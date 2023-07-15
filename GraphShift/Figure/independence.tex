@@ -1,0 +1,77 @@
+\begin{center}
+  \begin{tikzcd}[column sep=small, row sep=huge]
+    &
+    \delta_1
+    &
+    &[-17pt]
+    &[-17pt]
+    & &
+    \rho
+    & & &[-17pt] &[-17pt] &
+    \delta_n\\[-25pt]
+    %
+    L_1 \arrow[d] &
+    K_1 \arrow[l, tail] \arrow[r] \arrow[d] &
+    R_1 \arrow[dr] \ar[drrrrrrrrr, dashed, bend left=2, "i_{1,n}" description, pos=0.6]
+    &
+    &
+    L_2 \arrow[dl] 
+    & \arrow[l, dotted, tail] \arrow[rr, dotted, no head]
+    &
+    & {} \arrow[r, dotted]
+    &
+    R_{n-1} \arrow[dr] &
+    &
+    L_n \arrow[dl] \ar[dlllllllll, dashed, bend right=2, "i_{n,1}" description, pos=0.6]
+    &
+    K_n \arrow[l, tail] \arrow[r] \arrow[d]
+    &
+    R_n \arrow[d]\\
+    %%%%%%% 
+    %%%%%%%
+    G_1 &
+    D_1 \arrow[l, tail] \arrow[rr] \arrow[drrrrr, dotted]
+    &
+    &
+    G_2 \arrow[drrr, dotted]
+    &
+    &
+    D_2 \arrow[ll, tail] \arrow[rr, no head, dotted] \arrow[dr, dotted]
+    & 
+    &
+    D_{n-1} \arrow[dl, dotted]
+    &
+    &
+    G_n \arrow[ll] \arrow[dlll, dotted]
+    &
+    &
+    D_n  \arrow[ll, tail] \arrow[r] \arrow[dlllll, dotted]
+    &
+    G_{n+1}\\[-18pt]
+    %%%%%%%
+    %%%%%%%
+    &
+    &
+    &
+    &
+    &    
+    &
+    C
+    &
+    &
+    &
+    &
+    &
+    &      
+    % \arrow[loop below,"f_C=\cone f \bigsqcup" below]
+    % \arrow[r,  "\alpha=\bigsqcup" below, shift right=1ex]
+    % &
+    % L \arrow[l,  "\gamma=\cone{.}" above, shift right=1ex]
+    % \arrow[loop below,"f" below]
+\end{tikzcd}
+\end{center}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
