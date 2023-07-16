@@ -1,0 +1,138 @@
+  \begin{center}
+
+    %%% TYPE GRAPH 
+    % 
+    \subcaptionbox*{$T$}{
+      \begin{tikzpicture}[node distance=2mm, baseline=(current bounding box.center)]
+        \node () {
+          \begin{tikzpicture}
+            \node at (0,0) [node] (1) {}
+            edge [in=95, out=65, loop] ();        
+            % 
+            \pgfBox
+          \end{tikzpicture}
+        };
+      \end{tikzpicture}
+    }
+    % 
+    \hfill
+    %
+    %%% RULES 
+    % 
+    \subcaptionbox*{$p_1$}{
+    % RULE P1
+    %
+    \begin{tikzpicture}[node distance=2mm, baseline=(current bounding box.center)]
+      \node (l) {
+      \begin{tikzpicture}
+      %
+        \node at (0,0.53) {};
+        \node at (0,0) [node, label=below:$1$] (1) {} ;
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node [right=of l] (k) {
+      \begin{tikzpicture}
+        %
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$1$] (1) {};
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node  [right=of k] (r) {
+      \begin{tikzpicture}
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$1$] (1) {};
+        \node at (.5,0) [node, label=below:$2$] (2) {}; 
+        %
+        \pgfBox
+      \end{tikzpicture}
+    };
+    \path (k) edge[->] node[trans, above] {} (l);
+    \path (k) edge[->] node[trans, above] {} (r);
+    \end{tikzpicture}
+  }
+  %
+  \hfill
+  %
+  \subcaptionbox*{$p_2$}{
+    % RULE P2
+    %
+    \begin{tikzpicture}[node distance=2mm]
+      \node (l) {
+      \begin{tikzpicture}
+        %
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$1$] (1) {} ;
+        % 
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node [right=of l] (k) {
+      \begin{tikzpicture}
+        %
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$1$] (1) {};
+        % 
+        \pgfBox
+      \end{tikzpicture} 
+    };
+    \node  [right=of k] (r) {
+      \begin{tikzpicture}
+        \node at (0,0) [node, label=below:$1$] (1) {}
+        edge [in=95, out=65, loop] ();        
+        %
+        \pgfBox
+      \end{tikzpicture}
+    };
+    \path (k) edge[->] node[trans, above] {} (l);
+    \path (k) edge[->] node[trans, above] {} (r);
+    \end{tikzpicture}
+  }
+  %
+  \hfill
+  %
+  \subcaptionbox*{$p_3$}{
+    % RULE P3
+    %
+    \begin{tikzpicture}[node distance=2mm]
+      \node (l) {
+      \begin{tikzpicture}
+        %
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$1$] (1) {} ;
+        \node at (0.5,0) [node, label=below:$2$] (2) {} ;
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node [right=of l] (k) {
+      \begin{tikzpicture}
+        %
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$1$] (1) {} ;
+        \node at (0.5,0) [node, label=below:$2$] (2) {} ;
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node  [right=of k] (r) {
+      \begin{tikzpicture}
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$12$] (12) {};
+        %
+        \pgfBox
+      \end{tikzpicture}
+    };
+    \path (k) edge[->] node[trans, above] {} (l);
+    \path (k) edge[->] node[trans, above] {} (r);
+    \end{tikzpicture}
+  }
+  %
+\end{center}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

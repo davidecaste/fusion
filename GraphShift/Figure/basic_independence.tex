@@ -1,0 +1,32 @@
+\begin{center}
+  \begin{tikzcd}[column sep=small, row sep=normal]
+    {L_1} \ar[d, "m_{L_1}" swap]
+    &
+    {K_1} \ar[l, "l_1" swap] \ar[r, "r_1"] \ar[d, "m_{K_1}" description]
+    &
+    {R_1} \ar[dr, "m_{R_1}" description]  \ar[drrr, dotted, bend left=16, "i_1" description, pos=0.75]
+    & &
+    % 
+    {L_2}\ar[dl, "m_{L_2}" description] \ar[dlll, dotted, bend right=16, "i_2" description, pos=0.75]
+    &
+    {K_2} \ar[l, "l_2" swap] \ar[r, "r_2"] \ar[d, "m_{K_2}" description]
+    &
+    {R_2} \ar[d, "m_{R_2}"] \\
+    % 
+    % 
+    {G}
+    &
+    {D_1} \ar[l, "l^*_1"] \ar[rr, "r^*_1" swap]
+    & {} &
+    {H}
+    & {} &
+    {D_2} \ar[ll, "l^*_2"] \ar[r, "r^*_2" swap]
+    &
+    {M}  
+  \end{tikzcd}
+\end{center}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: ../GraphShift.tex
+%%% End:
