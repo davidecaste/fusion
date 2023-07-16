@@ -378,10 +378,10 @@ can have shift-equivalent derivations where the permutation is the
 identity but which are non isomorphic (e.g., in GraphShift, page 1-2
 $\rho_1 \shifteq \rho_3$, but $\rho_1 \equiv^{a} \rho_3$.
   
-We want a notion of shift-equivalence which ensures some properties
+We want a notion of shift-equivalence that ensures some properties
 which are indispensable to allow to interpret derivations up-to shift
 as equivalent concurrent computations which differ only for the fact
-that independent steps have been moved around. When moving around steps, we should not loose track of the identity of the steps: this is essential to be able to have an event structure semantics with a clearly defined notion of event.
+that independent steps have been moved around. When moving around steps, we should not lose track of the identity of the steps: this is essential to be able to have an event structure semantics with a clearly defined notion of event.
 
 
 Hence we assume to deal
@@ -416,7 +416,7 @@ properties:
 
 
 
-\textbf{Question.} Taking the standard shift, with generic interchange pair, a a counterexample to property 1, is the one mentioned above.  Do we have a counterexample to property 2? Not clear to me.
+\textbf{Question.} Taking the standard shift with generic interchange pair, a counterexample to Property 1 is the one mentioned above.  Do we have a counterexample to Property 2? Not clear to me.
 
 
 The above discussion should lead to
@@ -426,7 +426,7 @@ The above discussion should lead to
   the draft, GraphShift, Def. 3, cond (1)-(5), with the addition of
   Lemma 12).
   
-  \textbf{Questions}: Can we reduce the set of axioms? Do we need something else relating abstraction equivalence (iso of derivation) and shift? Relation with symmetries? 
+  \textbf{Questions}: Can we reduce the set of axioms? Do we need something else relating abstraction equivalence (iso of derivations) and shift? Relation with symmetries? 
 
   
   
@@ -445,7 +445,7 @@ The above discussion should lead to
   UnstableFull). By the way, note that the satisfaction of the conditions
   on shift depends not only on the notion of shift, but also on the
   notion of rewriting. In this case we expect to have a prime event
-  structure (bit this has to do with the second part of the work).
+  structure (but this has to do with the second part of the work).
   
   
 \end{enumerate}
@@ -456,17 +456,17 @@ The above discussion should lead to
 
 Ideally, one would like to be able to work with an abstract notion of
 shift-equivalence and just using its properties as singled out in the
-previous part derive a weak prime domain or connected event structure
+previous part to derive a weak prime domain or connected event structure
 for it. This is probably difficult, but one might need to add some
 futher properties to be proved for the specific notion of shift at
 hand.
 
 
-For this part, relevant material is section V of UnstableFull. We use abstraction equivalence (iso of derivations) $\equiv^{a}$ (def. 36), shift-equivalence $\shifteq_\sigma$ (Def. 38, traking the permutation) and their join $\equiv^c_\sigma$.
+For this part, relevant material is section V of UnstableFull. We use abstraction equivalence (iso of derivations) $\equiv^{a}$ (Def. 36), shift-equivalence $\shifteq_\sigma$ (Def. 38, traking the permutation) and their join $\equiv^c_\sigma$.
 
 For linear rules on graphs it is known that two derivations are
 related by $\rho \equiv^c_\sigma \rho'$ iff $\sigma$ is a consistent
-permutation (def. 40, UnstableFull). Rough;y the idea is to take the colimit
+permutation (Def. 40, UnstableFull). Roughly the idea is to take the colimit
 and consider the rewriting steps over the colimit to deduce
 dependencies. This was used in many places in the proofs, but for
 left-linear rules the proof does not go through (only the implication
@@ -474,7 +474,7 @@ left-linear rules the proof does not go through (only the implication
 permutation'' (Lemma 17(1)) seems to hold as the original proof do not
 to rely on linearity, this should be double-checked, but the converse
 is false). In general, the hope is to get rid of using consistent
-permutation and use instead more asbtract properties of
+permutations and use instead more abstract properties of
 shift-equivalence as discussed in the first part.
 
 The general idea is to show that considering derivations are arrows from the source to the target graph, then the slice from the initial graph $\slice{[G_s]}{\tr{\mathcal{G}}}$ should be a pre-order, whose ideal completion is a weak prime domain.
@@ -488,7 +488,7 @@ Relevant technical lemma in UnstableFull are:
 
 \item
   \textbf{Lemma 19}.
-  (1) says that if $\psi; \psi_1 \equiv^c_\sigma \psi'; \psi_1'$ and the permutation $\sigma$ sends $n$ steps of $\psi_1$ to $\psi'$ then such steps are not in $\psi$ and they will need to be in every $\phi_2$ such that $\psi; \phi_2 \equiv^c_\sigma \psi'; \phi_2'$. In particular there is $\phi_2$ consisting of exactly $n$ steps which allows for commutation. This allows essentially to deduce existence of minimal upper bounds, al with the same length. 
+  (1) says that if $\psi; \psi_1 \equiv^c_\sigma \psi'; \psi_1'$ and the permutation $\sigma$ sends $n$ steps of $\psi_1$ to $\psi'$ then such steps are not in $\psi$ and they will need to be in every $\phi_2$ such that $\psi; \phi_2 \equiv^c_\sigma \psi'; \phi_2'$. In particular there is $\phi_2$ consisting of exactly $n$ steps which allows for commutation. This allows essentially to deduce existence of minimal upper bounds, all with the same length. 
   Then (2) shows that all minimal upper bounds are isomorphic, so that we have a sup.
 
   Again, the hope is to obtain this from the abstract properties of
@@ -498,7 +498,7 @@ Relevant technical lemma in UnstableFull are:
   is a domain, i.e., algebraic finitary (see Def. 6), while
   \textbf{Theorem 6} prove that it is weak prime.
 
-  Here I think that the proofs are draft modifications of the original ones, changed after discovering the property on consistent permutation to be wrong. But they are drafty, to be redone maybe keeping some ideas.
+  Here I think that the proofs are draft modifications of the original ones, changed after discovering the property on consistent permutations to be wrong. But they are drafty, to be redone maybe keeping some ideas.
 
 
 \subsection*{Event structures for non-right linear, but jointly mono matches}
