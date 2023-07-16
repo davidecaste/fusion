@@ -1,28 +1,28 @@
-% (query-replace-regexp "\\\\begin{\\([^}]*\\)}\\[\\([^]]*\\)\\]{\\([^}]*\\)}{\\([^}]*\\)}" "\\\\begin{\\3}[\\2]")
+% --- LICS ----
 \documentclass[conference]{IEEEtran}
  \pdfoutput=1 
-%
+%(query-replace-regexp " es\\([, ]\\)"     " {\\\\esabbr}\\1")
 
-%
-%
-
+%(query-replace-regexp "\\\\langle\\(.*C[^,]*\\),\\(.*e[^\\]*\\)\\\\rangle" "\\\\esir{\\1}{\\2}")
+% (query-replace-regexp "{le:prec-irr-b}(\\(.\\))" "{le:prec-irr-b}(\\\\ref{le:prec-irr-b:\\1})")
+ 
  \usepackage{cite}
  \usepackage[standard]{ntheorem}
- %
- %
- %
- %
- %
+ % \newtheorem{theorem}{Theorem}
+ % \newtheorem{definition}{Theorem}[theorem]
+ % \newtheorem{proposition}{Proposition}[theorem]
+ % \newtheorem{lemma}{Lemma}[theorem]
+ % \newtheorem{corollary}{Corollary}[theorem]
 \renewenvironment{proof}{\begin{IEEEproof}}{\end{IEEEproof}}
-%
+% end LICS
 
-%
+% to switch between conference and full version
 \newif\ifconf
 \conftrue
 \conffalse
 
 
-%
+% if conference, omit proofs
 \ifconf
   \newcommand{\short}[1]{#1}
   \newcommand{\full}[1]{}
@@ -35,22 +35,22 @@
   \newcommand{\full}[1]{{#1}}
 \fi
 
-%
+% if commenting \final, omit todo notes and some parts
 \newif\iffinal
 \finaltrue
-%
+\finalfalse
 
-%
-%
-%
-%
-%
-%
-%
+% \iffinal
+% \usepackage{draftwatermark}
+% \SetWatermarkText{DRAFT}
+% \SetWatermarkScale{1}
+% \SetWatermarkLightness{.9}
+% \else
+% \fi
 
 
-%
-%
+% --- LNCS ---
+% \documentclass{llncs}
 
 \usepackage{etex}
 
@@ -64,29 +64,29 @@
 
 \iffinal
 \else
-%
+% for todo notes
 \setlength{\marginparwidth}{1.3cm}
 \fi
 
-%
+% derivations and labels
 \usepackage{proof}
 \newcommand{\lab}[1]{\ensuremath{\mathsf{{#1}}}}
 \newcommand{\slab}[1]{\ensuremath{\scriptstyle{\mathsf{{#1}}}}}
+
+% ``boxed'' \infer command
+\newcommand{\binfer}[3][]{
+  \mbox{\infer[#1]{#2}{#3}}}
 
 % name for transitivity of intechangeabilty on consistent irreducibles
 \newcommand{\wi}{{interchangeable}}
 
 
-% 
-\newcommand{\binfer}[3][]{
-  \mbox{\infer[#1]{#2}{#3}}}
-
-%
-%
-%
-%
-%
-%
+% Command for labels on the left side of the rule
+%       \inferL{<name>}{<post>}{<pre>}
+% generates:
+%             <pre>
+%      <name> ------
+%             <post>
 %
 \newlength{\myheight}
 \newcommand{\inferL}[3]
@@ -97,18 +97,18 @@
 }
 
 \usepackage{amssymb,graphicx,epsfig,color}
-%
+%\usepackage[scriptsize]{subfigure}
 \usepackage{subcaption}
 \usepackage[arrow,matrix,frame,curve,cmtip,color]{xy}
 \newdir{  >}{*{}!/-.9em/\dir{>}}
 \newdir{ >}{*{}!/-.4em/\dir{>}}
 \usepackage{wrapfig}
 
-%
-%
+% re-stating 
+%\usepackage{thm-restate}
 
-%
-%
+% showing labels
+%\usepackage[inline]{showlabels}
 
 \usepackage{pgf}
 \usepackage{tikz}
@@ -126,7 +126,7 @@
   \end{pgfonlayer}
 }
 
-\newcommand{\bx}[1]{\phantom{\big(}#1{\phantom{\big)}}} %
+\newcommand{\bx}[1]{\phantom{\big(}#1{\phantom{\big)}}} %for margins of labels on xypic diagrams
 
 
 \newcommand{\Rrel}[1]   {\stackrel{{#1}}{\Longrightarrow}}
@@ -137,7 +137,7 @@
 \newcommand{\nil}{{\tt 0}}
 \newcommand{\rec}{\emph{rec}}
 \newcommand{\fn}[1]{{\mathtt{fn}}(#1)}
-%
+%\usepackage{latexsym}
 \usepackage{stmaryrd}
 \def\encodep#1{\llfloor#1\rrfloor}
 
@@ -145,16 +145,16 @@
 
 \newcommand{\dpo}{\textsc{dpo}}
 
-%
+% base classes of categories for adhesive and quasi adhesive case
 \newcommand{\bAdh}{\ensuremath{\mathbb{B}}}
 \newcommand{\bQAdh}{\ensuremath{\mathbb{QB}}}
 
-%
+%from pawel
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath}
-%
-%
-%
+%2 righe tolte da Fabio
+%\usepackage{amssymb}
+%\usepackage{amsthm}
 \usepackage{enumerate}
 \usepackage{xspace}
 \usepackage{amsfonts}
@@ -164,132 +164,133 @@
 \usepackage{fancybox}
 
 
-%
+%%%%%%%% MATHEMATICAL NOTATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%
+%symbol for natural numbers
 \newcommand{\nat}{\ensuremath{\mathbb{N}}}
 
-%
+% finite subset
 \newcommand{\sfin}{\ensuremath{\subseteq_{\mathit{fin}}}}
 
-%
+% flattening of a multiset
 \newcommand{\flt}[1]{\ensuremath{[\![{#1}]\!]}}
 
-%
+% compact elements
 \newcommand{\compact}[1]{\ensuremath{\mathop{\mathsf{K}({#1})}}}
 
-%
+% principal ideal
 \newcommand{\principal}[1]{\ensuremath{\mathop{\downarrow\!{#1}}}}
 
-%
+% ideal completion
 \newcommand{\ideal}[1]{\ensuremath{\mathsf{Idl}({#1})}}
 
-%
+% complete prime elements
 \newcommand{\pr}[1]{\ensuremath{\mathop{\mathit{pr}({#1})}}}
 \newcommand{\wpr}[1]{\ensuremath{\mathop{\mathit{wpr}({#1})}}}
 
-%
+% irreducible elements
 \newcommand{\ir}[1]{\ensuremath{\mathop{\mathit{ir}({#1})}}}
 
-%
+% difference of irreducible elements
 \newcommand{\diff}[2]{\ensuremath{\delta({#1},{#2})}}
 
-%
+% immediate precedence
 
-%
-%
+% abbreviation for event structure
+% \newcommand{\esabbr}{event structure}
 \newcommand{\esabbr}{\textsc{es}}
 \newcommand{\esnabbr}{\textsc{esnb}}
 \newcommand{\esnmabbr}{\textsc{esn}}
 \newcommand{\eseqabbr}{\textsc{epes}}
 
-%
+% predecessor of an irreducible
 \newcommand{\pred}[1]{\ensuremath{\mathit{p}({#1})}}
 
-%
+% irreducible elements in es domains
 \newcommand{\esir}[2]{\ensuremath{\langle{#1}, {#2}\rangle}}
 
-%
+% equivalence classes [of irreducibles]
 \newcommand{\eqclass}[2][]{\ensuremath{[{#2}]_{\scriptscriptstyle {#1}}}}
-%
+% union of the equivalence classes of the elements in a set
 \newcommand{\eqclasscup}[2]{\ensuremath{{#2}_{\scriptscriptstyle {#1}}}}
 
 \newcommand{\eqclassir}[1]{\ensuremath{\eqclass[\leftrightarrow^*]{#1}}}
 
 
 
-%
+% quotient of set wrt a relation
 \newcommand{\quotient}[2]{\ensuremath{{#1}_{\scriptscriptstyle {#2}}}}
 
 
-%
+% category of event structures 
 \newcommand{\es}{\ensuremath{\mathsf{ES}}}
-%
+% category of stable event structures 
 \newcommand{\ses}{\ensuremath{\mathsf{sES}}}
-%
+% category of prime event structures 
 \newcommand{\pes}{\ensuremath{\mathsf{pES}}}
-%
+% category of prime event structures with equivalence
 \newcommand{\epes}{\ensuremath{\mathsf{epES}}}
 
-%
+% category of connected event structures 
 \newcommand{\ces}{\ensuremath{\mathsf{cES}}}
 
 
-%
+% category of weak prime algebraic domains domains 
 \newcommand{\WDom}{\ensuremath{\mathsf{wDom}}}
-%
+% category of domains
 \newcommand{\Dom}{\ensuremath{\mathsf{Dom}}}
-%
+% category of prime algebraic domains
 \newcommand{\PDom}{\ensuremath{\mathsf{pDom}}}
 
 
-%
+%%%%% NON BINARY CONFLICT
 
-%
+% category of event structures 
 \newcommand{\esn}{\ensuremath{\mathsf{ES_{nb}}}}
-%
+% category of stable event structures 
 \newcommand{\sesn}{\ensuremath{\mathsf{sES_n}}}
 
-%
+% category of connected event structures 
 \newcommand{\cesn}{\ensuremath{\mathsf{cES_{nb}}}}
 
-%
+% category of prime event structures 
 \newcommand{\pesn}{\ensuremath{\mathsf{pES_n}}}
 
-%
+% category of fusion domains 
 \newcommand{\WDomb}{\ensuremath{\mathsf{wDom_b}}}
-%
+% category of domains
 \newcommand{\Domb}{\ensuremath{\mathsf{Dom_b}}}
-%
+% category of prime algebraic domains
 \newcommand{\PDomb}{\ensuremath{\mathsf{pDom_b}}}
 
-%
+%%%%% END NON BINARY CONFLICT
 
 
-%
+% slice category
 \newcommand{\slice}[2]{\ensuremath{({#1} \downarrow {#2})}}
 
 
-%
+% event structure for a domain
 \newcommand{\zev}[0]{\ensuremath{\mathcal{E}}}
 \newcommand{\ev}[1]{\ensuremath{\zev({#1})}}
 
-%
+% from general to connected event structures
 \newcommand{\zconnes}[0]{\ensuremath{\mathcal{C}}}
 \newcommand{\connes}[1]{\ensuremath{\zconnes({#1})}}
-%
+% and inclusion
 \newcommand{\zinces}[0]{\ensuremath{\mathcal{I}}}
 \newcommand{\inces}[1]{\ensuremath{\zinces({#1})}}
 
-%
+
+% stable version
 \newcommand{\zsev}[0]{\ensuremath{\mathcal{E}_S}}
 \newcommand{\sev}[1]{\ensuremath{\zsev({#1})}}
 
-%
+% with equivalence
 \newcommand{\zeveq}[0]{\ensuremath{\mathcal{E}_{eq}}}
 \newcommand{\eveq}[1]{\ensuremath{\zeveq({#1})}}
 
-%
+% es with equivalence to es and vice
 \newcommand{\zfuse}[0]{\ensuremath{\mathcal{M}}}
 \newcommand{\fuse}[1]{\ensuremath{\zfuse({#1})}}
 \newcommand{\zunf}[0]{\ensuremath{\zunf}}
@@ -297,26 +298,26 @@
 
 
 
-%
+% Winskel/Droste version
 \newcommand{\zevwd}[0]{\ensuremath{\mathcal{E}_{wd}}}
 \newcommand{\evwd}[1]{\ensuremath{\zevwd({#1})}}
 
 
 
 
-%
+% configurations of an event structure
 \newcommand{\conf}[1]{\ensuremath{\mathit{Conf}({#1})}}
-%
+% finite configurations
 \newcommand{\conff}[1]{\ensuremath{\mathit{Conf_F}({#1})}}
 
-%
+% product of the sets of minimal enablinsg
 \newcommand{\pmin}[1]{\ensuremath{U_{#1}}}
 
-%
+% connectectedness of minimal enablinsg
 \newcommand{\conn}[1]{\ensuremath{\stackrel{#1}{\frown}}}
 
 
-%
+% domain for an event structure or graph grammar
 \newcommand{\zdom}[0]{\ensuremath{\mathcal{D}}}
 \newcommand{\dom}[1]{\ensuremath{\zdom({#1})}}
 
@@ -325,37 +326,37 @@
 \newcommand{\domeq}[1]{\ensuremath{\zdomeq({#1})}}
 
 
-%
+% partial order for a graph grammar
 \newcommand{\poset}[1]{\ensuremath{\mathcal{P}({#1})}}
 
-%
+% stable version
 \newcommand{\pdom}[1]{\ensuremath{\mathcal{D}_S({#1})}}
 \newcommand{\ppdom}[0]{\ensuremath{\mathcal{D}_S}}
 
 
-%
+% powerset
 \newcommand{\Pow}[1]{\ensuremath{\mathbf{2}^{#1}}}
 
-%
+% powerset of finite subsets
 \newcommand{\Powfin}[1]{\ensuremath{\mathbf{2}_\mathit{fin}^{#1}}}
 
-%
+% powerset of subsets of cardinality <= 1
 \newcommand{\Powone}[1]{\ensuremath{\mathbf{2}_1^{#1}}}
 
-%
+% integer interval
 \newcommand{\interval}[2][1]{\ensuremath{[{#1},{#2}]}}
 
-%
+% domain interval
 \newcommand{\dint}[2]{\ensuremath{[{#1},{#2}]}}
 
-%
+% set of intervals
 \newcommand{\IntSet}[1]{\ensuremath{\mathop{\mathit{Int}({#1})}}}
 
-%
+% intervals to irreducibles and vice
 \newcommand{\inir}{\ensuremath{\mathop{\mathit{\zeta}}}}
 \newcommand{\irin}{\ensuremath{\mathop{\mathit{\iota}}}}
 
-%
+% permutations
 \newcommand{\perm}{\sigma}
 
 % causes
@@ -366,22 +367,22 @@
 % saturation
 \newcommand{\sat}[1]{\ensuremath{\tilde{#1}}}
 
-
+%%% GRAPH GRAMMARS
 
 
 \newcommand{\Abs}[1]{\ensuremath{\mathsf{Abs}({#1})}}
 \newcommand{\tr}[1]{\ensuremath{\mathsf{Tr}({#1})}}
-%
+% fusion safe traces
 \newcommand{\trs}[1]{\ensuremath{\mathsf{Tr}_s({#1})}}
 \newcommand{\graph}{\ensuremath{\mathsf{Graph}}}
 \newcommand{\tgraph}[1]{\ensuremath{\mathsf{Graph}_{#1}}}
 \newcommand{\can}[1]{\ensuremath{\mathsf{C}({#1})}}
-%
+% source and target of a derivation
 \newcommand{\source}[1]{\ensuremath{\mathsf{s}({#1})}}
 \newcommand{\target}[1]{\ensuremath{\mathsf{t}({#1})}}
 \newcommand{\col}[1]{\ensuremath{\mathsf{col}({#1})}}
 
-%
+% left decorated trace
 \newcommand{\ltrace}[1]{\ensuremath{\langle {#1}\rangle_c}}
 
 \title{Domains and Event Structures for Fusions}
@@ -1036,7 +1037,6 @@ modelling the concurrent computations of name passing process
 calculi~\cite{CVY:ESSPE}.
 
 This is a revised and extended  version of the conference paper~\cite{BCG:DESF}.
-
 
 \section{Background: Domains and Event Structures}
 \label{se:background}
