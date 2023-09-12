@@ -1,0 +1,1060 @@
+ %(query-replace-regexp "\\\\sqsubseteq^{sh}_{\\([^}]*\\)}" "\\\\shiftpre[\\1]")
+% --- LNCS ---'
+\documentclass{llncs}
+
+\usepackage{hyperref}
+\usepackage[textsize=tiny]{todonotes}
+\usepackage{etex}
+
+\usepackage[all]{xy}
+\SelectTips{cm}{}
+% derivations and labels
+\usepackage{proof}
+\newcommand{\lab}[1]{\ensuremath{\mathsf{{#1}}}}
+\newcommand{\slab}[1]{\ensuremath{\scriptstyle{\mathsf{{#1}}}}}
+
+% ``boxed'' \infer command
+\newcommand{\binfer}[3][]{
+  \mbox{\infer[#1]{#2}{#3}}}
+
+% Command for labels on the left side of the rule
+%       \inferL{<name>}{<post>}{<pre>}
+% generates:
+%             <pre>
+%      <name> ------
+%             <post>
+%
+\newlength{\myheight}
+\newcommand{\inferL}[3]
+  {\settoheight{\myheight}{\mbox{${#2}$}}
+   \raisebox{\myheight}{{#1}}
+   \makebox[1mm]{}
+   \mbox{\infer{#2}{#3}}
+}
+
+\usepackage{amssymb,graphicx,epsfig,color}
+%\usepackage[scriptsize]{subfigure}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+
+% re-stating 
+%\usepackage{thm-restate}
+
+% showing labels
+%\usepackage[inline]{showlabels}
+
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows,shapes,snakes,automata,backgrounds,petri,fit,positioning}
+\tikzstyle{node}=[circle, draw=black, minimum size=1mm]
+\tikzstyle{trans}=[font=\scriptsize]
+\tikzstyle{lab}=[font=\small]
+
+
+\newcommand{\pgfBox}{
+  \begin{pgfonlayer}{background} 
+    \fill[blue!2,thick,draw=black!50,rounded corners,inner sep=3mm] ([xshift=-1.5pt,yshift=-1.5pt]current bounding box.south west) rectangle ([xshift=1.5pt,yshift=1.5pt]current bounding box.north east);
+  \end{pgfonlayer}
+}
+
+
+
+\newcommand{\Rrel}[1]   {\stackrel{{#1}}{\Longrightarrow}}
+\newcommand{\oa}{\overline a}
+\newcommand{\ob}{\overline b}
+\newcommand{\oc}{\overline c}
+\newcommand{\od}{\overline d}
+\newcommand{\nil}{{\tt 0}}
+\newcommand{\rec}{\emph{rec}}
+\newcommand{\fn}[1]{{\mathtt{fn}}(#1)}
+%\usepackage{latexsym}
+\usepackage{stmaryrd}
+\def\encodep#1{\llfloor#1\rrfloor}
+
+\newcommand{\cat}[1]{\ensuremath{\mathbf{#1}}}
+
+\newcommand{\dpo}{\textsc{dpo}}
+
+% base classes of categories for adhesive and quasi adhesive case
+\newcommand{\bAdh}{\ensuremath{\mathbb{B}}}
+\newcommand{\bQAdh}{\ensuremath{\mathbb{QB}}}
+
+%from pawel
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+%2 righe tolte da Fabio
+\usepackage{amssymb}
+%\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{xspace}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{cite}
+\usepackage{float}
+\usepackage{fancybox}
+
+\usepackage{cleveref}
+
+
+\spnewtheorem*{notation}{Notation}{\bfseries}{\rmfamily}
+
+%%%%%%%% MATHEMATICAL NOTATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%symbol for natural numbers
+\newcommand{\nat}{\ensuremath{\mathbb{N}}}
+
+% finite subset
+\newcommand{\sfin}{\ensuremath{\subseteq_{\mathit{fin}}}}
+
+% flattening of a multiset
+\newcommand{\flt}[1]{\ensuremath{[\![{#1}]\!]}}
+
+% compact elements
+\newcommand{\compact}[1]{\ensuremath{\mathop{\mathsf{K}({#1})}}}
+
+% principal ideal
+\newcommand{\principal}[1]{\ensuremath{\mathop{\downarrow\!{#1}}}}
+
+% ideal completion
+\newcommand{\ideal}[1]{\ensuremath{\mathsf{Idl}({#1})}}
+
+% complete prime elements
+\newcommand{\pr}[1]{\ensuremath{\mathop{\mathit{pr}({#1})}}}
+\newcommand{\wpr}[1]{\ensuremath{\mathop{\mathit{wpr}({#1})}}}
+
+% irreducible elements
+\newcommand{\ir}[1]{\ensuremath{\mathop{\mathit{ir}({#1})}}}
+
+% difference of irreducible elements
+\newcommand{\diff}[2]{\ensuremath{\delta({#1},{#2})}}
+
+% immediate precedence
+
+% abbreviation for event structure
+% \newcommand{\esabbr}{event structure}
+\newcommand{\esabbr}{\textsc{es}}
+\newcommand{\esnabbr}{\textsc{esnb}}
+\newcommand{\esnmabbr}{\textsc{esn}}
+\newcommand{\eseqabbr}{\textsc{epes}}
+
+% predecessor of an irreducible
+\newcommand{\pred}[1]{\ensuremath{\mathit{p}({#1})}}
+
+% irreducible elements in es domains
+\newcommand{\esir}[2]{\ensuremath{\langle{#1}, {#2}\rangle}}
+
+% equivalence classes [of irreducibles]
+\newcommand{\eqclass}[2][]{\ensuremath{[{#2}]_{\scriptscriptstyle {#1}}}}
+% union of the equivalence classes of the elements in a set
+\newcommand{\eqclasscup}[2]{\ensuremath{{#2}_{\scriptscriptstyle {#1}}}}
+
+\newcommand{\eqclassir}[1]{\ensuremath{\eqclass[\leftrightarrow^*]{#1}}}
+
+% quotient of set wrt a relation
+\newcommand{\quotient}[2]{\ensuremath{{#1}_{\scriptscriptstyle {#2}}}}
+
+% category of event structures 
+\newcommand{\es}{\ensuremath{\mathsf{ES}}}
+% category of stable event structures 
+\newcommand{\ses}{\ensuremath{\mathsf{sES}}}
+% category of prime event structures 
+\newcommand{\pes}{\ensuremath{\mathsf{pES}}}
+% category of prime event structures with equivalence
+\newcommand{\epes}{\ensuremath{\mathsf{epES}}}
+
+% category of connected event structures 
+\newcommand{\ces}{\ensuremath{\mathsf{cES}}}
+
+% category of weak prime algebraic domains domains 
+\newcommand{\WDom}{\ensuremath{\mathsf{wDom}}}
+% category of domains
+\newcommand{\Dom}{\ensuremath{\mathsf{Dom}}}
+% category of prime algebraic domains
+\newcommand{\PDom}{\ensuremath{\mathsf{pDom}}}
+
+
+%%%%% NON BINARY CONFLICT
+
+% category of event structures 
+\newcommand{\esn}{\ensuremath{\mathsf{ES_{nb}}}}
+% category of stable event structures 
+\newcommand{\sesn}{\ensuremath{\mathsf{sES_n}}}
+
+% category of connected event structures 
+\newcommand{\cesn}{\ensuremath{\mathsf{cES_{nb}}}}
+
+% category of prime event structures 
+\newcommand{\pesn}{\ensuremath{\mathsf{pES_n}}}
+
+% category of fusion domains 
+\newcommand{\WDomb}{\ensuremath{\mathsf{wDom_b}}}
+% category of domains
+\newcommand{\Domb}{\ensuremath{\mathsf{Dom_b}}}
+% category of prime algebraic domains
+\newcommand{\PDomb}{\ensuremath{\mathsf{pDom_b}}}
+
+%%%%% END NON BINARY CONFLICT
+
+
+% slice category
+\newcommand{\slice}[2]{\ensuremath{({#1} \downarrow {#2})}}
+
+
+% event structure for a domain
+\newcommand{\zev}[0]{\ensuremath{\mathcal{E}}}
+\newcommand{\ev}[1]{\ensuremath{\zev({#1})}}
+
+% from general to connected event structures
+\newcommand{\zconnes}[0]{\ensuremath{\mathcal{C}}}
+\newcommand{\connes}[1]{\ensuremath{\zconnes({#1})}}
+% and inclusion
+\newcommand{\zinces}[0]{\ensuremath{\mathcal{I}}}
+\newcommand{\inces}[1]{\ensuremath{\zinces({#1})}}
+
+
+% stable version
+\newcommand{\zsev}[0]{\ensuremath{\mathcal{E}_S}}
+\newcommand{\sev}[1]{\ensuremath{\zsev({#1})}}
+
+% with equivalence
+\newcommand{\zeveq}[0]{\ensuremath{\mathcal{E}_{eq}}}
+\newcommand{\eveq}[1]{\ensuremath{\zeveq({#1})}}
+
+% es with equivalence to es and vice
+\newcommand{\zfuse}[0]{\ensuremath{\mathcal{M}}}
+\newcommand{\fuse}[1]{\ensuremath{\zfuse({#1})}}
+\newcommand{\zunf}[0]{\ensuremath{\zunf}}
+\newcommand{\unf}[1]{\ensuremath{\mathcal{U}({#1})}}
+
+
+
+% Winskel/Droste version
+\newcommand{\zevwd}[0]{\ensuremath{\mathcal{E}_{wd}}}
+\newcommand{\evwd}[1]{\ensuremath{\zevwd({#1})}}
+
+
+
+
+% configurations of an event structure
+\newcommand{\conf}[1]{\ensuremath{\mathit{Conf}({#1})}}
+% finite configurations
+\newcommand{\conff}[1]{\ensuremath{\mathit{Conf_F}({#1})}}
+
+% product of the sets of minimal enablinsg
+\newcommand{\pmin}[1]{\ensuremath{U_{#1}}}
+
+% connectectedness of minimal enablinsg
+\newcommand{\conn}[1]{\ensuremath{\stackrel{#1}{\frown}}}
+
+
+% domain for an event structure or graph grammar
+\newcommand{\zdom}[0]{\ensuremath{\mathcal{D}}}
+\newcommand{\dom}[1]{\ensuremath{\zdom({#1})}}
+
+
+\newcommand{\zdomeq}[0]{\ensuremath{\mathcal{D}_{eq}}}
+\newcommand{\domeq}[1]{\ensuremath{\zdomeq({#1})}}
+
+
+% partial order for a graph grammar
+\newcommand{\poset}[1]{\ensuremath{\mathcal{P}({#1})}}
+
+% stable version
+\newcommand{\pdom}[1]{\ensuremath{\mathcal{D}_S({#1})}}
+\newcommand{\ppdom}[0]{\ensuremath{\mathcal{D}_S}}
+
+
+% powerset
+\newcommand{\Pow}[1]{\ensuremath{\mathbf{2}^{#1}}}
+
+% powerset of finite subsets
+\newcommand{\Powfin}[1]{\ensuremath{\mathbf{2}_\mathit{fin}^{#1}}}
+
+% powerset of subsets of cardinality <= 1
+\newcommand{\Powone}[1]{\ensuremath{\mathbf{2}_1^{#1}}}
+
+% integer interval
+\newcommand{\interval}[2][1]{\ensuremath{[{#1},{#2}]}}
+
+% domain interval
+\newcommand{\dint}[2]{\ensuremath{[{#1},{#2}]}}
+
+% set of intervals
+\newcommand{\IntSet}[1]{\ensuremath{\mathop{\mathit{Int}({#1})}}}
+
+% intervals to irreducibles and vice
+\newcommand{\inir}{\ensuremath{\mathop{\mathit{\zeta}}}}
+\newcommand{\irin}{\ensuremath{\mathop{\mathit{\iota}}}}
+
+% permutations
+\newcommand{\perm}{\sigma}
+
+% causes
+\newcommand{\causes}[1]{\ensuremath{\lfloor {#1})}}
+
+%%% GRAPH GRAMMARS
+
+
+\newcommand{\Abs}[1]{\ensuremath{\mathsf{Abs}({#1})}}
+\newcommand{\tr}[1]{\ensuremath{\mathsf{Tr}({#1})}}
+% fusion safe traces
+\newcommand{\trs}[1]{\ensuremath{\mathsf{Tr}_s({#1})}}
+%\newcommand{\graph}{\ensuremath{\mathsf{Graph}}}
+\newcommand{\tgraph}[1]{\ensuremath{\mathsf{Graph}_{#1}}}
+\newcommand{\can}[1]{\ensuremath{\mathsf{C}({#1})}}
+% source and target of a derivation
+\newcommand{\source}[1]{\ensuremath{\mathsf{s}({#1})}}
+\newcommand{\target}[1]{\ensuremath{\mathsf{t}({#1})}}
+\newcommand{\col}[1]{\ensuremath{\mathsf{col}({#1})}}
+
+% left decorated trace
+\newcommand{\ltrace}[1]{\ensuremath{\langle {#1}\rangle_c}}
+
+\newcommand{\bx}[1]{\phantom{\big(}#1{\phantom{\big)}}}
+\newcommand{\bxx}[1]{\,#1\,}
+\newcommand{\cycl}[1]{\ensuremath{\mbox{\textcircled{\scriptsize{$#1$}}}}}
+\renewcommand{\iff}{\ensuremath{\Leftrightarrow}}
+
+%%%%GENERAL CATEGORICAL NOTATION
+
+%identità
+\newcommand{\id}[1]{\mathsf{id}_{#1}}
+%codominio
+\newcommand{\cod}[1]{\mathsf{cod}({#1})}
+	%Variabili categorie
+\def\A{\textbf {\textup{A}}}
+\def\B{\textbf {\textup{B}}}
+\def\C{\textbf {\textup{C}}}
+\def\D{\textbf {\textup{D}}}
+\def\X{\textbf {\textup{X}}}
+\def\Y{\textbf {\textup{Y}}}
+\renewcommand{\P}{\textbf {\textup{P}}}
+
+%\derivazioni
+
+\newcommand{\dder}[1]{\mathscr{#1}}
+\newcommand{\sder}[2]{I(\mathscr{#1}, \mathscr{#2})}
+\newcommand{\der}[1]{\underline{\dder{#1}}}
+\def\dpo{\mathsf{C}^{\X}_R}
+\def\gpo{\mathsf{G}^{\X}_R}
+\def\dpi{[\mathsf{C}]^{\X}_R}
+\def\gpi{[\mathsf{G}]^{\X}_R}
+
+\newcommand{\ider}[1]{\mathscr{I}_{#1}}
+
+%categorie
+\def\Set{\textbf {\textup{Set}}}
+
+%comma
+\newcommand{\comma}[2]{#1\hspace{1pt} {\downarrow}\hspace{1pt} #2}
+\newcommand{\cma}[2]{\mathcal{#1}\hspace{1pt} {\downarrow}\hspace{1pt} \mathcal{#2}}
+
+%derivazioni
+\newcommand{\lpro}{\langle \hspace{-1.85pt}[}
+\newcommand{\rpro}{]\hspace{-1.85pt}\rangle}
+\newcommand{\tpro}[1]{\lpro \der{#1}\rpro}
+\newcommand{\lgt}[0]{\mathsf{length}}
+
+%%% NEW
+
+\usepackage{xparse}
+
+% inversions
+\newcommand{\inv}[1]{\ensuremath{inv}({#1})}
+
+% direct shift
+\newcommand{\shiftdir}[1][]{\ensuremath{\mathrel{{\rightsquigarrow}^{\mathit{sh}}_{#1}}}}
+
+% shift preorder
+\newcommand{\shiftpre}[1][]{\ensuremath{\mathrel{{\sqsubseteq}^{\mathit{sh}}_{#1}}}}
+
+% shift equivalence
+\newcommand{\shifteq}[1][]{\ensuremath{\mathrel{{\equiv}^\mathit{sh}_{#1}}}}
+
+% transp{source}[target]: if target not specified source+1
+\NewDocumentCommand{\transp}{m o}{%
+  \ensuremath{({#1},%
+  \IfNoValueTF{#2}%
+    {{#1}+1}%
+    {#2}%
+    )}
+}
+
+\NewDocumentCommand{\mycommand}{o}{%
+  % <code>
+  \IfNoValueTF{#1}
+    {code when no optional argument is passed}
+    {code when the optional argument #1 is present}%
+  % <code>
+}
+% interchange
+\newcommand{\IC}[1]{\ensuremath{\mathit{IC}({#1})}}
+
+
+\title{Fusion}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\todo{	A VERY NICE ABSTRACT}
+\end{abstract}
+
+\section{Introduction}
+
+\todo{A VERY NICE INTRODUCTION}
+
+\section{$\mathcal{M}$-adhesive categories}
+
+This first section is devoted to recall the definition and the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2006weak,lack2005adhesive}. 
+
+\begin{notation} 
+We stipulate here some notational conventions which will be used throughout this paper. 
+
+Given a category $\X$ we will not distinguish notationally between $\X$ and its class of objects: so that ``$X\in \X$'' means that $X$ belongs to the class of objects of $\X$.  
+
+If $1$ is a terminal object in a category $\X$,  the unique arrow $X\to 1$ from another object $X$ will be denoted by $!_X$. Similarly, if $0$ is initial in $\X$ then $?_X$ will denote the unique arrow $0\to X$. When $\X$ is $\Set$ and $1$ is a singleton, $\delta_x$ will denote the arrow $1\to X$ with value $x\in X$.
+
+Finally, we will use the following notation for some special classes of arrows of a category $\X$:
+\begin{itemize}
+	\item $\mathcal{A}(\X)$ will denote the class of all arrows of $\X$;
+	\item $\mathcal{M}(\X)$ will denote the class of all monos of $\X$;
+	\item $\mathcal{R}(\X)$ will denote the class of all regular monos of $\X$.
+\end{itemize}
+\end{notation}
+
+
+\subsection{The Van Kampen condition}
+The key property that $\mathcal{M}$-adhesive categories enjoy is given by  the so-called \emph{Van Kampen condition} \cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. We will recall it and examine some of its consequences. 
+
+\begin{definition} \index{Van Kampen square} \index{pushout!- square} \index{pushout!Van Kampen -|see{Van Kampen square}}Let $\X$ be a category  and consider the two diagrams below
+	\[\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{f}&&B\ar[dd]^{n}&&C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{g} &&D&&C \ar[rr]_{g} & & D}\]
+	We say that the left square is a \emph{Van Kampen square} if:
+	\begin{enumerate}
+		\item it is a pushout square;
+		\item whenever the right cube has pullbacks as back and left faces, then its top face is a pushout if and only if the front and right faces are pullbacks.
+	\end{enumerate}
+	
+	Pushout squares which enjoy the ``if'' half of this condition are called \emph{stable}.
+\end{definition}
+
+
+\begin{example}\label{ex:iso}
+	In any category $\X$, a square as the one below on the left, in which $m$ is an isomorphism, is Van Kampen. Notice that, in this situation, $n$ must be an isomorphism too.
+		\[\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{f}&&B\ar[dd]^{n}&&C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{g} &&D&&C \ar[rr]_{g} & & D}\]
+		
+	Take a cube as the one above and suppose that its back faces are pullbacks. In particular we know that also $m'$ is an isomorphism.
+	
+	\smallskip \noindent 
+	$(\Rightarrow)$ Suppose that the top face is a pushout, thus $n'$ is an isomorphism and the right square is a pullback. The thesis for the front face follows at once since $m', n', m$ and $m$ are isomorphisms and the back face a pullback.
+	
+	\smallskip \noindent 
+	$(\Leftarrow)$ If all the vertical faces are pullbacks, then $m'$ and $n'$ are isomorphisms and this entails at once that the top face is a pushout.
+\end{example}
+
+Before proceeding further, we recall this classical result about pullbacks.
+
+\begin{lemma}\label{lem:pb1}
+	Let $\X$ be a category, and consider the following diagram 	in which the right square is a pullback.
+	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
+	Then the whole rectangle is a pullback if and only if the left square is one.
+\end{lemma}
+
+The previous result can be dualised to get an analogous lemma for pushouts.
+
+\begin{lemma}\label{lem:po1}
+	Let $\X$ be a category, and consider the following diagram 	in which the left square is a pushout.
+	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
+	Then the whole rectangle is a pushout if and only if the right square is one.
+\end{lemma}
+
+The following proposition establishes a key property of Van Kampen squares with a mono as a side: they are not only pushouts, but also pullbacks.
+\begin{proposition}\label{prop:pbpo} Let $m\colon A\to C$ be a monomorphism in a category $\X$. Then every Van Kampen square
+	\[\xymatrix{A\ar[r]^{g} \ar[d]_{m} & B \ar[d]^{n} \\ C \ar[r]_{f}  & D}\]
+	is also a pullback square and $n$ is a monomorphism.
+\end{proposition}
+\begin{proof} Take the following cube:
+	\[\xymatrix@C=13pt@R=13pt{&A\ar[dd]|\hole_(.65){\id{A}}\ar[rr]^{g} \ar[dl]_{\id{A}} && B \ar[dd]^{\id{B}} \ar[dl]_{\id{B}} \\ A  \ar[dd]_{m}\ar[rr]^(.65){g} & & B \ar[dd]_(.3){n}\\&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{f} & & D}\]
+	By construction the top face of the cube is a pushout and the back one a pullback. The left face is a pullback because $m$ is mono. Thus the Van Kampen property yields that the front and the right faces are pullbacks and the thesis follows. \qed 
+\end{proof}
+
+The previous proposition, in turn, allows us to establish the following results.
+\begin{lemma}\label{lem:varie} Let $m:X\to Y$ be a monomorphism in a category $\X$ and suppose that the left square below is Van Kampen, while all the vertical faces in the right cube are pullbacks.
+		\[\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{f}&&B\ar[dd]^{n}&&C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{g} &&D&&C \ar[rr]_{g} & & D}\]
+Supppose, moreover that $d:D'\to D$ is mono, then $d\leq n$ if and only if $c \leq m$.
+\end{lemma}
+\begin{remark}
+	Recall that, given two monos $m:M\to X$ and $n:N\to X$ with the same codomain, $m\leq n$ means that there exists a, necessarily unique, $k:M\to N$ fitting in the triangle below:
+	\[\xymatrix{M\ar@{.>}[rr]^{k}  \ar[dr]_{m}&& N \ar[dl]^{n}\\ & X}\]
+	Notice that, if $m\leq n$ and $n\leq m$, then the arrow $k:M\to N$ is an isomorphism.  
+\end{remark}
+\begin{remark}
+	Notice that, since $d$ is a mono and the front face a pullback, then $c$ is a monomorphism too.
+\end{remark}
+
+\begin{proof}
+	$(\Rightarrow)$ By hypothesis there exists $k:D'\to B$ such that $n\circ k = d$. By \Cref{prop:pbpo}, the bottom face of the cube is a pullback, thus there exists a unique $h:C'\to A$ as in the diagram below. 
+	In particular, this implies the thesis.
+		\[\xymatrix@C=40pt{C'  \ar@{.>}[dr]^{h}\ar[r]^{g'} \ar@/_.3cm/[ddr]_{c}& D' \ar@/_.3cm/[ddr]|(.45)\hole_(.7){d}\ar@/^.3cm/[dr]^{k}\\ & A \ar[d]_{m} \ar[r]^{f} & B \ar[d]^{n} \\ & C \ar[r]_g & D}\]
+	
+	\smallskip \noindent 
+	$(\Leftarrow)$ Let $h:C\to A$ be such that $c=m\circ h$. By the Van Kampen property the top face of the given cube is a pushout. Thus the dotted $k:D'\to B$ in the following diagram exists.
+		\[\xymatrix@C=40pt{A' \ar@/^.3cm/[ddr]^(.8){a} \ar[d]_{m'} \ar[r]^{f'} & B' \ar[d]^{n'} \ar@/^.3cm/[ddr]^{b} \\  C' \ar@/_.3cm/[dr]_{h} \ar[r]_{g'}|(.7)\hole & D' \ar@{.>}[dr]^{k}\\ &A \ar[r]_f& B }\]
+	The thesis now follows at once. \qed 
+\end{proof}
+
+
+\subsection{$\mathcal{M}$-adhesivity}
+
+In this section we will define the notion of $\mathcal{M}, \mathcal{N}$-adhesivity and explore some of the consequence of such a property. Let us start fixing some terminology.
+
+\begin{definition}\
+	Let $\mathcal{M}$  be a class of arrows of a category $\X$. We say that  $\mathcal{M}$ is
+	\begin{itemize}
+		\item 
+		\emph{stable under pushouts (pullbacks)} if for every pushout (pullbacks) square 
+		\[\xymatrix{A\ar[r]^f  \ar[d]_{m}& B \ar[d]^n \\ C \ar[r]_g & D}\]
+		if $m \in \mathcal{M}$ ($n\in \mathcal{M}$) then $n \in \mathcal{M}$ ($m \in \mathcal{M}$);
+		\item \emph{closed under composition} if $g, f\in \mathcal{M}$ implies $g\circ f\in \mathcal{M}$ whenever $g$ and $f$ are composable;
+		\item \emph{closed under decomposition} if $g\circ f\in \mathcal{M}$ and $g\in \mathcal{M}$ implies $f\in \mathcal{M}$.
+	\end{itemize}
+\end{definition}
+
+\begin{remark}Clearly, ``decomposition'' corresponds to ``left cancellation'', but we prefer to stick to the name commonly used in literature.
+\end{remark}
+
+We are now ready to give the definition of $\mathcal{M}$-adhesive category	
+\begin{definition}[\cite{azzi2019essence,heindel2009category}]
+	Let $\X$ be a category and consider a subclass $\mathcal{M}$ of the class $\mathcal{M}(\X)$ of monomorphisms such that:
+	\begin{enumerate}
+		\item $\mathcal{M}$ contains all isomorphisms and is closed under composition;
+		\item $\mathcal{M}$ is stable under pullbacks and pushouts.
+	\end{enumerate}
+	We say that $\X$ is \emph{$\mathcal{M}$-adhesive} if
+	\begin{enumerate}
+		\item for every $m\colon X\to Y$ in $\mathcal{M}$ and $g\colon Z\to Y$, a pullback square
+		\[\xymatrix{P\ar[r]^p \ar[d]_{n}& X \ar[d]^{m}\\ Z \ar[r]_g& Y}\]
+		exists, such pullbacks will be called \emph{$\mathcal{M}$-pullbacks};
+		\item for every $m\colon X\to Y$ in $\mathcal{M}$ and $n\colon X\to Z$, a pushout square
+		\[\xymatrix{X \ar[r]^n \ar[d]_{m}& Z \ar[d]^{q}\\ Y\ar[r]_p &Q}\]
+		exists, such pushouts  will be called \emph{$\mathcal{M}$-pushouts}; 
+		\item  $\mathcal{M}$-pushouts are Van Kampen squares.
+	\end{enumerate}
+\end{definition}
+
+
+\begin{remark}\label{rem:diff}Our notion of $\mathcal{M}$-adhesivity is slightly different from the one of \cite{azzi2019essence}: in that paper, $\mathcal{M}$ is assumed to be only stable under pullbacks. Notice, however, that if $\mathcal{M}$ contains all split monos, then stability under pushouts can be deduced from the other axioms \cite[Prop.~$5.1.21$]{castelnovo2023thesis}.
+\end{remark}
+
+
+\begin{remark}\label{rem:salva} 
+	\emph{Adhesivity} and \emph{quasiadhesivity} as defined in \cite{lack2005adhesive,garner2012axioms}  coincide with  $\mathcal{A}(\X) $-adhesivity and $\mathcal{R}(\X)$-adhesivity, respectively. 
+\end{remark}
+
+A first result we can prove regards closure under decomposition of $\mathcal{M}$.
+
+\begin{proposition}\label{prop:deco}Let  $\mathcal{M}$ be a class of monomorphisms containing all isomorphisms and stable under pullbacks. For every arrow $f: X\to Y$ and monomorphism $m: Y\to Z$, if $m\circ f \in\mathcal{M}$ then $f\in \mathcal{M}$.
+\end{proposition}
+\begin{proof}Take the diagram
+	\[\xymatrix{X \ar[d]_{\id{X}}\ar[r]^{f}& Y \ar[r]^{\id{Y}}  \ar[d]_{\id{Y}}& Y \ar[d]^{m}\\
+		X \ar[r]_{f}& Y \ar[r]_{m} & Z}\]
+	Since $m$ is mono the right square is a pullback, the thesis now follows from \Cref{lem:pb1}.
+\end{proof}
+\begin{corollary}\label{cor:deco}
+	In every $\mathcal{M}$-adhesive category $\X$, the class $\mathcal{M}$ is closed under decomposition.
+\end{corollary}
+
+Another result which can be immediately established, with the aid of \Cref{prop:pbpo}, is the following one.
+\begin{proposition}\label{prop:pbpoad}
+	Let $\X$ be an $\mathcal{M}$-adhesive category. Then $\mathcal{M}$-pushouts are also pullback squares.
+\end{proposition}
+
+From \Cref{prop:pbpoad}, in turn, we can derive the following corollaries.
+\begin{corollary}\label{cor:rego}
+	In a $\mathcal{M}$-adhesive category $\X$, every $m\in\mathcal{M}$ is a regular mono.
+\end{corollary}
+\begin{proof}
+Let $m$ be an element of $\mathcal{M}$ and consider its pushout along itself.
+\[\xymatrix{X\ar[r]^m \ar[d]_m& Y\ar[d]^{f}\\Y \ar[r]_g & Z}\]
+By \Cref{prop:pbpoad} this square is a pullback, proving that $m$ is the equalizer of the arrows $f,g\colon Y\rightrightarrows Z$. \qed 
+\end{proof}
+
+The following result now follows at once noticing that a regular monomorphism which is also epic is automatically an isomorphism.
+
+\begin{corollary}\label{prop:bal}
+If $\X$ is an $\mathcal{M}$-adhesive categories, then every epimorphisms in $\mathcal{M}$ is an isomorphisms. In particular, every adhesive category $\X$ is \emph{balanced}: if a morphism is monic and epic, then it is an isomorphism.
+\end{corollary}
+
+
+$\mathcal{M}$-adhesivity is well-behaved with respect to the comma construction \cite{mac2013categories}, as shown by the following theorem.
+\begin{theorem}[\cite{CastelnovoGM22,ehrig2006fundamentals}]\label{lem:comma}
+	Let $\A$ and $\B$ be respectively an $\mathcal{M}$-adhesive and an $\mathcal{M}'$-adhesive category. Let also $L:\A\rightarrow \C$ be a functor that preserves $\mathcal{M}, \mathcal{N}$-pushouts, and  $R:\B\rightarrow \C$ be a functor which preserves pullbacks.Then $\comma{L}{R}$ is $\cma{M}{M'}$-adhesive, where 
+	\[
+	\cma{M}{M}':=\{(h,k)\in \mathcal{A}(\comma{L}{R}) \mid h\in \mathcal{M}, k\in \mathcal{M}'\}\]
+\end{theorem}
+
+In particular, we can apply this result  to slices over a given object.
+
+\begin{corollary}\label{cor:slice}
+	Let  $X$ be an object of an $\mathcal{M}$-adhesive category $\X$. Then  $\X/X$ is $\mathcal{M}/X$-adhesive, where
+	\[\mathcal{M}/X:=\{m\in  \mathcal{A}(\X/X) \mid m\in \mathcal{M} \}\]
+\end{corollary}
+
+\todo{ESEMPI}
+We can list various examples of $\mathcal{M}$-adhesive categories (see \cite{castelnovo2023thesis,CastelnovoGM22,lack2006toposes}).
+
+\begin{example}Topos, ipergrafi e grafi
+\end{example}
+
+
+\begin{example}GRAFI GERARCHICI
+\end{example}
+
+\begin{example}term graph
+\end{example}
+
+We end this section proving two properties of $\mathcal{M}$-adhesive categories:  $\mathcal{M}$-pushout-pullback decomposition and uniqueness of pushouts complements.
+
+
+\begin{lemma}[$\mathcal{M}$-pushout-pullback decomposition]\label{lem:popb} Let $\X$ be an $\mathcal{M}$-adhesive category  and suppose that, in the diagram below, the whole rectangle is a pushout and the right square a pullback.
+\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
+	Then the following statements hold true:
+	\begin{enumerate}
+\item if $a$ belongs to $\mathcal{M}$ and $k$ is a monomorphism,  then both squares are pushouts and pullbacks;
+\item if $f$ and $k $ are in  $\mathcal{M}$, then both squares are pushouts and pullbacks.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+	\item 	We can begin noticing that $c$ is an element of $\mathcal{M}$ because it is the pushout of $a$. Moreover, $b$, being the pullback of $c$, is in $\mathcal{M}$ too. Now, the whole rectangle is a $\mathcal{M}$-pushout, thus, by \Cref{prop:pbpoad}, it is a pullback and so its left half is a pullback, by \Cref{prop:pbpo}. Moreover, $g$, being the pullback of a monomorphism, is monic too.
+	
+	Putting together these observations, we can build the cube below, in which all the vertical faces are pullbacks.
+	\[\xymatrix@C=20pt@R=10pt{ & &X\ar[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar[ddd]_{g} \ar[rrr]^{b}&&& B\ar[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar[dl]_{f}&&& A \ar[dl]^{h}\\ & Y \ar[rrr]|(.67)\hole^{b} \ar[dl]_{g}&&& B \ar[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
+	The bottom face is a Van Kampen square and so its top one is a pushout. The thesis now follows from \Cref{lem:po1}.
+	\item By hypothesis, $g$ is the pullback of an arrow in $\mathcal{M}$, thus belongs to it. But then $g\circ f\in \mathcal{M}$ too  and the whole rectangle is a $\mathcal{M}$-pushout. Therefore, by \Cref{prop:pbpoad} a pullback, so that its left half is a pullback too, by \Cref{prop:pbpo}. Moreover $k\circ h$ is in $\mathcal{M}$ as the pushout of $g\circ f$ and, by \Cref{cor:deco}, we also know that $h\in \mathcal{M}$.  
+	
+	Using again \Cref{lem:po1}, it is enough to show that the left half of the original rectangle is a pushout. We can build the same cube of the previous point:
+	\[\xymatrix@C=20pt@R=10pt{ & &X\ar[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar[ddd]_{g} \ar[rrr]^{b}&&& B\ar[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar[dl]_{f}&&& A \ar[dl]^{h}\\ & Y \ar[rrr]|(.67)\hole^{b} \ar[dl]_{g}&&& B \ar[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
+	Its vertical faces are all pullbacks, those the top one is a pushout and we can conclude. \qed 
+\end{enumerate}
+\end{proof}
+
+Let us turn our attention to pushout complements.
+
+\begin{definition}
+Let $f:X\to Y$ and $g:Y\to Z$ ba two composable arrows in a category $\X$. A \emph{pushout complement} for the pair $(f,g)$ is a pair $(h,k)$ with $h:X\to W$ and $k:W\to Z$ such that the square below commutes and it is a pushout.
+\[\xymatrix{X \ar[r]^{f} \ar[d]_{h}& Y \ar[d]^{g} \\ W \ar[r]_{k}& Z}\]
+\end{definition}
+
+\begin{example}
+	In a generic category $\X$, pushout complements may not exist: in the  the category of $\Set$ the arrows $?_{2}:\emptyset \to 2$ and $!_2:2\to 1$ do not have a pushout complement.
+	
+	Moreover, composable arrows $f:X\to Y$ and $g:Y\to Z$ may have  pushout complements which are non-isomorphic: for instance, in $\Set$ the two squares below are both pushouts.
+	
+	\[\xymatrix{2 \ar[r]^{!_2} \ar[d]_{\id{2}}& 1 \ar[d]^{\id{1}} & 2 \ar[r]^{!_2} \ar[d]_{!_2}& 1 \ar[d]^{\id{1}}\\ 2 \ar[r]_{!_2}& 1 & 1 \ar[r]_{\id{1}}& 1}\]
+\end{example}
+
+Working in an $\mathcal{M}$-adhesive category we can amend the second defect. 
+
+\begin{lemma}[Uniqueness of pushouts complements]\label{lem:pocomp}
+Let $\X$ be a $\mathcal{M}$-adhesive category. Given $m:X\to Y$ in $\mathcal{M}$ and $n:Y\to Z$, let $(h_1, k_1)$ and $(h_2, k_2)$ be pushout complements of $m$  and $n$ and $W_1=\cod{h_1}$, $W_2=\cod{h_2}$. Then there exists a unique isomorphism $f:W_1\to W_2$ making the following diagram commutative.
+\[\xymatrix{&X \ar[r]^{m} \ar[d]_{h_1} \ar@/_.3cm/[ddl]_{h_2}& Y \ar[d]^{n} \\ &W_1 \ar@{.>}[dl]^{f} \ar[r]_{k_1} & Z \\ W_2 \ar@/_.3cm/[urr]_{k_2}}\]
+ 
+\end{lemma}
+\begin{proof}
+	$k_1$ and $k_2$, being the pushout of $m$, are elements of $\mathcal{M}$ and thus are monomorphisms. In particular, $k_2$ is a monomorphism and this  entails at once the uniqueness of $f$.  Moreover, notice that the squares
+	\[\xymatrix{X \ar[r]^{m} \ar[d]_{h_1}& Y \ar[d]^{n}& X \ar[d]_{h_2}\ar[r]^{m} & Y \ar[d]^{n}\\ W_1 \ar[r]_{k_1} & Z & W_2 \ar[r]_{k_2}& Z}\]
+	are $\mathcal{M}$-pushouts and thus Van Kampen.
+	
+To prove the existence of the wanted $f$, we can start observing that $k_1$ and $k_2$, being the pushout of $m$, are elements of $\mathcal{M}$, so that we can consider the pullback square
+	\[\xymatrix{P\ar[r]^{p_1}  \ar[d]_{p_2}& W_1 \ar[d]^{k_1}\\ W_2 \ar[r]_{k_2} & Z}\]
+	Since $k_1\circ h_1=k_2\circ h_2$, there exists a unique $g: X\to P$ such that
+	\[p_1\circ g=h_1 \qquad p_2\circ g = h_2\]
+	We can then build the cubes
+	\[\xymatrix@C=13pt@R=13pt{&X\ar[dd]|\hole_(.65){\id{X}}\ar[rr]^{g} \ar[dl]_{\id{X}} && P \ar[dd]^{p_1} \ar[dl]_{p_2} & &X\ar[dd]|\hole_(.65){\id{X}}\ar[rr]^{g} \ar[dl]_{\id{X}} && P \ar[dd]^{p_2} \ar[dl]_{p_1}\\ X  \ar[dd]_{m}\ar[rr]^(.65){h_2} & & W_2 \ar[dd]_(.3){k_2}& &  X  \ar[dd]_{m}\ar[rr]^(.65){h_1} & & W_1 \ar[dd]_(.3){k_1}\\&X\ar[rr]|\hole^(.65){h_1} \ar[dl]^{m} && W_1 \ar[dl]^{k_1} & &X\ar[rr]|\hole^(.65){h_2} \ar[dl]^{m} && W_2 \ar[dl]^{k_2}\\Y \ar[rr]_{n} & & Z & &Y \ar[rr]_{n} & & Z}\]
+	
+	Now, in both cubes the front and left faces are pullbacks, thus, by \Cref{lem:pb1}, their back face is a pullback too. Since $m\leq m$, \Cref{lem:varie} now entails that $k_1\leq k_2$ and $k_2\leq k_1$. Thus there exists an isomorphism $f:W_1\circ W_2$ such that $k_1=k_2\circ f$. To see that $h_2=f\circ h_1$, we can compute:
+	\begin{align*}
+		k_2\circ f \circ h_1 & = k_1\circ h_1\\&= n\circ m\\&= k_2\circ h_2
+	\end{align*}
+	The claim now follows since $k_2$ is a monomoprhism. \qed 
+\end{proof}
+
+
+\section{Double pushout rewriting and derivations}
+\todo{A VERY NICE INTRODUCTION}
+
+\subsection{Left-linear DPO-rewriting systems}
+We are now going to study rewriting systems in $\mathcal{M}, \mathcal{N}$-adhesive categories.
+
+\begin{definition}[\cite{habel2012mathcal,heindel2009category}]
+	Let $\X$ be a $\mathcal{M}$-adhesive category, a  \emph{left $\mathcal{M}$-linear} rule $\rho$ is a pair $(l,r)$ of arrows with the same domain, such that $l$ belongs to $\mathcal{M}$.  The rule $\rho$ is said to be \emph{$\mathcal{M}$-linear} if $r\in \mathcal{M}$ too. A rule $\rho$ is said to be \emph{consuming} if $l$ is not an isomorphism. We will represent a rule $\rho$ as a span 
+	\[\xymatrix{L & K\ar[l]_{l} \ar[r]^{r} & R}\]
+$L$ is the \emph{left-hand side}, $R$ is the \emph{right-hand side} and $K$ the \emph{glueing object}. 
+
+
+A \emph{left-linear DPO-rewriting system} is a pair $(\X, R)$ where $\X$ is a $\mathcal{M}$-adhesive category and $R$ is a set of left $\mathcal{M}$-linear rules. Given  two objects $G$ and $H$ and a rule $\rho=(l,r)$ in $R$, a \emph{direct derivation $\mathscr{D}$ from $G$ to $H$ via $\rho$}, is a diagram as the one below, in which both squares are pushouts. 
+	\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar[l]^{f} D \ar[r]_{g}& H}\]
+	The arrow $n$ is called the \emph{match} of the derivation, while $h$ is its \emph{back-match}.
+	We will denote a direct derivation $\dder{D}$ between $G$ and $H$ as $\dder{D}:G\Mapsto H$.
+\end{definition}
+
+\begin{remark}\todo{perché regole non consumanti non vanno bene}
+\end{remark}
+
+\begin{example}\todo{
+esempi di	derivazione}
+\end{example}
+
+$\mathcal{M}$-adhesivity of $\X$ guarantess the essential uniqueness of the result obtained rewriting an object, as shown by the next proposition.
+
+\begin{proposition}\label{prop:unique} Let $\X$  be a $\mathcal{M}$-adhesive category. Suppose that the two direct derivations $\mathscr{D}$ and $\mathscr{D'}$ below, with the same match and applying the same left $\mathcal{M}$-linear rule $\rho$ are given.
+	\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L \ar[d]_{n}& K \ar[d]^{k'}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h'}\\G & \ar[l]^{f} D \ar[r]_{g}& H & G & \ar[l]^{f'} D' \ar[r]_{g'}& H'}\]
+Then there exist isomorphisms $t:D\to D'$ and $s:H\to H'$ as in the following diagram.
+	\[\xymatrix@C=30pt@R=10pt{ &&&R\ar[dddr]^{h'} \ar[dddl]_{h}|(.67)\hole\\&&K \ar[dl]_{l} \ar[ur]^{r}\ar[dddr]^{k'} \ar[dddl]_{k}\\&L \ar[dddl]_{n}\\&&H \ar@{.>}[rr]^{s} && H'\\ & D \ar[ur]^{g} \ar@{.>}[rr]^{t} \ar[dl]_{f}&& D' \ar[ur]_{g'}\ar@/^.3cm/[dlll]^{f'}\\ G}\]
+\end{proposition}
+\begin{proof}
+	By construction, the pairs $(k, f)$ and $(k', f')$ are pushout complements of $l$ and $n$. Thus, the existence of the isomorphism $t:D\to D'$ follows from \Cref{lem:pocomp}. Now, computing we have
+	\begin{align*}
+		g'\circ t \circ k &= g' \circ k'\\&=h'\circ r
+	\end{align*}
+	Hence, we have the dotted $s:H\to H'$. To see that $s$ is an isomorphism, consider the diagram 
+	\[\xymatrix{K  \ar@/^.4cm/[rr]^{k'}\ar[d]_{r} \ar[r]_{k}& \ar[r]_{t} D \ar[d]^{g}& D' \ar[d]^{g'}\\ R \ar@/_.4cm/[rr]_{h'} \ar[r]^{h}& H \ar[r]^{s}& H'}\]
+	By hypothesis the whole rectangle and its left half are pushouts, therefore, by \Cref{lem:po1} its right square is a pushout too. The claim now follows from the fact that the pushout of an isomorphism is an isomorphism. \qed
+\end{proof}
+
+If we look to direct derivations as transitions, it is natural to consider them as edges in a direct graph. Taking as vertices objects or isomorphism classes of objects led us to the following definitions \cite{heindel2009category,mellies2005axiomatic}.
+
+\begin{definition}
+	Let $(\X, R)$ be a left-linear DPO-rewrityng system, with $\X$ $\mathcal{M}$-adhesive. The \emph{DPO-derivation graph} of $(\X, R)$ is the (large)  directed graph $\gpo$ having as vertices the objects of $\X$ and in which an edge between $G$ and $H$ is a direct derivation $\dder{D}:G\Mapsto H$.	A \emph{derivation} $\der{D}$ between two objects $G$ and $H$ is a path between them in $\gpo$.
+\end{definition}
+
+\begin{remark}
+	If $\X$ is not a small category , then $\gpo$ has a proper class of vertices.
+\end{remark}
+
+	We can spell out more explicitly what  a derivation $\dder{D}$ between $G$ and $H$ is.  $\dder{D}$ is a, possibly empty, sequence $\{\dder{D}_i\}_{i=0}^n$ of direct derivations such that:
+	\begin{enumerate}
+		\item for every index $i$, $\dder{D}_i$ is a direct derivation $G_i \Mapsto G_{i+1}$;
+		\item $G_0=G$ and $G_{n+1}=H$.
+	\end{enumerate}
+	
+	We will call the number $n+1$ the \emph{length} of the derivation, denoted by $\lgt(\der{D})$. We will also say that an empty derivation has length $0$. 
+	
+	Moreover,  if $\mathcal{D}_i$ is an application of the rule $\rho_i\in R$, then we can define an associated sequence of rule as $r(\der{D})$ as $\{\rho_i\}_{i=0}^n$.
+
+\begin{notation}Let $\der{D}=\{\dder{D}_i\}_{i=0}^n$ be a derivation. We will depict the $i^\text{th}$ element $\dder{D}_i$ of $\der{D}$ as in the following diagram.  
+	\[\xymatrix{L_i \ar[d]_{m_i}& K_i \ar[d]^{k_i}\ar[l]_{l_i} \ar[r]^{r_i} & R_i \ar[d]^{h_i} \\G_{i} & \ar[l]^{f_{i}} D_{i} \ar[r]_{g_{i}}& G_{i+1} }\]
+	Notice that, in particular, if $\der{D}:G\to H$, then $G_0=G$ and $G_{n+1}=H$. When $\der{D}$ has length $1$ we will suppress the indexes. In such case, we will also identify $\der{D}$ with its only element. 
+\end{notation} 
+
+\begin{example}\todo{esempi di derivazione}
+\end{example}
+
+\begin{remark}
+Derivations, being paths in a graph, can be concatenate: given $\der{D}=\{\dder{D}\}_{i=0}^n$ between $G$ and $H$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^m$, their \emph{concatenation} $\der{D}\cdot\der{D}'$ is the derivation $\{\dder{E}_i\}_{i=0}^{m+n+1}$ in which
+\[\dder{E}_i:=\begin{cases}
+	\dder{D}_i & i \leq n\\
+	\dder{D}'_{i-(n+1)} & n< i 
+\end{cases}\]	
+\end{remark}
+
+We are often interested in an object of $\X$ only up to isomorphism. It is then useful to consider a version of $\gpo$ in which vertices are classes of isomorphism of object of $\X$. However, in order to do so, we have also to identify direct derivations up to coherent isomorphisms. We are thus lead to the following definition.
+
+
+\begin{definition}
+	Let $\dder{D}:G\Mapsto H$ and $\dder{D}':G'\Mapsto H'$ be two direct derivations given by the following two diagrams
+	\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L \ar[d]_{n'}& K \ar[d]^{k'}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h'}\\G & \ar[l]^{f} D \ar[r]_{g}& H & G' & \ar[l]^{f'} D' \ar[r]_{g'}& H'}\]
+	An \emph{abstraction equivalence} $\phi:\dder{D}\to \dder{D}'$ is a triple $(\phi_1, \phi_2, \phi_3)$ of isomorphism fitting in the diagram below.
+	\[\xymatrix@C=40pt@R=10pt{ &&&R\ar[dddr]^{h'} \ar[dddl]_{h}|(.67)\hole\\&&K \ar[dl]_{l} \ar[ur]^{r}\ar[dddr]^{k'} \ar[dddl]_{k}|(.67)\hole\\&L\ar[dddr]^(.4){n'} \ar[dddl]_(.4){n}\\&&H \ar[rr]^{\phi_3} && H'\\ & D \ar[ur]_(.7){g} \ar[rr]^{\phi_2} \ar[dl]_{f}&& D' \ar[ur]_{g'}\ar[dl]^{f'}\\ G \ar[rr]_{\phi_1} && G'}\]
+
+Given two derivations $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ such that $\dder{D}_i:G_i\Mapsto G_{i+1}$ and $\dder{D}'_i:G'_i\Mapsto G'_{i+1}$., we will say that $\der{D}$ and $\der{D}'$ are \emph{abstraction equivalent}, if  $r(\der{D})=r(\der{D'})$  and there exists a family $\{\phi^i\}_{i=0}^n$ of abstraction equivalences $\phi^i:\dder{D}_i\to \dder{D}'_i$ such, for every index $i$, $\phi^i_3=\phi^{i+1}_1$.
+
+	In such situation we will say that $\der{D}$ and $\der{D}'$ are \emph{abstraction equivalent}. We will use $\equiv^a$ to denote the resulting equivalence relation, while $[\der{D}]_a$ will denote the equivalence class of $\der{D}$. 
+\end{definition}
+\begin{remark}
+	We can restate \Cref{prop:unique}: it asserts that, given two direct derivations $\dder{D}$ and $\dder{D'}$ with the same match, there exists an abstract equivalence between them whose first component is an identity.
+\end{remark}
+
+
+\begin{definition}
+	Let $(\X, R)$ be a left-linear DPO-rewrityng system, with $\X$ an $\mathcal{M}$-adhesive category. The  graph $\gpi$ is the (large)  directed graph having as vertices isomorphism classes of objects of $\X$ and in which an edge between $[G]$ and $[H]$ is the equivalence class $[\der{D}]_a$ of derivation $\der{D}$ between $G$ and $H$.	
+\end{definition}
+
+
+\subsection{Consistent permutations}
+
+Given a left-linear DPO-rewriting system $(\X, R)$,  a derivation $\der{D}$  determines a diagram $\Delta(\der{D})$ in $\X$. We can then wonder if such a diagram has a colimit. Clealry if $\der{D}$ is the empty derivation then a colimit for $\Delta(\der{D})$ amount to an initial object in $\X$. If $\der{D}$ is non-empty we can use the following result.
+
+\begin{lemma}\cite{heindel2009category}
+	Let $\X$ be an $\mathcal{M}, \mathcal{N}$-adhesive category and $(\X, R)$ a left-linear DPO-rewriting system over it. Then for every non-empty derivation $\der{D}:G\to H$, the diagram $\Delta(\der{D})$ has a colimit $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ such that $\iota_H$ belong to $\mathcal{M}$.
+\end{lemma}
+\begin{proof}
+	We proceed by induction.
+	\begin{enumerate}
+		\item Suppose that $n=0$ so that $\der{D}$ consists only of the following direct derivation
+		\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G & \ar[l]^{f} D \ar[r]_{g}& H }\]
+		then $f\in \mathcal{M}$ so that we can consider its pushout along $g$ to get a diagram
+		\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G \ar@/_.2cm/[dr]_{q}& \ar[l]^{f} D \ar[r]_{g}& H  \ar@/^.2cm/[dl]^{p}\\ & P}\]
+		Let $(C, \{c_X\}_{X\in \Delta(\der{D})})$ be another cocone, in particular we have
+		\begin{align*}
+			c_H\circ g & = c_D \\&= c_G\circ f
+		\end{align*}
+		Hence, there exists a unique $c:P\to C$ such that 
+		\[c\circ q= c_G \qquad c\circ p =c_H\]
+		Now, $f$ is in $\mathcal{M}$ as it is the pushout of $l$, hence $p$ is in $\mathcal{M}$ too and this gives us the thesis. 
+		\item Let $\der{D}$ be $\{\dder{D}_i\}_{i=0}^n$ and suppose that $n\geq 1$. Let also $\der{D}'$ be $\{\dder{D}_i\}^{n-1}_{i=0}$ and $\rho_n=(l_n, r_n)$ be the rule applied in $\dder{D}_n$. The pushout of $l_n$ is the arrow $f_n:D_n\to G_n$ is in $\mathcal{M}$ and, by inductive hypothesis, $\iota_{G_{n}}:G_{n}\to \lpro \der{D}'\rpro$ is in $\mathcal{M}$ too. Thus, we can consider the diagram below, having a pushout as its lower half.
+		\[\xymatrix{L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar[l]_{l_{n}} \ar[r]^{r_{n}} & R_{n} \ar[d]^{h_n} \\G_{n} \ar[d]_{\iota_{G_{n}}}& \ar[l]^{f_n} D_n \ar[r]_{g_n}& H  \ar[d]^{q}\\ \lpro \der{D}' \ar[rr]_{p}\rpro && P}\] 
+		Notice that, as in the point above, the arrow $q:H\to P$ is the pushout of an element in $\mathcal{M}$, therefore it is enough to show that the diagram so constructed provides a colimiting cocone for $\Delta(\der{D})$.
+		
+		Let $(C, \{c_X\}_{X\in \Delta(\der{D})})$ be a cocone, since $\Delta(\der{D}')$ is a subdiagram of $\Delta(\der{D})$, we get another cocone $(c, \{c_X\}_{X\in \Delta(\der{D}')})$ which induces an arrow $c':\lpro \der{D}' \rpro \to C$ such that
+		\begin{align*}
+			c'\circ \iota_{G_n} \circ f_n &=c_{G_n} \circ f_n\\&= c_{D_n}\\&= c_{H}\circ g_n
+		\end{align*}
+		Therefore the arrows $c'$ and $c_H$ induce a morphism $c:P\to C$ and the thesis now follows at once.
+		\qed 
+	\end{enumerate}
+\end{proof}
+
+So equipped, we can introduce the notion of \emph{consistent permutation}.
+
+\begin{definition}
+	Let $\X$ be an $\mathcal{M}$-adhesive category and consider a left-linear DPO-rewriting system $(\X, R)$ on it.  Take two non-empty derivations $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ with the same length with their associated sequences of rules $r(\der{D})=\{\rho_i\}_{i=0}^n$ and $r(\der{D}')=\{\rho'_i\}_{i=0}^n$. A permutation $\sigma:n+1\to n+1$  is called a \emph{consistent permutation} between $\der{D}$ and $\der{D}'$, if for every $i\in n+1$, $\rho_i=\rho'_{\sigma(i)}$ and, moreover, there exists an isomorphism $\phi:\tpro{D} \to \lpro \der{D}' \rpro$ fitting in the following diagrams, where $m_i, m'_i, h_i$ and $h'_i$ are, respectively, the matches and back-matches of $\dder{D}_i$ and $\dder{D}'_i$.
+\[\xymatrix{L_i \ar[r]^{m_i} \ar[d]_{m'_{\sigma(i)}}& G_i \ar[r]^{\iota_{G_i}} &\tpro{D} \ar[d]^{\xi} & R_i \ar[r]^{h_i} \ar[d]_{h'_{\sigma(i)}}& G_{i+1} \ar[r]^{\iota_{G_{i+1}}} &\tpro{D} \ar[d]^{\xi} \\G'_{\sigma(i)} \ar[rr]_{\iota_{G'_{\sigma(i)}}}&& \lpro \der{D}' \rpro& G'_{\sigma(i)+1} \ar[rr]_{\iota_{G'_{\sigma(i)+1}}}&& \lpro \der{D}' \rpro}\]
+\end{definition}
+
+
+
+\begin{remark}
+The commutativity of the two rectangles above, is equivalent to the commutativity of the following bigger diagram.		
+\[\xymatrix@C=40pt@R=10pt{ &&&R_{i}\ar[dddr]^{h'_i} \ar[dddl]_{h_i}|(.67)\hole\\&&K_i \ar[dl]_{l_i} \ar[ur]^{r}\ar[dddr]^{k'_i} \ar[dddl]_{k_i}|(.67)\hole\\&L_i\ar[dddr]_(.6){m'_i} \ar[dddl]_{m_i}\\&&G_{i+1}  \ar@/^.3cm/[dddl]|(.35)\hole^(.7){\iota_{G_{i+1}}}&& G'_{\sigma(i)+1}\ar@/^.3cm/[dddl]^{\iota_{G'_{\sigma(i)+1}}}\\ & D_i \ar[dd]_{\iota_{D_i}}\ar[ur]^(.6){g_i}  \ar[dl]_{f_i}&& D'_\sigma(i) \ar[dd]^{\iota_{D'_\sigma(i)}} \ar[ur]^{g'_{\sigma(i)}}\ar[dl]_{f'_{\sigma(i)}}\\ G_i \ar@/_.3cm/[dr]_{\iota_{G_i}} && G'_{\sigma(i)}\ar@/_.3cm/[dr]^{\iota_{G'_{\sigma(i)}}}\\& \tpro{D} \ar[rr]_{\xi}&& \lpro \der{D}' \rpro}\]
+
+Indeed,  to prove the commutativity of the central pentagon we can compute to get:
+\begin{align*}
+	\xi \circ \iota_{D_i}\circ k_i&=\xi \circ \iota_{G_{i}} \circ f_i\\&= \xi \circ \iota_{G_{i}}\circ m_i \circ l_i\\&=\iota_{G'_{\sigma(i)}}\circ m'_i\circ l_i\\&=\iota_{G'_{\sigma(i)}}\circ f'_{\sigma(i)}\circ k'_i\\&=\iota_{D'_\sigma(i)}\circ k_i'
+\end{align*}
+\end{remark}
+
+
+\begin{example} Let $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ be two abstraction equivalent non-empty derivations. Then the identity permutation $\id{n+1}$ is a consistent permuation between them. In such a case $\xi$ is simply the isomorphism induced by the $\{\phi^i\}_{i=0}^n$.
+\end{example}
+
+\begin{example}\todo{esempi di cose equivalenti}
+\end{example}
+
+\begin{lemma}\label{lem:unique}\todo{Questo è il punto 2 di Lemma 17}
+	contenuto...
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+\begin{corollary}\label{cor:unique}
+	contenuto...
+\end{corollary}
+
+\section{Switch equivalence and traces}
+\todo{A VERY NICE INTRO}
+
+\subsection{Sequentially independend ndependent and switchable derivations}
+\todo{A VERY NICE INTRO}
+
+\begin{definition}  Let $(\X, R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Let also $\dder{D}:G\Mapsto H$ and $\dder{D'}:H\Mapsto T$ be the two direct derivations depicted below.
+
+\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L' \ar[d]_{n'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[r]^{r'} & R' \ar[d]^{h'}\\G & \ar[l]^{f} D \ar[r]_{g}& H & H & \ar[l]^{f'} D' \ar[r]_{g'}& T}\]
+
+An \emph{independence pair} between $\dder{D}$ and $\dder{D'}$, is a pair of  arrows $i_1:R\to D'$ and $i_2:L'\to D$ such that the following diagram commutes.
+
+\[\xymatrix@C=12pt{L \ar[d]_{n}&& K \ar[d]_{k}\ar[ll]_{l} \ar[r]^{r} & R \ar@/^.35cm/@{.>}[drrr]_(.4){i_1} \ar[dr]|(.3)\hole_{h} && L' \ar@/_.35cm/@{.>}[dlll]^(.4){i_2} \ar[dl]|(.3)\hole^{n'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[rr]^{r'} && R' \ar[d]^{h'}\\G && \ar[ll]^{f} D \ar[rr]_{g}&& H  && \ar[ll]^{f'} D' \ar[rr]_{g'}&& T}\]
+We will say that $\dder{D}$ and $\dder{D'}$ are \emph{weakly sequentially independent} if an independence pair exists. If such independence pair is unique we will say that $\dder{D}$ and $\dder{D'}$ are \emph{sequentially independent}.
+\end{definition}
+
+\begin{example}
+	\todo{sequential independence}
+\end{example}
+\begin{example}
+	\todo{sequential independence che serva anche per es successivo}
+\end{example}
+
+\begin{remark} Let $(i_1, i_2)$ and $(j_1, j_2)$ be independence pairs for the direct derivations $\dder{D}$ and $\dder{D'}$. Notice that, by definition, we have
+	\begin{align*}f'\circ i_1&=h\\&=f'\circ j_1
+	\end{align*}
+	On the other hand, 
+	 $f':D'\to H$ is  the pushout of $l':K'\to L'$ and so it is in $\mathcal{M}$, implying $j_1=i_1$.
+	 
+	 On the other hand, if the rules $\rho$ applied in $\dder{D}$ is linear, then $g:D\to H$ is in $\mathcal{M}$, hence, from the equation
+	 \begin{align*}
+	 g\circ i_2&=h \\&= g\circ j_2
+	 \end{align*}
+we can deduce that $i_2=j_2$, too.
+
+Summing up, it all the rules of $(\X, R)$ are linear, then sequential independence and weak sequential independence coincide. 
+\end{remark}
+
+
+
+When working with linear rewriting systems, (weakly) sequential independent direct derivations can be switched, producing two new (weakly) sequential independent direct derivations between the same objects \cite[Thm.~$7.7$]{lack2005adhesive} . This is no more the case if the rules are only left-linear, as shown by the next example.
+
+\begin{example}
+	\todo{pensare ad un esempio in cui l'indipendenza non basta (o farsi venire in mente una dimostrazione della prop. 13 della versione su arxiv)}
+\end{example}
+
+To fix this problem, we adapt the notion of \emph{canonical filler} from \cite{heindel2009category}.
+
+\begin{definition}
+Let $(\X, R)$ be a left-linear DPO-rewriting system with $\X$ $\mathcal{M}$-adhesive. Let also $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$ be the two derivations depicted below.
+\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L' \ar[d]_{n'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[r]^{r'} & R' \ar[d]^{h'}\\G & \ar[l]^{f} D \ar[r]_{g}& H & H & \ar[l]^{f'} D' \ar[r]_{g'}& T}\]
+Since $f'$ is in $\mathcal{M}$, we can moreover consider a pullback square
+\[\xymatrix{P \ar[r]^{p} \ar[d]_{p'}& D\ar[d]^{g} \\ D' \ar[r]_{f'} & H}\]
+
+A \emph{filler} $\dder{D}$ and $\dder{D}'$ is  given by a pair of arrows $u:K\to P$ and $u':K'\to P$ satisfying the following conditions
+\begin{enumerate}
+	\item $p\circ u = k$, $p'\circ u' = k'$ and there exists a pushout square
+\[\xymatrix{K' \ar[r]^{r'} \ar[d]_{u'}& R'\ar@{.>}[d]^{j} \\ P \ar@{.>}[r]_{q'} & Q'}\]
+	\item  there exist arrows $i_1:R\to D'$, $i_2:L'\to D$ satisfying $f'\circ i_1=h$, $g\circ i_2=n'$ and such that the following squares are pushouts
+\[\xymatrix{K \ar[r]^{r} \ar[d]_{u}& R \ar@{.>}[d]^{i_1} &K' \ar[r]^{l'} \ar[d]_{u'}& L'\ar@{.>}[d]^{i_2} \\P \ar[r]_{p'}& D' & P \ar[r]_{p} & D}\]
+\end{enumerate}
+
+We will say that $\dder{D}$ and $\dder{D}'$ are \emph{switchable} if a filler between them exists. If such a filler is unique, we will say that $\dder{D}$ and $\dder{D}'$ are \emph{properly switchable}. We will use the notation $\dder{D}\updownarrow \dder{D'}$ to mean that $\dder{D}$ and $\dder{D}'$ are switchable, while $\dder{D}\Updownarrow \dder{D'}$ will denote that they are properly so.
+\end{definition}
+
+\begin{remark}\label{rem:obv}Notice that if $\dder{D}$ and $\dder{D}'$ are switchable, then they are weakly sequentially independent: indeed, if a filler between them exists, then $(i_1, i_2)$ is an independence pair.
+\end{remark}
+
+
+\begin{remark}\label{rem:deco} Let $\dder{D}$ and $\dder{D'}$ be two switchable direct derivations. Then the existence of a filler allows us to build the solid part of the diagram below.
+	\[\xymatrix{&&R \ar@/_1cm/[ddrr]_(.35){i_1} \ar[dr]^{h}&& L'\ar@/^1cm/[ddll]^(.35){i_2}  \ar[dl]_{n'}\\&K\ar[dr]^{k}\ar[dl]_{l} \ar@/_.8cm/[ddrr]^(.65){u}\ar[ur]^{r}&& H && K' \ar@/^.8cm/[ddll]_(.65){u'}\ar[dl]_{k'}\ar[lu]_{l'} \ar[dr]^{r'}\\L \ar[dr]_{n} \ar@{.>}@/_.8cm/[ddrr]_{j'}&& D \ar[dl]|(.42)\hole_(.64){f}\ar[ur]|(.48)\hole^(.7){g}&&D' \ar[dr]|(.42)\hole^(.65){g'} \ar[ul]|(.48)\hole_(.7){f'}&&R'\ar@/^.8cm/[ddll]^{j}\ar[dl]^{h'}\\&G &&P\ar[dr]^{q'} \ar@{.>}[dl]_{q}\ar[ur]^(.4){p'}\ar[ul]_(.4){p}&&T\\&&Q \ar@{.>}[ul]_{s} &&Q'\ar@{.>}[ur]^{t}}\]
+
+Let us complete this diagram defining the dotted arrows. We can start noticing that, since $l\in \mathcal{M}$, there exists a pushout square 
+	\[\xymatrix{K \ar[r]^{l} \ar[d]_{u}& L\ar@{.>}[d]^{j'} \\ P \ar[r]_{q} & Q}\]
+Moreover, the existence of the wanted $s:Q\to G$ and $t:Q'\to T$ follows from the following equalities
+\[\begin{split}
+f\circ p \circ u &= f\circ k \\&= n\circ l
+\end{split} \qquad \begin{split}
+g'\circ p'\circ u' &= g'\circ k'\\&=h'\circ r'
+\end{split}\]
+	
+We can prove some other properties of the arrows appearing in the diagram above.
+\begin{itemize}
+	\item The three rectangles below are pushouts and their left halves are pushouts too. Therefore, by \Cref{lem:po1}, also their right halves are pushouts.
+	\[\xymatrix{K \ar@/^.4cm/[rr]^{u}\ar[d]_{r}\ar[r]_{u} &P\ar[d]^{p'} \ar[r]_{p} & D \ar[d]^{f}&K' \ar@/^.4cm/[rr]^{k'}\ar[d]_{l'}\ar[r]_{u'} &P\ar[d]^{p} \ar[r]_{p'} & D' \ar[d]^{f'}\\  R \ar@/_.4cm/[rr]_{h} \ar[r]^{i_1}&D' \ar[r]^{f'} & H&L' \ar@/_.4cm/[rr]_{n'} \ar[r]^{i_2}&D \ar[r]^{g} & H}\]
+	\[ \xymatrix{K \ar@/^.4cm/[rr]^{k}\ar[d]_{l}\ar[r]_{u} &P\ar[d]^{q} \ar[r]_{p} & D \ar[d]^{f}&K' \ar@/^.4cm/[rr]^{k'}\ar[d]_{r'}\ar[r]_{u'} &P\ar[d]^{q'} \ar[r]_{p'} & D' \ar[d]^{g'}\\ L \ar@/_.4cm/[rr]_{n} \ar[r]^{j'}&Q \ar[r]^{s} & G&R' \ar@/_.4cm/[rr]_{h'} \ar[r]^{j}&Q' \ar[r]^{t} & T}\]
+\end{itemize}
+\end{remark}
+
+Before proceeding further, let us show that, in the linear case, the switchability relation reduces to sequential independence.
+
+\begin{proposition}
+	\todo{se il sistema è lineare}
+\end{proposition}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+
+We are now going to justify the choice of the name for the relation $\updownarrow$, showing that two switchable direct derivations $\dder{D}$ and $\dder{D'}$ can be actually switched. Consider the following diagram: the solid part exists by the definition of a filler, while the two new dotted arrows $v:Q\to J$ and $v':Q'\to J$ are obtained  as the pushout of $q:P\to Q$, which is in $\mathcal{M}$ by \Cref{rem:deco}, along $q':P\to Q'$.
+	\[\xymatrix{&&R \ar@/_1cm/[ddrr]_(.35){i_1}|(.7)\hole \ar[dr]^{h}&& L'\ar@/^1cm/[ddll]^(.35){i_2}  \ar[dl]_{n'}\\&K\ar[dr]^{k}\ar[dl]_{l} \ar@/_.8cm/[ddrr]^(.65){u}\ar[ur]^{r}&& H && K' \ar@/^.8cm/[ddll]_(.65){u'}\ar[dl]_{k'}\ar[lu]_{l'} \ar[dr]^{r'}\\L \ar[dr]_{n} \ar@/_.8cm/[ddrr]_{j'}&& D \ar[dl]|(.42)\hole_(.64){f}\ar[ur]|(.48)\hole^(.7){g}&&D' \ar[dr]|(.42)\hole^(.65){g'} \ar[ul]|(.48)\hole_(.7){f'}&&R'\ar@/^.8cm/[ddll]^{j}\ar[dl]^{h'}\\&G &&P\ar[dr]^{q'} \ar[dl]_{q}\ar[ur]^(.4){p'}\ar[ul]_(.4){p}&&T\\&&Q \ar[ul]_{s}\ar@{.>}[dr]_{v} &&Q'\ar[ur]^{t} \ar@{.>}[dl]^{v'}\\&&&J}\]
+	
+	Since, by \Cref{rem:deco}, all the curved rectangles are pushouts, as well as the bottom square, we can state the following definition.
+\begin{definition}
+	Let $(\X,R)$ be a left-linear DPO-rewriting system and suppose that $\X$ is $\mathcal{M}$-adhesive. Given two switchable direct derivations $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$, we can define other two direct derivations $I_{\dder{D}'}:G\Mapsto J$ and $I_{\dder{D}}:J\Mapsto T$ as follows:
+		\[\xymatrix{L' \ar[d]_{f\circ i_2}& \ar[l]_{l'}K'\ar[d]_{q\circ u'} \ar[r]^{r'} & R' \ar[d]_{v'\circ j} & L \ar[d]_{v\circ j'} & \ar[l]_{l}K \ar[d]^{q'\circ u}\ar[r]^{r}& R \ar[d]^{g'\circ i_1}\\
+		G &\ar[l]^{s} Q \ar[r]_{v}& J&J & \ar[l]^{v'}Q' \ar[r]_{t} & T}\]
+	The \emph{switching} $\sder{D}{D'}$ of $\dder{D}$ and $\dder{D'}$ is the derivation $I_{\dder{D'}} \cdot I_{\dder{D}}$.
+\end{definition}
+
+\begin{remark}Notice that $(j, j')$ is an independence pair for $I_{\dder{D}'}$ and $I_{\dder{D}}$. This is wintessed by the following diagram, commutative by construction.
+	\[\xymatrix@C=15pt{L' \ar[d]_{f\circ i_2}&& K \ar[d]_{q\circ u'}\ar[ll]_{l'} \ar[r]^{r'} & R' \ar@/^.35cm/[drrr]_(.4){j}|(.285)\hole \ar[dr]|(.28)\hole_{v'\circ j} && L \ar@/_.35cm/[dlll]^(.4){j'} \ar[dl]|(.28)\hole^{v\circ j'}& K \ar[d]^{q'\circ u}\ar[l]_{l} \ar[rr]^{r} && R \ar[d]^{g'\circ i_1}\\G && \ar[ll]^{s} Q \ar[rr]_{v}&& J  && \ar[ll]^{v'} Q' \ar[rr]_{t}&& T}\]
+\end{remark}
+
+\begin{example}\todo{controesempio sul fatto che scambiando posso avere debolezza}
+\end{example}
+
+
+\begin{example}\todo{esempio sul perché weakly independence/scambiabilità non basta nel caso non lineare}
+\end{example}
+
+
+
+\begin{proposition}bla blah 
+		unicità del filler implica unicitò degli ind pair
+\end{proposition}
+\begin{proof}
+	contenuto...\qed 
+\end{proof}
+
+
+
+\begin{definition}Let $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$ be two direct derivations in a left-linear DPO-rewriting system $(\X, R)$. We will say that $\dder{D}$ and $\dder{D}'$ are \emph{properly interchangeable} if:
+	\begin{enumerate}
+		\item $\dder{D}$ and $\dder{D}'$ are sequentially independent;
+		\item $I_{\dder{D}'}$ and $I_{\dder{D}}$ are sequentially independent too.
+	\end{enumerate} 
+	
+	Take two derivations $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_{i}\}_{i=0}^n$ with the same length and between the same $G_0$ and $G_n$. We say that $\der{D}'$ is \emph{obtained by a switch from $\der{D}$} if there exists an index $j\in n$ such that
+	\begin{itemize}
+\item 
+\item 		
+	\end{itemize}
+	
+	
+
+\end{definition}
+
+
+
+\begin{lemma}\todo{Punto 1 del Lemma 17}
+	contenuto...
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+\begin{example}\todo{permutazione consistente non implica scambiabilità}
+\end{example}
+
+\begin{lemma}
+	\todo{lemma 19}
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+
+\subsection{Concatenable traces}
+\begin{lemma}
+	\todo{abstract equivalence and switch }
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+\begin{definition}
+	\todo{tracce}
+\end{definition}
+
+\begin{theorem}
+	\todo{preordine}
+\end{theorem}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+
+\section{ Domains for DPO-rewriting}
+
+\subsection{weak domains}
+
+\subsection{From adhesive grammars to weak domains}
+
+
+\section{Conclusions and further work}
+\todo{VERY NICE CONCLUSIONS}
+
+\bibliographystyle{plain}
+\bibliography{bibliog.bib}
+
+
+
+
+\end{document}
