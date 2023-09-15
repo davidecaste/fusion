@@ -392,7 +392,7 @@
 \newcommand{\IC}[1]{\ensuremath{\mathit{IC}({#1})}}
 
 
-\title{Fusion}
+\title{Switch equivalence and weak prime domains for fusions}
 
 \begin{document}
 \maketitle
@@ -788,8 +788,25 @@ Given two derivations $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'
 
 Given a left-linear DPO-rewriting system $(\X, R)$,  a derivation $\der{D}$  determines a diagram $\Delta(\der{D})$ in $\X$. We can then wonder if such a diagram has a colimit. Clealry if $\der{D}$ is the empty derivation then a colimit for $\Delta(\der{D})$ amount to an initial object in $\X$. If $\der{D}$ is non-empty we can use the following result.
 
-\begin{lemma}\cite{heindel2009category}
-	Let $\X$ be an $\mathcal{M}, \mathcal{N}$-adhesive category and $(\X, R)$ a left-linear DPO-rewriting system over it. Then for every non-empty derivation $\der{D}:G\to H$, the diagram $\Delta(\der{D})$ has a colimit $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ such that $\iota_H$ belong to $\mathcal{M}$.
+\begin{lemma}\label{lem:colim}
+	Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, R)$ a left-linear DPO-rewriting system over it. The following hold true:
+	\begin{enumerate}
+		\item if $\der{D}$ is a derivation of length one given by the following diagram
+		
+		then the colimiting cocone $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ exists and  fits in the diagram below, wher the bottom face is a pushout;
+		\[\xymatrix{}\]
+		\item 
+		\item  for every non-empty derivation $\der{D}:G\to H$, the diagram $\Delta(\der{D})$ has a colimit $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ such that $\iota_H$ belong to $\mathcal{M}$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}\begin{enumerate}
+		contenuto...
+	\end{enumerate}
+	contenuto...
+\end{proof}
+
+\begin{lemma}	Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, R)$ a left-linear DPO-rewriting system over it.
+ Then
 \end{lemma}
 \begin{proof}
 	We proceed by induction.
@@ -821,7 +838,7 @@ Given a left-linear DPO-rewriting system $(\X, R)$,  a derivation $\der{D}$  det
 So equipped, we can introduce the notion of \emph{consistent permutation}.
 
 \begin{definition}
-	Let $\X$ be an $\mathcal{M}$-adhesive category and consider a left-linear DPO-rewriting system $(\X, R)$ on it.  Take two non-empty derivations $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ with the same length with their associated sequences of rules $r(\der{D})=\{\rho_i\}_{i=0}^n$ and $r(\der{D}')=\{\rho'_i\}_{i=0}^n$. A permutation $\sigma:n+1\to n+1$  is called a \emph{consistent permutation} between $\der{D}$ and $\der{D}'$, if for every $i\in n+1$, $\rho_i=\rho'_{\sigma(i)}$ and, moreover, there exists an isomorphism $\phi:\tpro{D} \to \lpro \der{D}' \rpro$ fitting in the following diagrams, where $m_i, m'_i, h_i$ and $h'_i$ are, respectively, the matches and back-matches of $\dder{D}_i$ and $\dder{D}'_i$.
+	Let $\X$ be an $\mathcal{M}$-adhesive category and consider a left-linear DPO-rewriting system $(\X, R)$ on it.  Take two non-empty derivations $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ with the same length with their associated sequences of rules $r(\der{D})=\{\rho_i\}_{i=0}^n$ and $r(\der{D}')=\{\rho'_i\}_{i=0}^n$. A permutation $\sigma:n+1\to n+1$  is called a \emph{consistent permutation} between $\der{D}$ and $\der{D}'$, if for every $i\in n+1$, $\rho_i=\rho'_{\sigma(i)}$ and, moreover, there exists an isomorphism $\xi:\tpro{D} \to \lpro \der{D}' \rpro$ fitting in the following diagrams, where $m_i, m'_i, h_i$ and $h'_i$ are, respectively, the matches and back-matches of $\dder{D}_i$ and $\dder{D}'_i$.
 \[\xymatrix{L_i \ar[r]^{m_i} \ar[d]_{m'_{\sigma(i)}}& G_i \ar[r]^{\iota_{G_i}} &\tpro{D} \ar[d]^{\xi} & R_i \ar[r]^{h_i} \ar[d]_{h'_{\sigma(i)}}& G_{i+1} \ar[r]^{\iota_{G_{i+1}}} &\tpro{D} \ar[d]^{\xi} \\G'_{\sigma(i)} \ar[rr]_{\iota_{G'_{\sigma(i)}}}&& \lpro \der{D}' \rpro& G'_{\sigma(i)+1} \ar[rr]_{\iota_{G'_{\sigma(i)+1}}}&& \lpro \der{D}' \rpro}\]
 \end{definition}
 
@@ -990,7 +1007,6 @@ We are now going to justify the choice of the name for the relation $\updownarro
 	\[\xymatrix@C=15pt{L' \ar[d]_{f\circ i_2}&& K' \ar[d]_{q\circ u'}\ar[ll]_{l'} \ar[r]^{r'} & R' \ar@/^.35cm/[drrr]_(.4){j'}|(.285)\hole \ar[dr]|(.28)\hole_{v'\circ j'} && L \ar@/_.35cm/[dlll]^(.4){j} \ar[dl]|(.28)\hole^{v\circ j}& K \ar[d]^{q'\circ u}\ar[l]_{l} \ar[rr]^{r} && R \ar[d]^{g'\circ i_1}\\G && \ar[ll]^{s} Q \ar[rr]_{v}&& J  && \ar[ll]^{v'} Q' \ar[rr]_{t}&& T}\]
 \end{remark} 
  
-
 \begin{proposition}\label{prop:fil}Let $(\X, R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Then every filler between two direct derivations $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$ is a filler also for $S_{u,u'}(\dder{D'}):G\Mapsto J$ and $S_{u,u'}(\dder{D}): J\Mapsto H$. In particular, if $\dder{D}\updownarrow \dder{D}'$, then $S_{u,u'}(\dder{D}')\updownarrow S_{u,u'}(\dder{D})$.
 \end{proposition}
 \begin{proof}By definition of filler, we have two pushout square
@@ -1078,8 +1094,9 @@ Take two derivations $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}
 \item $\dder{D}_j \Updownarrow \dder{D}_{j+1}$;		
 \item $\dder{D}'_j\cdot \dder{D}'_{j+1} = S_{u,u'}(\dder{D}, \dder{D}')$.
 	\end{enumerate}
+	In such a case, we will write $\der{D}\rightsquigarrow_j \der{D}'$ to denote that $\der{D}'$ is obtained by a proper switch between $\dder{D}_j$ and $\dder{D}_{j+1}$. 
 	
-	We will also say that $\der{D}$ is \emph{switch equivalent} to $\der{D}'$, if there exists a sequence, $\{\der{D}_i\}_{i=0}^n$ of derivations such that
+	We will say that $\der{D}$ is \emph{switch equivalent} to $\der{D}'$, if there exists a sequence, $\{\der{D}_i\}_{i=0}^n$ of derivations such that
 	\begin{enumerate}
 		\item $\der{D}_0=\der{D}$ and $\der{D}_n=\der{D}'$;
 		\item for every $i< n$, $\der{D}_{i+1}$ is obtained by a proper switch from $\der{D}_i$.
@@ -1093,15 +1110,22 @@ Take two derivations $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}
 	\todo{il punto due sopra è necessario}
 \end{example}
 
-\begin{proposition}
-	\todo{reversibilità}
-\end{proposition}
-\begin{proof}
-	contenuto...
+We can now prove some properties of switch equivalence.
+\begin{lemma}\todo{Def. 3 della bozza di Andrea }Let $(\X, R)$ be a left-linear DPO-rewriting system. Then the following hold true: 
+	\begin{enumerate}
+		\item 
+		\item 
+		\item 
+		\item 
+	\end{enumerate}
+\end{lemma}
+\begin{proof}\begin{enumerate}
+		\item 
+		\item 
+		\item 
+		\item \qed 
+	\end{enumerate}
 \end{proof}
-\begin{corollary}
-	\todo{ho davver una relazione di equivalenza}
-\end{corollary}
 
 
 \begin{example}\todo{esempio sul perché weakly independence non è invertibile}
@@ -1109,25 +1133,30 @@ Take two derivations $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}
 
 
 
-\begin{lemma}\todo{Punto 1 del Lemma 17}
-	contenuto...
+\begin{lemma} Let $(\X, R)$ be a left-linear DPO-rewriting system $(\X, R)$. Then the following hold true
+	\begin{enumerate}
+		\item If $\dder{D}$ and $\dder{D'}$ are two direct derivations such that $\dder{D}\updownarrow \dder{D'}$, then for every filler $(u,u')$ between them, the function
+		\[\tau:2\to2 \qquad x \mapsto \begin{cases}
+			1 & x=0\\
+			0 & x=1
+		\end{cases}\]
+		defines a consistent permutation between $\dder{D}\cdot \dder{D}'$ and $\sder{D}{D'}$;
+		\item if $\der{D}$ and $\der{D}'$ are two switch equivalent derivation, then there exists a consistent permutation between them.
+	\end{enumerate}
 \end{lemma}
 \begin{proof}
-	contenuto...
+	\begin{enumerate}
+		\item 
+		\item \qed 
+	\end{enumerate}
 \end{proof}
+ This, together with ???
+\begin{corollary}
+	\todo{unicità}
+\end{corollary}
 
 \begin{example}\label{ex:contro}\todo{permutazione consistente non implica scambiabilità}
 \end{example}
-
-Before moving forward, we will prove some other useful properties of the switch equivalence relation.
-
-\begin{lemma}
-	\todo{lemma 19}
-\end{lemma}
-\begin{proof}
-	contenuto...
-\end{proof}
-
 
 \subsection{Concatenable traces}
 \begin{lemma}
@@ -1139,6 +1168,16 @@ Before moving forward, we will prove some other useful properties of the switch 
 \begin{definition}
 	\todo{tracce}
 \end{definition}
+
+Before moving forward, we will prove some other useful properties of the switch equivalence relation.
+
+\begin{lemma}
+	\todo{lemma 19}
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
 
 \begin{theorem}
 	\todo{preordine}
