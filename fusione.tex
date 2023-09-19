@@ -354,6 +354,7 @@
 \newcommand{\lpro}{\langle \hspace{-1.85pt}[}
 \newcommand{\rpro}{]\hspace{-1.85pt}\rangle}
 \newcommand{\tpro}[1]{\lpro \der{#1}\rpro}
+\newcommand{\tproi}[2]{\lpro \der{#1}_{#2}\rpro}
 \newcommand{\lgt}[0]{\mathsf{length}}
 
 %%% NEW
@@ -791,47 +792,73 @@ Given a left-linear DPO-rewriting system $(\X, R)$,  a derivation $\der{D}$  det
 \begin{lemma}\label{lem:colim}
 	Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, R)$ a left-linear DPO-rewriting system over it. The following hold true:
 	\begin{enumerate}
-		\item if $\der{D}$ is a derivation of length one given by the following diagram
-		
-		then the colimiting cocone $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ exists and  fits in the diagram below, wher the bottom face is a pushout;
-		\[\xymatrix{}\]
-		\item 
-		\item  for every non-empty derivation $\der{D}:G\to H$, the diagram $\Delta(\der{D})$ has a colimit $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ such that $\iota_H$ belong to $\mathcal{M}$.
+		\item if $\der{D}$ is a derivation of length one, whose unique element is given by the following diagram
+	\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G & \ar[l]^{f} D \ar[r]_{g}& H }\]	
+		then the colimiting cocone $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ exists and  fits in the diagram below, where the bottom face is a pushout;
+		\[\xymatrix@R=10pt{&K\ar[dd]^{k}\ar[rr]^{r} \ar[dl]_{l} && R \ar[dd]^{h} \\ L  \ar[dd]_{m} \\&D\ar[rr]^{g} \ar[dl]_{f} && H \ar[dl]^{\iota_H} \\G \ar[rr]_{\iota_G} & & \tpro{D}}\]
+		\item  for every non-empty derivation $\der{D}$ from $G$ to $H$, the diagram $\Delta(\der{D})$ has a colimit $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ such that $\iota_H$ belong to $\mathcal{M}$;
+		\item let $\der{D}$ be the concatenation $\der{D}_1\cdot \der{D}_2$ of two derivations $\der{D}_1=\{\dder{D}_{1,i}\}_{i=0}^{n_1}$ between $G$ and $H$ and $\der{D}_2=\{\dder{D}_{2,j}\}_{j=0}^{n_2}$ between $H$ and $T$,  then the colimiting cocone $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ exists too and there is a pushout square
+		\[\xymatrix{H\ar[r]^-{\iota_{2, H}} \ar[d]_-{\iota_{1, H}} & \tproi{D}{2} \ar[d]^{p_2}\\  \tproi{D}{1} \ar[r]_{p_1}& \tpro{D}}\]
+		where $(\tproi{D}{1}, \{\iota_{1, X}\}_{X\in \Delta(\der{D}_1)})$ and $(\tproi{D}{2}, \{\iota_{2, X}\}_{X\in \Delta(\der{D}_2)})$ are the colimiting cocone for $\Delta(\der{D}_1)$ and $\Delta(\der{D}_2)$, respectively.
 	\end{enumerate}
 \end{lemma}
 \begin{proof}\begin{enumerate}
-		contenuto...
-	\end{enumerate}
-	contenuto...
-\end{proof}
-
-\begin{lemma}	Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, R)$ a left-linear DPO-rewriting system over it.
- Then
-\end{lemma}
-\begin{proof}
-	We proceed by induction.
-	\begin{enumerate}
-		\item Suppose that $n=0$ so that $\der{D}$ consists only of the following direct derivation
-		\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G & \ar[l]^{f} D \ar[r]_{g}& H }\]
-		then $f\in \mathcal{M}$ so that we can consider its pushout along $g$ to get a diagram
-		\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G \ar@/_.2cm/[dr]_{q}& \ar[l]^{f} D \ar[r]_{g}& H  \ar@/^.2cm/[dl]^{p}\\ & P}\]
-		Let $(C, \{c_X\}_{X\in \Delta(\der{D})})$ be another cocone, in particular we have
+		\item We can start noticing that $f$, being the pushout of $l$ is in $\mathcal{M}$ and thus it admits a pushout along $g$, giving us the diagram 
+		\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G \ar@/_.2cm/[dr]_{q}& \ar[l]^{f} D \ar[r]_{g}& H  \ar@/^.2cm/[dl]^{p}\\ & P}\]
+		Clearly, precomposing $p$ and $q$ with the arrows appearing in $\dder{D}$, we can extend the pushout $(P, p, q)$, to a cocone $(P, \{j_X\}_{X\in \Delta(\der{D})})$ on $\Delta(\der{D})$. Let $(C, \{c_X\}_{X\in \Delta(\der{D})})$ be another cocone, for $\Delta(\der{D})$, in particular we have
 		\begin{align*}
 			c_H\circ g & = c_D \\&= c_G\circ f
 		\end{align*}
-		Hence, there exists a unique $c:P\to C$ such that 
-		\[c\circ q= c_G \qquad c\circ p =c_H\]
-		Now, $f$ is in $\mathcal{M}$ as it is the pushout of $l$, hence $p$ is in $\mathcal{M}$ too and this gives us the thesis. 
-		\item Let $\der{D}$ be $\{\dder{D}_i\}_{i=0}^n$ and suppose that $n\geq 1$. Let also $\der{D}'$ be $\{\dder{D}_i\}^{n-1}_{i=0}$ and $\rho_n=(l_n, r_n)$ be the rule applied in $\dder{D}_n$. The pushout of $l_n$ is the arrow $f_n:D_n\to G_n$ is in $\mathcal{M}$ and, by inductive hypothesis, $\iota_{G_{n}}:G_{n}\to \lpro \der{D}'\rpro$ is in $\mathcal{M}$ too. Thus, we can consider the diagram below, having a pushout as its lower half.
-		\[\xymatrix{L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar[l]_{l_{n}} \ar[r]^{r_{n}} & R_{n} \ar[d]^{h_n} \\G_{n} \ar[d]_{\iota_{G_{n}}}& \ar[l]^{f_n} D_n \ar[r]_{g_n}& H  \ar[d]^{q}\\ \lpro \der{D}' \ar[rr]_{p}\rpro && P}\] 
-		Notice that, as in the point above, the arrow $q:H\to P$ is the pushout of an element in $\mathcal{M}$, therefore it is enough to show that the diagram so constructed provides a colimiting cocone for $\Delta(\der{D})$.
+		Hence, there exists a unique $c:P\to C$ such that $c\circ q= c_G$ and $c\circ p =c_H$. But these identities are enough to deduce that $(P, \{j_X\}_{X\in \Delta(\der{D})})$  is colimiting.
+		\item Let us proceed by induction.
+		\begin{itemize}
+			\item  If $n=0$, then the claim follows immediately from point $1$, noticing that $\iota_H$ is the pushout of $f$ and thus an element of $\mathcal{M}$.
+			\item Let $\der{D}$ be $\{\dder{D}_i\}_{i=0}^n$ and suppose that $n\geq 1$. Let also $\der{D}'$ be $\{\dder{D}_i\}^{n-1}_{i=0}$ and $\rho_n=(l_n, r_n)$ be the rule applied in $\dder{D}_n$. The pushout of $l_n$ is the arrow $f_n:D_n\to G_n$ is in $\mathcal{M}$ and, by inductive hypothesis, $\iota_{G_{n}}:G_{n}\to \lpro \der{D}'\rpro$ is in $\mathcal{M}$ too. Thus, we can consider the diagram below, having a pushout as its lower half.
+			\[\xymatrix{L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar[l]_{l_{n}} \ar[r]^{r_{n}} & R_{n} \ar[d]^{h_n} \\G_{n} \ar[d]_{\iota_{G_{n}}}& \ar[l]^{f_n} D_n \ar[r]_{g_n}& H  \ar[d]^{q}\\ \lpro \der{D}' \ar[rr]_{p}\rpro && P}\] 
+			Notice that, as in the point above, the arrow $q:H\to P$ is the pushout of an element in $\mathcal{M}$, therefore it is enough to show that the diagram so constructed provides a colimiting cocone for $\Delta(\der{D})$.
+			
+			Let $(C, \{c_X\}_{X\in \Delta(\der{D})})$ be a cocone, since $\Delta(\der{D}')$ is a subdiagram of $\Delta(\der{D})$, we get another cocone $(c, \{c_X\}_{X\in \Delta(\der{D}')})$ which induces an arrow $c':\lpro \der{D}' \rpro \to C$ such that
+			\begin{align*}
+				c'\circ \iota_{G_n} \circ f_n &=c_{G_n} \circ f_n\\&= c_{D_n}\\&= c_{H}\circ g_n
+			\end{align*}
+			Therefore the arrows $c'$ and $c_H$ induce a morphism $c:P\to C$ and the thesis now follows at once.
+		\end{itemize}
+		\item  As a first step, notice that $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D}_1)})$ and $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D}_2)})$ are cocone on, respectively, $\Delta(\der{D}_1)$ and $\Delta(\der{D}_2)$. Hence, there exist two arrows $p_1:\tproi{D}{1}\to \tpro{D}$, $p_2:\tproi{D}{2}\to \tpro{D}$ such that, for every $X\in  \Delta(\der{D}_1)$ and $Y\in  \Delta(\der{D}_2)$
+		\[p_1\circ \iota_{1, X} = \iota_X \qquad p_2\circ \iota_{2, Y}=\iota_{2,Y}\]
+		In particular, this entails the commutativity of the square
+				\[\xymatrix{H \ar[dr]^{\iota_H} \ar[r]^-{\iota_{2, H}} \ar[d]_-{\iota_{1, H}} & \tproi{D}{2} \ar[d]^{p_2}\\  \tproi{D}{1} \ar[r]_{p_1}& \tpro{D}}\]
 		
-		Let $(C, \{c_X\}_{X\in \Delta(\der{D})})$ be a cocone, since $\Delta(\der{D}')$ is a subdiagram of $\Delta(\der{D})$, we get another cocone $(c, \{c_X\}_{X\in \Delta(\der{D}')})$ which induces an arrow $c':\lpro \der{D}' \rpro \to C$ such that
-		\begin{align*}
-			c'\circ \iota_{G_n} \circ f_n &=c_{G_n} \circ f_n\\&= c_{D_n}\\&= c_{H}\circ g_n
-		\end{align*}
-		Therefore the arrows $c'$ and $c_H$ induce a morphism $c:P\to C$ and the thesis now follows at once.
-		\qed 
+	Let us now show that the square above is a pushout. Take two arrows $a:\tproi{D}{1}\to C$, $b:\tproi{D}{2}\to C$ such that
+	\[a\circ \iota_{1, H}=b\circ \iota_{2, H}\]
+	We can use the previous equality to define a cocone $(C, \{c_X\}_{X\in \Delta(\der{D})})$ putting:
+	\[c_X:=\begin{cases}
+		a\circ \iota_{1, X} & X\in \Delta(\der{D}_1)\\
+		b\circ \iota_{2, X} & X\in \Delta(\der{D}_2)
+	\end{cases}\]
+From this, we can deduce at once the existence of a unique $c:\der{D}\to C$ such that 
+\[c\circ \iota_X = c_X\]
+By construction, for every $X\in  \Delta(\der{D}_1)$ and $Y\in  \Delta(\der{D}_2)$ we have
+\[\begin{split}
+	c\circ p_1 \circ \iota_{1,X}&=c\circ \iota_{1, X}\\&=c_X \\&=a\circ \iota_{1,X}\\&=a\circ p_1\circ \iota_{1,X}
+\end{split}\qquad \begin{split}
+	c\circ p_2 \circ \iota_{2,Y}&=c\circ \iota_{2, Y}\\&=c_Y \\&=b\circ \iota_{2,Y}\\&=b\circ p_2\circ \iota_{2,Y}
+\end{split}\]
+Therefore
+\[c\circ p_1=a \qquad c\circ p_2 = b\]
+
+	For uniqueness, suppose that $c':\der{D}\to C$ is such that
+	\[c'\circ p_1=a \qquad c'\circ p_2 = b\]
+Then, for every $X\in \der{D}$ we have
+\begin{align*}
+	c'\circ \iota_X &= \begin{cases}
+	c'\circ p_1\circ \iota_{1, X} & X\in \Delta(\der{D}_1)\\
+	c'\circ p_2\circ \iota_{2, X} & X\in \Delta(\der{D}_2)
+	\end{cases}\\&=\begin{cases}
+a\circ \iota_{1, X} & X\in \Delta(\der{D}_1)\\
+b\circ \iota_{2, X} & X\in \Delta(\der{D}_2)
+	\end{cases}\\&=c_X\\&=c\circ \iota_X
+\end{align*}
+showing that $c'=c$ as wanted.	\qed
 	\end{enumerate}
 \end{proof}
 
@@ -875,7 +902,7 @@ Indeed,  to prove the commutativity of the central pentagon we can compute to ge
 \section{Switch equivalence and traces}
 \todo{A VERY NICE INTRO}
 
-\subsection{Sequentially independend ndependent and switchable derivations}
+\subsection{Sequentially independendent and switchable derivations}
 \todo{A VERY NICE INTRO}
 
 \begin{definition}  Let $(\X, R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Let also $\dder{D}:G\Mapsto H$ and $\dder{D'}:H\Mapsto T$ be the two direct derivations depicted below.
@@ -964,7 +991,7 @@ We can prove some other properties of the arrows appearing in the diagram above.
 
 Before proceeding further, let us show that, in the linear case, the switchability relation reduces to sequential independence.
 
-\begin{proposition}Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, R)$ a linear DPO-rewriting system. Given two direct derivations $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$, the following are equivalent:
+\begin{proposition}\label{prop:equi}Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, R)$ a linear DPO-rewriting system. Given two direct derivations $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$, the following are equivalent:
 	\begin{enumerate}
 		\item there exists a filler between $\dder{D}$ and $\dder{D'}$;
 		\item $\dder{D}$ and $\dder{D'}$ are sequentially independent.
@@ -991,7 +1018,12 @@ Therefore the two dotted arrows $u:K\to P$ and $u':K'\to P$ exist. We have to sh
 \end{enumerate}
 \end{proof}
 
-We are now going to justify the choice of the name for the relation $\updownarrow$, showing that two switchable direct derivations $\dder{D}$ and $\dder{D'}$ can be actually switched. Consider the following diagram: the solid part exists by the definition of a filler, while the two new dotted arrows $v:Q\to J$ and $v':Q'\to J$ are obtained  as the pushout of $q:P\to Q$, which is in $\mathcal{M}$ by \Cref{rem:deco}, along $q':P\to Q'$.
+\begin{remark}\todo{riferminto a \Cref{app:fill}}
+\end{remark}
+
+We are now going to justify the choice of the name for the relation $\updownarrow$, showing that two switchable direct derivations $\dder{D}$ and $\dder{D'}$ can be actually switched. 
+
+Consider the following diagram: the solid part exists by the definition of a filler, while the two new dotted arrows $v:Q\to J$ and $v':Q'\to J$ are obtained  as the pushout of $q:P\to Q$, which is in $\mathcal{M}$ by \Cref{rem:deco}, along $q':P\to Q'$.
 	\[\xymatrix{&&R \ar@/_1cm/[ddrr]_(.35){i_1}|(.7)\hole \ar[dr]^{h}&& L'\ar@/^1cm/[ddll]^(.35){i_2}  \ar[dl]_{n'}\\&K\ar[dr]^{k}\ar[dl]_{l} \ar@/_.8cm/[ddrr]^(.65){u}\ar[ur]^{r}&& H && K' \ar@/^.8cm/[ddll]_(.65){u'}\ar[dl]_{k'}\ar[lu]_{l'} \ar[dr]^{r'}\\L \ar[dr]_{n} \ar@/_.8cm/[ddrr]_{j}&& D \ar[dl]|(.42)\hole_(.64){f}\ar[ur]|(.48)\hole^(.7){g}&&D' \ar[dr]|(.42)\hole^(.65){g'} \ar[ul]|(.48)\hole_(.7){f'}&&R'\ar@/^.8cm/[ddll]^{j'}\ar[dl]^{h'}\\&G &&P\ar[dr]^{q'} \ar[dl]_{q}\ar[ur]^(.4){p'}\ar[ul]_(.4){p}&&T\\&&Q \ar[ul]_{s}\ar@{.>}[dr]_{v} &&Q'\ar[ur]^{t} \ar@{.>}[dl]^{v'}\\&&&J}\]
 	
 	Since, by \Cref{rem:deco}, all the curved rectangles are pushouts, as well as the bottom square, we can state the following definition.
@@ -1009,6 +1041,9 @@ We are now going to justify the choice of the name for the relation $\updownarro
  
 \begin{proposition}\label{prop:fil}Let $(\X, R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Then every filler between two direct derivations $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$ is a filler also for $S_{u,u'}(\dder{D'}):G\Mapsto J$ and $S_{u,u'}(\dder{D}): J\Mapsto H$. In particular, if $\dder{D}\updownarrow \dder{D}'$, then $S_{u,u'}(\dder{D}')\updownarrow S_{u,u'}(\dder{D})$.
 \end{proposition}
+\begin{remark}\label{rem:locCR}
+\todo{questo è Church-Rosser}
+\end{remark}
 \begin{proof}By definition of filler, we have two pushout square
 		\[\xymatrix{K \ar[r]^{l} \ar[d]_{u}& L \ar[d]^{j} & K' \ar[r]^{r'} \ar[d]_{u'} & R' \ar[d]^{j'}\\ P \ar[r]_q & Q & P \ar[r]_{q'} & Q'}\]
 		In particular, $q$ is an arrow of $\mathcal{M}$, therefore, by \Cref{prop:pbpoad}, the square below is a pullback.
@@ -1158,6 +1193,8 @@ We can now prove some properties of switch equivalence.
 \begin{example}\label{ex:contro}\todo{permutazione consistente non implica scambiabilità}
 \end{example}
 
+\subsection{Proper switchability is global}
+\todo{Tutto}
 \subsection{Concatenable traces}
 \begin{lemma}
 	\todo{abstract equivalence and switch }
@@ -1193,7 +1230,6 @@ Before moving forward, we will prove some other useful properties of the switch 
 
 \subsection{From adhesive grammars to weak domains}
 
-
 \section{Conclusions and further work}
 \todo{VERY NICE CONCLUSIONS}
 
@@ -1201,6 +1237,47 @@ Before moving forward, we will prove some other useful properties of the switch 
 \bibliography{bibliog.bib}
 
 
+\appendix
+\section{A note on fillers and sequential independence}\label{app:fill}
+ In \Cref{prop:equi} we proved that, in the linear case, the existence of an indpendence pair between two derivation is equivalent to that of a filler between them. This result can be further refined: in a\cite{baldan2011adhesivity} a class  $\mathbb{B}$ of (quasi)adhesive category is defined for which the local Church-Rosser Theorem holds even for left-linear DPO-rewriting system. In our language, and given \Cref{prop:fil} and \Cref{rem:locCR}, this amount to prove that, for elements of $\mathbb{B}$, every independence pair induces a filler.
+
+\begin{definition}
+	\todo{classe B e class B+}
+\end{definition}
+
+\begin{example}
+\todo{esempi}
+\end{example}
+
+\begin{example}
+	\todo{esempi}
+\end{example}
+
+\begin{definition}
+	\todo{due proprietà}
+\end{definition}
+
+\begin{proposition}
+	\todo{da B a B+}
+\end{proposition}
+\begin{proof}
+	contenuto... \qed 
+\end{proof}
+\begin{lemma}\todo{due proprietà classe B}
+\end{lemma}
+\begin{proof}
+	\qed 
+\end{proof}
+
+\begin{corollary}
+	\todo{due proprietà classe B+}
+\end{corollary}
+
+\begin{theorem}
+	\todo{filler e classe B+}
+\end{theorem}
+\begin{proof}\qed 
+\end{proof}
 
 
 \end{document}
