@@ -505,6 +505,17 @@ Supppose, moreover that $d:D'\to D$ is mono, then $d\leq n$ if and only if $c \l
 	The thesis now follows at once. \qed 
 \end{proof}
 
+Finally, we can show that stable pushouts enjoy a kind of \emph{pullback-pushout decomposition} property.
+
+\begin{proposition}\label{prop:stab}Let $\X$ be a category  and suppose that, in the diagram below, the whole rectangle is a stable pushout and the right square a pullback.
+	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
+	If the arrow $k$ is a monomorphism,  then both squares are pushouts.
+\end{proposition}
+
+\begin{proof} We can begin noticinng that $g$, being the pullback of the monomorphism $k$, is monic too. Thus we can build the cube below, in which all the vertical faces are pullbacks.
+	\[\xymatrix@C=20pt@R=10pt{ & &X\ar[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar[ddd]_{g} \ar[rrr]^{b}&&& B\ar[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar[dl]_{f}&&& A \ar[dl]^{h}\\ & Y  \ar[dl]_{g}&&& B \ar[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
+	By hypothesis the face is a stable pushout and so its top one is a pushout. \Cref{lem:po1} now entails that the right half of the rectangle with which we have started is a pushout too. \qed 
+\end{proof}
 
 \subsection{$\mathcal{M}$-adhesivity}
 
@@ -588,19 +599,26 @@ If $\X$ is an $\mathcal{M}$-adhesive categories, then every epimorphisms in $\ma
 \end{corollary}
 
 
-$\mathcal{M}$-adhesivity is well-behaved with respect to the comma construction \cite{mac2013categories}, as shown by the following theorem.
+$\mathcal{M}$-adhesivity is well-behaved with respect to  the comma construction \cite{mac2013categories}, as shown by the following theorem.
 \begin{theorem}[\cite{CastelnovoGM22,ehrig2006fundamentals}]\label{lem:comma}
-	Let $\A$ and $\B$ be respectively an $\mathcal{M}$-adhesive and an $\mathcal{M}'$-adhesive category. Let also $L:\A\rightarrow \C$ be a functor that preserves $\mathcal{M}, \mathcal{N}$-pushouts, and  $R:\B\rightarrow \C$ be a functor which preserves pullbacks.Then $\comma{L}{R}$ is $\cma{M}{M'}$-adhesive, where 
+	Let $\A$ and $\B$ be respectively an $\mathcal{M}$-adhesive and an $\mathcal{M}'$-adhesive category. Let also $L:\A\rightarrow \C$ be a functor that preserves $\mathcal{M}$-pushouts, and  $R:\B\rightarrow \C$ be a functor which preserves pullbacks.Then $\comma{L}{R}$ is $\cma{M}{M'}$-adhesive, where 
 	\[
 	\cma{M}{M}':=\{(h,k)\in \mathcal{A}(\comma{L}{R}) \mid h\in \mathcal{M}, k\in \mathcal{M}'\}\]
 \end{theorem}
 
-In particular, we can apply this result  to slices over a given object.
+In particular, we can apply this result to slices over and under a given object.
 
 \begin{corollary}\label{cor:slice}
 	Let  $X$ be an object of an $\mathcal{M}$-adhesive category $\X$. Then  $\X/X$ is $\mathcal{M}/X$-adhesive, where
 	\[\mathcal{M}/X:=\{m\in  \mathcal{A}(\X/X) \mid m\in \mathcal{M} \}\]
 \end{corollary}
+
+
+Another categorical construction which preserves adhesivity property is the formation of the category of functors.
+
+\begin{theorem}[\cite{CastelnovoGM22,ehrig2006fundamentals,lack2005adhesive}]\label{thm:functors}
+	contenuto...
+\end{theorem}
 
 We can list various examples of $\mathcal{M}$-adhesive categories (see \cite{castelnovo2023thesis,CastelnovoGM22,lack2006toposes}).
 
@@ -631,10 +649,10 @@ We end this section proving two properties of $\mathcal{M}$-adhesive categories:
 	
 	Putting together these observations, we can build the cube below, in which all the vertical faces are pullbacks.
 	\[\xymatrix@C=20pt@R=10pt{ & &X\ar[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar[ddd]_{g} \ar[rrr]^{b}&&& B\ar[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar[dl]_{f}&&& A \ar[dl]^{h}\\ & Y \ar[rrr]|(.67)\hole^{b} \ar[dl]_{g}&&& B \ar[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
-	The bottom face is a Van Kampen square and so its top one is a pushout. The thesis now follows from \Cref{lem:po1}.
+	The bottom face is a Van Kampen square and so its top one is a pushout. The thesis now follows from \Cref{lem:po1}. This follows at once from \Cref{prop:stab}.
 	\item By hypothesis, $g$ is the pullback of an arrow in $\mathcal{M}$, thus belongs to it. But then $g\circ f\in \mathcal{M}$ too  and the whole rectangle is a $\mathcal{M}$-pushout. Therefore, by \Cref{prop:pbpoad} a pullback, so that its left half is a pullback too, by \Cref{prop:pbpo}. Moreover $k\circ h$ is in $\mathcal{M}$ as the pushout of $g\circ f$ and, by \Cref{cor:deco}, we also know that $h\in \mathcal{M}$.  
 	
-	Using again \Cref{lem:po1}, it is enough to show that the left half of the original rectangle is a pushout. We can build the same cube of the previous point:
+	Using \Cref{lem:po1}, it is enough to show that the left half of the original rectangle is a pushout. We can build the same cube of the previous point:
 	\[\xymatrix@C=20pt@R=10pt{ & &X\ar[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar[ddd]_{g} \ar[rrr]^{b}&&& B\ar[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar[dl]_{f}&&& A \ar[dl]^{h}\\ & Y \ar[rrr]|(.67)\hole^{b} \ar[dl]_{g}&&& B \ar[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
 	Its vertical faces are all pullbacks, those the top one is a pushout and we can conclude. \qed 
 \end{enumerate}
@@ -888,11 +906,37 @@ Indeed,  to prove the commutativity of the central pentagon we can compute to ge
 \begin{example}\todo{esempi di cose consistenti utile per \cref{ex:contro}}
 \end{example}
 
-\begin{lemma}\label{lem:unique}\todo{Questo è il punto 2 di Lemma 17}
+
+To proceed further, we have to introduce a notion from general category theory.
+
+\begin{definition}[\cite{borceux1994handbook1,adamek1994locally}]
+Let $\X$ be a category, a \emph{separator}, or \emph{generator}, is an object $S$ such that, for every pair of arrows $f, g:X\rightrightarrows Y$, if \[f\circ s = g\circ s\] for every $s:S\to X$, then $f=g$. 
+
+Given a separator $S$, we will say that a morphism $f:X\to Y$,  is an \emph{$S$-surjection} if for every $s:S\to Y$  there exists $s':S\to X$ such that $f\circ s'= s$.
+\end{definition}
+
+\begin{example}
 	contenuto...
-\end{lemma}
+\end{example}
+\begin{example}
+	contenuto...
+\end{example}
+
+\begin{proposition}
+Let $f:X\to Y$ be a morphism in a category $\X$ with a separator $S$, then every $S$-surjection is an epimorphism.
+\end{proposition}
 \begin{proof}
-	contenuto...
+	Let $f:X\to Y$ be an $S$-surjection, and suppose that there exist two arrows $g, h:Y\rightrightarrows Z$ such that 
+	\[g\circ f = h\circ f\]
+Since $f$ is an $S$-surjection, for every $s:S\to Y$ there exists $s':S\to X$ such that $f\circ s'=s$, so that
+\begin{align*}
+	g\circ s &= g\circ f \circ s'\\&=h\circ f \circ s'\\&= h\circ s
+\end{align*} 
+	The thesis now follows since $S$ is a separator.	 \qed 
+\end{proof}
+\begin{lemma}Let $(\X,R)$ ba left-linear DPO-rewriting system and suppose that every rule in $R$ is consuming. Given two non-empty derivations $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_{i}\}_{i=0}^n$, if $\X$ has a separator $S$, then there exists at most one consistent permutation between them.
+\end{lemma}
+\begin{proof} Consider two permutations $\sigma$ and $\sigma': n+1 \rightrightarrows n+1$
 \end{proof}
 
 \begin{corollary}\label{cor:unique}
@@ -1239,7 +1283,37 @@ Before moving forward, we will prove some other useful properties of the switch 
 
 \appendix
 \section{A note on fillers and sequential independence}\label{app:fill}
- In \Cref{prop:equi} we proved that, in the linear case, the existence of an indpendence pair between two derivation is equivalent to that of a filler between them. This result can be further refined: in a\cite{baldan2011adhesivity} a class  $\mathbb{B}$ of (quasi)adhesive category is defined for which the local Church-Rosser Theorem holds even for left-linear DPO-rewriting system. In our language, and given \Cref{prop:fil} and \Cref{rem:locCR}, this amount to prove that, for elements of $\mathbb{B}$, every independence pair induces a filler.
+ In \Cref{prop:equi} we proved that, in the linear case, the existence of an indpendence pair between two derivation is equivalent to that of a filler between them. This result can be further refined: in a\cite{baldan2011adhesivity} a class  $\mathbb{B}$ of (quasi)adhesive category is defined for which the local Church-Rosser Theorem holds even for left-linear DPO-rewriting system. In our language, and given \Cref{prop:fil} and \Cref{rem:locCR}, this amount to prove that, for elements of $\mathbb{B}$, every independence pair induces a filler. 
+
+\begin{definition}Let $\X$ be a category, we say that $\X$ satisfies
+	\begin{itemize}
+		\item the \emph{mixed decomposition} property if for every diagram
+		\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
+		whose outer boundary is a pushout and in which $k$ is a monomorphisms, 
+		\item the \emph{pushout decomposition} property
+	\end{itemize}
+\end{definition}
+
+\begin{lemma}
+	contenuto...
+\end{lemma}
+\begin{proof}
+	contenuto...\qed 
+\end{proof}
+
+\begin{corollary}
+	contenuto...
+\end{corollary}
+
+The following result shows that the mixed and pushout decomposition properties guarantee that every independence pair gives rise to a filler.
+
+\begin{theorem}
+	\todo{filler e classe B+}
+\end{theorem}
+\begin{proof}\qed 
+\end{proof}
+
+Our next step is to identify sufficient conditions for a category $\X$ to satisfy the mixed and pushout decomposition properties.
 
 \begin{definition}
 	\todo{classe B e class B+}
@@ -1252,10 +1326,6 @@ Before moving forward, we will prove some other useful properties of the switch 
 \begin{example}
 	\todo{esempi}
 \end{example}
-
-\begin{definition}
-	\todo{due proprietà}
-\end{definition}
 
 \begin{proposition}
 	\todo{da B a B+}
@@ -1273,11 +1343,9 @@ Before moving forward, we will prove some other useful properties of the switch 
 	\todo{due proprietà classe B+}
 \end{corollary}
 
-\begin{theorem}
+\begin{corollary}
 	\todo{filler e classe B+}
-\end{theorem}
-\begin{proof}\qed 
-\end{proof}
+\end{corollary}
 
 
 \end{document}
