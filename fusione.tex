@@ -324,6 +324,8 @@
 \newcommand{\cod}[1]{\mathsf{cod}({#1})}
 	%Variabili categorie
 \def\A{\textbf {\textup{A}}}
+
+\def\R{\mathsf{R}}
 \def\B{\textbf {\textup{B}}}
 \def\C{\textbf {\textup{C}}}
 \def\D{\textbf {\textup{D}}}
@@ -600,7 +602,7 @@ If $\X$ is an $\mathcal{M}$-adhesive categories, then every epimorphisms in $\ma
 
 
 $\mathcal{M}$-adhesivity is well-behaved with respect to  the comma construction \cite{mac2013categories}, as shown by the following theorem.
-\begin{theorem}[\cite{CastelnovoGM22,ehrig2006fundamentals}]\label{lem:comma}
+\begin{theorem}[\cite{CastelnovoGM22,ehrig2006fundamentals,lack2005adhesive}]\label{lem:comma}
 	Let $\A$ and $\B$ be respectively an $\mathcal{M}$-adhesive and an $\mathcal{M}'$-adhesive category. Let also $L:\A\rightarrow \C$ be a functor that preserves $\mathcal{M}$-pushouts, and  $R:\B\rightarrow \C$ be a functor which preserves pullbacks.Then $\comma{L}{R}$ is $\cma{M}{M'}$-adhesive, where 
 	\[
 	\cma{M}{M}':=\{(h,k)\in \mathcal{A}(\comma{L}{R}) \mid h\in \mathcal{M}, k\in \mathcal{M}'\}\]
@@ -609,15 +611,16 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the comma construction
 In particular, we can apply this result to slices over and under a given object.
 
 \begin{corollary}\label{cor:slice}
-	Let  $X$ be an object of an $\mathcal{M}$-adhesive category $\X$. Then  $\X/X$ is $\mathcal{M}/X$-adhesive, where
-	\[\mathcal{M}/X:=\{m\in  \mathcal{A}(\X/X) \mid m\in \mathcal{M} \}\]
+	Let  $X$ be an object of an $\mathcal{M}$-adhesive category $\X$. Then  $\X/X$ and $X/\X$ are, respectively, is $\mathcal{M}/X$- and $X/\mathcal{M}$-adhesive, where
+	\[\mathcal{M}/X:=\{m\in  \mathcal{A}(\X/X) \mid m\in \mathcal{M} \} \qquad X/\mathcal{M}:=\{m\in  \mathcal{A}(X/\X) \mid m\in \mathcal{M} \}\]
 \end{corollary}
 
 
-Another categorical construction which preserves adhesivity property is the formation of the category of functors.
+Another categorical construction which preserves $\mathcal{M}$-adhesivity property is the formation of the category of functors.
 
 \begin{theorem}[\cite{CastelnovoGM22,ehrig2006fundamentals,lack2005adhesive}]\label{thm:functors}
-	contenuto...
+If $\X$ is an $\mathcal{M}$-adhesive category, then for every small category $\Y$, the category $\X^\Y$  of functors $\Y\to \X$ is $\mathcal{M}^{\Y}$-adhesive, where
+\[\mathcal{M}^{\Y}:=\{\eta \in \mathcal{A}(\X^\Y) \mid \eta_Y \in \mathcal{M} \text{ for every } Y\in \Y\}\]
 \end{theorem}
 
 We can list various examples of $\mathcal{M}$-adhesive categories (see \cite{castelnovo2023thesis,CastelnovoGM22,lack2006toposes}).
@@ -645,11 +648,7 @@ We end this section proving two properties of $\mathcal{M}$-adhesive categories:
 \end{lemma}
 \begin{proof}
 \begin{enumerate}
-	\item 	We can begin noticing that $c$ is an element of $\mathcal{M}$ because it is the pushout of $a$. Moreover, $b$, being the pullback of $c$, is in $\mathcal{M}$ too. Now, the whole rectangle is a $\mathcal{M}$-pushout, thus, by \Cref{prop:pbpoad}, it is a pullback and so its left half is a pullback, by \Cref{prop:pbpo}. Moreover, $g$, being the pullback of a monomorphism, is monic too.
-	
-	Putting together these observations, we can build the cube below, in which all the vertical faces are pullbacks.
-	\[\xymatrix@C=20pt@R=10pt{ & &X\ar[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar[ddd]_{g} \ar[rrr]^{b}&&& B\ar[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar[dl]_{f}&&& A \ar[dl]^{h}\\ & Y \ar[rrr]|(.67)\hole^{b} \ar[dl]_{g}&&& B \ar[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
-	The bottom face is a Van Kampen square and so its top one is a pushout. The thesis now follows from \Cref{lem:po1}. This follows at once from \Cref{prop:stab}.
+	\item By \Cref{prop:stab}, it follows that both squares are pushouts. On the other hand, \Cref{prop:pbpoad} entails that the whole rectangle is a pullback, thus the thesis follows from \Cref{lem:pb1}.
 	\item By hypothesis, $g$ is the pullback of an arrow in $\mathcal{M}$, thus belongs to it. But then $g\circ f\in \mathcal{M}$ too  and the whole rectangle is a $\mathcal{M}$-pushout. Therefore, by \Cref{prop:pbpoad} a pullback, so that its left half is a pullback too, by \Cref{prop:pbpo}. Moreover $k\circ h$ is in $\mathcal{M}$ as the pushout of $g\circ f$ and, by \Cref{cor:deco}, we also know that $h\in \mathcal{M}$.  
 	
 	Using \Cref{lem:po1}, it is enough to show that the left half of the original rectangle is a pushout. We can build the same cube of the previous point:
@@ -712,7 +711,7 @@ We are now going to study rewriting systems in $\mathcal{M}, \mathcal{N}$-adhesi
 $L$ is the \emph{left-hand side}, $R$ is the \emph{right-hand side} and $K$ the \emph{glueing object}. 
 
 
-A \emph{left-linear DPO-rewriting system} is a pair $(\X, R)$ where $\X$ is a $\mathcal{M}$-adhesive category and $R$ is a set of left $\mathcal{M}$-linear rules. $(\X, R)$ will be called \emph{linear} if every rule in $R$ is so.
+A \emph{left-linear DPO-rewriting system} is a pair $(\X, \R)$ where $\X$ is a $\mathcal{M}$-adhesive category and $R$ is a set of left $\mathcal{M}$-linear rules. $(\X, \R)$ will be called \emph{linear} if every rule in $R$ is so.
 
 Given  two objects $G$ and $H$ and a rule $\rho=(l,r)$ in $R$, a \emph{direct derivation $\mathscr{D}$ from $G$ to $H$ via $\rho$}, is a diagram as the one below, in which both squares are pushouts. 
 	\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar[l]^{f} D \ar[r]_{g}& H}\]
@@ -747,7 +746,7 @@ Then there exist isomorphisms $t:D\to D'$ and $s:H\to H'$ as in the following di
 If we look to direct derivations as transitions, it is natural to consider them as edges in a direct graph. Taking as vertices objects or isomorphism classes of objects led us to the following definitions \cite{heindel2009category,mellies2005axiomatic}.
 
 \begin{definition}
-	Let $(\X, R)$ be a left-linear DPO-rewrityng system, with $\X$ $\mathcal{M}$-adhesive. The \emph{DPO-derivation graph} of $(\X, R)$ is the (large)  directed graph $\gpo$ having as vertices the objects of $\X$ and in which an edge between $G$ and $H$ is a direct derivation $\dder{D}:G\Mapsto H$.	A \emph{derivation} $\der{D}$ between two objects $G$ and $H$ is a path between them in $\gpo$.
+	Let $(\X, \R)$ be a left-linear DPO-rewrityng system, with $\X$ $\mathcal{M}$-adhesive. The \emph{DPO-derivation graph} of $(\X, \R)$ is the (large)  directed graph $\gpo$ having as vertices the objects of $\X$ and in which an edge between $G$ and $H$ is a direct derivation $\dder{D}:G\Mapsto H$.	A \emph{derivation} $\der{D}$ between two objects $G$ and $H$ is a path between them in $\gpo$.
 \end{definition}
 
 \begin{remark}
@@ -772,6 +771,9 @@ If we look to direct derivations as transitions, it is natural to consider them 
 \begin{example}\todo{esempi di derivazione}
 \end{example}
 
+\begin{definition}
+	contenuto...
+\end{definition}
 \begin{remark}
 Derivations, being paths in a graph, can be concatenate: given $\der{D}=\{\dder{D}\}_{i=0}^n$ between $G$ and $H$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^m$, their \emph{concatenation} $\der{D}\cdot\der{D}'$ is the derivation $\{\dder{E}_i\}_{i=0}^{m+n+1}$ in which
 \[\dder{E}_i:=\begin{cases}
@@ -779,6 +781,7 @@ Derivations, being paths in a graph, can be concatenate: given $\der{D}=\{\dder{
 	\dder{D}'_{i-(n+1)} & n< i 
 \end{cases}\]	
 \end{remark}
+
 
 We are often interested in an object of $\X$ only up to isomorphism. It is then useful to consider a version of $\gpo$ in which vertices are classes of isomorphism of object of $\X$. However, in order to do so, we have also to identify direct derivations up to coherent isomorphisms. We are thus lead to the following definition.
 
@@ -791,7 +794,7 @@ We are often interested in an object of $\X$ only up to isomorphism. It is then 
 
 Given two derivations $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ such that $\dder{D}_i:G_i\Mapsto G_{i+1}$ and $\dder{D}'_i:G'_i\Mapsto G'_{i+1}$., we will say that $\der{D}$ and $\der{D}'$ are \emph{abstraction equivalent}, if  $r(\der{D})=r(\der{D'})$  and there exists a family $\{\phi^i\}_{i=0}^n$ of abstraction equivalences $\phi^i:\dder{D}_i\to \dder{D}'_i$ such, for every index $i$, $\phi^i_3=\phi^{i+1}_1$.
 
-	In such situation we will say that $\der{D}$ and $\der{D}'$ are \emph{abstraction equivalent}. We will use $\equiv^a$ to denote the resulting equivalence relation, while $[\der{D}]_a$ will denote the equivalence class of $\der{D}$. 
+	In such situation we will say that $\der{D}$ and $\der{D}'$ are \emph{abstraction equivalent}. We will use $\equiv^a$ to denote the resulting equivalence relation, while $[\der{D}]_a$ will denote the equivalence class of $\der{D}$, called an \emph{abstract derivation}. 
 \end{definition}
 \begin{remark}\label{rem:res}
 	We can restate \Cref{prop:unique}: it asserts that, given two direct derivations $\dder{D}$ and $\dder{D'}$ with the same match, there exists an abstract equivalence between them whose first component is an identity.
@@ -799,16 +802,70 @@ Given two derivations $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'
 
 
 \begin{definition}
-	Let $(\X, R)$ be a left-linear DPO-rewrityng system, with $\X$ an $\mathcal{M}$-adhesive category. The  graph $\gpi$ is the (large)  directed graph having as vertices isomorphism classes of objects of $\X$ and in which an edge between $[G]$ and $[H]$ is the equivalence class $[\der{D}]_a$ of derivation $\der{D}$ between $G$ and $H$.	
+	Let $(\X, \R)$ be a left-linear DPO-rewrityng system, with $\X$ an $\mathcal{M}$-adhesive category. The  graph $\gpi$ is the (large)  directed graph having as vertices isomorphism classes of objects of $\X$ and in which an edge between $[G]$ and $[H]$ is the equivalence class $[\der{D}]_a$ of derivation $\der{D}$ between $G$ and $H$.	
 \end{definition}
 
+Concatenation of abstraction equivalence classes of derivations requires a bit of care.  We start with some auxiliary definitions.
+
+
+\begin{definition} Let $(\X, \R)$ be a left-linear DPO-rewriting system and let also $\phi:G\to G'$ and $\psi:H\to H'$ be two isomorphisms. Given a direct derivation $\dder{D}:G\Mapsto H$
+	\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar[l]^{f} D \ar[r]_{g}& H}\]
+we define	$\phi * \dder{D}*\psi : G'\Mapsto H'$ as the direct derivation given by the following diagram.
+	\[\xymatrix{L \ar[d]_{\phi \circ n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{\psi \circ h}\\G' & \ar[l]^{\phi \circ f} D \ar[r]_{\psi \circ g}& H}\]
+
+Moreover, if $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ is a derivation between $G$ and $H$, then we define a derivation $\phi *\der{D} * \psi$ between $G'$ and $H'$ putting
+\[\phi *\der{D} * \psi := \{\phi* \dder{D}_0\}\cdot \{\dder{D}_i\}_{i=1}^{n-1} \cdot \{\dder{D}_n*\psi\}\] 
+\end{definition}
+\begin{remark}
+	By construction $\phi *\der{D} * \psi \equiv^a \der{D}$ for every derivation $\der{D}$. 
+\end{remark}
+\begin{notation}	We will use the notation $\phi *\dder{D}$, $\phi*\der{D}$ and $\dder{D}*\psi$, $\der{D}*\psi$ for the cases in which, respectively, $\psi=\id{H}$ and $\phi=\id{G}$.
+\end{notation}
+
+So equipped we can define the composite of two abstract derivations.
+
+\begin{definition}Let $[\der{D}]_a$ be an abstract derivation between $[G]$ and $[H]$ and $[\der{D}']_a$ one between $[H]$ and $[K]$ and suppose that $\der{D}$ and $\der{D}'$ are derivations between, respectively, $G'$ and $H'$ and between $\hat{H}$ and $K'$. We define the  \emph{composite  abstract derivation} $[\der{D}]_a\cdot [\der{D}']_a$ as $[\der{D}*(\psi\circ \phi)  \cdot \der{D}']_a$, where $\phi:H'\to H$ and $\psi:H\to \hat{H}$ are isomorphisms.
+\end{definition}
+\begin{remark} $\der{D}*(\psi\circ \phi)$ is a derivation between $G'$ and $\hat{H}$, thus
+	$[\der{D}*(\psi\circ \phi)  \cdot \der{D}']_a$  is really an abstract derivation between $[G]$ and $[K]$.
+\end{remark}
+\begin{remark}
+	The definition of $[\der{D}]_a\cdot [\der{D}]'_a$ does not depend on the choice of $\phi$ and $\psi$.
+	contenuto...
+\end{remark}
+
+\begin{proposition}
+	contenuto...
+\end{proposition}
+\begin{proof}
+	contenuto... \qed 
+\end{proof}
+\begin{lemma}\label{lem:tec}
+	contenuto...
+\end{lemma}
+\begin{proof}
+	contenuto...\qed 
+\end{proof}
+
+As concatenation of path in a graph is always associative, \Cref{lem:tec} allows us to deduce the following. 
+\begin{corollary}
+	contenuto...
+\end{corollary}
+
+\begin{definition}
+	contenuto...
+\end{definition}
+
+\begin{corollary}
+	contenuto...
+\end{corollary}
 
 \subsection{Consistent permutations}
 
-Given a left-linear DPO-rewriting system $(\X, R)$,  a derivation $\der{D}$  determines a diagram $\Delta(\der{D})$ in $\X$. We can then wonder if such a diagram has a colimit. Clealry if $\der{D}$ is the empty derivation then a colimit for $\Delta(\der{D})$ amount to an initial object in $\X$. If $\der{D}$ is non-empty we can use the following result.
+Given a left-linear DPO-rewriting system $(\X, \R)$,  a derivation $\der{D}$  determines a diagram $\Delta(\der{D})$ in $\X$. We can then wonder if such a diagram has a colimit. Clealry if $\der{D}$ is the empty derivation then a colimit for $\Delta(\der{D})$ amount to an initial object in $\X$. If $\der{D}$ is non-empty we can use the following result.
 
 \begin{lemma}\label{lem:colim}
-	Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, R)$ a left-linear DPO-rewriting system over it. The following hold true:
+	Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, \R)$ a left-linear DPO-rewriting system over it. The following hold true:
 	\begin{enumerate}
 		\item if $\der{D}$ is a derivation of length one, whose unique element is given by the following diagram
 	\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G & \ar[l]^{f} D \ar[r]_{g}& H }\]	
@@ -832,7 +889,7 @@ Given a left-linear DPO-rewriting system $(\X, R)$,  a derivation $\der{D}$  det
 		\begin{itemize}
 			\item  If $n=0$, then the claim follows immediately from point $1$, noticing that $\iota_H$ is the pushout of $f$ and thus an element of $\mathcal{M}$.
 			\item Let $\der{D}$ be $\{\dder{D}_i\}_{i=0}^n$ and suppose that $n\geq 1$. Let also $\der{D}'$ be $\{\dder{D}_i\}^{n-1}_{i=0}$ and $\rho_n=(l_n, r_n)$ be the rule applied in $\dder{D}_n$. The pushout of $l_n$ is the arrow $f_n:D_n\to G_n$ is in $\mathcal{M}$ and, by inductive hypothesis, $\iota_{G_{n}}:G_{n}\to \lpro \der{D}'\rpro$ is in $\mathcal{M}$ too. Thus, we can consider the diagram below, having a pushout as its lower half.
-			\[\xymatrix{L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar[l]_{l_{n}} \ar[r]^{r_{n}} & R_{n} \ar[d]^{h_n} \\G_{n} \ar[d]_{\iota_{G_{n}}}& \ar[l]^{f_n} D_n \ar[r]_{g_n}& H  \ar[d]^{q}\\ \lpro \der{D}' \ar[rr]_{p}\rpro && P}\] 
+			\[\xymatrix{L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar[l]_{l_{n}} \ar[r]^{r_{n}} & R_{n} \ar[d]^{h_n} \\G_{n} \ar[d]_{\iota'_{G_{n}}}& \ar[l]^{f_n} D_n \ar[r]_{g_n}& H  \ar[d]^{q}\\ \lpro \der{D}' \ar[rr]_{p}\rpro && P}\] 
 			Notice that, as in the point above, the arrow $q:H\to P$ is the pushout of an element in $\mathcal{M}$, therefore it is enough to show that the diagram so constructed provides a colimiting cocone for $\Delta(\der{D})$.
 			
 			Let $(C, \{c_X\}_{X\in \Delta(\der{D})})$ be a cocone, since $\Delta(\der{D}')$ is a subdiagram of $\Delta(\der{D})$, we get another cocone $(c, \{c_X\}_{X\in \Delta(\der{D}')})$ which induces an arrow $c':\lpro \der{D}' \rpro \to C$ such that
@@ -879,11 +936,37 @@ b\circ \iota_{2, X} & X\in \Delta(\der{D}_2)
 showing that $c'=c$ as wanted.	\qed
 	\end{enumerate}
 \end{proof}
+\iffalse 
+
+\begin{corollary}\label{cor:ele}
+	Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ be a derivation between $G$ and $H$. Let $j$ be an index strictly less than $n+1$ and consider two arrows $a:T\to G_j$, $b:T\to H$. If
+	\[\iota_H\circ b = \iota_{G_j}\circ t\]
+	then for every $j\leq i \leq n$ there exist an arrow $c_i:T\to D_k $ making the following diagrams commutative
+	\[\xymatrix{&T\ar[dr]^{a} \ar[dl]_{c_j}&&T\ar[d]_{c_i} \ar[r]^-{c_{i-1}} & D_{i-1} \ar[d]^{g_{i-1}}&&T \ar[dr]^{b} \ar[dl]_{c_n}\\D_j \ar[rr]_{f_j} && G_j & D_k \ar[r]_{f_i}& G_i & D_{n} \ar[rr]_{g_n} && H}\]
+	Where the index in the central square is assumed to be sctrictly greater than $j$.
+	\end{corollary}
+	
+	\begin{proof}
+		Let us proceed by induction on $n$.
+		\begin{itemize}
+			\item $n=0$. Let $\der{D}$ have as only element the derivation
+\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G & \ar[l]_{f} D \ar[r]^{g}& H }\]
+The hypotheses gives us the following diagram, in which, by the first point of \cref{lem:colim}, the square is a pushout.
+\[\xymatrix{T \ar@/^.2cm/[drr]^{b}  \ar@{.>}[dr]^c \ar@/_.2cm/[ddr]_{a}\\& D \ar[r]^{g} \ar[d]_{f}& H \ar[d]^{\iota_H}\\ &G \ar[r]_{\iota_G} & \tpro{D}}\]
+The square above is an $\mathcal{M}$-pushout, thus by \Cref{prop:pbpoad} it is also a pullback and the thesis follows.
+
+
+			\item $n>0$. Let $\der{D}$ be $\{\dder{D}_{i}\}_{i=0}^n$ and consider $\der{D}':=\{\dder{D}_i\}_{i=0}^{n-1}$. By the second point of \Cref{lem:colim} we know that there exists a diagram as the one below, in which the rectangle is a $\mathcal{M}$-pushout.
+					\[\xymatrix{&T \ar@/^.3cm/[drr]^{b}  \ar@/_.2cm/[dl]_{a}  \ar@{.>}[dr]_{c_n}\\G_j \ar@/_.3cm/[dr]_{\iota'_{G_j}} \ar[drrr]|(.34)\hole^(.7){\iota_{G_j}}&G_{n} \ar[d]_{\iota'_{G_{n}}}& \ar[l]^{f_n} D_n \ar[r]_{g_n}& H  \ar[d]^{\iota_H}\\ & \lpro \der{D}' \ar[rr]_{p}\rpro && \tpro{D}}\] 
+				By \Cref{prop:pbpoad} the rectangle in the diagram above is a pullback, hence the dotted $c_n:T\to D_n$ exists. The thesis now follows applying the inductive hypothesis to $a$ and $ \iota'_{G_n}\circ f_n\circ c_n$. \qed 
+		\end{itemize}
+\end{proof} 
+\fi 
 
 So equipped, we can introduce the notion of \emph{consistent permutation}.
 
 \begin{definition}
-	Let $\X$ be an $\mathcal{M}$-adhesive category and consider a left-linear DPO-rewriting system $(\X, R)$ on it.  Take two non-empty derivations $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ with the same length with their associated sequences of rules $r(\der{D})=\{\rho_i\}_{i=0}^n$ and $r(\der{D}')=\{\rho'_i\}_{i=0}^n$. A permutation $\sigma:n+1\to n+1$  is called a \emph{consistent permutation} between $\der{D}$ and $\der{D}'$, if for every $i\in n+1$, $\rho_i=\rho'_{\sigma(i)}$ and, moreover, there exists an isomorphism $\xi:\tpro{D} \to \lpro \der{D}' \rpro$ fitting in the following diagrams, where $m_i, m'_i, h_i$ and $h'_i$ are, respectively, the matches and back-matches of $\dder{D}_i$ and $\dder{D}'_i$.
+	Let $\X$ be an $\mathcal{M}$-adhesive category and consider a left-linear DPO-rewriting system $(\X, \R)$ on it.  Take two non-empty derivations $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ with the same length with their associated sequences of rules $r(\der{D})=\{\rho_i\}_{i=0}^n$ and $r(\der{D}')=\{\rho'_i\}_{i=0}^n$. A permutation $\sigma:n+1\to n+1$  is called a \emph{consistent permutation} between $\der{D}$ and $\der{D}'$, if for every $i\in n+1$, $\rho_i=\rho'_{\sigma(i)}$ and, moreover, there exists an isomorphism $\xi:\tpro{D} \to \lpro \der{D}' \rpro$ fitting in the following diagrams, where $m_i, m'_i, h_i$ and $h'_i$ are, respectively, the matches and back-matches of $\dder{D}_i$ and $\dder{D}'_i$.
 \[\xymatrix{L_i \ar[r]^{m_i} \ar[d]_{m'_{\sigma(i)}}& G_i \ar[r]^{\iota_{G_i}} &\tpro{D} \ar[d]^{\xi} & R_i \ar[r]^{h_i} \ar[d]_{h'_{\sigma(i)}}& G_{i+1} \ar[r]^{\iota_{G_{i+1}}} &\tpro{D} \ar[d]^{\xi} \\G'_{\sigma(i)} \ar[rr]_{\iota_{G'_{\sigma(i)}}}&& \lpro \der{D}' \rpro& G'_{\sigma(i)+1} \ar[rr]_{\iota_{G'_{\sigma(i)+1}}}&& \lpro \der{D}' \rpro}\]
 \end{definition}
 
@@ -915,13 +998,20 @@ Let $\X$ be a category, a \emph{separator}, or \emph{generator}, is an object $S
 Given a separator $S$, we will say that a morphism $f:X\to Y$,  is an \emph{$S$-surjection} if for every $s:S\to Y$  there exists $s':S\to X$ such that $f\circ s'= s$.
 \end{definition}
 
+\begin{remark}Notice that, by definition, an object $S$ in a category $\X$ is a separator if and only if the representable functor $\X(S,-):\X\to \Set$ is faithful.
+\end{remark}
 \begin{example}
 	contenuto...
 \end{example}
 \begin{example}
 	contenuto...
 \end{example}
-
+\begin{example}
+	contenuto...
+\end{example}
+\begin{example}
+	contenuto...
+\end{example}
 \begin{proposition}
 Let $f:X\to Y$ be a morphism in a category $\X$ with a separator $S$, then every $S$-surjection is an epimorphism.
 \end{proposition}
@@ -934,9 +1024,78 @@ Since $f$ is an $S$-surjection, for every $s:S\to Y$ there exists $s':S\to X$ su
 \end{align*} 
 	The thesis now follows since $S$ is a separator.	 \qed 
 \end{proof}
+
+For our purposes we need to introduce a particular kind of separator.
+\begin{definition} Let $(\X, \R)$ be left linear DPO-rewriting system on an $\mathcal{M}$-adhesive category $\X$. We define a class of arrows $\mathcal{R}$ saying that $f:X\to Y $ belongs to it if and only if there exists a rule $(l,r)\in \R$, an arrow $g$ and a pushout square
+	\[\xymatrix{K \ar[r]^{r} \ar[d]_{g}& R \ar[d]^{p}\\ X \ar[r]_{f} & Y}\]
+\end{definition}
+
+\begin{remark}\label{rem:comp} \Cref{lem:po1} entalis that $\mathcal{R}$ is stable under $\mathcal{M}$-pushouts and closed under composition.
+\end{remark}
+
+\begin{proposition}
+	Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, \R)$ a left-linear DPO-rewriting system over it. Then for every non-empty derivation $\der{D}=\{\der{D}\}_{i=0}^n$ between $G$ and $H$, the arrow $\iota_{G}:G\to \tpro{D}$ is in $\mathcal{R}$.
+\end{proposition}
+\begin{proof} We proceed by induction.
+		\begin{itemize}
+		\item $n=0$. Let $\der{D}$ have as only element the derivation
+		\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G & \ar[l]_{f} D \ar[r]^{g}& H }\]
+	 Thus $g$ belongs to $\mathcal{R}$. The thesis now follows immediately since, by \Cref{lem:colim}, the following square is an $\mathcal{M}$-pushout. 
+		\[\xymatrix{& D \ar[r]^{g} \ar[d]_{f}& H \ar[d]^{\iota_H}\\ &G \ar[r]_{\iota_G} & \tpro{D}}\]
+
+			
+		\item $n>0$.  Define $\der{D}'$ as $\{\dder{D}_i\}_{i=0}^{n-1}$. Using \Cref{lem:colim}, we can build the diagram below, in which the bottom rectangle is a $\mathcal{M}$-pushout.			\[\xymatrix{&L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar[l]_{l_{n}} \ar[r]^{r_{n}} & R_{n} \ar[d]^{h_n} \\&G_{n} \ar[d]_{\iota'_{G_{n}}}& \ar[l]^{f_n} D_n \ar[r]_{g_n}& H  \ar[d]^{\iota_H}\\ G\ar[r]^{\iota'_{G}} \ar@/_.4cm/[rrr]_{\iota_{G}}&\lpro \der{D}' \ar[rr]^{p}\rpro && \tpro{D}}\] 
+		By inductive hypothesis $\iota'_G$ is in $\mathcal{R}$, while $p$ is in it by construction. The thesis follows from \Cref{rem:comp}. \qed 
+	\end{itemize}
+
+\end{proof}
+\begin{definition}\label{def:sepb} Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category.	An \emph{$\mathcal{R}$-separator} for $\X$ is a separator $S$ with the property that, for every pushout square
+	\[\xymatrix{X \ar[r]^{f} \ar[d]_{m}& Z \ar[d]^{q} \\ Y \ar[r]_{p} & P}\]
+	 with $m\in \mathcal{M}$ and $f \in \mathcal{R}$, and for every $s_1, s_2:S\rightrightarrows Y$ such that 
+	$p\circ s_1=p\circ s_2$,	if $s_1\neq s_2$, then there exists $t_1, t_2:S\rightrightarrows X$ such that
+	\[m\circ t_1 = s_1 \quad m\circ t_2=s_2 \quad f\circ t_1=f\circ t_2\]
+\end{definition}
+\begin{remark}
+If $(\X, \R)$ is linear then every separator is an $\mathcal{M}, \mathcal{R}$-separator. Indeed, in such a case every arrow in $\mathcal{R}$ is in $\mathcal{M}$. Thus given a pushout
+\[\xymatrix{X \ar[r]^{f} \ar[d]_{m}& Z \ar[d]^{q} \\ Y \ar[r]_{p} & P}\]
+with $f\in \mathcal{R}$ it follows that $p$ is in $\mathcal{M}$ too. But then $p$ is mono and so the equality
+\[p\circ s_1=p\circ s_2\] 
+entails $s_1=s_2$.
+\end{remark}
+
+\begin{remark} Notice that, since $m$ is assumed to be in $\mathcal{M}$, and thus mono, the arrows $t_1$ and $t$
+\end{remark}
+
+\begin{example}
+	contenuto...
+\end{example}
+\begin{example}
+	contenuto...
+\end{example}
+\begin{example}
+	contenuto...
+\end{example}
+\begin{example}
+	contenuto...
+\end{example}
+
+We can combine \Cref{def:sepb} with \Cref{cor:ele} to get the following. 
+
+\begin{proposition}\label{prop:salva}
+	contenuto...
+\end{proposition}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+We are now ready to prove the central result of this section. 
+
 \begin{lemma}Let $(\X,R)$ ba left-linear DPO-rewriting system and suppose that every rule in $R$ is consuming. Given two non-empty derivations $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_{i}\}_{i=0}^n$, if $\X$ has a separator $S$, then there exists at most one consistent permutation between them.
 \end{lemma}
-\begin{proof} Consider two permutations $\sigma$ and $\sigma': n+1 \rightrightarrows n+1$
+\begin{proof} Consider two consistent permutations $\sigma$ and $\sigma': n+1 \rightrightarrows n+1$ and let $\xi, \xi':\tpro{D}\rightrightarrows \tpro{D'}$ be the associated isomorphisms. Let also $i\in n+1$ be such that $\sigma(i)\neq \sigma'(i)$ whithout loss of generality we can suppose that $\sigma'(i)<\sigma(i)$. Using consistency, we get a diagram 
+	\[\xymatrix@C=8pt@R=15pt{ &&&&&R_{i}\ar@/^1.4cm/[dddrrr]^{h'_{\sigma(i)}} \ar@/_1.7cm/[dddlll]_{h'_{\sigma'(i)}}|(.65)\hole|(.83)\hole\ar[ddd]|(.34)\hole^{h_i}|(.82)\hole\\&&&&K_i \ar@/_1.7cm/[dddlll]_{k'_{\sigma'(i)}}|(.67)\hole\ar[dl]_{l_i} \ar[ur]^{r}\ar@/^1.4cm/[dddrrr]^{k'_{\sigma(i)}} \ar[ddd]|(.35)\hole_(.7){k_i}\\&&&L_i\ar@/_1.7cm/[dddlll]_{m'_{\sigma'(i)}}\ar@/^1.4cm/[dddrrr]^(.7){m'_{\sigma(i)}} \ar[ddd]_{m_i}\\&&G'_{\sigma'(i)+1}\ar@/^.5cm/[dddl]^{\iota_{G'_{\sigma'(i)+1}}}&&&G_{i+1}  \ar@/^.5cm/[dddl]^{\iota_{G_{i+1}}}&&& G'_{\sigma(i)+1}\ar@/^.5cm/[dddl]^{\iota_{G'_{\sigma(i)+1}}}\\ & D_{\sigma'(i)}\ar[ur]^{g'_{\sigma'(i)}}\ar[dl]_(.4){f'_{\sigma'(i)}}\ar[dd]^{\iota_{D'_{\sigma'(i)}}}&&&D_i \ar[dd]^{\iota_{D_i}}\ar[ur]^{g_i}  \ar[dl]_{f_i}&&& D'_\sigma(i) \ar[dd]^{\iota_{D'_\sigma(i)}} \ar[ur]^{g'_{\sigma(i)}}\ar[dl]_(.4){f'_{\sigma(i)}}\\ G'_{\sigma'(i)}\ar@/_.3cm/[dr]_(.4){\iota_{G_{\sigma'(i)}}}&&&G_i \ar@/_.3cm/[dr]_(.4){\iota_{G_i}} &&& G'_{\sigma(i)}\ar@/_.3cm/[dr]_(.4){\iota_{G'_{\sigma(i)}}}\\&\lpro \der{D}'\rpro &&& \tpro{D} \ar[rrr]_{\xi} \ar[lll]^{\xi'}&&& \lpro \der{D}' \rpro}\]
+	
+	Take an arrow $s:S\to L_i$ , then we 
 \end{proof}
 
 \begin{corollary}\label{cor:unique}
@@ -949,7 +1108,7 @@ Since $f$ is an $S$-surjection, for every $s:S\to Y$ there exists $s':S\to X$ su
 \subsection{Sequentially independendent and switchable derivations}
 \todo{A VERY NICE INTRO}
 
-\begin{definition}  Let $(\X, R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Let also $\dder{D}:G\Mapsto H$ and $\dder{D'}:H\Mapsto T$ be the two direct derivations depicted below.
+\begin{definition}  Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Let also $\dder{D}:G\Mapsto H$ and $\dder{D'}:H\Mapsto T$ be the two direct derivations depicted below.
 
 \[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L' \ar[d]_{n'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[r]^{r'} & R' \ar[d]^{h'}\\G & \ar[l]^{f} D \ar[r]_{g}& H & H & \ar[l]^{f'} D' \ar[r]_{g'}& T}\]
 
@@ -976,7 +1135,7 @@ We will say that $\dder{D}$ and $\dder{D'}$ are \emph{weakly sequentially indepe
 	 \end{align*}
 we can deduce that $i_2=j_2$, too.
 
-Summing up, if $(\X, R)$ is a linear DPO-rewriting system, then sequential independence and weak sequential independence coincide. 
+Summing up, if $(\X, \R)$ is a linear DPO-rewriting system, then sequential independence and weak sequential independence coincide. 
 \end{remark}
 
 
@@ -990,7 +1149,7 @@ When working with linear rewriting systems, (weakly) sequential independent dire
 To fix this problem, we adapt the notion of \emph{canonical filler} from \cite{heindel2009category}.
 
 \begin{definition}\label{def:filler}
-Let $(\X, R)$ be a left-linear DPO-rewriting system with $\X$ $\mathcal{M}$-adhesive. Let also $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$ be the two derivations depicted below.
+Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ $\mathcal{M}$-adhesive. Let also $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$ be the two derivations depicted below.
 \[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L' \ar[d]_{n'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[r]^{r'} & R' \ar[d]^{h'}\\G & \ar[l]^{f} D \ar[r]_{g}& H & H & \ar[l]^{f'} D' \ar[r]_{g'}& T}\]
 Since $f'$ is in $\mathcal{M}$, we can moreover consider a pullback square
 \[\xymatrix{P \ar[r]^{p} \ar[d]_{p'}& D\ar[d]^{g} \\ D' \ar[r]_{f'} & H}\]
@@ -1035,7 +1194,7 @@ We can prove some other properties of the arrows appearing in the diagram above.
 
 Before proceeding further, let us show that, in the linear case, the switchability relation reduces to sequential independence.
 
-\begin{proposition}\label{prop:equi}Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, R)$ a linear DPO-rewriting system. Given two direct derivations $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$, the following are equivalent:
+\begin{proposition}\label{prop:equi}Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, \R)$ a linear DPO-rewriting system. Given two direct derivations $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$, the following are equivalent:
 	\begin{enumerate}
 		\item there exists a filler between $\dder{D}$ and $\dder{D'}$;
 		\item $\dder{D}$ and $\dder{D'}$ are sequentially independent.
@@ -1055,7 +1214,7 @@ g\circ i_2\circ l' &= n'\circ l'\\&=f'\circ k'
 \end{split}\]
 Therefore the two dotted arrows $u:K\to P$ and $u':K'\to P$ exist. We have to show that they satisfy the two conditions in the definition of a filler. 
 \begin{enumerate}
-	\item  By construction $p\circ u = k$ and $p'\circ u'=k'$. Since $(\X, R)$ is linear, then $r':K'\to R'$ belongs to $\mathcal{M}$, thus it admits a pushout along $u':K'\to P$, as wanted.
+	\item  By construction $p\circ u = k$ and $p'\circ u'=k'$. Since $(\X, \R)$ is linear, then $r':K'\to R'$ belongs to $\mathcal{M}$, thus it admits a pushout along $u':K'\to P$, as wanted.
 	\item Take the following two rectangles
 \[\xymatrix{K \ar@/^.4cm/[rr]^{u}\ar[d]_{r}\ar[r]_{u} &P\ar[d]^{p'} \ar[r]_{p} & D \ar[d]^{f}&K' \ar@/^.4cm/[rr]^{k'}\ar[d]_{l'}\ar[r]_{u'} &P\ar[d]^{p} \ar[r]_{p'} & D' \ar[d]^{f'}\\  R \ar@/_.4cm/[rr]_{h} \ar[r]^{i_1}&D' \ar[r]^{f'} & H&L' \ar@/_.4cm/[rr]_{n'} \ar[r]^{i_2}&D \ar[r]^{g} & H}\]
 	By hypothesis $r$ and $l'$ are in $\mathcal{M}$, thus $f'$ and $g$ belong to it too. The first point of \Cref{lem:popb}  yields the thesis. \qed 
@@ -1083,7 +1242,7 @@ Consider the following diagram: the solid part exists by the definition of a fil
 	\[\xymatrix@C=15pt{L' \ar[d]_{f\circ i_2}&& K' \ar[d]_{q\circ u'}\ar[ll]_{l'} \ar[r]^{r'} & R' \ar@/^.35cm/[drrr]_(.4){j'}|(.285)\hole \ar[dr]|(.28)\hole_{v'\circ j'} && L \ar@/_.35cm/[dlll]^(.4){j} \ar[dl]|(.28)\hole^{v\circ j}& K \ar[d]^{q'\circ u}\ar[l]_{l} \ar[rr]^{r} && R \ar[d]^{g'\circ i_1}\\G && \ar[ll]^{s} Q \ar[rr]_{v}&& J  && \ar[ll]^{v'} Q' \ar[rr]_{t}&& T}\]
 \end{remark} 
  
-\begin{proposition}\label{prop:fil}Let $(\X, R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Then every filler between two direct derivations $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$ is a filler also for $S_{u,u'}(\dder{D'}):G\Mapsto J$ and $S_{u,u'}(\dder{D}): J\Mapsto H$. In particular, if $\dder{D}\updownarrow \dder{D}'$, then $S_{u,u'}(\dder{D}')\updownarrow S_{u,u'}(\dder{D})$.
+\begin{proposition}\label{prop:fil}Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Then every filler between two direct derivations $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$ is a filler also for $S_{u,u'}(\dder{D'}):G\Mapsto J$ and $S_{u,u'}(\dder{D}): J\Mapsto H$. In particular, if $\dder{D}\updownarrow \dder{D}'$, then $S_{u,u'}(\dder{D}')\updownarrow S_{u,u'}(\dder{D})$.
 \end{proposition}
 \begin{remark}\label{rem:locCR}
 \todo{questo è Church-Rosser}
@@ -1105,7 +1264,7 @@ Consider the following diagram: the solid part exists by the definition of a fil
 The previous remark allow us to further switch the direct derivation $S_{u,u'}(\dder{D})$ and $S_{u,u'}(\dder{D}')$. The following lemma guarantees us that, in this way, we get back a derivation which is abstraction equivalent to $\dder{D}\cdot \dder{D}'$.
 
 \begin{lemma}\label{lem:rev}
-	Let $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$ be two direct derivations in a left-linear DPO-rewriting system $(\X, R)$ and let $(u,u')$ be a filler between them. Then $S_{u',u}(S_{u,u'}(\dder{D}, \dder{D'}))$ is abstraction equivalent to $\dder{D}\cdot \dder{D}'$. 
+	Let $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$ be two direct derivations in a left-linear DPO-rewriting system $(\X, \R)$ and let $(u,u')$ be a filler between them. Then $S_{u',u}(S_{u,u'}(\dder{D}, \dder{D'}))$ is abstraction equivalent to $\dder{D}\cdot \dder{D}'$. 
 \end{lemma}
 \begin{proof} By \Cref{prop:fil}, $(u', u)$ is a filler between $S_{u,u'}(\dder{D}')$ and $S_{u,u'}(\dder{D})$, thus we have a diagram as the one below.
 		\[\xymatrix{&&R' \ar@/_1cm/[ddrr]_(.35){j'}|(.7)\hole \ar[dr]^{v'\circ j'}&& L \ar@/^1cm/[ddll]^(.35){j}  \ar[dl]_{v\circ j}\\&K'\ar[dr]^{q\circ u'}\ar[dl]_{l'} \ar@/_.8cm/[ddrr]^(.65){u'}\ar[ur]^{r'}&& J && K \ar@/^.8cm/[ddll]_(.65){u}\ar[dl]_{q'\circ u}\ar[lu]_{l} \ar[dr]^{r}\\L' \ar[dr]^{f\circ i_2} \ar@/_.8cm/[ddrr]_{c_2}&& Q \ar[dl]|(.42)\hole_(.64){s}\ar[ur]|(.48)\hole^(.7){v}&&Q' \ar[dr]|(.42)\hole_(.65){t} \ar[ul]|(.48)\hole_(.7){v'}&&R\ar@/^.8cm/[ddll]^{c_1}\ar[dl]_{g'\circ i_1}\\&G &&P\ar[dr]^{e} \ar[dl]_{e'}\ar[ur]^(.4){q'}\ar[ul]_(.4){q}&&T\\&&E' \ar[ul]_{a}\ar[dr]_{w'} &&E\ar[ur]^{b} \ar[dl]^{w}\\&&&F}\]
@@ -1165,7 +1324,7 @@ Putting together the two diagrams above we get the thesis. \qed
 
 Our next step is to relate derivations which are equal ``up to switching''.
 
-\begin{definition} Let $(\X, R)$ be a left-linear DPO-rewriting system. Given two direct derivations $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$, we say that  $\dder{D}$ and $\dder{D}'$ are \emph{properly interchangeable} if $\dder{D}\updownarrow_! \dder{D'}$ and $S_{u,u'}(\dder{D}')\updownarrow_!S_{u,u'}(\dder{D})$, where $(u,u')$ is a filler between $\dder{D}$ and $\dder{D}'$. In such a case, we will write $\dder{D}\Updownarrow\dder{D}'$. 
+\begin{definition} Let $(\X, \R)$ be a left-linear DPO-rewriting system. Given two direct derivations $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$, we say that  $\dder{D}$ and $\dder{D}'$ are \emph{properly interchangeable} if $\dder{D}\updownarrow_! \dder{D'}$ and $S_{u,u'}(\dder{D}')\updownarrow_!S_{u,u'}(\dder{D})$, where $(u,u')$ is a filler between $\dder{D}$ and $\dder{D}'$. In such a case, we will write $\dder{D}\Updownarrow\dder{D}'$. 
 	
 Take two derivations $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_{i}\}_{i=0}^n$ with the same length and between the same $G_0$ and $G_n$. We say that $\der{D}'$ is \emph{obtained by a proper switch from $\der{D}$} if there exists an index $j < n$ such that
 	\begin{enumerate}
@@ -1190,7 +1349,7 @@ Take two derivations $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}
 \end{example}
 
 We can now prove some properties of switch equivalence.
-\begin{lemma}\todo{Def. 3 della bozza di Andrea }Let $(\X, R)$ be a left-linear DPO-rewriting system. Then the following hold true: 
+\begin{lemma}\todo{Def. 3 della bozza di Andrea }Let $(\X, \R)$ be a left-linear DPO-rewriting system. Then the following hold true: 
 	\begin{enumerate}
 		\item 
 		\item 
@@ -1212,7 +1371,7 @@ We can now prove some properties of switch equivalence.
 
 
 
-\begin{lemma} Let $(\X, R)$ be a left-linear DPO-rewriting system $(\X, R)$. Then the following hold true
+\begin{lemma} Let $(\X, \R)$ be a left-linear DPO-rewriting system $(\X, \R)$. Then the following hold true
 	\begin{enumerate}
 		\item If $\dder{D}$ and $\dder{D'}$ are two direct derivations such that $\dder{D}\updownarrow \dder{D'}$, then for every filler $(u,u')$ between them, the function
 		\[\tau:2\to2 \qquad x \mapsto \begin{cases}
@@ -1238,7 +1397,7 @@ We can now prove some properties of switch equivalence.
 \end{example}
 
 \subsection{Proper switchability is global}
-\todo{Tutto}
+\todo{NO IDEA PER ORA}
 \subsection{Concatenable traces}
 \begin{lemma}
 	\todo{abstract equivalence and switch }
