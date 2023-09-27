@@ -874,9 +874,17 @@ Given a left-linear DPO-rewriting system $(\X, \R)$,  a derivation $\der{D}$  de
 		\item  for every non-empty derivation $\der{D}$ from $G$ to $H$, the diagram $\Delta(\der{D})$ has a colimit $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ such that $\iota_H$ belong to $\mathcal{M}$;
 		\item let $\der{D}$ be the concatenation $\der{D}_1\cdot \der{D}_2$ of two derivations $\der{D}_1=\{\dder{D}_{1,i}\}_{i=0}^{n_1}$ between $G$ and $H$ and $\der{D}_2=\{\dder{D}_{2,j}\}_{j=0}^{n_2}$ between $H$ and $T$,  then the colimiting cocone $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ exists too and there is a pushout square
 		\[\xymatrix{H\ar[r]^-{\iota_{2, H}} \ar[d]_-{\iota_{1, H}} & \tproi{D}{2} \ar[d]^{p_2}\\  \tproi{D}{1} \ar[r]_{p_1}& \tpro{D}}\]
-		where $(\tproi{D}{1}, \{\iota_{1, X}\}_{X\in \Delta(\der{D}_1)})$ and $(\tproi{D}{2}, \{\iota_{2, X}\}_{X\in \Delta(\der{D}_2)})$ are the colimiting cocone for $\Delta(\der{D}_1)$ and $\Delta(\der{D}_2)$, respectively.
+		where $(\tproi{D}{1}, \{\iota_{1, X}\}_{X\in \Delta(\der{D}_1)})$ and $(\tproi{D}{2}, \{\iota_{2, X}\}_{X\in \Delta(\der{D}_2)})$ are the colimiting cocone for $\Delta(\der{D}_1)$ and $\Delta(\der{D}_2)$, respectively;
+		\item given a non-empty derivation $\der{D}=\{\dder{D}\}_{i=0}^n$ between $G$ and $H$, for every $j\in n+1$ different from $0$ the following diagram is a pushout
+		\[\xymatrix@C=30pt{D_{j} \ar[r]^{g_j}\ar[d]_{f_j}& G_{j+1} \ar[r]^-{\hat{\iota}_{G_{j+1}}} & \lpro \der{\hat{D}}\rpro \ar[dd]^{p_2} \\ G_j \ar[d]_{\iota'_{G_j}}\\ \lpro \der{D}' \rpro \ar[rr]_{p_1}  &&\tpro{D} }\] 
+		where $\der{\hat{D}}=\{\dder{D}_i\}_{i=j+1}^n$, $\der{D}'=\{\dder{D}_i\}_{i=0}^j$ and $p_1:\lpro\der{D}' \rpro\to \tpro{D}$ and $p_2:\lpro \der{\hat{D}}\rpro \to \tpro{D}$ are the arrows induced by the cocones, $(\tpro{D}, \{\iota_{X}\}_{X\in \Delta(\der{D}')})$ and $(\tpro{D}, \{\iota_{X}\}_{X\in \Delta(\der{D}')})$, respectively.
 	\end{enumerate}
 \end{lemma}
+\begin{remark}\label{rem:zero}
+There is a version of point $4$ of \Cref{lem:colim} for $j=0$ which follows directly from points $1$ and $3$. Indeed, $\der{D}=\der{D}_1 \cdot \der{D}_2$ where $\der{D}_1=\{\dder{D}_0\}$ and $\der{D}_2=\{\dder{D}_i\}_{i=1}^n$. Then the two halves of the rectangle below are pushouts. By \Cref{lem:po1} the whole diagram is then a pushout too.
+	\[\xymatrix@C=30pt{D_{0} \ar[r]^{g_0}\ar[d]_{f_0}& G_{1} \ar[r]^-{\iota_{2,G_{1}}} & \lpro \der{D}_2\rpro \ar[dd]^{p_2} \\ G \ar[d]_{\iota_{1,G}}\\ \lpro \der{D}_1 \rpro \ar[rr]_{p_1}  &&\tpro{D} }\] 
+\end{remark}
+
 \begin{proof}\begin{enumerate}
 		\item We can start noticing that $f$, being the pushout of $l$ is in $\mathcal{M}$ and thus it admits a pushout along $g$, giving us the diagram 
 		\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G \ar@/_.2cm/[dr]_{q}& \ar[l]^{f} D \ar[r]_{g}& H  \ar@/^.2cm/[dl]^{p}\\ & P}\]
@@ -910,20 +918,20 @@ Given a left-linear DPO-rewriting system $(\X, \R)$,  a derivation $\der{D}$  de
 		a\circ \iota_{1, X} & X\in \Delta(\der{D}_1)\\
 		b\circ \iota_{2, X} & X\in \Delta(\der{D}_2)
 	\end{cases}\]
-From this, we can deduce at once the existence of a unique $c:\der{D}\to C$ such that 
+From this, we can deduce at once the existence of a unique $c:\tpro{D}\to C$ such that 
 \[c\circ \iota_X = c_X\]
 By construction, for every $X\in  \Delta(\der{D}_1)$ and $Y\in  \Delta(\der{D}_2)$ we have
 \[\begin{split}
-	c\circ p_1 \circ \iota_{1,X}&=c\circ \iota_{1, X}\\&=c_X \\&=a\circ \iota_{1,X}\\&=a\circ p_1\circ \iota_{1,X}
+	c\circ p_1 \circ \iota_{1,X}&=c\circ \iota_{X}\\&=c_X \\&=a\circ \iota_{1,X}\\&=a\circ p_1\circ \iota_{1,X}
 \end{split}\qquad \begin{split}
-	c\circ p_2 \circ \iota_{2,Y}&=c\circ \iota_{2, Y}\\&=c_Y \\&=b\circ \iota_{2,Y}\\&=b\circ p_2\circ \iota_{2,Y}
+	c\circ p_2 \circ \iota_{2,Y}&=c\circ \iota_{Y}\\&=c_Y \\&=b\circ \iota_{2,Y}\\&=b\circ p_2\circ \iota_{2,Y}
 \end{split}\]
 Therefore
 \[c\circ p_1=a \qquad c\circ p_2 = b\]
 
-	For uniqueness, suppose that $c':\der{D}\to C$ is such that
+	For uniqueness, suppose that $c':\tpro{D}\to C$ is such that
 	\[c'\circ p_1=a \qquad c'\circ p_2 = b\]
-Then, for every $X\in \der{D}$ we have
+Then, for every $X\in \Delta(\der{D})$ we have
 \begin{align*}
 	c'\circ \iota_X &= \begin{cases}
 	c'\circ p_1\circ \iota_{1, X} & X\in \Delta(\der{D}_1)\\
@@ -933,18 +941,65 @@ a\circ \iota_{1, X} & X\in \Delta(\der{D}_1)\\
 b\circ \iota_{2, X} & X\in \Delta(\der{D}_2)
 	\end{cases}\\&=c_X\\&=c\circ \iota_X
 \end{align*}
-showing that $c'=c$ as wanted.	\qed
+showing that $c'=c$ as wanted.	
+
+\item Let $a:\lpro \der{\hat{D}}\rpro\to C$ , $b:\lpro \der{D}' \rpro\to C$ be two arrows fitting in the diagram 
+	\[\xymatrix{D_{j} \ar[ddrr]^{\iota_{D_j}}\ar[r]^{g_j}\ar[d]_{f_j}& G_{j+1} \ar[r]^{\hat{\iota}_{G_{j+1}}} & \lpro \der{\hat{D}}\rpro \ar@/^.4cm/[dddr]^{a} \ar[dd]^{p_2} \\ G_j \ar[d]_{\iota'_{G_j}}\\ \lpro \der{D}' \rpro \ar@/_.4cm/[rrrd]_{b} \ar[rr]_{p_1}  &&\tpro{D} \ar@{.>}[dr]^{c}\\ &&& C }\] 
+	
+	We can define a cocone $(C, \{c_X\}_{X\in \Delta(\der{D})})$ putting
+		\[c_X:=\begin{cases}
+		a\circ \hat{\iota}_{ X} & X\in \Delta(\der{\hat{D}})\\
+		b\circ \iota'_{ X} & X\in \Delta(\der{D}')\\
+		b\circ \iota'_{G_j} \circ f_j & X=D_j
+	\end{cases}\]
+	Thus we get a unique arrow $c:\tpro{D}\to C$ such that 
+	\[c\circ \iota_X = c_X\]
+	Now, for every $X\in  \Delta(\der{D}')$ and $Y\in  \Delta(\der{\hat{D}})$ we have
+	\[\begin{split}
+		c\circ p_1 \circ \iota'_{X}&=c\circ \iota_{X}\\&=c_X \\&=b\circ \iota'_{X}\\&=b\circ p_1\circ \iota'_{X}
+	\end{split}\qquad \begin{split}
+		c\circ p_2 \circ \hat{\iota}_{Y}&=c\circ \iota_{Y}\\&=c_Y \\&=a\circ \hat{\iota}_{Y}\\&=a\circ p_2\circ \hat{\iota}_{Y}
+	\end{split}\]
+	so that we can deduce
+	\[c\circ p_1=a \qquad c\circ p_2 = b\]
+	
+	To see that such $c$ is unique, suppose that $c':\tpro{D}\to C$ is given such that
+	\[c'\circ p_1=b \qquad c'\circ p_2 = a\]
+	Then, for every $X\in \Delta(\der{D})$ we have
+	\begin{align*}
+		c'\circ \iota_X &= \begin{cases}
+			c'\circ p_1\circ \iota'_{X} & X\in \Delta(\der{D}')\\
+			c'\circ p_2\circ \hat{\iota}_{X} & X\in \Delta(\der{\hat{D}})\\
+			c'\circ \iota_{D_j} & X=D_j
+		\end{cases}\\&=\begin{cases}
+		b\circ \iota'_{X} & X\in \Delta(\der{D}')\\
+		a\circ \hat{\iota}_{X} & X\in \Delta(\der{\hat{D}})\\
+		c'\circ p_1 \circ \iota'_{G_j} \circ f_j  & X=D_j
+		\end{cases}\\&= \begin{cases}
+		b\circ \iota'_{X} & X\in \Delta(\der{D}')\\
+		a\circ \hat{\iota}_{X} & X\in \Delta(\der{\hat{D}})\\
+			b\circ \iota'_{G_j} \circ f_j  & X=D_j
+		\end{cases}\\&=c_X\\&=c\circ \iota_X
+	\end{align*}
+	allowing us to deduce that $c'=c$.	\qed 	
 	\end{enumerate}
 \end{proof}
-\iffalse 
-
 \begin{corollary}\label{cor:ele}
-	Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ be a derivation between $G$ and $H$. Let $j$ be an index strictly less than $n+1$ and consider two arrows $a:T\to G_j$, $b:T\to H$. If
-	\[\iota_H\circ b = \iota_{G_j}\circ t\]
-	then for every $j\leq i \leq n$ there exist an arrow $c_i:T\to D_k $ making the following diagrams commutative
-	\[\xymatrix{&T\ar[dr]^{a} \ar[dl]_{c_j}&&T\ar[d]_{c_i} \ar[r]^-{c_{i-1}} & D_{i-1} \ar[d]^{g_{i-1}}&&T \ar[dr]^{b} \ar[dl]_{c_n}\\D_j \ar[rr]_{f_j} && G_j & D_k \ar[r]_{f_i}& G_i & D_{n} \ar[rr]_{g_n} && H}\]
-	Where the index in the central square is assumed to be sctrictly greater than $j$.
+	Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ be a derivation between $G$ and $H$. Let $j$ and $k$ be two indexes less or equal than $n+1$ and suppose that $j< k$.  Consider two arrows $a:T\to G_j$, $b:T\to G_k$. If $\iota_{G_j}\circ a = \iota_{G_k}\circ b$, 
+	then  there exist arrow $c:T\to D_j $  such that \[f_j\circ c = a\qquad \iota_{D_j}\circ c =\iota_{G_k}\circ b\]
 	\end{corollary}
+\begin{proof} We split the cases.
+	\begin{itemize}
+		\item $j=0$. Consider $\der{D}_1:=\{\dder{D}_0\}$ and $\der{D}_2:=\{\dder{D}_i\}_{i=1}^n$.  Consider the diagram below in which, by \Cref{rem:zero}, the rectangle on the bottom right is a pushout.
+		\[\xymatrix@C= 40pt{T  \ar@/_.3cm/[dddr]_{a}\ar@{.>}[dr]^{t}\ar[rr]^{b}&& G_k \ar@/^.3cm/[dr]^{\iota_{2, G_k}} \ar@/_.25cm/[dddr]|(.31)\hole_{\iota_{G_k}}\\&D_{0} \ar[r]^{g_0}\ar[d]_{f_0}& G_{1} \ar[r]^-{\iota_{2,G_{1}}} & \lpro \der{D}_2\rpro \ar[dd]^{p_2} \\ &G \ar[drr]^{\iota_G} \ar[d]^{\iota_{1,G}}\\ &\lpro \der{D}_1 \rpro \ar[rr]_{p_1}  &&\tpro{D} }\] 
+		Since $f_0$ and $\iota_{1,G}$ are in $\mathcal{M}$ the same rectangle is an $\mathcal{M}$-pushout and so, by \Cref{prop:pbpoad} is a pullback and the thesis follows.
+		\item   $j\neq 0$.
+		
+		The thesis now followins appealing again to \Cref{prop:pbpoad}. \qed
+	\end{itemize}
+\end{proof}	
+	
+	
 	
 	\begin{proof}
 		Let us proceed by induction on $n$.
@@ -961,8 +1016,6 @@ The square above is an $\mathcal{M}$-pushout, thus by \Cref{prop:pbpoad} it is a
 				By \Cref{prop:pbpoad} the rectangle in the diagram above is a pullback, hence the dotted $c_n:T\to D_n$ exists. The thesis now follows applying the inductive hypothesis to $a$ and $ \iota'_{G_n}\circ f_n\circ c_n$. \qed 
 		\end{itemize}
 \end{proof} 
-\fi 
-
 So equipped, we can introduce the notion of \emph{consistent permutation}.
 
 \begin{definition}
