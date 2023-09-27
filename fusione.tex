@@ -993,29 +993,12 @@ showing that $c'=c$ as wanted.
 		\item $j=0$. Consider $\der{D}_1:=\{\dder{D}_0\}$ and $\der{D}_2:=\{\dder{D}_i\}_{i=1}^n$.  Consider the diagram below in which, by \Cref{rem:zero}, the rectangle on the bottom right is a pushout.
 		\[\xymatrix@C= 40pt{T  \ar@/_.3cm/[dddr]_{a}\ar@{.>}[dr]^{t}\ar[rr]^{b}&& G_k \ar@/^.3cm/[dr]^{\iota_{2, G_k}} \ar@/_.25cm/[dddr]|(.31)\hole_{\iota_{G_k}}\\&D_{0} \ar[r]^{g_0}\ar[d]_{f_0}& G_{1} \ar[r]^-{\iota_{2,G_{1}}} & \lpro \der{D}_2\rpro \ar[dd]^{p_2} \\ &G \ar[drr]^{\iota_G} \ar[d]^{\iota_{1,G}}\\ &\lpro \der{D}_1 \rpro \ar[rr]_{p_1}  &&\tpro{D} }\] 
 		Since $f_0$ and $\iota_{1,G}$ are in $\mathcal{M}$ the same rectangle is an $\mathcal{M}$-pushout and so, by \Cref{prop:pbpoad} is a pullback and the thesis follows.
-		\item   $j\neq 0$.
-		
-		The thesis now followins appealing again to \Cref{prop:pbpoad}. \qed
+		\item   $j\neq 0$. We proceed as in the point above. Using point $4$ of \Cref{lem:colim} we know that the bottom right rectangle in the diagram above. 
+			\[\xymatrix@C=30pt{T  \ar@/_.3cm/[dddr]_{a}\ar@{.>}[dr]^{t}\ar[rr]^{b}&& G_k \ar@/^.3cm/[dr]^{\iota_{2, G_k}} \ar@/_.25cm/[dddr]|(.31)\hole_{\iota_{G_k}}\\&D_{j} \ar[r]^{g_j}\ar[d]_{f_j}& G_{j+1} \ar[r]^-{\hat{\iota}_{G_{j+1}}} & \lpro \der{\hat{D}}\rpro \ar[dd]^{p_2} \\ &G_j \ar[d]^{\iota'_{G_j}}\\ &\lpro \der{D}' \rpro \ar[rr]_{p_1}  &&\tpro{D} }\] 
+		Such rectangle is an $\mathcal{M}$-pushout and the thesis follows from \Cref{prop:pbpoad}. \qed
 	\end{itemize}
 \end{proof}	
 	
-	
-	
-	\begin{proof}
-		Let us proceed by induction on $n$.
-		\begin{itemize}
-			\item $n=0$. Let $\der{D}$ have as only element the derivation
-\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G & \ar[l]_{f} D \ar[r]^{g}& H }\]
-The hypotheses gives us the following diagram, in which, by the first point of \cref{lem:colim}, the square is a pushout.
-\[\xymatrix{T \ar@/^.2cm/[drr]^{b}  \ar@{.>}[dr]^c \ar@/_.2cm/[ddr]_{a}\\& D \ar[r]^{g} \ar[d]_{f}& H \ar[d]^{\iota_H}\\ &G \ar[r]_{\iota_G} & \tpro{D}}\]
-The square above is an $\mathcal{M}$-pushout, thus by \Cref{prop:pbpoad} it is also a pullback and the thesis follows.
-
-
-			\item $n>0$. Let $\der{D}$ be $\{\dder{D}_{i}\}_{i=0}^n$ and consider $\der{D}':=\{\dder{D}_i\}_{i=0}^{n-1}$. By the second point of \Cref{lem:colim} we know that there exists a diagram as the one below, in which the rectangle is a $\mathcal{M}$-pushout.
-					\[\xymatrix{&T \ar@/^.3cm/[drr]^{b}  \ar@/_.2cm/[dl]_{a}  \ar@{.>}[dr]_{c_n}\\G_j \ar@/_.3cm/[dr]_{\iota'_{G_j}} \ar[drrr]|(.34)\hole^(.7){\iota_{G_j}}&G_{n} \ar[d]_{\iota'_{G_{n}}}& \ar[l]^{f_n} D_n \ar[r]_{g_n}& H  \ar[d]^{\iota_H}\\ & \lpro \der{D}' \ar[rr]_{p}\rpro && \tpro{D}}\] 
-				By \Cref{prop:pbpoad} the rectangle in the diagram above is a pullback, hence the dotted $c_n:T\to D_n$ exists. The thesis now follows applying the inductive hypothesis to $a$ and $ \iota'_{G_n}\circ f_n\circ c_n$. \qed 
-		\end{itemize}
-\end{proof} 
 So equipped, we can introduce the notion of \emph{consistent permutation}.
 
 \begin{definition}
