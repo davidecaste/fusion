@@ -324,6 +324,11 @@
 \newcommand{\cod}[1]{\mathsf{cod}({#1})}
 	%Variabili categorie
 \def\A{\textbf {\textup{A}}}
+%scheletro
+
+
+\newcommand{\sk}{\mathsf{sk}_{\X}}
+
 
 \def\R{\mathsf{R}}
 \def\B{\textbf {\textup{B}}}
@@ -331,6 +336,8 @@
 \def\D{\textbf {\textup{D}}}
 \def\X{\textbf {\textup{X}}}
 \def\Y{\textbf {\textup{Y}}}
+
+\newcommand{\ske}{\mathsf{sk}(\X)}
 \renewcommand{\P}{\textbf {\textup{P}}}
 
 %\derivazioni
@@ -719,11 +726,14 @@ Given  two objects $G$ and $H$ and a rule $\rho=(l,r)$ in $R$, a \emph{direct de
 	We will denote a direct derivation $\dder{D}$ between $G$ and $H$ as $\dder{D}:G\Mapsto H$.
 \end{definition}
 
-\begin{remark}\todo{perché regole non consumanti non vanno bene}
-\end{remark}
-
 \begin{example}\todo{
 esempi di	derivazione}
+\end{example}
+
+\begin{example}\label{exa:conc} Let  $\dder{D}:G\Mapsto H$ be the direct derivation 
+		\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar[l]^{f} D \ar[r]_{g}& H}\]
+	If $\phi:G\to G'$ and $\psi:H\to H'$ are two isomorphisms, 	we can consider the direct derivation	$\phi * \dder{D}*\psi : G'\Mapsto H'$ given by the following diagram.
+	\[\xymatrix{L \ar[d]_{\phi \circ n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{\psi \circ h}\\G' & \ar[l]^{\phi \circ f} D \ar[r]_{\psi \circ g}& H}\]
 \end{example}
 
 $\mathcal{M}$-adhesivity of $\X$ guarantess the essential uniqueness of the result obtained rewriting an object, as shown by the next proposition.
@@ -743,7 +753,7 @@ Then there exist isomorphisms $t:D\to D'$ and $s:H\to H'$ as in the following di
 	By hypothesis the whole rectangle and its left half are pushouts, therefore, by \Cref{lem:po1} its right square is a pushout too. The claim now follows from the fact that the pushout of an isomorphism is an isomorphism. \qed
 \end{proof}
 
-If we look to direct derivations as transitions, it is natural to consider them as edges in a direct graph. Taking as vertices objects or isomorphism classes of objects led us to the following definitions \cite{heindel2009category,mellies2005axiomatic}.
+If we look to direct derivations as transitions, it is natural to consider them as edges in a direct graph. Taking objects as vertices objects led us to the following definition \cite{heindel2009category}.
 
 \begin{definition}
 	Let $(\X, \R)$ be a left-linear DPO-rewrityng system, with $\X$ $\mathcal{M}$-adhesive. The \emph{DPO-derivation graph} of $(\X, \R)$ is the (large)  directed graph $\gpo$ having as vertices the objects of $\X$ and in which an edge between $G$ and $H$ is a direct derivation $\dder{D}:G\Mapsto H$.	A \emph{derivation} $\der{D}$ between two objects $G$ and $H$ is a path between them in $\gpo$.
@@ -772,7 +782,7 @@ If we look to direct derivations as transitions, it is natural to consider them 
 \end{example}
 
 \begin{definition}
-	contenuto...
+	The \emph{DPO-derivation category} of a left-linear DPO-rewriting system $(\X, \R)$ is the free category on $\gpo$.
 \end{definition}
 \begin{remark}
 Derivations, being paths in a graph, can be concatenate: given $\der{D}=\{\dder{D}\}_{i=0}^n$ between $G$ and $H$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^m$, their \emph{concatenation} $\der{D}\cdot\der{D}'$ is the derivation $\{\dder{E}_i\}_{i=0}^{m+n+1}$ in which
@@ -780,11 +790,49 @@ Derivations, being paths in a graph, can be concatenate: given $\der{D}=\{\dder{
 	\dder{D}_i & i \leq n\\
 	\dder{D}'_{i-(n+1)} & n< i 
 \end{cases}\]	
+
+It is immediate to see that the concatenation of two non-empty derivations coincides with their composition in $\dpo$. 
 \end{remark}
 
+ \Cref{exa:conc} allows us to compose derivations with isomorphisms.
 
-We are often interested in an object of $\X$ only up to isomorphism. It is then useful to consider a version of $\gpo$ in which vertices are classes of isomorphism of object of $\X$. However, in order to do so, we have also to identify direct derivations up to coherent isomorphisms. We are thus lead to the following definition.
+\begin{definition} Given a left-linear DPO-rewriting system $(\X, \R)$ and aderivation $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ between $G$ and $H$, the derivation $\phi *\der{D} * \psi$ between $G'$ and $H'$ is defined as
+	\[\phi *\der{D} * \psi := \{\phi* \dder{D}_0*\id{G_1}\}\cdot \{\dder{D}_i\}_{i=1}^{n-1} \cdot \{\id{G_n}*\dder{D}_n*\psi\}\] 
+	
+\end{definition}
 
+\begin{notation} In the following, we will use the notation $\phi *\dder{D}$, $\phi*\der{D}$ and $\dder{D}*\psi$, $\der{D}*\psi$ for the cases in which, respectively, $\psi=\id{H}$ and $\phi=\id{G}$. In particular
+	\[\phi *\der{D} * \psi = \{\phi* \dder{D}_0\}\cdot \{\dder{D}_i\}_{i=1}^{n-1} \cdot \{\dder{D}_n*\psi\}\] 
+\end{notation}
+
+We are often interested in an object of $\X$ only up to isomorphism. It is then useful to consider a version of $\gpo$ in which vertices are classes of isomorphism of object of $\X$. In order to do so, some preliminary work is needed.
+
+\begin{definition}\cite{mac2013categories}
+Let $\X$ be a category, we say that  $\X$ is \emph{skeletal} if, for every two objects $X$ and $Y$, the existence of an isomorphism $\phi:X\to Y$ entails $X=Y$. A \emph{skeleton} for a category $\X$ is a full subcategory $\ske$ which is skeletal and such that the inclusion functor $\ske\to \X$ is an equivalence. 
+\end{definition}
+
+\begin{remark}
+By definition the inclusion $\ske \to \X$ is an equivalence. In particular, this mean that, for every objects $X$ of $\X$ there exists $\pi(X)$ in $\ske$ and an isomorphism $\phi_X: \pi(X) \to X$.
+\end{remark}
+
+\begin{proposition}\label{prop:ske}
+	Every category $\X$ has a skeleton. 
+\end{proposition}
+\begin{proof}
+	For every object $X\in \X$, pick a single representative $\pi(X)$ of its isomorphism class. Let $\ske$ be the full subcategory given by these objects. By definition $\ske$ is skeletal and the inclusion functor is full, faithful and essentially surjective.\qed 
+\end{proof}
+\begin{remark}
+	The proof of \Cref{prop:ske} relies on the axiom of choice for classes.
+	\end{remark}
+\begin{remark}
+	It is possible to proof that every two skeleta of a given category $\X$ are isomorphic (not only equivalent). For the remaining of this paper we assume that a skeleton $\ske$ of $\X$ and a functor $\pi:\X\to \ske$ are chosen once and for all.
+\end{remark}
+
+\begin{definition}
+	Let $(\X, \R)$ be a left-linear DPO-rewriting system, a \emph{decorated derivation} between two objects $G$ and $H$ is a triple $(\der{D}, \alpha, \omega)$, where $\der{D}$ is a derivation between $G$ and $H$, and $\alpha:\pi(G)\to G$ and $\omega:\pi(H)\to H$ are isomorphisms.
+\end{definition}
+
+As we are interested in objects only up to isomorphism, so we are interested in (decorated) derivations only up to some notion of coherent isomorphism between them.
 
 \begin{definition}
 	Let $\dder{D}:G\Mapsto H$ and $\dder{D}':G'\Mapsto H'$ be two direct derivations given by the following two diagrams
@@ -792,74 +840,47 @@ We are often interested in an object of $\X$ only up to isomorphism. It is then 
 	An \emph{abstraction equivalence} $\phi:\dder{D}\to \dder{D}'$ is a triple $(\phi_1, \phi_2, \phi_3)$ of isomorphism fitting in the diagram below.
 	\[\xymatrix@C=40pt@R=10pt{ &&&R\ar[dddr]^{h'} \ar[dddl]_{h}|(.67)\hole\\&&K \ar[dl]_{l} \ar[ur]^{r}\ar[dddr]^{k'} \ar[dddl]_{k}|(.67)\hole\\&L\ar[dddr]^(.4){n'} \ar[dddl]_(.4){n}\\&&H \ar[rr]^{\phi_3} && H'\\ & D \ar[ur]_(.7){g} \ar[rr]^{\phi_2} \ar[dl]_{f}&& D' \ar[ur]_{g'}\ar[dl]^{f'}\\ G \ar[rr]_{\phi_1} && G'}\]
 
-Given two derivations $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ such that $\dder{D}_i:G_i\Mapsto G_{i+1}$ and $\dder{D}'_i:G'_i\Mapsto G'_{i+1}$., we will say that $\der{D}$ and $\der{D}'$ are \emph{abstraction equivalent}, if  $r(\der{D})=r(\der{D'})$  and there exists a family $\{\phi^i\}_{i=0}^n$ of abstraction equivalences $\phi^i:\dder{D}_i\to \dder{D}'_i$ such, for every index $i$, $\phi^i_3=\phi^{i+1}_1$.
+Given two decorated derivations $(\der{D}, \alpha, \omega)$, $(\der{D}', \alpha', \omega')$ with  $\der{D}=\{\dder{D}_i\}_{i=0}^n$, $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ such that $\dder{D}_i:G_i\Mapsto G_{i+1}$ and $\dder{D}'_i:G'_i\Mapsto G'_{i+1}$, we will say that $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ are \emph{abstraction equivalent}, if  $r(\der{D})=r(\der{D'})$  and there exists a family $\{\phi^i\}_{i=0}^n$ of abstraction equivalences $\phi^i$ between $\dder{D}_i$ and  $\dder{D}'_i$ such that, for every index $i$, $\phi^i_3=\phi^{i+1}_1$ and  the following diagrams commute.
+\[\xymatrix{&\pi(G_0) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G_{n+1}) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G_0 \ar[rr]_{\phi^0_0} && G'_0 &G_{n+1} \ar[rr]_{\phi^n_3} && G'_{n+1} } \]
 
-	In such situation we will say that $\der{D}$ and $\der{D}'$ are \emph{abstraction equivalent}. We will use $\equiv^a$ to denote the resulting equivalence relation, while $[\der{D}]_a$ will denote the equivalence class of $\der{D}$, called an \emph{abstract derivation}. 
+	In such situation we will say that $ (\der{D}, \alpha, \omega)$ and  $(\der{D}', \alpha', \omega')$ are \emph{abstraction equivalent}. We will use $\equiv^a$ to denote the resulting equivalence relation, while  $[\der{D}, \alpha, \omega]_a$ will denote the equivalence class of  $(\der{D}, \alpha, \omega)$, called an \emph{abstract decorated derivation}. 
 \end{definition}
-\begin{remark}\label{rem:res}
-	We can restate \Cref{prop:unique}: it asserts that, given two direct derivations $\dder{D}$ and $\dder{D'}$ with the same match, there exists an abstract equivalence between them whose first component is an identity.
+\begin{remark}\label{rem:res} \Cref{prop:unique} can be restated as saying that, given two direct derivations $\dder{D}$ and $\dder{D'}$ with the same match, there exists an abstract equivalence between them whose first component is an identity.
 \end{remark}
+
+\begin{definition}
+Let $(\der{D}, \alpha, \omega)$ be a decorated derivation between $G$ and $H$ and $(\der{D}', \alpha', \omega')$ one between $H'$ and $K$. If $H$ and $H'$ are isomorphic, so that $\pi(H)=\pi(H')$, we define the  \emph{composite decorated derivation}  $(\der{D}, \alpha, \omega)\cdot (\der{D}', \alpha', \omega')$as $((\der{D}* \omega^{-1}) \cdot ((\alpha')^{-1} *\der{D}'), \alpha, \omega')$.
+\end{definition}
+
+\begin{remark}\label{rem:lgt}
+	contenuto...
+\end{remark}
+
+
+The next proposition justifies the use of decorations, guaranteeing that concatenation of abstract decorated derivations is weel-defined.
+\begin{proposition}
+	Given a decorated derivation $(\der{D}, \alpha, \omega)$  between $G$ and $H$ and  another one $(\der{E}, \beta, \xi)$ between $E$ and $K$ with $\pi(H)=\pi(E)$. If  $(\der{D}', \alpha', \omega')$ and $(\der{E}', \beta', \xi')$ are two other decorated derivations such that
+	$[\der{D}, \alpha, \omega]_a = [\der{D}', \alpha', \omega']_a$ and $[\der{D}, \beta, \xi]_a=[\der{E}', \beta', \xi']_a$, then
+	\[[(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)]_a=[(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')]_a\]
+\end{proposition}
+
+\begin{proof}
+	contenuto...\qed 
+\end{proof}
+
+
+\begin{definition}
+	contenuto...
+\end{definition}
 
 
 \begin{definition}
 	Let $(\X, \R)$ be a left-linear DPO-rewrityng system, with $\X$ an $\mathcal{M}$-adhesive category. The  graph $\gpi$ is the (large)  directed graph having as vertices isomorphism classes of objects of $\X$ and in which an edge between $[G]$ and $[H]$ is the equivalence class $[\der{D}]_a$ of derivation $\der{D}$ between $G$ and $H$.	
 \end{definition}
 
-Concatenation of abstraction equivalence classes of derivations requires a bit of care.  We start with some auxiliary definitions.
-
-
-\begin{definition} Let $(\X, \R)$ be a left-linear DPO-rewriting system and let also $\phi:G\to G'$ and $\psi:H\to H'$ be two isomorphisms. Given a direct derivation $\dder{D}:G\Mapsto H$
-	\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar[l]^{f} D \ar[r]_{g}& H}\]
-we define	$\phi * \dder{D}*\psi : G'\Mapsto H'$ as the direct derivation given by the following diagram.
-	\[\xymatrix{L \ar[d]_{\phi \circ n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{\psi \circ h}\\G' & \ar[l]^{\phi \circ f} D \ar[r]_{\psi \circ g}& H}\]
-
-Moreover, if $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ is a derivation between $G$ and $H$, then we define a derivation $\phi *\der{D} * \psi$ between $G'$ and $H'$ putting
-\[\phi *\der{D} * \psi := \{\phi* \dder{D}_0\}\cdot \{\dder{D}_i\}_{i=1}^{n-1} \cdot \{\dder{D}_n*\psi\}\] 
-\end{definition}
 \begin{remark}
-	By construction $\phi *\der{D} * \psi \equiv^a \der{D}$ for every derivation $\der{D}$. 
-\end{remark}
-\begin{notation}	We will use the notation $\phi *\dder{D}$, $\phi*\der{D}$ and $\dder{D}*\psi$, $\der{D}*\psi$ for the cases in which, respectively, $\psi=\id{H}$ and $\phi=\id{G}$.
-\end{notation}
-
-So equipped we can define the composite of two abstract derivations.
-
-\begin{definition}Let $[\der{D}]_a$ be an abstract derivation between $[G]$ and $[H]$ and $[\der{D}']_a$ one between $[H]$ and $[K]$ and suppose that $\der{D}$ and $\der{D}'$ are derivations between, respectively, $G'$ and $H'$ and between $\hat{H}$ and $K'$. We define the  \emph{composite  abstract derivation} $[\der{D}]_a\cdot [\der{D}']_a$ as $[\der{D}*(\psi\circ \phi)  \cdot \der{D}']_a$, where $\phi:H'\to H$ and $\psi:H\to \hat{H}$ are isomorphisms.
-\end{definition}
-\begin{remark} $\der{D}*(\psi\circ \phi)$ is a derivation between $G'$ and $\hat{H}$, thus
-	$[\der{D}*(\psi\circ \phi)  \cdot \der{D}']_a$  is really an abstract derivation between $[G]$ and $[K]$.
-\end{remark}
-\begin{remark}
-	The definition of $[\der{D}]_a\cdot [\der{D}]'_a$ does not depend on the choice of $\phi$ and $\psi$.
 	contenuto...
 \end{remark}
-
-\begin{proposition}
-	contenuto...
-\end{proposition}
-\begin{proof}
-	contenuto... \qed 
-\end{proof}
-\begin{lemma}\label{lem:tec}
-	contenuto...
-\end{lemma}
-\begin{proof}
-	contenuto...\qed 
-\end{proof}
-
-As concatenation of path in a graph is always associative, \Cref{lem:tec} allows us to deduce the following. 
-\begin{corollary}
-	contenuto...
-\end{corollary}
-
-\begin{definition}
-	contenuto...
-\end{definition}
-
-\begin{corollary}
-	contenuto...
-\end{corollary}
-
 \subsection{Consistent permutations}
 
 Given a left-linear DPO-rewriting system $(\X, \R)$,  a derivation $\der{D}$  determines a diagram $\Delta(\der{D})$ in $\X$. We can then wonder if such a diagram has a colimit. Clealry if $\der{D}$ is the empty derivation then a colimit for $\Delta(\der{D})$ amount to an initial object in $\X$. If $\der{D}$ is non-empty we can use the following result.
@@ -1010,7 +1031,7 @@ So equipped, we can introduce the notion of \emph{consistent permutation}.
 
 \begin{remark}
 The commutativity of the two rectangles above, is equivalent to the commutativity of the following bigger diagram.		
-\[\xymatrix@C=40pt@R=10pt{ &&&R_{i}\ar[dddr]^{h'_i} \ar[dddl]_{h_i}|(.67)\hole\\&&K_i \ar[dl]_{l_i} \ar[ur]^{r}\ar[dddr]^{k'_i} \ar[dddl]_{k_i}|(.67)\hole\\&L_i\ar[dddr]_(.6){m'_i} \ar[dddl]_{m_i}\\&&G_{i+1}  \ar@/^.3cm/[dddl]|(.35)\hole^(.7){\iota_{G_{i+1}}}&& G'_{\sigma(i)+1}\ar@/^.3cm/[dddl]^{\iota_{G'_{\sigma(i)+1}}}\\ & D_i \ar[dd]_{\iota_{D_i}}\ar[ur]^(.6){g_i}  \ar[dl]_{f_i}&& D'_\sigma(i) \ar[dd]^{\iota_{D'_\sigma(i)}} \ar[ur]^{g'_{\sigma(i)}}\ar[dl]_{f'_{\sigma(i)}}\\ G_i \ar@/_.3cm/[dr]_{\iota_{G_i}} && G'_{\sigma(i)}\ar@/_.3cm/[dr]^{\iota_{G'_{\sigma(i)}}}\\& \tpro{D} \ar[rr]_{\xi}&& \lpro \der{D}' \rpro}\]
+\[\xymatrix@C=40pt@R=10pt{ &&&R_{i}\ar[dddr]^{h'_{\sigma(i)}} \ar[dddl]_{h_i}|(.67)\hole\\&&K_i \ar[dl]_{l_i} \ar[ur]^{r}\ar[dddr]^{k'_{\sigma(i)}} \ar[dddl]_{k_i}|(.67)\hole\\&L_i\ar[dddr]_(.6){m'_{\sigma(i)}} \ar[dddl]_{m_i}\\&&G_{i+1}  \ar@/^.3cm/[dddl]|(.35)\hole^(.7){\iota_{G_{i+1}}}&& G'_{\sigma(i)+1}\ar@/^.3cm/[dddl]^{\iota'_{G'_{\sigma(i)+1}}}\\ & D_i \ar[dd]_{\iota_{D_i}}\ar[ur]^(.6){g_i}  \ar[dl]_{f_i}&& D'_\sigma(i) \ar[dd]^{\iota'_{D'_\sigma(i)}} \ar[ur]^{g'_{\sigma(i)}}\ar[dl]_{f'_{\sigma(i)}}\\ G_i \ar@/_.3cm/[dr]_{\iota_{G_i}} && G'_{\sigma(i)}\ar@/_.3cm/[dr]^{\iota'_{G'_{\sigma(i)}}}\\& \tpro{D} \ar[rr]_{\xi}&& \lpro \der{D}' \rpro}\]
 
 Indeed,  to prove the commutativity of the central pentagon we can compute to get:
 \begin{align*}
@@ -1018,6 +1039,10 @@ Indeed,  to prove the commutativity of the central pentagon we can compute to ge
 \end{align*}
 \end{remark}
 
+\begin{remark}\label{rem:coproj}
+Notice that, in particular, the previous diagram entails
+		\[\xi \circ \iota_{L_i}=\iota'_{L_{\sigma(i)}} \quad \xi \circ \iota_{K_i}=\iota'_{K_{\sigma(i)}} \quad \xi \circ \iota_{R_i}=\iota'_{R_{\sigma(i)}} \]
+\end{remark}
 
 \begin{example} Let $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ be two abstraction equivalent non-empty derivations. Then the identity permutation $\id{n+1}$ is a consistent permuation between them. In such a case $\xi$ is simply the isomorphism induced by the $\{\phi^i\}_{i=0}^n$.
 \end{example}
@@ -1029,13 +1054,20 @@ Indeed,  to prove the commutativity of the central pentagon we can compute to ge
 To proceed further, we have to introduce a notion from general category theory.
 
 \begin{definition}[\cite{borceux1994handbook1,adamek1994locally}]
-Let $\X$ be a category, a \emph{separator}, or \emph{generator}, is an object $S$ such that, for every pair of arrows $f, g:X\rightrightarrows Y$, if \[f\circ s = g\circ s\] for every $s:S\to X$, then $f=g$. 
+Let $\X$ be a category, a \emph{separating family},  is a class $\mathcal{S}$ of objects such that, for every pair of arrows $f, g:X\rightrightarrows Y$, if \[f\circ s = g\circ s\] for every $s:S\to X$ with domain $S\in \mathcal{S}$, then $f=g$. 
 
-Given a separator $S$, we will say that a morphism $f:X\to Y$,  is an \emph{$S$-surjection} if for every $s:S\to Y$  there exists $s':S\to X$ such that $f\circ s'= s$.
+Given a separating family $\mathcal{S}$, we will say that a morphism $f:X\to Y$,  is an \emph{$\mathcal{S}$-surjection} if for every $s:S\to Y$ with domain in $\mathcal{S}$  there exists $s':S\to X$ such that $f\circ s'= s$.
 \end{definition}
 
-\begin{remark}Notice that, by definition, an object $S$ in a category $\X$ is a separator if and only if the representable functor $\X(S,-):\X\to \Set$ is faithful.
-\end{remark}
+\begin{proposition}\label{prop:sep}
+	contenuto...
+\end{proposition}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+We can list some examples of separating families.
+
 \begin{example}
 	contenuto...
 \end{example}
@@ -1049,87 +1081,36 @@ Given a separator $S$, we will say that a morphism $f:X\to Y$,  is an \emph{$S$-
 	contenuto...
 \end{example}
 \begin{proposition}
-Let $f:X\to Y$ be a morphism in a category $\X$ with a separator $S$, then every $S$-surjection is an epimorphism.
+Let $f:X\to Y$ be a morphism in a category $\X$ with a separating family $\mathcal{S}$, then every $\mathcal{S}$-surjection is an epimorphism.
 \end{proposition}
 \begin{proof}
-	Let $f:X\to Y$ be an $S$-surjection, and suppose that there exist two arrows $g, h:Y\rightrightarrows Z$ such that 
+	Let $f:X\to Y$ be an $\mathcal{S}$-surjection, and suppose that there exist two arrows $g, h:Y\rightrightarrows Z$ such that 
 	\[g\circ f = h\circ f\]
-Since $f$ is an $S$-surjection, for every $s:S\to Y$ there exists $s':S\to X$ such that $f\circ s'=s$, so that
+Since $f$ is an $\mathcal{S}$-surjection, for every $S\in \mathcal{S}$ and arrow $s:S\to Y$ there exists $s':S\to X$ such that $f\circ s'=s$, so that
 \begin{align*}
 	g\circ s &= g\circ f \circ s'\\&=h\circ f \circ s'\\&= h\circ s
 \end{align*} 
-	The thesis now follows since $S$ is a separator.	 \qed 
-\end{proof}
-
-For our purposes we need to introduce a particular kind of separator.
-\begin{definition} Let $(\X, \R)$ be left linear DPO-rewriting system on an $\mathcal{M}$-adhesive category $\X$. We define a class of arrows $\mathcal{R}$ saying that $f:X\to Y $ belongs to it if and only if there exists a rule $(l,r)\in \R$, an arrow $g$ and a pushout square
-	\[\xymatrix{K \ar[r]^{r} \ar[d]_{g}& R \ar[d]^{p}\\ X \ar[r]_{f} & Y}\]
-\end{definition}
-
-\begin{remark}\label{rem:comp} \Cref{lem:po1} entalis that $\mathcal{R}$ is stable under $\mathcal{M}$-pushouts and closed under composition.
-\end{remark}
-
-\begin{proposition}
-	Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, \R)$ a left-linear DPO-rewriting system over it. Then for every non-empty derivation $\der{D}=\{\der{D}\}_{i=0}^n$ between $G$ and $H$, the arrow $\iota_{G}:G\to \tpro{D}$ is in $\mathcal{R}$.
-\end{proposition}
-\begin{proof} We proceed by induction.
-		\begin{itemize}
-		\item $n=0$. Let $\der{D}$ have as only element the derivation
-		\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G & \ar[l]_{f} D \ar[r]^{g}& H }\]
-	 Thus $g$ belongs to $\mathcal{R}$. The thesis now follows immediately since, by \Cref{lem:colim}, the following square is an $\mathcal{M}$-pushout. 
-		\[\xymatrix{& D \ar[r]^{g} \ar[d]_{f}& H \ar[d]^{\iota_H}\\ &G \ar[r]_{\iota_G} & \tpro{D}}\]
-
-			
-		\item $n>0$.  Define $\der{D}'$ as $\{\dder{D}_i\}_{i=0}^{n-1}$. Using \Cref{lem:colim}, we can build the diagram below, in which the bottom rectangle is a $\mathcal{M}$-pushout.			\[\xymatrix{&L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar[l]_{l_{n}} \ar[r]^{r_{n}} & R_{n} \ar[d]^{h_n} \\&G_{n} \ar[d]_{\iota'_{G_{n}}}& \ar[l]^{f_n} D_n \ar[r]_{g_n}& H  \ar[d]^{\iota_H}\\ G\ar[r]^{\iota'_{G}} \ar@/_.4cm/[rrr]_{\iota_{G}}&\lpro \der{D}' \ar[rr]^{p}\rpro && \tpro{D}}\] 
-		By inductive hypothesis $\iota'_G$ is in $\mathcal{R}$, while $p$ is in it by construction. The thesis follows from \Cref{rem:comp}. \qed 
-	\end{itemize}
-
-\end{proof}
-\begin{definition}\label{def:sepb} Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category.	An \emph{$\mathcal{R}$-separator} for $\X$ is a separator $S$ with the property that, for every pushout square
-	\[\xymatrix{X \ar[r]^{f} \ar[d]_{m}& Z \ar[d]^{q} \\ Y \ar[r]_{p} & P}\]
-	 with $m\in \mathcal{M}$ and $f \in \mathcal{R}$, and for every $s_1, s_2:S\rightrightarrows Y$ such that 
-	$p\circ s_1=p\circ s_2$,	if $s_1\neq s_2$, then there exists $t_1, t_2:S\rightrightarrows X$ such that
-	\[m\circ t_1 = s_1 \quad m\circ t_2=s_2 \quad f\circ t_1=f\circ t_2\]
-\end{definition}
-\begin{remark}
-If $(\X, \R)$ is linear then every separator is an $\mathcal{M}, \mathcal{R}$-separator. Indeed, in such a case every arrow in $\mathcal{R}$ is in $\mathcal{M}$. Thus given a pushout
-\[\xymatrix{X \ar[r]^{f} \ar[d]_{m}& Z \ar[d]^{q} \\ Y \ar[r]_{p} & P}\]
-with $f\in \mathcal{R}$ it follows that $p$ is in $\mathcal{M}$ too. But then $p$ is mono and so the equality
-\[p\circ s_1=p\circ s_2\] 
-entails $s_1=s_2$.
-\end{remark}
-
-\begin{remark} Notice that, since $m$ is assumed to be in $\mathcal{M}$, and thus mono, the arrows $t_1$ and $t$
-\end{remark}
-
-\begin{example}
-	contenuto...
-\end{example}
-\begin{example}
-	contenuto...
-\end{example}
-\begin{example}
-	contenuto...
-\end{example}
-\begin{example}
-	contenuto...
-\end{example}
-
-We can combine \Cref{def:sepb} with \Cref{cor:ele} to get the following. 
-
-\begin{proposition}\label{prop:salva}
-	contenuto...
-\end{proposition}
-\begin{proof}
-	contenuto...
+	The thesis now follows since $\mathcal{S}$ is separating.	 \qed 
 \end{proof}
 
 We are now ready to prove the central result of this section. 
 
 \begin{lemma}Let $(\X,R)$ ba left-linear DPO-rewriting system and suppose that every rule in $R$ is consuming. Given two non-empty derivations $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_{i}\}_{i=0}^n$, if $\X$ has a separator $S$, then there exists at most one consistent permutation between them.
 \end{lemma}
-\begin{proof} Consider two consistent permutations $\sigma$ and $\sigma': n+1 \rightrightarrows n+1$ and let $\xi, \xi':\tpro{D}\rightrightarrows \tpro{D'}$ be the associated isomorphisms. Let also $i\in n+1$ be such that $\sigma(i)\neq \sigma'(i)$ whithout loss of generality we can suppose that $\sigma'(i)<\sigma(i)$. Using consistency, we get a diagram 
-	\[\xymatrix@C=8pt@R=15pt{ &&&&&R_{i}\ar@/^1.4cm/[dddrrr]^{h'_{\sigma(i)}} \ar@/_1.7cm/[dddlll]_{h'_{\sigma'(i)}}|(.65)\hole|(.83)\hole\ar[ddd]|(.34)\hole^{h_i}|(.82)\hole\\&&&&K_i \ar@/_1.7cm/[dddlll]_{k'_{\sigma'(i)}}|(.67)\hole\ar[dl]_{l_i} \ar[ur]^{r}\ar@/^1.4cm/[dddrrr]^{k'_{\sigma(i)}} \ar[ddd]|(.35)\hole_(.7){k_i}\\&&&L_i\ar@/_1.7cm/[dddlll]_{m'_{\sigma'(i)}}\ar@/^1.4cm/[dddrrr]^(.7){m'_{\sigma(i)}} \ar[ddd]_{m_i}\\&&G'_{\sigma'(i)+1}\ar@/^.5cm/[dddl]^{\iota_{G'_{\sigma'(i)+1}}}&&&G_{i+1}  \ar@/^.5cm/[dddl]^{\iota_{G_{i+1}}}&&& G'_{\sigma(i)+1}\ar@/^.5cm/[dddl]^{\iota_{G'_{\sigma(i)+1}}}\\ & D_{\sigma'(i)}\ar[ur]^{g'_{\sigma'(i)}}\ar[dl]_(.4){f'_{\sigma'(i)}}\ar[dd]^{\iota_{D'_{\sigma'(i)}}}&&&D_i \ar[dd]^{\iota_{D_i}}\ar[ur]^{g_i}  \ar[dl]_{f_i}&&& D'_\sigma(i) \ar[dd]^{\iota_{D'_\sigma(i)}} \ar[ur]^{g'_{\sigma(i)}}\ar[dl]_(.4){f'_{\sigma(i)}}\\ G'_{\sigma'(i)}\ar@/_.3cm/[dr]_(.4){\iota_{G_{\sigma'(i)}}}&&&G_i \ar@/_.3cm/[dr]_(.4){\iota_{G_i}} &&& G'_{\sigma(i)}\ar@/_.3cm/[dr]_(.4){\iota_{G'_{\sigma(i)}}}\\&\lpro \der{D}'\rpro &&& \tpro{D} \ar[rrr]_{\xi} \ar[lll]^{\xi'}&&& \lpro \der{D}' \rpro}\]
+
+\begin{proof} Consider two consistent permutations $\sigma$ and $\sigma': n+1 \rightrightarrows n+1$ and let $\xi, \xi':\tpro{D}\rightrightarrows \tpro{D'}$ be the associated isomorphisms.	\[\xymatrix@C=8pt@R=20pt{ &&&&&R_{i}\ar@/^1.4cm/[dddrrr]^{h'_{\sigma(i)}} \ar@/_1.7cm/[dddlll]_{h'_{\sigma'(i)}}|(.65)\hole|(.83)\hole\ar[ddd]|(.35)\hole^{h_i}|(.805)\hole\\&&&&K_i \ar@/_1.7cm/[dddlll]_{k'_{\sigma'(i)}}|(.67)\hole\ar[dl]_{l_i} \ar[ur]^{r}\ar@/^1.4cm/[dddrrr]^{k'_{\sigma(i)}} \ar[ddd]|(.35)\hole_(.7){k_i}\\&&&L_i\ar@/_1.7cm/[dddlll]_{m'_{\sigma'(i)}}\ar@/^1.4cm/[dddrrr]^(.7){m'_{\sigma(i)}} \ar[ddd]_{m_i}\\&&G'_{\sigma'(i)+1}\ar@/^.5cm/[dddl]^{\iota_{G'_{\sigma'(i)+1}}}&&&G_{i+1}  \ar@/^.5cm/[dddl]^{\iota_{G_{i+1}}}&&& G'_{\sigma(i)+1}\ar@/^.5cm/[dddl]^{\iota_{G'_{\sigma(i)+1}}}\\ & D'_{\sigma'(i)}\ar[ur]^{g'_{\sigma'(i)}}\ar[dl]_(.35){f'_{\sigma'(i)}}\ar[dd]^{\iota_{D'_{\sigma'(i)}}}&&&D_i \ar[dd]^{\iota_{D_i}}\ar[ur]^{g_i}  \ar[dl]_{f_i}&&& D'_\sigma(i) \ar[dd]^{\iota_{D'_\sigma(i)}} \ar[ur]^{g'_{\sigma(i)}}\ar[dl]_(.4){f'_{\sigma(i)}}\\ G'_{\sigma'(i)}\ar@/_.3cm/[dr]_(.35){\iota_{G_{\sigma'(i)}}}&&&G_i \ar@/_.3cm/[dr]_(.35){\iota_{G_i}} &&& G'_{\sigma(i)}\ar@/_.3cm/[dr]_(.35){\iota_{G'_{\sigma(i)}}}\\&\lpro \der{D}'\rpro &&& \tpro{D} \ar[rrr]_{\xi} \ar[lll]^{\xi'}&&& \lpro \der{D}' \rpro}\]
+	
+Suppose that there exists $j\in n+1$ be such that $\sigma(j)\neq \sigma'(j)$.  Let $k$ be $\sigma^{-1}(\sigma'(i))$, then, in particular $j\neq k$. By \Cref{rem:coproj} we know that
+\begin{align*}
+\iota_{L_{k}}=\xi^{-1} \circ \iota'_{L_{\sigma(k)}}
+\end{align*}We have two cases.
+	\begin{itemize}
+		\item $i< \sigma^{-1}(\sigma'(i))$.
+		\item $\sigma^{-1}(\sigma'(i))<i$.\qed 
+	\end{itemize} 
+\end{proof} 
+	
+\begin{proof}  whithout loss of generality we can suppose that $\sigma'(i)<\sigma(i)$. Using consistency, we get a diagram 
 	
 	Take an arrow $s:S\to L_i$ , then we 
 \end{proof}
