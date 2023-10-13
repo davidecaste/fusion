@@ -1081,6 +1081,10 @@ Notice that, in particular, the previous diagram entails
 		\[\xi_\sigma \circ \iota_{L_i}=\iota'_{L_{\sigma(i)}} \quad \xi_\sigma \circ \iota_{K_i}=\iota'_{K_{\sigma(i)}} \quad \xi_\sigma \circ \iota_{R_i}=\iota'_{R_{\sigma(i)}} \]
 \end{remark}
 
+\begin{remark}\label{rem:inversa}
+Let $\sigma:[0,n]\to [0,n]$ be a consistent permutation between $(\der{D},\alpha, \omega)$ and $(\der{D}', \alpha', \omega')$, then $\sigma^{-1}$ is a consistent permutation between $(\der{D}', \alpha', \omega')$ and $(\der{D},\alpha, \omega)$: indeed, it is enough to consider, as mediating isomorphism, the inverse $\xi^{-1}_\sigma$ of $\xi_\sigma$.
+\end{remark}
+
 \begin{remark}\label{rem:comp} Consistent permutations can be composed. Indeed, given decorated derivations $(\der{D}, \alpha, \omega)$, $(\der{D}', \alpha', \omega')$ and $(\der{\hat{D}}, \hat{\alpha}, \hat{\omega})$, if $\sigma$ is a consistent permutation between the first two and $\sigma'$ one between the second and the third, then  we have diagrams
 	\[\xymatrix@C=18pt{ & G \ar[rr]^{\iota_{G}} &&\tpro{D} \ar[d]^{\xi_\sigma}&  &  H \ar[rr]^{\iota_H} &&\tpro{D} \ar[d]^{\xi_\sigma} \\ \pi(G) \ar@/_.2cm/[dr]_{\hat{\alpha}}\ar@/^.2cm/[ur]^{\alpha} \ar[r]^{\alpha'} &G' \ar[rr]^{\iota'_{G'}}  &&\lpro \der{D}'  \rpro \ar[d]^{\xi_{\sigma'}}&\pi(H)\ar@/_.2cm/[dr]_{\hat{\omega}}\ar@/^.2cm/[ur]^{\omega} \ar[r]^{\omega'} & H' \ar[rr]^{\iota'_{H'}} && \lpro \der{D}' \rpro \ar[d]^{\xi_{\sigma'}}\\ &\hat{G}  \ar[rr]_{\hat{\iota}_{\hat{G}}}&& \lpro \hat{\der{D}}\rpro  && \hat{H} \ar[rr]_{\hat{\iota}_{\hat{H}}}&& \lpro \hat{\der{D}} \rpro \\& G_i \ar[rr]^{\iota_{G_i}} &&\tpro{D} \ar[d]^{\xi_\sigma}&  &  G_i \ar[rr]^{\iota_{G_i}} &&\tpro{D} \ar[d]^{\xi_\sigma} \\ L_i \ar@/_.2cm/[dr]_{\hat{m}_{\sigma'(\sigma(i))}}\ar@/^.2cm/[ur]^{m_i} \ar[r]^{m'_{\sigma(i)}} &G'_{\sigma(i)} \ar[rr]^{\iota'_{G'_{\sigma(i)}}}  &&\lpro \der{D}'  \rpro \ar[d]^{\xi_{\sigma'}}&R_i \ar@/_.2cm/[dr]_{\hat{h}_{\sigma'(\sigma(i))}}\ar@/^.2cm/[ur]^{h_i} \ar[r]^{h'_{\sigma(i)}} & G'_{\sigma(i)} \ar[rr]^{\iota'_{G'_{\sigma(i)}}} && \lpro \der{D}' \rpro \ar[d]^{\xi_{\sigma'}}\\ &\hat{G}_{\sigma'(\sigma(i))}  \ar[rr]_-{\hat{\iota}_{\hat{G}_{\sigma'(\sigma(i))}}}&& \lpro \hat{\der{D}}\rpro  && \hat{G}_{\sigma'(\sigma(i))} \ar[rr]_-{\hat{\iota}_{\hat{G}_{\sigma'(\sigma(i))}}}&& \lpro \hat{\der{D}} \rpro	}\]
 	We deduce at once that $\sigma'\circ \sigma$ is a consistent permutation with mediating isomorphism given by $\xi_{\sigma'} \circ \xi_\sigma$.
@@ -1136,86 +1140,39 @@ Now, notice that, given a consistent permutation $\sigma$, $\xi_\sigma:\tpro{D}\
 	contenuto...\qed 
 \end{proof}
 
-
-To proceed further, we have to introduce a notion from general category theory.
-
-\begin{definition}[\cite{borceux1994handbook1,adamek1994locally}]
-Let $\X$ be a category, a \emph{separating family},  is a class $\mathcal{S}$ of objects such that, for every pair of arrows $f, g:X\rightrightarrows Y$, if \[f\circ s = g\circ s\] for every $s:S\to X$ with domain $S\in \mathcal{S}$, then $f=g$. 
-
-Given a separating family $\mathcal{S}$, we will say that a morphism $f:X\to Y$,  is an \emph{$\mathcal{S}$-surjection} if for every $s:S\to Y$ with domain in $\mathcal{S}$  there exists $s':S\to X$ such that $f\circ s'= s$.
-\end{definition}
-
-We can list some examples of separating families.
-
-\begin{example}
-	contenuto...
-\end{example}
-\begin{example}
-	contenuto...
-\end{example}
-\begin{example}
-	contenuto...
-\end{example}
-\begin{example}
-	contenuto...
-\end{example}
-\begin{proposition}
-Let $f:X\to Y$ be a morphism in a category $\X$ with a separating family $\mathcal{S}$, then every $\mathcal{S}$-surjection is an epimorphism.
-\end{proposition}
-\begin{proof}
-	Let $f:X\to Y$ be an $\mathcal{S}$-surjection, and suppose that there exist two arrows $g, h:Y\rightrightarrows Z$ such that 
-	\[g\circ f = h\circ f\]
-Since $f$ is an $\mathcal{S}$-surjection, for every $S\in \mathcal{S}$ and arrow $s:S\to Y$ there exists $s':S\to X$ such that $f\circ s'=s$, so that
-\begin{align*}
-	g\circ s &= g\circ f \circ s'\\&=h\circ f \circ s'\\&= h\circ s
-\end{align*} 
-	The thesis now follows since $\mathcal{S}$ is separating.	 \qed 
-\end{proof}
-
 We are now ready to prove the central result of this section. 
 
-\begin{lemma} Let $(\X,R)$ ba left-linear DPO-rewriting system and suppose that $\X$ has a separator $\mathcal{S}$. Consider two consistent permutation $\sigma,\sigma':[0,n]\rightrightarrows [0,n]$ between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$. Suppose that $\sigma\neq \sigma'$ and let $j$ be the minimum index such that $\sigma(j)\neq \sigma'(j)$. Let also $r(\der{D})$ be $\{\rho_i\}_{i=0}^n$. Then the following hold true:
+\begin{lemma} Let $(\X,R)$ be a left-linear DPO-rewriting system. Consider two consistent permutation $\sigma,\sigma':[0,n]\rightrightarrows [0,n]$ between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$. Suppose that $\sigma\neq \sigma'$ and let $j$ be the minimum index such that $\sigma(j)\neq \sigma'(j)$. Let also $r(\der{D})$ be $\{\rho_i\}_{i=0}^n$. Then the following hold true:
 	\begin{enumerate}
 		\item if $j=0$, then the rule $\rho_0$ is not consuming;
-		\item if $j\neq 0$, then the rule $\rho_{j-1}$ is not consuming.
+		\item if $j\neq 0$ then the rule $\rho_{j-1}$ is not consuming.
 	\end{enumerate}
 \end{lemma}
 \begin{proof}\begin{enumerate}
-		\item 
-		\item  \qed
+		\item Let $k$ be $\sigma^{-1}(\sigma'(0))$ and notice that, since $\sigma(0)\neq \sigma'(0)$, then $0< k$.  By  the first point of  \Cref{prop:uniqu} we can consider the diagram
+		\[\xymatrix@C=40pt{& L_0 \ar[d]_{m'_{\sigma'(0)}} \ar@/^.2cm/[dr]^{m_{k}} \ar@/_.2cm/[dl]_{m_{0}} \\G_{0} \ar@/_.2cm/[drr]_(.3){\iota_{G_0}}|(.515)\hole \ar[d]_{\iota_{G_0}}& G'_{\sigma'(0)} \ar[d]^{\iota_{G'_{\sigma'(0)}}} & G_{k} \ar[d]^{\iota_{G_k}}\\ \tpro{D} \ar[r]_{\xi_{\sigma'}} & \lpro \der{D'}\rpro & \tpro{D} \ar[l]^{\xi_{\sigma}}}\]
+	From \Cref{cor:ele}, we can conclude that there exists $c:L_0\to D_0$ such that $f_0\circ c=m_0$. We thus have the solid part of the commutative diagram below.
+		\[\xymatrix{L_0 \ar@/^.3cm/[drr]^{\id{L_0}} \ar@{.>}[dr]_{t} \ar@/_.3cm/[ddr]_{c}\\ & K_0 \ar[d]_{k_0}\ar[r]^{l_0}& L_0 \ar[d]^{m_0} \\& D_0 \ar[r]_{f_0} & G_0} \]
+		The internal square is an $\mathcal{M}$-pushout and thus a pullback, by \Cref{prop:pbpoad}, so that we have the existence of the dotted $t:L_0\to K_0$. Therefore $\id{L_0}=l_0\circ t$, proving that $l_0$ is an epimorphism. The thesis now follows from \Cref{cor:rego}.  
+		\item  Let $k$ be $\sigma^{-1}(\sigma'(j-1))$ and notice that $\rho_{j-1}=\rho_k$. By definition of $j$, $\sigma_{|[0,j-1]}=\sigma'_{|[0,j-1]}$, thus the second point of \Cref{prop:unique} yields the diagram
+			\[\xymatrix@C=40pt{& L_{j-1} \ar[d]_{m'_{\sigma'(j-1)}} \ar@/^.2cm/[dr]^{m_{k}} \ar@/_.2cm/[dl]_{m_{j-1}} \\G_{j-1} \ar@/_.2cm/[drr]_(.3){\iota_{G_{j-1}}}|(.515)\hole \ar[d]_{\iota_{G_{j-1}}}& G'_{\sigma'(j-1)} \ar[d]^{\iota_{G'_{\sigma'(j-1)}}} & G_{k} \ar[d]^{\iota_{G_k}}\\ \tpro{D} \ar[r]_{\xi_{\sigma'}} & \lpro \der{D'}\rpro & \tpro{D} \ar[l]^{\xi_{\sigma}}}\]
+			Let $a$ be $\min(j-1, k)$, by \Cref{cor:ele},  there exists $c:L_{j-1}\to D_a$ such that $f_a\circ c=m_a$. As before this yields the solid part of the following diagram
+			\[\xymatrix{L_{j-1} \ar@/^.3cm/[drr]^{\id{L_{j-1}}} \ar@{.>}[dr]_{t} \ar@/_.3cm/[ddr]_{c}\\ & K_{j-1} \ar[d]_{k_a}\ar[r]^{l_{j-1}}& L_{j-1} \ar[d]^{m_a} \\& D_a \ar[r]_{f_a} & G_a} \]
+			The existence of the dotted $t:L_{j-1}\to K_{j-1}$ follows from  \Cref{prop:pbpoad} and we can conclude. \qed
 	\end{enumerate}
 \end{proof}
 
 \begin{corollary}\label{cor:unique}
-Let $(\X,R)$ ba left-linear DPO-rewriting system and suppose that every rule in $R$ is consuming. Given two non-empty derivations $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_{i}\}_{i=0}^n$, if $\X$ has a separator $\mathcal{S}$, then there exists at most one consistent permutation between them.
+Let $(\X,R)$ ba left-linear DPO-rewriting system and suppose that every rule in $R$ is consuming. For every two non-empty decorated derivations $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$, there exists at most one consistent permutation between them.
 \end{corollary}
 
 
-
-
-\begin{lemma}Let $(\X,R)$ ba left-linear DPO-rewriting system and suppose that every rule in $R$ is consuming. Given two non-empty derivations $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_{i}\}_{i=0}^n$, if $\X$ has a separator $S$, then there exists at most one consistent permutation between them.
-\end{lemma}
-
-\begin{proof} Consider two consistent permutations $\sigma$ and $\sigma': n+1 \rightrightarrows n+1$ and let $\xi, \xi':\tpro{D}\rightrightarrows \lpro \der{D}' \rpro$ be the associated isomorphisms.	\[\xymatrix@C=8pt@R=20pt{ &&&&&R_{i}\ar@/^1.4cm/[dddrrr]^{h'_{\sigma(i)}} \ar@/_1.7cm/[dddlll]_{h'_{\sigma'(i)}}|(.65)\hole|(.83)\hole\ar[ddd]|(.35)\hole^{h_i}|(.805)\hole\\&&&&K_i \ar@/_1.7cm/[dddlll]_{k'_{\sigma'(i)}}|(.67)\hole\ar[dl]_{l_i} \ar[ur]^{r}\ar@/^1.4cm/[dddrrr]^{k'_{\sigma(i)}} \ar[ddd]|(.35)\hole_(.7){k_i}\\&&&L_i\ar@/_1.7cm/[dddlll]_{m'_{\sigma'(i)}}\ar@/^1.4cm/[dddrrr]^(.7){m'_{\sigma(i)}} \ar[ddd]_{m_i}\\&&G'_{\sigma'(i)+1}\ar@/^.5cm/[dddl]^{\iota_{G'_{\sigma'(i)+1}}}&&&G_{i+1}  \ar@/^.5cm/[dddl]^{\iota_{G_{i+1}}}&&& G'_{\sigma(i)+1}\ar@/^.5cm/[dddl]^{\iota_{G'_{\sigma(i)+1}}}\\ & D'_{\sigma'(i)}\ar[ur]^{g'_{\sigma'(i)}}\ar[dl]_(.35){f'_{\sigma'(i)}}\ar[dd]^{\iota_{D'_{\sigma'(i)}}}&&&D_i \ar[dd]^{\iota_{D_i}}\ar[ur]^{g_i}  \ar[dl]_{f_i}&&& D'_\sigma(i) \ar[dd]^{\iota_{D'_\sigma(i)}} \ar[ur]^{g'_{\sigma(i)}}\ar[dl]_(.4){f'_{\sigma(i)}}\\ G'_{\sigma'(i)}\ar@/_.3cm/[dr]_(.35){\iota_{G_{\sigma'(i)}}}&&&G_i \ar@/_.3cm/[dr]_(.35){\iota_{G_i}} &&& G'_{\sigma(i)}\ar@/_.3cm/[dr]_(.35){\iota_{G'_{\sigma(i)}}}\\&\lpro \der{D}'\rpro &&& \tpro{D} \ar[rrr]_{\xi} \ar[lll]^{\xi'}&&& \lpro \der{D}' \rpro}\]
-	
-Suppose that there exists $j\in n+1$ be such that $\sigma(j)\neq \sigma'(j)$.  Let $k$ be $\sigma^{-1}(\sigma'(i))$, then, in particular $j\neq k$. By \Cref{rem:coproj} we know that
-\begin{align*}
-\iota_{L_{k}}=\xi^{-1} \circ \iota'_{L_{\sigma(k)}}
-\end{align*}We have two cases.
-	\begin{itemize}
-		\item $i< \sigma^{-1}(\sigma'(i))$.
-		\item $\sigma^{-1}(\sigma'(i))<i$.\qed 
-	\end{itemize} 
-\end{proof} 
-	
-\begin{proof}  whithout loss of generality we can suppose that $\sigma'(i)<\sigma(i)$. Using consistency, we get a diagram 
-	
-	Take an arrow $s:S\to L_i$ , then we 
+\begin{corollary}\label{cor:dec}
+	\todo{prefisso e suffisso}
+\end{corollary}
+\begin{proof}
+	contenuto...\qed 
 \end{proof}
-
-\begin{corollary}
-	contenuto...
-\end{corollary}
 
 \section{Switch equivalence and traces}
 \todo{A VERY NICE INTRO}
@@ -1229,7 +1186,7 @@ Suppose that there exists $j\in n+1$ be such that $\sigma(j)\neq \sigma'(j)$.  L
 
 An \emph{independence pair} between $\dder{D}$ and $\dder{D'}$, is a pair of  arrows $i_1:R\to D'$ and $i_2:L'\to D$ such that the following diagram commutes.
 
-\[\xymatrix@C=15pt{L \ar[d]_{n}&& K \ar[d]_{k}\ar[ll]_{l} \ar[r]^{r} & R \ar@/^.35cm/@{.>}[drrr]_(.4){i_1} \ar[dr]|(.3)\hole_{h} && L' \ar@/_.35cm/@{.>}[dlll]^(.4){i_2} \ar[dl]|(.3)\hole^{n'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[rr]^{r'} && R' \ar[d]^{h'}\\G && \ar[ll]^{f} D \ar[rr]_{g}&& H  && \ar[ll]^{f'} D' \ar[rr]_{g'}&& T}\]
+\[\xymatrix@C=15pt{L \ar[d]_{n}&& K \ar[d]_{k}\ar[ll]_{l} \ar[r]^{r} & R \ar@/^.35cm/@{.>}[drrr]|(.3)\hole_(.4){i_1} \ar[dr]|(.3)\hole_{h} && L' \ar@/_.35cm/@{.>}[dlll]^(.4){i_2} \ar[dl]|(.3)\hole^{n'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[rr]^{r'} && R' \ar[d]^{h'}\\G && \ar[ll]^{f} D \ar[rr]_{g}&& H  && \ar[ll]^{f'} D' \ar[rr]_{g'}&& T}\]
 We will say that $\dder{D}$ and $\dder{D'}$ are \emph{weakly sequentially independent} if an independence pair exists. If such independence pair is unique we will say that $\dder{D}$ and $\dder{D'}$ are \emph{sequentially independent}.
 \end{definition}
 
@@ -1258,7 +1215,7 @@ Summing up, if $(\X, \R)$ is a linear DPO-rewriting system, then sequential inde
 When working with linear rewriting systems, (weakly) sequential independent direct derivations can be switched, producing two new (weakly) sequential independent direct derivations between the same objects \cite[Thm.~$7.7$]{lack2005adhesive} . This is no more the case if the rules are only left-linear, as shown by the next example.
 
 \begin{example}
-	\todo{pensare ad un esempio in cui l'indipendenza non basta (o farsi venire in mente una dimostrazione della prop. 13 della versione su arxiv)}
+	\todo{pensare ad un esempio in cui l'indipendenza non basta }
 \end{example}
 
 To fix this problem, we adapt the notion of \emph{canonical filler} from \cite{heindel2009category}.
@@ -1299,12 +1256,13 @@ f\circ p \circ u &= f\circ k \\&= n\circ l
 g'\circ p'\circ u' &= g'\circ k'\\&=h'\circ r'
 \end{split}\]
 	
-We can prove some other properties of the arrows appearing in the diagram above.
-\begin{itemize}
-	\item The three rectangles below are pushouts and their left halves are pushouts too. Therefore, by \Cref{lem:po1}, also their right halves are pushouts.
+We can prove some other properties of the arrows appearing in the diagram above. The three rectangles below are pushouts and their left halves are pushouts too. Therefore, by \Cref{lem:po1}, also their right halves are pushouts.
 	\[\xymatrix{K \ar@/^.4cm/[rr]^{u}\ar[d]_{r}\ar[r]_{u} &P\ar[d]^{p'} \ar[r]_{p} & D \ar[d]^{g}&K' \ar@/^.4cm/[rr]^{k'}\ar[d]_{l'}\ar[r]_{u'} &P\ar[d]^{p} \ar[r]_{p'} & D' \ar[d]^{f'}\\  R \ar@/_.4cm/[rr]_{h} \ar[r]^{i_1}&D' \ar[r]^{f'} & H&L' \ar@/_.4cm/[rr]_{n'} \ar[r]^{i_2}&D \ar[r]^{g} & H}\]
 	\[ \xymatrix{K \ar@/^.4cm/[rr]^{k}\ar[d]_{l}\ar[r]_{u} &P\ar[d]^{q} \ar[r]_{p} & D \ar[d]^{f}&K' \ar@/^.4cm/[rr]^{k'}\ar[d]_{r'}\ar[r]_{u'} &P\ar[d]^{q'} \ar[r]_{p'} & D' \ar[d]^{g'}\\ L \ar@/_.4cm/[rr]_{n} \ar[r]^{j}&Q \ar[r]^{s} & G&R' \ar@/_.4cm/[rr]_{h'} \ar[r]^{j'}&Q' \ar[r]^{t} & T}\]
-\end{itemize}
+
+Notice, moreover, that $p, q$ are the pushouts of $l'$ and $l$, respectively, thus they  are elements of $\mathcal{M}$. By \Cref{prop:pbpoad} the squares
+\[\xymatrix{P\ar[r]^{p} \ar[d]_{p'} & D \ar[d]^{g}& P \ar[r]^{p} \ar[d]_{q} &D\ar[d]^{f}\\ D' \ar[r]_{f'} & H & Q \ar[r]_{s}& G}\]
+are pullbacks too.
 \end{remark}
 
 Before proceeding further, let us show that, in the linear case, the switchability relation reduces to sequential independence.
@@ -1345,7 +1303,7 @@ Consider the following diagram: the solid part exists by the definition of a fil
 	\[\xymatrix{&&R \ar@/_1cm/[ddrr]_(.35){i_1}|(.7)\hole \ar[dr]^{h}&& L'\ar@/^1cm/[ddll]^(.35){i_2}  \ar[dl]_{n'}\\&K\ar[dr]^{k}\ar[dl]_{l} \ar@/_.8cm/[ddrr]^(.65){u}\ar[ur]^{r}&& H && K' \ar@/^.8cm/[ddll]_(.65){u'}\ar[dl]_{k'}\ar[lu]_{l'} \ar[dr]^{r'}\\L \ar[dr]_{n} \ar@/_.8cm/[ddrr]_{j}&& D \ar[dl]|(.42)\hole_(.64){f}\ar[ur]|(.48)\hole^(.7){g}&&D' \ar[dr]|(.42)\hole^(.65){g'} \ar[ul]|(.48)\hole_(.7){f'}&&R'\ar@/^.8cm/[ddll]^{j'}\ar[dl]^{h'}\\&G &&P\ar[dr]^{q'} \ar[dl]_{q}\ar[ur]^(.4){p'}\ar[ul]_(.4){p}&&T\\&&Q \ar[ul]_{s}\ar@{.>}[dr]_{v} &&Q'\ar[ur]^{t} \ar@{.>}[dl]^{v'}\\&&&J}\]
 	
 	Since, by \Cref{rem:deco}, all the curved rectangles are pushouts, as well as the bottom square, we can state the following definition.
-\begin{definition}
+\begin{definition}\label{def:switch}
 	Let $(\X,R)$ be a left-linear DPO-rewriting system and suppose that $\X$ is $\mathcal{M}$-adhesive. Given two switchable direct derivations $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$, with a filler $(u,u')$, we can define other two direct derivations $S_{u,u'}(\dder{D}'):G\Mapsto J$ and $S_{u,u'}(\dder{D}):J\Mapsto T$ as follows:
 		\[\xymatrix{L' \ar[d]_{f\circ i_2}& \ar[l]_{l'}K'\ar[d]_{q\circ u'} \ar[r]^{r'} & R' \ar[d]_{v'\circ j'} & L \ar[d]_{v\circ j} & \ar[l]_{l}K \ar[d]^{q'\circ u}\ar[r]^{r}& R \ar[d]^{g'\circ i_1}\\
 		G &\ar[l]^{s} Q \ar[r]_{v}& J&J & \ar[l]^{v'}Q' \ar[r]_{t} & T}\]
@@ -1512,15 +1470,63 @@ We can now prove some properties of switch equivalence.
 \end{example}
 
 \subsection{Proper switchability is global}
+\todo{intro}
 
-\begin{lemma}
-	contenuto...
+
+\begin{lemma}[Invariance under immediate shift, 1] Let $(\X,\R)$ be a left-linear DPO-rewriting system consider a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$. If $(v,v')$ is a filler between $\dder{D}_0$ and $\dder{D}_1$, $(u,u')$ one between $\dder{D}_1$ and $\dder{D}_2$ and $\dder{D}_0\updownarrow S_{u,u'}(\dder{D}_2)$ with filler $(w,w')$, then there exists a filler between $S_{w,w'}(\dder{D}_0)$ and $S_{u,u'}(\dder{D}_1)$.
 \end{lemma}
 \begin{proof}
-	contenuto... \qed 
+By \Cref{def:filler,def:switch}, the fillers $(v,v')$, $(u,u')$ and $(w,w')$ give us the following three diagrams 
+			\[\xymatrix{&&R_0 \ar@/_1cm/[ddrr]_(.35){i_0}|(.7)\hole \ar[dr]^{h_0}&& L_1\ar@/^1cm/[ddll]^(.35){i_1}  \ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar[dl]_{l_0} \ar@/_.8cm/[ddrr]|(.36)\hole^(.65){v}\ar[ur]^{r_0}&& G_1 && K_1 \ar@/^.8cm/[ddll]|(.36)\hole_(.65){v'}\ar[dl]_{k_1}\ar[lu]_{l_1} \ar[dr]^{r_1}\\L_0 \ar@/_.8cm/[ddrr]_(.2){j_0}|(.31)\hole|(.81)\hole \ar[dr]^(.4){m_0}|(.61)\hole && D_0 \ar[dl]|(.4)\hole_(.65){f_0}\ar[ur]|(.5)\hole^(.7){g_0}&&D_1 \ar[dr]|(.4)\hole^(.65){g_1} \ar[ul]|(.5)\hole_(.65){f_1}&&R_1\ar@/^.8cm/[ddll]^(.2){j_1}|(.31)\hole|(.81)\hole\ar[dl]_{h_1}\\&G_0 &&P_1\ar[dr]_{q_1} \ar[dl]^{q_0}\ar[ur]^(.4){p_1}\ar[ul]_(.4){p_0}&&G_2\\L_1 \ar@/^.8cm/[uurr]^(.2){i_1} \ar[ur]_(.35){f_0\circ i_1}|(.61)\hole&&Q_0 \ar[ul]|(.4)\hole_(.65){s_0}\ar[dr]|(.5)\hole^(.65){t_0} &&Q_1\ar[ur]|(.4)\hole^(.65){t_1} \ar[dl]|(.5)\hole_(.65){s_1} && R_0  \ar[ul]^(.35){g_1\circ i_0}|(.61)\hole\ar@/_.8cm/[uull]_(.2){i_0}\\&K_1 \ar[ur]_{q_0\circ v'} \ar[dr]_{r_1} \ar[ul]^{l_1}\ar@/^.8cm/[uurr]_(.65){v'}&&G'_1&& K_0 \ar[ur]_{r_0} \ar[ul]^{q_1\circ v} \ar[dl]^{l_0} \ar@/_.8cm/[uull]^(.65){v}\\&& R_1 \ar[ur]_{\hspace{-5pt}s_1\circ j_1}\ar@/^1cm/[uurr]^(.25){j_1}&& L_0 \ar[ul]^{t_0\circ j_0\hspace{-5pt}} \ar@/_1cm/[uull]_(.25){j_0} |(.69)\hole }\]
+			\[\xymatrix{&&R_1 \ar@/_1cm/[ddrr]_(.35){a_1}|(.7)\hole \ar[dr]^{h_1}&& L_2\ar@/^1cm/[ddll]^(.35){a_2}  \ar[dl]_{m_2}\\&K_1\ar[dr]^{k_1}\ar[dl]_{l_1} \ar@/_.8cm/[ddrr]|(.36)\hole^(.65){u}\ar[ur]^{r_1}&& G_2 && K_2 \ar@/^.8cm/[ddll]|(.36)\hole_(.65){u'}\ar[dl]_{k_2}\ar[lu]_{l_2} \ar[dr]^{r_2}\\L_1 \ar@/_.8cm/[ddrr]_(.2){b_1}|(.31)\hole|(.81)\hole \ar[dr]^(.4){m_1}|(.61)\hole && D_1 \ar[dl]|(.4)\hole_(.65){f_1}\ar[ur]|(.5)\hole^(.7){g_1}&&D_2 \ar[dr]|(.4)\hole^(.65){g_2} \ar[ul]|(.5)\hole_(.65){f_2}&&R_2\ar@/^.8cm/[ddll]^(.2){b_2}|(.31)\hole|(.81)\hole\ar[dl]_{h_2}\\&G_1 &&P_2\ar[dr]_{d_2} \ar[dl]^{d_1}\ar[ur]^(.4){c_2}\ar[ul]_(.4){c_1}&&G_2\\L_2 \ar@/^.8cm/[uurr]^(.2){a_2} \ar[ur]_(.35){f_1\circ a_2}|(.61)\hole&&Q_2 \ar[ul]|(.4)\hole_(.65){x_1}\ar[dr]|(.5)\hole^(.65){y_1} &&Q_3\ar[ur]|(.4)\hole^(.65){y_2} \ar[dl]|(.5)\hole_(.65){x_2} && R_1  \ar[ul]^(.35){g_2\circ a_1}|(.61)\hole\ar@/_.8cm/[uull]_(.2){a_1}\\&K_2 \ar[ur]_{d_1\circ u'} \ar[dr]_{r_2} \ar[ul]^{l_2}\ar@/^.8cm/[uurr]_(.65){u'}&&G'_2&& K_1 \ar[ur]_{r_1} \ar[ul]^{d_2\circ u} \ar[dl]^{l_1} \ar@/_.8cm/[uull]^(.65){u}\\&& R_2 \ar[ur]_{\hspace{-5pt}x_2\circ b_2}\ar@/^1cm/[uurr]^(.25){b_2}&& L_1 \ar[ul]^{y_1\circ b_1\hspace{-5pt}} \ar@/_1cm/[uull]_(.25){b_1} |(.69)\hole }\]
+			\[\xymatrix{&&R_0 \ar@/_1cm/[ddrr]_(.35){e_0}|(.7)\hole \ar[dr]^{h_0}&& L_2\ar@/^1cm/[ddll]^(.35){e_1}  \ar[dl]_{f_1\circ a_2}\\&K_0\ar[dr]^{k_0}\ar[dl]_{l_0} \ar@/_.8cm/[ddrr]|(.36)\hole^(.65){w}\ar[ur]^{r_0}&& G_1 && K_2 \ar@/^.8cm/[ddll]|(.36)\hole_(.65){w'}\ar[dl]_{d_1\circ u'\hspace{-5pt}}\ar[lu]_{l_2} \ar[dr]^{r_2}\\L_0 \ar@/_.8cm/[ddrr]_(.2){o_0}|(.31)\hole|(.81)\hole \ar[dr]^(.4){m_0}|(.61)\hole && D_0 \ar[dl]|(.4)\hole_(.65){f_0}\ar[ur]|(.5)\hole^(.7){g_0}&&Q_2 \ar[dr]|(.4)\hole^(.65){y_1} \ar[ul]|(.5)\hole_(.65){x_1}&&R_2\ar@/^.8cm/[ddll]^(.2){o_1}|(.31)\hole|(.81)\hole\ar[dl]_(.35){x_2\circ b_2}\\&G_0 &&P_3\ar[dr]_{n_1} \ar[dl]^{n_0}\ar[ur]^(.4){u_1}\ar[ul]_(.4){u_0}&&G'_2\\L_2 \ar@/^.8cm/[uurr]^(.2){e_1} \ar[ur]_(.35){f_0\circ e_1}|(.61)\hole&&Q_4 \ar[ul]|(.4)\hole_(.65){z_0}\ar[dr]|(.5)\hole^(.65){z'_0} &&Q_5\ar[ur]|(.4)\hole^(.65){z'_1} \ar[dl]|(.5)\hole_(.65){z_1} && R_0  \ar[ul]^(.35){g_1\circ e_0}|(.61)\hole\ar@/_.8cm/[uull]_(.2){e_0}\\&K_2 \ar[ur]_{n_0\circ w'} \ar[dr]_{r_2} \ar[ul]^{l_2}\ar@/^.8cm/[uurr]_(.65){w'}&&G'_1&& K_0 \ar[ur]_{r_0} \ar[ul]^{n_1\circ w} \ar[dl]^{l_0} \ar@/_.8cm/[uull]^(.65){w}\\&& R_2 \ar[ur]_{\hspace{-4pt}z_1\circ o_1}\ar@/^1cm/[uurr]^(.25){o_1}&& L_0 \ar[ul]^{z'_0\circ o_0\hspace{-5pt}} \ar@/_1cm/[uull]_(.25){o_0} |(.69)\hole }\]
+			
+		To construct a filler between $S_{w,w'}(\dder{D}_0)$ and $S_{u,u'}(\dder{D}_1)$,  we can start pulling back $x_2:Q_3\to G'_2$, which is in $\mathcal{M}$, along $z'_1:Q_5\to G'_2$ along  to get the solid part of the diagram below.
+			\[\xymatrix{&&R_0 \ar@{.>}@/_1cm/[ddrr]_(.25){\alpha_1}|(.7)\hole  \ar[dr]^{\hspace{-4pt}g_1\circ e_0}&& L_1\ar@{.>}@/^1cm/[ddll]^(.25){\alpha_2}  \ar[dl]_{y_1\circ b_1\hspace{-4pt}}\\&K_0\ar[dr]^{n_1\circ w}\ar[dl]_{l_0} \ar@{.>}@/_.8cm/[ddrr]_(.65){\beta}\ar[ur]^{r_0}&& G'_2&& K_1 \ar@{.>}@/^.8cm/[ddll]^(.65){\beta'}\ar[dl]_{d_2\circ u}\ar[lu]_{l_1} \ar[dr]^{r_1}\\L_0 \ar[dr]_{z'_0\circ o_0} && Q_5 \ar[dl]|(.4)\hole_(.6){z_1}\ar[ur]|(.5)\hole^(.7){z'_1}&&Q_3 \ar[dr]|(.4)\hole^(.65){y_2} \ar[ul]|(.5)\hole_(.7){x_2}&&R_1\ar@{.>}@/^.8cm/[ddll]^{\gamma'}\ar[dl]_(.4){g_2\circ a_1}\\&G'_1 &&P_4\ar@{.>}[dr]^{\epsilon'} \ar[ur]^(.4){\delta'}\ar[ul]_(.4){\delta}&&G_2\\&& &&Q_6}\]
+		
+		Let us construct the dotted arrows.
+		\begin{itemize}
+		\item Existence of $\beta$. Comsider the arrows $i_0\circ r_0:K_0\to D_1$ and $u_1\circ w:K_0\to Q_2$. Then
+		\begin{align*}
+	f_1\circ i_0\circ r_0&=h_0\circ r_0\\&=g_0\circ k_0\\&=g_0\circ u_0\circ w\\&=x_1\circ u_1\circ w
+		\end{align*}
+		\item Existence of $\beta'$. We proceed as above, this time taking the arrows $i_1\circ l_1:K_1\to D_0$ and $d_1\circ u:K_1\to Q_2$. We get
+		\begin{align*}
+			g_0\circ i_1\circ l_1&=m_1\circ l_1\\&=f_1\circ k_1\\&f_1\circ c_1\circ u\\&=x_1\circ d_1\circ u
+		\end{align*}
+		giving a unique $\underline{\beta}':K_1\to P_3$ fitting in the diagram 
+		\[\xymatrix{K_1 \ar@{.>}[dr]^{\underline{\beta}'} \ar[r]^{l_1} \ar[d]_{u}& L_1 \ar@/^.2cm/[dr]^{i_1}\\ P_2 \ar@/_.2cm/[dr]_{d_1}&P_3 \ar[r]^{u_0} \ar[d]_{u_1}& D_0 \ar[d]^{g_0}\\ &Q_2\ar[r]_{x_1} & G_1}\]
+		If we compute we get
+		\begin{align*}
+			z'_1\circ n_1\circ\underline{\beta}'&=y_1\circ u_1\circ \underline{\beta}'\\&=y_1\circ d_1\circ u\\&=x_2\circ d_2\circ u
+		\end{align*}
+		Therefore there is $\beta':K_1\to P_4$ such that
+		\[\xymatrix{K_1 \ar@{.>}[dr]^{\beta'} \ar[r]^{\underline{\beta}'} \ar[d]_{u}& P_3 \ar@/^.2cm/[dr]^{n_1}\\ P_2 \ar@/_.2cm/[dr]_{d_2}&P_4 \ar[r]^{\delta} \ar[d]_{\delta'}& Q_5 \ar[d]^{z'_1}\\ &Q_3\ar[r]_{x_2} & G'_2}\]
+		commutes.
+		\item Existence of $\alpha_1$.
+		\item Existence of $\alpha_2$.
+		\item Existence of $\epsilon'$.
+		\item Existence of $\gamma'$.
+		\end{itemize}
+		
+		Finally, we have to show that these data form a filler.
+	\begin{enumerate}
+		\item 
+		\item 
+	\end{enumerate} 
 \end{proof}
 
-\todo{NO IDEA PER ORA}
+\begin{lemma}[Invariance under immediate shift, 2]\todo{nell'altro senso}
+\end{lemma}
+\begin{proof}
+ \todo{fare} \qed 
+\end{proof}
+
+\begin{corollary}
+\todo{passare a $\updownarrow_!$ e $\Updownarrow$}
+\end{corollary}
+
+\todo{ricopiare tutta l'induzione di Andrea}
 \subsection{Concatenable traces}
 \begin{lemma}
 	\todo{abstract equivalence and switch }
@@ -1564,6 +1570,10 @@ Before moving forward, we will prove some other useful properties of the switch 
 
 
 \appendix
+\section{On permutations}\label{app:perm}
+\todo{inserire risutati sulle permutazione che abbiamo usato}
+
+
 \section{A note on fillers and sequential independence}\label{app:fill}
  In \Cref{prop:equi} we proved that, in the linear case, the existence of an indpendence pair between two derivation is equivalent to that of a filler between them. This result can be further refined: in a\cite{baldan2011adhesivity} a class  $\mathbb{B}$ of (quasi)adhesive category is defined for which the local Church-Rosser Theorem holds even for left-linear DPO-rewriting system. In our language, and given \Cref{prop:fil} and \Cref{rem:locCR}, this amount to prove that, for elements of $\mathbb{B}$, every independence pair induces a filler. 
 
@@ -1628,6 +1638,7 @@ Our next step is to identify sufficient conditions for a category $\X$ to satisf
 \begin{corollary}
 	\todo{filler e classe B+}
 \end{corollary}
+
 
 
 \end{document}
