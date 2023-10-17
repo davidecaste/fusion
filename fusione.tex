@@ -403,7 +403,7 @@
 
 
 \title{Switch equivalence and weak prime domains for fusions}
-\author{Paolo Baldan \and Davide Castelnovo  \and  Andrea Corradini  Fabio Gadducci}
+\author{Paolo Baldan \and Davide Castelnovo  \and  Andrea Corradini  \and Fabio Gadducci}
 
 \begin{document}
 \maketitle
@@ -1174,7 +1174,7 @@ Let $(\X,R)$ ba left-linear DPO-rewriting system and suppose that every rule in 
 	contenuto...\qed 
 \end{proof}
 
-\section{Switch equivalence and traces}
+\section{Shift equivalence and traces}
 \todo{A VERY NICE INTRO}
 
 \subsection{Sequentially independendent and switchable derivations}
@@ -1237,7 +1237,8 @@ A \emph{filler} between $\dder{D}$ and $\dder{D}'$ is  given by a pair of arrows
 We will say that $\dder{D}$ and $\dder{D}'$ are \emph{switchable} if a filler between them exists. If such a filler is unique, we will say that $\dder{D}$ and $\dder{D}'$ are \emph{uniquely switchable}. We will use the notation $\dder{D}\updownarrow \dder{D'}$ to mean that $\dder{D}$ and $\dder{D}'$ are switchable, while $\dder{D}\updownarrow_! \dder{D'}$ will denote that they are uniquely so.
 \end{definition}
 
-\begin{remark}\todo{oss su unicità del filler}
+\begin{remark}A remark on the uniqueness of filler is due. Let $\der{D}:\Mapsto H$ and $\der{D}':G\Mapsto T$ be two direct derivations such that $\der{D}\updownarrow_! \der{D}'$. The uniqueness of the filler between them must be interpreted only up to a choice of a pullback square 
+	\[\xymatrix{P \ar[r]^{p} \ar[d]_{p'}& D\ar[d]^{g} \\ D' \ar[r]_{f'} & H}\]
 \end{remark}
 
 
@@ -1268,10 +1269,41 @@ Notice that if $\dder{D}$ and $\dder{D}'$ are switchable, then they are weakly s
 \begin{definition}We will say that a left-linear DPO-rewriting system  $(\X, \R)$ is \emph{tame} if for every two direct derivations $\dder{D}:H\Mapsto H$, $\dder{D}':H\Mapsto T$ and for every independence pair $(i_1, i_2)$ between them, there exists a filler $(u,u')$ between them such that  the squares below are pushouts.\[\xymatrix{K \ar[r]^{r} \ar[d]_{u}& R \ar[d]^{i_1} &K' \ar[r]^{l'} \ar[d]_{u'}& L'\ar[d]^{i_2} \\P \ar[r]_{p'}& D' & P \ar[r]_{p} & D}\]
 \end{definition}
 
+\begin{remark}\label{rem:unic} Given an independence pair $(i_1, i_2)$ between $\dder{D}$ and $\dder{D}'$, there is at most one filler  such that $(u,u')$ such that 
+	\[\xymatrix{K \ar[r]^{r} \ar[d]_{u}& R \ar[d]^{i_1} &K' \ar[r]^{l'} \ar[d]_{u'}& L'\ar[d]^{i_2} \\P \ar[r]_{p'}& D' & P \ar[r]_{p} & D}\]
+	are pushouts. Indeed, for every other filler $(v,v')$, it must be that
+	\[\begin{split}
+		p\circ u &=k \\&= p\circ v
+	\end{split}\qquad \begin{split}
+	p\circ u' &= i_2\circ l' \\&= p\circ v'
+	\end{split}\]
+	Since the arrow $p:P\to D$, which is the pullback of $f'$, is in $\mathcal{M}$ we conclude that $(u,u')=(v,v')$.
+\end{remark}
 
-\begin{proposition}\label{prop:equi}Every linear DPO-rewriting system. $(\X, \R)$ a linear is tame.
+
+
+\begin{proposition}\label{prop:filip}
+Let $(\X, \R)$ be a tame left-linear DPO-rewriting system, then, given $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$, the following are equivalent:
+\begin{enumerate}
+	\item $\dder{D}$ and $\dder{D}'$ are sequentially independent;
+	\item $\dder{D}\updownarrow_! \dder{D}'$.
+\end{enumerate}
+\end{proposition}
+\begin{proof} $(1\Rightarrow 2)$ Let $(i_1, i_2)$ be the unique independence pair between $\dder{D}$ and $\dder{D}$'. Take a pullback square \[\xymatrix{P \ar[r]^{p} \ar[d]_{p'}& D\ar[d]^{g} \\ D' \ar[r]_{f'} & H}\]
+by tameness we know that there exist a filler $(u,u')$ made by arrows $u:K\to P$ and $u':K'\to P$ fitting in the two pushout squares below. 
+	\[\xymatrix{K \ar[r]^{r} \ar[d]_{u}& R \ar[d]^{i_1} &K' \ar[r]^{l'} \ar[d]_{u'}& L'\ar[d]^{i_2} \\P \ar[r]_{p'}& D' & P \ar[r]_{p} & D}\]
+	In particular, 	$\der{D}\updownarrow \der{D'}$. On the other hand, if $(v,v')$ with $v:K\to P$ and $v':K'\to P$ is another filler, then there are other  two pushout squares
+	\[\xymatrix{K \ar[r]^{r} \ar[d]_{v}& R \ar[d]^{j_1} &K' \ar[r]^{l'} \ar[d]_{v'}& L'\ar[d]^{j_2} \\P \ar[r]_{p'}& D' & P \ar[r]_{p} & D}\]
+	such that $f'\circ j_1=h$, $g\circ j_2=n'$. But then $(j_1, j_2)$ is an independence pair and so $j_1=i_1$ and $j_2=i_2$. \Cref{rem:unic} now yields the thesis.
+	
+	\smallskip \noindent $(2\Rightarrow 1)$ Let $(u,u')$ be the filler between $\dder{D}$ and $\dder{D}$'. Then we get an independence pair $(i_1, i_2)$ pushing out $u$ along $r$ and $u'$ along $l'$, respectively. If $(j_1, j_2)$ is another independence pair
+\end{proof}
+
+A source of tame left-linear DPO-rewriting systems is given by the linear ones, as shown by the following proposition.
+
+\begin{proposition}\label{prop:equi}Every linear DPO-rewriting system $(\X, \R)$ is tame.
  \end{proposition}
-\begin{proof} Let $(i_1, i_2)$ be an independence pair between $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$. We have a diagram
+\begin{proof} Suppose that $\X$ is $\mathcal{M}$-adhesive and let $(i_1, i_2)$ be an independence pair between $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$. We have a diagram
 	\[\xymatrix@C=15pt{L \ar[d]_{n}&& K \ar[d]_{k}\ar[ll]_{l} \ar[r]^{r} & R \ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_1} \ar[dr]|(.3)\hole_{h} && L' \ar@/_.35cm/[dlll]^(.4){i_2} \ar[dl]|(.3)\hole^{n'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[rr]^{r'} && R' \ar[d]^{h'}\\G && \ar[ll]^{f} D \ar[rr]_{g}&& H  && \ar[ll]^{f'} D' \ar[rr]_{g'}&& T}\]
 Pulling back $g$ along $f'$, we get another diagram 
 	\[\xymatrix{&&R \ar@/_1cm/[ddrr]_(.35){i_1}|(.7)\hole \ar[dr]^{h}&& L'\ar@/^1cm/[ddll]^(.35){i_2}  \ar[dl]_{n'}\\&K\ar[dr]^{k}\ar[dl]_{l} \ar@{.>}@/_.8cm/[ddrr]^(.65){u}\ar[ur]^{r}&& H && K' \ar@{.>}@/^.8cm/[ddll]_(.65){u'}\ar[dl]_{k'}\ar[lu]_{l'} \ar[dr]^{r'}\\L \ar[dr]_{n} && D \ar[dl]|(.42)\hole_(.64){f}\ar[ur]|(.48)\hole^(.7){g}&&D' \ar[dr]|(.42)\hole^(.65){g'} \ar[ul]|(.48)\hole_(.7){f'}&&R'\ar[dl]^{h'}\\&G &&P\ar[ur]^(.4){p'}\ar[ul]_(.4){p}&&T}\] 
@@ -1469,7 +1501,7 @@ We can now prove some properties of switch equivalence.
 \todo{intro}
 
 
-\begin{lemma}Let $(\X,\R)$ be a tame left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Consider a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$. If $(v,v')$ is a filler between $\dder{D}_0$ and $\dder{D}_1$, $(u,u')$ one between $\dder{D}_1$ and $\dder{D}_2$ and $\dder{D}_0\updownarrow S_{u,u'}(\dder{D}_2)$ with filler $(w,w')$, then there exists a filler between $S_{w,w'}(\dder{D}_0)$ and $S_{u,u'}(\dder{D}_1)$.
+\begin{lemma}\label{lem:iig1}Let $(\X,\R)$ be a tame left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Consider a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$. If $(v,v')$ is a filler between $\dder{D}_0$ and $\dder{D}_1$, $(u,u')$ one between $\dder{D}_1$ and $\dder{D}_2$ and $\dder{D}_0\updownarrow S_{u,u'}(\dder{D}_2)$ with filler $(w,w')$, then there exists a filler between $S_{w,w'}(\dder{D}_0)$ and $S_{u,u'}(\dder{D}_1)$.
 \end{lemma}
 \begin{proof}
 We can use \Cref{def:filler,def:switch} to get some diagrams.  First of all the filler $(v,v')$ between $\dder{D}_0$ and $\dder{D}_1$ yields
@@ -1500,88 +1532,30 @@ We can use \Cref{def:filler,def:switch} to get some diagrams.  First of all the 
 		\begin{align*}
 			g_0\circ i_1&= m_1 \\&= x_1 \circ b_1
 		\end{align*}
-			implying the existence of $\alpha'_2:L_1\to P_3$ fitting in the fiagram below.
-			\[\xymatrix{L_1 \ar@{.>}[dr]^{\alpha'_2} \ar@/^.3cm/[drr]^{i_1} \ar@/_.3cm/[ddr]_{e_0}\\ &P_2 \ar[r]^{c_2} \ar[d]_{d_1}& D_1 \ar[d]^{f_1}\\ &Q_2\ar[r]_{x_1} & G_1}\]
-		
-		\iffalse 
-		  we can start pulling back $x_2:Q_3\to G'_2$, which is in $\mathcal{M}$, along $z'_1:Q_5\to G'_2$ along  to get the solid part of the diagram below.
-			\[\xymatrix{&&R_0 \ar@{.>}@/_1cm/[ddrr]_(.25){\alpha_1}|(.7)\hole  \ar[dr]^{\hspace{-4pt}y_1\circ e_0}&& L_1\ar@{.>}@/^1cm/[ddll]^(.25){\alpha_2}  \ar[dl]_{y_1\circ b_1\hspace{-4pt}}\\&K_0\ar[dr]^{n_1\circ w}\ar[dl]_{l_0} \ar@{.>}@/_.8cm/[ddrr]_(.65){\beta}\ar[ur]^{r_0}&& G'_2&& K_1 \ar@{.>}@/^.8cm/[ddll]^(.65){\beta'}\ar[dl]_{d_2\circ u}\ar[lu]_{l_1} \ar[dr]^{r_1}\\L_0 \ar[dr]_{z'_0\circ o_0} && Q_5 \ar[dl]|(.4)\hole_(.6){z_1}\ar[ur]|(.5)\hole^(.7){z'_1}&&Q_3 \ar[dr]|(.4)\hole^(.65){y_2} \ar[ul]|(.5)\hole_(.7){x_2}&&R_1\ar@{.>}@/^.8cm/[ddll]^{\gamma'}\ar[dl]_(.4){g_2\circ a_1}\\&G'_1 &&P_4\ar@{.>}[dr]^{\epsilon'} \ar[ur]^(.4){\delta'}\ar[ul]_(.4){\delta}&&G_2\\&& &&Q_6}\]
-		
-		Let us construct the dotted arrows.
-		\begin{itemize}
-		\item Existence of $\beta$. Consider the arrows $i_0\circ r_0:K_0\to D_1$ and $u_1\circ w:K_0\to Q_2$. Then
-		\begin{align*}
-	f_1\circ i_0\circ r_0&=h_0\circ r_0\\&=g_0\circ k_0\\&=g_0\circ u_0\circ w\\&=x_1\circ u_1\circ w
-		\end{align*}
-		Therefore there exists a unique $\underline{\beta}:K_0\to P_2$ making the diagram 
-		\[\xymatrix{K_0 \ar@{.>}[dr]^{\underline{\beta}} \ar[r]^{r_0} \ar[d]_{w}& R_0 \ar@/^.2cm/[dr]^{i_0}\\ P_3 \ar@/_.2cm/[dr]_{u_1}&P_2 \ar[r]^{c_1} \ar[d]_{d_1}& D_1 \ar[d]^{f_1}\\ &Q_2\ar[r]_{x_1} & G_1}\]
-		commutative. Computing further we also get
-		\begin{align*}
-		x_2\circ d_2\circ \underline{\beta}&=y_1\circ d_1\circ \underline{\beta}\\&=y_1\circ u_1\circ w\\&=z'_1\circ u_1\circ w
-		\end{align*}
-		We conclude that there exists the dotted  $\beta: K_0\to P_4$ depicted in the diagram below.
-		\[\xymatrix{K_0 \ar@{.>}[dr]^{\beta} \ar[r]^{\underline{\beta}} \ar[d]_{w}& P_2 \ar@/^.2cm/[dr]^{d_2}\\ P_3 \ar@/_.2cm/[dr]_{n_1}&P_4 \ar[r]^{\delta'} \ar[d]_{\delta}& Q_3 \ar[d]^{x_2}\\ &Q_5\ar[r]_{z'_1} & G'_2}\]
-		\item Existence of $\beta'$. We proceed as above, this time taking the arrows $i_1\circ l_1:K_1\to D_0$ and $d_1\circ u:K_1\to Q_2$. We get
-		\begin{align*}
-			g_0\circ i_1\circ l_1&=m_1\circ l_1\\&=f_1\circ k_1\\&=f_1\circ c_1\circ u\\&=x_1\circ d_1\circ u
-		\end{align*}
-		giving a unique $\underline{\beta}':K_1\to P_3$ fitting in the diagram 
-		\[\xymatrix{K_1 \ar@{.>}[dr]^{\underline{\beta}'} \ar[r]^{l_1} \ar[d]_{u}& L_1 \ar@/^.2cm/[dr]^{i_1}\\ P_2 \ar@/_.2cm/[dr]_{d_1}&P_3 \ar[r]^{u_0} \ar[d]_{u_1}& D_0 \ar[d]^{g_0}\\ &Q_2\ar[r]_{x_1} & G_1}\]
-		If we compute we get
-		\begin{align*}
-			z'_1\circ n_1\circ\underline{\beta}'&=y_1\circ u_1\circ \underline{\beta}'\\&=y_1\circ d_1\circ u\\&=x_2\circ d_2\circ u
-		\end{align*}
-		Therefore there is $\beta':K_1\to P_4$ such that
-		\[\xymatrix{K_1 \ar@{.>}[dr]^{\beta'} \ar[r]^{\underline{\beta}'} \ar[d]_{u}& P_3 \ar@/^.2cm/[dr]^{n_1}\\ P_2 \ar@/_.2cm/[dr]_{d_2}&P_4 \ar[r]^{\delta} \ar[d]_{\delta'}& Q_5 \ar[d]^{z'_1}\\ &Q_3\ar[r]_{x_2} & G'_2}\]
-		commutes.
-		\item Existence of $\alpha_1$. Let us consider the arrows $i_0:R_0\to D_1$ and $e_0:R_0\to Q_2$. An easy computation shows that
-		\begin{align*}
-			f_1\circ i_0&= h_0\\&=x_1\circ e_0
-		\end{align*}
-	entailing the existence of  $\alpha'_1:R_0\to P_2$
-	\[\xymatrix{R_0 \ar@{.>}[dr]^{\alpha'_1} \ar@/^.3cm/[drr]^{i_0} \ar@/_.3cm/[ddr]_{e_0}\\ &P_2 \ar[r]^{c_2} \ar[d]_{d_1}& D_1 \ar[d]^{f_1}\\ &Q_2\ar[r]_{x_1} & G_1}\]
-	We can then define $\alpha_1:R_0\to Q_3$ as $d_2\circ \alpha'_1$. Notice that 
-	\begin{align*}
-x_2\circ \alpha_1&=x_2\circ d_2\circ \alpha'_1\\&= y_1\circ d_1\circ \alpha'_1\\&=y_1\circ e_0
-	\end{align*}
-This equality, in turn, implies	
-		\begin{align*}
-x_2\circ \alpha_1\circ r_0&=y_1\circ e_0\circ r_0\\&=y_1\circ  u_1\circ w \\&= z'_1\circ  n_1\circ w \\&= z'_1 \circ \beta \circ \delta \\&= x_2\circ \beta \circ \delta' 
-	\end{align*}
-	Since $x_2$ is mono, because $x_2\in \mathcal{M}$, we conclude that the square below is commutative.
-	\[\xymatrix{K_0 \ar[r]^{r_0} \ar[d]_{\beta}& R_0  \ar[d]^{\alpha_1}\\ P_4 \ar[r]_{\delta'} & Q_3}\]
-	
-		\item Existence of $\alpha_2$.
-		\item Existence of $\epsilon'$.
-		\item Existence of $\gamma'$.
-		\end{itemize}
-		
-		Finally, we have to show that these data form a filler.
-	\begin{enumerate}
-		\item \todo{This follows by definition}
-		\item We have to show that the following two squares are pushouts
-		\[\xymatrix{}\]
-		
-		\smallskip
-		For the first one, consider the diagram
-		\[\xymatrix{K_0 \ar[r]^{r_0} \ar[d]_{\beta}& R_0  \ar[d]^{\alpha_1}\\ P_4 \ar[r]_{\delta'} & Q_3\\&& U}\]
-			\[\xymatrix{K_0 \ar[r]^{r_0} \ar[d]_{\beta}& R_0  \ar[d]^{\alpha_1}\\ P_4 \ar[r]_{\delta'} & Q_3}\]
-		
-		
-			\[\xymatrix{K_0 \ar[r]^{r_0} \ar[d]_{\beta}& R_0  \ar[d]^{\alpha_1}\\ P_4 \ar[r]_{\delta'} & Q_3}\]
-		
-		
-		
-		For the second one
-	\end{enumerate} 
-	\fi  
+			implying the existence of $\alpha'_2:L_1\to P_3$ fitting in the diagram below.
+			\[\xymatrix{L_1 \ar@{.>}[dr]^{\alpha'_2} \ar@/^.3cm/[drr]^{i_1} \ar@/_.3cm/[ddr]_{b_1}\\ &P_3 \ar[r]^{u_0} \ar[d]_{u_1}& D_0 \ar[d]^{g_0}\\ &Q_2\ar[r]_{x_1} & G_1}\] 
+			Let $\alpha_2:L_1\to Q_5$ be $n_1\circ \alpha'_2$, then
+			\begin{align*}
+				z'_1 \circ \alpha_2 & = z'_1 \circ n_1\circ \alpha'_2\\&=y_1\circ u_1\circ \alpha'_2\\&=y_1\circ b_1
+			\end{align*}
+			The thesis now follows. \qed
 \end{proof}
 
-\begin{corollary}
-	\todo{passare a $\updownarrow_!$ e $\Updownarrow$}
+\begin{corollary} Given a tame  left-linear DPO-rewriting system  $(\X,\R)$ with $\X$ an $\mathcal{M}$-adhesive category and a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$, the following are true: 
+	\begin{enumerate}
+		\item suppose that $(u,u')$ and $(w,w')$ are fillers witnessing  $\dder{D}_1\updownarrow_! \dder{D}_2$ and $\dder{D}_0\updownarrow_! S_{u,u'}(\dder{D}_2)$ respectively, if $\dder{D}_0\updownarrow_!\dder{D}_1$, then $S_{w,w'}(\dder{D}_0)\updownarrow_!S_{u,u'}(\dder{D}_1)$;
+		\item 
+	\end{enumerate}
 \end{corollary}
-
-\begin{lemma}\todo{nell'altro senso}
+\begin{proof}
+	\begin{enumerate}
+		\item Let $(v,v')$ be the unique filler between $\dder{D}_0$ and $\dder{D}_1$.  By \Cref{rem:filip}
+		\item \qed 
+	\end{enumerate}
+\end{proof}
+ 
+ We need another lemma, similar to \Cref{lem:iig1}.
+\begin{lemma}\label{lem:iig2}\todo{nell'altro senso}
 \end{lemma}
 \begin{proof}
  \todo{fare} \qed 
@@ -1591,7 +1565,7 @@ x_2\circ \alpha_1\circ r_0&=y_1\circ e_0\circ r_0\\&=y_1\circ  u_1\circ w \\&= z
 \todo{passare a $\updownarrow_!$ e $\Updownarrow$}
 \end{corollary}
 
-\begin{corollary}[Invariance under shift]
+\begin{corollary}[Invariance under immediate shift]\label{cor:ius}
 	contenuto...
 \end{corollary}
 
