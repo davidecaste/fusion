@@ -929,13 +929,15 @@ Given a left-linear DPO-rewriting system $(\X, \R)$,  a derivation $\der{D}$  de
 		\[\xymatrix{H\ar[r]^-{\iota_{2, H}} \ar[d]_-{\iota_{1, H}} & \tproi{D}{2} \ar[d]^{p_2}\\  \tproi{D}{1} \ar[r]_{p_1}& \tpro{D}}\]
 		where $(\tproi{D}{1}, \{\iota_{1, X}\}_{X\in \Delta(\der{D}_1)})$ and $(\tproi{D}{2}, \{\iota_{2, X}\}_{X\in \Delta(\der{D}_2)})$ are the colimiting cocone for $\Delta(\der{D}_1)$ and $\Delta(\der{D}_2)$, respectively;
 		\item given a non-empty derivation $\der{D}=\{\dder{D}\}_{i=0}^n$ between $G$ and $H$, for every $j\in n+1$ different from $0$ the following diagram is a pushout
-		\[\xymatrix@C=30pt{D_{j} \ar[r]^{g_j}\ar[d]_{f_j}& G_{j+1} \ar[r]^-{\hat{\iota}_{G_{j+1}}} & \lpro \der{\hat{D}}\rpro \ar[dd]^{p_2} \\ G_j \ar[d]_{\iota'_{G_j}}\\ \lpro \der{D}' \rpro \ar[rr]_{p_1}  &&\tpro{D} }\] 
+		\[\xymatrix@C=30pt{D_{j} \ar[r]^{g_j}\ar[d]_{f_j}& G_{j+1} \ar[r]^-{\hat{\iota}_{G_{j+1}}} \ar@/^.3cm/[ddl]^{\iota'_{G_j}} & \lpro \der{\hat{D}}\rpro \ar[dd]^{p_2} \\ G_j \ar[d]_{\iota'_{G_j}}\\ \lpro \der{D}' \rpro \ar[rr]_{p_1}  &&\tpro{D} }\] 
 		where $\der{\hat{D}}=\{\dder{D}_i\}_{i=j+1}^n$, $\der{D}'=\{\dder{D}_i\}_{i=0}^j$ and $p_1:\lpro\der{D}' \rpro\to \tpro{D}$ and $p_2:\lpro \der{\hat{D}}\rpro \to \tpro{D}$ are the arrows induced by the cocones, $(\tpro{D}, \{\iota_{X}\}_{X\in \Delta(\der{D}')})$ and $(\tpro{D}, \{\iota_{X}\}_{X\in \Delta(\der{D}')})$, respectively.
 	\end{enumerate}
 \end{lemma}
 \begin{remark}\label{rem:zero}
-There is a version of point $4$ of \Cref{lem:colim} for $j=0$ which follows directly from points $1$ and $3$. Indeed, $\der{D}=\der{D}_1 \cdot \der{D}_2$ where $\der{D}_1=\{\dder{D}_0\}$ and $\der{D}_2=\{\dder{D}_i\}_{i=1}^n$. Then the two halves of the rectangle below are pushouts. By \Cref{lem:po1} the whole diagram is then a pushout too.
-	\[\xymatrix@C=30pt{D_{0} \ar[r]^{g_0}\ar[d]_{f_0}& G_{1} \ar[r]^-{\iota_{2,G_{1}}} & \lpro \der{D}_2\rpro \ar[dd]^{p_2} \\ G \ar[d]_{\iota_{1,G}}\\ \lpro \der{D}_1 \rpro \ar[rr]_{p_1}  &&\tpro{D} }\] 
+There is a version of point $4$ of \Cref{lem:colim} for $j=0$ which follows directly from points $1$ and $3$. Indeed, $\der{D}=\der{D}_1 \cdot \der{D}_2$ where $\der{D}_1=\{\dder{D}_0\}$ and $\der{D}_2=\{\dder{D}_i\}_{i=1}^n$. By point $1$ and $3$ of \Cref{lem:colim}, the two halves of the rectangle below are pushouts. By \Cref{lem:po1} the whole diagram is then a pushout too.
+	\[\xymatrix@C=30pt{D_{0} \ar[r]^{g_0}\ar[d]_{f_0}& G_{1} \ar[d]^{\iota_{1, G_1}} \ar[r]^-{\iota_{2,G_{1}}} & \lpro \der{D}_2\rpro \ar[d]^{p_2} \\ G \ar[r]_{\iota_{1,G}}& \lpro \der{D}_1 \rpro \ar[r]_{p_1}  &\tpro{D} }\]
+Notice that this entails that the square below is also a pushout. 
+\[\xymatrix@C=25pt{D_0\ar[r]^-{\iota_{2, D_0}}  \ar[d]_{\iota_{1, D_0}}&  \lpro \der{D}_1 \rpro\ar[d]^{p_2}\\ \lpro \der{D}_1 \rpro \ar[r]_{p_1}  &\tpro{D} }\]
 \end{remark}
 
 \begin{proof}\begin{enumerate}
@@ -1044,10 +1046,10 @@ showing that $c'=c$ as wanted.
 \begin{proof} We split the cases.
 	\begin{itemize}
 		\item $j=0$. Consider $\der{D}_1:=\{\dder{D}_0\}$ and $\der{D}_2:=\{\dder{D}_i\}_{i=1}^n$.  Consider the diagram below in which, by \Cref{rem:zero}, the rectangle on the bottom right is a pushout.
-		\[\xymatrix@C= 40pt{T  \ar@/_.3cm/[dddr]_{a}\ar@{.>}[dr]^{t}\ar[rr]^{b}&& G_k \ar@/^.3cm/[dr]^{\iota_{2, G_k}} \ar@/_.25cm/[dddr]|(.31)\hole_{\iota_{G_k}}\\&D_{0} \ar[r]^{g_0}\ar[d]_{f_0}& G_{1} \ar[r]^-{\iota_{2,G_{1}}} & \lpro \der{D}_2\rpro \ar[dd]^{p_2} \\ &G \ar[drr]^{\iota_G} \ar[d]^{\iota_{1,G}}\\ &\lpro \der{D}_1 \rpro \ar[rr]_{p_1}  &&\tpro{D} }\] 
+		\[\xymatrix@C= 40pt{T  \ar@/_.6cm/[ddd]_{a}\ar@{.>}[d]^{t}\ar[rr]^{b}&& G_k \ar[d]_{\iota_{2, G_k}} \ar@/^.6cm/[ddd]^{\iota_{G_k}}\\D_{0} \ar[r]^{g_0}\ar[d]^{f_0}& G_{1} \ar[r]^-{\iota_{2,G_{1}}} & \lpro \der{D}_2\rpro \ar[dd]_{p_2} \\ G \ar[drr]^{\iota_G} \ar[d]^{\iota_{1,G}}\\ \lpro \der{D}_1 \rpro \ar[rr]_{p_1}  &&\tpro{D} }\] 
 		Since $f_0$ and $\iota_{1,G}$ are in $\mathcal{M}$ the same rectangle is an $\mathcal{M}$-pushout and so, by \Cref{prop:pbpoad} is a pullback and the thesis follows.
 		\item   $j\neq 0$. We proceed as in the point above. Using point $4$ of \Cref{lem:colim} we know that the bottom right rectangle in the diagram below is a pushout. 
-			\[\xymatrix@C=30pt{T  \ar@/_.3cm/[dddr]_{a}\ar@{.>}[dr]^{t}\ar[rr]^{b}&& G_k \ar@/^.3cm/[dr]^{\iota_{2, G_k}} \ar@/_.25cm/[dddr]|(.31)\hole_{\iota_{G_k}}\\&D_{j} \ar[r]^{g_j}\ar[d]_{f_j}& G_{j+1} \ar[r]^-{\hat{\iota}_{G_{j+1}}} & \lpro \der{\hat{D}}\rpro \ar[dd]^{p_2} \\ &G_j \ar[d]^{\iota'_{G_j}}\\ &\lpro \der{D}' \rpro \ar[rr]_{p_1}  &&\tpro{D} }\] 
+			\[\xymatrix@C=30pt{T  \ar@/_.6cm/[ddd]_{a}\ar@{.>}[d]^{t}\ar[rr]^{b}&& G_k \ar[d]_{\iota_{2, G_k}} \ar@/^.6cm/[ddd]^{\iota_{G_k}}\\D_{j} \ar[r]^{g_j}\ar[d]^{f_j}& G_{j+1} \ar[r]^-{\hat{\iota}_{G_{j+1}}} & \lpro \der{\hat{D}}\rpro \ar[dd]_{p_2} \\ G_j \ar[d]^{\iota'_{G_j}} \ar[drr]^{\iota_{G_j}}\\ \lpro \der{D}' \rpro \ar[rr]_{p_1}  &&\tpro{D} }\] 
 		Point $2$ of \Cref{lem:colim} entails that $\iota'_{G_j}$ is in $\mathcal{M}$, and so is $f_j$ as it is the pushout of $l_j$. Thus the rectangle we are considering is an $\mathcal{M}$-pushout and the thesis follows again from \Cref{prop:pbpoad}. \qed
 	\end{itemize}
 \end{proof}	
@@ -1304,7 +1306,7 @@ Therefore the two dotted arrows $u:K\to P$ and $u':K'\to P$ exist. We have to sh
 \end{enumerate}
 \end{proof}
 
-\begin{remark} \cite{baldan2011adhesivity} identifies a large class of (quasi)adhesive categories with the property that every left linear DPO-rewriting system on them is tame. We reproduce these results in \Cref{app:fill}. 
+\begin{remark} \cite{baldan2011adhesivity} identifies a large class of (quasi)adhesive categories with the property that every left linear DPO-rewriting system on them is tame. We adapt these results to our context in \Cref{app:fill}. 
 \end{remark}
 
 We are now going to justify the choice of the name for the relation $\updownarrow$, showing that two switchable direct derivations $\dder{D}$ and $\dder{D'}$ can be actually switched. 
@@ -1320,6 +1322,16 @@ Let $(i_1, i_2)$ be a good independence pair and consider the following diagram:
 	The \emph{switching} $\sder{D}{D'}$ of $\dder{D}$ and $\dder{D'}$ is the derivation $S_{i_1,i_2}(\dder{D}')\cdot S_{i_1,i_2}(\dder{D})$.
 \end{definition}
 
+\begin{remark}\label{rem:pbsalva}
+Let $(i_1,i_2)$ be a good independence pair between the derivation $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$.  Let also $\der{\hat{D}}$ be the derivation consisting only in $S_{i_1,i_2}(\dder{D})$. We have a diagram 
+\[\xymatrix{P\ar[r]^{q}  \ar[d]_{p}& Q \ar[r]^{v} \ar[d]^{s}& J \ar[r]^{\hat{\iota}_J}& \lpro \der{\hat{D}} \rpro \ar[d]^{\hat{p}}  \\D	\ar[r]_{f} &G \ar[rr]_{\iota_{G}}&& \lpro S_{i_1, i_2}(\dder{D}, \dder{D}')\rpro}\]
+By \Cref{rem:zero,rem:deco}, its two halves are pullbacks and so, by \Cref{lem:pb1} the whole rectangle is a pullback too. Moreover, notice that
+\begin{align*}
+	\hat{\iota}_J\circ v \circ q &= \hat{\iota}_J\circ v'\circ q'\\&= \hat{\iota}_{Q'}\circ q'
+\end{align*}
+which entails that the rectangle below is a pullback too.
+\[\xymatrix{P\ar[r]^{q'}  \ar[d]_{p}& Q' \ar[r]^{\hat{\iota}_{Q'}}& \lpro \der{\hat{D}} \rpro \ar[d]^{\hat{p}}  \\D	\ar[r]_{f} &G \ar[r]_-{\iota_{G}}& \lpro S_{i_1, i_2}(\dder{D}, \dder{D}')\rpro}\]
+\end{remark}
 
 \begin{remark}\label{rem:indip}Notice that $(j', j)$ is an independence pair for $S_{i_1,i_2}(\dder{D}')$ and $S_{i_1,i_2}(\dder{D})$. This is witnessed by the following diagram, commutative by construction.
 	\[\xymatrix@C=15pt{L' \ar[d]_{f\circ i_2}&& K' \ar[d]_{q\circ u'}\ar[ll]_{l'} \ar[r]^{r'} & R' \ar@/^.35cm/[drrr]_(.4){j'}|(.285)\hole \ar[dr]|(.28)\hole_{v'\circ j'} && L \ar@/_.35cm/[dlll]^(.4){j} \ar[dl]|(.28)\hole^{v\circ j}& K \ar[d]^{q'\circ u}\ar[l]_{l} \ar[rr]^{r} && R \ar[d]^{g'\circ i_1}\\G && \ar[ll]^{s} Q \ar[rr]_{v}&& J  && \ar[ll]^{v'} Q' \ar[rr]_{t}&& T}\]
@@ -1346,6 +1358,8 @@ By \Cref{rem:indip} we know that $(j,j')$ is an independence pair. The results a
 \end{proof}
 
 The previous remark allow us to further switch the direct derivation $S_{i_1,i_2}(\dder{D})$ and $S_{i_2,i_2}(\dder{D}')$. The following lemma guarantees us that, in this way, we get back a derivation which is abstraction equivalent to $\dder{D}\cdot \dder{D}'$.
+
+\todo{introdurre decorazione}
 
 \begin{lemma}\label{lem:rev}
 	Let $\dder{D}:G\Mapsto H$ and $\dder{D}':H\Mapsto T$ be two direct derivations in a left-linear DPO-rewriting system $(\X, \R)$ and let $(i_1,i_2)$ be a good independence pair between them. Then $S_{j',j}(S_{i_1,i_2}(\dder{D}, \dder{D'}))$ is abstraction equivalent to $\dder{D}\cdot \dder{D}'$. 
@@ -1376,13 +1390,10 @@ The previous remark allow us to further switch the direct derivation $S_{i_1,i_2
 	\[\xymatrix{K\ar[r]^{\id{K}} \ar[d]_{(\phi')^{-1} \circ e' \circ u}&K\ar[d]_{e'\circ u} \ar[r]^{l} & L \ar[d]^{s\circ j} \\D\ar[r]_{\phi'} & E' \ar[r]_{a}&G}\]
 	are pullbacks. Thus the whole diagram is a pullback. But, by construction $s\circ j =n$ and we have already proved that $a\circ \phi'=f$. We then conclude that ther exists an isomorphism $\zeta:K\to K$ which makes the diagram below commutative
 	\[\xymatrix{K \ar@{.>}[r]_{\zeta}\ar@/^.4cm/[rr]^{l}  \ar@/_.5cm/[dr]_{(\phi')^{-1} \circ e' \circ u}& K \ar[r]_{l} \ar[d]_{n} & L \ar[d]^{n} \\ & D \ar[r]_{f} & G}\]
-	The commutativity of the upper triangle entails
-	\[l\circ \zeta=l\]
-	but $l$, being an element of $\mathcal{M}$ is mono, so that $\zeta=\id{K}$. From this, we can conclude that
+	The commutativity of the upper triangle entails $l\circ \zeta=l$. Since $l$ is an element of $\mathcal{M}$  we can deduce that. $\zeta=\id{K}$. From this, we conclude that
 	\[e'\circ u = \phi' \circ k\]
 	
-	
-	As a next step, notice the existence of $\phi$ and $\phi'$, together with \cref{rem:deco}, entails  the existence of a third isomorphism $\psi:H\to F$ fitting in the diagram below.
+	As a next step, notice the existence of $\phi$ and $\phi'$, together with \Cref{rem:deco}, entails  the existence of a third isomorphism $\psi:H\to F$ fitting in the diagram below.
 	\[\xymatrix{P  \ar[d]^{p'}\ar@/_.4cm/[dd]_{e}\ar@/^.4cm/[rr]^{e'} \ar[r]_{p} & D \ar[d]^{g} \ar[r]_{\phi'} & E'\ar[d]^{w'}\\D' \ar[d]^{\phi} \ar[r]_{f'} & H\ar@{.>}[r]^{\psi} & F \\E \ar@/_.4cm/[urr]_{w}}\]
 Now, if we compute, we get
 \begin{align*}
@@ -1455,7 +1466,7 @@ We can now prove some properties of switch equivalence.
 
 
 
-\begin{lemma} Let $(\X, \R)$ be a left-linear DPO-rewriting system $(\X, \R)$. Then the following hold true
+\begin{lemma}\label{lem:consperm} Let $(\X, \R)$ be a left-linear DPO-rewriting system $(\X, \R)$. Then the following hold true
 	\begin{enumerate}
 		\item If $\dder{D}$ and $\dder{D'}$ are two direct derivations such that $\dder{D}\updownarrow \dder{D'}$, then for every filler $(u,u')$ between them, the function
 		\[\tau:2\to2 \qquad x \mapsto \begin{cases}
@@ -1523,7 +1534,7 @@ We can now prove some properties of switch equivalence.
 			The thesis now follows. \qed
 \end{proof}
 
-\begin{corollary} Given a tame  left-linear DPO-rewriting system  $(\X,\R)$ with $\X$ an $\mathcal{M}$-adhesive category and a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$, the following are true: 
+\begin{corollary} Given a tame  left-linear DPO-rewriting system  $(\X,\R)$ with $\X$ an $\mathcal{M}$-adhesive category and a decorated derivation $(\der{D}, \alpha, \omega)$ with $\der{D}=\{\dder{D}_i\}_{i=0}^2$. Then the following are true: 
 	\begin{enumerate}
 		\item suppose that $(a_1,a_2)$ and $(e_0,e_1)$ are independence pairs witnessing  $\dder{D}_1\updownarrow_! \dder{D}_2$ and $\dder{D}_0\updownarrow_! S_{a_1,a_2}(\dder{D}_2)$ respectively, if $\dder{D}_0\updownarrow_!\dder{D}_1$, then $S_{e_0,e_1}(\dder{D}_0)\updownarrow_!S_{a_2,a_2}(\dder{D}_1)$;
 		\item 
@@ -1531,12 +1542,20 @@ We can now prove some properties of switch equivalence.
 \end{corollary}
 \begin{proof}
 	\begin{enumerate}
-		\item Let $(i_1,i_2)$ be the unique independence pair between $\dder{D}_0$ and $\dder{D}_1$.  By tameness and \Cref{lem:iig1} we know that $S_{e_0,e_1}(\dder{D}_0)\updownarrow S_{a_1,a_2}(\dder{D}_1)$. Let $(\alpha_1, \alpha_2)$ be the independence pair constructed in the proof of \Cref{lem:iig1}. Take another independence pair $(\beta_1, \beta_2)$,  by \Cref{rem:weak} we already know that $\beta_1=\alpha_1$. Now, using the same notation as the proof of \Cref{lem:iig1}, we have 
-		\[x_2\circ \beta_1 = y_1\circ e_0 \qquad z'_1\circ \beta_2 = y_1\circ b_1\]
+		\item Let $(i_1,i_2)$ be the unique independence pair between $\dder{D}_0$ and $\dder{D}_1$.  By tameness and \Cref{lem:iig1} we know that $S_{e_0,e_1}(\dder{D}_0)\updownarrow S_{a_1,a_2}(\dder{D}_1)$. Let $(\alpha_1, \alpha_2)$ be the independence pair constructed in the proof of \Cref{lem:iig1}. Take another independence pair $(\beta_1, \beta_2)$,  by \Cref{rem:weak} we already know that $\beta_1=\alpha_1$. Let also $\der{E}$ be the derivation $S_{e_0, e_1}(S_{a_1, a_2}(\der{D}_2))\cdot S_{e_0, e_1}(\dder{D}_0) \cdot S_{a_1, a_2}(\der{D}_1)$. Let $\sigma:[0,2]\to [0,2]$ be the cycle $(0,1,2)$. By \Cref{lem:consperm} we know that $\sigma$ is a consistente permutation between $(\der{D}, \alpha, \omega)$ and $(\der{E}, \alpha, \omega)$. In particular, we have
+		\begin{align*}
+			\iota_{\der{E}, G_0}\circ f_0\circ  i_1 &=\xi_\sigma \circ 	\iota_{\der{D}, G_0}\circ f_0\circ  i_1 \\&= \xi_\sigma \circ 	\iota_{\der{D}, D_0}\circ  i_1\\ &= \xi_\sigma \circ \iota_{\der{D}, G_1} \circ g_0\circ  i_1 \\&=\xi_\sigma \circ \iota_{\der{D}, G_1}\circ m_1\\ &=  \iota_{\der{E}, G'_2}\circ y_1\circ b_1\\&= \iota_{\der{E}, G'_2}\circ z'_1\circ \beta_2\\&= \iota_{\der{E}, Q_5}\circ \beta_2 
+		\end{align*}
+		Using	\Cref{rem:pbsalva} we can deduce the existence of a unique arrow $\beta'_2:L_1\to P_3$ fitting in the diagram below
+		\[\xymatrix{L_1 \\& P_3 & Q_5\\
+		&D_0& \tpro{E}}\]
+		If we further compute, we get
+		\begin{align*}
+			y_1\circ u_1\circ \beta'_2\\&=z'_1\circ n_1\circ \beta'_2=\\&= z'_1\circ \beta_2 \\&=y_1\circ b_1
+		\end{align*}
+		Thus $(u_1\circ \beta'_2, b_2)$ is an independence pair between $S_{a_1, a_2}(\der{D}_2)$ and $S_{a_1, a_2}(\der{D}_1)$ therefore, by hypothesis $u_1\circ \beta'_2=b_1$. But this implies that $\beta'_2$ and $\alpha'_2$ are equal, giving us the thesis.
 		
-		In particular, this implies that there exist $\beta'_1:R_0\to P_2$, $\beta'_2:L_1\to P_3$ as in the diagrams below.
-		\[\xymatrix{R_0 &&& L_1\\ & P_2 & Q_3 && P } \]
-		
+\todo{ripulire le ipotesi: serve scambiabilità propria tra 1 e 2}
 		
 		\item \qed 
 	\end{enumerate}
