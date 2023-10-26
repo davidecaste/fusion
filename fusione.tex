@@ -1540,22 +1540,26 @@ We can now prove some properties of switch equivalence.
 		\item 
 	\end{enumerate}
 \end{corollary}
+
+\todo{ripulire le ipotesi: serve scambiabilità propria tra 1 e 2}
+\todo{sistemare il fatto che qua utilizziamo derivazioni di 3 passi}
 \begin{proof}
 	\begin{enumerate}
-		\item Let $(i_1,i_2)$ be the unique independence pair between $\dder{D}_0$ and $\dder{D}_1$.  By tameness and \Cref{lem:iig1} we know that $S_{e_0,e_1}(\dder{D}_0)\updownarrow S_{a_1,a_2}(\dder{D}_1)$. Let $(\alpha_1, \alpha_2)$ be the independence pair constructed in the proof of \Cref{lem:iig1}. Take another independence pair $(\beta_1, \beta_2)$,  by \Cref{rem:weak} we already know that $\beta_1=\alpha_1$. Let also $\der{E}$ be the derivation $S_{e_0, e_1}(S_{a_1, a_2}(\der{D}_2))\cdot S_{e_0, e_1}(\dder{D}_0) \cdot S_{a_1, a_2}(\der{D}_1)$. Let $\sigma:[0,2]\to [0,2]$ be the cycle $(0,1,2)$. By \Cref{lem:consperm} we know that $\sigma$ is a consistente permutation between $(\der{D}, \alpha, \omega)$ and $(\der{E}, \alpha, \omega)$. In particular, we have
+		\item Let $(i_1,i_2)$ be the unique independence pair between $\dder{D}_0$ and $\dder{D}_1$.  By tameness and \Cref{lem:iig1} we know that $S_{e_0,e_1}(\dder{D}_0)\updownarrow S_{a_1,a_2}(\dder{D}_1)$. Let $(\alpha_1, \alpha_2)$ be the independence pair constructed in the proof of \Cref{lem:iig1}. Take another independence pair $(\beta_1, \beta_2)$,  by \Cref{rem:weak} we already know that $\beta_1=\alpha_1$. Let also $\der{E}$ be the derivation $S_{e_0, e_1}(S_{a_1, a_2}(\der{D}_2))\cdot S_{e_0, e_1}(\dder{D}_0) \cdot S_{a_1, a_2}(\der{D}_1)$. Let $\sigma:[0,2]\to [0,2]$ be the cycle $(0,1,2)$. By \Cref{lem:consperm} we know that $\sigma$ is a consistent permutation between $(\der{D}, \alpha, \omega)$ and $(\der{E}, \alpha, \omega)$. In particular, we have
 		\begin{align*}
 			\iota_{\der{E}, G_0}\circ f_0\circ  i_1 &=\xi_\sigma \circ 	\iota_{\der{D}, G_0}\circ f_0\circ  i_1 \\&= \xi_\sigma \circ 	\iota_{\der{D}, D_0}\circ  i_1\\ &= \xi_\sigma \circ \iota_{\der{D}, G_1} \circ g_0\circ  i_1 \\&=\xi_\sigma \circ \iota_{\der{D}, G_1}\circ m_1\\ &=  \iota_{\der{E}, G'_2}\circ y_1\circ b_1\\&= \iota_{\der{E}, G'_2}\circ z'_1\circ \beta_2\\&= \iota_{\der{E}, Q_5}\circ \beta_2 
 		\end{align*}
 		Using	\Cref{rem:pbsalva} we can deduce the existence of a unique arrow $\beta'_2:L_1\to P_3$ fitting in the diagram below
-		\[\xymatrix{L_1 \\& P_3 & Q_5\\
-		&D_0& \tpro{E}}\]
+		\[\xymatrix@C=30pt{L_1  \ar@/^.3cm/[drr]^{\beta_2} \ar@/_.3cm/[ddr]_{i_1}\ar@{.>}[dr]^{\beta'_2}\\& P_3 \ar[r]^{n_1}  \ar[d]_{u_0}& Q_5 \ar[d]^{\iota_{\dder{E}, Q_5}}\\
+		&D_0 \ar[r]_{\iota_{\dder{E}, G_0}}& \tpro{E}}\]
 		If we further compute, we get
 		\begin{align*}
-			y_1\circ u_1\circ \beta'_2\\&=z'_1\circ n_1\circ \beta'_2=\\&= z'_1\circ \beta_2 \\&=y_1\circ b_1
+			y_1\circ u_1\circ \beta'_2&=z'_1\circ n_1\circ \beta'_2=\\&= z'_1\circ \beta_2 \\&=y_1\circ b_1
 		\end{align*}
 		Thus $(u_1\circ \beta'_2, b_2)$ is an independence pair between $S_{a_1, a_2}(\der{D}_2)$ and $S_{a_1, a_2}(\der{D}_1)$ therefore, by hypothesis $u_1\circ \beta'_2=b_1$. But this implies that $\beta'_2$ and $\alpha'_2$ are equal, giving us the thesis.
 		
 \todo{ripulire le ipotesi: serve scambiabilità propria tra 1 e 2}
+\todo{sistemare il fatto che qua utilizziamo derivazioni di 3 passi}
 		
 		\item \qed 
 	\end{enumerate}
