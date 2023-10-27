@@ -1,6 +1,6 @@
  %(query-replace-regexp "\\\\sqsubseteq^{sh}_{\\([^}]*\\)}" "\\\\shiftpre[\\1]")
 % --- LNCS ---'
-\documentclass{llncs}
+\documentclass{article}
 
 \usepackage{hyperref}
 \usepackage[textsize=tiny]{todonotes}
@@ -83,9 +83,9 @@
 %from pawel
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath}
-%2 righe tolte da Fabio
+
 \usepackage{amssymb}
-%\usepackage{amsthm}
+\usepackage{amsthm}
 \usepackage{enumerate}
 \usepackage{xspace}
 \usepackage{amsfonts}
@@ -97,7 +97,7 @@
 \usepackage{cleveref}
 
 
-\spnewtheorem*{notation}{Notation}{\bfseries}{\rmfamily}
+%\spnewtheorem*{notation}{Notation}{\bfseries}{\rmfamily}
 
 %%%%%%%% MATHEMATICAL NOTATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -401,6 +401,18 @@
 % interchange
 \newcommand{\IC}[1]{\ensuremath{\mathit{IC}({#1})}}
 
+%%%%% Ambienti matematici  %%%%%%
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{notation}{Notation}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
 
 \title{Switch equivalence and weak prime domains for fusions}
 \author{Paolo Baldan \and Davide Castelnovo  \and  Andrea Corradini  \and Fabio Gadducci}
@@ -408,10 +420,13 @@
 \begin{document}
 \maketitle
 
+
+
 \begin{abstract}
 \todo{	A VERY NICE ABSTRACT}
 \end{abstract}
 
+\tableofcontents
 \section{Introduction}
 
 \todo{A VERY NICE INTRODUCTION}
@@ -487,7 +502,7 @@ The following proposition establishes a key property of Van Kampen squares with 
 \end{proposition}
 \begin{proof} Take the following cube:
 	\[\xymatrix@C=13pt@R=13pt{&A\ar[dd]|\hole_(.65){\id{A}}\ar[rr]^{g} \ar[dl]_{\id{A}} && B \ar[dd]^{\id{B}} \ar[dl]_{\id{B}} \\ A  \ar[dd]_{m}\ar[rr]^(.65){g} & & B \ar[dd]_(.3){n}\\&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{f} & & D}\]
-	By construction the top face of the cube is a pushout and the back one a pullback. The left face is a pullback because $m$ is mono. Thus the Van Kampen property yields that the front and the right faces are pullbacks and the thesis follows. \qed 
+	By construction the top face of the cube is a pushout and the back one a pullback. The left face is a pullback because $m$ is mono. Thus the Van Kampen property yields that the front and the right faces are pullbacks and the thesis follows. \qedhere 
 \end{proof}
 
 The previous proposition, in turn, allows us to establish the following results.
@@ -512,7 +527,7 @@ Supppose, moreover that $d:D'\to D$ is mono, then $d\leq n$ if and only if $c \l
 	\smallskip \noindent 
 	$(\Leftarrow)$ Let $h:C\to A$ be such that $c=m\circ h$. By the Van Kampen property the top face of the given cube is a pushout. Thus the dotted $k:D'\to B$ in the following diagram exists.
 		\[\xymatrix@C=40pt{A' \ar@/^.3cm/[ddr]^(.8){a} \ar[d]_{m'} \ar[r]^{f'} & B' \ar[d]^{n'} \ar@/^.3cm/[ddr]^{b} \\  C' \ar@/_.3cm/[dr]_{h} \ar[r]_{g'}|(.7)\hole & D' \ar@{.>}[dr]^{k}\\ &A \ar[r]_f& B }\]
-	The thesis now follows at once. \qed 
+	The thesis now follows at once. \qedhere 
 \end{proof}
 
 Finally, we can show that stable pushouts enjoy a kind of \emph{pullback-pushout decomposition} property.
@@ -524,7 +539,7 @@ Finally, we can show that stable pushouts enjoy a kind of \emph{pullback-pushout
 
 \begin{proof} We can begin noticinng that $g$, being the pullback of the monomorphism $k$, is monic too. Thus we can build the cube below, in which all the vertical faces are pullbacks.
 	\[\xymatrix@C=20pt@R=10pt{ & &X\ar[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar[ddd]_{g} \ar[rrr]^{b}&&& B\ar[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar[dl]_{f}&&& A \ar[dl]^{h}\\ & Y  \ar[dl]_{g}&&& B \ar[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
-	By hypothesis the face is a stable pushout and so its top one is a pushout. \Cref{lem:po1} now entails that the right half of the rectangle with which we have started is a pushout too. \qed 
+	By hypothesis the face is a stable pushout and so its top one is a pushout. \Cref{lem:po1} now entails that the right half of the rectangle with which we have started is a pushout too. \qedhere 
 \end{proof}
 
 \subsection{$\mathcal{M}$-adhesivity}
@@ -599,7 +614,7 @@ From \Cref{prop:pbpoad}, in turn, we can derive the following corollaries.
 \begin{proof}
 Let $m$ be an element of $\mathcal{M}$ and consider its pushout along itself.
 \[\xymatrix{X\ar[r]^m \ar[d]_m& Y\ar[d]^{f}\\Y \ar[r]_g & Z}\]
-By \Cref{prop:pbpoad} this square is a pullback, proving that $m$ is the equalizer of the arrows $f,g\colon Y\rightrightarrows Z$. \qed 
+By \Cref{prop:pbpoad} this square is a pullback, proving that $m$ is the equalizer of the arrows $f,g\colon Y\rightrightarrows Z$. \qedhere 
 \end{proof}
 
 The following result now follows at once noticing that a regular monomorphism which is also epic is automatically an isomorphism.
@@ -661,7 +676,7 @@ We end this section proving two properties of $\mathcal{M}$-adhesive categories:
 	
 	Using \Cref{lem:po1}, it is enough to show that the left half of the original rectangle is a pushout. We can build the same cube of the previous point:
 	\[\xymatrix@C=20pt@R=10pt{ & &X\ar[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar[ddd]_{g} \ar[rrr]^{b}&&& B\ar[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar[dl]_{f}&&& A \ar[dl]^{h}\\ & Y \ar[rrr]|(.67)\hole^{b} \ar[dl]_{g}&&& B \ar[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
-	Its vertical faces are all pullbacks, those the top one is a pushout and we can conclude. \qed 
+	Its vertical faces are all pullbacks, those the top one is a pushout and we can conclude. \qedhere 
 \end{enumerate}
 \end{proof}
 
@@ -703,7 +718,7 @@ To prove the existence of the wanted $f$, we can start observing that $k_1$ and 
 	\begin{align*}
 		k_2\circ f \circ h_1 & = k_1\circ h_1\\&= n\circ m\\&= k_2\circ h_2
 	\end{align*}
-	The claim now follows since $k_2$ is a monomoprhism. \qed 
+	The claim now follows since $k_2$ is a monomoprhism. \qedhere 
 \end{proof}
 
 
@@ -761,19 +776,17 @@ If we look to direct derivations as transitions, it is natural to consider them 
 \end{definition}
 
 \begin{remark}
-	If $\X$ is not a small category , then $\gpo$ has a proper class of vertices.
+We can spell out more explicitly what  a derivation $\dder{D}$ betwee nis.  An \emph{empty derivation} starting and ending in $G$ is just $G$ itself.  A \emph{non-empty derivation} $\dder{D}$ is a sequence $\{\dder{D}_i\}_{i=0}^n$ of direct derivations such that:
+\begin{enumerate}
+	\item for every index $i$, $\dder{D}_i$ is a direct derivation $G_i \Mapsto G_{i+1}$;
+	\item $G_0=G$ and $G_{n+1}=H$.
+\end{enumerate}
+
+We will call the number $n+1$ the \emph{length} of the derivation, denoted by $\lgt(\der{D})$. We will also say that an empty derivation has length $0$. 
+
+Moreover,  if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then we can define an associated sequence of rules as $r(\der{D})$ as $\{\rho_i\}_{i=0}^n$.
 \end{remark}
-
-	We can spell out more explicitly what  a derivation $\dder{D}$ between $G$ and $H$ is.  $\dder{D}$ is a, possibly empty, sequence $\{\dder{D}_i\}_{i=0}^n$ of direct derivations such that:
-	\begin{enumerate}
-		\item for every index $i$, $\dder{D}_i$ is a direct derivation $G_i \Mapsto G_{i+1}$;
-		\item $G_0=G$ and $G_{n+1}=H$.
-	\end{enumerate}
 	
-	We will call the number $n+1$ the \emph{length} of the derivation, denoted by $\lgt(\der{D})$. We will also say that an empty derivation has length $0$. 
-	
-	Moreover,  if $\mathcal{D}_i$ is an application of the rule $\rho_i\in R$, then we can define an associated sequence of rules as $r(\der{D})$ as $\{\rho_i\}_{i=0}^n$.
-
 \begin{notation}Let $\der{D}=\{\dder{D}_i\}_{i=0}^n$ be a derivation. We will depict the $i^\text{th}$ element $\dder{D}_i$ of $\der{D}$ as in the following diagram.  
 	\[\xymatrix{L_i \ar[d]_{m_i}& K_i \ar[d]^{k_i}\ar[l]_{l_i} \ar[r]^{r_i} & R_i \ar[d]^{h_i} \\G_{i} & \ar[l]^{f_{i}} D_{i} \ar[r]_{g_{i}}& G_{i+1} }\]
 	Notice that, in particular, if $\der{D}:G\to H$, then $G_0=G$ and $G_{n+1}=H$. When $\der{D}$ has length $1$ we will suppress the indexes. In such case, we will also identify $\der{D}$ with its only element. 
@@ -783,16 +796,14 @@ If we look to direct derivations as transitions, it is natural to consider them 
 \end{example}
 
 \begin{definition}
-	The \emph{DPO-derivation category} $\dpo$ of a left-linear DPO-rewriting system $(\X, \R)$ is the free category on $\gpo$.
-\end{definition}
+	The \emph{DPO-derivation category} $\dpo$ of a left-linear DPO-rewriting system $(\X, \R)$ is the category in which arrows between $G$ and $H$ are given by, possibly empty, derivations. Composition is concatenation of paths in $\gpo$ and identities are given by empty derivations.
+\end{definition} 	
 \begin{remark}
-Derivations, being paths in a graph, can be concatenate: given $\der{D}=\{\dder{D}\}_{i=0}^n$ between $G$ and $H$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^m$, their \emph{concatenation} $\der{D}\cdot\der{D}'$ is the derivation $\{\dder{E}_i\}_{i=0}^{m+n+1}$ in which
-\[\dder{E}_i:=\begin{cases}
-	\dder{D}_i & i \leq n\\
-	\dder{D}'_{i-(n+1)} & n< i 
-\end{cases}\]	
-
-It is immediate to see that the concatenation of two non-empty derivations coincides with their composition in $\dpo$. 
+	More explicitly, given $\der{D}=\{\dder{D}\}_{i=0}^n$ between $G$ and $H$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^m$, their concatenation $\der{D}\cdot\der{D}'$ is the derivation $\{\dder{E}_i\}_{i=0}^{m+n+1}$ in which
+	\[\dder{E}_i:=\begin{cases}
+		\dder{D}_i & i \leq n\\
+		\dder{D}'_{i-(n+1)} & n< i 
+	\end{cases}\]	
 \end{remark}
 
  \Cref{exa:conc} allows us to compose derivations with isomorphisms.
@@ -820,7 +831,7 @@ By definition the inclusion $\ske \to \X$ is an equivalence. In particular, this
 	Every category $\X$ has a skeleton. 
 \end{proposition}
 \begin{proof}
-	For every object $X\in \X$, pick a single representative $\pi(X)$ of its isomorphism class. Let $\ske$ be the full subcategory given by these objects. By definition $\ske$ is skeletal and the inclusion functor is full, faithful and essentially surjective.\qed 
+	For every object $X\in \X$, pick a single representative $\pi(X)$ of its isomorphism class. Let $\ske$ be the full subcategory given by these objects. By definition $\ske$ is skeletal and the inclusion functor is full, faithful and essentially surjective.\qedhere 
 \end{proof}
 \begin{remark}
 	The proof of \Cref{prop:ske} relies on the axiom of choice for classes.
@@ -832,6 +843,11 @@ By definition the inclusion $\ske \to \X$ is an equivalence. In particular, this
 \begin{definition}
 	Let $(\X, \R)$ be a left-linear DPO-rewriting system, a \emph{decorated derivation} between two objects $G$ and $H$ is a triple $(\der{D}, \alpha, \omega)$, where $\der{D}$ is a derivation between $G$ and $H$, and $\alpha:\pi(G)\to G$ and $\omega:\pi(H)\to H$ are isomorphisms.
 \end{definition}
+
+\begin{remark}A decorated derivation $(\der{D}, \alpha, \omega)$ with $\der{D}$ empty is just a span
+	\[\xymatrix{G & \pi(G) \ar[r]^{\omega} \ar[l]_{\alpha} & G}\]
+	in which both $\omega$ and $\alpha$ are isomorphisms.
+\end{remark}
 
 As we are interested in objects only up to isomorphism, so we are interested in (decorated) derivations only up to some notion of coherent isomorphism between them.
 
@@ -899,7 +915,7 @@ The previous two identities show that $\psi^{n+1}$ is an abstract equivalence be
 	\end{split}\qquad \begin{split}
 	\psi^{n+m-1}_3\circ \xi &=\varphi^m_3\circ \xi \\&= \xi'
 	\end{split}\]
-Therefore the thesis now follows.	\qed 
+Therefore the thesis now follows.	\qedhere 
 \end{proof}
 
 \begin{definition}
@@ -1036,7 +1052,7 @@ showing that $c'=c$ as wanted.
 			b\circ \iota'_{G_j} \circ f_j  & X=D_j
 		\end{cases}\\&=c_X\\&=c\circ \iota_X
 	\end{align*}
-	allowing us to deduce that $c'=c$.	\qed 	
+	allowing us to deduce that $c'=c$. \qedhere 
 	\end{enumerate}
 \end{proof}
 \begin{corollary}\label{cor:ele}
@@ -1050,7 +1066,7 @@ showing that $c'=c$ as wanted.
 		Since $f_0$ and $\iota_{1,G}$ are in $\mathcal{M}$ the same rectangle is an $\mathcal{M}$-pushout and so, by \Cref{prop:pbpoad} is a pullback and the thesis follows.
 		\item   $j\neq 0$. We proceed as in the point above. Using point $4$ of \Cref{lem:colim} we know that the bottom right rectangle in the diagram below is a pushout. 
 			\[\xymatrix@C=30pt{T  \ar@/_.6cm/[ddd]_{a}\ar@{.>}[d]^{t}\ar[rr]^{b}&& G_k \ar[d]_{\iota_{2, G_k}} \ar@/^.6cm/[ddd]^{\iota_{G_k}}\\D_{j} \ar[r]^{g_j}\ar[d]^{f_j}& G_{j+1} \ar[r]^-{\hat{\iota}_{G_{j+1}}} & \lpro \der{\hat{D}}\rpro \ar[dd]_{p_2} \\ G_j \ar[d]^{\iota'_{G_j}} \ar[drr]^{\iota_{G_j}}\\ \lpro \der{D}' \rpro \ar[rr]_{p_1}  &&\tpro{D} }\] 
-		Point $2$ of \Cref{lem:colim} entails that $\iota'_{G_j}$ is in $\mathcal{M}$, and so is $f_j$ as it is the pushout of $l_j$. Thus the rectangle we are considering is an $\mathcal{M}$-pushout and the thesis follows again from \Cref{prop:pbpoad}. \qed
+		Point $2$ of \Cref{lem:colim} entails that $\iota'_{G_j}$ is in $\mathcal{M}$, and so is $f_j$ as it is the pushout of $l_j$. Thus the rectangle we are considering is an $\mathcal{M}$-pushout and the thesis follows again from \Cref{prop:pbpoad}. \qedhere
 	\end{itemize}
 \end{proof}	
 	
@@ -1139,7 +1155,7 @@ Now, notice that, given a consistent permutation $\sigma$, $\xi_\sigma:\tpro{D}\
 \todo{il caso in cui sigma si decomponga come due permu}
 \end{proposition}
 \begin{proof}
-	contenuto...\qed 
+	contenuto...\qedhere 
 \end{proof}
 
 We are now ready to prove the central result of this section. 
@@ -1173,13 +1189,13 @@ Let $(\X,R)$ ba left-linear DPO-rewriting system and suppose that every rule in 
 	\todo{prefisso e suffisso}
 \end{corollary}
 \begin{proof}
-	contenuto...\qed 
+	contenuto...\qedhere 
 \end{proof}
 
 \section{Shift equivalence and traces}
 \todo{A VERY NICE INTRO}
 
-\subsection{Sequentially independendent and switchable derivations}
+\subsection{Sequentially independent and switchable derivations}
 \todo{A VERY NICE INTRO}
 
 \begin{definition}  Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Let also $\dder{D}:G\Mapsto H$ and $\dder{D'}:H\Mapsto T$ be the two direct derivations depicted below.
@@ -1302,7 +1318,7 @@ Therefore the two dotted arrows $u:K\to P$ and $u':K'\to P$ exist. We have to sh
 	\item  By construction $p\circ u = k$ and $p'\circ u'=k'$. Since $(\X, \R)$ is linear, then $r':K'\to R'$ belongs to $\mathcal{M}$, thus it admits a pushout along $u':K'\to P$, as wanted.
 	\item Take the following two rectangles
 \[\xymatrix{K \ar@/^.4cm/[rr]^{u}\ar[d]_{r}\ar[r]_{u} &P\ar[d]^{p'} \ar[r]_{p} & D \ar[d]^{f}&K' \ar@/^.4cm/[rr]^{k'}\ar[d]_{l'}\ar[r]_{u'} &P\ar[d]^{p} \ar[r]_{p'} & D' \ar[d]^{f'}\\  R \ar@/_.4cm/[rr]_{h} \ar[r]^{i_1}&D' \ar[r]^{f'} & H&L' \ar@/_.4cm/[rr]_{n'} \ar[r]^{i_2}&D \ar[r]^{g} & H}\]
-	By hypothesis $r$ and $l'$ are in $\mathcal{M}$, thus $f'$ and $g$ belong to it too. The first point of \Cref{lem:popb}  yields the thesis. \qed 
+	By hypothesis $r$ and $l'$ are in $\mathcal{M}$, thus $f'$ and $g$ belong to it too. The first point of \Cref{lem:popb}  yields the thesis. \qedhere 
 \end{enumerate}
 \end{proof}
 
@@ -1413,7 +1429,7 @@ If we compute further, we also get
 These equations allow us to conclude that the following diagram commutes.
 	\[\xymatrix@C=40pt@R=10pt{ &&&R'\ar[dddr]^{t\circ j'} \ar[dddl]_{h'}|(.67)\hole\\&&K' \ar[dl]_{l'} \ar[ur]^{r}\ar[dddr]^{e\circ u'} \ar[dddl]_{k}|(.67)\hole\\&L'\ar[dddr]^(.4){w'\circ c_2} \ar[dddl]_(.4){n'}\\&&T \ar[rr]^{\id{T}} && T\\ & D' \ar[ur]_(.7){g'} \ar[rr]^{\phi} \ar[dl]_{f'}&& E \ar[ur]_{b}\ar[dl]^{w}\\ H \ar[rr]_{\psi} && F}\]
 
-Putting together the two diagrams above we get the thesis. \qed 
+Putting together the two diagrams above we get the thesis. \qedhere 
 \end{proof}
 
 
@@ -1456,7 +1472,7 @@ We can now prove some properties of switch equivalence.
 		\item 
 		\item 
 		\item 
-		\item \qed 
+		\item \qedhere 
 	\end{enumerate}
 \end{proof}
 
@@ -1480,7 +1496,7 @@ We can now prove some properties of switch equivalence.
 \begin{proof}
 	\begin{enumerate}
 		\item 
-		\item \qed 
+		\item \qedhere 
 	\end{enumerate}
 \end{proof}
  This, together with ???
@@ -1561,7 +1577,7 @@ We can now prove some properties of switch equivalence.
 \todo{ripulire le ipotesi: serve scambiabilità propria tra 1 e 2}
 \todo{sistemare il fatto che qua utilizziamo derivazioni di 3 passi}
 		
-		\item \qed 
+		\item \qedhere 
 	\end{enumerate}
 \end{proof}
  
@@ -1569,7 +1585,7 @@ We can now prove some properties of switch equivalence.
 \begin{lemma}\label{lem:iig2}\todo{nell'altro senso}
 \end{lemma}
 \begin{proof}
- \todo{fare} \qed 
+ \todo{fare} \qedhere 
 \end{proof}
 
 \begin{corollary}
@@ -1644,7 +1660,7 @@ Before moving forward, we will prove some other useful properties of the switch 
 	contenuto...
 \end{lemma}
 \begin{proof}
-	contenuto...\qed 
+	contenuto...\qedhere 
 \end{proof}
 
 \begin{corollary}
@@ -1656,7 +1672,7 @@ The following result shows that the mixed and pushout decomposition properties g
 \begin{theorem}
 	\todo{filler e classe B+}
 \end{theorem}
-\begin{proof}\qed 
+\begin{proof}\qedhere 
 \end{proof}
 
 Our next step is to identify sufficient conditions for a category $\X$ to satisfy the mixed and pushout decomposition properties.
@@ -1677,12 +1693,12 @@ Our next step is to identify sufficient conditions for a category $\X$ to satisf
 	\todo{da B a B+}
 \end{proposition}
 \begin{proof}
-	contenuto... \qed 
+	contenuto... \qedhere 
 \end{proof}
 \begin{lemma}\todo{due proprietà classe B}
 \end{lemma}
 \begin{proof}
-	\qed 
+	\qedhere 
 \end{proof}
 
 \begin{corollary}
