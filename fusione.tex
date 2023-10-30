@@ -65,7 +65,6 @@
 \newcommand{\ob}{\overline b}
 \newcommand{\oc}{\overline c}
 \newcommand{\od}{\overline d}
-\newcommand{\nil}{{\tt 0}}
 \newcommand{\rec}{\emph{rec}}
 \newcommand{\fn}[1]{{\mathtt{fn}}(#1)}
 %\usepackage{latexsym}
@@ -364,7 +363,7 @@
 \newcommand{\rpro}{]\hspace{-1.85pt}\rangle}
 \newcommand{\tpro}[1]{\lpro \der{#1}\rpro}
 \newcommand{\tproi}[2]{\lpro \der{#1}_{#2}\rpro}
-\newcommand{\lgt}[0]{\mathsf{length}}
+\newcommand{\lgh}[0]{\mathsf{length}}
 
 %%% NEW
 
@@ -782,7 +781,7 @@ We can spell out more explicitly what  a derivation $\dder{D}$ betwee nis.  An \
 	\item $G_0=G$ and $G_{n+1}=H$.
 \end{enumerate}
 
-We will call the number $n+1$ the \emph{length} of the derivation, denoted by $\lgt(\der{D})$. We will also say that an empty derivation has length $0$. 
+We will call the number $n+1$ the \emph{length} of the derivation, denoted by $\lgh(\der{D})$. We will also say that an empty derivation has length $0$. 
 
 Moreover,  if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then we can define an associated sequence of rules as $r(\der{D})$ as $\{\rho_i\}_{i=0}^n$.
 \end{remark}
@@ -857,10 +856,10 @@ As we are interested in objects only up to isomorphism, so we are interested in 
 	An \emph{abstraction equivalence} $\phi:\dder{D}\to \dder{D}'$ is a triple $(\phi_1, \phi_2, \phi_3)$ of isomorphism fitting in the diagram below.
 	\[\xymatrix@C=40pt@R=10pt{ &&&R\ar[dddr]^{h'} \ar[dddl]_{h}|(.67)\hole\\&&K \ar[dl]_{l} \ar[ur]^{r}\ar[dddr]^{k'} \ar[dddl]_{k}|(.67)\hole\\&L\ar[dddr]^(.4){n'} \ar[dddl]_(.4){n}\\&&H \ar[rr]^{\phi_3} && H'\\ & D \ar[ur]_(.7){g} \ar[rr]^{\phi_2} \ar[dl]_{f}&& D' \ar[ur]_{g'}\ar[dl]^{f'}\\ G \ar[rr]_{\phi_1} && G'}\]
 
-Given two decorated derivations $(\der{D}, \alpha, \omega)$, $(\der{D}', \alpha', \omega')$ with  $\der{D}=\{\dder{D}_i\}_{i=0}^n$, $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ such that $\dder{D}_i:G_i\Mapsto G_{i+1}$ and $\dder{D}'_i:G'_i\Mapsto G'_{i+1}$, we will say that $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ are \emph{abstraction equivalent}, if  $r(\der{D})=r(\der{D'})$  and there exists a family $\{\phi^i\}_{i=0}^n$ of abstraction equivalences $\phi^i$ between $\dder{D}_i$ and  $\dder{D}'_i$ such that, for every index $i$, $\phi^i_3=\phi^{i+1}_1$ and  the following diagrams commute.
+We will say that  two decorated derivations$(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ are \emph{abstraction equivalent}, if $\lgh(\der{D})=\lgh(\der{D}')$, $r(\der{D})=r(\der{D'})$, and there exists a family $\{\phi^i\}_{i=0}^{\lgh(\der{D})}$ of abstraction equivalences $\phi^i$ between $\dder{D}_i$ and  $\dder{D}'_i$ such that, for $i\in [0, \lgh(\der{D})]$, $\phi^i_3=\phi^{i+1}_1$ and  the following diagrams commute.
 \[\xymatrix{&\pi(G_0) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G_{n+1}) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G_0 \ar[rr]_{\phi^0_1} && G'_0 &G_{n+1} \ar[rr]_{\phi^n_3} && G'_{n+1} } \]
 
-	In such situation we will say that $ (\der{D}, \alpha, \omega)$ and  $(\der{D}', \alpha', \omega')$ are \emph{abstraction equivalent}. We will use $\equiv^a$ to denote the resulting equivalence relation, while  $[\der{D}, \alpha, \omega]_a$ will denote the equivalence class of  $(\der{D}, \alpha, \omega)$, called an \emph{abstract decorated derivation}. 
+We will use $\equiv^a$ to denote the resulting equivalence relation. An \emph{abstract decorated derivation}.  $[\der{D}, \alpha, \omega]_a$ is just the equivalence class of  $(\der{D}, \alpha, \omega)$.
 \end{definition}
 \begin{remark}\label{rem:res} \Cref{prop:unique} can be restated as saying that, given two direct derivations $\dder{D}$ and $\dder{D'}$ with the same match, there exists an abstract equivalence between them whose first component is an identity.
 \end{remark}
