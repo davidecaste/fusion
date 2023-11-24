@@ -1,10 +1,8 @@
- %(query-replace-regexp "\\\\sqsubseteq^{sh}_{\\([^}]*\\)}" "\\\\shiftpre[\\1]")
-% --- LNCS ---'
-\documentclass{article}
 
+\documentclass[a4paper]{article}
 \usepackage{hyperref}
 \usepackage[textsize=tiny]{todonotes}
-\usepackage{etex}
+%\usepackage{etex}
 
 \usepackage[all]{xy}
 \SelectTips{cm}{}
@@ -57,9 +55,11 @@
     \fill[blue!2,thick,draw=black!50,rounded corners,inner sep=3mm] ([xshift=-1.5pt,yshift=-1.5pt]current bounding box.south west) rectangle ([xshift=1.5pt,yshift=1.5pt]current bounding box.north east);
   \end{pgfonlayer}
 }
-
-
-
+\usepackage{scalerel}
+\newcommand{\smallmin}{\scaleobj{0.6}{-}}
+\newcommand{\Deltamin}{\Delta^{\hspace{-2pt}\begin{matrix}
+			\smallmin\\
+		\end{matrix}} \hspace{-1pt}}
 \newcommand{\Rrel}[1]   {\stackrel{{#1}}{\Longrightarrow}}
 \newcommand{\oa}{\overline a}
 \newcommand{\ob}{\overline b}
@@ -363,7 +363,7 @@
 \newcommand{\rpro}{]\hspace{-1.85pt}\rangle}
 \newcommand{\tpro}[1]{\lpro \der{#1}\rpro}
 \newcommand{\tproi}[2]{\lpro \der{#1}_{#2}\rpro}
-\newcommand{\lgh}[0]{\mathsf{length}}
+\newcommand{\lgh}[0]{\mathsf{lg}}
 
 %%% NEW
 
@@ -519,13 +519,12 @@ Supppose, moreover that $d:D'\to D$ is mono, then $d\leq n$ if and only if $c \l
 \end{remark}
 
 \begin{proof}
-	$(\Rightarrow)$ By hypothesis there exists $k:D'\to B$ such that $n\circ k = d$. By \Cref{prop:pbpo}, the bottom face of the cube is a pullback, thus there exists a unique $h:C'\to A$ as in the diagram below. 
-	In particular, this implies the thesis.
-		\[\xymatrix@C=40pt{C'  \ar@{.>}[dr]^{h}\ar[r]^{g'} \ar@/_.3cm/[ddr]_{c}& D' \ar@/_.3cm/[ddr]|(.45)\hole_(.7){d}\ar@/^.3cm/[dr]^{k}\\ & A \ar[d]_{m} \ar[r]^{f} & B \ar[d]^{n} \\ & C \ar[r]_g & D}\]
+	$(\Rightarrow)$ By hypothesis there exists $k:D'\to B$ such that $n\circ k = d$. By \Cref{prop:pbpo}, the bottom face of the cube is a pullback. Thus there exists a unique $h:C'\to A$ as in the diagram below, implying the thesis.
+		\[\xymatrix@C=40pt{C'  \ar@{.>}[d]^{h}\ar[r]^{g'} \ar@/_.5cm/[dd]_{c}& D' \ar@/^.5cm/[dd]^{d}\ar[d]_{k}\\ A \ar[d]^{m} \ar[r]^{f} & B \ar[d]_{n} \\  C \ar[r]_g & D}\]
 	
 	\smallskip \noindent 
 	$(\Leftarrow)$ Let $h:C\to A$ be such that $c=m\circ h$. By the Van Kampen property the top face of the given cube is a pushout. Thus the dotted $k:D'\to B$ in the following diagram exists.
-		\[\xymatrix@C=40pt{A' \ar@/^.3cm/[ddr]^(.8){a} \ar[d]_{m'} \ar[r]^{f'} & B' \ar[d]^{n'} \ar@/^.3cm/[ddr]^{b} \\  C' \ar@/_.3cm/[dr]_{h} \ar[r]_{g'}|(.7)\hole & D' \ar@{.>}[dr]^{k}\\ &A \ar[r]_f& B }\]
+		\[\xymatrix@C=40pt{A' \ar@/_.5cm/[dd]_{a} \ar[d]^{m'} \ar[r]^{f'} & B' \ar[d]_{n'} \ar@/^.5cm/[dd]^{b} \\  C' \ar[d]^{h} \ar[r]_{g'} & D' \ar@{.>}[d]_{k}\\ A \ar[r]_f& B }\]
 	The thesis now follows at once. \qedhere 
 \end{proof}
 
@@ -735,37 +734,41 @@ $L$ is the \emph{left-hand side}, $R$ is the \emph{right-hand side} and $K$ the 
 
 A \emph{left-linear DPO-rewriting system} is a pair $(\X, \R)$ where $\X$ is a $\mathcal{M}$-adhesive category and $R$ is a set of left $\mathcal{M}$-linear rules. $(\X, \R)$ will be called \emph{linear} if every rule in $R$ is so.
 
-Given  two objects $G$ and $H$ and a rule $\rho=(l,r)$ in $R$, a \emph{direct derivation $\mathscr{D}$ from $G$ to $H$ via $\rho$}, is a diagram as the one below, in which both squares are pushouts. 
+Given  two objects $G$ and $H$ and a rule $\rho=(l,r)$ in $\R$, a \emph{direct derivation $\mathscr{D}$ from $G$ to $H$ applying the rule $\rho$}, is a diagram as the one below, in which both squares are pushouts. 
 	\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar[l]^{f} D \ar[r]_{g}& H}\]
 	The arrow $n$ is called the \emph{match} of the derivation, while $h$ is its \emph{back-match}.
-	We will denote a direct derivation $\dder{D}$ between $G$ and $H$ as $\dder{D}:G\Mapsto H$.
+	We will denote a direct derivation $\dder{D}$ between $G$ and $H$ as $\dder{D}:G\Mapsto H$. W
 \end{definition}
 
 \begin{example}\todo{
 esempi di	derivazione}
 \end{example}
 
-\begin{example}\label{exa:conc} Let  $\dder{D}:G\Mapsto H$ be the direct derivation 
+\begin{remark}\label{exa:conc} Let  $\dder{D}:G\Mapsto H$ be the direct derivation 
 		\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar[l]^{f} D \ar[r]_{g}& H}\]
 	If $\phi:G\to G'$ and $\psi:H\to H'$ are two isomorphisms, 	we can consider the direct derivation	$\phi * \dder{D}*\psi : G'\Mapsto H'$ given by the following diagram.
 	\[\xymatrix{L \ar[d]_{\phi \circ n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{\psi \circ h}\\G' & \ar[l]^{\phi \circ f} D \ar[r]_{\psi \circ g}& H}\]
-\end{example}
+	
+	In particular, we will use $\phi*\dder{D}$ and $\dder{D}*\psi$  to denote $\phi*\dder{D}*\id{H}$ and $\id{G}*\dder{D}*\psi$.
+\end{remark}
+
+
 
 $\mathcal{M}$-adhesivity of $\X$ guarantess the essential uniqueness of the result obtained rewriting an object, as shown by the next proposition.
 
 \begin{proposition}\label{prop:unique} Let $\X$  be a $\mathcal{M}$-adhesive category. Suppose that the two direct derivations $\mathscr{D}$ and $\mathscr{D'}$ below, with the same match and applying the same left $\mathcal{M}$-linear rule $\rho$ are given.
 	\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L \ar[d]_{n}& K \ar[d]^{k'}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h'}\\G & \ar[l]^{f} D \ar[r]_{g}& H & G & \ar[l]^{f'} D' \ar[r]_{g'}& H'}\]
 Then there exist isomorphisms $t:D\to D'$ and $s:H\to H'$ as in the following diagram.
-	\[\xymatrix@C=40pt@R=10pt{ &&&R\ar[dddr]^{h'} \ar[dddl]_{h}|(.67)\hole\\&&K \ar[dl]_{l} \ar[ur]^{r}\ar[dddr]^{k'} \ar[dddl]_{k}\\&L \ar[dddl]_{n}\\&&H \ar@{.>}[rr]^{s} && H'\\ & D \ar[ur]^{g} \ar@{.>}[rr]^{t} \ar[dl]_{f}&& D' \ar[ur]_{g'}\ar@/^.4cm/[dlll]^{f'}\\ G}\]
+\[\xymatrix@C=40pt{&&D' \ar[r]^{g'} \ar@/_.45cm/[dll]_{f'}&H'\\G & L \ar[l]_{n} & K \ar[u]_{k'} \ar[d]^{k}\ar[r]^{r} \ar[l]_{l} &R\ar[u]^{h'} \ar[d]_{h}\\&&D\ar@/^.45cm/[ull]^{f}\ar@/^.4cm/@{.>}[uu]^(.4){t}|\hole \ar[r]_{g}&H\ar@/_.4cm/@{.>}[uu]_{s}}\]
 \end{proposition}
 \begin{proof}
 	By construction, the pairs $(k, f)$ and $(k', f')$ are pushout complements of $l$ and $n$. Thus, the existence of the isomorphism $t:D\to D'$ follows from \Cref{lem:pocomp}. Now, computing we have
 	\begin{align*}
 		g'\circ t \circ k &= g' \circ k'\\&=h'\circ r
 	\end{align*}
-	Hence, we have the dotted $s:H\to H'$. To see that $s$ is an isomorphism, consider the diagram 
+	Hence, we have the wanted $s:H\to H'$. To see that $s$ is an isomorphism, consider the diagram 
 	\[\xymatrix{K  \ar@/^.4cm/[rr]^{k'}\ar[d]_{r} \ar[r]_{k}& \ar[r]_{t} D \ar[d]^{g}& D' \ar[d]^{g'}\\ R \ar@/_.4cm/[rr]_{h'} \ar[r]^{h}& H \ar[r]^{s}& H'}\]
-	By hypothesis the whole rectangle and its left half are pushouts, therefore, by \Cref{lem:po1} its right square is a pushout too. The claim now follows from the fact that the pushout of an isomorphism is an isomorphism. \qed
+	By hypothesis the whole rectangle and its left half are pushouts, therefore, by \Cref{lem:po1} its right square is a pushout too. The claim now follows from the fact that the pushout of an isomorphism is an isomorphism.
 \end{proof}
 
 If we look to direct derivations as transitions, it is natural to consider them as edges in a direct graph. Taking objects as vertices objects led us to the following definition \cite{heindel2009category}.
@@ -775,7 +778,7 @@ If we look to direct derivations as transitions, it is natural to consider them 
 \end{definition}
 
 \begin{remark}
-We can spell out more explicitly what  a derivation $\dder{D}$ betwee nis.  An \emph{empty derivation} starting and ending in $G$ is just $G$ itself.  A \emph{non-empty derivation} $\dder{D}$ is a sequence $\{\dder{D}_i\}_{i=0}^n$ of direct derivations such that:
+We can spell out more explicitly what  a derivation $\dder{D}$ is.  An \emph{empty derivation} starting and ending in $G$ is just $G$ itself.  A \emph{non-empty derivation} $\dder{D}$ is a sequence $\{\dder{D}_i\}_{i=0}^n$ of direct derivations such that:
 \begin{enumerate}
 	\item for every index $i$, $\dder{D}_i$ is a direct derivation $G_i \Mapsto G_{i+1}$;
 	\item $G_0=G$ and $G_{n+1}=H$.
@@ -784,6 +787,10 @@ We can spell out more explicitly what  a derivation $\dder{D}$ betwee nis.  An \
 We will call the number $n+1$ the \emph{length} of the derivation, denoted by $\lgh(\der{D})$. We will also say that an empty derivation has length $0$. 
 
 Moreover,  if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then we can define an associated sequence of rules as $r(\der{D})$ as $\{\rho_i\}_{i=0}^n$.
+\end{remark}
+
+\begin{remark}\label{rem:func}
+	Consider a derivation $\der{D}$ in a left-linear DPO-rewriting system $(\X, \R)$. We can take the subcategory $\Delta(\der{D})$ of $\X$ given by the arrows appearing in $\der{D}$. This subcategory comes equipped with an inclusion functor $I(\der{D}):\Delta(\der{D})\to \X$. Moreover, we can further define $\Deltamin(\der{D})$ as the subcategory of $\Delta(\der{D})$ containing only the bottom row of the derivation.
 \end{remark}
 	
 \begin{notation}Let $\der{D}=\{\dder{D}_i\}_{i=0}^n$ be a derivation. We will depict the $i^\text{th}$ element $\dder{D}_i$ of $\der{D}$ as in the following diagram.  
@@ -803,20 +810,31 @@ Moreover,  if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then we can def
 		\dder{D}_i & i \leq n\\
 		\dder{D}'_{i-(n+1)} & n< i 
 	\end{cases}\]	
+
+Notice, moreover that, $\der{D}\cdot \der{D'}$ is equal to $\der{D}'$ if $\der{D}$ is empty, while it coincides with $\der{D}$ if $\der{D}'$ has length zero.
 \end{remark}
 
  \Cref{exa:conc} allows us to compose derivations with isomorphisms.
 
-\begin{definition} Given a left-linear DPO-rewriting system $(\X, \R)$ and aderivation $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ between $G$ and $H$, the derivation $\phi *\der{D} * \psi$ between $G'$ and $H'$ is defined as
-	\[\phi *\der{D} * \psi := \{\phi* \dder{D}_0*\id{G_1}\}\cdot \{\dder{D}_i\}_{i=1}^{n-1} \cdot \{\id{G_n}*\dder{D}_n*\psi\}\] 
-	
+\begin{definition} Let $(\X, \R)$ be a a left-linear DPO-rewriting system. Given a derivation $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ between $G$ and $H$ and isomorphisms $\phi: G\to G'$, $\psi:H\to H'$, the derivations  $\phi*\der{D}$ and $\der{D}*\psi$ are defined as
+	\[\phi *\der{D} := \begin{cases}
+		G' & \lgh(\der{D})=0\\ 
+		\{\phi* \dder{D}_0\}\cdot \{\dder{D}_i\}_{i=1}^{n}  & \lgh(\der{D})\neq 0
+	\end{cases}\] 
+	\[\der{D}*\psi := \begin{cases}
+		H' & \lgh(\der{D})=0\\ 
+		 \{\dder{D}_i\}_{i=0}^{n-1} \cdot \{\dder{D}_n*\psi\} & \lgh(\der{D})\neq 0
+	\end{cases}\] 
+
+	Moreover, if $\lgh(\der{D})>0$,  we define the derivation $\phi *\der{D} * \psi$ as
+	\[\phi *\der{D} * \psi = \{\phi* \dder{D}_0\}\cdot \{\dder{D}_i\}_{i=1}^{n-1} \cdot \{\dder{D}_n*\psi\}\] 
 \end{definition}
 
-\begin{notation} In the following, we will use the notation $\phi *\dder{D}$, $\phi*\der{D}$ and $\dder{D}*\psi$, $\der{D}*\psi$ for the cases in which, respectively, $\psi=\id{H}$ and $\phi=\id{G}$. In particular
-	\[\phi *\der{D} * \psi = \{\phi* \dder{D}_0\}\cdot \{\dder{D}_i\}_{i=1}^{n-1} \cdot \{\dder{D}_n*\psi\}\] 
-\end{notation}
+\begin{remark}
+When $\der{D}$ consists only in the direct derivation $\dder{D}$, then $\phi*\der{D}*\psi$ is the derivation of length one whose unique element is $\phi*\dder{D}*\psi$.
+\end{remark}
 
-We are often interested in an object of $\X$ only up to isomorphism. It is then useful to consider a version of $\gpo$ in which vertices are classes of isomorphism of object of $\X$. In order to do so, some preliminary work is needed.
+We are often interested in an object of $\X$ only up to isomorphism. It is therefore useful to consider a version of $\gpo$ in which vertices are classes of isomorphism of object of $\X$. In order to do so, some preliminary work is needed.
 
 \begin{definition}\cite{mac2013categories}
 Let $\X$ be a category, we say that  $\X$ is \emph{skeletal} if, for every two objects $X$ and $Y$, the existence of an isomorphism $\phi:X\to Y$ entails $X=Y$. A \emph{skeleton} for a category $\X$ is a full subcategory $\ske$ which is skeletal and such that the inclusion functor $\ske\to \X$ is an equivalence. 
@@ -843,88 +861,201 @@ By definition the inclusion $\ske \to \X$ is an equivalence. In particular, this
 	Let $(\X, \R)$ be a left-linear DPO-rewriting system, a \emph{decorated derivation} between two objects $G$ and $H$ is a triple $(\der{D}, \alpha, \omega)$, where $\der{D}$ is a derivation between $G$ and $H$, and $\alpha:\pi(G)\to G$ and $\omega:\pi(H)\to H$ are isomorphisms.
 \end{definition}
 
-\begin{remark}A decorated derivation $(\der{D}, \alpha, \omega)$ with $\der{D}$ empty is just a span
-	\[\xymatrix{G & \pi(G) \ar[r]^{\omega} \ar[l]_{\alpha} & G}\]
+\begin{example}A decorated derivation $(\der{D}, \alpha, \omega)$ with $\der{D}$ empty is just a span
+	\[\xymatrix{G & \pi(G) \ar[r]^-{\omega} \ar[l]_-{\alpha} & G}\]
 	in which both $\omega$ and $\alpha$ are isomorphisms.
+\end{example}
+
+As we are interested in objects only up to isomorphism, so we are interested in (decorated) derivations only up to some notion of coherent isomorphism between them. This is done with the help of \Cref{rem:func}.
+
+\begin{definition}Let $(\X, \R)$ be a left-linear DPO-rewriting system,  an \emph{abstraction equivalence} between two derivations $\der{D}$ and $\der{D'}$ with the same length and such that $r(\der{D})=r(\der{D}')$, is a family of isomorphisms $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ such that, for every $i\in [0, \lgh(\der{D})]$ the following diagram commutes
+	\[\xymatrix@C=40pt{G'_i&D'_i \ar[r]^{g'_i} \ar[l]_{f'}&G'_{i+1}\\  L_i \ar[u]^{n'_i} \ar[d]_{n_i}& K_i \ar[u]^{k'_i} \ar[d]_{k_i} \ar[r]^{r_i} \ar[l]_{l_i} &R\ar[u]^{h'_i} \ar[d]_{h_i}\\G_i \ar@/_.45cm/[uu]_(.35){\phi_{G_i}}|\hole&D_i\ar[l]^{f_i}\ar@/_.45cm/[uu]_(.35){\phi_{D_i}}|\hole \ar[r]_{g}&G_{i+1}\ar@/_.45cm/[uu]_{\phi_{H_i}}}\]
+
+Given two decorated derivations $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$, we say that they are \emph{abstraction equivalent}, if $\lgh(\der{D})=\lgh(\der{D}')$, $r(\der{D})=r(\der{D'})$, and there exists an of abstraction equivalence between $\der{D}$ and  $\der{D}$ such that the triangles below commute.
+\[\xymatrix@C=15pt{&\pi(G_0) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G_{n+1}) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G_0 \ar[rr]_{\phi_{G_0}} && G'_0 &G_{n+1} \ar[rr]_{\phi_{G_{n+1}}} && G'_{n+1} } \]
+We will use $\equiv^a$ to denote the resulting relation.
+\end{definition}
+
+\begin{remark}\label{rem:equi}
+	It is immediate to see that $\equiv^a$ is an equivalence relation. Indeed $(\der{D}, \alpha, \omega)$ is abstract equivalent to itself via the abstract equivalence with the identities as components. Furthermore, if  $\{\phi_X\}_{X\in \Deltamin(\der{D})}$  witnesses $(\der{D}, \alpha, \omega)\equiv_a (\der{D}', \alpha', \omega')$, then considering $\{\phi^{-1}_X\}_{X\in \Deltamin(\der{D})}$ shows $(\der{D}', \alpha', \omega)\equiv_a (\der{D}, \alpha, \omega)$. Finally, transitivity is assured composing abstract equivalences. 
+	
+	We will denote by $[\der{D}, \alpha, \omega]_a$ is just the equivalence class of  $(\der{D}, \alpha, \omega)$.
+	 Such equivalence classes will be called  \emph{abstract decorated derivation}.  
 \end{remark}
 
-As we are interested in objects only up to isomorphism, so we are interested in (decorated) derivations only up to some notion of coherent isomorphism between them.
+\begin{remark}\label{rem:empty}
+Let $(\der{D},\alpha, \omega)$ be an empty derivation from an object $G$ and  $(\der{D}',\alpha', \omega')$ a another empty one from $G'$.  If $(\der{D},\alpha, \omega)\equiv_a(\der{D}',\alpha', \omega')$ then an abstraction equivalence between $\der(D)$ and $\der{D}'$ is just an isomorphism $\phi:G\to G'$, so that $\pi(G)=\pi(G')$. Moreover, such isomorphism must fit in the diagrams below.
+\[\xymatrix@C=15pt{&\pi(G) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G\ar[rr]_{\phi} && G' &G \ar[rr]_{\phi} && G' } \]
+In particular, these two triangles imply that
+\begin{align*}
+	\alpha'\circ \alpha^{-1}&=\phi \\&=\omega'\circ \omega^{-1}
+\end{align*}
+\end{remark}
 
-\begin{definition}
-	Let $\dder{D}:G\Mapsto H$ and $\dder{D}':G'\Mapsto H'$ be two direct derivations given by the following two diagrams
-	\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L \ar[d]_{n'}& K \ar[d]^{k'}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h'}\\G & \ar[l]^{f} D \ar[r]_{g}& H & G' & \ar[l]^{f'} D' \ar[r]_{g'}& H'}\]
-	An \emph{abstraction equivalence} $\phi:\dder{D}\to \dder{D}'$ is a triple $(\phi_1, \phi_2, \phi_3)$ of isomorphism fitting in the diagram below.
-	\[\xymatrix@C=40pt@R=10pt{ &&&R\ar[dddr]^{h'} \ar[dddl]_{h}|(.67)\hole\\&&K \ar[dl]_{l} \ar[ur]^{r}\ar[dddr]^{k'} \ar[dddl]_{k}|(.67)\hole\\&L\ar[dddr]^(.4){n'} \ar[dddl]_(.4){n}\\&&H \ar[rr]^{\phi_3} && H'\\ & D \ar[ur]_(.7){g} \ar[rr]^{\phi_2} \ar[dl]_{f}&& D' \ar[ur]_{g'}\ar[dl]^{f'}\\ G \ar[rr]_{\phi_1} && G'}\]
-
-We will say that  two decorated derivations$(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ are \emph{abstraction equivalent}, if $\lgh(\der{D})=\lgh(\der{D}')$, $r(\der{D})=r(\der{D'})$, and there exists a family $\{\phi^i\}_{i=0}^{\lgh(\der{D})}$ of abstraction equivalences $\phi^i$ between $\dder{D}_i$ and  $\dder{D}'_i$ such that, for $i\in [0, \lgh(\der{D})]$, $\phi^i_3=\phi^{i+1}_1$ and  the following diagrams commute.
-\[\xymatrix{&\pi(G_0) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G_{n+1}) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G_0 \ar[rr]_{\phi^0_1} && G'_0 &G_{n+1} \ar[rr]_{\phi^n_3} && G'_{n+1} } \]
-
-We will use $\equiv^a$ to denote the resulting equivalence relation. An \emph{abstract decorated derivation}.  $[\der{D}, \alpha, \omega]_a$ is just the equivalence class of  $(\der{D}, \alpha, \omega)$.
-\end{definition}
 \begin{remark}\label{rem:res} \Cref{prop:unique} can be restated as saying that, given two direct derivations $\dder{D}$ and $\dder{D'}$ with the same match, there exists an abstract equivalence between them whose first component is an identity.
 \end{remark}
 
-\begin{definition}
-Let $(\der{D}, \alpha, \omega)$ be a decorated derivation between $G$ and $H$ and $(\der{D}', \alpha', \omega')$ one between $H'$ and $K$. If $H$ and $H'$ are isomorphic, so that $\pi(H)=\pi(H')$, we define the  \emph{composite decorated derivation}  $(\der{D}, \alpha, \omega)\cdot (\der{D}', \alpha', \omega')$ as $((\der{D}* \omega^{-1}) \cdot ((\alpha')^{-1} *\der{D}'), \alpha, \omega')$.
+\begin{definition}\label{def:conc}
+Let $(\der{D}, \alpha, \omega)$ be a decorated derivation between $G$ and $H$ and $(\der{D}', \alpha', \omega')$ one between $H'$ and $K$. If $H$ and $H'$ are isomorphic, so that $\pi(H)=\pi(H')$, we define the  \emph{composite decorated derivation} putting
+\[(\der{D}, \alpha, \omega)\cdot (\der{D}', \alpha', \omega'):=\begin{cases}
+(\der{D}', \alpha'\circ \omega^{-1}\circ \alpha, \omega')	&\lgh(\der{D})=0 \\
+	(\der{D}, \alpha, \omega \circ (\alpha')^{-1}\circ \omega')&\lgh(\der{D}')=0 \text{ and } \lgh(\der{D})\neq 0\\
+(\der{D}*\omega^{-1}\cdot \alpha'*\der{D'}, \alpha, \omega')	&\text{otherwise}
+\end{cases}\]
 \end{definition}
 
-\begin{remark}\label{rem:lgt}
-	Given two composable decorated derivations $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$  such that $\der{D}$ and $\der{D}'$ have  length $n$ and $m$, respectively, then $(\der{D}* \omega^{-1}) \cdot ((\alpha')^{-1} *\der{D}')$ has length $n+m$.
-\end{remark}
 
+\begin{remark}\label{rem:lgt}
+	Let $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ two composable decorated derivations   such that $\lgh(\der{D})=n$ and $\lgh(\der{D}')=m$.	 Then $(\der{D}*\omega^{-1}\cdot \alpha'*\der{D'}, \alpha, \omega')$ has length $n+m$.
+\end{remark}
+\iffalse 
+\begin{proposition}\label{prop:ident}
+Let $(\der{D}, \alpha, \omega)$ be a decorated derivation between $G$ and $H$ and  $(\der{D}',\alpha', \omega')$ be one between $G'$ and $H'$. Suppose, moreover that $G'$ and $H$ are isomorphic, so that $\pi(G')=\pi(H)$. Then the following hold true.
+\begin{enumerate}
+	\item If $\der{D}$ is the empty derivation, then
+	\[(\der{D}, \alpha, \omega)\cdot (\der{D}',\alpha', \omega')\equiv_a (\der{D}',\alpha', \omega')\]
+	\item  If $\der{D}'$ is the empty derivation, then
+	\[(\der{D}, \alpha, \omega)\cdot (\der{D}',\alpha', \omega')\equiv_a (\der{D},\alpha, \omega)\]
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+	\item 
+	By \Cref{def:conc}, we have that 
+	\[(\der{D}, \alpha, \omega)\cdot (\der{D}',\alpha', \omega')= (\der{D}', \alpha'\circ \omega^{-1}\circ \alpha, \omega')\] 
+	
+	For every $X\in \Deltamin(\der{D'})$ we can define
+	\[\phi_{X}:=\begin{cases}
+		\alpha' \circ \alpha \circ \omega \circ (\alpha')^{-1} & X=G'\\
+		\id{X} & \text{otherwise}
+	\end{cases} \]
+	Now, we can notice that $\phi_{G'_0}$ is the composition $\alpha'\circ (\alpha'\circ \omega^{-1}\circ \alpha)^{-1}$, giving us the triangle
+
+\[\xymatrix@C=15pt{&\pi(G') \ar[dr]^{\alpha'} \ar[dl]_{\alpha'\circ \omega^{-1}\circ \alpha}\\ G'\ar[rr]_{\phi_{G'}} && G'} \]
+To conclude the proof it is now enough to show the commutativity of 
+	\[\xymatrix@C=40pt{G'&D'_0 \ar[r]^{g'_0} \ar[l]_{f'_0}&G'_{1}\\  L'_0 \ar[u]^{n'_0} \ar[d]_{n'_0}& K'_0 \ar[u]^{k'_0} \ar[d]_{k'_0} \ar[r]^{r'_0} \ar[l]_{l'_0} &R'_0\ar[u]^{h'_0} \ar[d]_{h'_0}\\G' \ar@/_.45cm/[uu]_(.35){\phi_{G'}}|\hole&D'_0\ar[l]^{f'_0}\ar@/_.45cm/[uu]_(.35){\id{D'_0}}|\hole \ar[r]_{g'_0}&G'_{1}\ar@/_.45cm/[uu]_{\id{G'_1}}}\]
+	
+	\item \qedhere 
+\end{enumerate}
+\end{proof}
+
+\begin{remark}\label{rem:ident}Consider a decorated derivation $(\der{D}, \alpha, \omega)$ between $G$ and $H$ and another one $(\der{D}',\alpha', \omega')$ between $G'$ and $H'$. Suppose, moreover that $\pi(G')=\pi(H)$. By \Cref{rem:empty}, if $\der{D}$ is the empty derivation, so that $G=H$, then 
+	\[(\der{D}, \alpha, \omega)\cdot (\der{D}',\alpha', \omega')= ((\omega \circ (\alpha')^{-1}) *\der{D}', \alpha, \omega')\]
+
+Furthermore, we can notice that
+\[(\der{D}', \alpha', \omega')\equiv_a ((\omega \circ (\alpha')^{-1}) *\der{D}', \alpha, \omega')\]	
+Indeed, for every $X'\in \Deltamin(\der{D'})$ we can define
+\[\phi_{X'}:=\begin{cases}
+	(\alpha')^{-1} & X'=G'\\
+	\id{X'} & \text{otherwise}
+\end{cases} \]
+
+	
+	
+Similarly, if $\lgh(\der{D}')=0$, implying $G'=H'$, we get
+		\[(\der{D}, \alpha, \omega)\cdot (\der{D}',\alpha', \omega')=(\der{D}*\omega^{-1}, \alpha, \omega')\]
+
+We can notice, moreover, that 
+\[(\der{D}', \alpha', \omega')\equiv_a ((\omega \circ (\alpha')^{-1}) *\der{D}', \alpha, \omega') \qquad  (\der{D}, \alpha, \omega) \equiv_a (\der{D}*\omega^{-1}, \alpha, \omega')\] 	
+Indeed,  for every $X'\in \Deltamin(\der{D'})$ and $X\in \Deltamin(\der{D})$ we can define
+\[\phi_{X'}:=\begin{cases}
+	(\alpha')^{-1} & X'=G'_{0}\\
+	\id{X'} & \text{otherwise}
+\end{cases} \qquad \phi_{X}:=\begin{cases}
+\id{X} & \text{otherwise}\\
+\omega^{-1} & X=H\\
+\end{cases}\]
+
+
+first of all notice that the triangles below commute.
+\[\xymatrix@C=15pt{&\pi(G'_0) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G\ar[rr]_{\phi} && G' &G' \ar[rr]_{\phi} && G' } \]
+
+
+Furthermore, for every $X\in $ $i\in [0, \lgh(\der{D})]$ 
+		
+\end{remark}
+\fi 
 
 The next proposition justifies the use of decorations, guaranteeing that concatenation of abstract decorated derivations is weel-defined.
-\begin{proposition}
+\begin{lemma}
 	Given a decorated derivation $(\der{D}, \alpha, \omega)$  between $G$ and $H$ and  another one $(\der{E}, \beta, \xi)$ between $E$ and $K$ with $\pi(H)=\pi(E)$. If  $(\der{D}', \alpha', \omega')$ and $(\der{E}', \beta', \xi')$ are two other decorated derivations such that
-	$[\der{D}, \alpha, \omega]_a = [\der{D}', \alpha', \omega']_a$ and $[\der{D}, \beta, \xi]_a=[\der{E}', \beta', \xi']_a$, then
+	\[[\der{D}, \alpha, \omega]_a = [\der{D}', \alpha', \omega']_a \qquad [\der{D}, \beta, \xi]_a=[\der{E}', \beta', \xi']_a\]
+	Then
 	\[[(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)]_a=[(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')]_a\]
-\end{proposition}
+\end{lemma}
 
-\begin{proof}
-	To fix the notation, let $\der{D}$, $\der{D}'$, $\der{E}$ and $\der{E}'$ be given by
-	\[\der{D}=\{\dder{D}_i\}_{i=0}^n \quad \der{D}'=\{\dder{D}'_i\}_{i=0}^n \quad \der{E}=\{\dder{E}_i\}_{i=0}^m \quad \der{E}'=\{\dder{E}'_i\}_{i=0}^m\]
-	Let also $\{\phi^i\}_{i=0}^n$ and $\{\varphi^i\}_{i=0}^m$ be families of abstract equivalences between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ and between $(\der{E}, \beta, \xi)$ and $(\der{E}', \beta', \xi')$, respectively. For every $i\in [0, n+m-1]$ define 
-	\[\psi^{i}:=\begin{cases}
-		\phi^i & i< n\\
-		(\phi^n_1, \phi^n_2, \id{\pi(H)}) & i=n\\
-		(\id{\pi(E)}, \varphi^{0}_2, \varphi^{0}_3) & i=n+1\\
-		\varphi^{i-n+1} & i>n+1
-	\end{cases}\] 
-Notice suppose that $h_n:R_n\to H, h_n:R_n\to H'$ are the back-matches of $\der{D}_n$ and $\der{D}'_n$ and that the following diagram is given
-	\[\xymatrix@C=40pt@R=10pt{ &&&R_n\ar[dddr]^{h'_n} \ar[dddl]_{h_n}|(.67)\hole\\&&K_n \ar[dl]_{l_n} \ar[ur]^{r_n}\ar[dddr]^{k'_n} \ar[dddl]_{k_n}|(.67)\hole\\&L_n\ar[dddr]^(.4){m'_n} \ar[dddl]_(.4){m_n}\\&&H \ar[rr]^{\phi^n_3} && H'\\ & D_n \ar[ur]_(.7){g_n} \ar[rr]^{\phi^n_2} \ar[dl]_{f_n}&& D'_n \ar[ur]_{g'_n}\ar[dl]^{f'_n}\\ G_{n} \ar[rr]_{\phi^n_1} && G'_n}\]
-Then we have
-\begin{align*} 
-	\id{\pi(H)}\circ \omega^{-1} \circ h_n&=(\omega')^{-1}\circ \phi^n_3 \circ \omega \circ \omega^{-1} \circ h_n\\&=(\omega')^{-1}\circ \phi^n_3  \circ h_n\\&=(\omega')^{-1}  \circ h'_n
-\end{align*} 
-and 
-\begin{align*} \id{\pi(H)}\circ \omega^{-1} \circ g_n  &=(\omega')^{-1}\circ \phi^n_3 \circ \omega \circ \omega^{-1}\circ g_n\\&=(\omega')^{-1}\circ \phi^n_3\circ g'_n\\&=(\omega')^{-1}\circ g'_n\circ \phi^n_2\end{align*}
-Therefore $\psi^n$ is an abstract equivalence between $\dder{D}_n*\omega^{-1}$ and $\dder{D}_n'*(\omega')^{-1}$.
+\begin{proof} Take two abstraction equivalences $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ and $\{\varphi_X\}_{X\in \Deltamin(\der{D})}$ between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ and between $(\der{E}, \beta, \xi)$ and $(\der{E}', \beta', \xi')$, respectively. To fix the notation, suppose that goes from $G'$ to $H'$ and $(\der{E}', \beta', \xi')$ from $E'$ to $K'$. We have three cases.
+	
+\begin{itemize}
+	\item $\lgh(\der{D})=0$. Then, $\lgh(\der{D}')$ is $0$ too. By \Cref{def:conc} we have
+	\begin{align*}
+	(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)&=(\der{E}, \beta\circ \omega^{-1}\circ \alpha, \xi)\\
+		(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')&=(\der{E}', \beta'\circ (\omega')^{-1}\circ \alpha', \xi')
+	\end{align*}
+ Now, notice that $G$ and $H$ must coincide. Moreover, by \Cref{rem:empty} we also know that $\pi(G)=\pi(G')$ too. The same \Cref{rem:empty} entails that the inner squares of the following diagram are commutative, so that the whole rectangle commutes too.
+ \[\xymatrix@C=35pt{\pi(G) \ar[r]^{\alpha} \ar[d]_{\id{\pi(G)}}& G  \ar[d]_{\phi_G}\ar[r]^-{\omega^{-1}} & \pi(G) \ar[d]_{\id{\pi(G)}} \ar[r]^{\beta}& E \ar[d]^{\varphi_E}\\\pi(G') \ar[r]_{\alpha'}& G' \ar[r]_-{(\omega')^{-1}} & \pi(G') \ar[r]_{\beta'} & E'}\]
+ 
+ We can  then conclude that $\{\varphi_X\}_{X\in \Deltamin(\der{D})}$ witnesses the fact that $(\der{E}, \beta\circ \omega^{-1}\circ \alpha, \xi)$ is abstraction equivalent to $(\der{E}', \beta'\circ (\omega')^{-1}\circ \alpha', \xi')$.
 
-Similarly, if $\hat{m}_0:\hat{L}_0\to E, \hat{m}'_0:L'_0\to E'$ the matches of $\der{E}_0$, $\der{E}'_0$, we can consider the diagram
-\[\xymatrix@C=40pt@R=10pt{ &&&\hat{R}_0\ar[dddr]^{\hat{h}'_0} \ar[dddl]_{\hat{h}_0}|(.67)\hole\\&&\hat{K}_0 \ar[dl]_{\hat{l}_0} \ar[ur]^{\hat{r}_0}\ar[dddr]^{k'_0} \ar[dddl]_{\hat{k}_0}|(.67)\hole\\&\hat{L}_n\ar[dddr]^(.4){\hat{m}'_0} \ar[dddl]_(.4){\hat{m}_0}\\&&\hat{G}_1 \ar[rr]^{\varphi^0_3} && \hat{G}'_1\\ & \hat{D}_0 \ar[ur]_(.7){\hat{g}_0} \ar[rr]^{\varphi^0_2} \ar[dl]_{\hat{f}_0}&& \hat{D}'_0 \ar[ur]_{\hat{g}'_0}\ar[dl]^{\hat{f}'_0}\\ E \ar[rr]_{\varphi^0_1} && E'}\]
-and computing we get
+\item $\lgh(\der{D})\neq 0$ and $\lgh(\der{E})= 0$. As in the point above, we get that also $\der{E}'$  is an empty derivation, thus we have
 \begin{align*}
-	\id{\pi(E)}\circ \alpha^{-1} \circ \hat{m}_0&=(\alpha')^{-1}\circ \varphi^0_1 \circ \alpha \circ \alpha^{-1} \circ \hat{m}_0\\&=(\alpha')^{-1}\circ \varphi^0_1  \circ \hat{m}_0\\&=(\alpha')^{-1}\circ \hat{m}'_n
+	(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)&=(\der{D},  \alpha, \omega \circ \beta^{-1}\circ \xi)\\
+	(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')&=(\der{D}',  \alpha', \omega' \circ (\beta')^{-1}\circ \xi')
 \end{align*}
-together with
-\begin{align*} \id{\pi(E)}\circ \alpha^{-1}\circ \hat{f}_0  &=(\alpha')^{-1}\circ \varphi^0_1 \circ \alpha \circ \alpha^{-1}\circ \hat{f}_0\\&=(\alpha')^{-1}\circ \varphi^0_1\circ \hat{f}_0\\&=(\alpha')^{-1}\circ \hat{f}'_0\circ \varphi^0_2\end{align*}
-The previous two identities show that $\psi^{n+1}$ is an abstract equivalence between $\dder{E}_0$ and $\dder{E}'_0$. By hypothesis $\pi(H)=\pi(E)$ and, moreover, we have
-	\[\begin{split}
-		\psi^{0}_1\circ \alpha &= \phi^0_1\circ \alpha \\&= \alpha'
-	\end{split}\qquad \begin{split}
-	\psi^{n+m-1}_3\circ \xi &=\varphi^m_3\circ \xi \\&= \xi'
-	\end{split}\]
-Therefore the thesis now follows.	\qedhere 
+In this case we have that $E=K$ and that $\pi(E)=\pi(E')$. From \Cref{rem:empty} we deduce that the diagram below commutes.
+\[\xymatrix@C=35pt{\pi(E) \ar[r]^{\xi} \ar[d]_{\id{\pi(E)}}& E  \ar[d]_{\varphi_E}\ar[r]^-{\beta^{-1}} & \pi(E) \ar[d]_{\id{\pi(E)}} \ar[r]^{\omega}& H \ar[d]^{\phi_H}\\\pi(E') \ar[r]_{\xi'}& E' \ar[r]_-{(\beta')^{-1}} & \pi(E') \ar[r]_{\omega'} & H'}\]
+The thesis now follows at once.
+	\item $\lgh(\der{D})\neq 0$ and $\lgh(\der{E})\neq 0$. In this case we have
+	\begin{align*}
+		(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)&=(\der{D}*\omega^{-1}\cdot \beta*\der{E}, \alpha, \xi)\\
+		(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')&=(\der{D}'*(\omega')^{-1}\cdot \beta'*\der{E'}, \alpha', \xi')
+	\end{align*}
+ To fix the notation, suppose that $\der{D}$, $\der{D}'$, $\der{E}$ and $\der{E}'$ are given by
+	\[\der{D}=\{\dder{D}_i\}_{i=0}^n \quad \der{D}'=\{\dder{D}'_i\}_{i=0}^n \quad \der{E}=\{\dder{E}_i\}_{i=0}^t \quad \der{E}'=\{\dder{E}'_i\}_{i=0}^t\]
+	where $\dder{D}_i$, $\dder{D}'_i$, $\dder{E}_i$ and $\dder{E}'_i$ are given, respectively, by the following four diagrams. We can also notice that the rule applied by $\dder{D}_i$ must coincide with the one applpied in $\dder{D}'_i$ and that the same holds for $\dder{E}_i$ and $\dder{E}'_i$.
+	\[\xymatrix{L_{\der{D},i} \ar[d]_{m_{\der{D}, i}}& K_{\der{D},i} \ar[d]_{k_{\der{D}, i}} \ar[r]^{r_{\der{D},i}} \ar[l]_{l_{\der{D},i}} & R_{\der{D},i}\ar[d]^{h_{\der{D}, i}} &L_{\der{E},i} \ar[d]_{m_{\der{E}, i}}& K_{\der{E},i} \ar[d]_{k_{\der{E}, i}} \ar[r]^{r_{\der{E},i}} \ar[l]_{l_{\der{E},i}} & R_{\der{E},i}\ar[d]^{h_{\der{E}, i}} \\G_i & D_i \ar[r]_{g_{\der{D},i}} \ar[l]^{f_{\der{D},i}} & G_{i+1} & E_i & F_i\ar[r]_{g_{\der{E},i}} \ar[l]^{f_{\der{E},i}}  & E_{i+1}}\]
+	\[\xymatrix{L_{\der{D},i} \ar[d]_{m_{\der{D}', i}}& K_{\der{D},i} \ar[d]_{k_{\der{D}', i}} \ar[r]^{r_{\der{D},i}} \ar[l]_{l_{\der{D},i}} & R_{\der{D},i}\ar[d]^{h_{\der{D}', i}} &L_{\der{E},i} \ar[d]_{m_{\der{E}', i}}& K_{\der{E},i} \ar[d]_{k_{\der{E}', i}} \ar[r]^{r_{\der{E},i}} \ar[l]_{l_{\der{E},i}} & R_{\der{E},i}\ar[d]^{h_{\der{E}', i}} \\G_i & D_i \ar[r]_{g_{\der{D}',i}} \ar[l]^{f_{\der{D}',i}} & G_{i+1} & E_i & F_i\ar[r]_{g_{\der{E}',i}} \ar[l]^{f_{\der{E}',i}}  & E_{i+1}}\]
+	
+Now, for every $X\in \Deltamin(\der{D}*\omega^{-1}\cdot \beta*\der{E})$ we can define
+\[\psi_X:=\begin{cases}
+	\phi_X & X\in  \Deltamin(\der{D})\text{ and } X\neq H\\\varphi_X & X\in  \Deltamin(\der{E}) \text{ and } X\neq E\\\id{\pi(H)}& X=\pi(H)\end{cases}\]
+Notice that, since $\psi_G=\phi_G$ and $\psi_K=\varphi_K$ we have at once  the commutativity of the triangles
+\[\xymatrix@C=15pt{&\pi(G) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(K) \ar[dr]^{\xi'} \ar[dl]_{\xi}\\ G\ar[rr]_{\psi_G} && G' &K \ar[rr]_{\psi_K} && K' } \]
+
+
+To show that $\{\psi_X\}_{\Deltamin(\der{D}*\omega^{-1}\cdot \beta*\der{E})}$ it is now enough to prove the commutativity of the diagrams
+	\[\xymatrix@C=45pt@R=15pt{G'_n&D'_n \ar[r]^-{(\omega')^{-1}\circ g_{\der{D}',n}} \ar@/_.2cm/[dr]_(.6){g_{\der{D}',n}} \ar[l]_{f_{\der{D}',n}}&\pi(H') \\&&H' \ar[u]^{(\omega')^{-1}}\\  L_{\der{D}, n} \ar[uu]^{m_{\der{D}',n}} \ar[dd]_{m_{\der{D},n}}& K_{\der{D}, n} \ar[uu]^{k_{\der{D}',n}} \ar[dd]_{k_{\der{D},n}} \ar[r]^{r_{\der{D},n}} \ar[l]_{l_{\der{D},n}} &R_{\der{D}, n}\ar[u]^{h_{\der{D}',n}} \ar[d]_{h_{\der{D},n}}\\&&H \ar[d]_{\omega^{-1}}\\G_n \ar@/_.7cm/[uuuu]_(.35){\phi_{G_n}}|\hole&D_n\ar[l]^{f_{\der{D},n}}\ar@/_.7cm/[uuuu]_(.35){\phi_{D_n}}|\hole \ar@/^.2cm/[ur]^(.6){g_{\der{D},n}}\ar[r]_{\omega^{-1}\circ g_{\der{D},n}}&\pi(H)\ar@/_.7cm/[uuuu]_{\id{\pi(H)}}\\ \pi(E')&F'_0 \ar[l]_-{(\beta')^{-1}\circ f_{\der{E}',0}} \ar@/^.2cm/[dl]^(.6){f_{\der{E}',0}} \ar[r]^{g_{\der{E}',0}}&E'_1 \\E' \ar[u]_{(\beta')^{-1}}&& \\  L_{\der{E}, 0} \ar[u]_{m_{\der{E}', 0}} \ar[d]^{m_{\der{E}, 0}}& K_{\der{E}, 0} \ar[uu]_{k_{\der{E}', 0}} \ar[dd]^{k_{\der{E}, i}} \ar[r]^{r_{\der{E},0}} \ar[l]_{l_{\der{E},0}} &R_{\der{E}, 0}\ar[uu]_{h_{\der{E}',0}} \ar[dd]^{h_{\der{E},0}}\\E \ar[d]^{\beta^{-1}}&& \\\pi(E) \ar@/^.7cm/[uuuu]^{\id{\pi(E)}}&F_0\ar[l]^{\beta^{-1}\circ f_{\der{E},0}}\ar@/^.7cm/[uuuu]^(.35){\varphi_{F_0}}|\hole \ar@/_.2cm/[ul]_(.6){f_{\der{E},0}}\ar[r]_{g_{\der{E},0}}&E_1\ar@/^.7cm/[uuuu]^(.35){\varphi_{E_1}}|\hole}\]
+		
+To see this, in turn, it is enough to show that	the squares
+\[\xymatrix{&R_{\der{D}, n} \ar[d]_{h_{\der{D}, n}}\ar[r]^{h_{\der{D}', n}} & H' \ar[d]^{(\omega')^{-1}} &L_{\der{E}, 0} \ar[d]_{m_{\der{E}, 0}}\ar[r]^{m_{\der{E}', 0}}& E' \ar[d]^{(\beta')^{-1}}\\&H\ar[r]_{\omega^{-1}} &\pi(H)&E \ar[r]_{\beta^{-1}} & \pi(E)\\D_n \ar[rr]^{\phi_{D_n}} \ar[d]_{g_{\der{D}, n}}&&D'_n \ar[d]^{g_{\der{D}', n}}&F_0 \ar[d]_{f_{\der{E}, 0}} \ar[rr]^{\varphi_{F_0}} && F_0' \ar[d]^{f_{\der{E}', 0}}\\H \ar[r]_-{\omega^{-1}} &\pi(H)&H' \ar[l]^-{(\omega')^{-1}}  &E \ar[r]_-{\beta^{-1}} & \pi(E) & E' \ar[l]^-{(\beta')^{-1}}}\]
+are commutative. For the first ones, we have
+	\begin{align*} 
+	\omega^{-1} \circ h_{\der{D}, n}&=\id{\pi(H)}\circ \omega^{-1} \circ h_{\der{D}, n} \\&=(\omega')^{-1}\circ \phi_H \circ \omega \circ \omega^{-1} \circ h_{\der{D}, n}\\&=(\omega')^{-1}\circ \phi_H  \circ h_{\der{D}, n}\\&=(\omega')^{-1}  \circ h_{\der{D}', n}
+\end{align*} 
+and
+\begin{align*} 
+	\beta^{-1} \circ m_{\der{E}, 0}&=\id{\pi(E)}\circ \beta^{-1} \circ m_{\der{E}, 0}\\&=(\beta')^{-1}\circ \varphi_{E} \circ \beta \circ \beta^{-1} \circ m_{\der{E}, 0}\\&=(\beta')^{-1}\circ \varphi_{E}  \circ m_{\der{E}, 0}\\&=(\beta')^{-1}  \circ m_{\der{E}', 0}
+\end{align*} 
+
+The commutativity of the second row of diagrams follows from
+\begin{align*}
+ \omega^{-1} \circ g_{\der{D}, n}&=\id{\pi(H)}\circ \omega^{-1} \circ g_{\der{D}, n}\\&=(\omega')^{-1}\circ \phi_H \circ \omega\circ \omega^{-1} \circ g_{\der{D}, n}\\&=(\omega')^{-1}\circ \phi_H  \circ g_{\der{D}, n}\\&= (\omega')^{-1} \circ g_{\der{D}', n}\circ \phi_{D_n}
+\end{align*}
+and
+\begin{align*}
+	\beta^{-1} \circ f_{\der{E}, 0}&=\id{\pi(E)}\circ \beta^{-1} \circ f_{\der{E}, 0}\\&=(\beta')^{-1}\circ \varphi_E \circ \beta\circ \beta^{-1} \circ f_{\der{E}, 0}\\&=(\beta')^{-1}\circ \varphi_E  \circ f_{\der{E}, 0}\\&= (\beta')^{-1} \circ f_{\der{E}', n}\circ \varphi_{F_0}
+\end{align*}
+ The thesis now follows.	\qedhere 
+\end{itemize}	
 \end{proof}
 
 \begin{definition}
 	Let $(\X, \R)$ be a left-linear DPO-rewrityng system, with $\X$ an $\mathcal{M}$-adhesive category. The  category $\dpi$ is defined as follows:
 	\begin{itemize}
 		\item objects are isomorphism classes of objects of $\X$;
-		\item a non-identity arrow $[G]\to [H]$ is an equivalence class $[\der{D}, \alpha, \omega]_a$ of a decorated derivation between $G'$ and $H'$ for some $G'$ and $H'$ such that $\pi(G')=G$ and $\pi(H')=H$;
+		\item an arrow $[G]\to [H]$ is an equivalence class $[\der{D}, \alpha, \omega]_a$ of a decorated derivation between $G'$ and $H'$ for some $G'$ and $H'$ such that $\pi(G')=G$ and $\pi(H')=H$;
 		\item composition is concatenation of abstract decorated derivations;
-		\item identities are added formally.
-	\end{itemize}
+		\item the identity on $[G]$ is $[(G, \alpha, \alpha)]_a$, where $\alpha$ is any isomorphism $\pi(G)\to G$.	\end{itemize}
 \end{definition}
 
 
@@ -1523,7 +1654,7 @@ We can now prove some properties of switch equivalence.
 			\[\xymatrix{&&R_0 \ar@/_1cm/[ddrr]_(.35){e_0}|(.7)\hole \ar[dr]^{h_0}&& L_2\ar@/^1cm/[ddll]^(.35){e_1}  \ar[dl]_{f_1\circ a_2}\\&K_0\ar[dr]^{k_0}\ar[dl]_{l_0} \ar@/_.8cm/[ddrr]|(.36)\hole^(.65){w}\ar[ur]^{r_0}&& G_1 && K_2 \ar@/^.8cm/[ddll]|(.36)\hole_(.65){w'}\ar[dl]_{d_1\circ u'\hspace{-5pt}}\ar[lu]_{l_2} \ar[dr]^{r_2}\\L_0 \ar@/_.8cm/[ddrr]_(.2){o_0}|(.31)\hole|(.81)\hole \ar[dr]^(.4){m_0}|(.61)\hole && D_0 \ar[dl]|(.4)\hole_(.65){f_0}\ar[ur]|(.5)\hole^(.7){g_0}&&Q_2 \ar[dr]|(.4)\hole^(.65){y_1} \ar[ul]|(.5)\hole_(.65){x_1}&&R_2\ar@/^.8cm/[ddll]^(.2){o_1}|(.31)\hole|(.81)\hole\ar[dl]_(.35){x_2\circ b_2}\\&G_0 &&P_3\ar[dr]_{n_1} \ar[dl]^{n_0}\ar[ur]^(.4){u_1}\ar[ul]_(.4){u_0}&&G'_2\\L_2 \ar@/^.8cm/[uurr]^(.2){e_1} \ar[ur]_(.35){f_0\circ e_1}|(.61)\hole&&Q_4 \ar[ul]|(.4)\hole_(.65){z_0}\ar[dr]|(.5)\hole^(.65){z'_0} &&Q_5\ar[ur]|(.4)\hole^(.65){z'_1} \ar[dl]|(.5)\hole_(.65){z_1} && R_0  \ar[ul]^(.35){y_1\circ e_0}|(.61)\hole\ar@/_.8cm/[uull]_(.2){e_0}\\&K_2 \ar[ur]_{n_0\circ w'} \ar[dr]_{r_2} \ar[ul]^{l_2}\ar@/^.8cm/[uurr]_(.65){w'}&&G'_1&& K_0 \ar[ur]_{r_0} \ar[ul]^{n_1\circ w} \ar[dl]^{l_0} \ar@/_.8cm/[uull]^(.65){w}\\&& R_2 \ar[ur]_{\hspace{-4pt}z_1\circ o_1}\ar@/^1cm/[uurr]^(.25){o_1}&& L_0 \ar[ul]^{z'_0\circ o_0\hspace{-5pt}} \ar@/_1cm/[uull]_(.25){o_0} |(.69)\hole }\]
 	
 	We have to construct the two dotted arrows in the diagram below.
-			\[\xymatrix@C=15pt{L_. \ar[d]_{z'_0\circ o_0}&& K_0 \ar[d]_{n_1\circ w}\ar[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@{.>}@/^.35cm/[drrr]_(.4){\alpha_1}|(.285)\hole \ar[dr]|(.28)\hole_{y_1\circ e_0} && L_1 \ar@{.>}@/_.35cm/[dlll]^(.4){\alpha_2} \ar[dl]|(.28)\hole^{y_1\circ b_1}& K_1 \ar[d]^{d_2\circ u}\ar[l]_{l_1} \ar[rr]^{r_1} && R_1 \ar[d]^{g_2\circ a_1}\\G'_1 && \ar[ll]^{z_1} Q_5 \ar[rr]_{z'_1}&& G'_2  && \ar[ll]^{x_2} Q_3 \ar[rr]_{y_2}&& G_2}\]
+			\[\xymatrix@C=15pt{L_0 \ar[d]_{z'_0\circ o_0}&& K_0 \ar[d]_{n_1\circ w}\ar[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@{.>}@/^.35cm/[drrr]_(.4){\alpha_1}|(.285)\hole \ar[dr]|(.28)\hole_{y_1\circ e_0} && L_1 \ar@{.>}@/_.35cm/[dlll]^(.4){\alpha_2} \ar[dl]|(.28)\hole^{y_1\circ b_1}& K_1 \ar[d]^{d_2\circ u}\ar[l]_{l_1} \ar[rr]^{r_1} && R_1 \ar[d]^{g_2\circ a_1}\\G'_1 && \ar[ll]^{z_1} Q_5 \ar[rr]_{z'_1}&& G'_2  && \ar[ll]^{x_2} Q_3 \ar[rr]_{y_2}&& G_2}\]
 			
 		Consider the arrows $i_0:R_0\to D_1$ and $e_0:R_0\to Q_2$. An easy computation shows that
 			\begin{align*}
@@ -1546,7 +1677,7 @@ We can now prove some properties of switch equivalence.
 			\begin{align*}
 				z'_1 \circ \alpha_2 & = z'_1 \circ n_1\circ \alpha'_2\\&=y_1\circ u_1\circ \alpha'_2\\&=y_1\circ b_1
 			\end{align*}
-			The thesis now follows. \qed
+			The thesis now follows.  
 \end{proof}
 
 \begin{corollary} Given a tame  left-linear DPO-rewriting system  $(\X,\R)$ with $\X$ an $\mathcal{M}$-adhesive category and a decorated derivation $(\der{D}, \alpha, \omega)$ with $\der{D}=\{\dder{D}_i\}_{i=0}^2$. Then the following are true: 
@@ -1708,6 +1839,6 @@ Our next step is to identify sufficient conditions for a category $\X$ to satisf
 	\todo{filler e classe B+}
 \end{corollary}
 
-
+\section{On rewriting systems on $\Set$.}\label{app:set}
 
 \end{document}
