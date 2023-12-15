@@ -1,11 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{adamek1994locally}
-J.~Ad{\'a}mek and J.~Rosick{\'y}.
-\newblock {\em Locally presentable and accessible categories}, volume 189 of
-  {\em London Mathematical Society Lecture Note}.
-\newblock Cambridge University Press, 1994.
-
 \bibitem{azzi2019essence}
 G.~G. Azzi, A.~Corradini, and L.~Ribeiro.
 \newblock On the essence and initiality of conflicts in
@@ -19,12 +13,6 @@ P.~Baldan, F.~Gadducci, and P.~Soboci{\'n}ski.
 \newblock In {\em Mathematical Foundations of Computer Science 2011: 36th
   International Symposium, MFCS 2011, Warsaw, Poland, August 22-26, 2011.
   Proceedings 36}, pages 48--59. Springer, 2011.
-
-\bibitem{borceux1994handbook1}
-F.~Borceux.
-\newblock {\em Handbook of Categorical Algebra 1. Basic Category Theory},
-  volume~50 of {\em Encyclopedia of Mathematics and its Applications}.
-\newblock Cambridge University Press, 1994.
 
 \bibitem{brown1997van}
 R.~Brown and G.~Janelidze.
@@ -53,13 +41,18 @@ H.~Ehrig, K.~Ehrig, U.~Prange, and G.~Taentzer.
 \newblock Monographs in Theoretical Computer Science. Springer Science \&
   Business Media, 2006.
 
-\bibitem{ehrig2006weak}
-Hartmut Ehrig and Ulrike Prange.
-\newblock Weak adhesive high-level replacement categories and systems: a
-  unifying framework for graph and petri net transformations.
-\newblock In {\em Algebra, Meaning, and Computation: Essays dedicated to Joseph
-  A. Goguen on the Occasion of His 65th Birthday}, pages 235--251. Springer,
-  2006.
+\bibitem{ehrig2012}
+H.~Ehrig, U.~Golas, A.~Habel, L.~Lambers, and F.~Orejas.
+\newblock $\mathcal{M}$-adhesive transformation systems with nested application
+  conditions. {P}art 2: Embedding, critical pairs and local confluence.
+\newblock {\em Fundamenta Informaticae}, 118(1-2):35--63, 2012.
+
+\bibitem{ehrig2014adhesive}
+H.~Ehrig, U.~Golas, A.~Habel, L.~Lambers, and F.~Orejas.
+\newblock $\mathcal{M}$-adhesive transformation systems with nested application
+  conditions. {P}art 1: parallelism, concurrency and amalgamation.
+\newblock {\em Mathematical Structures in Computer Science}, 24(4):240406,
+  2014.
 
 \bibitem{garner2012axioms}
 R.~Garner and S.~Lack.
@@ -107,15 +100,5 @@ S.~MacLane.
 \newblock {\em Categories for the working mathematician}, volume~5 of {\em
   Graduate Texts in Mathematics}.
 \newblock Springer Science \& Business Media, 2013.
-
-\bibitem{mellies2005axiomatic}
-P.-A. Melli{\`e}s.
-\newblock Axiomatic rewriting theory {I}: A diagrammatic standardization
-  theorem.
-\newblock In A.~Middeldorp, V.~Oostrom, F.~Raamsdonk, and R.~Vrijer, editors,
-  {\em Processes, Terms and Cycles: Steps on the Road to Infinity. Essays
-  Dedicated to Jan Willem Klop on the Occasion of His 60th Birthday}, volume
-  3838 of {\em Lecture Notes in Computer Science}, pages 554--638. Springer
-  Science \& Business Media, 2005.
 
 \end{thebibliography}

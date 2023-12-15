@@ -1,46 +1,51 @@
-This is BibTeX, Version 0.99d (TeX Live 2019)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+This is BibTeX, Version 0.99d (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: fusione.aux
 The style file: plain.bst
 Database file #1: bibliog.bib
-You've used 17 entries,
+Repeated entry---line 450 of file bibliog.bib
+ : @article{ehrig2014adhesive
+ :                           ,
+I'm skipping whatever remains of this entry
+You've used 15 entries,
             2118 wiz_defined-function locations,
-            612 strings with 7576 characters,
-and the built_in function-call counts, 6478 in all, are:
-= -- 642
-> -- 285
-< -- 15
-+ -- 107
-- -- 88
-* -- 457
-:= -- 1033
-add.period$ -- 59
-call.type$ -- 17
+            603 strings with 7162 characters,
+and the built_in function-call counts, 5806 in all, are:
+= -- 571
+> -- 287
+< -- 10
++ -- 109
+- -- 92
+* -- 434
+:= -- 950
+add.period$ -- 51
+call.type$ -- 15
 change.case$ -- 80
 chr.to.int$ -- 0
-cite$ -- 17
-duplicate$ -- 279
-empty$ -- 518
-format.name$ -- 88
-if$ -- 1407
+cite$ -- 15
+duplicate$ -- 226
+empty$ -- 439
+format.name$ -- 92
+if$ -- 1231
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 19
-newline$ -- 88
-num.names$ -- 44
-pop$ -- 99
+int.to.str$ -- 15
+missing$ -- 15
+newline$ -- 78
+num.names$ -- 38
+pop$ -- 82
 preamble$ -- 1
 purify$ -- 69
 quote$ -- 0
-skip$ -- 198
+skip$ -- 162
 stack$ -- 0
-substring$ -- 390
-swap$ -- 99
-text.length$ -- 15
+substring$ -- 353
+swap$ -- 73
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
+type$ -- 56
 warning$ -- 0
-while$ -- 67
-width$ -- 19
-write$ -- 201
+while$ -- 59
+width$ -- 17
+write$ -- 176
+(There was 1 error message)
