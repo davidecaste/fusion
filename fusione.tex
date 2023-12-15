@@ -751,8 +751,8 @@ esempi di	derivazione}
 
 \begin{remark}\label{exa:conc} Let  $\dder{D}\colon G\Mapsto H$ be the direct derivation 
 		\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar[l]^{f} D \ar[r]_{g}& H}\]
-	If $\phi\colon G\to G'$ and $\psi\colon H\to H'$ are two isomorphisms, 	we can consider the direct derivation	$\phi * \dder{D}*\psi \colon G'\Mapsto H'$ given by the following diagram.
-	\[\xymatrix{L \ar[d]_{\phi \circ n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{\psi \circ h}\\G' & \ar[l]^{\phi \circ f} D \ar[r]_{\psi \circ g}& H}\]
+	If $\phi\colon G'\to G$ and $\psi\colon H\to H'$ are two isomorphisms, 	we can consider the direct derivation	$\phi * \dder{D}*\psi \colon G'\Mapsto H'$ given by the following diagram.
+	\[\xymatrix{L \ar[d]_{\phi^{-1} \circ n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{\psi \circ h}\\G' & \ar[l]^{\phi^{-1} \circ f} D \ar[r]_{\psi \circ g}& H'}\]
 	
 	In particular, we will use $\phi*\dder{D}$ and $\dder{D}*\psi$  to denote $\phi*\dder{D}*\id{H}$ and $\id{G}*\dder{D}*\psi$.
 \end{remark}
@@ -902,6 +902,17 @@ In particular, these two triangles imply that
 \begin{remark}\label{rem:res} \Cref{prop:unique} can be restated as saying that, given two direct derivations $\dder{D}$ and $\dder{D'}$ with the same match, there exists an abstract equivalence between them whose first component is an identity.
 \end{remark}
 
+\begin{example}\label{rem:absequi}
+	Let $\der{D}$ be a derivation with source $G$ and target $H$. Let also $\phi:G'\to G$ and $\psi:H\to H'$ be two isomorphisms. Then for every $X\in \Deltamin(\der{D})$ we can define 
+	\[\varphi_X:=\begin{cases}
+		\phi^{-1} & X=G\\
+		\psi & X=H\\
+		\id{X} & \text{otherwise}
+	\end{cases}\]
+
+It is immediate to see that the family $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ is an abstraction equivalence between $\der{D}$ and $\phi *\der{D}*\psi$.	
+\end{example}
+
 \begin{definition}\label{def:conc}
 Let $(\der{D}, \alpha, \omega)$ be a decorated derivation between $G$ and $H$ and $(\der{D}', \alpha', \omega')$ one between $H'$ and $K$. If $H$ and $H'$ are isomorphic, so that $\pi(H)=\pi(H')$, we define the  \emph{composite decorated derivation} putting
 \[(\der{D}, \alpha, \omega)\cdot (\der{D}', \alpha', \omega'):=\begin{cases}
@@ -984,7 +995,7 @@ Furthermore, for every $X\in $ $i\in [0, \lgh(\der{D})]$
 \fi 
 
 The next proposition justifies the use of decorations, guaranteeing that concatenation of abstract decorated derivations is weel-defined.
-\begin{lemma}
+\begin{lemma}\label{lem:conc}
 	Given a decorated derivation $(\der{D}, \alpha, \omega)$  between $G$ and $H$ and  another one $(\der{E}, \beta, \xi)$ between $E$ and $K$ with $\pi(H)=\pi(E)$. If  $(\der{D}', \alpha', \omega')$ and $(\der{E}', \beta', \xi')$ are two other decorated derivations such that
 	\[[\der{D}, \alpha, \omega]_a = [\der{D}', \alpha', \omega']_a \qquad [\der{D}, \beta, \xi]_a=[\der{E}', \beta', \xi']_a\]
 	Then
@@ -1019,9 +1030,9 @@ The thesis now follows at once.
 	\end{align*}
  To fix the notation, suppose that $\der{D}$, $\der{D}'$, $\der{E}$ and $\der{E}'$ are given by
 	\[\der{D}=\{\dder{D}_i\}_{i=0}^n \quad \der{D}'=\{\dder{D}'_i\}_{i=0}^n \quad \der{E}=\{\dder{E}_i\}_{i=0}^t \quad \der{E}'=\{\dder{E}'_i\}_{i=0}^t\]
-	where $\dder{D}_i$, $\dder{D}'_i$, $\dder{E}_i$ and $\dder{E}'_i$ are given, respectively, by the following four diagrams. We can also notice that the rule applied by $\dder{D}_i$ must coincide with the one applpied in $\dder{D}'_i$ and that the same holds for $\dder{E}_i$ and $\dder{E}'_i$.
+	Moreover, noticing that the rule applied by $\dder{D}_i$ and the one applied in $\mathcal{E}_i$  must coincide with, respectively, the one applied in $\dder{D}'_i$ and the one applied $\dder{E}'_i$. We will also assume that $\dder{D}_i$, $\dder{D}'_i$, $\dder{E}_i$ and $\dder{E}'_i$ are given, respectively, by the following four diagrams. 
 	\[\xymatrix{L_{\der{D},i} \ar[d]_{m_{\der{D}, i}}& K_{\der{D},i} \ar[d]_{k_{\der{D}, i}} \ar[r]^{r_{\der{D},i}} \ar[l]_{l_{\der{D},i}} & R_{\der{D},i}\ar[d]^{h_{\der{D}, i}} &L_{\der{E},i} \ar[d]_{m_{\der{E}, i}}& K_{\der{E},i} \ar[d]_{k_{\der{E}, i}} \ar[r]^{r_{\der{E},i}} \ar[l]_{l_{\der{E},i}} & R_{\der{E},i}\ar[d]^{h_{\der{E}, i}} \\G_i & D_i \ar[r]_{g_{\der{D},i}} \ar[l]^{f_{\der{D},i}} & G_{i+1} & E_i & F_i\ar[r]_{g_{\der{E},i}} \ar[l]^{f_{\der{E},i}}  & E_{i+1}}\]
-	\[\xymatrix{L_{\der{D},i} \ar[d]_{m_{\der{D}', i}}& K_{\der{D},i} \ar[d]_{k_{\der{D}', i}} \ar[r]^{r_{\der{D},i}} \ar[l]_{l_{\der{D},i}} & R_{\der{D},i}\ar[d]^{h_{\der{D}', i}} &L_{\der{E},i} \ar[d]_{m_{\der{E}', i}}& K_{\der{E},i} \ar[d]_{k_{\der{E}', i}} \ar[r]^{r_{\der{E},i}} \ar[l]_{l_{\der{E},i}} & R_{\der{E},i}\ar[d]^{h_{\der{E}', i}} \\G_i & D_i \ar[r]_{g_{\der{D}',i}} \ar[l]^{f_{\der{D}',i}} & G_{i+1} & E_i & F_i\ar[r]_{g_{\der{E}',i}} \ar[l]^{f_{\der{E}',i}}  & E_{i+1}}\]
+	\[\xymatrix{L_{\der{D},i} \ar[d]_{m_{\der{D}', i}}& K_{\der{D},i} \ar[d]_{k_{\der{D}', i}} \ar[r]^{r_{\der{D},i}} \ar[l]_{l_{\der{D},i}} & R_{\der{D},i}\ar[d]^{h_{\der{D}', i}} &L_{\der{E},i} \ar[d]_{m_{\der{E}', i}}& K_{\der{E},i} \ar[d]_{k_{\der{E}', i}} \ar[r]^{r_{\der{E},i}} \ar[l]_{l_{\der{E},i}} & R_{\der{E},i}\ar[d]^{h_{\der{E}', i}} \\G'_i & D'_i \ar[r]_{g_{\der{D}',i}} \ar[l]^{f_{\der{D}',i}} & G'_{i+1} & E'_i & F'_i\ar[r]_{g_{\der{E}',i}} \ar[l]^{f_{\der{E}',i}}  & E'_{i+1}}\]
 	
 Now, for every $X\in \Deltamin(\der{D}*\omega^{-1}\cdot \beta*\der{E})$ we can define
 \[\psi_X:=\begin{cases}
@@ -1030,7 +1041,7 @@ Notice that, since $\psi_G=\phi_G$ and $\psi_K=\varphi_K$ we have at once  the c
 \[\xymatrix@C=15pt{&\pi(G) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(K) \ar[dr]^{\xi'} \ar[dl]_{\xi}\\ G\ar[rr]_{\psi_G} && G' &K \ar[rr]_{\psi_K} && K' } \]
 
 
-To show that $\{\psi_X\}_{\Deltamin(\der{D}*\omega^{-1}\cdot \beta*\der{E})}$ it is now enough to prove the commutativity of the diagrams
+To show that $\{\psi_X\}_{\Deltamin(\der{D}*\omega^{-1}\cdot \beta*\der{E})}$ is an abstraction equivalence, it is now enough to prove the commutativity of the diagrams
 	\[\xymatrix@C=45pt@R=15pt{G'_n&D'_n \ar[r]^-{(\omega')^{-1}\circ g_{\der{D}',n}} \ar@/_.2cm/[dr]_(.6){g_{\der{D}',n}} \ar[l]_{f_{\der{D}',n}}&\pi(H') \\&&H' \ar[u]^{(\omega')^{-1}}\\  L_{\der{D}, n} \ar[uu]^{m_{\der{D}',n}} \ar[dd]_{m_{\der{D},n}}& K_{\der{D}, n} \ar[uu]^{k_{\der{D}',n}} \ar[dd]_{k_{\der{D},n}} \ar[r]^{r_{\der{D},n}} \ar[l]_{l_{\der{D},n}} &R_{\der{D}, n}\ar[u]^{h_{\der{D}',n}} \ar[d]_{h_{\der{D},n}}\\&&H \ar[d]_{\omega^{-1}}\\G_n \ar@/_.7cm/[uuuu]_(.35){\phi_{G_n}}|\hole&D_n\ar[l]^{f_{\der{D},n}}\ar@/_.7cm/[uuuu]_(.35){\phi_{D_n}}|\hole \ar@/^.2cm/[ur]^(.6){g_{\der{D},n}}\ar[r]_{\omega^{-1}\circ g_{\der{D},n}}&\pi(H)\ar@/_.7cm/[uuuu]_{\id{\pi(H)}}\\ \pi(E')&F'_0 \ar[l]_-{(\beta')^{-1}\circ f_{\der{E}',0}} \ar@/^.2cm/[dl]^(.6){f_{\der{E}',0}} \ar[r]^{g_{\der{E}',0}}&E'_1 \\E' \ar[u]_{(\beta')^{-1}}&& \\  L_{\der{E}, 0} \ar[u]_{m_{\der{E}', 0}} \ar[d]^{m_{\der{E}, 0}}& K_{\der{E}, 0} \ar[uu]_{k_{\der{E}', 0}} \ar[dd]^{k_{\der{E}, i}} \ar[r]^{r_{\der{E},0}} \ar[l]_{l_{\der{E},0}} &R_{\der{E}, 0}\ar[uu]_{h_{\der{E}',0}} \ar[dd]^{h_{\der{E},0}}\\E \ar[d]^{\beta^{-1}}&& \\\pi(E) \ar@/^.7cm/[uuuu]^{\id{\pi(E)}}&F_0\ar[l]^{\beta^{-1}\circ f_{\der{E},0}}\ar@/^.7cm/[uuuu]^(.35){\varphi_{F_0}}|\hole \ar@/_.2cm/[ul]_(.6){f_{\der{E},0}}\ar[r]_{g_{\der{E},0}}&E_1\ar@/^.7cm/[uuuu]^(.35){\varphi_{E_1}}|\hole}\]
 		
 To see this, in turn, it is enough to show that	the squares
@@ -1183,8 +1194,7 @@ So equipped, we can introduce the notion of \emph{consistent permutation}.
 	Let $\X$ be an $\mathcal{M}$-adhesive category and consider a left-linear DPO-rewriting system $(\X, \R)$ on it.  Take two non-empty decorated derivations $(\der{D}, \alpha, \omega)$ and  $(\der{D}', \alpha', \omega')$ with the same length and with isomorphic sources and targets.
 	 	 
 	 	If $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ with assciated sequence of rules $r(\der{D})=\{\rho_i\}_{i=0}^n$ and $r(\der{D}')=\{\rho'_i\}_{i=0}^n$, a \emph{consistent permutation} between  $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ is a permutation $\sigma\colon [0,n]\to [0,n]$  such that, for every $i\in [0,n]$, $\rho_i=\rho'_{\sigma(i)}$ and, moreover, there exists a \emph{mediating isomorphism} $\xi_\sigma\colon \tpro{D} \to \lpro \der{D}' \rpro$ fitting in the following diagrams, where $m_i, m'_i, h_i$ and $h'_i$ are, respectively, the matches and back-matches of $\dder{D}_i$ and $\dder{D}'_i$.
-	\[\xymatrix@C=30pt{\pi(G_0)\ar[r]^{\alpha} \ar[d]_{\alpha'} & G_0 \ar[r]^{\iota_{G_0}} &\tpro{D} \ar[d]^{\xi_\sigma}&   \pi(G_{n+1}) \ar[r]^{\omega} \ar[d]_{\omega'} & G_{n+1} \ar[r]^{\iota_{G_{n+1}}} &\tpro{D} \ar[d]^{\xi_\sigma}\\ G'_0 \ar[rr]_{\iota'_{G'_0}} & &\lpro \der{D}' \rpro& G'_{n+1} \ar[rr]_{\iota'_{G'_{n+1}}} & &\lpro \der{D}' \rpro}\]
-\[\xymatrix{L_i \ar[r]^{m_i} \ar[d]_{m'_{\sigma(i)}}& G_i \ar[r]^{\iota_{G_i}} &\tpro{D} \ar[d]^{\xi_\sigma} & R_i \ar[r]^{h_i} \ar[d]_{h'_{\sigma(i)}}& G_{i+1} \ar[r]^{\iota_{G_{i+1}}} &\tpro{D} \ar[d]^{\xi_\sigma} \\G'_{\sigma(i)} \ar[rr]_{\iota'_{G'_{\sigma(i)}}}&& \lpro \der{D}' \rpro& G'_{\sigma(i)+1} \ar[rr]_{\iota'_{G'_{\sigma(i)+1}}}&& \lpro \der{D}' \rpro}\]
+	\[\xymatrix@C=30pt{\pi(G_0)\ar[r]^{\alpha} \ar[d]_{\alpha'} & G_0 \ar[r]^{\iota_{G_0}} &\tpro{D} \ar[d]^{\xi_\sigma}&   \pi(G_{n+1}) \ar[r]^{\omega} \ar[d]_{\omega'} & G_{n+1} \ar@{>->}[r]^{\iota_{G_{n+1}}} &\tpro{D} \ar[d]^{\xi_\sigma}\\ G'_0 \ar[rr]_{\iota'_{G'_0}} & &\lpro \der{D}' \rpro& G'_{n+1} \ar@{>->}[rr]_{\iota'_{G'_{n+1}}} & &\lpro \der{D}' \rpro\\L_i \ar[r]^{m_i} \ar[d]_{m'_{\sigma(i)}}& G_i \ar[r]^{\iota_{G_i}} &\tpro{D} \ar[d]^{\xi_\sigma} & R_i \ar[r]^{h_i} \ar[d]_{h'_{\sigma(i)}}& G_{i+1} \ar[r]^{\iota_{G_{i+1}}} &\tpro{D} \ar[d]^{\xi_\sigma} \\G'_{\sigma(i)} \ar[rr]_{\iota'_{G'_{\sigma(i)}}}&& \lpro \der{D}' \rpro& G'_{\sigma(i)+1} \ar[rr]_{\iota'_{G'_{\sigma(i)+1}}}&& \lpro \der{D}' \rpro}\]
 \end{definition}
 
 \begin{remark}
@@ -1205,8 +1215,8 @@ Notice that, in particular, the previous diagram entails
 Let $\sigma\colon [0,n]\to [0,n]$ be a consistent permutation between $(\der{D},\alpha, \omega)$ and $(\der{D}', \alpha', \omega')$, then its inverse $\sigma^{-1}$ is a consistent permutation between $(\der{D}', \alpha', \omega')$ and $(\der{D},\alpha, \omega)$. Indeed, it is enough to consider, as mediating isomorphism, the inverse $\xi^{-1}_\sigma$ of $\xi_\sigma$.
 \end{remark}
 
-\begin{remark}\label{rem:comp} Consistent permutations can be composed. Indeed, given decorated derivations $(\der{D}, \alpha, \omega)$, $(\der{D}', \alpha', \omega')$ and $(\der{\hat{D}}, \hat{\alpha}, \hat{\omega})$, if $\sigma$ is a consistent permutation between the first two and $\sigma'$ one between the second and the third, then  we have diagrams
-	\[\xymatrix@C=18pt{ & G \ar[rr]^{\iota_{G}} &&\tpro{D} \ar[d]^{\xi_\sigma}&  &  H \ar[rr]^{\iota_H} &&\tpro{D} \ar[d]^{\xi_\sigma} \\ \pi(G) \ar@/_.2cm/[dr]_{\hat{\alpha}}\ar@/^.2cm/[ur]^{\alpha} \ar[r]^{\alpha'} &G' \ar[rr]^{\iota'_{G'}}  &&\lpro \der{D}'  \rpro \ar[d]^{\xi_{\sigma'}}&\pi(H)\ar@/_.2cm/[dr]_{\hat{\omega}}\ar@/^.2cm/[ur]^{\omega} \ar[r]^{\omega'} & H' \ar[rr]^{\iota'_{H'}} && \lpro \der{D}' \rpro \ar[d]^{\xi_{\sigma'}}\\ &\hat{G}  \ar[rr]_{\hat{\iota}_{\hat{G}}}&& \lpro \hat{\der{D}}\rpro  && \hat{H} \ar[rr]_{\hat{\iota}_{\hat{H}}}&& \lpro \hat{\der{D}} \rpro \\& G_i \ar[rr]^{\iota_{G_i}} &&\tpro{D} \ar[d]^{\xi_\sigma}&  &  G_i \ar[rr]^{\iota_{G_i}} &&\tpro{D} \ar[d]^{\xi_\sigma} \\ L_i \ar@/_.2cm/[dr]_{\hat{m}_{\sigma'(\sigma(i))}}\ar@/^.2cm/[ur]^{m_i} \ar[r]^{m'_{\sigma(i)}} &G'_{\sigma(i)} \ar[rr]^{\iota'_{G'_{\sigma(i)}}}  &&\lpro \der{D}'  \rpro \ar[d]^{\xi_{\sigma'}}&R_i \ar@/_.2cm/[dr]_{\hat{h}_{\sigma'(\sigma(i))}}\ar@/^.2cm/[ur]^{h_i} \ar[r]^{h'_{\sigma(i)}} & G'_{\sigma(i)} \ar[rr]^{\iota'_{G'_{\sigma(i)}}} && \lpro \der{D}' \rpro \ar[d]^{\xi_{\sigma'}}\\ &\hat{G}_{\sigma'(\sigma(i))}  \ar[rr]_-{\hat{\iota}_{\hat{G}_{\sigma'(\sigma(i))}}}&& \lpro \hat{\der{D}}\rpro  && \hat{G}_{\sigma'(\sigma(i))} \ar[rr]_-{\hat{\iota}_{\hat{G}_{\sigma'(\sigma(i))}}}&& \lpro \hat{\der{D}} \rpro	}\]
+\begin{remark}\label{rem:comp} Consistent permutations can be composed. Indeed, given decorated derivations $(\der{D}, \alpha, \omega)$, $(\der{D}', \alpha', \omega')$ and $(\der{\hat{D}}, \hat{\alpha}, \hat{\omega})$ all of length $n$, if $\sigma$ is a consistent permutation between the first two and $\sigma'$ one between the second and the third, then  we have diagrams
+	\[\xymatrix@C=18pt{ & G_0 \ar[rr]^{\iota_{G_0}} &&\tpro{D} \ar[d]^{\xi_\sigma}&  &  G_{n} \ar@{>->}[rr]^{\iota_{ G_{n}}} &&\tpro{D} \ar[d]^{\xi_\sigma} \\ \pi(G_0) \ar@/_.2cm/[dr]_{\hat{\alpha}}\ar@/^.2cm/[ur]^{\alpha} \ar[r]^{\alpha'} &G'_0 \ar[rr]^{\iota'_{G'_0}}  &&\lpro \der{D}'  \rpro \ar[d]^{\xi_{\sigma'}}&\pi({ G_{n}})\ar@/_.2cm/[dr]_{\hat{\omega}}\ar@/^.2cm/[ur]^{\omega} \ar[r]^{\omega'} & { G'_{n}} \ar@{>->}[rr]^{\iota'_{{ G'_{n}}}} && \lpro \der{D}' \rpro \ar[d]^{\xi_{\sigma'}}\\ &\hat{G}_0  \ar[rr]_{\hat{\iota}_{\hat{G}_0}}&& \lpro \hat{\der{D}}\rpro  && \hat{G}_n \ar@{>->}[rr]_{\hat{\iota}_{\hat{G}_n}}&& \lpro \hat{\der{D}} \rpro \\& G_i \ar[rr]^{\iota_{G_i}} &&\tpro{D} \ar[d]^{\xi_\sigma}&  &  G_i \ar[rr]^{\iota_{G_i}} &&\tpro{D} \ar[d]^{\xi_\sigma} \\ L_i \ar@/_.2cm/[dr]_{\hat{m}_{\sigma'(\sigma(i))}}\ar@/^.2cm/[ur]^{m_i} \ar[r]^{m'_{\sigma(i)}} &G'_{\sigma(i)} \ar[rr]^{\iota'_{G'_{\sigma(i)}}}  &&\lpro \der{D}'  \rpro \ar[d]^{\xi_{\sigma'}}&R_i \ar@/_.2cm/[dr]_{\hat{h}_{\sigma'(\sigma(i))}}\ar@/^.2cm/[ur]^{h_i} \ar[r]^{h'_{\sigma(i)}} & G'_{\sigma(i)} \ar[rr]^{\iota'_{G'_{\sigma(i)}}} && \lpro \der{D}' \rpro \ar[d]^{\xi_{\sigma'}}\\ &\hat{G}_{\sigma'(\sigma(i))}  \ar[rr]_-{\hat{\iota}_{\hat{G}_{\sigma'(\sigma(i))}}}&& \lpro \hat{\der{D}}\rpro  && \hat{G}_{\sigma'(\sigma(i))} \ar[rr]_-{\hat{\iota}_{\hat{G}_{\sigma'(\sigma(i))}}}&& \lpro \hat{\der{D}} \rpro	}\]
 	We deduce at once that $\sigma'\circ \sigma$ is a consistent permutation with mediating isomorphism given by $\xi_{\sigma'} \circ \xi_\sigma$.
 \end{remark}
 
@@ -1253,36 +1263,6 @@ Now, notice that, given a consistent permutation $\sigma\colon [0,n]\to[0,n]$, w
 \begin{corollary} For every consistent permutation $\sigma$ between  $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$, the mediating isomorphism $\xi_\sigma\colon \tpro{D}\to \lpro \der{D}'\rpro$ is unique.
 \end{corollary}
 
-
-\begin{proposition}\label{prop:sum} Let $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ be two abstract decorated derivations such that
-	\[(\der{D}, \alpha, \omega)=(\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2) \qquad (\der{D}', \alpha', \omega')=(\der{D}'_1, \alpha'_1, \omega'_1)\cdot (\der{D}'_2, \alpha'_2, \omega'_2)\]
-If $\sigma_1\colon [0, \lgh(\der{D}_1)-1]\to [0, \lgh(\der{D}_1)-1]$ is a consistent permutation between  $(\der{D}_1, \alpha_1, \omega_1)$ and $(\der{D}'_1, \alpha'_1, \omega'_1)$ and $\sigma_2:[0, \lgh(\der{D}_2)-1]\to [0, \lgh(\der{D}_2)-1]$ one between $(\der{D}_2, \alpha_2, \omega_2)$ and $(\der{D}'_2, \alpha'_2, \omega'_2)$, then 
-\[\sigma_1+\sigma_2\colon[0, \lgh(\der{D})-1]\to[0, \lgh(\der{D})-1] \qquad n \mapsto \begin{cases}
-	\sigma_1(n) & n < \lgh(\der{D}_1)\\
-	\sigma_2(n-\lgh(\der{D}_1)) &   \lgh(\der{D}_1) \leq n
-\end{cases}\]
- is a consistent permutation between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$.
-\end{proposition}
-\begin{proof}
-	\[(\der{D}, \alpha, \omega)\cdot (\der{D}', \alpha', \omega'):=\begin{cases}
-		(\der{D}', \alpha'\circ \omega^{-1}\circ \alpha, \omega')	&\lgh(\der{D})=0 \\
-		(\der{D}, \alpha, \omega \circ (\alpha')^{-1}\circ \omega')&\lgh(\der{D}')=0 \text{ and } \lgh(\der{D})\neq 0\\
-		(\der{D}*\omega^{-1}\cdot \alpha'*\der{D'}, \alpha, \omega')	&\text{otherwise}
-	\end{cases}\]
-	
-	Following \Cref{def:conc}, we will split the proof in three cases.
-	\begin{itemize}
-		\item $\lgh(\der{D}_1)=0$. Thus $\lgh(\der{D}'_1)=0$ too  and we have
-		\[(\der{D}, \alpha, \omega)=(\der{D}_2, \alpha_2\circ \omega_1^{-1}\circ \alpha_1, \omega_2) \quad (\der{D}', \alpha', \omega')=(\der{D}'_2, \alpha'_2\circ (\omega'_1)^{-1}\circ \alpha'_1, \omega'_2)\]
-	Moreover, in this case $\sigma_1+\sigma_2=\sigma_2$. The thesis now follows at once noticing that 
-	\begin{align*}\xi_{\sigma_2}\circ \iota_{G_{2,0}}\circ \alpha_2 \circ \omega_1^{-1}\circ \alpha_1 &=\iota'_{G'_{2,0}} \circ \alpha'_2 \circ \omega^{-1}_1 \circ \alpha_1\\&=\iota'_{G'_{2,0}} \circ \alpha'_2 \circ (\omega'_1)^{-1}\circ \xi_{\id{\emptyset}} \circ \alpha_1\\&=\iota'_{G'_{2,0}} \circ \alpha'_2\circ (\omega'_1)^{-1} \circ \alpha'_1
-	\end{align*}
-
-		\item 
-		\item  \qedhere 
-	\end{itemize}
-\end{proof}
-
 We are now ready to prove the central result of this section. 
 
 \begin{lemma} Let $(\X,R)$ be a left-linear DPO-rewriting system. Consider two consistent permutation $\sigma,\sigma'\colon [0,n]\rightrightarrows [0,n]$ between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$. Suppose that $\sigma\neq \sigma'$ and let $j$ be the minimum index such that $\sigma(j)\neq \sigma'(j)$. Let also $r(\der{D})$ be $\{\rho_i\}_{i=0}^n$. Then the following hold true:
@@ -1295,26 +1275,74 @@ We are now ready to prove the central result of this section.
 		\item Let $k$ be $\sigma^{-1}(\sigma'(0))$ and notice that, since $\sigma(0)\neq \sigma'(0)$, then $0< k$.  By  the first point of  \Cref{prop:uniqu} we can consider the diagram
 		\[\xymatrix@C=40pt{& L_0 \ar[d]_{m'_{\sigma'(0)}} \ar@/^.2cm/[dr]^{m_{k}} \ar@/_.2cm/[dl]_{m_{0}} \\G_{0} \ar@/_.2cm/[drr]_(.3){\iota_{G_0}}|(.515)\hole \ar[d]_{\iota_{G_0}}& G'_{\sigma'(0)} \ar[d]^{\iota_{G'_{\sigma'(0)}}} & G_{k} \ar[d]^{\iota_{G_k}}\\ \tpro{D} \ar[r]_{\xi_{\sigma'}} & \lpro \der{D'}\rpro & \tpro{D} \ar[l]^{\xi_{\sigma}}}\]
 	From \Cref{cor:ele}, we can conclude that there exists $c\colon L_0\to D_0$ such that $f_0\circ c=m_0$. We thus have the solid part of the commutative diagram below.
-		\[\xymatrix{L_0 \ar@/^.3cm/[drr]^{\id{L_0}} \ar@{.>}[dr]_{t} \ar@/_.3cm/[ddr]_{c}\\ & K_0 \ar[d]_{k_0}\ar[r]^{l_0}& L_0 \ar[d]^{m_0} \\& D_0 \ar[r]_{f_0} & G_0} \]
+		\[\xymatrix{L_0 \ar@/^.3cm/[drr]^{\id{L_0}} \ar@{.>}[dr]_{t} \ar@/_.3cm/[ddr]_{c}\\ & K_0 \ar[d]_{k_0}\ar@{>->}[r]^{l_0}& L_0 \ar[d]^{m_0} \\& D_0 \ar@{>->}[r]_{f_0} & G_0} \]
 		The internal square is an $\mathcal{M}$-pushout and thus a pullback, by \Cref{prop:pbpoad}, so that we have the existence of the dotted $t\colon L_0\to K_0$. Therefore $\id{L_0}=l_0\circ t$, proving that $l_0$ is an epimorphism. The thesis now follows from \Cref{cor:rego}.  
 		\item  Let $k$ be $\sigma^{-1}(\sigma'(j-1))$ and notice that $\rho_{j-1}=\rho_k$. By definition of $j$, $\sigma_{|[0,j-1]}=\sigma'_{|[0,j-1]}$, thus the second point of \Cref{prop:unique} yields the diagram
 			\[\xymatrix@C=40pt{& L_{j-1} \ar[d]_{m'_{\sigma'(j-1)}} \ar@/^.2cm/[dr]^{m_{k}} \ar@/_.2cm/[dl]_{m_{j-1}} \\G_{j-1} \ar@/_.2cm/[drr]_(.3){\iota_{G_{j-1}}}|(.515)\hole \ar[d]_{\iota_{G_{j-1}}}& G'_{\sigma'(j-1)} \ar[d]^{\iota_{G'_{\sigma'(j-1)}}} & G_{k} \ar[d]^{\iota_{G_k}}\\ \tpro{D} \ar[r]_{\xi_{\sigma'}} & \lpro \der{D'}\rpro & \tpro{D} \ar[l]^{\xi_{\sigma}}}\]
 			Let $a$ be $\min(j-1, k)$, by \Cref{cor:ele},  there exists $c\colon L_{j-1}\to D_a$ such that $f_a\circ c=m_a$. As before this yields the solid part of the following diagram
-			\[\xymatrix{L_{j-1} \ar@/^.3cm/[drr]^{\id{L_{j-1}}} \ar@{.>}[dr]_{t} \ar@/_.3cm/[ddr]_{c}\\ & K_{j-1} \ar[d]_{k_a}\ar[r]^{l_{j-1}}& L_{j-1} \ar[d]^{m_a} \\& D_a \ar[r]_{f_a} & G_a} \]
+			\[\xymatrix{L_{j-1} \ar@/^.3cm/[drr]^{\id{L_{j-1}}} \ar@{.>}[dr]_{t} \ar@/_.3cm/[ddr]_{c}\\ & K_{j-1} \ar[d]_{k_a}\ar@{>->}[r]^{l_{j-1}}& L_{j-1} \ar[d]^{m_a} \\& D_a \ar@{>->}[r]_{f_a} & G_a} \]
 			The existence of the dotted $t\colon L_{j-1}\to K_{j-1}$ follows from  \Cref{prop:pbpoad} and we can conclude. \qedhere
 	\end{enumerate}
 \end{proof}
 
-\begin{corollary}\label{cor:unique}
+\begin{corollary}[Uniqueness of consistent permutation]\label{cor:unique}
 Let $(\X,R)$ ba left-linear DPO-rewriting system and suppose that every rule in $R$ is consuming. For every two non-empty decorated derivations $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$, there exists at most one consistent permutation between them.
 \end{corollary}
 
+We end this section proving two rather technical result about consistent permutations between composite decorated derivations.
 
-\begin{corollary}\label{cor:dec}
+\begin{proposition}\label{prop:sum} Let $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ be two abstract decorated derivations such that
+	\[(\der{D}, \alpha, \omega)=(\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2) \qquad (\der{D}', \alpha', \omega')=(\der{D}'_1, \alpha'_1, \omega'_1)\cdot (\der{D}'_2, \alpha'_2, \omega'_2)\]
+	If $\sigma\colon [0, \lgh(\der{D}_1)-1]\to [0, \lgh(\der{D}_1)-1]$ is a consistent permutation between  $(\der{D}_1, \alpha_1, \omega_1)$ and $(\der{D}'_1, \alpha'_1, \omega'_1)$ and $\tau:[0, \lgh(\der{D}_2)-1]\to [0, \lgh(\der{D}_2)-1]$ one between $(\der{D}_2, \alpha_2, \omega_2)$ and $(\der{D}'_2, \alpha'_2, \omega'_2)$, then 
+	\[\sigma+\tau\colon[0, \lgh(\der{D})-1]\to[0, \lgh(\der{D})-1] \qquad n \mapsto \begin{cases}
+		\sigma(n) & n < \lgh(\der{D}_1)\\
+		\tau(n-\lgh(\der{D}_1)) &   \lgh(\der{D}_1) \leq n
+	\end{cases}\]
+	is a consistent permutation between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$.
+\end{proposition}
+\begin{proof}
+	Let us start fixing some notation. Given $X_1\in \Delta(\der{D}_1)$, $X_2\in \Delta(\der{D}_2)$, $X'_1\in \Delta(\der{D}'_1)$, $X'_2\in \Delta(\der{D}'_2)$, we will denote their coprojections into, respectively, $\lpro \der{D}_1\rpro$, $\lpro \der{D}'_2\rpro$, $\lpro \der{D}'_1\rpro$, $\lpro \der{D}'_2\rpro$ by
+	$\iota_{1, X_1}\colon X_1\to \lpro\der{D}_1\rpro$, $\iota_{1, X_2}\colon X_2\to \lpro\der{D}_1\rpro$, $\iota'_{1, X'_1}\colon X'_1\to \lpro\der{D}'_1\rpro$ and $\iota'_{2, X'_2}\colon X'_2\to \lpro\der{D}_1\rpro$.
+	
+	Now that these preliminaries matters have been addressed, we will proceed with the rest of the proof.. We split the proof in three cases.
+	\begin{itemize}
+		\item $\lgh(\der{D}_1)=0$. Thus $\lgh(\der{D}'_1)=0$ too  and we have
+		\begin{align*}
+			(\der{D}, \alpha, \omega)&=(\der{D}_2, \alpha_2\circ \omega_1^{-1}\circ \alpha_1, \omega_2) \\ (\der{D}', \alpha', \omega')&=(\der{D}'_2, \alpha'_2\circ (\omega'_1)^{-1}\circ \alpha'_1, \omega'_2)
+		\end{align*}
+		Moreover, in this case $\sigma$ must be $\id{\emptyset}$ and $\sigma+\tau$ must be equal to $\tau$. The thesis now follows from the commutativity of the following diagram.
+		\[\xymatrix@C=35pt{& G_{1,0}\ar[dd]^{\xi_{\id{\emptyset}}} \ar[dr]^{\omega^{-1}_1}&&G_{2,0}\ar[r]^-{\iota_{2, G_{2,0}}} & \lpro \der{D}_2\rpro \ar[dd]^{\xi_{\tau}}\\\pi(G_{1,0})  \ar[ur]^{\alpha_1} \ar[dr]_{\alpha'_1}&& \pi(G_{2,0}) \ar[ur]^{\alpha_2} \ar[dr]_{\alpha'_2}\\& G'_{1,0} \ar[ur]_{(\omega'_1)^{-1}}&&G'_{2,0} \ar[r]_-{\iota'_{2, G_{2,0}}}& \lpro \der{D}'_2\rpro}\]
+		
+		\item $\lgh(\der{D}_2)=0$.  As before this implies that also $\lgh(\der{D}'_2)$ is $0$.  Applying \Cref{def:conc} we get 
+		\begin{align*}
+			(\der{D}, \alpha, \omega)&=(\der{D}_1, \alpha_1, \omega_1 \circ (\alpha_2)^{-1}\circ \omega_2) \\ (\der{D}', \alpha', \omega')&=(\der{D}'_1, \alpha'_1, \omega'_1 \circ (\alpha'_2)^{-1}\circ \omega'_2)
+		\end{align*}
+		Since $\der{D}_2$ is empty, then $\tau=\id{\emptyset}$ and $\sigma+\tau=\sigma$. Let $n$ be $\lg(\der{D}_1)$, as before the thesis follows from the diagram below.
+		\[\xymatrix@C=35pt{& G_{2,0}\ar[dd]^{\xi_{\id{\emptyset}}} \ar[dr]^{\alpha^{-1}_2}&&G_{1,n}\ar@{>->}[r]^-{\iota_{1, G_{1,n}}} & \lpro \der{D}_2\rpro \ar[dd]^{\xi_{\sigma_1}}\\\pi(G_{2,0})  \ar[ur]^{\omega_2} \ar[dr]_{\omega'_2}&& \pi(G_{1,n}) \ar[ur]^{\omega_1} \ar[dr]_{\omega'_1}\\& G'_{2,0} \ar[ur]_{(\alpha'_1)^{-1}}&&G'_{1,n} \ar@{>->}[r]_-{\iota'_{1, G_{1,n}}}& \lpro \der{D}'_2\rpro}\]
+		\item   $\lgh(\der{D}_1)\neq0$ and $\lgh(\der{D}_2)\neq 0$. Thus $\der{D}'_1$ and $\der{D}'_2$ are non-empty too. In this case we have:
+		\begin{align*}
+			(\der{D}, \alpha, \omega)&=(\der{D}_1*\omega_1^{-1}\cdot \alpha_2*\der{D}_2, \alpha_1, \omega_2)\\
+			(\der{D}', \alpha', \omega')&=(\der{D}'_1*(\omega'_1)^{-1}\cdot \alpha'_2*\der{D}'_2, \alpha'_1, \omega'_2)
+		\end{align*}
+		
+		
+		Let us assume that $\der{D}_1$, $\der{D}'_1$, $\der{D}_2$ and $\der{D}'_2$ are given by
+		\[\der{D}_1=\{\dder{D}_{1,i}\}_{i=0}^n \quad \der{D}'_1=\{\dder{D}'_{1,i}\}_{i=0}^n \quad \der{D}_2=\{\dder{D}_{2,i}\}_{i=0}^t \quad \der{D}_2'=\{\dder{D}'_{2,i}\}_{i=0}^t\]
+		By definition of consistent permutation, the rule applied by $\dder{D}_{1,i}$ and the one applied in $\dder{D}_{2,i}$  must coincide with, respectively, the one applied in $\dder{D}'_{1,i}$ and the one applied $\dder{D}'_{2,1}$. Let $\dder{D}_{1,i}$, $\dder{D}'_{1,i}$, $\dder{D}_{2,i}$ and $\dder{D}'_{2,i}$ be given, by the following four diagrams. 
+		\[\xymatrix{L_{1,i} \ar[d]_{m_{1, i}}& K_{1,i} \ar[d]_{k_{1, i}} \ar[r]^{r_{1,i}} \ar@{>->}[l]_{l_{1,i}} & R_{1,i}\ar[d]^{h_{1, i}} &L_{1,i} \ar[d]_{m'_{1, i}}& K_{1,i} \ar[d]_{k'_{1, i}} \ar[r]^{r_{1,i}} \ar@{>->}[l]_{l_{1,i}} & R_{1,i}\ar[d]^{h'_{1, i}} \\G_{1,i} & D_{1,i} \ar[r]_{g_{1,i}} \ar@{>->}[l]^{f_{1,i}} & G_{1,i+1} & G'_{1,i} & D'_{1,i}\ar[r]_{g'_{1,i}} \ar@{>->}[l]^{f'_{1,i}}  & G'_{1,i+1}}\]		
+		\[\xymatrix{L_{2,i} \ar[d]_{m_{2, i}}& K_{2,i} \ar[d]_{k_{2, i}} \ar[r]^{r_{2,i}} \ar@{>->}[l]_{l_{2,i}} & R_{2,i}\ar[d]^{h_{2, i}} &L_{2,i} \ar[d]_{m'_{2, i}}& K_{2,i} \ar[d]_{k'_{2, i}} \ar[r]^{r_{2,i}} \ar@{>->}[l]_{l_{2,i}} & R_{2,i}\ar[d]^{h'_{2, i}} \\G_{2,i} & D_{2,i} \ar[r]_{g_{2,i}} \ar@{>->}[l]^{f_{2,i}} & G_{2,i+1} & G'_{2,i} & D'_{2,i}\ar[r]_{g'_{2,i}} \ar@{>->}[l]^{f'_{2,i}}  & G'_{2,i+1}}\] 
+	\end{itemize}
+	Let $(\lpro \der{D}_1*(\omega_1)^{-1}\rpro, \{j_X\}_{X\in \Delta( \der{D}_1*(\omega_1)^{-1})})$, $(\lpro \der{D}'_1*(\omega'_1)^{-1}\rpro, \{j'_X\}_{X\in \Delta( \der{D}'_1*(\omega'_1)^{-1})})$, $(\lpro \der{D}_1*(\omega_1)^{-1}\rpro, \{j_X\}_{X\in \Delta( \der{D}_1*(\omega_1)^{-1})})$ and $(\lpro \der{D}'_1*(\omega'_1)^{-1}\rpro, \{j'_X\}_{X\in \Delta( \der{D}'_1*(\omega'_1)^{-1})})$ be colimiting cocones. Define two other cocones and  $\der{D}'_1*(\omega'_1)^{-1}\cdot \alpha'_2*\der{D}'_2$
+	Using point $2$ of \Cref{lem:colim} we get two pushout squares
+	\[\xymatrix{\pi(H) & }\]
+	Now, notice that $()$ and $bb$ are cocones on ... so that there exists... such that. 
+\end{proof}
+
+\begin{corollary}\label{cor:presuffix}
 	\todo{prefisso e suffisso}
 \end{corollary}
 \begin{proof}
-	contenuto...\qedhere 
+	contenuto...
 \end{proof}
 
 \section{Shift equivalence and traces}
