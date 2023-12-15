@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.6.27)  15 DEC 2023 10:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.6.27)  15 DEC 2023 12:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1160,7 +1160,7 @@ onomor-phism, then both squares are pushouts
 6x2 292> <xymatrix 6x2 292> [15] <xymatrix 4x2 450> [16] <xymatrix 4x2 450>
 <xymatrix 6x2 624> <xymatrix 6x2 624> [17] <xymatrix 6x2 292> <xymatrix 3x10
 1792> <xymatrix 6x4 840> [18] [19] <xymatrix 2x2 188>
-Overfull \hbox (13.65024pt too wide) in paragraph at lines 1097--1098
+Overfull \hbox (13.65024pt too wide) in paragraph at lines 1030--1031
 \OML/cmm/m/it/10 F \OMS/cmsy/m/n/10 ^^N \OML/cmm/m/it/10 I$ \OT1/cmr/m/n/10 and
  $\OML/cmm/m/it/10 F$\OT1/cmr/m/n/10 , then the canon-i-cal ar-row $\OML/cmm/m/
 it/10 ^^^ [] [] C \OMS/cmsy/m/n/10 ! \OML/cmm/m/it/10 D$ \OT1/cmr/m/n/10 in-duc
@@ -1172,13 +1172,13 @@ ed by $(\OML/cmm/m/it/10 D; \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 d[]\OMS/cmsy/m/n
 229> [21] <xymatrix 3x3 402> [22] <xymatrix 3x3 543> <xymatrix 4x2 365>
 <xymatrix 3x4 634> [23] <xymatrix 6x4 918> <xymatrix 4x3 855> [24] <xymatrix
 8x6 1568>
-Overfull \hbox (0.44148pt too wide) detected at line 1219
+Overfull \hbox (0.44148pt too wide) detected at line 1152
 []
  []
 
 [25] <xymatrix 2x2 182> [26] <xymatrix 3x3 433> [27] <xymatrix 3x3 331>
 <xymatrix 3x3 433> <xymatrix 3x3 331> [28]
-Overfull \hbox (13.2737pt too wide) in paragraph at lines 1295--1297
+Overfull \hbox (13.2737pt too wide) in paragraph at lines 1228--1230
 \OT1/cmr/m/it/10 If $\OML/cmm/m/it/10 ^^[ [] [] \OT1/cmr/m/n/10 [0\OML/cmm/m/it
 /10 ; []\OT1/cmr/m/n/10 ([][]) \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1] \OMS/cms
 y/m/n/10 ! \OT1/cmr/m/n/10 [0\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 ([][]) \OMS/c
@@ -1206,22 +1206,22 @@ LaTeX Warning: Marginpar on page 42 moved.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1663.
+(hyperref)                removing `math shift' on input line 1597.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Updownarrow' on input line 1663.
+(hyperref)                removing `\Updownarrow' on input line 1597.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1663.
+(hyperref)                removing `math shift' on input line 1597.
 
 <xymatrix 7x7 2235> <xymatrix 7x7 2235> [42] <xymatrix 7x7 2236> <xymatrix 9x2
 770> [43] <xymatrix 3x3 331> <xymatrix 3x3 331> [44] <xymatrix 7x7 2236>
 <xymatrix 9x2 770> <xymatrix 3x3 331> [45] <xymatrix 3x3 331> [46]
 (./fusione.bbl [47])
 
-LaTeX Warning: Reference `rem:locCR' on page 1 undefined on input line 1869.
+LaTeX Warning: Reference `rem:locCR' on page 1 undefined on input line 1803.
 
 <xymatrix 3x2 313> [48]
 
@@ -1232,11 +1232,11 @@ LaTeX Warning: Marginpar on page 49 moved.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1934.
+(hyperref)                removing `math shift' on input line 1868.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1934.
+(hyperref)                removing `math shift' on input line 1868.
 
 [49] (./fusione.aux)
 
@@ -1280,7 +1280,7 @@ ve/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/stmaryrd/stmary10.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/xypic/xycmat10.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/xypic/xycmbt10.pfb>
-Output written on fusione.pdf (49 pages, 525125 bytes).
+Output written on fusione.pdf (49 pages, 525124 bytes).
 PDF statistics:
  821 PDF objects out of 1000 (max. 8388607)
  734 compressed objects within 8 object streams

@@ -926,75 +926,8 @@ Let $(\der{D}, \alpha, \omega)$ be a decorated derivation between $G$ and $H$ an
 \begin{remark}\label{rem:lgt}
 	Let $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ two composable decorated derivations   such that $\lgh(\der{D})=n$ and $\lgh(\der{D}')=m$.	 Then $(\der{D}*\omega^{-1}\cdot \alpha'*\der{D'}, \alpha, \omega')$ has length $n+m$.
 \end{remark}
-\iffalse 
-\begin{proposition}\label{prop:ident}
-Let $(\der{D}, \alpha, \omega)$ be a decorated derivation between $G$ and $H$ and  $(\der{D}',\alpha', \omega')$ be one between $G'$ and $H'$. Suppose, moreover that $G'$ and $H$ are isomorphic, so that $\pi(G')=\pi(H)$. Then the following hold true.
-\begin{enumerate}
-	\item If $\der{D}$ is the empty derivation, then
-	\[(\der{D}, \alpha, \omega)\cdot (\der{D}',\alpha', \omega')\equiv_a (\der{D}',\alpha', \omega')\]
-	\item  If $\der{D}'$ is the empty derivation, then
-	\[(\der{D}, \alpha, \omega)\cdot (\der{D}',\alpha', \omega')\equiv_a (\der{D},\alpha, \omega)\]
-\end{enumerate}
-\end{proposition}
-\begin{proof}
-\begin{enumerate}
-	\item 
-	By \Cref{def:conc}, we have that 
-	\[(\der{D}, \alpha, \omega)\cdot (\der{D}',\alpha', \omega')= (\der{D}', \alpha'\circ \omega^{-1}\circ \alpha, \omega')\] 
-	
-	For every $X\in \Deltamin(\der{D'})$ we can define
-	\[\phi_{X}:=\begin{cases}
-		\alpha' \circ \alpha \circ \omega \circ (\alpha')^{-1} & X=G'\\
-		\id{X} & \text{otherwise}
-	\end{cases} \]
-	Now, we can notice that $\phi_{G'_0}$ is the composition $\alpha'\circ (\alpha'\circ \omega^{-1}\circ \alpha)^{-1}$, giving us the triangle
 
-\[\xymatrix@C=15pt{&\pi(G') \ar[dr]^{\alpha'} \ar[dl]_{\alpha'\circ \omega^{-1}\circ \alpha}\\ G'\ar[rr]_{\phi_{G'}} && G'} \]
-To conclude the proof it is now enough to show the commutativity of 
-	\[\xymatrix@C=40pt{G'&D'_0 \ar[r]^{g'_0} \ar[l]_{f'_0}&G'_{1}\\  L'_0 \ar[u]^{n'_0} \ar[d]_{n'_0}& K'_0 \ar[u]^{k'_0} \ar[d]_{k'_0} \ar[r]^{r'_0} \ar[l]_{l'_0} &R'_0\ar[u]^{h'_0} \ar[d]_{h'_0}\\G' \ar@/_.45cm/[uu]_(.35){\phi_{G'}}|\hole&D'_0\ar[l]^{f'_0}\ar@/_.45cm/[uu]_(.35){\id{D'_0}}|\hole \ar[r]_{g'_0}&G'_{1}\ar@/_.45cm/[uu]_{\id{G'_1}}}\]
-	
-	\item \qedhere 
-\end{enumerate}
-\end{proof}
-
-\begin{remark}\label{rem:ident}Consider a decorated derivation $(\der{D}, \alpha, \omega)$ between $G$ and $H$ and another one $(\der{D}',\alpha', \omega')$ between $G'$ and $H'$. Suppose, moreover that $\pi(G')=\pi(H)$. By \Cref{rem:empty}, if $\der{D}$ is the empty derivation, so that $G=H$, then 
-	\[(\der{D}, \alpha, \omega)\cdot (\der{D}',\alpha', \omega')= ((\omega \circ (\alpha')^{-1}) *\der{D}', \alpha, \omega')\]
-
-Furthermore, we can notice that
-\[(\der{D}', \alpha', \omega')\equiv_a ((\omega \circ (\alpha')^{-1}) *\der{D}', \alpha, \omega')\]	
-Indeed, for every $X'\in \Deltamin(\der{D'})$ we can define
-\[\phi_{X'}:=\begin{cases}
-	(\alpha')^{-1} & X'=G'\\
-	\id{X'} & \text{otherwise}
-\end{cases} \]
-
-	
-	
-Similarly, if $\lgh(\der{D}')=0$, implying $G'=H'$, we get
-		\[(\der{D}, \alpha, \omega)\cdot (\der{D}',\alpha', \omega')=(\der{D}*\omega^{-1}, \alpha, \omega')\]
-
-We can notice, moreover, that 
-\[(\der{D}', \alpha', \omega')\equiv_a ((\omega \circ (\alpha')^{-1}) *\der{D}', \alpha, \omega') \qquad  (\der{D}, \alpha, \omega) \equiv_a (\der{D}*\omega^{-1}, \alpha, \omega')\] 	
-Indeed,  for every $X'\in \Deltamin(\der{D'})$ and $X\in \Deltamin(\der{D})$ we can define
-\[\phi_{X'}:=\begin{cases}
-	(\alpha')^{-1} & X'=G'_{0}\\
-	\id{X'} & \text{otherwise}
-\end{cases} \qquad \phi_{X}:=\begin{cases}
-\id{X} & \text{otherwise}\\
-\omega^{-1} & X=H\\
-\end{cases}\]
-
-
-first of all notice that the triangles below commute.
-\[\xymatrix@C=15pt{&\pi(G'_0) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G\ar[rr]_{\phi} && G' &G' \ar[rr]_{\phi} && G' } \]
-
-
-Furthermore, for every $X\in $ $i\in [0, \lgh(\der{D})]$ 
-		
-\end{remark}
-\fi 
-
-The next proposition justifies the use of decorations, guaranteeing that concatenation of abstract decorated derivations is weel-defined.
+The next proposition justifies the use of decorations, guaranteeing that concatenation of abstract decorated derivations is well-defined.
 \begin{lemma}\label{lem:conc}
 	Given a decorated derivation $(\der{D}, \alpha, \omega)$  between $G$ and $H$ and  another one $(\der{E}, \beta, \xi)$ between $E$ and $K$ with $\pi(H)=\pi(E)$. If  $(\der{D}', \alpha', \omega')$ and $(\der{E}', \beta', \xi')$ are two other decorated derivations such that
 	\[[\der{D}, \alpha, \omega]_a = [\der{D}', \alpha', \omega']_a \qquad [\der{D}, \beta, \xi]_a=[\der{E}', \beta', \xi']_a\]
@@ -1449,7 +1382,8 @@ If every independence pair is good we will say that $(\X, \R)$ is \emph{tame}.
 	Since the arrow $p\colon P\to D$, which is the pullback of $f'$, is in $\mathcal{M}$ we conclude that $(u,u')=(v,v')$.
 \end{remark}
 
-\begin{remark}Clearly in a tame left-linear DPO-rewriting system two direct derivations are sequentially independent if and only if they are unquely switchable.
+\begin{remark}
+  Clearly in a tame left-linear DPO-rewriting system two direct derivations are sequentially independent if and only if they are unquely switchable.
 \end{remark}
 
 A source of tame left-linear DPO-rewriting systems is given by the linear ones, as shown by the following proposition.
