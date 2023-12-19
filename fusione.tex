@@ -321,7 +321,7 @@
 
 %%%%GENERAL CATEGORICAL NOTATION
 
-%identit‡
+%identit√†
 \newcommand{\id}[1]{\mathsf{id}_{#1}}
 %codominio
 \newcommand{\cod}[1]{\mathsf{cod}({#1})}
@@ -434,6 +434,60 @@
 \section{Introduction}
 
 \todo{A VERY NICE INTRODUCTION}
+
+SOME IDEAS (BADLY WRITTEN, JUST TO START TO PUT IDEAS IN ORDER)
+
+Graph-like structures are used in uncountably many setting for representing the dynamic of software systems: the graph represents the entities in the states and their relations, while rewriting steps, modifying the graph, are used to model events which produce state changes.
+
+Rewriting over graph-like structures is elegantly captured by
+DPO-rewriting over adhesive categories and variants.  This has been
+largely studied for so-called linear rewriting rules. Roughly
+speaking, with linear rules a rewriting step can express the fact that
+some entities in the current state are removed, some other are needed
+for the rewriting step to occur but preserved and some new entities
+are generated.
+
+The computation described by a rewriting system can be naturally
+interpreted as a distributed computation and a notion of independence
+between rewriting steps naturally emerges. When different rules are
+applied at ``distinct'' parts of the state, possibly overlapping on
+preserved items, the rewriting steps can be naturally deemed as
+independent and their application can occur in any order and possibly
+concurrently. This phenomenon is formally captured by the so-called
+Church-Rosser theorem of DPO rewriting. This represent the basis for
+viewing sequences of rewriting in the DPO approach as concurrent
+computations and derive corresponding concurrent semantics. Derivation
+traces can be quotiented by an equivalence relation which identifies
+sequences of rewritings which differs only for the order of
+independent steps, leading to so-called derivation traces. In turn,
+the dependencies this setting can be captured by a classical structure
+in concurrency theory, the so-called prime event structures where
+dependencies are reduced to causality and conflict.
+
+
+It can be the case that linear rules are not sufficiently expressive for capturing the dynamic of a system. This is the case when  a computational step is required not only to consume, preserve and generated, but also ``merge'' parts of the state. This happens, e.g., in nominal calculi where, as a result of name passing, the received name is identified with a local one at the receiver, in the modelling of bonding in biological/chemical processes, add EGGS, something about string diagrams?
+
+Technically, describing fusions requires to move from linear to left-linear rewriting rules. While left-linear rules have been considered in various instances (mainly for graph rewriting( and some results concerning the corresponding rewriting theory have been put forward, to the best of our knowledge the phenomena arising when rewriting with left-linear rules in the general setting of adhesive categories (which capture most ``applications'') have not been systematically explored.
+
+Here we perform this exploration by observing that a number of basic
+properties of rewriting which play a role in the corresponding
+rewriting and concurrency theory need a deep rethinking for
+left-linear rules and we propose solutions for the problems which
+arise.
+
+Firstly, Church-Rosser theorem does not work out of the box: the independence condition for adhesive categories does not extend smoothly to left-linear rules, i.e., existence of an independence pair does not ensure the possibility of switching two derivation and a refined notion, involving the concept of a so-called filler has to be introduced. The problem was identified already in ... where a suitable subclass of adhesive categories is identified where independence as induced by a filler coincide with independence as induced by an independence pair.
+
+Having a notion of independence between computation steps sits at the core of the possibility of viewing an execution trace as a concurrent computation. This is obtained by considering traces up to an equivalence that identifies traces differing only for the order of independent steps (e.g., interchange law [?] in term rewriting, shift equivalence [?] in graph rewriting or permutation equivalence [?] in lambda-calculus). While for linear rewriting systems this works smoothly, for left-linear ones one has to face the problem that if two rewriting steps $r_a r_b$ are independent, if we switch $r_a$ after $r_a$ and then switch it back we can obtain a computation which is not the original one, making the theory of derivation traces inconsistent. In order to solve this problem, we work in a subclass of adhesive categories where derivation steps can be switched in an ``essentially unique way''. We also identify a large class of adhesive categories, arising as presheaves, where the condition is automatically satisfied. [this solves also the previous problem, right;
+
+
+Additionally, a central property for linear rewriting systems is the fact that independence of two rewriting steps is a global notion, independently of the context in which the rewritings take place. This is at the basis of the possibility of capturing the dependencies between rewriting steps in terms of two basic relations, causality and conflict, investigated in ...
+
+This fails for left-linear rules where, as observed in ... for graph rewriting, the possibility of merging parts of the state leads to a sort of disjunctive causality, i.e., a rewriting step, say $r_c$ can be enabled by two different rewriting steps $r_a$ and $r_b$, in a way that in a derivation $r_a r_b r_c$ steps $r_b$ and $r_c$ are independent since the presence of $r_a$ in the past is sufficient for enabling $r_a$, while in $r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent. The paper shows that for left-linear rewriting systems a special form of globality of independence can be recovered.
+
+
+The concurrent semantics of linear graph rewriting systems over adhesive categories can be captured by prime event structures and prime algebraic domains [extend] [...]. This is extended to adhesive categories in   [IS THIS IN TOBIAS?]
+
+In [...] it is observed for graph rewriting systems that the presence of fusions, the same event can be enabled by different minimal sets of events, thus preventing the identification of a proper notion of causality and making prime event structures and prime domain inadequate. It is argued that the right class of structures capturing the concurrent behaviour in the presence of fusion are connected event structures and weak prime algebraic domains. This is worked out for DPO rewriting systems over graphs. However the proof relies on a characterisation of independence which fails for non linear rules. Here we correct that result and extend it to DPO rewriting over a large class of adhesive categories.
 
 \section{$\mathcal{M}$-adhesive categories}
 
@@ -1034,7 +1088,7 @@ Let $I:\Deltamin(\dder{D})\to \Delta(\dder{D})$ be the inclusion functor. It is 
 \begin{proof}\begin{enumerate}
 		\item Let us proceed by induction on the length of $\der{D}$.
 		\begin{itemize}
-			\item  $\lgh(\dder{D})=0$. then the $\tpro{\dder{D}}$ is simply $(G, \{\id{G}\})$ and $\id{G}\in \mathcal{M}$.∏
+			\item  $\lgh(\dder{D})=0$. then the $\tpro{\dder{D}}$ is simply $(G, \{\id{G}\})$ and $\id{G}\in \mathcal{M}$.¬∏
 			\item $\lgh(\dder{D})=0$. Suppose that $\dder{D}$ has as its single component the derivation
 			\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G& \ar@{>->}[l]^{f} D \ar[r]_{g}& H  \\}\]
 			The arrow $f$ is  the pushout of $l$ and so it is in in $\mathcal{M}$. We can thus consider the $\mathcal{M}$-pushout square
@@ -1158,7 +1212,7 @@ Let $\sigma\colon [0,n]\to [0,n]$ be a consistent permutation between $(\der{D},
 	If $\der{D}$ and $\der{D}'$ are empty, then the converse also holds: indeed in such a case a mediating isomorphism provides the wanted abstraction equivalence.
 \end{example}
 
-\begin{example}\todo{identit‡ consistente non implica astrazione}
+\begin{example}\todo{identit√† consistente non implica astrazione}
 \end{example}
 
 \begin{proposition}\label{prop:uniqu}
@@ -1537,7 +1591,7 @@ Take two derivations $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}
 
 
 \begin{example}
-	\todo{il punto due sopra Ë necessario}
+	\todo{il punto due sopra √® necessario}
 \end{example}
 
 We can now prove some properties of switch equivalence.
@@ -1558,7 +1612,7 @@ We can now prove some properties of switch equivalence.
 \end{proof}
 
 
-\begin{example}\todo{esempio sul perchÈ weakly independence non Ë invertibile}
+\begin{example}\todo{esempio sul perch√© weakly independence non √® invertibile}
 \end{example}
 
 
@@ -1582,10 +1636,10 @@ We can now prove some properties of switch equivalence.
 \end{proof}
  This, together with ???
 \begin{corollary}
-	\todo{unicit‡}
+	\todo{unicit√†}
 \end{corollary}
 
-\begin{example}\label{ex:contro}\todo{permutazione consistente non implica scambiabilit‡}
+\begin{example}\label{ex:contro}\todo{permutazione consistente non implica scambiabilit√†}
 \end{example}
 
 
@@ -1685,7 +1739,7 @@ Allowing us to conclude that  $S_{i_0,i_1}(\dder{D}_1)\updownarrow S_{\alpha_0, 
 	\end{enumerate}
 \end{corollary}
 
-\todo{ripulire le ipotesi: serve scambiabilit‡ propria tra 1 e 2}
+\todo{ripulire le ipotesi: serve scambiabilit√† propria tra 1 e 2}
 \todo{sistemare il fatto che qua utilizziamo derivazioni di 3 passi}
 \begin{proof}
 	\begin{enumerate}
@@ -1702,7 +1756,7 @@ Allowing us to conclude that  $S_{i_0,i_1}(\dder{D}_1)\updownarrow S_{\alpha_0, 
 		\end{align*}
 		Thus $(u_1\circ \beta'_2, b_2)$ is an independence pair between $S_{a_1, a_2}(\der{D}_2)$ and $S_{a_1, a_2}(\der{D}_1)$ therefore, by hypothesis $u_1\circ \beta'_2=b_1$. But this implies that $\beta'_2$ and $\alpha'_2$ are equal, giving us the thesis.
 		
-\todo{ripulire le ipotesi: serve scambiabilit‡ propria tra 1 e 2}
+\todo{ripulire le ipotesi: serve scambiabilit√† propria tra 1 e 2}
 \todo{sistemare il fatto che qua utilizziamo derivazioni di 3 passi}
 		
 		\item \qedhere 
@@ -1710,7 +1764,7 @@ Allowing us to conclude that  $S_{i_0,i_1}(\dder{D}_1)\updownarrow S_{\alpha_0, 
 \end{proof}
  
  
- \todo{mettere esempio del perchÈ fallisce nell'altra direziome}
+ \todo{mettere esempio del perch√© fallisce nell'altra direziome}
  \todo{anche una breve intro}
 
 \begin{lemma}\label{lem:iig2}Let $(\X,\R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. For every derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$, if $(i_0,i_1)$ is a good independence pair between $\dder{D}_0$ and $\dder{D}_1$, $(a_1,a_2)$ one between $\dder{D}_1$ and $\dder{D}_2$ and $\dder{D}_0\updownarrow S_{a_1,a_2}(\dder{D}_2)$ with good independence pair $(e_0,e_1)$, then $S_{e_0,e_1}(\dder{D}_0)$ and $S_{a_1,a_2}(\dder{D}_1)$ are weakly sequentially independent.
@@ -1850,14 +1904,14 @@ Our next step is to identify sufficient conditions for a category $\X$ to satisf
 \begin{proof}
 	contenuto... \qedhere 
 \end{proof}
-\begin{lemma}\todo{due propriet‡ classe B}
+\begin{lemma}\todo{due propriet√† classe B}
 \end{lemma}
 \begin{proof}
 	\qedhere 
 \end{proof}
 
 \begin{corollary}
-	\todo{due propriet‡ classe B+}
+	\todo{due propriet√† classe B+}
 \end{corollary}
 
 \begin{corollary}
@@ -1872,3 +1926,8 @@ Our next step is to identify sufficient conditions for a category $\X$ to satisf
 
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
