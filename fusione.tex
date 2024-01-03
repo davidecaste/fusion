@@ -517,7 +517,19 @@ Events are then identified with computations consisting of a rewriting
 step with all its causes. This is generalised to adhesive categories
 in~\cite{heindel2009category}. [IS THIS IN TOBIAS?]
 
-In~\cite{baldan2017domains} it is observed for graph rewriting systems that the presence of fusions, the same event can be enabled by different minimal sets of events, thus preventing the identification of a proper notion of causality and making prime event structures and prime domain inadequate. It is argued that the right class of structures capturing the concurrent behaviour in the presence of fusion are connected event structures and weak prime algebraic domains. This is worked out for DPO rewriting systems over graphs. However the proof relies on a characterisation of independence which fails for non linear rules. Here we correct that result and extend it to DPO rewriting over a large class of adhesive categories.
+In~\cite{baldan2017domains} it is observed for graph rewriting systems that the presence of fusions, the same event can be enabled by different minimal sets of events, i.e., a central property of the domain of configuration, namely stability, fails. This prevents the identification of a proper notion of causality and makes prime event structures and prime domains inadequate to represent computations with fusions. It is argued that the right class of structures capturing the concurrent behaviour in the presence of fusion are connected event structures and weak prime algebraic domains.
+%
+An event is still a computation that cannot be decomposed
+as the join of other computations, hence, in order theoretical terms,
+it is an irreducible.
+%
+However, due to unstability, irreducibles are not necessarily primes:
+two different irreducibles can represent the same computation step
+with different minimal enablings.  In~\cite{baldan2017domains} this
+is worked out for DPO rewriting systems over graphs. However the proof
+relies on a wrong characterisation of independence which fails for non
+linear rules. Here we rework in depth the result and extend it to DPO
+rewriting over a large class of adhesive categories.
 
 \section{$\mathcal{M}$-adhesive categories}
 
