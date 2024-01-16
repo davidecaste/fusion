@@ -1388,7 +1388,7 @@ We can now turn our attention to the case in which a consistent permutation betw
 	\end{enumerate}
 \end{lemma}
 \begin{proof}\begin{enumerate}
-		\item Recall that, in this case \[q_1=\iota_{G_0}\circ \alpha_2\circ \omega^{-1}_1 \circ \iota^{-1}_{1,G_{1,0}} \qquad q'_1=\iota'_{G_0}\circ \alpha'_2\circ (\omega'_1)^{-1} \circ (\iota'_{1,G'_{1,0}})^{-1}\]
+		\item Recall that, in this case \[q_1=\iota_{G_0}\circ \alpha_2\circ \omega^{-1}_1 \circ \iota^{-1}_{1,G_{1,0}} \qquad q'_1=\iota'_{G'_0}\circ \alpha'_2\circ (\omega'_1)^{-1} \circ (\iota'_{1,G'_{1,0}})^{-1}\]
 		
 		If we compute we have
 		\begin{align*}
@@ -1402,7 +1402,7 @@ We can now turn our attention to the case in which a consistent permutation betw
 		\end{align*}
 	Hence, again by \Cref{rem:empty,ex:empty}:
 				\begin{align*}
-			\xi_\sigma \circ q_1 &=\iota'_{G'_0}\circ \alpha'\circ \alpha^{-1}\circ \alpha_2\circ \omega^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G'_0}\circ \alpha'_2\circ \alpha^{-1}_2\circ \alpha_2\circ \omega^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G'_0}\circ \alpha'_2\circ \omega^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G_0}\circ \alpha'_2\circ (\omega'_1)^{-1} \circ  \omega'_1\circ \omega^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G_0}\circ \alpha'_2\circ (\omega'_1)^{-1} \circ \alpha'_1\circ \alpha^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G_0}\circ \alpha'_2\circ (\omega'_1)^{-1} \circ (\iota'_{1,G_{1,0}})^{-1}\circ \iota'_{1,G'_{1,0}}\circ \alpha'_1\circ \alpha^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=q'_1\circ \iota'_{1,G'_{1,0}}\circ \alpha'_1\circ \alpha^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=q'_1\circ \xi_{\tau}
+			\xi_\sigma \circ q_1 &=\iota'_{G'_0}\circ \alpha'\circ \alpha^{-1}\circ \alpha_2\circ \omega^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G'_0}\circ \alpha'_2\circ \alpha^{-1}_2\circ \alpha_2\circ \omega^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G'_0}\circ \alpha'_2\circ \omega^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G'_0}\circ \alpha'_2\circ (\omega'_1)^{-1} \circ  \omega'_1\circ \omega^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G_0}\circ \alpha'_2\circ (\omega'_1)^{-1} \circ \alpha'_1\circ \alpha^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G'_0}\circ \alpha'_2\circ (\omega'_1)^{-1} \circ (\iota'_{1,G_{1,0}})^{-1}\circ \iota'_{1,G'_{1,0}}\circ \alpha'_1\circ \alpha^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=q'_1\circ \iota'_{1,G'_{1,0}}\circ \alpha'_1\circ \alpha^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=q'_1\circ \xi_{\tau}
 		\end{align*}
 
 
@@ -1423,7 +1423,7 @@ We can now turn our attention to the case in which a consistent permutation betw
 			\[\xymatrix{K_{i-1}\ar[r]^{r_{i-1}} \ar[d]_{k_{i-1}}& R_{i-1} \ar[d]^{h_{i-1}}\\ D_{i-1} \ar[r]_{g_{i-1}}& G_i}\] 
 		Since $i$ belongs to $E_{\sigma, \tau}$, then $i-1\in E_{\sigma, \tau}$ too. By definition, $i\leq l_1-1$, so that, using \Cref{rem:coproj} we have
 			\[\begin{split}
-				\xi_\sigma \circ \iota_{G_i}\circ h_{i-1}&=  \xi_\sigma\circ \iota_{R_{i-1}}\\&=\iota'_{R_{\sigma(i-1)}}\\&=\iota'_{R_{\tau(i-1)}}\\&=q'_1\circ \iota_{1, R'_{1,\tau(i-1)}}\\&=q'_1\circ \xi_{\tau}\circ \iota_{1, R_{i-1}}\\&=q'_1\circ \xi_{\tau} \circ \iota_{1, G_{1,i}}\circ h_{1, i-1}\\&=q'_1\circ \xi_\tau \circ \iota_{1, G_i} \circ h_{i-1}
+				\xi_\sigma \circ \iota_{G_i}\circ h_{i-1}&=  \xi_\sigma\circ \iota_{R_{i-1}}\\&=\iota'_{R'_{\sigma(i-1)}}\\&=\iota'_{R'_{\tau(i-1)}}\\&=q'_1\circ \iota'_{1, R'_{1,\tau(i-1)}}\\&=q'_1\circ \xi_{\tau}\circ \iota_{1, R_{i-1}}\\&=q'_1\circ \xi_{\tau} \circ \iota_{1, G_{1,i}}\circ h_{1, i-1}\\&=q'_1\circ \xi_\tau \circ \iota_{1, G_i} \circ h_{i-1}
 			\end{split} \]
 	
 		 \Cref{rem:dett} and the induction hypothesis give us
@@ -1436,10 +1436,10 @@ We can now turn our attention to the case in which a consistent permutation betw
 			By \Cref{def:conc}, we have
 			\[h_{l_1-1}=h_{1, l_1} \qquad g_{l_1-1}=g_{1,l_1}\]
 			which, since $q'_1=\id{\lpro \der{D}'_1\rpro}$, in turn, implies that 
-			\[\iota'_{R_{\tau(l_1-1)}}=q'_1\circ \iota_{1, R'_{1,\tau(l_1-1)}}\] 
+			\[\iota'_{R_{\tau(l_1-1)}}=q'_1\circ \iota'_{1, R'_{1,\tau(l_1-1)}}\] 
 			We can thus repeat the same argument of the previous point to deduce
 		\begin{align*}
-				\xi_\sigma \circ \iota_{G_{l_1}}\circ h_{l_1-1}&=  \xi_\sigma\circ \iota_{R_{l_1-1}}\\&=\iota'_{R_{\sigma(l_1-1)}}\\&=\iota'_{R_{\tau(l_1-1)}}\\&=q'_1\circ \iota_{1, R'_{1,\tau(l_1-1)}}\\&=q'_1\circ \xi_{\tau}\circ \iota_{1, R_{l_1-1}}\\&=q'_1\circ \xi_{\tau} \circ \iota_{1, G_{1,l_1}}\circ h_{1, l_1-1}\\&=q'_1\circ \xi_\tau \circ \iota_{1, G_{l_1}} \circ h_{l_1-1}			\end{align*} 
+				\xi_\sigma \circ \iota_{G_{l_1}}\circ h_{l_1-1}&=  \xi_\sigma\circ \iota_{R_{l_1-1}}\\&=\iota'_{R'_{\sigma(l_1-1)}}\\&=\iota'_{R'_{\tau(l_1-1)}}\\&=q'_1\circ \iota'_{1, R'_{1,\tau(l_1-1)}}\\&=q'_1\circ \xi_{\tau}\circ \iota_{1, R_{l_1-1}}\\&=q'_1\circ \xi_{\tau} \circ \iota_{1, G_{1,l_1}}\circ h_{1, l_1-1}\\&=q'_1\circ \xi_\tau \circ \iota_{1, G_{l_1}} \circ h_{l_1-1}			\end{align*} 
 		
 		By hypothesis $l_1-1\in E_{\sigma, \tau}$, so that pint $3$ of this lemma to get
 		\[\xi_\sigma \circ \iota_{G_{l_1-1}}=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{l_1-1}}\]
@@ -1455,7 +1455,7 @@ We can now turn our attention to the case in which a consistent permutation betw
 		
 	\[	\xi_\sigma \circ \iota_{G_{l_1}}=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{l_1}}\circ \omega_1\]
 		We can start noticing that
-		\[q'_1\circ \iota'_{1, G'_{1,l_1}}=\iota_{G'_{l_1}} \circ \omega^{-1} \]
+		\[q'_1\circ \iota'_{1, G'_{1,l_1}}=\iota'_{G'_{l_1}} \circ \omega_1^{-1} \]
 		Therefore
 		\begin{align*}q'_1\circ \iota'_{1, R'_{1,l_1}}&=q'_1\circ \iota'_{1, G'_{1,l_1}}\circ  h'_{1, l_1}\\&=q'_1\circ \iota'_{1, G'_{1,l_1}}\circ \omega_1 \circ  h'_{ l_1}\\&= \iota'_{G'_{l_1}}\circ h'_{l_1}\\&=\iota'_{R'_{l_1-1}}
 		\end{align*}
@@ -1483,15 +1483,17 @@ We are now ready to prove the central result of this section.
 		\item if $j\neq 0$ then the rule $\rho_{j-1}$ is not consuming.
 	\end{enumerate}
 \end{lemma}
+\begin{remark}\label{rem:minmax}It is worth to notice that the hypothesis $D_{\sigma, \tau} \neq \emptyset$ entails $l_1\neq 0$. Moreover, if $j\neq 0$, then $j-1$ is the maximum of $E_{\sigma, \tau}$.
+\end{remark}
 \begin{proof}
 	\begin{enumerate}
-		\item Let $k$ be $\sigma^{-1}(\tau(0))$ and notice that, since $\sigma(0)\neq \tau(0)$, then $0< k$.  By  the first point of  \Cref{prop:uniqu} we can consider the diagram
-		\[\xymatrix@C=40pt{& L_0 \ar[d]_{m'_{\tau(0)}} \ar@/^.2cm/[dr]^{m_{k}} \ar@/_.2cm/[dl]_{m_{0}} \\G_{0} \ar@/_.2cm/[drr]_(.3){\iota_{G_0}}|(.515)\hole \ar[d]_{\iota_{G_0}}& G'_{\tau(0)} \ar[d]^{\iota_{G'_{\tau(0)}}} & G_{k} \ar[d]^{\iota_{G_k}}\\ \tpro{D} \ar[r]_{\xi_{\tau}} & \lpro \der{D'}\rpro & \tpro{D} \ar[l]^{\xi_{\sigma}}}\]
+		\item Let $k$ be $\sigma^{-1}(\tau(0))$ and notice that, since $\sigma(0)\neq \tau(0)$, then $0< k$.  By  the second point of  \Cref{prop:uniqu} we can consider the diagram
+		\[\xymatrix@C=40pt{&& L_0 \ar[d]_{m'_{\tau(0)}} \ar@/^.2cm/[dr]^{m_{k}} \ar@/_.4cm/[dll]_{m_{0}} \\G_{0} \ar@/^.2cm/[drrr]^(.4){\iota_{G_0}}|(.67)\hole \ar[d]_{\iota_{1,G_{1,0}}}& &G'_{\tau(0)} \ar[d]^(.45){\iota'_{G'_{\tau(0)}}} & G_{k} \ar[d]^{\iota_{G_k}}\\ \lpro\der{D}_1 \rpro \ar[r]_{\xi_{\tau}} &\lpro \der{D}'_1\rpro \ar[r]_{q'_1} & \lpro \der{D'}\rpro & \tpro{D} \ar[l]^{\xi_{\sigma}}}\]
 		From \Cref{cor:ele}, we can conclude that there exists $c\colon L_0\to D_0$ such that $f_0\circ c=m_0$. We thus have the solid part of the commutative diagram below.
 		\[\xymatrix{L_0 \ar@/^.3cm/[drr]^{\id{L_0}} \ar@{.>}[dr]_{t} \ar@/_.3cm/[ddr]_{c}\\ & K_0 \ar[d]_{k_0}\ar@{>->}[r]^{l_0}& L_0 \ar[d]^{m_0} \\& D_0 \ar@{>->}[r]_{f_0} & G_0} \]
 		The internal square is an $\mathcal{M}$-pushout and thus a pullback, by \Cref{prop:pbpoad}, so that we have the existence of the dotted $t\colon L_0\to K_0$. Therefore $\id{L_0}=l_0\circ t$, proving that $l_0$ is an epimorphism. The thesis now follows from \Cref{cor:rego}. 
-		\item  Let $k$ be $\sigma^{-1}(\tau(j-1))$ and notice that $\rho_{j-1}=\rho_k$. By definition of $j$, $\sigma(i)=\tau(i)$ for every $i\in [0,j-1]$, so that $j-1$ belongs to $E_{\sigma, \tau}$. Hence, by the second point of \Cref{prop:uniqu} we have
-		\[\xymatrix@C=40pt{& L_{j-1} \ar[d]_{m'_{\tau(j-1)}} \ar@/^.2cm/[dr]^{m_{k}} \ar@/_.2cm/[dl]_{m_{j-1}} \\G_{j-1} \ar@/_.2cm/[drr]_(.3){\iota_{G_{j-1}}}|(.515)\hole \ar[d]_{\iota_{G_{j-1}}}& G'_{\tau(j-1)} \ar[d]^{\iota_{G'_{\tau(j-1)}}} & G_{k} \ar[d]^{\iota_{G_k}}\\ \tpro{D} \ar[r]_{\xi_{\tau}} & \lpro \der{D'}\rpro & \tpro{D} \ar[l]^{\xi_{\sigma}}}\]
+		\item  Let $k$ be $\sigma^{-1}(\tau(j-1))$ and notice that $\rho_{j-1}=\rho_k$. We have already noticed in \Cref{rem:minmax} that $j-1$ is the maximum of $E_{\sigma, \tau}$.  Hence, by the third point of \Cref{prop:uniqu} we have
+		\[\xymatrix@C=40pt{&& L_{j-1} \ar[d]_{m'_{\tau({j-1})}} \ar@/^.2cm/[dr]^{m_{k}} \ar@/_.4cm/[dll]_{m_{{j-1}}} \\G_{1,{j-1}} \ar@/^.2cm/[drrr]^(.4){\iota_{G_{j-1}}}|(.67)\hole \ar[d]_{\iota_{1,G_{1,j-1}}}& &G'_{\tau({j-1})} \ar[d]^{\iota'_{G'_{\tau({j-1})}}} & G_{k} \ar[d]^{\iota_{G_k}}\\ \lpro\der{D}_1 \rpro \ar[r]_{\xi_{\tau}} &\lpro \der{D}'_1\rpro \ar[r]_{q'_1} & \lpro \der{D'}\rpro & \tpro{D} \ar[l]^{\xi_{\sigma}}}\]
 		Let $a$ be $\min(j-1, k)$, by \Cref{cor:ele},  there exists $c\colon L_{j-1}\to D_a$ such that $f_a\circ c=m_a$. As before this yields the solid part of the following diagram, in which the square is an $\mathcal{M}$-pushout.
 		\[\xymatrix{L_{j-1} \ar@/^.3cm/[drr]^{\id{L_{j-1}}} \ar@{.>}[dr]_{t} \ar@/_.3cm/[ddr]_{c}\\ & K_{j-1} \ar[d]_{k_a}\ar@{>->}[r]^{l_{j-1}}& L_{j-1} \ar[d]^{m_a} \\& D_a \ar@{>->}[r]_{f_a} & G_a} \]
 		The existence of the dotted $t\colon L_{j-1}\to K_{j-1}$ follows from  \Cref{prop:pbpoad} and we can conclude. \qedhere
@@ -1506,7 +1508,7 @@ Let $(\X,\R)$ be a consuming left-linear DPO-rewriting system. Then, for every t
 Let $\sigma, \tau: [0, \lgh(\der{D})-1]\rightrightarrows [0, \lgh(\der{D})-1]$ be two consistent permutations. Let $H$  and $H'$ be, respectively, the target of $\der{D}$ and $\der{D}'$. Take two isomorphisms $\gamma:\pi(H)\to \gamma$, $\gamma':\pi(H')\to H'$, then, according to \Cref{def:conc}:
 \begin{align*}(\der{D}, \alpha, \omega)&=(\der{D}, \alpha, \omega)\cdot (\der{D}_2, \gamma, \gamma) \\(\der{D}', \alpha', \omega')&=(\der{D}', \alpha', \omega')\cdot (\der{D}'_2, \gamma', \gamma') 
 \end{align*} 
-where $\der{D}_2$ and $\der{D}'_2$ are the empty derivation on $H$ and $H'$. The thesis now follows at once from \Cref{lem:impo}.
+where $\der{D}_2$ and $\der{D}'_2$ are the empty derivation on $H$ and $H'$. Since $(\X, \R)$ is consuming, then \Cref{lem:impo} entails $D_{\sigma, \tau}=\emptyset$, from which the thesis follows.
 \end{proof}
 
 
@@ -1514,10 +1516,10 @@ where $\der{D}_2$ and $\der{D}'_2$ are the empty derivation on $H$ and $H'$. The
 \begin{lemma}\label{lem:presuffix} Let $(\X, \R)$ be a consuming left-linear DPO-rewriting system.  Let also $(\der{D}_1, \alpha_1, \omega_1)$, $(\der{D}_2, \alpha_2, \omega_2)$ be two composable decorated derivations of length, respectively, $l_1$ and $l_2$. Suppose that $\sigma\colon [0, l_1+l_2-1]\to [0, l_1+l_2-1]$ is a consistent permutation between $(\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)$ and $(\der{D}'_1, \alpha'_1, \omega'_1)\cdot (\der{D}'_2, \alpha'_2, \omega'_2)$ for some other two composable decorated derivations $(\der{D}_1, \alpha_1, \omega_1)$ and $(\der{D}_2, \alpha_2, \omega_2)$.  If $\tau\colon [0,l_1-1]\to [0, l_1-1]$ is a consistent permutation between $(\der{D_1}, \alpha_1, \omega_1)$ and $(\der{D}'_1, \alpha'_1, \omega'_1)$. Then the following hold true:
 	\begin{enumerate}
 		\item suppose that $l_1$ and $l_2$ are different from $0$ and consider the following two pushout squares given by \Cref{rem:dett}:
-		\[\xymatrix@C=45pt@R=30pt{\pi(G_{2,0}) \ar@{>->}[d]_{\iota_{1, G_{1,n+1}} \circ \omega_1}\ar[r]^{\iota_{2, G_{2,0}} \circ \alpha_2}& \lpro \der{D}_2 \rpro \ar@{>->}[d]^{p_2} &  \pi(G'_{2,0}) \ar@{>->}[d]_{\iota'_{1, G'_{1,n+1}} \circ \omega'_1} \ar[r]^{\iota'_{2, G'_{2,0}} \circ \alpha'_2}& \lpro \der{D}'_2 \rpro \ar@{>->}[d]^{p'_2} \\ \lpro \der{D}_1 \rpro  \ar[r]_{p_1} & \tpro{D} & \lpro \der{D}'_1\rpro \ar[r]^{p'_1} & \lpro \der{D}'\rpro  }\]
+		\[\xymatrix@C=45pt@R=30pt{\pi(G_{2,0}) \ar@{>->}[d]_{\iota_{1, G_{1,n+1}} \circ \omega_1}\ar[r]^{\iota_{2, G_{2,0}} \circ \alpha_2}& \lpro \der{D}_2 \rpro \ar@{>->}[d]^{q_2} &  \pi(G'_{2,0}) \ar@{>->}[d]_{\iota'_{1, G'_{1,n+1}} \circ \omega'_1} \ar[r]^{\iota'_{2, G'_{2,0}} \circ \alpha'_2}& \lpro \der{D}'_2 \rpro \ar@{>->}[d]^{q'_2} \\ \lpro \der{D}_1 \rpro  \ar[r]_{q_1} & \tpro{D} & \lpro \der{D}'_1\rpro \ar[r]_{q'_1} & \lpro \der{D}'\rpro  }\]
 		then, for every $i\in [0, l_2]$ there exists a unique $\zeta_i\colon G_{2,i}\to \lpro \der{D}_2\rpro $ fitting in the diagram below
-		\[\xymatrix@R=35pt{G_{2,i} \ar[r]^{\iota_{2,G_{2,i}}} \ar@{.>}[d]_{\zeta_i}&\lpro \der{D}_2 \rpro \ar@{>->}[r]^{p_2}& \tpro{D} \ar[d]^{\xi_{\sigma}} \\
-			\lpro \der{D}'_2 \rpro \ar@{>->}[rr]_{p'_2}&& \lpro \der{D}'\rpro }\]
+		\[\xymatrix@R=35pt{G_{2,i} \ar[r]^{\iota_{2,G_{2,i}}} \ar@{.>}[d]_{\zeta_i}&\lpro \der{D}_2 \rpro \ar@{>->}[r]^{q_2}& \tpro{D} \ar[d]^{\xi_{\sigma}} \\
+			\lpro \der{D}'_2 \rpro \ar@{>->}[rr]_{q'_2}&& \lpro \der{D}'\rpro }\]
 		\item the permutation
 		\[\varrho\colon [0,l_2-1]\to [0, l_2-1] \qquad i \mapsto \sigma(i+l_1)-l_1\]
 		is a consistent one.
@@ -1528,7 +1530,10 @@ where $\der{D}_2$ and $\der{D}'_2$ are the empty derivation on $H$ and $H'$. The
 		\[\xi_\sigma \circ \iota_{G_{i}}=\]Let us prove the existence of $\zeta_i$ by induction on $i\in [0, l_2]$.
 		
 		\smallskip \noindent $i=0$. We already know that $G_{l_1}$ and $G'_{l_1}$ are both equal to $\pi(G_{2,0})$.  Moreover, we also know that
-		\[p_2\circ \iota_{2, G_{2,0}}=\iota_{G_{l_1}} \circ \alpha^{-1}_2 \qquad \]
+		\begin{align*}
+		q_2\circ \iota_{2, G_{2,0}}=\iota_{G_{l_1}} \circ \alpha^{-1}_2 \qquad
+		\end{align*}
+
 		Thus we have a diagram
 		\[\xymatrix{&G_{2,0} \\
 		G_{l_1} \\
