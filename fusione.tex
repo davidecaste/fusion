@@ -1331,10 +1331,10 @@ In these cases, if the cocones $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$,
 
 	Indeed, we have three cases:
 	\begin{itemize}
-		\item $\lgh(\der{D}_1)=0$. Then  $(\der{D}, \alpha, \omega)$ is $(\der{D}_2, \alpha_2\circ \omega_1^{-1}\circ \alpha_1, \omega_2)$ thus we can take as $q_2$ the identity on $\lpro \der{D}_2\rpro$. In this case $\iota_{1,G_{1,0}}$ is an isomorphism, so that the only possible choice for $q_1$ is $\iota_{G_0}\circ \alpha_2\circ \omega^{-1}_1 \circ \iota^{-1}_{G_{1,0}}$
-		\item $\lgh(\der{D}_1)\neq 0$ and $\lgh(\der{D}_2)=0$ . Hence  $(\der{D}, \alpha, \omega)$ is $(\der{D}_1, \alpha_1, \omega_1 \circ \alpha^{-1}_2\circ \omega_2)$. We can define $q_1$ as $\id{\lpro \der{D}_2\rpro}$, while, since $\iota_{2,G_{2,0}}$ is an isomorphism, $q_2$ must be  $\iota_{G_{l_1+l_2}}\circ  \omega_1  \circ \alpha^{-1}_2 \circ \iota^{-1}_{G_{1,0}}$.
-		\item  $\lgh(\der{D}_1)\neq 0$ and $\lgh(\der{D}_2)\neq 0$.In this case we have that $(\der{D}, \alpha, \omega)$  is $(\der{D}_1*\omega_1^{-1}\cdot \alpha_2*\der{D}_2, \alpha_1, \omega_2)$. By the second point of \Cref{lem:colim} and by \Cref{rem:abscons} we get the following diagram, in which the central square is a pushout:
-			\[\xymatrix@C=40pt{&&G_{2,0} \ar@/_.3cm/[dl]_{\alpha^{-1}_2} \ar@/^.3cm/[dr]^{\iota_{2, G_{2,0}}}\\&\pi(G_{2,0})\ar[r]^-{\iota'_{2, \pi(G_{2,0})}} \ar@{>->}[d]_-{\iota'_{1, \pi(G_{1,l_1})}} & \lpro \alpha_2*\der{D}_2 \rpro \ar@{>->}[d]^{p_2} &\tproi{D}{2} \ar[l]_-{\Gamma^{\alpha_2}} \ar@{>.>}@/^.2cm/[dl]^{q_2}\\ G_{1,l_1}  \ar@/^.3cm/[ur]^{\omega^{-1}_1}  \ar@/_.3cm/[dr]_{\iota_{1, G_{1, l_1}}}& \lpro \der{D}_1*\omega_1^{-1} \rpro  \ar[r]_{p_1}& \tpro{D} \\ &\tproi{D}{1} \ar[u]^{\Gamma_{\omega^{-1}_1}}  \ar@{.>}@/_.2cm/[ur]_{q_1}}\]
+		\item $\lgh(\der{D}_1)=0$. Then  $(\der{D}, \alpha, \omega)$ is $(\der{D}_2, \alpha_2\circ \omega_1^{-1}\circ \alpha_1, \omega_2)$ thus we can take as $q_2$ the identity on $\lpro \der{D}_2\rpro$. In this case $\iota_{1,G_{1,0}}$ is an isomorphism, so that the only possible choice for $q_1$ is $\iota_{G_0}\circ \alpha_2\circ \omega^{-1}_1 \circ \iota^{-1}_{1,G_{1,0}}$
+		\item $\lgh(\der{D}_1)\neq 0$ and $\lgh(\der{D}_2)=0$ . Hence  $(\der{D}, \alpha, \omega)$ is $(\der{D}_1, \alpha_1, \omega_1 \circ \alpha^{-1}_2\circ \omega_2)$. We can define $q_1$ as $\id{\lpro \der{D}_1\rpro}$, while, since $\iota_{2,G_{2,0}}$ is an isomorphism, $q_2$ must be  $\iota_{G_{l_1+l_2}}\circ  \omega_1  \circ \alpha^{-1}_2 \circ \iota^{-1}_{2,G_{2,0}}$.
+		\item  $\lgh(\der{D}_1)\neq 0$ and $\lgh(\der{D}_2)\neq 0$. In this case we have that $(\der{D}, \alpha, \omega)$  is $(\der{D}_1*\omega_1^{-1}\cdot \alpha_2*\der{D}_2, \alpha_1, \omega_2)$. By the second point of \Cref{lem:colim} and by \Cref{rem:abscons} we get the following diagram, in which the central square is a pushout:
+			\[\xymatrix@C=40pt{&&G_{2,0}  \ar@/_.3cm/[dl]_{\alpha^{-1}_2} \ar@/^.3cm/[dr]^{\iota_{2, G_{2,0}}}\\&\pi(G_{2,0}) \ar[dr]^{\iota_{G_{l_1}}}\ar[r]^-{\iota'_{2, \pi(G_{2,0})}} \ar@{>->}[d]_-{\iota'_{1, \pi(G_{1,l_1})}} & \lpro \alpha_2*\der{D}_2 \rpro \ar@{>->}[d]^{p_2} &\tproi{D}{2} \ar[l]_-{\Gamma^{\alpha_2}} \ar@{>.>}@/^.2cm/[dl]^{q_2}\\ G_{1,l_1}  \ar@/^.3cm/[ur]^{\omega^{-1}_1}  \ar@{>->}@/_.3cm/[dr]_{\iota_{1, G_{1, l_1}}}& \lpro \der{D}_1*\omega_1^{-1} \rpro  \ar[r]_{p_1}& \tpro{D} \\ &\tproi{D}{1} \ar[u]^{\Gamma_{\omega^{-1}_1}}  \ar@{.>}@/_.2cm/[ur]_{q_1}}\]
 			Let us define $q_1$ as $p_1\circ \Gamma_{\omega^{-1}_1}$ and $q_2$ as $p_2\circ \Gamma^{\alpha_2}$. Then, for every $i\in [0,l_1-1]$ and $j\in [l_1+1, l_1+l_2]$
 				\[\begin{split}
 		q_1\circ \iota_{1, G_{1,i}}&=p_1\circ \Gamma_{\omega^{-1}_1}\circ \iota_{1, G_{1,i}}\\&=p_1\circ \iota'_{1, G_{1,i}} \\&=\iota_{G_{i}}
@@ -1350,30 +1350,63 @@ In these cases, if the cocones $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$,
 		q_2\circ \iota_{G_{2,l_2}}\circ \omega_2&= p_2\circ \Gamma^{\alpha_2}\circ \iota_{G_{2,l_2}}\circ \omega_2 \\&=p_2\circ \iota'_{1, G_{2,l_2}} \circ \omega_2 \\&= \iota_{G_{l_1+l_2}}\circ \omega
 			\end{align*}			
 			\end{itemize}
-	
-	Let $i$ and $j$ be elements of $[0,l_1-1]$ and $[l_1+1, l_1+l_2]$ respectively, then the previous equalities also entail that,
-\[\begin{split}q_1\circ \iota_{1, D_{1,i}}&=\iota_{D_{i}}\\q_2\circ \iota_{2, D_{2,j}}&=\iota_{D_{j+l_1}} 	\\q_1\circ \iota_{1, R_{1,i}}&=\iota_{R_{i}} \\
-	q_2\circ \iota_{2, R_{2,j}}&=\iota_{R_{j+l_1}}
+		
+It is worth noticing that, for every $i\in [0,l_1-1]$ and $j\in [l_1+1, l_1+l_2]$ the previous equalities also entail that,
+\[\begin{split}q_1\circ \iota_{1, D_{1,i}}&=\iota_{D_{i}}\\q_2\circ \iota_{2, D_{2,j}}&=\iota_{D_{j+l_1}} 	\\q_1\circ \iota_{1, R_{1,i-1}}&=\iota_{R_{i-1}} \\
+	q_2\circ \iota_{2, R_{2,j-1}}&=\iota_{R_{j+l_1-1}}
 \end{split} \qquad 
 \begin{split}    	q_1\circ \iota_{1, L_{1,i}}&=\iota_{L_{i}} \\q_2\circ \iota_{2, L_{2,j}}&=\iota_{L_{j+l_1}}\\ q_1\circ \iota_{1, K_{1,i}}&=\iota_{K_{i}}\\q_2\circ \iota_{2, K_{2,j}}&=\iota_{K_{j+l_1}}\end{split}\]
 \end{remark}
 
+We can now turn our attention to the case in which a consistent permutation between two composite derivations is given.
 
-
-\begin{proposition}\label{prop:uniqu}
+\begin{lemma}[Restriction Lemma]\label{prop:uniqu}
 	Let $\sigma\colon [0,n]\to [0,n]$ be a consistent permutations between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ and suppose that 
 	\[(\der{D}, \alpha, \omega)=(\der{D}_1, \alpha_1, \omega_1) \cdot (\der{D}_2, \alpha_2, \omega_2) \qquad (\der{D}', \alpha', \omega')=(\der{D}'_1, \alpha'_1, \omega'_1) \cdot (\der{D}'_2, \alpha'_2, \omega'_2) \]
 	
-	 Let $l_1$ be the length of $\der{D}_1$, and suppose that there exists a consistent permutation $\tau:[0,l_1-1]\to [0, l_1-1]$. If $q'_1$ is the canonical arrow $\lpro \der{D}'_1\rpro \to \lpro \der{D}'\rpro$,  then the following hold true:
+	 Let $l_1$ be the length of $\der{D}_1$, and suppose that there exists a consistent permutation $\tau:[0,l_1-1]\to [0, l_1-1]$.  If $q_1\colon \lpro \der{D}_1\rpro \to \lpro \der{D}\rpro$  and $q'_1\colon \lpro \der{D}'_1\rpro \to \lpro \der{D}'\rpro$ are the canonical arrows defined above, then the following hold true:
 	\begin{enumerate}
-	\item if $l_1\neq 0$, so that $G_{1,0}=G_0$, then $\xi_\sigma \circ \iota_{G_0} = q'_1\circ \xi_{\tau} \circ  \iota_{1, G_{1,0}}$;
-	\item  define the set $E_{\sigma, \tau}$ as 
-	\[E_{\sigma, \tau}:=\{i\in  [0, l_1-1] \mid \sigma(j)=\tau(j) \text{ for every } j \leq i \}\]
-	then, if $E_{\sigma, \tau}\neq \emptyset$,  for every index $i\in [0, \max(E_{\sigma, \tau})+1]$ we have 
-	\[\xi_\sigma \circ \iota_{G_i}=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_i}\]
+	\item  if $l_1=0$, then the following diagram commutes:
+		\[\xymatrix{\lpro \der{D}_1\rpro \ar[r]^{\xi_\tau} \ar[d]_{q_1}& \lpro \der{D}'_1 \ar[d]^{q'_1}\rpro\\ \lpro \der{D}\rpro \ar[r]_{\xi_\sigma} & \lpro \der{D}'\rpro } \]
+	%\[\xi_\sigma \circ q_1 \circ \iota_{1, G_{1,0}} = q'_1\circ \xi_{\tau} \circ  \iota_{1, G_{1,0}}\]
+	\item if $l_1\neq 0$, so that $G_{1,0}=G_0$, then \[\xi_\sigma \circ \iota_{G_0} = q'_1\circ \xi_{\tau} \circ  \iota_{1, G_{1,0}}\]
 	\end{enumerate}
-\end{proposition}
+	
+	Moreover, let $E_{\sigma, \tau}$ be the set
+	\[E_{\sigma, \tau}:=\{i\in  [0, l_1-1] \mid \sigma(j)=\tau(j) \text{ for every } j \leq i \}\]
+	then also the following hold true:
+	\begin{enumerate}
+		\setcounter{enumi}{2}
+	\item  if $E_{\sigma, \tau}\neq \emptyset$,  for every index $i\in [0, \max(E_{\sigma, \tau})]$ we have 
+	\[\xi_\sigma \circ \iota_{G_i}=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_i}\]
+	\item if $l_1-1\in E_{\sigma, \tau}$ and $l_2=0$ so that  $G_{l_1}=G_{1, l_1}$, then 
+	\[\xi_\sigma \circ \iota_{G_{l_1}}=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{l_1}}\]
+	\item if $l_1-1\in E_{\sigma, \tau}$ and $l_2\neq 0$, so that $G_{l_1}=\pi(G_{2,0})$, then 
+	\[\xi_\sigma \circ \iota_{G_{l_1}}=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{l_1}}\circ \omega_1 \]
+	\item if $l_1-1\in E_{\sigma, \tau}$, then the following diagram commutes:
+	\[\xymatrix{\lpro \der{D}_1\rpro \ar[r]^{\xi_\tau} \ar[d]_{q_1}& \lpro \der{D}'_1 \ar[d]^{q'_1}\rpro\\ \lpro \der{D}\rpro \ar[r]_{\xi_\sigma} & \lpro \der{D}'\rpro } \]
+	\end{enumerate}
+\end{lemma}
 \begin{proof}\begin{enumerate}
+		\item Recall that, in this case \[q_1=\iota_{G_0}\circ \alpha_2\circ \omega^{-1}_1 \circ \iota^{-1}_{1,G_{1,0}} \qquad q'_1=\iota'_{G_0}\circ \alpha'_2\circ (\omega'_1)^{-1} \circ (\iota'_{1,G'_{1,0}})^{-1}\]
+		
+		If we compute we have
+		\begin{align*}
+	\xi_\sigma \circ q_1 &=\xi_\sigma \circ \iota_{G_0}\circ \alpha_2\circ \omega^{-1}_1 \circ \iota^{-1}_{1,G_{1,0}} \\&=\iota'_{G'_0}\circ \alpha'\circ \alpha^{-1}\circ \alpha_2\circ \omega^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}
+		\end{align*}
+		Now, since $l_1=0$ we also have that 
+		\[\alpha=\alpha_2\circ \omega_1^{-1}\circ \alpha_1 \qquad \alpha'=\alpha'_2\circ (\omega'_1)^{-1}\circ \alpha'_1\]
+		therefore, using \Cref{rem:empty,ex:empty}
+		\begin{align*}
+	\alpha'\circ \alpha^{-1}&=\alpha'_2\circ (\omega'_1)^{-1}\circ \alpha'_1\circ \alpha^{-1}_1\circ \omega_1\circ \alpha^{-1}_2\\&=\alpha'_2\circ (\omega'_1)^{-1}\circ \omega'_1\circ \omega^{-1}_1\circ \omega_1\circ \alpha^{-1}_2\\&=\alpha'_2\circ \alpha^{-1}_2
+		\end{align*}
+	Hence, again by \Cref{rem:empty,ex:empty}:
+				\begin{align*}
+			\xi_\sigma \circ q_1 &=\iota'_{G'_0}\circ \alpha'\circ \alpha^{-1}\circ \alpha_2\circ \omega^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G'_0}\circ \alpha'_2\circ \alpha^{-1}_2\circ \alpha_2\circ \omega^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G'_0}\circ \alpha'_2\circ \omega^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G_0}\circ \alpha'_2\circ (\omega'_1)^{-1} \circ  \omega'_1\circ \omega^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G_0}\circ \alpha'_2\circ (\omega'_1)^{-1} \circ \alpha'_1\circ \alpha^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=\iota'_{G_0}\circ \alpha'_2\circ (\omega'_1)^{-1} \circ (\iota'_{1,G_{1,0}})^{-1}\circ \iota'_{1,G'_{1,0}}\circ \alpha'_1\circ \alpha^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=q'_1\circ \iota'_{1,G'_{1,0}}\circ \alpha'_1\circ \alpha^{-1}_1\circ \iota^{-1}_{1,G_{1,0}}\\&=q'_1\circ \xi_{\tau}
+		\end{align*}
+
+
+		
 		\item Start noticing that
 		\[\xi_\sigma \circ \iota_{G_0}=\iota'_{G'_0}\circ \alpha'\circ \alpha^{-1} \qquad \xi_{\tau} \circ \iota_{1,G_{1,0}}= \iota'_{1, G'_{1,0}} \circ \alpha'_1\circ \alpha^{-1}_1\] 
 		Therefore:
@@ -1382,26 +1415,61 @@ In these cases, if the cocones $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$,
 		\end{align*}
 		By hypothesis $\lgh(\der{D}_1) \neq 0$, thus $\alpha_1=\alpha$ and we can conclude.
 		
-		\item  From $E_{\sigma, \tau}\neq \emptyset$ we deduce that $l_1\neq 0$ and that $0\in E_{\sigma, \tau}$.  Let $j$ be the maximum of $E_{\sigma, \tau}$. We proceed by induction on $i\in [0,j+1]$. 
+		\item  From $E_{\sigma, \tau}\neq \emptyset$ we deduce that $l_1\neq 0$ and that $0\in E_{\sigma, \tau}$.   We proceed by induction on $i\in [0,\max(E_{\sigma, \tau})]$. 
 
 \smallskip \noindent  If $i=0$ the thesis follows from point $1$.
 
 \smallskip \noindent If $i>0$, we proceed as in the proof of \Cref{prop:isouno} considering the pushout square
 			\[\xymatrix{K_{i-1}\ar[r]^{r_{i-1}} \ar[d]_{k_{i-1}}& R_{i-1} \ar[d]^{h_{i-1}}\\ D_{i-1} \ar[r]_{g_{i-1}}& G_i}\] 
-			
-			Using \Cref{rem:coproj,rem:dett} and the induction hypothesis we get
+		Since $i$ belongs to $E_{\sigma, \tau}$, then $i-1\in E_{\sigma, \tau}$ too. By definition, $i\leq l_1-1$, so that, using \Cref{rem:coproj} we have
 			\[\begin{split}
-			\xi_\sigma \circ \iota_{G_i}\circ h_{i-1}&=  \xi_\sigma\circ \iota_{R_{i-1}}\\&=\iota'_{R_{\sigma(i-1)}}\\&=\iota'_{R_{\tau(i-1)}}\\&=q'_1\circ \iota_{1, R_{1,\tau(i-1)}}\\&=q'_1\circ \xi_{\tau}\circ \iota_{1, R_{i-1}}\\&=q'_1\circ \xi_{\tau} \circ \iota_{1, G_{1,i}}\circ h_{1, i-1}\\&=q'_1\circ \xi_\tau \circ \iota_{1, G_i} \circ h_{i-1}
-			\end{split} \qquad \begin{split}
-			contenuto...
-			\end{split}\]
+				\xi_\sigma \circ \iota_{G_i}\circ h_{i-1}&=  \xi_\sigma\circ \iota_{R_{i-1}}\\&=\iota'_{R_{\sigma(i-1)}}\\&=\iota'_{R_{\tau(i-1)}}\\&=q'_1\circ \iota_{1, R'_{1,\tau(i-1)}}\\&=q'_1\circ \xi_{\tau}\circ \iota_{1, R_{i-1}}\\&=q'_1\circ \xi_{\tau} \circ \iota_{1, G_{1,i}}\circ h_{1, i-1}\\&=q'_1\circ \xi_\tau \circ \iota_{1, G_i} \circ h_{i-1}
+			\end{split} \]
+	
+		 \Cref{rem:dett} and the induction hypothesis give us
+		\begin{align*}
+			\xi_\sigma \circ \iota_{G_i}\circ g_{i-1}&=\xi_{\sigma}\circ \iota_{D_{i-1}}\\&=\xi_{\sigma}\circ \iota_{G_{i-1}} \circ f_{i-1}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{i-1}} \circ f_{i-1}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{i-1}} \circ f_{1, i-1}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, D_{i-1}}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_i}\circ g_{1, i-1}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_i}\circ g_{i-1}
+		\end{align*}
+			and the thesis now follows.
+			\item Since $l_1-1\in E_{\sigma, \tau}$ we have $l_1\neq 0$ and $E_{\sigma, \tau}=[0,l_1-1]$.  We can start with the pushout
+			\[\xymatrix{K_{l_1-1}\ar[r]^{r_{l_1-1}} \ar[d]_{k_{l_1-1}}& R_{i-1} \ar[d]^{h_{l_1-1}}\\ D_{l_1-1} \ar[r]_{g_{l_1-1}}& G_{l_1}}\] 
+			By \Cref{def:conc}, we have
+			\[h_{l_1-1}=h_{1, l_1} \qquad g_{l_1-1}=g_{1,l_1}\]
+			which, since $q'_1=\id{\lpro \der{D}'_1\rpro}$, in turn, implies that 
+			\[\iota'_{R_{\tau(l_1-1)}}=q'_1\circ \iota_{1, R'_{1,\tau(l_1-1)}}\] 
+			We can thus repeat the same argument of the previous point to deduce
+		\begin{align*}
+				\xi_\sigma \circ \iota_{G_{l_1}}\circ h_{l_1-1}&=  \xi_\sigma\circ \iota_{R_{l_1-1}}\\&=\iota'_{R_{\sigma(l_1-1)}}\\&=\iota'_{R_{\tau(l_1-1)}}\\&=q'_1\circ \iota_{1, R'_{1,\tau(l_1-1)}}\\&=q'_1\circ \xi_{\tau}\circ \iota_{1, R_{l_1-1}}\\&=q'_1\circ \xi_{\tau} \circ \iota_{1, G_{1,l_1}}\circ h_{1, l_1-1}\\&=q'_1\circ \xi_\tau \circ \iota_{1, G_{l_1}} \circ h_{l_1-1}			\end{align*} 
+		
+		By hypothesis $l_1-1\in E_{\sigma, \tau}$, so that pint $3$ of this lemma to get
+		\[\xi_\sigma \circ \iota_{G_{l_1-1}}=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{l_1-1}}\]
+		 
+		 From this the thesis follows after a brief computation:
+		 		\begin{align*}
+		 	\xi_\sigma \circ \iota_{G_{l_1}}\circ g_{l_1-1}&=\xi_{\sigma}\circ \iota_{D_{l_1-1}}\\&=\xi_{\sigma}\circ \iota_{G_{l_1-1}} \circ f_{l_1-1}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{l_1-1}} \circ f_{l_1-1}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{l_1}-1} \circ f_{1, l_1-1}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, D_{l_1-1}}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{l_1}}\circ g_{1, l_1-1}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{l_1}}\circ g_{l_1-1}
+		 \end{align*}
+			
+			\item In this case, we can consider the following diagram, in which the inner rectangle and the outer border are pushouts
+		\[\xymatrix@C=35pt{K_{1,l_1-1}\ar[r]^{r_{1,l_1-1}} \ar[d]_{k_{1,l_1-1}}& R_{i-1} \ar[d]_{h_{1,l_1-1}} \ar@/^.3cm/[ddr]^{h_{l_1-1}}\\ D_{1,l_1-1} \ar[r]_{g_{1,l_1-1}} \ar@/_.3cm/[drr]_{g_{l_1-1}}& G_{1,l_1} \ar[dr]^{\omega_1^{-1}}\\ &&\pi(G_{2,0})}\] 
+		
+		
+	\[	\xi_\sigma \circ \iota_{G_{l_1}}=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{l_1}}\circ \omega_1\]
+		We can start noticing that
+		\[q'_1\circ \iota'_{1, G'_{1,l_1}}=\iota_{G'_{l_1}} \circ \omega^{-1} \]
+		Therefore
+		\begin{align*}q'_1\circ \iota'_{1, R'_{1,l_1}}&=q'_1\circ \iota'_{1, G'_{1,l_1}}\circ  h'_{1, l_1}\\&=q'_1\circ \iota'_{1, G'_{1,l_1}}\circ \omega_1 \circ  h'_{ l_1}\\&= \iota'_{G'_{l_1}}\circ h'_{l_1}\\&=\iota'_{R'_{l_1-1}}
+		\end{align*}
+		
+		The argument now proceeds almost verbatim like the one of the previous two point. 
+		On the one hand we have	
+		\begin{align*}
+			\xi_\sigma \circ \iota_{G_{l_1}}\circ h_{l_1-1}&=  \xi_\sigma\circ \iota_{R_{l_1-1}}\\&=\iota'_{R'_{\sigma(l_1-1)}}\\&=\iota'_{R'_{\tau(l_1-1)}}\\&=q'_1\circ \iota'_{1, R'_{1,\tau(l_1-1)}}\\&=q'_1\circ \xi_{\tau}\circ \iota_{1, R_{l_1-1}}\\&=q'_1\circ \xi_{\tau} \circ \iota_{1, G_{1,l_1}}\circ h_{1, l_1-1}\\&=q'_1\circ \xi_\tau \circ \iota_{1, G_{1, l_1}} \circ \omega_1 \circ  h_{l_1-1}			\end{align*} 
+							On the other hand, by point $3$ of this lemma we have
 			\begin{align*}
+				\xi_\sigma \circ \iota_{G_{l_1}}\circ g_{l_1-1}&=\xi_{\sigma}\circ \iota_{D_{l_1-1}}\\&=\xi_{\sigma}\circ \iota_{G_{l_1-1}} \circ f_{l_1-1}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{l_1}} \circ f_{l_1-1}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{l_1}} \circ f_{1, {l_1}-1}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, D_{{l_1}-1}}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{l_1}}\circ g_{1, l_1-1}\\&=q'_1 \circ \xi_{\tau} \circ \iota_{1, G_{l_1}}\circ \omega_1\circ g_{l_1-1}
 			\end{align*}
-			But, by the induction hypothesis we also have
-			\begin{align*}
-				\xi_\sigma \circ \iota_{G_i}\circ g_{i-1}&=\xi_{\sigma}\circ \iota_{D_{i-1}}\\&=\xi_{\sigma}\circ \iota_{G_{i-1}} \circ f_{i-1}\\&=\xi_{\tau}\circ \iota_{G_{i-1}} \circ f_{i-1}\\&=\xi_{\tau}\circ \iota_{D_{i-1}} \\&=\xi_{\tau}\circ \iota_{G_{i}} \circ g_{i-1}
-			\end{align*}
-			The thesis now follows.			\qedhere
+			
+			\item  The thesis follows from points $3$ and $4$ if $l_2=0$, from $3$ and $5$ if $l_2\neq 0$.	\qedhere
 	\end{enumerate}
 \end{proof}
 
@@ -1648,6 +1716,14 @@ The thesis now follows at once.	 \qedhere
 
 \section{Switch equivalence and traces}
 \todo{A VERY NICE INTRO}
+
+
+\subsection{Sequentially independent and switchable derivations }
+\todo{this is an attempt to rewrite in a better way the following section. Hopefully this will spare us the use of fillers}
+\todo{A VERY NICE INTRO}
+
+
+
 
 \subsection{Sequentially independent and switchable derivations}
 \todo{A VERY NICE INTRO}
@@ -1962,7 +2038,7 @@ We can now prove some properties of switch equivalence.
 
 
 \todo{ci sono un sacco di sistemi very tame}
-\subsection{Switch equivalence}
+\subsection{Inversions and switch equivalence}
 \todo{intro}
 
 
