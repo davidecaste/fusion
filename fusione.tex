@@ -1781,21 +1781,28 @@ We want to be able to exchange to switch the application of two rules used by tw
  Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category and suppose that $\der{D}=\{\dder{D}_i\}_{i=0}^1$  is a derivation of length $2$ made by the following two weakly sequentially independent derivations $\dder{D}_0$, $\der{D}_1$, with independence pair $(i_0, i_1)$:
  	\[\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0} && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar[l]_{l_1} \ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2}\]
  	
- 	Take another derivation $\der{E}=\{\der{E}_i\}_{i=0}^1$ with source $G_0$ and target $G_2$ and in which $\der{E}_0$, $\der{E}_1$ are
+ 	Take another derivation $\der{E}=\{\dder{E}_i\}_{i=0}^1$ with source $G_0$ and target $G_2$ and in which $\der{E}_0$, $\der{E}_1$ are
 \[\xymatrix{L_{\der{E},0} \ar[d]_{m_{\der{E},0}}& K_{\der{E},0} \ar[d]^{k_{\der{E},0}}\ar[l]_{l_{\der{E},0}} \ar[r]^{r_{\der{E},0}} & R_{\der{E},0} \ar[d]^{h_{\der{E},0}} & L_{\der{E},1} \ar[d]_{m_{\der{E},1}}& K_{\der{E},1} \ar[d]^{k_{\der{E},1}}\ar[l]_{l_{\der{E},1}} \ar[r]^{r_{\der{E},1}} & R_{\der{E},1} \ar[d]^{h_{\der{E},1}}\\G_{0} & \ar[l]^{f_{\der{E},0}} D_{\der{E},0} \ar[r]_{g_{\der{E},0}}& G_{\der{E},1} & G_{\der{E},1} & \ar[l]^{f_{\der{E},1}} D_{\der{E},1} \ar[r]_{g_{\der{E},1}}& G_{2}}\]
  	We say that $\der{E}$ is a
  	 	 \emph{switch} of $\der{D}$ along $(i_1, i_2)$ if
  	\begin{enumerate}
- 		\item $\der{E}_0$ applies the rule used by $\der{D}_1$ and $\der{E}_1$ the one used by $\der{D}_0$, so that
+ 		\item $\dder{E}_0$ applies the rule used by $\dder{D}_1$ and $\dder{E}_1$ the one used by $\dder{D}_0$, so that
  		\[(l_{\der{E},0}, r_{\der{E},0})=(l_1,r_1)  \qquad (l_{\der{E},1}, r_{\der{E},1})=(l_0,r_0)\]
- 		\item there exists $j_1 \colon L_0\to D_{\der{E},0}$ such that  $m_0=f_{\der{E},0} \circ j_1$;
- 		\item $m_{\der{E},0}= f_0\circ i_1$ and $m_{\der{E},1}= g_{\der{E}, 0}\circ j_1$. %and $h_{\der{E},1}= g_{1}\circ i_0$.
+ 		\item there exists an independence pair $(j_0, j_1)$ between $\dder{E}_0$ and $\dder{E}_1$ such that
+ 		\[ m_0=f_{\der{E},0} \circ j_1 \qquad h_1=g_{\der{E},1} \circ j_0\]
+ 		\item $m_{\der{E},0}= f_0\circ i_1$ and $h_{\der{E},1}= g_{1}\circ i_0$.
  	\end{enumerate}
 \end{definition}
 
 \begin{remark}\label{rem:fact}
-	Notice that, since $f_{\der{E}, 0}$ is in $\mathcal{M}$, there is at most one $j_1\colon L_0\to D_{\der{E},0}$ such that $m_0=f_{\der{E}, 0} \circ j_1$.
+	Notice that, since $f_{\der{E}, 0}$ is in $\mathcal{M}$, there is at most one $j_1\colon L_0\to D_{\der{E},0}$ such that $m_0=f_{\der{E}, 0} \circ j_1$. Moreover, we already know that there is at most one $j_0\colon R_1\to D_{\der{E},1}$ such that $m_{\der{E},1}=f_{\der{E},1}\circ j_0$, therefore, the independence pair $(j_0,j_1)$ between the component of a switch is uniquely determined.
 \end{remark}
+
+Our first result about switches is their uniqueness up to abstraction equivalence.
+
+\begin{theorem}[Uniqueness of switches]\label{thm:switch_uni} Let $\der{D}=\{\dder{D}_i\}_{i=0}^1$  
+	
+\end{theorem}
 
 \begin{lemma}\label{lem:cose} Let $(\der{D}, \alpha, \omega)$ be a decorated derivation with $\der{D}=\{\dder{D}_i\}_{i=0}^1$,  and suppose that $(i_0, i_1)$ is an independence pair between $\dder{D}_0$  and $\der{D}_1$. If $\der{E}=\{\dder{E}_i\}_{i=0}^1$ is a switch of $\der{D}$ along $(i_0, i_1)$, then the following hold true:
 	\begin{enumerate}
@@ -2354,8 +2361,53 @@ If every $\nu_i$ is an inversion for $\sigma$, then there exists a family $\{\nu
 \begin{proof}
 	contenuto...
 \end{proof}
+\newpage
 
 
+NOTES ON THE FUNDAMENTAL LEMMA WE NEED
+
+Everything is very tame, so that sequential independence coincides with switchability and we do not have ambiguity in the choice of an independence pair
+
+
+We start with the following situation.
+	\[\xymatrix@C=15pt{L_0\ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]_(.4){i_0}|(.285)\hole \ar[dr]|(.28)\hole_{h_0} && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.28)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar[l]_{l_1} \ar[r]^{r_1} & R_1 \ar[dr]|(.28)\hole_{h_1} \ar@/^.35cm/[drrr]_(.4){j_0}|(.285)\hole  && L_2 \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.28)\hole^{m_2}& K_2 \ar[d]^{k_2}\ar[l]_{l_2} \ar[rr]^{r_2} && R_2 \ar[d]^{h_2} \\G_0 && \ar[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2 && \ar[ll]^{f_2} D_2 \ar[rr]_{g_2}&& G_3 }\]
+	
+	We can do two things:
+	
+	FIRST SEQUENCE OF SWITCHINGS:
+	
+	Switch the first two
+	
+
+	\[\xymatrix@C=15pt{L_1\ar[d]_{f_0\circ i_1}&& K_1 \ar[d]_{k'_1}\ar[ll]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){a_0}|(.285)\hole \ar[dr]|(.28)\hole_{h'_1} && L_0 \ar@/_.35cm/[dlll]^(.4){a_1} \ar[dl]|(.28)\hole^{m'_0}& K_0 \ar[d]^{k'_0}\ar[l]_{l_0} \ar[r]^{r_0} & R_0 \ar[dr]|(.28)\hole_{g_1\circ j_0} \ar@/^.35cm/[drrr]_(.4){b_0}|(.285)\hole  && L_2 \ar@/_.35cm/[dlll]^(.4){b_1} \ar[dl]|(.28)\hole^{m_2}& K_2 \ar[d]^{k_2}\ar[l]_{l_2} \ar[rr]^{r_2} && R_2 \ar[d]^{h_2} \\G_0 && \ar[ll]^{f'_0} D'_0 \ar[rr]_{g'_0}&& G'_1  && \ar[ll]^{f'_1} D'_1 \ar[rr]_{g'_1}&& G_2 && \ar[ll]^{f_2} D_2 \ar[rr]_{g_2}&& G_3 }\]
+	
+	Moreover, we know that
+	\[m_0=f'_0\circ a_1 \qquad h_1=g'_1\circ a_0\]
+	
+	
+	
+	Switch second and third
+	\[\xymatrix@C=15pt{L_1\ar[d]_{f_0\circ i_1}&& K_1 \ar[d]_{k'_1}\ar[ll]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){c_0}|(.285)\hole \ar[dr]|(.28)\hole_{h'_1} && L_2 \ar@/_.35cm/[dlll]^(.4){c_1} \ar[dl]|(.28)\hole^{f'_1\circ b_1}& K_2 \ar[d]^{k'_2}\ar[l]_{l_2} \ar[r]^{r_2} & R_2 \ar[dr]|(.28)\hole_{h'_2} \ar@/^.35cm/[drrr]_(.4){d_0}|(.285)\hole  && L_0 \ar@/_.35cm/[dlll]^(.4){d_1} \ar[dl]|(.28)\hole^{\hat{m}_0}& K_0 \ar[d]^{\hat{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]^{g_2\circ b_0} \\G_0 && \ar[ll]^{f'_0} D'_0 \ar[rr]_{g'_0}&& G'_1  && \ar[ll]^{\hat{f}_1} \hat{D}_1 \ar[rr]_{\hat{g}_1}&& G'_2 && \ar[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
+	And we know that
+	\[m'_0=\hat{f}_1\circ d_1 \qquad h_2=g'_2\circ d_0\]
+	Since the rewriting system is very tame and using the three steps lemmas we can characterize $c_0\colon R_1\to \hat{D}_1$ and $c_1\colon L_2\to D'_0$ as the unique arrows fitting in the diagrams
+\[\xymatrix@R=15pt@C=15pt{&&R_1 \ar[dl]_{j_0}\ar[dd]^{c'_0} \ar@{.>}[dr]^{c_0}\\&D_2 \ar[dl]_{f_2}&&\hat{D}_1 \ar[dr]^{\hat{g}_1}\\G_2 && P\ar[dr]_{q_2} \ar[ur]_{q_1}\ar[dl]^{p_1} \ar[ul]_{p_2}&&G'_2\\& D'_1 \ar[ul]^{g'_1}&&D'_2 \ar[ur]_{f'_2}}\]
+	
+	
+	Switch first and second 
+	
+	
+	SECOND SEQUENCE OF SWITCHINGS:
+
+	Switch third and second
+	
+	Switch second and first
+	
+	Switch second and third
+
+
+
+\newpage 
 \iffalse 
 \begin{corollary} Given a tame  left-linear DPO-rewriting system  $(\X,\R)$ with $\X$ an $\mathcal{M}$-adhesive category and a decorated derivation $(\der{D}, \alpha, \omega)$ with $\der{D}=\{\dder{D}_i\}_{i=0}^2$. Then the following are true: 
 	\begin{enumerate}
