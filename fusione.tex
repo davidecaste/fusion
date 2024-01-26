@@ -2384,24 +2384,38 @@ We start with the following situation.
 	Moreover, we know that
 	\[m_0=f'_0\circ a_1 \qquad h_1=g'_1\circ a_0\]
 	
-	
-	
 	Switch second and third
 	\[\xymatrix@C=15pt{L_1\ar[d]_{f_0\circ i_1}&& K_1 \ar[d]_{k'_1}\ar[ll]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){c_0}|(.285)\hole \ar[dr]|(.28)\hole_{h'_1} && L_2 \ar@/_.35cm/[dlll]^(.4){c_1} \ar[dl]|(.28)\hole^{f'_1\circ b_1}& K_2 \ar[d]^{k'_2}\ar[l]_{l_2} \ar[r]^{r_2} & R_2 \ar[dr]|(.28)\hole_{h'_2} \ar@/^.35cm/[drrr]_(.4){d_0}|(.285)\hole  && L_0 \ar@/_.35cm/[dlll]^(.4){d_1} \ar[dl]|(.28)\hole^{\hat{m}_0}& K_0 \ar[d]^{\hat{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]^{g_2\circ b_0} \\G_0 && \ar[ll]^{f'_0} D'_0 \ar[rr]_{g'_0}&& G'_1  && \ar[ll]^{\hat{f}_1} \hat{D}_1 \ar[rr]_{\hat{g}_1}&& G'_2 && \ar[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
 	And we know that
 	\[m'_0=\hat{f}_1\circ d_1 \qquad h_2=g'_2\circ d_0\]
 	Since the rewriting system is very tame and using the three steps lemmas we can characterize $c_0\colon R_1\to \hat{D}_1$ and $c_1\colon L_2\to D'_0$ as the unique arrows fitting in the diagrams
-\[\xymatrix@R=15pt@C=15pt{&&R_1 \ar[dl]_{j_0}\ar[dd]^{c'_0} \ar@{.>}[dr]^{c_0}\\&D_2 \ar[dl]_{f_2}&&\hat{D}_1 \ar[dr]^{\hat{g}_1}\\G_2 && P\ar[dr]_{q_2} \ar[ur]_{q_1}\ar[dl]^{p_1} \ar[ul]_{p_2}&&G'_2\\& D'_1 \ar[ul]^{g'_1}&&D'_2 \ar[ur]_{f'_2}}\]
+\[\xymatrix@R=15pt@C=15pt{&&R_1 \ar@/_1.2cm/[dddl]_(.4){a_0}|(.63)\hole\ar[dl]^{j_0}\ar[dd]^{c'_0} \ar@{.>}[dr]^{c_0}\\&D_2 \ar[dl]^(.4){f_2}&&\hat{D}_1 \ar[dr]^{\hat{g}_1}\\G_2 && P\ar[dr]_{p_4} \ar[ur]_{p_3}\ar[dl]^{p_1} \ar[ul]^{p_2}&&G'_2\\& D'_1 \ar[ul]^{g'_1}&&D'_2 \ar[ur]_{f'_2}}\]
+
+\[\xymatrix@R=15pt@C=15pt{&&L_2 \ar[dl]^{j_1} \ar@/_1.2cm/[dddl]_(.4){z_1}|(.63)\hole\ar[dd]^{c'_1} \ar@{.>}[dr]^{c_1}\\&D_1 \ar[dl]^(.4){f_1}&&D'_0 \ar[dr]^{g'_0}\\G_1 && Q\ar[dr]_{q_4} \ar[ur]_{q_3}\ar[dl]^{q_1} \ar[ul]_{q_2}&&G'_1\\& D_0 \ar[ul]^{g_0}&&D'_1 \ar[ur]_{f'_1}}\]
 	
 	
 	Switch first and second 
-	
+	\[\xymatrix@C=15pt{L_2\ar[d]_{f'_0\circ c_1}&& K_2 \ar[d]_{\hat{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){e_0}|(.285)\hole \ar[dr]|(.28)\hole_{\hat{h}_2} && L_1 \ar@/_.35cm/[dlll]^(.4){e_1} \ar[dl]|(.28)\hole^{\hat{m}_1}& K_1 \ar[d]^{\hat{k}_1}\ar[l]_{l_1} \ar[r]^{r_1} & R_1 \ar[dr]_{\hat{g}_1\circ c_0}   && L_0  \ar[dl]^{\hat{m}_0}& K_0 \ar[d]^{\hat{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]^{g_2\circ b_0} \\G_0 && \ar[ll]^{\hat{f}_0} D'_0 \ar[rr]_{\hat{g}_0}&& \hat{G}_1  && \ar[ll]^{\tilde{f}_1} \tilde{D}_1 \ar[rr]_{\tilde{g}_1}&& G'_2 && \ar[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
+	Moreover
+	\[f_0\circ i_1=\hat{f}_0\circ e_1 \qquad h'_2=\tilde{g}_1\circ e_0\]
 	
 	SECOND SEQUENCE OF SWITCHINGS:
 
 	Switch third and second
 	
+	
+	\[\xymatrix@C=15pt{L_0\ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]_(.4){z_0}|(.285)\hole \ar[dr]|(.28)\hole_{h_0} && L_2 \ar@/_.35cm/[dlll]^(.4){z_1} \ar[dl]|(.28)\hole^{f_1\circ j_1}& K_2 \ar[d]^{\check{k}_2}\ar[l]_{l_2} \ar[r]^{r_2} & R_2 \ar[dr]|(.28)\hole_{\check{h}_2} \ar@/^.35cm/[drrr]_(.4){w_0}|(.285)\hole  && L_1 \ar@/_.35cm/[dlll]^(.4){w_1} \ar[dl]|(.28)\hole^{\check{m}_1}& K_1 \ar[d]^{\check{k}_1}\ar[l]_{l_1} \ar[rr]^{r_1} && R_1\ar[d]^{g_2\circ j_0} \\G_0 && \ar[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar[ll]^{\check{f}_1} \check{D}_1 \ar[rr]_{\check{g}_1}&& \check{G}_2 && \ar[ll]^{\check{f}_2} \check{D}_2 \ar[rr]_{\check{g}_2}&& G_3 }\]
+	Moreover
+	\[m_1=\check{f}_1\circ w_1 \qquad h_2=\check{g}_2\circ w_0\]
+	
 	Switch second and first
+		\[\xymatrix@C=15pt{L_2\ar[d]_{f_0\circ z_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){y_0}|(.285)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_2 \ar@/_.35cm/[dlll]^(.4){y_1} \ar[dl]|(.28)\hole^{\check{m}_2}& K_0 \ar[d]^{\check{k}_0}\ar[l]_{l_0} \ar[r]^{r_0} & R_0 \ar[dr]|(.28)\hole_{\check{g}_1\circ z_0} \ar@/^.35cm/[drrr]_(.4){x_0}|(.285)\hole  && L_1 \ar@/_.35cm/[dlll]^(.4){x_1} \ar[dl]|(.28)\hole^{\check{m}_1}& K_1 \ar[d]^{\check{k}_1}\ar[l]_{l_1} \ar[rr]^{r_1} && R_1\ar[d]^{g_2\circ j_0} \\G_0 && \ar[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar[ll]^{\mathring{f}_1} \mathring{D}_1 \ar[rr]_{\mathring{g}_1}&& \check{G}_2 && \ar[ll]^{\check{f}_2} \check{D}_2 \ar[rr]_{\check{g}_2}&& G_3 }\]
+	
+	
+	By very tameness we have
+	\begin{align*}
+		f_0'\circ c_1&=f'_0\circ q_3\circ c'_1\\&=f_0\circ q_1\circ c'_1\\&=f_0\circ z_1
+	\end{align*}
 	
 	Switch second and third
 
