@@ -428,6 +428,122 @@
 \end{abstract}
 
 \tableofcontents
+
+\section*{Summary (with dependencies)}
+
+\subsection*{REWRITING}
+\begin{itemize}
+\item DPO Rewriting in $\mathcal{M}$-adhesive categories, with left-$\mathcal{M}$-linear rules (from now on shortened in ``linear'')\\
+  Observe that rewriting is deterministic (by uniqueness of
+  PO-complement Corollary~\ref{lem:radj})
+  
+\item Category of abstract derivation for DPO-rewriting system $(\X, \R)$
+  \begin{itemize}
+  \item \emph{DPO-derivation category} $\dpo$: objects are graphs, arrows between possibly empty, derivations.
+  \item \emph{DPO-abstract decorated derivation category} $\dpi$
+  \end{itemize}
+
+
+
+\item \emph{Consistent permutations} (Definition~\ref{def:permcon}):
+  permutation on the steps of two abstract decorated derivations and isomorphism between the colimits such
+  that arrows into the colimits ``commutes''.
+  \begin{enumerate}
+  \item It is unique for consuming rewriting systems
+    (Corollary~\ref{cor:unique})
+  \item They can be composed (Lemma~\ref{lem:sum})
+  \end{enumerate}
+\item 
+
+  
+\item Notions of independence\\
+  We have several possibile notions of independence for two direct
+  derivations $\dder{D} ; \dder{D'}$
+  \begin{enumerate}
+    
+  \item \emph{Existence of a filler}
+    There is a filler for $\dder{D} ; \dder{D'}$
+    (Definition~\ref{def:filler})
+
+  \item \emph{Switchable}
+    There is $\dder{D}_1' ; \dder{D}_1$ which is a \emph{switch}
+    of $\dder{D} ; \dder{D'}$ (Definition~\ref{de:switch}, being a
+    switch is defined axiomatically) [actually, Definition~\ref{de:good-switchable} provides a definition of switchable which looks different to me, I would avoid this, to be checked] 
+
+  \item \emph{(Weakly) Sequential independent} There is an
+    \emph{independence pair}
+    (Definition~\ref{de:sequential-independence}) They are called
+    \emph{strongly sequential independent} if the independence pair is
+    unique.
+  \end{enumerate}
+
+  We have that $(1) \Rightarrow (2)$ (Theorem~\ref{prop:fil}) and $(2) \Rightarrow (3)$ while
+  we expect that in general $(3) \not\Rightarrow (1)$ (but no
+  counterexample). This is instead known to hold for linear rules.
+
+  
+  Some terminology (Definition~\ref{de:good-switchable})
+  \begin{itemize}
+
+    
+  \item \emph{Tame rewriting systems}\\
+    An independence pairs induced by a filler is called \emph{good}
+    A rewriting system where all indepedence pairs are good is called
+    \emph{tame}
+    
+    NOTE: the categories in which condition $B$
+    from~\cite{baldan2011adhesivity} identifies a large class of
+    (quasi)adhesive categories where left-linear systems are all
+    tame. Adapted here to M-adhesivity.
+
+  \item \emph{Very Tame rewriting systems}\\
+    Tame and existing indepence pairs are unique (hence switching is unique)
+    (see later for examples)
+  \end{itemize}
+
+  
+\item \emph{Switch equivalent derivations} (concrete)\\
+  Definition~\ref{de:switchable}
+
+  THEOREM: Two switch equivalent derivations admit a consistent
+  permutation (Lemma~\ref{lem:consperm} ??).
+  
+  A consequence of this used for proving that the slice of traces is a pre-order.
+
+  The converse holds only when rules are linear [proof clear, but not written]
+
+    
+    
+\end{itemize}
+
+\subsection*{CONCURRENCY}
+
+This part is dealt with for very tame rewriting systems and depends on this assumption. Note that
+\begin{itemize}
+\item Linear rewriting systems on adhesive categories are very tame
+\item Left-linear rewritint systems on graph-like categories with generalisation of (i) no isolated nodes in $L$ and (ii) right leg injective on nodes is very tame
+\item Graphs with equivalences (Egg) with left-leg regular mono, right leg mono is very tame
+\end{itemize}
+
+We show
+\begin{itemize}
+
+  
+\item Three-steps lemma (Lemma~\ref{lem:iig1}), which is a weakened version of ``indepedence is global''.
+  \begin{itemize}
+    
+  \item If in $abc$ I have that $ab$ are independent and $c$ is anticipated, they remain independent.
+  \item  If in $abc$ I have that $bc$ are independent and $a$ is moved to the end, they remain independent only if there is an additional condition (essentially requiring that $a$ was not a cause of $c$)
+  \end{itemize}
+
+  
+  
+\item No need of useless switchs (if two derivations are switch equivalent I can obtain one from another applying only inversions)
+
+\item weak prime domain e connected es semantics
+\end{itemize}
+
+
 \section{Introduction}
 
 \todo{A VERY NICE INTRODUCTION}
@@ -1742,7 +1858,9 @@ The thesis now follows at once.	 \qedhere
 \todo{this is an attempt to rewrite in a better way the following section. Hopefully this will spare us the use of fillers}
 \todo{A VERY NICE INTRO}
 
-\begin{definition}[Sequential independence]  Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Let also $\dder{D}\colon G\Mapsto H$ and $\dder{D'}\colon H\Mapsto T$ be the two direct derivations depicted below.
+\begin{definition}[Sequential independence]
+  \label{de:sequential-independence}
+  Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Let also $\dder{D}\colon G\Mapsto H$ and $\dder{D'}\colon H\Mapsto T$ be the two direct derivations depicted below.
 	
 	\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L' \ar[d]_{m'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[r]^{r'} & R' \ar[d]^{h'}\\G & \ar[l]^{f} D \ar[r]_{g}& H & H & \ar[l]^{f'} D' \ar[r]_{g'}& T}\]
 	
@@ -1778,6 +1896,7 @@ The thesis now follows at once.	 \qedhere
 We want to be able to exchange to switch the application of two rules used by two consecutive weakly independent direct derivations. This leads us to the following definition.
 
 \begin{definition}[Switch]
+  \label{de:switch}
  Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category and suppose that $\der{D}=\{\dder{D}_i\}_{i=0}^1$  is a derivation of length $2$ made by the following two weakly sequentially independent derivations $\dder{D}_0$, $\der{D}_1$, with independence pair $(i_0, i_1)$:
  	\[\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0} && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar[l]_{l_1} \ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2}\]
  	
@@ -1999,7 +2118,16 @@ A \emph{filler} between $\dder{D}$ and $\dder{D}'$ is  given by a pair of arrows
 
 Notice that if there is a filler between  $\dder{D}$ and $\dder{D}'$ are switchable, then they are weakly sequentially independent: indeed, if a filler between them exists, then $(i_1, i_2)$ is an independence pair. On the other hand, \Cref{ex:difficile} shows that not every independence pair arises in this way.
 
-\begin{definition} Let  $\dder{D}\colon H\Mapsto H$, $\dder{D}'\colon H\Mapsto T$ be two direct derivations in a left-linear DPO-rewriting system  $(\X, \R)$. An independence pair $(i_1, i_2)$ between $\dder{D}$ and $\dder{D}'$ is \emph{good} if there exists a filler $(u,u')$ between them such that  the squares below are pushouts.\[\xymatrix{K \ar[r]^{r} \ar[d]_{u}& R \ar[d]^{i_1} &K' \ar[r]^{l'} \ar[d]_{u'}& L'\ar[d]^{i_2} \\P \ar[r]_{p'}& D' & P \ar[r]_{p} & D}\]
+\begin{definition}
+  \label{de:good-switchable}
+  Let $\dder{D}\colon H\Mapsto H$, $\dder{D}'\colon H\Mapsto T$ be two
+  direct derivations in a left-linear DPO-rewriting system $(\X,
+  \R)$. An independence pair $(i_1, i_2)$ between $\dder{D}$ and
+  $\dder{D}'$ is \emph{good} if there exists a filler $(u,u')$ between
+  them such that the squares below are
+  pushouts.\[\xymatrix{K \ar[r]^{r} \ar[d]_{u}& R \ar[d]^{i_1} &K'
+      \ar[r]^{l'} \ar[d]_{u'}& L'\ar[d]^{i_2} \\P \ar[r]_{p'}& D' & P
+      \ar[r]_{p} & D}\]
 	
 We will say that $\dder{D}$ and $\dder{D}'$ are \emph{switchable} if a good independence pair between them exists. If such a pair is unique, we will say that $\dder{D}$ and $\dder{D}'$ are \emph{uniquely switchable}. We will use the notation $\dder{D}\updownarrow \dder{D'}$ to mean that $\dder{D}$ and $\dder{D}'$ are switchable, while $\dder{D}\updownarrow_! \dder{D'}$ will denote that they are uniquely so.
 
@@ -2152,7 +2280,16 @@ Putting together the two diagrams above we get the thesis. \qedhere
 
 Our next step is to relate derivations which are equal ``up to switching''.
 
-\begin{definition} Let $(\X, \R)$ be a left-linear DPO-rewriting system. Given two direct derivations $\dder{D}\colon G\Mapsto H$ and $\dder{D}'\colon H\Mapsto T$, we say that  $\dder{D}$ and $\dder{D}'$ are \emph{properly switchable} if $\dder{D}\updownarrow_! \dder{D'}$ and $S_{i_1,i_2}(\dder{D}')\updownarrow_!S_{i_1,i_2}(\dder{D})$, where $(i_2,i_2)$ is a good independence pair betwwen $\dder{D}$ and $\dder{D}'$. In such a case, we will write $\dder{D}\Updownarrow\dder{D}'$. 
+\begin{definition}
+  \label{de:switchable}
+  Let $(\X, \R)$ be a left-linear DPO-rewriting system. Given two
+  direct derivations $\dder{D}\colon G\Mapsto H$ and
+  $\dder{D}'\colon H\Mapsto T$, we say that $\dder{D}$ and $\dder{D}'$
+  are \emph{properly switchable} if $\dder{D}\updownarrow_! \dder{D'}$
+  and $S_{i_1,i_2}(\dder{D}')\updownarrow_!S_{i_1,i_2}(\dder{D})$,
+  where $(i_2,i_2)$ is a good independence pair betwwen $\dder{D}$ and
+  $\dder{D}'$. In such a case, we will write
+  $\dder{D}\Updownarrow\dder{D}'$.
 	
 Take two derivations $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_{i}\}_{i=0}^n$ with the same length and between the same $G_0$ and $G_n$. We say that $\der{D}'$ is \emph{obtained by a proper switch from $\der{D}$} if there exists an index $j < n$ such that
 	\begin{enumerate}
