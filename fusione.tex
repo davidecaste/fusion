@@ -2230,10 +2230,40 @@ We can now prove some properties of switch equivalence.
 
 
 \todo{ci sono un sacco di sistemi very tame}
-\subsection{Inversions and switch equivalence}
+\subsection{Switch equivalence}
 \todo{intro}
 
+\subsubsection{The $3$-steps lemmas} 
 
+As a beginning step in our analysis of switch equivalence, we will establish three lemmas  dealing with derivations of length $3$. 
+
+
+\begin{lemma}[First $3$-steps Lemma]\label{lem:primo}
+Let $(\X,\R)$ be a left-linear DPO-rewriting system. Consider a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$ and suppose that $(i_0,i_1)$ is a good independence pair between $\dder{D}_0$ and $\dder{D}_1$, $(a_0,a_1)$ one between $\dder{D}_1$ and $\dder{D}_2$ and $(e_0, e_1)$ one between $\dder{D}_0$ and $S_{a_0,a_1}(\dder{D}_2)$.
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+
+\begin{lemma}[Second $3$-steps Lemma]\label{lem:secondo}
+	contenuto...
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+
+
+\begin{lemma}[Third $3$-steps Lemma]\label{lem:terzo}
+	contenuto...
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+
+\todo{dividere in due il lemma dopo. devono venire tre lemmi}
 \begin{lemma}[Three steps Lemma]\label{lem:iig1}Let $(\X,\R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Consider a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$ and suppose that $(i_0,i_1)$ is a good independence pair between $\dder{D}_0$ and $\dder{D}_1$, $(a_0,a_1)$ one between $\dder{D}_1$ and $\dder{D}_2$ and $(e_0, e_1)$ one between $\dder{D}_0$ and $S_{a_0,a_1}(\dder{D}_2)$. Then the following properties hold true.
 	\begin{enumerate}
 		\item $S_{e_0,e_1}(\dder{D}_0)$ and $S_{a_0,a_1}(\dder{D}_1)$ are weakly sequentially independent.
@@ -2313,6 +2343,8 @@ Allowing us to conclude that  $S_{i_0,i_1}(\dder{D}_1)\updownarrow S_{\alpha_0, 
 \qedhere 
 			\end{enumerate}
 \end{proof}
+
+\subsubsection{Inversions and switch equivalence}
 \todo{richiamare cosa sono le inversioni}
 
 \begin{lemma}[Fundamental Lemma] Let $(\der{D}, \alpha, \omega)$ and $(\der{D'}, \alpha, \omega)$ be two decorated derivations and suppose that there exists a non-empty sequence $\{\der{D}_i\}_{i=0}^n$ a of derivations witnessing $\der{D}\equiv^s \der{D}'$. For every $i\in [0,n-1]$, let $\nu_i\colon [0, \lgh(\der{D})-1]\to [0, \lgh(\der{D})-1]$ be the $2$-cycle associated to the switch between $\der{D}_i$ and $\der{D}_{i+1}$, let also $\sigma$ be the associated consistent permutation between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$. Define $k$ as the maximum of the set
@@ -2384,21 +2416,28 @@ We start with the following situation.
 	Moreover, we know that
 	\[m_0=f'_0\circ a_1 \qquad h_1=g'_1\circ a_0\]
 	
-	Switch second and third
+	Switch second and third 
 	\[\xymatrix@C=15pt{L_1\ar[d]_{f_0\circ i_1}&& K_1 \ar[d]_{k'_1}\ar[ll]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){c_0}|(.285)\hole \ar[dr]|(.28)\hole_{h'_1} && L_2 \ar@/_.35cm/[dlll]^(.4){c_1} \ar[dl]|(.28)\hole^{f'_1\circ b_1}& K_2 \ar[d]^{k'_2}\ar[l]_{l_2} \ar[r]^{r_2} & R_2 \ar[dr]|(.28)\hole_{h'_2} \ar@/^.35cm/[drrr]_(.4){d_0}|(.285)\hole  && L_0 \ar@/_.35cm/[dlll]^(.4){d_1} \ar[dl]|(.28)\hole^{\hat{m}_0}& K_0 \ar[d]^{\hat{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]^{g_2\circ b_0} \\G_0 && \ar[ll]^{f'_0} D'_0 \ar[rr]_{g'_0}&& G'_1  && \ar[ll]^{\hat{f}_1} \hat{D}_1 \ar[rr]_{\hat{g}_1}&& G'_2 && \ar[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
 	And we know that
 	\[m'_0=\hat{f}_1\circ d_1 \qquad h_2=g'_2\circ d_0\]
-	Since the rewriting system is very tame and using the three steps lemmas we can characterize $c_0\colon R_1\to \hat{D}_1$ and $c_1\colon L_2\to D'_0$ as the unique arrows fitting in the diagrams
+	\todo{qua abbiamo usato il secondo lemma dei tre passi (quello condizionale)}Since the rewriting system is very tame and using the three steps lemmas we can characterize $c_0\colon R_1\to \hat{D}_1$ and $c_1\colon L_2\to D'_0$ as the unique arrows fitting in the diagrams
 \[\xymatrix@R=15pt@C=15pt{&&R_1 \ar@/_1.2cm/[dddl]_(.4){a_0}|(.63)\hole\ar[dl]^{j_0}\ar[dd]^{c'_0} \ar@{.>}[dr]^{c_0}\\&D_2 \ar[dl]^(.4){f_2}&&\hat{D}_1 \ar[dr]^{\hat{g}_1}\\G_2 && P\ar[dr]_{p_4} \ar[ur]_{p_3}\ar[dl]^{p_1} \ar[ul]^{p_2}&&G'_2\\& D'_1 \ar[ul]^{g'_1}&&D'_2 \ar[ur]_{f'_2}}\]
 
 \[\xymatrix@R=15pt@C=15pt{&&L_2 \ar[dl]^{j_1} \ar@/_1.2cm/[dddl]_(.4){z_1}|(.63)\hole\ar[dd]^{c'_1} \ar@{.>}[dr]^{c_1}\\&D_1 \ar[dl]^(.4){f_1}&&D'_0 \ar[dr]^{g'_0}\\G_1 && Q\ar[dr]_{q_4} \ar[ur]_{q_3}\ar[dl]^{q_1} \ar[ul]_{q_2}&&G'_1\\& D_0 \ar[ul]^{g_0}&&D'_1 \ar[ur]_{f'_1}}\]
 	
 	
 	Switch first and second 
-	\[\xymatrix@C=15pt{L_2\ar[d]_{f'_0\circ c_1}&& K_2 \ar[d]_{\hat{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){e_0}|(.285)\hole \ar[dr]|(.28)\hole_{\hat{h}_2} && L_1 \ar@/_.35cm/[dlll]^(.4){e_1} \ar[dl]|(.28)\hole^{\hat{m}_1}& K_1 \ar[d]^{\hat{k}_1}\ar[l]_{l_1} \ar[r]^{r_1} & R_1 \ar[dr]_{\hat{g}_1\circ c_0}   && L_0  \ar[dl]^{\hat{m}_0}& K_0 \ar[d]^{\hat{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]^{g_2\circ b_0} \\G_0 && \ar[ll]^{\hat{f}_0} D'_0 \ar[rr]_{\hat{g}_0}&& \hat{G}_1  && \ar[ll]^{\tilde{f}_1} \tilde{D}_1 \ar[rr]_{\tilde{g}_1}&& G'_2 && \ar[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
+	\[\xymatrix@C=15pt{L_2\ar[d]_{f'_0\circ c_1}&& K_2 \ar[d]_{\hat{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){e_0}|(.285)\hole \ar[dr]|(.28)\hole_{\hat{h}_2} && L_1 \ar@/_.35cm/[dlll]^(.4){e_1} \ar[dl]|(.28)\hole^{\hat{m}_1}& K_1 \ar[d]^{\hat{k}_1}\ar[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){t_0} \ar[dr]|(.28)\hole_{\hat{g}_1\circ c_0}   && L_0  \ar[dl]|(.28)\hole^{\hat{m}_0} \ar@/_.35cm/[dlll]^(.4){t_1}& K_0 \ar[d]^{\hat{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]^{g_2\circ b_0} \\G_0 && \ar[ll]^{\hat{f}_0} \hat{D}_0 \ar[rr]_{\hat{g}_0}&& \hat{G}_1  && \ar[ll]^{\tilde{f}_1} \tilde{D}_1 \ar[rr]_{\tilde{g}_1}&& G'_2 && \ar[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
 	Moreover
 	\[f_0\circ i_1=\hat{f}_0\circ e_1 \qquad h'_2=\tilde{g}_1\circ e_0\]
+	and $(t_0, t_1)$ is characterized using again very tameness and the first $3$-steps Lemma as the unique arrows fitting in:
+	\[\xymatrix{&R_1 \ar[dl]_{a_0} \ar@{.>}[dr]^{t_0} \ar@/^.4cm/[dd]|\hole^(.6){c_0}\ar[d]_{t'_0}\\ D'_1 \ar[d]_{g'_1}&P\ar[d]_{p_3} \ar[r]^{p_4} \ar[l]_{p_1}&D'_2\ar[d]^{f'_2}\\G'_1&\hat{D}_1 \ar[l]^{\hat{f}_1}\ar[r]_{\hat{g}_1}& G'_2}\]
 	
+	
+	
+	\[\xymatrix@R=15pt@C=15pt{&&L_ 0\ar[dl]^{a_1} \ar@/_1.2cm/[dddl]_(.4){d_1}|(.63)\hole\ar[dd]^{t'_1} \ar@{.>}[dr]^{t_1}\\&D'_0 \ar[dl]^(.4){g'_0}&&\tilde{D}_1 \ar[dr]^{\tilde{f}_1}\\G'_1 && S\ar[dr]_{s_4} \ar[ur]_{s_3}\ar[dl]^{s_1} \ar[ul]_{s_2}&&\hat{G}_1\\& \hat{D}_1 \ar[ul]^{\hat{f}_1}&&\hat{D}_0 \ar[ur]_{\hat{g}_0}}\]
+	
+
 	SECOND SEQUENCE OF SWITCHINGS:
 
 	Switch third and second
@@ -2409,15 +2448,53 @@ We start with the following situation.
 	\[m_1=\check{f}_1\circ w_1 \qquad h_2=\check{g}_2\circ w_0\]
 	
 	Switch second and first
-		\[\xymatrix@C=15pt{L_2\ar[d]_{f_0\circ z_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){y_0}|(.285)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_2 \ar@/_.35cm/[dlll]^(.4){y_1} \ar[dl]|(.28)\hole^{\check{m}_2}& K_0 \ar[d]^{\check{k}_0}\ar[l]_{l_0} \ar[r]^{r_0} & R_0 \ar[dr]|(.28)\hole_{\check{g}_1\circ z_0} \ar@/^.35cm/[drrr]_(.4){x_0}|(.285)\hole  && L_1 \ar@/_.35cm/[dlll]^(.4){x_1} \ar[dl]|(.28)\hole^{\check{m}_1}& K_1 \ar[d]^{\check{k}_1}\ar[l]_{l_1} \ar[rr]^{r_1} && R_1\ar[d]^{g_2\circ j_0} \\G_0 && \ar[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar[ll]^{\mathring{f}_1} \mathring{D}_1 \ar[rr]_{\mathring{g}_1}&& \check{G}_2 && \ar[ll]^{\check{f}_2} \check{D}_2 \ar[rr]_{\check{g}_2}&& G_3 }\]
-	
-	
-	By very tameness we have
+		\[\xymatrix@C=15pt{L_2\ar[d]_{f_0\circ z_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){y_0}|(.285)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_0 \ar@/_.35cm/[dlll]^(.4){y_1} \ar[dl]|(.28)\hole^{\check{m}_0}& K_0 \ar[d]^{\check{k}_0}\ar[l]_{l_0} \ar[r]^{r_0} & R_0 \ar[dr]|(.28)\hole_{\check{g}_1\circ z_0} \ar@/^.35cm/[drrr]_(.4){x_0}|(.285)\hole  && L_1 \ar@/_.35cm/[dlll]^(.4){x_1} \ar[dl]|(.28)\hole^{\check{m}_1}& K_1 \ar[d]^{\check{k}_1}\ar[l]_{l_1} \ar[rr]^{r_1} && R_1\ar[d]^{g_2\circ j_0} \\G_0 && \ar[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar[ll]^{\mathring{f}_1} \mathring{D}_1 \ar[rr]_{\mathring{g}_1}&& \check{G}_2 && \ar[ll]^{\check{f}_2} \check{D}_2 \ar[rr]_{\check{g}_2}&& G_3 }\]
+	As before we have
+	\[m_0=\check{f}_0\circ y_1 \qquad \check{h}_2=\mathring{g}_1\circ y_0\]
+	The really important thing to notice is that, by very tameness we have
 	\begin{align*}
 		f_0'\circ c_1&=f'_0\circ q_3\circ c'_1\\&=f_0\circ q_1\circ c'_1\\&=f_0\circ z_1
 	\end{align*}
 	
+	\todo{GOOD! i primi match sono uguali, ora giochiamoci il primo lemma dei tre passi}
+	
 	Switch second and third
+\[\xymatrix@C=15pt{L_2\ar[d]_{f_0\circ z_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){v_0}|(.285)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_1 \ar@/_.35cm/[dlll]^(.4){v_1} \ar[dl]|(.28)\hole^{\mathring{f}_1 \circ x_1}& K_1 \ar[d]^{\mathring{k}_1}\ar[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){u_0}|(.285)\hole\ar[dr]_{\check{h}_1}   && L_0 \ar@/_.35cm/[dlll]^(.4){u_1} \ar[dl]^{\mathring{m}_0}& K_0 \ar[d]^{\mathring{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0\ar[d]^{\check{g}_2\circ x_0} \\G_0 && \ar[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar[ll]^{\bar{f}_1} \bar{D}_1 \ar[rr]_{\bar{g}_1}&& \bar{G}_2 && \ar[ll]^{\bar{f}_2} \bar{D}_2 \ar[rr]_{\bar{g}_2}&& G_3 }\]
+
+\[\xymatrix@R=15pt@C=15pt{&&R_1 \ar@/_1.2cm/[dddl]_(.4){a_0}|(.63)\hole\ar[dl]^{j_0}\ar[dd]^{c'_0} \ar@{.>}[dr]^{c_0}\\&D_2 \ar[dl]^(.4){f_2}&&\hat{D}_1 \ar[dr]^{\hat{g}_1}\\G_2 && P\ar[dr]_{p_4} \ar[ur]_{p_3}\ar[dl]^{p_1} \ar[ul]^{p_2}&&G'_2\\& D'_1 \ar[ul]^{g'_1}&&D'_2 \ar[ur]_{f'_2}}\]
+
+\[\xymatrix@R=15pt@C=15pt{&&L_1 \ar[dl]^{w_1} \ar@/_1.2cm/[dddl]_(.4){i_1}|(.63)\hole\ar[dd]^{v'_1} \ar@{.>}[dr]^{v_1}\\&\check{D}_1 \ar[dl]^(.4){\check{f}_1}&&\check{D}_0 \ar[dr]^{g'_0}\\G_1 && \check{Q}\ar[dr]_{\check{q}_4} \ar[ur]_{\check{q}_3}\ar[dl]^{\check{q}_1} \ar[ul]_{\check{q}_2}&&\check{G}_1\\& D_0 \ar[ul]^{g_0}&&\mathring{D}_1 \ar[ur]_{\check{f}_1}}\]
+
+
+
+
+HUGE DIAGRAM
+
+
+\[\xymatrix@C=15pt{
+  & K_1 \ar[d]^{\hat{k}_1}\ar[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){t_0} \ar[dr]|(.28)\hole_{\hat{g}_1\circ c_0}   && L_0  \ar[dl]|(.28)\hole^{\hat{m}_0} \ar@/_.35cm/[dlll]^(.4){t_1}& K_0 \ar[d]^{\hat{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]^{g_2\circ b_0} \\G_0 && \ar[ll]^{\hat{f}_0} \hat{D}_0 \ar[rr]_{\hat{g}_0}&& \hat{G}_1  && \ar[ll]^{\tilde{f}_1} \tilde{D}_1 \ar[rr]_{\tilde{g}_1}&& G'_2 && \ar[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 \\
+	L_2\ar[d]_{f_0\circ z_1} \ar[u]^{f'_0\circ c_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/_.35cm/[urrr]^(.4){e_0}|(.285)\hole \ar[ur]|(.28)\hole^{\hat{h}_2} \ar@/^.35cm/[drrr]_(.4){v_0}|(.285)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_1 \ar@/^.35cm/[ulll]_(.4){e_1} \ar[ul]|(.28)\hole_{\hat{m}_1} \ar@/_.35cm/[dlll]^(.4){v_1} \ar[dl]|(.28)\hole^{\mathring{f}_1 \circ x_1}& K_1 \ar[d]^{\mathring{k}_1}\ar[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){u_0}|(.285)\hole\ar[dr]_{\check{h}_1}   && L_0 \ar@/_.35cm/[dlll]^(.4){u_1} \ar[dl]^{\mathring{m}_0}& K_0 \ar[d]^{\mathring{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0\ar[d]^{\check{g}_2\circ x_0} \\G_0 && \ar[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar[ll]^{\bar{f}_1} \bar{D}_1 \ar[rr]_{\bar{g}_1}&& \bar{G}_2 && \ar[ll]^{\bar{f}_2} \bar{D}_2 \ar[rr]_{\bar{g}_2}&& G_3 }\]
+
+Now, by determinism we have isomorphisms $\phi_{\check{D}_0}\colon \check{D}_0\to \hat{D}_0$ $\phi_{\check{G}_1}\colon \check{G}_1\to \hat{G}_1$
+Notice that
+\begin{align*}
+	\hat{f}_0\circ \phi_{\check{D}_0}\circ v_1&= \check{f}_0\circ v_1\\&=\check{f}_0\circ \check{q}_3\circ v'_1\\&=f_0\circ \check{q}_1\circ v'_1\\&=f_0\circ i_1\\&=\hat{f}_0\circ e_1
+\end{align*}
+
+GOOD: $\phi_{\check{D}_0}$ sends $v_1$ to $e_1$, thus it respects the match of $L_1$. Automatically it sends $v_0$ to $e_0$.
+
+CHECK THAT $\check{g}_2\circ x_0=g_2\circ j_0$
+
+USO IL PRIMO LEMMA DEI TRE PASSI:
+
+	\[\xymatrix{&R_0 \ar[dl]_{i_0} \ar@{.>}[dr]^{x_0} \ar@/^.4cm/[dd]|\hole^(.6){j_0}\ar[d]_{x'_0}\\ D_1 \ar[d]_{g_1}&P'\ar[d]_{p'_3} \ar[r]^{p'_4} \ar[l]_{p'_1}&\check{D}_2\ar[d]^{\check{g}_2}\\G_2&D_2 \ar[l]^{f_2}\ar[r]_{g_2}& G_3}\]
+
+
+
+\[\xymatrix@R=15pt@C=15pt{&&L_ 0\ar[dl]^{I_1} \ar@/_1.2cm/[dddl]_(.4){d_1}|(.63)\hole\ar[dd]^{t'_1} \ar@{.>}[dr]^{t_1}\\&D'_0 \ar[dl]^(.4){g'_0}&&\tilde{D}_1 \ar[dr]^{\tilde{f}_1}\\G'_1 && S\ar[dr]_{s_4} \ar[ur]_{s_3}\ar[dl]^{s_1} \ar[ul]_{s_2}&&\hat{G}_1\\& \hat{D}_1 \ar[ul]^{\hat{f}_1}&&\hat{D}_0 \ar[ur]_{\hat{g}_0}}\]
+
+
+
 
 
 
