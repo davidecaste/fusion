@@ -1,4 +1,21 @@
-\documentclass[a4paper]{lipics}
+\documentclass[a4paper,UKenglish,cleveref,pdftex, thm-restate,numberwithinsect]{lipics}
+\newif\ifreport
+\reporttrue
+%\reportfalse
+
+
+\ifreport
+\nolinenumbers %uncomment to disable line numbering
+\hideLIPIcs  %uncomment to remove references to LIPIcs series (logo, DOI, ...), e.g. when preparing a pre-final version to be uploaded to arXiv or another public repository
+\else
+%\relatedversion{An extended version is available at \url{https://arxiv.org/abs/2007.04213}.} %optional, e.g. full version hosted on arXiv, HAL, or other respository/website
+%\relatedversion{A full version of the paper is available at \url{...}.}
+\fi
+
+\bibliographystyle{abbrv}% the mandatory bibstyle
+
+
+
 \usepackage{hyperref}
 \usepackage[textsize=tiny]{todonotes}
 %\usepackage{etex}
@@ -91,7 +108,7 @@
 \usepackage{cite}
 \usepackage{float}
 \usepackage{fancybox}
-
+\usepackage{proof-at-the-end}
 \usepackage{cleveref}
 
 
@@ -414,7 +431,23 @@
 
 
 \title{Switch equivalence for left-linear rewriting systems}
-%\author{Paolo Baldan\and Davide Castelnovo\and  Andrea Corradini\and Fabio Gadducci}
+\author{Paolo Baldan} 
+{Department of Mathematics, University of Padova, Italy}
+{baldan@math.unipd.it}{}{}
+\author{Davide Castelnovo}
+{Department of Mathematics, University of Padova, Italy}
+{davide.castelnovo@math.unipd.it}{}{}
+\author{Andrea Corradini}
+{Department of Computer Science, University of Pisa, Italy}
+{andrea.corradini@unipi.it}{}{}
+
+\author{Fabio Gadducci}
+{Department of Computer Science, University of Pisa, Italy}
+{fabio.gadducci@unipi.it}{}{}
+
+
+\authorrunning{P.~Baldan, D.~Castelnovo, A.~Corradini, F.~Gadducci}
+\Copyright{Paolo Baldan, Davide Castelnovo, Andrea Corradini and Fabio Gadducci}
 
 \begin{document}
 \maketitle
@@ -645,7 +678,8 @@ relies on a wrong characterisation of independence which fails for non
 linear rules. Here we rework in depth the result and extend it to DPO
 rewriting over a large class of adhesive categories.
 
-\section{$\mathcal{M}$-adhesive categories and DPO-rewriting systems}
+\section{$\mathcal{M}$-adhesive categories and DPO-rewriting systems}\label{sec:ade}
+\todo{RIDURRE MOLTO}
 
 This first section is devoted to recall the definition and the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive}. 
 
@@ -714,43 +748,47 @@ The previous result can be dualised to get an analogous lemma for pushouts.
 \end{lemma}
 
 The following proposition establishes a key property of $\mathcal{A}$-Van Kampen squares with a mono as a side: they are not only pushouts, but also pullbacks.
-\begin{proposition}\label{prop:pbpo} Let $\mathcal{A}$ be a class of arrows stable under pushouts and containing all the isomorphisms.  If $m\colon A\to C$ is mono and belongs to $\mathcal{A}$, then every $\mathcal{A}$-Van Kampen square
+\begin{theoremEnd}[category=sec2]{proposition}\label{prop:pbpo} Let $\mathcal{A}$ be a class of arrows stable under pushouts and containing all the isomorphisms.  If $m\colon A\to C$ is mono and belongs to $\mathcal{A}$, then every $\mathcal{A}$-Van Kampen square
 	\[\xymatrix{A\ar[r]^{g} \ar[d]_{m} & B \ar[d]^{n} \\ C \ar[r]_{f}  & D}\]
 	is also a pullback square and $n$ is a monomorphism.
-\end{proposition}
-\begin{proof} We can start considering the cube below and noticing that $n$, being the pushout of $m\in \mathcal{M}$, belongs to $\mathcal{A}$ too.
-	\[\xymatrix@C=13pt@R=13pt{&A\ar[dd]|\hole_(.65){\id{A}}\ar[rr]^{g} \ar[dl]_{\id{A}} && B \ar[dd]^{\id{B}} \ar[dl]_{\id{B}} \\ A  \ar[dd]_{m}\ar[rr]^(.65){g} & & B \ar[dd]_(.3){n}\\&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{f} & & D}\]
-	By construction the top face of the cube is a pushout and the back one a pullback. The left face is a pullback because $m$ is mono. Thus the $\mathcal{A}$-Van Kampen property yields that the front and the right faces are pullbacks. 
+\end{theoremEnd}
+\begin{proof}\begin{proofEnd}
+		We can start considering the cube below and noticing that $n$, being the pushout of $m\in \mathcal{M}$, belongs to $\mathcal{A}$ too.
+		\[\xymatrix@C=13pt@R=13pt{&A\ar[dd]|\hole_(.65){\id{A}}\ar[rr]^{g} \ar[dl]_{\id{A}} && B \ar[dd]^{\id{B}} \ar[dl]_{\id{B}} \\ A  \ar[dd]_{m}\ar[rr]^(.65){g} & & B \ar[dd]_(.3){n}\\&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{f} & & D}\]
+		By construction the top face of the cube is a pushout and the back one a pullback. The left face is a pullback because $m$ is mono. Thus the $\mathcal{A}$-Van Kampen property yields that the front and the right faces are pullbacks. 
+	\end{proofEnd} 
 \end{proof}
 
-The previous proposition, in turn, allows us to establish the following results.
-\begin{lemma}\label{lem:varie}Let $\mathcal{A}$ be a class of arrows stable under pullbacks, pushouts and containing all isomorphisms.  Suppose that, the left square below is $\mathcal{A}$-Van Kampen, while the vertical faces in the right cube are pullbacks.
+
+Recall that, given two monos $m:M\to X$ and $n:N\to X$ with the same codomain, $m\leq n$ means that there exists a, necessarily unique and necessarily mono, $k:M\to N$ fitting in the triangle below:
+\[\xymatrix{M\ar[rr]^{k}  \ar[dr]_{m}&& N \ar[dl]^{n}\\ & X}\]
+Notice, moreover, that  if $m\leq n$ and $n\leq m$, then the arrow $k:M\to N$ is an isomorphism.  
+
+The previous proposition, now, allows us to establish the following result.
+\begin{theoremEnd}[category=sec2]{lemma}\label{lem:varie}Let $\mathcal{A}$ be a class of arrows stable under pullbacks, pushouts and containing all isomorphisms.  Suppose that, the left square below is $\mathcal{A}$-Van Kampen, while the vertical faces in the right cube are pullbacks.
 		\[\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{g'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{g}&&B\ar[dd]^{n}&&C'  \ar[dd]_{c}\ar[rr]^(.7){f'} & & D' \ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{f} &&D&&C \ar[rr]_{f} & & D}\]
 Supppose, moreover that $m\colon A\to C$ and $d\colon D'\to D$ are mono and that $d$ belongs to $\mathcal{A}$. Then $d\leq n$ if and only if $c \leq m$.
-\end{lemma}
+\end{theoremEnd}
 
-\begin{remark}
-	Recall that, given two monos $m:M\to X$ and $n:N\to X$ with the same codomain, $m\leq n$ means that there exists a, necessarily unique and necessarily mono, $k:M\to N$ fitting in the triangle below:
-	\[\xymatrix{M\ar[rr]^{k}  \ar[dr]_{m}&& N \ar[dl]^{n}\\ & X}\]
-	Notice that, if $m\leq n$ and $n\leq m$, then the arrow $k:M\to N$ is an isomorphism.  
-\end{remark}
 \begin{remark}
 	Notice that, since $d$ is a mono and the vertical faces are pullbacks, then $a, b$ and $c$ are monomorphisms too. Moreover, $n$ is mono by \Cref{prop:pbpo}, so that even $m'$ and $n'$ are monos.
 \end{remark}
 
 \begin{proof}
-	$(\Rightarrow)$ By hypothesis there exists $k:D'\to B$ such that $n\circ k = d$. By \Cref{prop:pbpo}, the bottom face of the cube is a pullback. Thus there exists a unique $h:C'\to A$ as in the diagram below, implying the thesis.
+	\begin{proofEnd}		
+		$(\Rightarrow)$ By hypothesis there exists $k:D'\to B$ such that $n\circ k = d$. By \Cref{prop:pbpo}, the bottom face of the cube is a pullback. Thus there exists a unique $h:C'\to A$ as in the diagram below, implying the thesis.
 		\[\xymatrix@C=40pt{C'  \ar[d]^{h}\ar[r]^{f'} \ar@/_.5cm/[dd]_{c}& D' \ar@/^.5cm/[dd]^{d}\ar[d]_{k}\\ A \ar[d]^{m} \ar[r]^{g} & B \ar[d]_{n} \\  C \ar[r]_f & D}\]
-	
-	\smallskip \noindent 
-	$(\Leftarrow)$ Let $h:C\to A$ be such that $c=m\circ h$. By the $\mathcal{A}$-Van Kampen property the top face of the given cube is a pushout. Thus the dotted $k:D'\to B$ in the following diagram exists.
+		
+		\smallskip \noindent 
+		$(\Leftarrow)$ Let $h:C\to A$ be such that $c=m\circ h$. By the $\mathcal{A}$-Van Kampen property the top face of the given cube is a pushout. Thus the dotted $k:D'\to B$ in the following diagram exists.
 		\[\xymatrix@C=40pt{A' \ar@/_.5cm/[dd]_{a} \ar[d]^{m'} \ar[r]^{g'} & B' \ar[d]_{n'} \ar@/^.5cm/[dd]^{b} \\  C' \ar[d]^{h} \ar[r]_{f'} & D' \ar@{.>}[d]_{k}\\ A \ar[r]_g& B }\]
-Moreover, by construction we have
-\[\begin{split}
-n\circ k \circ n' &= n\circ b\\&=d\circ n'\\&\\&
-\end{split} \qquad \begin{split}
-n\circ k \circ f' &= n\circ g\circ h\\&=f\circ m\circ h\\&=f\circ c\\&= d\circ f' \end{split}\]
-We can therefore conclude that $n\circ k =d$. \qedhere 
+		Moreover, by construction we have
+		\begin{align*}
+	n\circ k \circ n'&= n\circ b=d\circ n'\\
+		n\circ k \circ f' &= n\circ g\circ h=f\circ m\circ h=f\circ c= d\circ f' 
+		\end{align*}
+		We can therefore conclude that $n\circ k =d$.
+	\end{proofEnd} \qedhere 
 \end{proof}
 
 Finally, we can show that $\mathcal{A}$-stable pushouts enjoy a kind of \emph{pullback-pushout decomposition} property.
@@ -910,18 +948,19 @@ Let $f\colon X\to Y$ and $g\colon Y\to Z$ ba two composable arrows in a category
 Working in an $\mathcal{M}$-adhesive category we can amend the second defect. 
 
 
-\begin{lemma}\label{lem:radj}
+\begin{theoremEnd}[category=sec2]{lemma}\label{lem:radj}
 Let $f\colon X\to Y$ be an arrow in an $\mathcal{M}$-adhesive category $\X$ and suppose that the left square below is a pushout while the  right one is a pullback, with $ m\colon M\to X$ and $n\colon N\to Y$ in $\mathcal{M}$.
 \[\xymatrix{M \ar@{>->}[d]_{m}\ar[r]^{h}& Q \ar@{>->}[d]^{k} & P \ar[r]^{p_1} \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\X\ar[r]_{f}&Y &X \ar[r]_f&Y\\}\]
 Then $n\leq k$ if and only if $p_2\leq m$.
-\end{lemma}
-\begin{proof}  
+\end{theoremEnd}
+\begin{proof} 
+\begin{proofEnd}  
 	We start pulling back $n$ along $k$ and then pulling back the resulting arrow along $h$, getting the following two pullbacks square:
 \[\xymatrix{B \ar@{>->}[d]_{b}\ar@{>->}[r]^{s}& N \ar@{>->}[d]^{n} & A \ar[r]^{r} \ar@{>->}[d]_{a}& B \ar@{>->}[d]^{b}\\Q\ar@{>->}[r]_{k}&Y &M \ar[r]_h&Q\\}\]
 Notice that 
-\begin{align*}
-	f\circ m\circ a&=k\circ h\circ a\\&=k\circ b\circ r\\&=n\circ s\circ r
-\end{align*}
+\[
+f\circ m\circ a=k\circ h\circ a=k\circ b\circ r=n\circ s\circ r\]
+
 	Thus there exists a unique $t\colon A\to P$ as in the diagram
 \[\xymatrix{A \ar@{>->}[d]_{a} \ar@{.>}[dr]^{t}\ar[r]^{r} &B \ar@{>->}@/^.2cm/[dr]^{s} \\ M \ar@{>->}@/_.2cm/[dr]_{m}&P\ar[r]^{p_1}  \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\ &X \ar[r]_{f} & Y}\]
 	We can then consider the cube below, in which the front, right and back faces are pullbacks.
@@ -929,9 +968,9 @@ Notice that
 	We can notice that the left square is a pullback too. To see this it is enough to apply \Cref{lem:pb1} to the diagram
 	\[\xymatrix{A  \ar@/^.4cm/[rr]^{s\circ r}\ar@{>->}[d]_{a} \ar[r]_{t}& \ar[r]_{p_1} P \ar@{>->}[d]^{p_2}& N \ar[d]^{c}\\ M \ar@/_.4cm/[rr]_{k\circ h}\ar@{>->}[r]^{m}& X \ar[r]^{f}& Y}\]
 
-	The thesis now follows immediately from \Cref{lem:varie}.
+	The thesis now follows immediately from \Cref{lem:varie}. \qedhere 
+\end{proofEnd}
 \end{proof}
-
 \begin{corollary}[Uniqueness of pushouts complements]\label{lem:pocomp} 
 Let $\X$ be a $\mathcal{M}$-adhesive category. Given $m\colon X\mto Y$ in $\mathcal{M}$ and $f\colon Y\to Z$, let $(h_1, k_1)$ and $(h_2, k_2)$ be pushout complements of $m$  and $f$ and $W_1=\cod{h_1}$, $W_2=\cod{h_2}$. Then there exists a unique isomorphism $\phi\colon W_1\to W_2$ making the following diagram commutative.
 \[\xymatrix{&X \ar@{>->}[r]^{m} \ar[d]_{h_1} \ar@/_.3cm/[ddl]_{h_2}& Y \ar[d]^{f} \\ &W_1 \ar@{.>}[dl]^{\phi} \ar@{>->}[r]_{k_1} & Z \\ W_2 \ar@{>->}@/_.3cm/[urr]_{k_2}}\]
@@ -984,20 +1023,6 @@ esempi di	derivazione}
 
 $\mathcal{M}$-adhesivity of $\X$ guarantes the essential uniqueness of the result obtained rewriting an object, as shown by the next proposition.
 
-\begin{proposition}\label{prop:unique} Let $\X$  be a $\mathcal{M}$-adhesive category. Suppose that the two direct derivations $\mathscr{D}$ and $\mathscr{D'}$ below, with the same match and applying the same left $\mathcal{M}$-linear rule $\rho$ are given.
-	\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L \ar[d]_{m}& K \ar[d]^{k'}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h'}\\G & \ar@{>->}[l]^{f} D \ar[r]_{g}& H & G & \ar@{>->}[l]^{f'} D' \ar[r]_{g'}& H'}\]
-Then there exist isomorphisms $t\colon D\to D'$ and $s\colon H\to H'$ as in the following diagram.
-\[\xymatrix@C=40pt{&&D' \ar[r]^{g'} \ar@{>->}@/_.45cm/[dll]_{f'}&H'\\G & L \ar[l]_{m} & K \ar[u]_{k'} \ar[d]^{k}\ar[r]^{r} \ar@{>->}[l]_{l} &R\ar[u]^{h'} \ar[d]_{h}\\&&D\ar@{>->}@/^.45cm/[ull]^{f}\ar@/^.4cm/@{.>}[uu]^(.4){t}|\hole \ar[r]_{g}&H\ar@/_.4cm/@{.>}[uu]_{s}}\]
-\end{proposition}
-\begin{proof}
-	By construction, the pairs $(k, f)$ and $(k', f')$ are pushout complements of $l$ and $n$. Thus, the existence of the isomorphism $t\colon D\to D'$ follows from \Cref{lem:pocomp}. Now, computing we have
-	\begin{align*}
-		g'\circ t \circ k &= g' \circ k'\\&=h'\circ r
-	\end{align*}
-	Hence, we have the wanted $s\colon H\to H'$. To see that $s$ is an isomorphism, consider the diagram 
-	\[\xymatrix{K  \ar@/^.4cm/[rr]^{k'}\ar[d]_{r} \ar[r]_{k}& \ar[r]_{t} D \ar[d]^{g}& D' \ar[d]^{g'}\\ R \ar@/_.4cm/[rr]_{h'} \ar[r]^{h}& H \ar[r]^{s}& H'}\]
-	By hypothesis the whole rectangle and its left half are pushouts, therefore, by \Cref{lem:po1} its right square is a pushout too. The claim now follows from the fact that the pushout of an isomorphism is an isomorphism.
-\end{proof}
 
 If we look to direct derivations as transitions, it is natural to consider them as edges in a direct graph. Taking objects as vertices objects led us to the following definition \cite{heindel2009category}.
 
@@ -1846,15 +1871,41 @@ The thesis now follows at once.	 \qedhere
 
 
 
+\todo{INSERIRE: SISTEMA DI RISCRITTURA E EQUIVALENZA ASTRATTA: ORA NON SERVONO LE DECORAZIONI E POSSIAMO ASSUMERE CHE LE EQUIVALENZE ASTRATTE ABBIANO L'IDENTITÀ NEL SOURCE E TARGET}
+
+\begin{theoremEnd}[category=sec2]{proposition}\label{prop:derpo}
+	\todo{mettere che il pullback tra due derivazioni consecutive è un pushout}
+\end{theoremEnd}
+\begin{proof}
+	\begin{proofEnd}
+		contenuto...\qedhere 
+	\end{proofEnd}
+\end{proof}
 
 
-\section{Switch equivalence }
+\begin{proposition}\label{prop:unique} Let $\X$  be a $\mathcal{M}$-adhesive category. Suppose that the two direct derivations $\mathscr{D}$ and $\mathscr{D'}$ below, with the same match and applying the same left $\mathcal{M}$-linear rule $\rho$ are given.
+	\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L \ar[d]_{m}& K \ar[d]^{k'}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h'}\\G & \ar@{>->}[l]^{f} D \ar[r]_{g}& H & G & \ar@{>->}[l]^{f'} D' \ar[r]_{g'}& H'}\]
+	Then there exist isomorphisms $t\colon D\to D'$ and $s\colon H\to H'$ as in the following diagram.
+	\[\xymatrix@C=40pt{&&D' \ar[r]^{g'} \ar@{>->}@/_.45cm/[dll]_{f'}&H'\\G & L \ar[l]_{m} & K \ar[u]_{k'} \ar[d]^{k}\ar[r]^{r} \ar@{>->}[l]_{l} &R\ar[u]^{h'} \ar[d]_{h}\\&&D\ar@{>->}@/^.45cm/[ull]^{f}\ar@/^.4cm/@{.>}[uu]^(.4){t}|\hole \ar[r]_{g}&H\ar@/_.4cm/@{.>}[uu]_{s}}\]
+\end{proposition}
+\begin{proof}
+	By construction, the pairs $(k, f)$ and $(k', f')$ are pushout complements of $l$ and $n$. Thus, the existence of the isomorphism $t\colon D\to D'$ follows from \Cref{lem:pocomp}. Now, computing we have
+	\begin{align*}
+		g'\circ t \circ k &= g' \circ k'\\&=h'\circ r
+	\end{align*}
+	Hence, we have the wanted $s\colon H\to H'$. To see that $s$ is an isomorphism, consider the diagram 
+	\[\xymatrix{K  \ar@/^.4cm/[rr]^{k'}\ar[d]_{r} \ar[r]_{k}& \ar[r]_{t} D \ar[d]^{g}& D' \ar[d]^{g'}\\ R \ar@/_.4cm/[rr]_{h'} \ar[r]^{h}& H \ar[r]^{s}& H'}\]
+	By hypothesis the whole rectangle and its left half are pushouts, therefore, by \Cref{lem:po1} its right square is a pushout too. The claim now follows from the fact that the pushout of an isomorphism is an isomorphism.
+\end{proof}
+
+\section{Switch equivalence }\label{sec:equi}
+
 \todo{A VERY NICE INTRO}
 
 
 \subsection{Sequentially independent and switchable derivations }
 
-\todo{A VERY NICE INTRO}
+\todo{a very nice intro}
 
 \begin{definition}[Sequential independence]
   \label{de:sequential-independence}
@@ -1877,13 +1928,11 @@ The thesis now follows at once.	 \qedhere
 
 
  Let $(i_0, i_1)$ and $(i'_0, i'_1)$ be independence pairs for the direct derivations $\dder{D}$ and $\dder{D'}$. Notice that, by definition, we have
-	\begin{align*}f'\circ i_0&=h\\&=f'\circ i'_0
-	\end{align*}
+ \[f'\circ i_0=h=f'\circ i'_0\]
 	On the other hand, 
 	$f'\colon D'\to H$ is  the pushout of $l'\colon K'\to L'$ and so it is in $\mathcal{M}$, implying $i_0=i'_0$. If, moreover, we suppose that the rule $\rho$ applied in $\dder{D}$ is linear, then $g\colon D\to H$ is in $\mathcal{M}$ too, hence, from the equation
-	\begin{align*}
-		g\circ i_1&=h \\&= g\circ i'_1
-	\end{align*}
+	\[
+	g\circ i_1=m'= g\circ i'_1\]
 	we can deduce that $i'_0=i'_1$, too. Summing up, we have just proved the following.
 	
 	\begin{proposition}\label{rem:weak}
@@ -1899,9 +1948,9 @@ We want to be able to exchange to switch the application of two rules used by tw
  	\[\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0} && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2}\]
  	
  	Take another derivation $\der{E}=\{\dder{E}_i\}_{i=0}^1$ with source $G_0$ and target $G_2$ and in which $\der{E}_0$, $\der{E}_1$ are
-\[\xymatrix{L_{\der{E},0} \ar[d]_{m_{\der{E},0}}& K_{\der{E},0} \ar[d]^{k_{\der{E},0}}\ar[l]_{l_{\der{E},0}} \ar[r]^{r_{\der{E},0}} & R_{\der{E},0} \ar[d]^{h_{\der{E},0}} & L_{\der{E},1} \ar[d]_{m_{\der{E},1}}& K_{\der{E},1} \ar[d]^{k_{\der{E},1}}\ar[l]_{l_{\der{E},1}} \ar[r]^{r_{\der{E},1}} & R_{\der{E},1} \ar[d]^{h_{\der{E},1}}\\G_{0} & \ar[l]^{f_{\der{E},0}} D_{\der{E},0} \ar[r]_{g_{\der{E},0}}& G_{\der{E},1} & G_{\der{E},1} & \ar[l]^{f_{\der{E},1}} D_{\der{E},1} \ar[r]_{g_{\der{E},1}}& G_{2}}\]
+\[\xymatrix{L_{\der{E},0} \ar[d]_{m_{\der{E},0}}& K_{\der{E},0} \ar[d]^{k_{\der{E},0}}\ar@{>->}[l]_{l_{\der{E},0}} \ar[r]^{r_{\der{E},0}} & R_{\der{E},0} \ar[d]^{h_{\der{E},0}} & L_{\der{E},1} \ar[d]_{m_{\der{E},1}}& K_{\der{E},1} \ar[d]^{k_{\der{E},1}}\ar@{>->}[l]_{l_{\der{E},1}} \ar[r]^{r_{\der{E},1}} & R_{\der{E},1} \ar[d]^{h_{\der{E},1}}\\G_{0} & \ar@{>->}[l]^{f_{\der{E},0}} D_{\der{E},0} \ar[r]_{g_{\der{E},0}}& G_{\der{E},1} & G_{\der{E},1} & \ar@{>->}[l]^{f_{\der{E},1}} D_{\der{E},1} \ar[r]_{g_{\der{E},1}}& G_{2}}\]
  	We say that $\der{E}$ is a
- 	 	 \emph{switch} of $\der{D}$ along $(i_1, i_2)$ if
+ 	 	 \emph{switch} of $\dder{D}_0$ and $\dder{D}_1$ along $(i_1, i_2)$ if
  	\begin{enumerate}
  		\item $\dder{E}_0$ applies the rule used by $\dder{D}_1$ and $\dder{E}_1$ the one used by $\dder{D}_0$, so that
  		\[(l_{\der{E},0}, r_{\der{E},0})=(l_1,r_1)  \qquad (l_{\der{E},1}, r_{\der{E},1})=(l_0,r_0)\]
@@ -1909,6 +1958,8 @@ We want to be able to exchange to switch the application of two rules used by tw
  		\[ m_0=f_{\der{E},0} \circ j_1 \qquad h_1=g_{\der{E},1} \circ j_0\]
  		\item $m_{\der{E},0}= f_0\circ i_1$ and $h_{\der{E},1}= g_{1}\circ i_0$.
  	\end{enumerate}
+
+If a switch of $\dder{D}_0$ and $\dder{D}_1$ exists we will say that they are \emph{switchable}.
 \end{definition}
 
 \begin{remark}\label{rem:fact}
@@ -1917,11 +1968,32 @@ We want to be able to exchange to switch the application of two rules used by tw
 
 Our first result about switches is their uniqueness up to abstraction equivalence.
 
-\begin{theorem}[Uniqueness of switches]\label{thm:switch_uni} Let $\der{D}=\{\dder{D}_i\}_{i=0}^1$  
+\begin{lemma}[Uniqueness of switches]\label{thm:switch_uni} Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^1$ be a derivation and suppose that both $\der{E}=\{\dder{E}_i\}_{i=0}^1$  and $\der{F}=\{\dder{F}_i\}_{i=0}^1$ are switches of $\dder{D}_0$ and $\dder{D}_1$. Then $\der{E}$ and $\der{F}$ are abstraction equivalent.
+\end{lemma}
+\begin{proof}
+	By definition of switch we know that $\der{E}_0$ and $\der{F}_0$ have the same match $f_0\circ i_1$ and that $\der{E}_1$ and $\der{F}_1$ have the same comatch $g_1\circ i_0$. Thus we can build the solid part of the diagram below.
+	\[\xymatrix@C=15pt{G_{0} && \ar@{>->}[ll]_{f_{\der{F},0}} D_{\der{F},0} \ar[rr]^{g_{\der{F},0}}&& G_{\der{F},1} && \ar@{>->}[ll]_{f_{\der{F},1}} D_{\der{F},1} \ar[rr]^{g_{\der{F},1}}&& G_{2}\\L_1 \ar[d]^{f_0\circ i_1} \ar[u]_{f_0\circ i_1}&& K_{1} \ar[d]^{k_{\der{E},0}} \ar[u]_{k_{\der{F},0}}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_{1} \ar@/^.35cm/[drrr]|(.3)\hole_(.4){j_0} \ar[dr]|(.3)\hole_{h_{\der{E},0}} \ar@/_.35cm/[urrr]|(.3)\hole^(.4){a_0} \ar[ur]|(.3)\hole^{h_{\der{F},0}}& &L_{0} \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.3)\hole^{m_{\der{E},1}} \ar@/^.35cm/[ulll]_(.4){a_1} \ar[ul]|(.3)\hole_{m_{\der{F},1}}& K_{0} \ar[d]_{k_{\der{E},1}} \ar[u]^{k_{\der{F},1}}\ar@{>->}[l]_{l_{0}} \ar[rr]^{r_0} && R_{0} \ar[d]_{g_1\circ i_0} \ar[u]^{g_1\circ i_0}\\ \ar@/^.5cm/[uu]^{\id{G_0}} G_{0} && \ar[ll]^{f_{\der{E},0}} D_{\der{E},0} \ar@{.>}@/^.5cm/[uu]^(.33){\phi_{0}}|\hole \ar[rr]_{g_{\der{E},0}}&& G_{\der{E},1} \ar@{.>}[uu]^(.2){\psi_1}|(.45)\hole |(.55)\hole&& \ar@{>->}[ll]^{f_{\der{E},1}} D_{\der{E},1} \ar@{.>}@/_.5cm/[uu]_(.33){\phi_{1}}|\hole\ar[rr]_{g_{\der{E},1}}&& G_{2}\ar@{.>}@/_.5cm/[uu]_{\psi_2}}\]
+	Now, by \Cref{prop:unique} we get $\phi_0\colon D_{\der{E},0}\to D_{\der{F},0}$ and $\psi_1 \colon G_{\der{E},1}\to G_{\der{F},1}$ such that 
+	\[\xymatrix{G_{0} & \ar@{>->}[l]_{f_{\der{F},0}} D_{\der{F},0} \ar[r]^{g_{\der{F},0}}& G_{\der{F},1} \\L_1 \ar[d]^{f_0\circ i_1} \ar[u]_{f_0\circ i_1}& K_{1} \ar[d]^{k_{\der{E},0}} \ar[u]_{k_{\der{F},0}}\ar[l]_{l_1} \ar[r]^{r_1} & R_{1}  \ar[d]_{h_{\der{E},0}}  \ar[u]^{h_{\der{F},0}}\\ \ar@/^.5cm/[uu]^{\id{G_0}} G_{0} & \ar@{>->}[l]^{f_{\der{E},0}} D_{\der{E},0} \ar@/^.5cm/[uu]^(.33){\phi_{0}}|\hole \ar[r]_{g_{\der{E},0}}& G_{\der{E},1} \ar@/_.5cm/[uu]_{\psi_1}}\]
+	commutes. But then we have
+	\[
+	f_{\der{F},0}\circ \phi_0\circ j_1=f_{\der{E},0} \circ j_1=m_0=f_{\der{F},0}\circ a_1\]
+	which entails $a_1= \phi_0\circ j_1$. This, in turn, gives us that
+	\[\psi\circ m_{\der{E},1}=\psi \circ g_{\der{E},0}\circ j_1=g_{\der{F},0}\circ \phi_0\circ j_1=g_{\der{F},0}\circ a_1=m_{\der{F},1}\]
 	
-\end{theorem}
+Now, the square 
+\[\xymatrix@C=30pt{K_0 \ar[d]_{k_{\der{E,1}}} \ar@{>->}[r]^{l_0}& L_0 \ar[d]^{\psi_1\circ m_{\der{E},1}} \\D_{\der{E},1} \ar@{>->}[r]_{\psi_1\circ f_{\der{E},1}}& G_{\der{F}, 1}} \]
+is a pushout and $\psi_1\circ m_{\der{E},1}=m_{\der{F},1}$, thus, by \Cref{prop:unique} there are $\phi_1\colon D_{\der{E},1}\to D_{\der{F},1}$ and $\psi_2\colon G_2\to G_2$ fitting in the diagram below
+	\[\xymatrix{G_{\der{F},1} & \ar@{>->}[l]_{f_{\der{F},1}} D_{\der{F},1} \ar[r]^{g_{\der{F},1}}& G_2 \\L_0 \ar[d]^{m_{\der{E},1}} \ar[u]_{m_{\der{F},1}}& K_{1} \ar[d]^{m_{\der{E},1}} \ar[u]_{m_{\der{F},1}}\ar[l]_{l_1} \ar[r]^{r_1} & R_{1}  \ar[d]_{g_1\circ i_0}  \ar[u]^{g_1\circ i_0}\\ \ar@/^.5cm/[uu]^{\psi_1} G_{\der{E},1} & \ar@{>->}[l]^{f_{\der{E},1}} D_{\der{E},1} \ar@/^.5cm/[uu]^(.33){\phi_{1}}|\hole \ar[r]_{g_{\der{E},1}}& G_2 \ar@/_.5cm/[uu]_{\psi_2}}\]
+To conclude, it is now enough to notice that
+	\[f_{\der{F},1} \circ \phi_1\circ j_0=\psi_1\circ f_{\der{E},1}\circ j_0=\psi_1\circ h_{\der{E,0}}=h_{\der{F},0}=f_{\der{F},1}\circ a_0\]
+	allowing us to deduce $ \phi_1\circ j_0=a_0$.
+\end{proof}
 
-\begin{lemma}\label{lem:cose} Let $(\der{D}, \alpha, \omega)$ be a decorated derivation with $\der{D}=\{\dder{D}_i\}_{i=0}^1$,  and suppose that $(i_0, i_1)$ is an independence pair between $\dder{D}_0$  and $\der{D}_1$. If $\der{E}=\{\dder{E}_i\}_{i=0}^1$ is a switch of $\der{D}$ along $(i_0, i_1)$, then the following hold true:
+
+
+We can now derive some other properties  
+\begin{theoremEnd}[category=sec3]{proposition}\label{lem:cose} Let $(\der{D}, \alpha, \omega)$ be a decorated derivation with $\der{D}=\{\dder{D}_i\}_{i=0}^1$,  and suppose that $(i_0, i_1)$ is an independence pair between $\dder{D}_0$  and $\der{D}_1$. If $\der{E}=\{\dder{E}_i\}_{i=0}^1$ is a switch of $\der{D}$ along $(i_0, i_1)$, then the following hold true:
 	\begin{enumerate}
 			\item the pullback square below is an $\mathcal{M}$-pushout;
 			\[\xymatrix{P \ar[r]^{p_1} \ar@{>->}[d]_{p_0}& D_1 \ar@{>->}[d]^{f_1}\\ D_0 \ar[r]_{g_1}& G_1}\]
@@ -1932,8 +2004,11 @@ Our first result about switches is their uniqueness up to abstraction equivalenc
  		\item there exists an arrow $j_0\colon R_1\to D_{\der{E},1}$ such that 
  		\[h_{\der{E},0}=f_{\der{E},1}\circ j_0 \qquad h_1=g_{\der{E},1} \circ j_0\]
 	\end{enumerate}
-\end{lemma}
+\end{theoremEnd}
 \begin{proof}
+	\begin{proofEnd}
+		contenuto...
+	\end{proofEnd} \qedhere 
 	Before starting with the proof of our claims, it is worth noticing that the definition of switchin gives us the following diagram:
 			\[\xymatrix@R=28pt{&&R_0 \ar@/_1.15cm/[ddrr]_(.8){i_0}|(.68)\hole \ar[dr]^{h_0}&& L_1\ar@/^1.15cm/[ddll]^(.8){i_1}  \ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar[dl]_{l_0} \ar[ur]^{r_0}&& G_1 && K_1 \ar[dl]_{k_1}\ar[lu]_{l_1} \ar[dr]^{r_1}\\L_0 \ar@/_.94cm/[ddrr]_(.8){j_1}|(.31)\hole \ar[dr]^(.35){m_0}|(.6)\hole && D_0 \ar[dl]^{f_0}\ar[ur]|(.5)\hole^(.7){g_0}&&D_1 \ar[dr]_{g_1} \ar[ul]|(.5)\hole_(.65){f_1}&&R_1\ar[dl]^(.35){h_1}|(.6)\hole\\&G_0 &&&&G_2\\L_1 \ar@/^.94cm/[uurr]^(.8){i_1} \ar[ur]_(.35){m_{\der{E},0}}|(.61)\hole&&D_{\der{E},0} \ar[ul]_{f_{\der{E},0}}\ar[dr]^{g_{\der{E},0}} &&D_{\der{E},1}\ar[ur]^{g_{\der{E},1}} \ar[dl]|(.5)\hole^(.7){f_{\der{E},1}} && R_0  \ar@/_.94cm/[uull]_(.8){j_1} \ar[ul]^{h_{\der{E},1}}\\&K_1 \ar[ur]_{k_{\der{E},0}} \ar[dr]_{r_1} \ar[ul]^{l_1}&&G_{\der{E},1}&& K_0 \ar[ur]_{r_0} \ar[ul]^{k_{\der{E},1}} \ar[dl]^{l_0} \\&& R_1 \ar[ur]_{h_{\der{E},0}}&& L_0 \ar[ul]^{m_{\der{E},1}} \ar@/_1.15cm/[uull]_(.6){j_1} }\]
 			
@@ -2711,46 +2786,12 @@ USO IL PRIMO LEMMA DEI TRE PASSI:
 \fi 
 
 
-\subsection{Concatenable traces}
-\begin{lemma}
-	\todo{abstract equivalence and switch }
-\end{lemma}
-\begin{proof}
-	contenuto...
-\end{proof}
-\begin{definition}
-	\todo{tracce}
-\end{definition}
 
-Before moving forward, we will prove some other useful properties of the switch equivalence relation.
-
-\begin{lemma}
-	\todo{lemma 19}
-\end{lemma}
-\begin{proof}
-	contenuto...
-\end{proof}
-
-
-\begin{theorem}
-	\todo{preordine}
-\end{theorem}
-\begin{proof}
-	contenuto...
-\end{proof}
-
-
-\section{ Domains for DPO-rewriting}
-
-\subsection{weak domains}
-
-\subsection{From adhesive grammars to weak domains}
 
 
 \section{Conclusions and further work}
 \todo{VERY NICE CONCLUSIONS}
 
-\bibliographystyle{plain}
 \bibliography{bibliog.bib}
 
 
@@ -2822,10 +2863,16 @@ Our next step is to identify sufficient conditions for a category $\X$ to satisf
 	\todo{filler e classe B+}
 \end{corollary}
 
-
 \section{Rewriting systems on $\Set$.}\label{app:set}
 
 
+\section{Omitted proofs}
+In this appendix we will provide the proofs of...
+\subsection{Proofs for \Cref{sec:ade}}
+\printProofs[sec2]
+
+\subsection{Proofs for \Cref{sec:equi}}
+\printProofs[sec3]
 \end{document}
 
 %%% Local Variables:
