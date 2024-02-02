@@ -810,16 +810,18 @@ The following proposition establishes a key property of $\mathcal{A}$-Van Kampen
 	\end{proofEnd} 
 \end{proof}
 
-
-Recall that, given two monos $m:M\to X$ and $n:N\to X$ with the same codomain, $m\leq n$ means that there exists a, necessarily unique and necessarily mono, $k:M\to N$ fitting in the triangle below:
-\[\xymatrix{M\ar[rr]^{k}  \ar[dr]_{m}&& N \ar[dl]^{n}\\ & X}\]
-Notice, moreover, that  if $m\leq n$ and $n\leq m$, then the arrow $k:M\to N$ is an isomorphism.  
-
 The previous proposition, now, allows us to establish the following result.
 \begin{theoremEnd}[category=sec2]{lemma}\label{lem:varie}Let $\mathcal{A}$ be a class of arrows stable under pullbacks, pushouts and containing all isomorphisms.  Suppose that, the left square below is $\mathcal{A}$-Van Kampen, while the vertical faces in the right cube are pullbacks.
 		\[\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{g'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{g}&&B\ar[dd]^{n}&&C'  \ar[dd]_{c}\ar[rr]^(.7){f'} & & D' \ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{f} &&D&&C \ar[rr]_{f} & & D}\]
 Supppose, moreover that $m\colon A\to C$ and $d\colon D'\to D$ are mono and that $d$ belongs to $\mathcal{A}$. Then $d\leq n$ if and only if $c \leq m$.
 \end{theoremEnd}
+
+
+\begin{remark}
+	Recall that, given two monos $m:M\to X$ and $n:N\to X$ with the same codomain, $m\leq n$ means that there exists a, necessarily unique and necessarily mono, $k:M\to N$ fitting in the triangle below:
+	\[\xymatrix{M\ar[rr]^{k}  \ar[dr]_{m}&& N \ar[dl]^{n}\\ & X}\]
+	Notice, moreover, that  if $m\leq n$ and $n\leq m$, then the arrow $k:M\to N$ is an isomorphism.  
+\end{remark}
 
 \begin{remark}
 	Notice that, since $d$ is a mono and the vertical faces are pullbacks, then $a, b$ and $c$ are monomorphisms too. Moreover, $n$ is mono by \Cref{prop:pbpo}, so that even $m'$ and $n'$ are monos.
@@ -866,13 +868,15 @@ In this section we will define the notion of $\mathcal{M}$-adhesivity \cite{azzi
 		\item $\mathcal{M}$ contains all isomorphisms and is closed under composition;
 		\item $\mathcal{M}$ is stable under pullbacks and pushouts.
 	\end{enumerate} 
-	We will use $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$. $\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
+	We will use $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$. 
+	
+	$\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
 	\begin{enumerate}
 		\item for every $m\colon X\mto Y$ in $\mathcal{M}$ and $g\colon Z\to Y$, a pullback square
 		\[\xymatrix{P\ar[r]^p \ar@{>->}[d]_{n}& X \ar@{>->}[d]^{m}\\ Z \ar[r]_g& Y}\]
 		exists, such pullbacks will be called \emph{$\mathcal{M}$-pullbacks};
 		\item for every $m\colon X\mto Y$ in $\mathcal{M}$ and $f\colon X\to Z$, a pushout square
-		\[\xymatrix{X \ar[r]^f \ar@{>->}[d]_{m}& Z \ar[d]^{q}\\ Y\ar[r]_p &Q}\]
+		\[\xymatrix{X \ar[r]^f \ar@{>->}[d]_{m}& Z \ar@{>->}[d]^{q}\\ Y\ar[r]_p &Q}\]
 		exists, such pushouts  will be called \emph{$\mathcal{M}$-pushouts}; 
 		\item  $\mathcal{M}$-pushouts are $\mathcal{M}$-Van Kampen squares.
 	\end{enumerate}
@@ -987,6 +991,8 @@ We end this section recalling two properties of $\mathcal{M}$-adhesive categorie
 	\end{proofEnd}
 \end{proof}
 
+
+
 Let us turn our attention to pushout complements.
 
 \begin{definition}[Pushout complement]
@@ -1031,55 +1037,56 @@ f\circ m\circ a=k\circ h\circ a=k\circ b\circ r=n\circ s\circ r\]
 \end{proof}
 \begin{theoremEnd}[category=sec2]{corollary}[Uniqueness of pushouts complements]\label{lem:pocomp} 
 Let $\X$ be a $\mathcal{M}$-adhesive category. Given $m\colon X\mto Y$ in $\mathcal{M}$ and $f\colon Y\to Z$, let $(h_1, k_1)$ and $(h_2, k_2)$ be pushout complements of $m$  and $f$ and $W_1=\cod{h_1}$, $W_2=\cod{h_2}$. Then there exists a unique isomorphism $\phi\colon W_1\to W_2$ making the following diagram commutative.
-\[\xymatrix{&X \ar@{>->}[r]^{m} \ar[d]_{h_1} \ar@/_.3cm/[ddl]_{h_2}& Y \ar[d]^{f} \\ &W_1 \ar@{.>}[dl]^{\phi} \ar@{>->}[r]_{k_1} & Z \\ W_2 \ar@{>->}@/_.3cm/[urr]_{k_2}}\]
+\[\xymatrix{&X \ar@{>->}[r]^{m} \ar[d]_{h_1} \ar@/_.3cm/[dl]_{h_2}& Y \ar[d]^{f} \\ W_2 \ar@{>->}@/_.4cm/[rr]_{k_2} &W_1 \ar@{.>}[l]_{\phi} \ar@{>->}[r]^{k_1} & Z }\]
 \end{theoremEnd}
 \begin{proof}\begin{proofEnd}
 	Consider the two pushout squares
 	\[\xymatrix{M \ar[r]^{h_1}\ar@{>->}[d]_{m}& W_1 \ar@{>->}[d]^{k_1} & M \ar@{>->}[d]_{m} \ar[r]^{h_1}& W_2 \ar@{>->}[d]^{k_2}\\Y\ar[r]_{f}&Z &Y \ar[r]_{f}&Z}\]
 	Since $\mathcal{M}$ is in $\mathcal{M}$, \cref{prop:pbpoad} guarantees that they are both pullbacks.
 	Since $m\leq m$, by \Cref{lem:radj} we get that now entails that $k_1\leq k_2$ and $k_2\leq k_1$. Thus there exists an isomorphism $\phi\colon W_1\to W_2$ such that $k_1=k_2\circ \phi$. To see that $h_2=\phi\circ h_1$, we can compute:
-	\begin{align*}
-		k_2\circ \phi \circ h_1 & = k_1\circ h_1\\&= n\circ m\\&= k_2\circ h_2
-	\end{align*}
+	\[
+	k_2\circ \phi \circ h_1  = k_1\circ h_1= n\circ m= k_2\circ h_2\]
+	
 	The claim now follows since $k_2$ is a monomorphism.
 	\end{proofEnd} 
 \end{proof}
-\subsection{DPO rewriting systems}
-\iffalse 
-\section{DPO rewriting and derivations}
-
+\subsection{DPO rewriting systems derivations}
 $\mathcal{M}$-adhesive categories are the right context in which to perform abstract rewriting using the so-called ``douple pushout approach'' (DPO). We will recall the basic definitions and properties of this approach to abstract rewriting. 
 
-\subsection{Left-linear DPO-rewriting systems}
-We are now going to study rewriting systems in $\mathcal{M}, \mathcal{N}$-adhesive categories.
 
 \begin{definition}[\cite{habel2012mathcal,heindel2009category}]
 	Let $\X$ be a $\mathcal{M}$-adhesive category, a  \emph{left $\mathcal{M}$-linear} rule $\rho$ is a pair $(l,r)$ of arrows with the same domain, such that $l$ belongs to $\mathcal{M}$.  The rule $\rho$ is said to be \emph{$\mathcal{M}$-linear} if $r\in \mathcal{M}$ too. A rule $\rho$ is said to be \emph{consuming} if $l$ is not an isomorphism. We will represent a rule $\rho$ as a span 
 	\[\xymatrix{L & K\ar[l]_{l} \ar[r]^{r} & R}\]
-$L$ is the \emph{left-hand side}, $R$ is the \emph{right-hand side} and $K$ the \emph{glueing object}. 
-
-
-A \emph{left-linear DPO-rewriting system} is a pair $(\X, \R)$ where $\X$ is a $\mathcal{M}$-adhesive category and $R$ is a set of left $\mathcal{M}$-linear rules. $(\X, \R)$ will be called \emph{linear} if every rule in $R$ is $\mathcal{M}$-linear. Similarly, a \emph{consuming} left-linear DPO-rewriting system is one in which every rule is consuming.
-
-Given  two objects $G$ and $H$ and a rule $\rho=(l,r)$ in $\R$, a \emph{direct derivation $\mathscr{D}$ from $G$ to $H$ applying the rule $\rho$}, is a diagram as the one below, in which both squares are pushouts. 
+	$L$ is the \emph{left-hand side}, $R$ is the \emph{right-hand side} and $K$ the \emph{glueing object}. 
+	
+	
+	A \emph{left-linear DPO-rewriting system} is a pair $(\X, \R)$ where $\X$ is an $\mathcal{M}$-adhesive category and $R$ is a set of left $\mathcal{M}$-linear rules. $(\X, \R)$ will be called \emph{linear} if every rule in $R$ is $\mathcal{M}$-linear. Similarly, a \emph{consuming} left-linear DPO-rewriting system is one in which every rule is consuming.
+	
+	Given  two objects $G$ and $H$ and a rule $\rho=(l,r)$ in $\R$, a \emph{direct derivation $\mathscr{D}$ from $G$ to $H$ applying the rule $\rho$}, is a diagram as the one below, in which both squares are pushouts. 
 	\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar[l]^{f} D \ar[r]_{g}& H}\]
 	The arrow $n$ is called the \emph{match} of the derivation, while $h$ is its \emph{back-match}.
 	We will denote a direct derivation $\dder{D}$ between $G$ and $H$ as $\dder{D}\colon G\Mapsto H$. 
 \end{definition}
 
-\begin{example}\todo{
-esempi di	derivazione}
-\end{example}
-
-\begin{remark}\label{exa:conc} Let  $\dder{D}\colon G\Mapsto H$ be the direct derivation 
-		\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar[l]^{f} D \ar[r]_{g}& H}\]
-	If $\phi\colon G'\to G$ and $\psi\colon H\to H'$ are two isomorphisms, 	we can consider the direct derivation	$\phi * \dder{D}*\psi \colon G'\Mapsto H'$ given by the following diagram.
-	\[\xymatrix{L \ar[d]_{\phi^{-1} \circ n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{\psi \circ h}\\G' & \ar[l]^{\phi^{-1} \circ f} D \ar[r]_{\psi \circ g}& H'}\]
-	
-	In particular, we will use $\phi*\dder{D}$ and $\dder{D}*\psi$  to denote $\phi*\dder{D}*\id{H}$ and $\id{G}*\dder{D}*\psi$.
-\end{remark}
 
 $\mathcal{M}$-adhesivity of $\X$ guarantes the essential uniqueness of the result obtained rewriting an object, as shown by the next proposition.
+
+
+\begin{theoremEnd}[category=sec2]{proposition}\label{prop:unique} Let $\X$  be a $\mathcal{M}$-adhesive category. Suppose that the two direct derivations $\mathscr{D}$ and $\mathscr{D'}$ below, with the same match and applying the same left-linear rule $\rho$ are given.
+	\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L \ar[d]_{m}& K \ar[d]^{k'}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h'}\\G & \ar@{>->}[l]^{f} D \ar[r]_{g}& H & G & \ar@{>->}[l]^{f'} D' \ar[r]_{g'}& H'}\]
+	Then there exist isomorphisms $t\colon D\to D'$ and $s\colon H\to H'$ as in the following diagram.
+	\[\xymatrix@C=40pt{G&D' \ar[r]^{g'} \ar@{>->}[l]_{f'}&H'\\ L \ar[d]^{m} \ar[u]_{m} & K \ar[u]_{k'} \ar[d]^{k}\ar[r]^{r} \ar@{>->}[l]_{l} &R\ar[u]^{h'} \ar[d]_{h}\\G\ar@/^.4cm/[uu]^{\id{G}}&D\ar@{>->}[l]^{f}\ar@/^.4cm/@{.>}[uu]^(.4){\phi}|\hole \ar[r]_{g}&H\ar@/_.4cm/@{.>}[uu]_{\psi}}\]
+\end{theoremEnd}
+\begin{proof}\begin{proofEnd}
+	By construction, the pairs $(k, f)$ and $(k', f')$ are pushout complements of $l$ and $n$. Thus, the existence of the isomorphism $t\colon D\to D'$ follows from \Cref{lem:pocomp}. Now, computing we have
+\[
+g'\circ t \circ k= g' \circ k'=h'\circ r\]
+	Hence, we have the wanted $s\colon H\to H'$. To see that $s$ is an isomorphism, consider the diagram 
+	\[\xymatrix{K  \ar@/^.4cm/[rr]^{k'}\ar[d]_{r} \ar[r]_{k}& \ar[r]_{t} D \ar[d]^{g}& D' \ar[d]^{g'}\\ R \ar@/_.4cm/[rr]_{h'} \ar[r]^{h}& H \ar[r]^{s}& H'}\]
+	By hypothesis the whole rectangle and its left half are pushouts, therefore, by \Cref{lem:po1} its right square is a pushout too. The claim now follows from the fact that the pushout of an isomorphism is an isomorphism.
+	\end{proofEnd}
+\end{proof}
+
 
 
 If we look to direct derivations as transitions, it is natural to consider them as edges in a direct graph. Taking objects as vertices objects led us to the following definition \cite{heindel2009category}.
@@ -1109,215 +1116,15 @@ Moreover,  if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then we can def
 	Notice that, in particular, if $\der{D}\colon G\to H$, then $G_0=G$ and $G_{n+1}=H$. When $\der{D}$ has length $1$ we will suppress the indexes. In such case, we will also identify $\der{D}$ with its only element. 
 \end{notation} 
 
-\begin{example}\todo{esempi di derivazione}
-\end{example}
-
-\begin{definition}
-	The \emph{DPO-derivation category} $\dpo$ of a left-linear DPO-rewriting system $(\X, \R)$ is the category in which arrows between $G$ and $H$ are given by, possibly empty, derivations. Composition is concatenation of paths in $\gpo$ and identities are given by empty derivations.
-\end{definition} 	
-\begin{remark}
-	More explicitly, given $\der{D}=\{\dder{D}\}_{i=0}^n$ between $G$ and $H$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^m$, their concatenation $\der{D}\cdot\der{D}'$ is the derivation $\{\dder{E}_i\}_{i=0}^{m+n+1}$ in which
-	\[\dder{E}_i:=\begin{cases}
-		\dder{D}_i & i \leq n\\
-		\dder{D}'_{i-(n+1)} & n< i 
-	\end{cases}\]	
-
-Notice, moreover that, $\der{D}\cdot \der{D'}$ is equal to $\der{D}'$ if $\der{D}$ is empty, while it coincides with $\der{D}$ if $\der{D}'$ has length zero.
-\end{remark}
-
- \Cref{exa:conc} allows us to compose derivations with isomorphisms.
-
-\begin{definition} Let $(\X, \R)$ be a a left-linear DPO-rewriting system. Given a derivation $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ between $G$ and $H$ and isomorphisms $\phi\colon G\to G'$, $\psi\colon H\to H'$, the derivations  $\phi*\der{D}$ and $\der{D}*\psi$ are defined as
-	\[\phi *\der{D} := \begin{cases}
-		G' & \lgh(\der{D})=0\\ 
-		\{\phi* \dder{D}_0\}\cdot \{\dder{D}_i\}_{i=1}^{n}  & \lgh(\der{D})\neq 0
-	\end{cases}\] 
-	\[\der{D}*\psi := \begin{cases}
-		H' & \lgh(\der{D})=0\\ 
-		 \{\dder{D}_i\}_{i=0}^{n-1} \cdot \{\dder{D}_n*\psi\} & \lgh(\der{D})\neq 0
-	\end{cases}\] 
-
-	Moreover, if $\lgh(\der{D})>0$,  we define the derivation $\phi *\der{D} * \psi$ as
-	\[\phi *\der{D} * \psi = \{\phi* \dder{D}_0\}\cdot \{\dder{D}_i\}_{i=1}^{n-1} \cdot \{\dder{D}_n*\psi\}\] 
-\end{definition}
-
-\begin{remark}
-When $\der{D}$ consists only in the direct derivation $\dder{D}$, then $\phi*\der{D}*\psi$ is the derivation of length one whose unique element is $\phi*\dder{D}*\psi$.
-\end{remark}
-
-We are often interested in an object of $\X$ only up to isomorphism. It is therefore useful to consider a version of $\gpo$ in which vertices are classes of isomorphism of object of $\X$. In order to do so, some preliminary work is needed.
-
-\begin{definition}\cite{mac2013categories}
-Let $\X$ be a category, we say that  $\X$ is \emph{skeletal} if, for every two objects $X$ and $Y$, the existence of an isomorphism $\phi\colon X\to Y$ entails $X=Y$. A \emph{skeleton} for a category $\X$ is a full subcategory $\ske$ which is skeletal and such that the inclusion functor $\ske\to \X$ is an equivalence. 
-\end{definition}
-
-\begin{remark}
-By definition the inclusion $\ske \to \X$ is an equivalence. In particular, this mean that, for every objects $X$ of $\X$ there exists $\pi(X)$ in $\ske$ and an isomorphism $\phi_X\colon \pi(X) \to X$.
-\end{remark}
-
-\begin{proposition}\label{prop:ske}
-	Every category $\X$ has a skeleton. 
-\end{proposition}
-\begin{proof}
-	For every object $X\in \X$, pick a single representative $\pi(X)$ of its isomorphism class. Let $\ske$ be the full subcategory given by these objects. By definition $\ske$ is skeletal and the inclusion functor is full, faithful and essentially surjective.\qedhere 
-\end{proof}
-\begin{remark}
-	The proof of \Cref{prop:ske} relies on the axiom of choice for classes.
-	\end{remark}
-\begin{remark}
-	It is possible to proof that every two skeleta of a given category $\X$ are isomorphic (not only equivalent). For the remaining of this paper we assume that a skeleton $\ske$ of $\X$ and a functor $\pi\colon \X\to \ske$ are chosen once and for all.
-\end{remark}
-
-\begin{definition}
-	Let $(\X, \R)$ be a left-linear DPO-rewriting system, a \emph{decorated derivation} between two objects $G$ and $H$ is a triple $(\der{D}, \alpha, \omega)$, where $\der{D}$ is a derivation between $G$ and $H$, and $\alpha\colon \pi(G)\to G$ and $\omega\colon \pi(H)\to H$ are isomorphisms.
-\end{definition}
-
-\begin{notation}
-	We will extend the use of the words length, source and target to decorated derivations in the obvious way, forgetting the decorations $\alpha$ and $\omega$.
-\end{notation}
-
-\begin{example}A decorated derivation $(\der{D}, \alpha, \omega)$ with $\der{D}$ empty is just a span
-	\[\xymatrix{G & \pi(G) \ar[r]^-{\omega} \ar[l]_-{\alpha} & G}\]
-	in which both $\omega$ and $\alpha$ are isomorphisms.
-\end{example}
-
-As we are interested in objects only up to isomorphism, so we are interested in (decorated) derivations only up to some notion of coherent isomorphism between them. This is done with the help of \Cref{rem:func}.
+Often, we are interested in derivations only up to some notion of coherent isomorphism between them. This is done with the help of \Cref{rem:func}.
 
 \begin{definition}Let $(\X, \R)$ be a left-linear DPO-rewriting system,  an \emph{abstraction equivalence} between two derivations $\der{D}$ and $\der{D'}$ with the same length and such that $r(\der{D})=r(\der{D}')$, is a family of isomorphisms $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ such that, for every $i\in [0, \lgh(\der{D})]$ the following diagram commutes
 	\[\xymatrix@C=40pt{G'_i&D'_i \ar[r]^{g'_i} \ar[l]_{f'_i}&G'_{i+1}\\  L_i \ar[u]^{n'_i} \ar[d]_{n_i}& K_i \ar[u]^{k'_i} \ar[d]_{k_i} \ar[r]^{r_i} \ar[l]_{l_i} &R\ar[u]^{h'_i} \ar[d]_{h_i}\\G_i \ar@/_.45cm/[uu]_(.35){\phi_{G_i}}|\hole&D_i\ar[l]^{f_i}\ar@/_.45cm/[uu]_(.35){\phi_{D_i}}|\hole \ar[r]_{g_i}&G_{i+1}\ar@/_.45cm/[uu]_{\phi_{H_i}}}\]
 
-Given two decorated derivations $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$, we say that they are \emph{abstraction equivalent}, if $\lgh(\der{D})=\lgh(\der{D}')$, $r(\der{D})=r(\der{D'})$, and there exists an of abstraction equivalence between $\der{D}$ and  $\der{D}$ such that the triangles below commute.
-\[\xymatrix@C=15pt{&\pi(G_0) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G_{n+1}) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G_0 \ar[rr]_{\phi_{G_0}} && G'_0 &G_{n+1} \ar[rr]_{\phi_{G_{n+1}}} && G'_{n+1} } \]
-We will use $\equiv^a$ to denote the resulting relation.
+We will say that  $\der{D}$ $\der{D}'$  are \emph{abstraction equivalent}, if there exists an of abstraction equivalence between them.
 \end{definition}
 
-\begin{remark}\label{rem:equi}
-	It is immediate to see that $\equiv^a$ is an equivalence relation. Indeed $(\der{D}, \alpha, \omega)$ is abstract equivalent to itself via the abstract equivalence with the identities as components. Furthermore, if  $\{\phi_X\}_{X\in \Deltamin(\der{D})}$  witnesses $(\der{D}, \alpha, \omega)\equiv_a (\der{D}', \alpha', \omega')$, then considering $\{\phi^{-1}_X\}_{X\in \Deltamin(\der{D})}$ shows $(\der{D}', \alpha', \omega)\equiv_a (\der{D}, \alpha, \omega)$. Finally, transitivity is assured composing abstract equivalences. 
-	
-	We will denote by $[\der{D}, \alpha, \omega]_a$ is just the equivalence class of  $(\der{D}, \alpha, \omega)$.
-	 Such equivalence classes will be called  \emph{abstract decorated derivation}.  
-\end{remark}
-
-\begin{remark}\label{rem:empty}
-Let $(\der{D},\alpha, \omega)$ be an empty derivation from an object $G$ and  $(\der{D}',\alpha', \omega')$ a another empty one from $G'$.  If $(\der{D},\alpha, \omega)\equiv_a(\der{D}',\alpha', \omega')$ then an abstraction equivalence between $\der{D}$ and $\der{D}'$ is just an isomorphism $\phi\colon G\to G'$, so that $\pi(G)=\pi(G')$. Moreover, such isomorphism must fit in the diagrams below.
-\[\xymatrix@C=15pt{&\pi(G) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G\ar[rr]_{\phi} && G' &G \ar[rr]_{\phi} && G' } \]
-In particular, these two triangles imply that
-\begin{align*}
-	\alpha'\circ \alpha^{-1}&=\phi \\&=\omega'\circ \omega^{-1}
-\end{align*}
-\end{remark}
-
-\begin{remark}\label{rem:res} \Cref{prop:unique} can be restated as saying that, given two direct derivations $\dder{D}$ and $\dder{D'}$ with the same match, there exists an abstract equivalence between them whose first component is an identity.
-\end{remark}
-
-\begin{remark}\label{rem:absequi}
-	Let $\der{D}$ be a derivation with source $G$ and target $H$. Let also $\phi\colon G'\to G$ and $\psi\colon H\to H'$ be two isomorphisms. Then for every $X\in \Deltamin(\der{D})$ we can define 
-	\[\varphi_X:=\begin{cases}
-		\phi^{-1} & X=G\\
-		\id{X} & \text{otherwise}
-	\end{cases} \qquad \varphi'_X:=\begin{cases}
-	\psi & X=H\\
-	\id{X} & \text{otherwise}
-	\end{cases}\]
-It is immediate to see that the family $\{\varphi_X\}_{X\in \Deltamin(\der{D})}$ is an abstraction equivalence between $\der{D}$ and $\phi *\der{D}$, while $\{\varphi'_X\}_{X\in \Deltamin(\der{D})}$ is one between $\der{D}$ and $\der{D}*\psi$.
-\end{remark}
-
-\begin{definition}\label{def:conc}
-Let $(\der{D}, \alpha, \omega)$ be a decorated derivation between $G$ and $H$ and $(\der{D}', \alpha', \omega')$ one between $H'$ and $K$. If $H$ and $H'$ are isomorphic, so that $\pi(H)=\pi(H')$, we define the  \emph{composite decorated derivation} putting
-\[(\der{D}, \alpha, \omega)\cdot (\der{D}', \alpha', \omega'):=\begin{cases}
-(\der{D}', \alpha'\circ \omega^{-1}\circ \alpha, \omega')	&\lgh(\der{D})=0 \\
-	(\der{D}, \alpha, \omega \circ (\alpha')^{-1}\circ \omega')&\lgh(\der{D}')=0 \text{ and } \lgh(\der{D})\neq 0\\
-(\der{D}*\omega^{-1}\cdot \alpha'*\der{D'}, \alpha, \omega')	&\text{otherwise}
-\end{cases}\]
-\end{definition}
-
-
-\begin{remark}\label{rem:lgt}
-	Let $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ two composable decorated derivations   such that $\lgh(\der{D})=n$ and $\lgh(\der{D}')=m$.	 Then $(\der{D}*\omega^{-1}\cdot \alpha'*\der{D'}, \alpha, \omega')$ has length $n+m$.
-\end{remark}
-
-The next proposition justifies the use of decorations, guaranteeing that concatenation of abstract decorated derivations is well-defined.
-\begin{lemma}\label{lem:conc}
-	Given a decorated derivation $(\der{D}, \alpha, \omega)$  between $G$ and $H$ and  another one $(\der{E}, \beta, \xi)$ between $E$ and $K$ with $\pi(H)=\pi(E)$. If  $(\der{D}', \alpha', \omega')$ and $(\der{E}', \beta', \xi')$ are two other decorated derivations such that
-	\[[\der{D}, \alpha, \omega]_a = [\der{D}', \alpha', \omega']_a \qquad [\der{D}, \beta, \xi]_a=[\der{E}', \beta', \xi']_a\]
-	Then
-	\[[(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)]_a=[(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')]_a\]
-\end{lemma}
-
-\begin{proof} Take two abstraction equivalences $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ and $\{\varphi_X\}_{X\in \Deltamin(\der{D})}$ between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ and between $(\der{E}, \beta, \xi)$ and $(\der{E}', \beta', \xi')$, respectively. To fix the notation, suppose that goes from $G'$ to $H'$ and $(\der{E}', \beta', \xi')$ from $E'$ to $K'$. We have three cases.
-	
-\begin{itemize}
-	\item $\lgh(\der{D})=0$. Then, $\lgh(\der{D}')$ is $0$ too. By \Cref{def:conc} we have
-	\begin{align*}
-	(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)&=(\der{E}, \beta\circ \omega^{-1}\circ \alpha, \xi)\\
-		(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')&=(\der{E}', \beta'\circ (\omega')^{-1}\circ \alpha', \xi')
-	\end{align*}
- Now, notice that $G$ and $H$ must coincide. Moreover, by \Cref{rem:empty} we also know that $\pi(G)=\pi(G')$ too. The same \Cref{rem:empty} entails that the inner squares of the following diagram are commutative, so that the whole rectangle commutes too.
- \[\xymatrix@C=35pt{\pi(G) \ar[r]^{\alpha} \ar[d]_{\id{\pi(G)}}& G  \ar[d]_{\phi_G}\ar[r]^-{\omega^{-1}} & \pi(G) \ar[d]_{\id{\pi(G)}} \ar[r]^{\beta}& E \ar[d]^{\varphi_E}\\\pi(G') \ar[r]_{\alpha'}& G' \ar[r]_-{(\omega')^{-1}} & \pi(G') \ar[r]_{\beta'} & E'}\]
- 
- We can  then conclude that $\{\varphi_X\}_{X\in \Deltamin(\der{D})}$ witnesses the fact that $(\der{E}, \beta\circ \omega^{-1}\circ \alpha, \xi)$ is abstraction equivalent to $(\der{E}', \beta'\circ (\omega')^{-1}\circ \alpha', \xi')$.
-
-\item $\lgh(\der{D})\neq 0$ and $\lgh(\der{E})= 0$. As in the point above, we get that also $\der{E}'$  is an empty derivation, thus we have
-\begin{align*}
-	(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)&=(\der{D},  \alpha, \omega \circ \beta^{-1}\circ \xi)\\
-	(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')&=(\der{D}',  \alpha', \omega' \circ (\beta')^{-1}\circ \xi')
-\end{align*}
-In this case we have that $E=K$ and that $\pi(E)=\pi(E')$. From \Cref{rem:empty} we deduce that the diagram below commutes.
-\[\xymatrix@C=35pt{\pi(E) \ar[r]^{\xi} \ar[d]_{\id{\pi(E)}}& E  \ar[d]_{\varphi_E}\ar[r]^-{\beta^{-1}} & \pi(E) \ar[d]_{\id{\pi(E)}} \ar[r]^{\omega}& H \ar[d]^{\phi_H}\\\pi(E') \ar[r]_{\xi'}& E' \ar[r]_-{(\beta')^{-1}} & \pi(E') \ar[r]_{\omega'} & H'}\]
-The thesis now follows at once.
-	\item $\lgh(\der{D})\neq 0$ and $\lgh(\der{E})\neq 0$. In this case we have
-	\begin{align*}
-		(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)&=(\der{D}*\omega^{-1}\cdot \beta*\der{E}, \alpha, \xi)\\
-		(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')&=(\der{D}'*(\omega')^{-1}\cdot \beta'*\der{E'}, \alpha', \xi')
-	\end{align*}
- To fix the notation, suppose that $\der{D}$, $\der{D}'$, $\der{E}$ and $\der{E}'$ are given by
-	\[\der{D}=\{\dder{D}_i\}_{i=0}^n \quad \der{D}'=\{\dder{D}'_i\}_{i=0}^n \quad \der{E}=\{\dder{E}_i\}_{i=0}^t \quad \der{E}'=\{\dder{E}'_i\}_{i=0}^t\]
-	Moreover, noticing that the rule applied by $\dder{D}_i$ and the one applied in $\mathcal{E}_i$  must coincide with, respectively, the one applied in $\dder{D}'_i$ and the one applied $\dder{E}'_i$. We will also assume that $\dder{D}_i$, $\dder{D}'_i$, $\dder{E}_i$ and $\dder{E}'_i$ are given, respectively, by the following four diagrams. 
-	\[\xymatrix{L_{\der{D},i} \ar[d]_{m_{\der{D}, i}}& K_{\der{D},i} \ar[d]_{k_{\der{D}, i}} \ar[r]^{r_{\der{D},i}} \ar[l]_{l_{\der{D},i}} & R_{\der{D},i}\ar[d]^{h_{\der{D}, i}} &L_{\der{E},i} \ar[d]_{m_{\der{E}, i}}& K_{\der{E},i} \ar[d]_{k_{\der{E}, i}} \ar[r]^{r_{\der{E},i}} \ar[l]_{l_{\der{E},i}} & R_{\der{E},i}\ar[d]^{h_{\der{E}, i}} \\G_i & D_i \ar[r]_{g_{\der{D},i}} \ar[l]^{f_{\der{D},i}} & G_{i+1} & E_i & F_i\ar[r]_{g_{\der{E},i}} \ar[l]^{f_{\der{E},i}}  & E_{i+1}}\]
-	\[\xymatrix{L_{\der{D},i} \ar[d]_{m_{\der{D}', i}}& K_{\der{D},i} \ar[d]_{k_{\der{D}', i}} \ar[r]^{r_{\der{D},i}} \ar[l]_{l_{\der{D},i}} & R_{\der{D},i}\ar[d]^{h_{\der{D}', i}} &L_{\der{E},i} \ar[d]_{m_{\der{E}', i}}& K_{\der{E},i} \ar[d]_{k_{\der{E}', i}} \ar[r]^{r_{\der{E},i}} \ar[l]_{l_{\der{E},i}} & R_{\der{E},i}\ar[d]^{h_{\der{E}', i}} \\G'_i & D'_i \ar[r]_{g_{\der{D}',i}} \ar[l]^{f_{\der{D}',i}} & G'_{i+1} & E'_i & F'_i\ar[r]_{g_{\der{E}',i}} \ar[l]^{f_{\der{E}',i}}  & E'_{i+1}}\]
-	
-Now, for every $X\in \Deltamin(\der{D}*\omega^{-1}\cdot \beta*\der{E})$ we can define
-\[\psi_X:=\begin{cases}
-	\phi_X & X\in  \Deltamin(\der{D})\text{ and } X\neq H\\\varphi_X & X\in  \Deltamin(\der{E}) \text{ and } X\neq E\\\id{\pi(H)}& X=\pi(H)\end{cases}\]
-Notice that, since $\psi_G=\phi_G$ and $\psi_K=\varphi_K$ we have at once  the commutativity of the triangles
-\[\xymatrix@C=15pt{&\pi(G) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(K) \ar[dr]^{\xi'} \ar[dl]_{\xi}\\ G\ar[rr]_{\psi_G} && G' &K \ar[rr]_{\psi_K} && K' } \]
-
-
-To show that $\{\psi_X\}_{\Deltamin(\der{D}*\omega^{-1}\cdot \beta*\der{E})}$ is an abstraction equivalence, it is now enough to prove the commutativity of the diagrams
-	\[\xymatrix@C=45pt@R=15pt{G'_n&D'_n \ar[r]^-{(\omega')^{-1}\circ g_{\der{D}',n}} \ar@/_.2cm/[dr]_(.6){g_{\der{D}',n}} \ar[l]_{f_{\der{D}',n}}&\pi(H') \\&&H' \ar[u]^{(\omega')^{-1}}\\  L_{\der{D}, n} \ar[uu]^{m_{\der{D}',n}} \ar[dd]_{m_{\der{D},n}}& K_{\der{D}, n} \ar[uu]^{k_{\der{D}',n}} \ar[dd]_{k_{\der{D},n}} \ar[r]^{r_{\der{D},n}} \ar[l]_{l_{\der{D},n}} &R_{\der{D}, n}\ar[u]^{h_{\der{D}',n}} \ar[d]_{h_{\der{D},n}}\\&&H \ar[d]_{\omega^{-1}}\\G_n \ar@/_.7cm/[uuuu]_(.35){\phi_{G_n}}|\hole&D_n\ar[l]^{f_{\der{D},n}}\ar@/_.7cm/[uuuu]_(.35){\phi_{D_n}}|\hole \ar@/^.2cm/[ur]^(.6){g_{\der{D},n}}\ar[r]_{\omega^{-1}\circ g_{\der{D},n}}&\pi(H)\ar@/_.7cm/[uuuu]_{\id{\pi(H)}}\\ \pi(E')&F'_0 \ar[l]_-{(\beta')^{-1}\circ f_{\der{E}',0}} \ar@/^.2cm/[dl]^(.6){f_{\der{E}',0}} \ar[r]^{g_{\der{E}',0}}&E'_1 \\E' \ar[u]_{(\beta')^{-1}}&& \\  L_{\der{E}, 0} \ar[u]_{m_{\der{E}', 0}} \ar[d]^{m_{\der{E}, 0}}& K_{\der{E}, 0} \ar[uu]_{k_{\der{E}', 0}} \ar[dd]^{k_{\der{E}, i}} \ar[r]^{r_{\der{E},0}} \ar[l]_{l_{\der{E},0}} &R_{\der{E}, 0}\ar[uu]_{h_{\der{E}',0}} \ar[dd]^{h_{\der{E},0}}\\E \ar[d]^{\beta^{-1}}&& \\\pi(E) \ar@/^.7cm/[uuuu]^{\id{\pi(E)}}&F_0\ar[l]^{\beta^{-1}\circ f_{\der{E},0}}\ar@/^.7cm/[uuuu]^(.35){\varphi_{F_0}}|\hole \ar@/_.2cm/[ul]_(.6){f_{\der{E},0}}\ar[r]_{g_{\der{E},0}}&E_1\ar@/^.7cm/[uuuu]^(.35){\varphi_{E_1}}|\hole}\]
-		
-To see this, in turn, it is enough to show that	the squares
-\[\xymatrix{&R_{\der{D}, n} \ar[d]_{h_{\der{D}, n}}\ar[r]^{h_{\der{D}', n}} & H' \ar[d]^{(\omega')^{-1}} &L_{\der{E}, 0} \ar[d]_{m_{\der{E}, 0}}\ar[r]^{m_{\der{E}', 0}}& E' \ar[d]^{(\beta')^{-1}}\\&H\ar[r]_{\omega^{-1}} &\pi(H)&E \ar[r]_{\beta^{-1}} & \pi(E)\\D_n \ar[rr]^{\phi_{D_n}} \ar[d]_{g_{\der{D}, n}}&&D'_n \ar[d]^{g_{\der{D}', n}}&F_0 \ar[d]_{f_{\der{E}, 0}} \ar[rr]^{\varphi_{F_0}} && F_0' \ar[d]^{f_{\der{E}', 0}}\\H \ar[r]_-{\omega^{-1}} &\pi(H)&H' \ar[l]^-{(\omega')^{-1}}  &E \ar[r]_-{\beta^{-1}} & \pi(E) & E' \ar[l]^-{(\beta')^{-1}}}\]
-are commutative. For the first ones, we have
-	\begin{align*} 
-	\omega^{-1} \circ h_{\der{D}, n}&=\id{\pi(H)}\circ \omega^{-1} \circ h_{\der{D}, n} \\&=(\omega')^{-1}\circ \phi_H \circ \omega \circ \omega^{-1} \circ h_{\der{D}, n}\\&=(\omega')^{-1}\circ \phi_H  \circ h_{\der{D}, n}\\&=(\omega')^{-1}  \circ h_{\der{D}', n}
-\end{align*} 
-and
-\begin{align*} 
-	\beta^{-1} \circ m_{\der{E}, 0}&=\id{\pi(E)}\circ \beta^{-1} \circ m_{\der{E}, 0}\\&=(\beta')^{-1}\circ \varphi_{E} \circ \beta \circ \beta^{-1} \circ m_{\der{E}, 0}\\&=(\beta')^{-1}\circ \varphi_{E}  \circ m_{\der{E}, 0}\\&=(\beta')^{-1}  \circ m_{\der{E}', 0}
-\end{align*} 
-
-The commutativity of the second row of diagrams follows from
-\begin{align*}
- \omega^{-1} \circ g_{\der{D}, n}&=\id{\pi(H)}\circ \omega^{-1} \circ g_{\der{D}, n}\\&=(\omega')^{-1}\circ \phi_H \circ \omega\circ \omega^{-1} \circ g_{\der{D}, n}\\&=(\omega')^{-1}\circ \phi_H  \circ g_{\der{D}, n}\\&= (\omega')^{-1} \circ g_{\der{D}', n}\circ \phi_{D_n}
-r\end{align*}
-and
-\begin{align*}
-	\beta^{-1} \circ f_{\der{E}, 0}&=\id{\pi(E)}\circ \beta^{-1} \circ f_{\der{E}, 0}\\&=(\beta')^{-1}\circ \varphi_E \circ \beta\circ \beta^{-1} \circ f_{\der{E}, 0}\\&=(\beta')^{-1}\circ \varphi_E  \circ f_{\der{E}, 0}\\&= (\beta')^{-1} \circ f_{\der{E}', n}\circ \varphi_{F_0}
-\end{align*}
- The thesis now follows.	\qedhere 
-\end{itemize}	
-\end{proof}
-
-\begin{definition}
-	Let $(\X, \R)$ be a left-linear DPO-rewrityng system, with $\X$ an $\mathcal{M}$-adhesive category. The  category $\dpi$ is defined as follows:
-	\begin{itemize}
-		\item objects are isomorphism classes of objects of $\X$;
-		\item an arrow $[G]\to [H]$ is an equivalence class $[\der{D}, \alpha, \omega]_a$ of a decorated derivation between $G'$ and $H'$ for some $G'$ and $H'$ such that $\pi(G')=G$ and $\pi(H')=H$;
-		\item composition is concatenation of abstract decorated derivations;
-		\item the identity on $[G]$ is $[G, \alpha, \alpha]_a$, where $\alpha$ is any isomorphism $\pi(G)\to G$.	\end{itemize}
-\end{definition}
-
+\iffalse 
 
 \subsection{Consistent permutations}
 
@@ -1924,37 +1731,14 @@ Let $i$ be an index in $[0, n+t+1]$, we proceed splitting the cases.
 \end{itemize}
 The thesis now follows at once.	 \qedhere 
 \end{itemize} \end{proof}
-
 \fi 
+
 
 
 
 \todo{INSERIRE: SISTEMA DI RISCRITTURA E EQUIVALENZA ASTRATTA: ORA NON SERVONO LE DECORAZIONI E POSSIAMO ASSUMERE CHE LE EQUIVALENZE ASTRATTE ABBIANO L'IDENTITÀ NEL SOURCE E TARGET}
 
-\begin{theoremEnd}[category=sec2]{proposition}\label{prop:derpo}
-	\todo{mettere che il pullback tra due derivazioni consecutive è un pushout}
-\end{theoremEnd}
-\begin{proof}
-	\begin{proofEnd}
-		contenuto...\qedhere 
-	\end{proofEnd}
-\end{proof}
 
-
-\begin{proposition}\label{prop:unique} Let $\X$  be a $\mathcal{M}$-adhesive category. Suppose that the two direct derivations $\mathscr{D}$ and $\mathscr{D'}$ below, with the same match and applying the same left $\mathcal{M}$-linear rule $\rho$ are given.
-	\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L \ar[d]_{m}& K \ar[d]^{k'}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h'}\\G & \ar@{>->}[l]^{f} D \ar[r]_{g}& H & G & \ar@{>->}[l]^{f'} D' \ar[r]_{g'}& H'}\]
-	Then there exist isomorphisms $t\colon D\to D'$ and $s\colon H\to H'$ as in the following diagram.
-	\[\xymatrix@C=40pt{&&D' \ar[r]^{g'} \ar@{>->}@/_.45cm/[dll]_{f'}&H'\\G & L \ar[l]_{m} & K \ar[u]_{k'} \ar[d]^{k}\ar[r]^{r} \ar@{>->}[l]_{l} &R\ar[u]^{h'} \ar[d]_{h}\\&&D\ar@{>->}@/^.45cm/[ull]^{f}\ar@/^.4cm/@{.>}[uu]^(.4){t}|\hole \ar[r]_{g}&H\ar@/_.4cm/@{.>}[uu]_{s}}\]
-\end{proposition}
-\begin{proof}
-	By construction, the pairs $(k, f)$ and $(k', f')$ are pushout complements of $l$ and $n$. Thus, the existence of the isomorphism $t\colon D\to D'$ follows from \Cref{lem:pocomp}. Now, computing we have
-	\begin{align*}
-		g'\circ t \circ k &= g' \circ k'\\&=h'\circ r
-	\end{align*}
-	Hence, we have the wanted $s\colon H\to H'$. To see that $s$ is an isomorphism, consider the diagram 
-	\[\xymatrix{K  \ar@/^.4cm/[rr]^{k'}\ar[d]_{r} \ar[r]_{k}& \ar[r]_{t} D \ar[d]^{g}& D' \ar[d]^{g'}\\ R \ar@/_.4cm/[rr]_{h'} \ar[r]^{h}& H \ar[r]^{s}& H'}\]
-	By hypothesis the whole rectangle and its left half are pushouts, therefore, by \Cref{lem:po1} its right square is a pushout too. The claim now follows from the fact that the pushout of an isomorphism is an isomorphism.
-\end{proof}
 
 \section{Switch equivalence }\label{sec:equi}
 
@@ -2000,7 +1784,7 @@ The thesis now follows at once.	 \qedhere
 
 We want to be able to exchange to switch the application of two rules used by two consecutive weakly independent direct derivations. This leads us to the following definition.
 
-\begin{definition}[Switch]
+\begin{definition}[Switch]\label{def:switc}
   \label{de:switch}
  Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category and suppose that $\der{D}=\{\dder{D}_i\}_{i=0}^1$  is a derivation of length $2$ made by the following two weakly sequentially independent derivations $\dder{D}_0$, $\der{D}_1$, with independence pair $(i_0, i_1)$:
  	\[\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0} && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2}\]
@@ -2024,7 +1808,21 @@ If a switch of $\dder{D}_0$ and $\dder{D}_1$ exists we will say that they are \e
 	Notice that, since $f_{\der{E}, 0}$ is in $\mathcal{M}$, there is at most one $j_1\colon L_0\to D_{\der{E},0}$ such that $m_0=f_{\der{E}, 0} \circ j_1$. Moreover, we already know that there is at most one $j_0\colon R_1\to D_{\der{E},1}$ such that $m_{\der{E},1}=f_{\der{E},1}\circ j_0$, therefore, the independence pair $(j_0,j_1)$ between the component of a switch is uniquely determined.
 \end{remark}
 
-Our first result about switches is their uniqueness up to abstraction equivalence.
+
+Consider a sqitch $\der{E}=\{\dder{E}_i\}_{i=0}^1$ for $\dder{D}_0$ and $\dder{D}_1$, then by definition $\dder{E}_0$ and $\dder{E}_1$ are weakly sequentially independentWe can then wonder if they are switchable.
+
+\begin{theoremEnd}[category=sec3]{proposition}
+	Let $\der{D}=\{\dder{D}_i\}_{i=0}^1$ be a derivation and suppose that $\der{E}=\{\dder{E}_i\}_{i=0}^1$ is a switch for it. Then $\der{D}$ is a switch for $\dder{E_0}$ and $\dder{E}_1$.
+\end{theoremEnd}
+\begin{proof}\begin{proofEnd}
+	The first point of \Cref{def:switc} is obviously satisfied. The second one follows at once since 
+	\[m_{\der{E},0}= f_0\circ i_1 \qquad h_{\der{E},1}= g_{1}\circ i_0\]
+	Finally, the third point holds because we already know that 
+\[m_{\der{E},0}= f_0\circ i_1 \qquad h_{\der{E},1}= g_{1}\circ i_0\]
+	\end{proofEnd}
+\end{proof}
+
+Switches are unique up to abstraction equivalence, as shown by the next proposition.
 
 \begin{lemma}[Uniqueness of switches]\label{thm:switch_uni} Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^1$ be a derivation and suppose that both $\der{E}=\{\dder{E}_i\}_{i=0}^1$  and $\der{F}=\{\dder{F}_i\}_{i=0}^1$ are switches of $\dder{D}_0$ and $\dder{D}_1$. Then $\der{E}$ and $\der{F}$ are abstraction equivalent.
 \end{lemma}
@@ -2048,57 +1846,49 @@ To conclude, it is now enough to notice that
 	allowing us to deduce $ \phi_1\circ j_0=a_0$.
 \end{proof}
 
-
-
-We can now derive some other properties  
-\begin{theoremEnd}[category=sec3]{proposition}\label{lem:cose} Let $(\der{D}, \alpha, \omega)$ be a decorated derivation with $\der{D}=\{\dder{D}_i\}_{i=0}^1$,  and suppose that $(i_0, i_1)$ is an independence pair between $\dder{D}_0$  and $\der{D}_1$. If $\der{E}=\{\dder{E}_i\}_{i=0}^1$ is a switch of $\der{D}$ along $(i_0, i_1)$, then the following hold true:
-	\begin{enumerate}
-			\item the pullback square below is an $\mathcal{M}$-pushout;
-			\[\xymatrix{P \ar[r]^{p_1} \ar@{>->}[d]_{p_0}& D_1 \ar@{>->}[d]^{f_1}\\ D_0 \ar[r]_{g_1}& G_1}\]
-			\item there exist $q_0\colon P\to D_{\der{E},0}$, $q_1\colon P\to D_{\der{E},1}$ making the squares 
-			\[\xymatrix{}\]
-			commutative, moreover, they are all pushouts;
-			\[\xymatrix{}\]
- 		\item there exists an arrow $j_0\colon R_1\to D_{\der{E},1}$ such that 
- 		\[h_{\der{E},0}=f_{\der{E},1}\circ j_0 \qquad h_1=g_{\der{E},1} \circ j_0\]
-	\end{enumerate}
+We can now derive some other properties  of switches.
+\begin{theoremEnd}[category=sec3]{proposition}\label{lem:cose} Let $\der{D}$ be a derivation with $\der{D}=\{\dder{D}_i\}_{i=0}^1$,  and suppose that $(i_0, i_1)$ is an independence pair between $\dder{D}_0$  and $\der{D}_1$. 	If $\der{E}=\{\dder{E}_i\}_{i=0}^1$ is a switch of $\der{D}$ along $(i_0, i_1)$, then there exists $q_0\colon P\to D_{\der{E},0}$ in the diagram below
+	\[\xymatrix{D_{\der{E},0} \ar[d]_{f_{\der{E},0}}&P \ar@{.>}[l]_{q_0} \ar[r]^{p_1} \ar@{>->}[d]_{p_0}& D_1 \ar@{>->}[d]^{f_1}\\ G_{0}&D_0 \ar@{>->}[l]^{f_0}\ar[r]_{g_0}& G_1}\]
+	Moreover, if $(\X, \R)$ is linear then there also exists  exists the dotted $q_1\colon P\to D_{\der{E},1}$ in the diagram
+	\[\xymatrix{P  \ar@{>->}[r]^{q_0} \ar@{.>}[d]_{q_1}& D_{\der{E},0} \ar@{>->}[d]^{g_{\der{E},0}}\\D_{\der{E},1} \ar@{>->}[r]_{g_{\der{E},1}}  &G_{\der{E},1}}\]
+	Moreover, in such case, all these three squares are $\mathcal{M}$-pushouts. 
 \end{theoremEnd}
 \begin{proof}
 	\begin{proofEnd}
-		contenuto...
-	\end{proofEnd} \qedhere 
-	Before starting with the proof of our claims, it is worth noticing that the definition of switchin gives us the following diagram:
-			\[\xymatrix@R=28pt{&&R_0 \ar@/_1.15cm/[ddrr]_(.8){i_0}|(.68)\hole \ar[dr]^{h_0}&& L_1\ar@/^1.15cm/[ddll]^(.8){i_1}  \ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar[dl]_{l_0} \ar[ur]^{r_0}&& G_1 && K_1 \ar[dl]_{k_1}\ar[lu]_{l_1} \ar[dr]^{r_1}\\L_0 \ar@/_.94cm/[ddrr]_(.8){j_1}|(.31)\hole \ar[dr]^(.35){m_0}|(.6)\hole && D_0 \ar[dl]^{f_0}\ar[ur]|(.5)\hole^(.7){g_0}&&D_1 \ar[dr]_{g_1} \ar[ul]|(.5)\hole_(.65){f_1}&&R_1\ar[dl]^(.35){h_1}|(.6)\hole\\&G_0 &&&&G_2\\L_1 \ar@/^.94cm/[uurr]^(.8){i_1} \ar[ur]_(.35){m_{\der{E},0}}|(.61)\hole&&D_{\der{E},0} \ar[ul]_{f_{\der{E},0}}\ar[dr]^{g_{\der{E},0}} &&D_{\der{E},1}\ar[ur]^{g_{\der{E},1}} \ar[dl]|(.5)\hole^(.7){f_{\der{E},1}} && R_0  \ar@/_.94cm/[uull]_(.8){j_1} \ar[ul]^{h_{\der{E},1}}\\&K_1 \ar[ur]_{k_{\der{E},0}} \ar[dr]_{r_1} \ar[ul]^{l_1}&&G_{\der{E},1}&& K_0 \ar[ur]_{r_0} \ar[ul]^{k_{\der{E},1}} \ar[dl]^{l_0} \\&& R_1 \ar[ur]_{h_{\der{E},0}}&& L_0 \ar[ul]^{m_{\der{E},1}} \ar@/_1.15cm/[uull]_(.6){j_1} }\]
+		aaa
+		\end{proofEnd} \qedhere 
+		\begin{enumerate}
+			\item We start noticing that
+			\[
+			g_0\circ i_1\circ l_1=m_1\circ l_1=k_1\circ f_1\] 
+			Thus there exists the dotted $u\colon K_1\to P$ in the diagram
+			\[\xymatrix{K_1 \ar@{>->}[d]_{l_1} \ar@{.>}[r]_{u}\ar@/^.4cm/[rr]^{k_1} &P \ar[r]_{p_1} \ar@{>->}[d]_{p_0}& D_1 \ar@{>->}[d]^{f_1}\\L_1 \ar@/_.4cm/[rr]_{m_1}\ar[r]^{i_1}& D_0 \ar[r]^{g_0}& G_1}\]
+			The thesis now follows applying  the first point of \Cref{lem:popb} to it.
 			
-			Let us turn to our statements.
-	\begin{enumerate}
-		\item We start noticing that 
-		\begin{align*}
-			g_0\circ i_1\circ l_1&=m_1\circ l_1\\&=k_1\circ f_1
-		\end{align*}
-		Thus there exists the dotted $u\colon K_1\to P$ in the diagram
-		\[\]
-		The thesis now follows applyin \Cref{lem:popb} to
+			
+			\item From \Cref{lem:popb} and since $f_0$ is a monomorphism, we know that every square in the following diagram is a pullback. Thus the outer square is a pullback too.
+			\[\xymatrix{K_1 \ar[r]^{u} \ar@{>->}[d]_{l_1}&P \ar[r]^{\id{P}}\ar[d]_{p_0}& P\ar[d]^{p_0}\\L_1  \ar[d]_{\id{L_1}}\ar[r]^{i_1}&D_0 \ar[r]^{\id{D_0}} \ar[d]_{\id{D_0}}& D_{0}  \ar@{>->}[d]^{f_0}\\ L_1\ar[r]^{i_1} \ar@/_.4cm/[rr]_{m_{\der{E},0}}&D_0 \ar@{>->}[r]^{f_0}&G_0}\]
+		The thesis now follows from \Cref{lem:radj} applied to		
+		\[\xymatrix{K_1 \ar@{>->}[d]_{l_1}\ar[r]^{k_{\der{E},0}}& D_{\der{E},0} \ar@{>->}[d]^{f_{\der{E},0}} & K_1 \ar[r]^{u} \ar@{>->}[d]_{l_1}& P \ar@{>->}[d]^{f_0\circ p_0}\\L_1\ar[r]_{m_{\der{E},0}}&G &L_1 \ar[r]_{m_{\der{E},0}}&G}\]
 		
+		Notice that
+		\[f_{\der{E},0}\circ q_0\circ u=f_0\circ p_0\circ u=f_0\circ i_1\circ l_1=m_{\der{E},0}\circ l_1=f_{\der{E},0}\circ k_{\der{E},0}\]
+		Thus $q_0\circ u=k_{\der{E},0}$ and  it is now enough to apply \Cref{lem:po1} to the rectangle
 		
+		\[\xymatrix{K_1 \ar@/^.4cm/[rr]^{k_{\der{E},0}} \ar@{>->}[d]_{l_1} \ar[r]_{u}& \ar[d]^{p_0} P \ar[r]_{q_0}& D_{\der{E},0} \ar@{>->}[d]^{f_{\der{E},0}}\\ L_1 \ar@/_.4cm/[rr]_{m_{\der{E},0}}\ar[r]^{i_1}& D_{0} \ar@{>->}[r]^{f_{0}}& G_0}\]
 
-		\item 
-		\item  We already have an arrow $j_1\colon L_0\to D_{\der{E},0}$ such that
-		\[m_{\der{E},1}=g_{\der{E},0}\circ j_1\]
-		Therefore the thesis follows at once from the previous point.
-
-	
-	
-	\item 
-		
-		\item \qedhere 
-	\end{enumerate}
+			\item If $(\X, \R)$ is linear, then $g_{\der{E},0}$ is a monomorphism and therefore in the diagram
+			
+						\[\xymatrix{K_1 \ar[r]^{u} \ar@{>->}[d]_{r_1}&P \ar[r]^{\id{P}}\ar[d]_{q_0}& P\ar[d]^{q_0}\\R_1  \ar[d]_{\id{R_1}}\ar[r]^{j_0}&D_{\der{E},0} \ar[r]^{\id{D_{\der{E},0}}} \ar[d]_{\id{D_{\der{E},0}}}& D_{\der{E},0} \ar@{>->}[d]^{g_{\der{E},0}}\\ R_1\ar[r]^{j_0} \ar@/_.4cm/[rr]_{h_1}&D_{\der{E},0} \ar@{>->}[r]^{g_{\der{E},0}}&G_{\der{E},1}}\]
+			all the inner squares are pullback. Thus the outer square is a pullback too and we get the existence of $q_1$ applying \Cref{lem:radj} to
+			
+			To show that the square so obtained is a pushout, we can apply again \Cref{lem:po1} to 
+			\[\]			
+			\qedhere 
+		\end{enumerate}
 \end{proof}
 
-\todo{ $\dder{E}_0$ and $\dder{E}_1$ are weak sequentially independent;
 
-if $\der{E}'=\{\dder{E}'_i\}_{i=0}^1$ is another switching of $\der{D}$ along $(i_0, i_1)$, then there exist arrows.... such that the following diagram commutes:
-}
 In particular [...]
 \begin{definition}\todo{switch}
 	contenuto...
