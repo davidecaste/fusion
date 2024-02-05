@@ -2371,23 +2371,34 @@ USO IL PRIMO LEMMA DEI TRE PASSI:
 	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
 	is given and the whole rectangle is a pushout. We say that $\X$ satisfies:
 	\begin{itemize}
-		\item the \emph{mixed decomposition} property if, whenever $k$ is a monomorphisms and the right half of the previous diagram is a pullback, then the left one is a pushout.
+		\item the \emph{$\mathcal{M}$-mixed decomposition} property if, whenever $k$ belongs to $\mathcal{M}$ and the right half of the previous diagram is a pullback, then the left one is a pushout.
 		\item the \emph{$\mathcal{M}$-pushout decomposition} property if whenever $a, b$ and $c$ belongs to $\mathcal{M}$ and the right half of the diagram above is a pushout, then its left half is a pushout too.
 	\end{itemize}
 \end{definition}
 
+\todo{chiusura per certe costruzioni}
 
 The following result shows that the mixed and pushout decomposition properties guarantee that every independence pair is good.
 
-\begin{theorem}Let $\X$ be an $\mathcal{M}$-adhesive category satisfying the mixedand the $\mathcal{M}$-pushout decomposition properties. Then every left-linear DPO rewriting system on $\X$ is tame.
+\begin{theorem}\label{thm:good1}Let $\X$ be an $\mathcal{M}$-adhesive category with all pushouts and satisfying the $\mathcal{M}$-mixed and the $\mathcal{M}$-pushout decomposition properties. Then every left-linear DPO rewriting system on $\X$ is tame.
 \end{theorem}
-\begin{proof}\qedhere 
+\begin{proof} 
+	Consider the derivation $\der{D}=\{\dder{D}_i\}_{i=0}^1$, made by two weakly sequentially independent derivations, depicted below.
+	\[\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0} && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} && R_1 \ar[d]^{h_1} \\G_0 && \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2 }\]
+
+We have to show that $(i_0, i_1)$ is a good independence pair. Now, by hypothesis $\X$ has all pushouts, thus the only thing to show is that the squares below are pushouts (the third one is the usual pullback of $f_1\colon D_1\to G_0$ along $g_0\colon D_0\to G_1$).
+			\[\xymatrix{K_0 \ar[r]^{r_0}  \ar[d]_{u_0}& R_0 \ar[d]^{i_0} & K_1 \ar@{>->}[r]^{l_1}  \ar[d]_{u_1}& L_1 \ar[d]^{i_1}&P \ar@{>->}[r]^{p_0} \ar[d]_{p_1}& D_0\ar@{.>}[d]^{g_0} \\ P \ar[r]_{p_1} & D_1 &P \ar[r]_{p_0}  & D_0&D_1 \ar@{>->}[r]_{f_1} & G_1}\]
+
+To see this, consider the following two diagrams.
+\[\xymatrix{K_0 \ar@/^.4cm/[rr]^{k_0} \ar[d]_{r_0} \ar[r]_{u_0}& \ar@{>->}[r]_{p_0} P \ar[d]_{i_0}& D_0 \ar[d]^{g_0}\\ R_0 \ar@/_.4cm/[rr]_{h_0}  \ar[r]_{u_0}\ar[r]^{i_0}& D_1 \ar@{>->}[r]^{f_1}& G_1}\]
+
+The thesis now follows from the mixed and the $\mathcal{M}$-pushout decomposition property.
 \end{proof}
 
 Our next step is to identify sufficient conditions for a category $\X$ to satisfy the mixed and $\mathcal{M}$-pushout decomposition properties.
 
 \begin{definition}
-	\todo{classe B e class B+}
+	\todo{classe B }
 \end{definition}
 
 \begin{example}
@@ -2398,18 +2409,19 @@ Our next step is to identify sufficient conditions for a category $\X$ to satisf
 	\todo{esempi}
 \end{example}
 
-\begin{proposition}
-	\todo{da B a B+}
-\end{proposition}
-\begin{proof}
-	contenuto... \qedhere 
-\end{proof}
 \begin{lemma}\todo{due proprietÃ  classe B}
 \end{lemma}
 \begin{proof}
 	\qedhere 
 \end{proof}
 
+
+\begin{definition}
+	\todo{classe B+}
+\end{definition}
+
+\begin{remark}\todo{adesività B+}
+\end{remark}
 \begin{corollary}
 	\todo{due proprietÃ  classe B+}
 \end{corollary}
