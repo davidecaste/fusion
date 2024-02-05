@@ -597,13 +597,13 @@ variants~\cite{lack2005adhesive,ehrig2006weak}. Operating within the
 framework of adhesive categories allows one to devise the foundations
 of a rewriting theory which can be subsequently instantiated to the
 context of interest, thus avoiding the need of repeatedly proving
-similar ad-hoc results in for each specific setting.
+similar ad-hoc results for each specific setting.
 
 Rewriting over adhesive categories has been widely studied in the last
 two decades and most of the research focused on the so-called linear
 rewriting rules. Roughly speaking, linear rewriting rules can specify
-that, in a rewriting step, some entities in the current state are
-removed, some other are needed for the rewriting step to occur but
+that, in a rewriting step, some entities of the current state are
+deleted, some others are needed for the rewriting step to occur but
 remain unaltered and some new entities can be generated.
 
 The computation described by a rewriting system can be naturally
@@ -624,13 +624,13 @@ independent steps, referred to as shift equivalence~\cite{CMREHL:AAGT}
 permutation equivalence~\cite{JJL80} in the $\lambda$-calculus).
 
 In some situations rewriting with linear rules are not sufficiently
-expressive for capturing the dynamic of a system. This is the case
+expressive for capturing the dynamics of a system. This is the case
 when a computational step is required not only to consume, preserve
-and generated, but also ``merge'' parts of the state. This happens,
+and generate, but also ``merge'' parts of the state. This happens,
 e.g., in nominal calculi where, as a result of name passing, the
 received name is identified with a local one at the
 receiver~\cite{CVY:ESSPE,Gad07} or in the modelling of bonding in
-biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms is
+biological/chemical processes~\cite{PUY:MBPE}. A similar mechanism is
 at the core of e-graphs (equality graphs), recently used for
 rewrite-driven compiler optimizations~\cite{WNW:egg}. Rather than
 explicitly merging nodes corresponding to equal expression, the idea
@@ -641,8 +641,8 @@ over the nodes.  \todo{P: la sequenza di lavori su questo \`e ampia,
 
 \todo{P: something about string diagrams?}
 
-Technically, to acquire the expressiveness needed for expressing
-fusions, i.e., the merge of some elements in the state, requires to
+Technically, acquiring the expressiveness needed for expressing
+fusions, i.e., for merging of some elements in the state, requires to
 move from linear to left-linear rewriting rules. While left-linear
 rules have been considered in various instances (mainly in categories
 of graphs) and some results concerning the corresponding rewriting
@@ -656,26 +656,32 @@ rules a number of fundamental properties which play a role in the
 corresponding theory of rewriting need a deep rethinking.
 
 Firstly, Church-Rosser theorem does not work out of the box. In
-particular, sequential independence between rewriting steps~\cite{}
-expressed in terms of the existence of a so-called independence pair
-is a canonical and well-understood notion of independence in the
-linear case. \todo{P: Too technical? Forse qui e' piu' esplicativo un
-  esempio} Whenever two steps are sequential independent
+particular, in the linear case, sequential independence between
+rewriting steps~\cite{} expressed in terms of the existence of a
+so-called independence pair is a canonical and well-understood notion
+of independence . \todo{P: Too technical? Forse qui e' piu'
+  esplicativo un esempio} Whenever two steps are sequential
+independent
 \begin{itemize}
 \item they can be switched and 
 \item the result of the switch is uniquely determined.
 \end{itemize}
 
-Here we observe that, in general, both property can fail: sequential
+Here we observe that, in general, both properties can fail: sequential
 independent steps could be not switchable and different independent
 pairs could exist leading to different switches of the same rewriting
-steps.  A refined notion of independence can be considered to ensure
-that independent rewriting steps can be switched, based in the concept
-of a so-called filler. The problem was identified already
-in~\cite{baldan2011adhesivity} where a suitable subclass of adhesive
-categories is identified where independence as induced by a filler
-coincide with sequential independence (as induced by an independence
-pair). Here this is extended to $\mathcal{M}$-adhesive categories.
+steps.  Since switches are the key notion used to equate computations
+which only differs for independent steps, as we will exemplify in the
+paper, this phenomenon leads to an inconsistent theory which
+identifies clearly different computations.\todo{P: da dire meglio, ma e' un punto centrale}
+A refined notion of
+independence can be considered to ensure that independent rewriting
+steps can be switched, based in the concept of a so-called filler. The
+problem was identified already in~\cite{baldan2011adhesivity} where a
+suitable subclass of adhesive categories is singled out where
+independence as induced by a filler coincide with sequential
+independence (as induced by an independence pair). Here this is
+extended to $\mathcal{M}$-adhesive categories.
 
 
 We face the problem in the setting of $\mathcal{M}$-adhesive
@@ -684,7 +690,7 @@ The natural idea, put forward in~\cite{baldan2017domains}, of limiting
 sequential independence to those cases in which the switch is possible
 and uniquely determined falls short.
 
-Rather we focus on a class of rewriting systems, the so-called
+Rather here we identify a class of rewriting systems, the so-called
 \emph{very tame rewriting systems} in $\mathcal{M}$-adhesive
 categories where sequential independence ensures existence and
 uniqueness of the switch and argue that this is the right setting for
@@ -692,32 +698,38 @@ dealing with left-linear rewriting systems.
 
 On the one hand we argue that very tame rewriting systems capture most
 categories of interest for rewriting. In particular, we single out a
-class of left-linear rewriting systems on graph-like structures which
-are very tame and we show that rewriting systems on (term)graphs with
-equivalences resempling e-graphs are also very tame. As a sanity
-check, also linear rewriting systems on $\mathcal{M}$-adhesive
-categories are very tame.
+class of very tame left-linear rewriting systems on graph-like
+structures sufficiently general to includes many applications of graph
+rewriting with ``fusion'' in the literature (roughly, these systems
+allows for merging nodes but not edges).  We also show that a class of
+rewriting systems on (term)graphs with equivalences resembling
+e-graphs are also very tame. As a sanity check, linear rewriting
+systems on $\mathcal{M}$-adhesive categories can be shown to be very
+tame.
 
 On the other hand we show that an appropriate theory of rewriting can
-be developed for very tame rewriting systems, recovering, sometimes in
-weakened form, results which hold in the linear case.  Local
-Curch-Rosser is fully recovered for very tame rewriting systems.
+be developed for very tame rewriting systems, where we recovering,
+sometimes in weakened form, results which hold in the linear case. In
+particular, local Curch-Rosser theorem is fully recovered for very
+tame rewriting systems.
 
 For linear rewriting systems sequential independence of derivations
-can be also characterised in terms of the existence of a suitable
+can be characterised in terms of the existence of a suitable
 isomorphism between the colimit of the derivations, the so-called
-consistent permutations (which are also strictly related to the notion
-of process). This result, which is folklore for categories of graphs,
-is explicitly proved here for $\mathcal{M}$-adhesive categories. Based on such result one can deduce two fundamental consequences:
+consistent permutations (strictly related also to the notion of
+process). This result, which is known for categories of graphs and
+folklore for adhesive categories, is explicitly proved here for linear
+rewriting systems on $\mathcal{M}$-adhesive categories. Based on such
+result one can deduce two basic properties which are fundamental in the development of the theory of rewriting:
 \begin{enumerate}
 \item when swicthing a derivation consisting of several steps, the result only depends on the overall permutation, not on the order of the swicthes
 \item independence of rewriting steps is a ``global property'', independent of the position in which these steps are in the derivation.
 \end{enumerate}
 
-We show that for left-linear rewriting systems the characterisation of
+We observe that for left-linear rewriting systems the characterisation of
 shift equivalence based on consistent permutations fails: the
 existence of a consistent permutation is only necessary but not
-sufficient, hence it cannot be used for proving (1) and (2). However property (1) can be still proved to holds. Instead only a weak form of (2) can be proved. This is intimately related to the possibility of expressing disnjuctive forms of causality.
+sufficient, hence it cannot be used for proving (1) and (2). However, we can show that property (1) still holds, but requires a completely different proof technique. Instead only a weak form of (2) can be proved. This is intimately related to the possibility of expressing disnjuctive forms of causality.
 
 \todo[inline]{
 This fails for left-linear rules where, as observed
