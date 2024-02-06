@@ -2,7 +2,7 @@
 \newif\ifreport
 \reporttrue
 %\reportfalse
-
+ 
 
 \ifreport
 \nolinenumbers %uncomment to disable line numbering
@@ -432,6 +432,11 @@
 %\newtheorem{example}[theorem]{Example}
 
 
+% commands for restructuring
+\newcommand{\rem}[2]{{\color{blue}#1}{\color{red}#2}}
+\renewcommand{\rem}[2]{}
+
+
 \title{Left-linear rules in adhesive categories}
 \author{Paolo Baldan} 
 {Department of Mathematics, University of Padova, Italy}
@@ -767,19 +772,30 @@ The key property that $\mathcal{M}$-adhesive categories enjoy is given by  the s
 	\end{itemize}
 \end{definition}
 
-\begin{remark}In the previous definition, ``decomposition'' corresponds to ``left cancellation'', but we prefer to stick to the name commonly used in literature (see e.g.~\cite{habel2012mathcal}).
+\rem{rimuoverei}{
+\begin{remark}
+  In the previous definition, ``decomposition'' corresponds to
+  ``left cancellation'', but we prefer to stick to the name commonly
+  used in literature (see e.g.~\cite{habel2012mathcal}).
 \end{remark}
+}
+
 So equipped, we can introduce the notion of \emph{$\mathcal{A}$-Van Kampen square}.
 
 \noindent 
-\parbox{10cm}{\begin{definition}[Van Kampen property] Let $\X$ be a category  and consider the two diagrams aside.
+\parbox{10cm}{
+  \begin{definition}[Van Kampen property]
+    Let $\X$ be a category and consider the two diagrams aside.
 
-\hspace{15pt}Given  a class of arrows $\mathcal{A}\subseteq \mor(\X)$, we say that the bottom square \emph{has the Van Kampen property relatively to $\mathcal{A}$}, or that it  is a \emph{$\mathcal{A}$-Van Kampen square} if:
+    \hspace{15pt}
+    Given  a class of arrows $\mathcal{A}\subseteq \mor(\X)$, we say that the bottom square
+    % \emph{has the Van Kampen property relatively to $\mathcal{A}$}, or that it
+    is a \emph{$\mathcal{A}$-Van Kampen square} if:
 	\begin{enumerate}
 		\item is a pushout square;
 		\item 	whenever the cube above has pullbacks as back and left faces and the vertical arrows belong to $\mathcal{A}$, then its top face is a pushout if and only if the front and right faces are pullbacks.
 	\end{enumerate}
-	Pushout squares which enjoy the ``if'' half of the second point of the condition above are called \emph{$\mathcal{A}$-stable}. 
+	Pushout squares which enjoy the ``if'' half of item (2) above are called \emph{$\mathcal{A}$-stable}. 
 	
 We will call a $\mor(\X)$-Van Kampen ($\mor(\X)$-stable) square simply a \emph{Van Kampen} (\emph{stable}) square.
 \end{definition}}
@@ -789,34 +805,53 @@ We will call a $\mor(\X)$-Van Kampen ($\mor(\X)$-stable) square simply a \emph{V
 In this section we will define the notion of $\mathcal{M}$-adhesivity \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,heindel2009category,lack2005adhesive} and explore some of the consequence of such a property. 
 
 \begin{definition}[$\mathcal{M}$-adhesive category]
-	Let $\X$ be a category and consider a subclass $\mathcal{M}$ of the class $\mon(\X)$ of monomorphisms such that:
-	\begin{enumerate}
-		\item $\mathcal{M}$ contains all isomorphisms and is closed under composition;
-		\item $\mathcal{M}$ is stable under pullbacks and pushouts.
-	\end{enumerate} 
-	We will use $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$. 
-	
-	$\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
-	\begin{enumerate}
-		\item it has \emph{$\mathcal{M}$-pullbacks}, i.e. pullbacks along arrows of $\mathcal{M}$;
-		\item it has \emph{$\mathcal{M}$-pushouts}, i.e. pushouts along arrows of $\mathcal{M}$;
-		\item  $\mathcal{M}$-pushouts are $\mathcal{M}$-Van Kampen squares.
-	\end{enumerate}
-		
-A category $\X$ is said to be \emph{strictly $\mathcal{M}$-adhesive} if $\mathcal{M}$-pushouts are Van Kampen squares.	
+  Let $\X$ be a category and let $\mathcal{M}$ be a subclass of
+  $\mon(\X)$ 
+  % \begin{enumerate}
+  % \item $\mathcal{M}$
+  including  all isomorphisms, closed under composition,
+  % \item $\mathcal{M}$
+  and stable under pullbacks and pushouts.
+  % \end{enumerate} 
+  The category
+	%
+  $\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
+  \begin{enumerate}
+  \item it has \emph{$\mathcal{M}$-pullbacks}, i.e. pullbacks along arrows of $\mathcal{M}$;
+  \item it has \emph{$\mathcal{M}$-pushouts}, i.e. pushouts along arrows of $\mathcal{M}$;
+  \item  $\mathcal{M}$-pushouts are $\mathcal{M}$-Van Kampen squares.
+  \end{enumerate}
+  
+  A category $\X$ is said to be \emph{strictly $\mathcal{M}$-adhesive}
+  if $\mathcal{M}$-pushouts are Van Kampen squares.
 \end{definition}
+We will use $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
 
-\begin{remark}\label{rem:diff}Our notion of $\mathcal{M}$-adhesivity follows \cite{ehrig2012,ehrig2014adhesive} and is different from the one of \cite{azzi2019essence}. What is called $\mathcal{M}$-adhesivity in that paper corresponds to our strict $\mathcal{M}$-adhesivity. Moreover, in \cite{azzi2019essence} the class $\mathcal{M}$ is assumed to be only stable under pullbacks. However, if $\mathcal{M}$ contains all split monos, then stability under pushouts can be deduced from the other axioms \cite[Prop.~$5.1.21$]{castelnovo2023thesis}.
+\rem{rimuoverei}{
+\begin{remark}
+  \label{rem:diff}
+  Our notion of $\mathcal{M}$-adhesivity follows
+  \cite{ehrig2012,ehrig2014adhesive} and is different from the one of
+  \cite{azzi2019essence}. What is called $\mathcal{M}$-adhesivity in
+  that paper corresponds to our strict
+  $\mathcal{M}$-adhesivity. Moreover, in \cite{azzi2019essence} the
+  class $\mathcal{M}$ is assumed to be only stable under
+  pullbacks. However, if $\mathcal{M}$ contains all split monos, then
+  stability under pushouts can be deduced from the other
+  axioms~\cite[Prop.~$5.1.21$]{castelnovo2023thesis}.
 \end{remark}
+}
 
-
-\begin{remark}\label{rem:salva} 
-	\emph{Adhesivity} and \emph{quasiadhesivity} as defined in \cite{lack2005adhesive,garner2012axioms}  coincide with  strict $\mon(\X) $-adhesivity and strict $\reg(\X)$-adhesivity, respectively. 
+\begin{remark}
+  \label{rem:salva}
+  \emph{Adhesivity} and \emph{quasiadhesivity} as defined in \cite{lack2005adhesive,garner2012axioms}  coincide with  strict $\mon(\X) $-adhesivity and strict $\reg(\X)$-adhesivity, respectively. 
 \end{remark}
 
 \begin{example}\label{rem:iso} Let $\mathsf{Iso}$ be the class of all isomorphisms, then any category $\X$ is $\mathsf{Iso}$-adhesive.
 \end{example}
 
+
+\rem{Qui l'idea \`e mostrare che valgono per $\mathcal{M}$ le naturali generalizzazioni delle propriet\`a delle adesive. Credo si possa dirle in prosa e metterle in appendice.}{%
 A first result we can prove regards closure under decomposition of $\mathcal{M}$.
 
 \begin{theoremEnd}[category=sec2]{proposition}\label{prop:deco}Let  $\mathcal{A}$ be a class of arrows stable under pullbacks. For every arrow $f\colon X\to Y$ and monomorphism $m\colon Y\to Z$, if $m\circ f \in\mathcal{A}$ then $f\in \mathcal{A}$.
@@ -828,13 +863,17 @@ A first result we can prove regards closure under decomposition of $\mathcal{M}$
 	Since $m$ is mono the right square is a pullback, while the left square is a pullback by construction. By \Cref{lem:pb1} the whole rectangle is a pullback and the thesis follows.
 	\end{proofEnd}
 \end{proof}
-\begin{corollary}\label{cor:deco}
-	In every $\mathcal{M}$-adhesive category $\X$, the class $\mathcal{M}$ is closed under decomposition.
+\begin{corollary}
+  \label{cor:deco}
+  In every $\mathcal{M}$-adhesive category $\X$, the class $\mathcal{M}$ is closed under decomposition.
 \end{corollary}
 
 Another result which can be immediately established, with the aid of \Cref{prop:pbpo}, is the following one.
-\begin{proposition}\label{prop:pbpoad}
-	Let $\X$ be an $\mathcal{M}$-adhesive category. Then $\mathcal{M}$-pushouts are pullbacks.
+
+\begin{proposition}
+  \label{prop:pbpoad}
+  Let $\X$ be an $\mathcal{M}$-adhesive category. Then
+  $\mathcal{M}$-pushouts are pullbacks.
 \end{proposition}
 
 From \Cref{prop:pbpoad}, in turn, we can derive the following corollaries.
@@ -842,10 +881,10 @@ From \Cref{prop:pbpoad}, in turn, we can derive the following corollaries.
 	In a $\mathcal{M}$-adhesive category $\X$, every $m\in\mathcal{M}$ is a regular mono.
 \end{theoremEnd}
 \begin{proof}\begin{proofEnd}
-		Let $m$ be an element of $\mathcal{M}$ and consider its pushout along itself.
-		\[\xymatrix{X\ar@{>->}[r]^m \ar@{>->}[d]_m& Y\ar@{>->}[d]^{f}\\Y \ar@{>->}[r]_g & Z}\]
-		By \Cref{prop:pbpoad} this square is a pullback, proving that $m$ is the equalizer of the arrows $f,g\colon Y\rightrightarrows Z$. 
-	\end{proofEnd} 
+    Let $m$ be an element of $\mathcal{M}$ and consider its pushout along itself.
+    \[\xymatrix{X\ar@{>->}[r]^m \ar@{>->}[d]_m& Y\ar@{>->}[d]^{f}\\Y \ar@{>->}[r]_g & Z}\]
+    By \Cref{prop:pbpoad} this square is a pullback, proving that $m$ is the equalizer of the arrows $f,g\colon Y\rightrightarrows Z$. 
+  \end{proofEnd} 
 \end{proof}
 
 The following result now follows at once noticing that a regular monomorphism which is also epic is automatically an isomorphism.
@@ -853,8 +892,10 @@ The following result now follows at once noticing that a regular monomorphism wh
 \begin{corollary}\label{prop:bal}
 If $\X$ is an $\mathcal{M}$-adhesive categories, then every epimorphisms in $\mathcal{M}$ is an isomorphisms. In particular, every adhesive category $\X$ is \emph{balanced}: if a morphism is monic and epic, then it is an isomorphism.
 \end{corollary}
+}
 
 
+\todo{P: qui probabilmente si puo' compattare tenendo solo cio' che si usa}
 $\mathcal{M}$-adhesivity is well-behaved with respect to  the comma construction \cite{mac2013categories}, as shown by the following theorem.
 \begin{theorem}[\cite{ehrig2006fundamentals,lack2005adhesive}]\label{lem:comma}
 	Let $\A$ and $\B$ be respectively an $\mathcal{M}$-adhesive and an $\mathcal{M}'$-adhesive category. Let also $L:\A\rightarrow \C$ be a functor that preserves $\mathcal{M}$-pushouts, and  $R:\B\rightarrow \C$ be a functor which preserves pullbacks.Then $\comma{L}{R}$ is $\cma{M}{M'}$-adhesive, where 
@@ -893,6 +934,7 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see \cite{cas
 \begin{example}\todo{term graph}
 \end{example}
 
+\rem{Questo penso tutto in appendice, eventualmente tenendo la decomposition o richiamandola quando si parla di switch}{%
 We end this section recalling two properties of $\mathcal{M}$-adhesive categories:  $\mathcal{M}$-pushout-pullback decomposition and uniqueness of pushouts complements.
 
 
@@ -986,6 +1028,7 @@ Let $\X$ be a $\mathcal{M}$-adhesive category. Given $m\colon X\mto Y$ in $\math
 	The claim now follows since $k_2$ is a monomorphism.
 	\end{proofEnd} 
 \end{proof}
+}
 \subsection{DPO rewriting systems derivations}
 $\mathcal{M}$-adhesive categories are the right context in which to perform abstract rewriting using the so-called ``douple pushout approach'' (DPO). We will recall the basic definitions and properties of this approach to abstract rewriting. 
 
@@ -1005,12 +1048,13 @@ $\mathcal{M}$-adhesive categories are the right context in which to perform abst
 \end{definition}
 
 
-If we look to direct derivations as transitions, it is natural to consider them as edges in a direct graph. Taking objects as vertices objects led us to the following definition \cite{heindel2009category}.
+\rem{Mi pare si possa omettere}{
+  If we look to direct derivations as transitions, it is natural to consider them as edges in a direct graph. Taking objects as vertices objects led us to the following definition \cite{heindel2009category}.
 
 \begin{definition}
 	Let $(\X, \R)$ be a left-linear DPO rewrityng system, with $\X$ $\mathcal{M}$-adhesive. The \emph{DPO-derivation graph} of $(\X, \R)$ is the (large)  directed graph $\gpo$ having as vertices the objects of $\X$ and in which an edge between $G$ and $H$ is a direct derivation $\dder{D}\colon G\Mapsto H$.	A \emph{derivation} $\der{D}$ between two objects $G$ and $H$ is a path between them in $\gpo$. The \emph{source} and \emph{target} of $\der{D}$ are, respectively, $G$ and $H$.
 \end{definition}
-
+}
 \begin{remark}
 We can spell out more explicitly what  a derivation $\dder{D}$ is.  An \emph{empty derivation} starting and ending in $G$ is just $G$ itself.  A \emph{non-empty derivation} $\dder{D}$ is a sequence $\{\dder{D}_i\}_{i=0}^n$ of direct derivations such that:
 \begin{enumerate}
@@ -1023,13 +1067,26 @@ We will call the number $n+1$ the \emph{length} of the derivation, denoted by $\
 Moreover,  if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then we can define an associated sequence of rules as $r(\der{D})$ as $\{\rho_i\}_{i=0}^n$.
 \end{remark}
 
-\begin{remark}\label{rem:func}
-	Consider a derivation $\der{D}$ in a left-linear DPO rewriting system $(\X, \R)$. We can take the subcategory $\Delta(\der{D})$ of $\X$ given by the arrows appearing in $\der{D}$. This subcategory comes equipped with an inclusion functor $I(\der{D})\colon \Delta(\der{D})\to \X$. Moreover, we can further define $\Deltamin(\der{D})$ as the subcategory of $\Delta(\der{D})$ containing only the bottom row of the derivation.
+\begin{remark}
+  \label{rem:func}
+  Consider a derivation $\der{D}$ in a left-linear DPO rewriting
+  system $(\X, \R)$. We can take the subcategory $\Delta(\der{D})$ of
+  $\X$ given by the arrows appearing in $\der{D}$. This subcategory
+  comes equipped with an inclusion functor
+  $I(\der{D})\colon \Delta(\der{D})\to \X$. Moreover, we can further
+  define $\Deltamin(\der{D})$ as the subcategory of $\Delta(\der{D})$
+  containing only the bottom row of the derivation.
 \end{remark}
 	
-\begin{notation}Let $\der{D}=\{\dder{D}_i\}_{i=0}^n$ be a derivation. We will depict the $i^\text{th}$ element $\dder{D}_i$ of $\der{D}$ as in the following diagram.  
-	\[\xymatrix{L_i \ar[d]_{m_i}& K_i \ar[d]^{k_i}\ar@{>->}[l]_{l_i} \ar[r]^{r_i} & R_i \ar[d]^{h_i} \\G_{i} & \ar@{>->}[l]^{f_{i}} D_{i} \ar[r]_{g_{i}}& G_{i+1} }\]
-	Notice that, in particular, if $\der{D}\colon G\to H$, then $G_0=G$ and $G_{n+1}=H$. When $\der{D}$ has length $1$ we will suppress the indexes. In such case, we will also identify $\der{D}$ with its only element. 
+\begin{notation}
+  Let $\der{D}=\{\dder{D}_i\}_{i=0}^n$ be a derivation. We will depict
+  the $i^\text{th}$ element $\dder{D}_i$ of $\der{D}$ as in the
+  following diagram.
+  \[\xymatrix{L_i \ar[d]_{m_i}& K_i \ar[d]^{k_i}\ar@{>->}[l]_{l_i} \ar[r]^{r_i} & R_i \ar[d]^{h_i} \\G_{i} & \ar@{>->}[l]^{f_{i}} D_{i} \ar[r]_{g_{i}}& G_{i+1} }\]
+  Notice that, in particular, if $\der{D}\colon G\to H$, then $G_0=G$
+  and $G_{n+1}=H$. When $\der{D}$ has length $1$ we will suppress the
+  indexes. In such case, we will also identify $\der{D}$ with its only
+  element.
 \end{notation} 
 
 Often, we are interested in derivations only up to some notion of coherent isomorphism between them. This is done with the help of \Cref{rem:func}.
@@ -1085,19 +1142,33 @@ Let $I:\Deltamin(\dder{D})\to \Delta(\dder{D})$ be the inclusion functor. It is 
 \end{enumerate}
 \end{remark}
 
-\begin{proof}\begin{enumerate}
-		\item Let us proceed by induction on the length of $\der{D}$.
-
+\begin{proof}
+  \begin{enumerate}
+  \item Let us proceed by induction on the length of $\der{D}$.
+    
+    
+    \smallskip \noindent
+    $\lgh(\dder{D})=0$. then the
+    $\tpro{\dder{D}}$ is simply $(G, \{\id{G}\})$ and
+    $\id{G}\in \mathcal{M}$.¸
 	
-	\smallskip \noindent $\lgh(\dder{D})=0$. then the $\tpro{\dder{D}}$ is simply $(G, \{\id{G}\})$ and $\id{G}\in \mathcal{M}$.¸
-	
-	\smallskip \noindent$\lgh(\dder{D})=1$. Suppose that $\dder{D}$ has as its single component the derivation
-			\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G& \ar@{>->}[l]^{f} D \ar[r]_{g}& H  \\}\]
-			The arrow $f$ is  the pushout of $l$ and so it is in in $\mathcal{M}$. We can thus consider the $\mathcal{M}$-pushout square
-			\[\xymatrix{D \ar@{>->}[d]_{f} \ar[r]^{g} & H \ar@{>->}[d]^{p} \\G \ar[r]_{q}& P }\]
-			Since $p\in \mathcal{M}$, the thesis follows immediately from \Cref{rem:cof}. 
-	
-	\smallskip \noindent$\lgh(\dder{D})\geq 2$. Let $\der{D}$ be $\{\dder{D}_i\}_{i=0}^n$ with $n\geq 1$. Let also $\der{D}'$ be $\{\dder{D}_i\}^{n-1}_{i=0}$ and $\rho_n=(l_n, r_n)$ be the rule applied in $\dder{D}_n$. The pushout of $l_n$ is the arrow $f_n\colon D_n\to G_n$ is in $\mathcal{M}$ and, by inductive hypothesis, $\iota_{G_{n}}\colon G_{n}\to \lpro \der{D}'\rpro$ is in $\mathcal{M}$ too. Thus, we can consider the diagram below, having a pushout as its lower half.
+    \smallskip \noinden
+    t$\lgh(\dder{D})=1$. Suppose that $\dder{D}$
+    has as its single component the derivation
+    \[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G& \ar@{>->}[l]^{f} D \ar[r]_{g}& H  \\}\]
+    The arrow $f$ is  the pushout of $l$ and so it is in in $\mathcal{M}$. We can thus consider the $\mathcal{M}$-pushout square
+    \[\xymatrix{D \ar@{>->}[d]_{f} \ar[r]^{g} & H \ar@{>->}[d]^{p} \\G \ar[r]_{q}& P }\]
+    Since $p\in \mathcal{M}$, the thesis follows immediately from \Cref{rem:cof}. 
+    
+    \smallskip \noindent
+    $\lgh(\dder{D})\geq 2$. Let $\der{D}$ be
+    $\{\dder{D}_i\}_{i=0}^n$ with $n\geq 1$. Let also $\der{D}'$ be
+    $\{\dder{D}_i\}^{n-1}_{i=0}$ and $\rho_n=(l_n, r_n)$ be the rule
+    applied in $\dder{D}_n$. The pushout of $l_n$ is the arrow
+    $f_n\colon D_n\to G_n$ is in $\mathcal{M}$ and, by inductive
+    hypothesis, $\iota_{G_{n}}\colon G_{n}\to \lpro \der{D}'\rpro$ is
+    in $\mathcal{M}$ too. Thus, we can consider the diagram below,
+    having a pushout as its lower half.
 			\[\xymatrix{L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar@{>->}[l]_{l_{n}} \ar[r]^{r_{n}} & R_{n} \ar[d]^{h_n} \\G_{n} \ar@{>->}[d]_{\iota'_{G_{n}}}& \ar@{>->}[l]^{f_n} D_n \ar[r]_{g_n}& H  \ar@{>->}[d]^{q}\\ \lpro \der{D}' \ar[rr]_{p}\rpro && P}\] 
 			Notice that, as in the point above, the arrow $q\colon H\to P$ is the pushout of an element in $\mathcal{M}$, therefore it is enough to show that the diagram so constructed provides a colimiting cocone for $\Delta(\der{D})$.
 			
@@ -1683,57 +1754,56 @@ The thesis now follows at once.	 \qedhere
 
 \subsection{Sequentially independent and switchable derivations }
 
-\todo{a very nice intro}
+In this section we discuss the notion of independence between
+consecutive rewriting steps, which is a fundamental ingredient of the
+rewriting theory, which comes into play when viewing a derivation
+sequence as a concurrent computation, the idea being that of
+abstracting out the order of execution of independent rewtings. We
+observe that the shift to left-linear rules leads to the failure of
+various basic properties of the classical notion of independence and
+we single out a framework in which these can be re-established.
+
+
+In the DPO approach to rewriting the canonical notion of independence is that of sequential independence, recalled below.
 
 \begin{definition}[Sequential independence]
   \label{de:sequential-independence}
-  Let $(\X, \R)$ be a left-linear DPO rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Let also $\der{D}=\{\dder{D}_i\}_{i=0}^1$ be a derivation of length $2$. 	An \emph{independence pair} between $\dder{D}_0$ and $\dder{D}_0$, is a pair of  arrows $i_0\colon R_0\to D_1$ and $i_1\colon L_1\to D_0$ such that the following diagram commutes.
-	\[\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@{.>}@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0} && L_1 \ar@{.>}@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2}\]
-	We will say that $\dder{D}_0$ and $\dder{D}_1$ are \emph{weakly sequentially independent} if an independence pair exists. If such independence pair is unique we will say that $\dder{D}$ and $\dder{D'}$ are \emph{sequentially independent}.
+  Let $(\X, \R)$ be a left-linear DPO rewriting system with $\X$ an
+  $\mathcal{M}$-adhesive category. Let also
+  $\der{D}=\{\dder{D}_i\}_{i=0}^1$ be a derivation of length $2$, with
+  $\dder{D}_i$ using rule $\rho_i = (l_i,r_i)$.  An \emph{independence
+    pair} between $\dder{D}_0$ and $\dder{D}_1$, is a pair of arrows
+  $i_0\colon R_0\to D_1$ and $i_1\colon L_1\to D_0$ such that the
+  following diagram commutes.
+  \[\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@{.>}@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0} && L_1 \ar@{.>}@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2}\]
+  We will say that $\dder{D}_0$ and $\dder{D}_1$ are
+  % \emph{weakly sequentially independent} if an independence pair exists. If such  independence pair is unique we will say that $\dder{D}$ and $\dder{D'}$ are
+  \emph{sequentially independent}.\todo{Eliminata la
+    nozione di weakly indepedendent, giusto?}
 \end{definition}
 
-\begin{example}
-	\todo{sequential independence}
-\end{example}
-\begin{example}
-	\todo{sequential independence che serva anche per es successivo}
-\end{example}
+Intutitively, the existence of the independence pair is intended to
+capture the possibility of switching the application of the two rules:
+$f_0 \circ i_1$ is a potential match for $\rho_1$ in $G_0$ and the
+existence of $i_0 : R_0 \to D_1$ indicates that $\rho_1$ do not delete
+items in the image of $K_0$ and thus $\rho_1$ can be applied after
+$\rho_0$.
 
+More precisely, let us formalise what it means for a derivation being the switch of another.
 
- Let $(i_0, i_1)$ and $(i'_0, i'_1)$ be independence pairs for the direct derivations $\dder{D}_0$ and $\dder{D}_1$. Notice that, by definition, we have
- \[f_1\circ i_0=h_0=f_1\circ i'_0 \qquad 	g_0\circ i_1=m_1= g_0\circ i'_1\]
+% We want to be able to to switch the application of two rules used by two consecutive weakly independent direct derivations.
+% This leads us to the following definition.
 
-The arrow $f_1\colon D\to G_1$ is  the pushout of $l_1\colon K_1\mto L_1$, thus it is in $\mathcal{M}$ implying $i_0=i'_0$. If, moreover, we suppose that the rule $\rho$ applied in $\dder{D}$ is linear, then $g_0\colon D_0\to G_1$ is in $\mathcal{M}$ too entailing $i'_1=i'_1$, too. Summing up, we have just proved the following.
-	
-	\begin{proposition}\label{rem:weak}
-	Let $(\X, \R)$ be a linear DPO rewriting system, then two direct derivations $\dder{D}$ and $\dder{D}'$ are weakly sequential independent if and only if they are sequential independent. 
-\end{proposition}
-
-There is another useful properties of weakly sequentially independent direct derivations which is worth mentioning.
-
-\begin{theoremEnd}[category=sec3]{proposition}\label{prop:tec}
-	Let $(i_0, i_1)$ be an independence pair between two direct derivations $\dder{D}_0$ and $\dder{D}_1$ in a left-linear DPO rewriting system $(\X,\R)$. Consider the pullback of $f_1\colon D_1\mto G_1$ along $g_0\colon D_0\to G_1$ (first square below),  then there exist the arrows $u_1\colon K_1\to P$ and $u_0\colon K_0\to P$ fitting in the central and right square, Moreover, the right one is always a pullback.
-	\[\xymatrix{P \ar@{>->}[r]^{p_0} \ar[d]_{p_1} & D_0 \ar[d]^{g_0}& K_0 \ar[r]^{r_0}  \ar@{.>}[d]_{u_0}& R_0 \ar[d]^{i_0} & K_1 \ar@{>->}[r]^{l_1}  \ar@{.>}[d]_{u_1}& L_1 \ar[d]^{i_1}\\  D_1 \ar@{>->}[r]_{f_1} &G_1 &P \ar[r]_{p_1} & D_1 &P \ar[r]_{p_0}  & D_0}\]
-\end{theoremEnd}
-\begin{proof}
-	\begin{proofEnd}
-We start noticing that
-\[
-f_1\circ i_0\circ r_0=h_0\circ r_0=g_0\circ k_0 \qquad g_0\circ i_1\circ l_1=m_1\circ l_1= f_1 \circ k_1 \] 
-Thus there exists the dotted $u_0\colon K_0\to P$, $u_1\colon K_1\to P$  in the diagram
-\[\xymatrix{K_0 \ar[d]_{r_0} \ar@{.>}[r]_{u_0}\ar@/^.4cm/[rr]^{k_0} &P \ar@{>->}[r]_{p_0} \ar[d]_{p_1}& D_0 \ar[d]^{g_0}&K_1 \ar@{>->}[d]_{l_1} \ar@{.>}[r]_{u_1}\ar@/^.4cm/[rr]^{k_1} &P \ar[r]_{p_1} \ar@{>->}[d]_{p_0}& D_1 \ar@{>->}[d]^{f_1}\\R_0 \ar@/_.4cm/[rr]_{h_0}\ar[r]^{i_0}& D_1 \ar@{>->}[r]^{f_1}& G_1&L_1 \ar@/_.4cm/[rr]_{m_1}\ar[r]^{i_1}& D_0 \ar[r]^{g_0}& G_1}\]
-By \Cref{prop:pbpoad,lem:pb1} we get that the left half of the second rectangle is a pullback. 
-	\end{proofEnd} \qedhere 
-\end{proof}
-
-We want to be able to to switch the application of two rules used by two consecutive weakly independent direct derivations. This leads us to the following definition.
-
-\begin{definition}[Switch]\label{def:switc}
-  \label{de:switch}
- Let $(\X, \R)$ be a left-linear DPO rewriting system with $\X$ an $\mathcal{M}$-adhesive category and suppose that $\der{D}=\{\dder{D}_i\}_{i=0}^1$  is a derivation of length $2$ made by two weakly sequentially independent derivations $\dder{D}_0$, $\dder{D}_1$, with independence pair $(i_0, i_1)$:
- 	\[\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0} && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2}\]
+\begin{definition}[Switch]
+  \label{def:switch}
+  Let $(\X, \R)$ be a left-linear DPO rewriting system with $\X$ an
+  $\mathcal{M}$-adhesive category and suppose that
+  $\der{D}=\{\dder{D}_i\}_{i=0}^1$ is a derivation of length $2$ made
+  by two weakly sequentially independent derivations $\dder{D}_0$,
+  $\dder{D}_1$, with independence pair $(i_0, i_1)$:
+  \[\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0} && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2}\]
  	
- 	Take another derivation $\der{E}=\{\dder{E}_i\}_{i=0}^1$ as below
+  Take another derivation $\der{E}=\{\dder{E}_i\}_{i=0}^1$ as below
 \[\xymatrix@C=18pt{L_{\der{E},0} \ar[d]_{m_{\der{E},0}}&& K_{\der{E},0} \ar[d]_{k_{\der{E},0}}\ar@{>->}[ll]_{l_{\der{E},0}} \ar[r]^{r_{\der{E},0}} & R_{\der{E},0} \ar[dr]_{h_{\der{E},0}} && L_{\der{E},1} \ar[dl]^{m_{\der{E},1}}& K_{\der{E},1} \ar[d]^{k_{\der{E},1}}\ar@{>->}[l]_{l_{\der{E},1}} \ar[rr]^{r_{\der{E},1}} && R_{\der{E},1} \ar[d]^{h_{\der{E},1}}\\G_{0} && \ar@{>->}[ll]^{f_{\der{E},0}} D_{\der{E},0} \ar[rr]_{g_{\der{E},0}}&& G_{\der{E},1} && \ar@{>->}[ll]^{f_{\der{E},1}} D_{\der{E},1} \ar[rr]_{g_{\der{E},1}}&& G_{2}}\]
  	We say that $\der{E}$ is a
  	 	 \emph{switch} of $\dder{D}_0$ and $\dder{D}_1$ along $(i_1, i_2)$ if
@@ -1748,32 +1818,70 @@ We want to be able to to switch the application of two rules used by two consecu
 If a switch of $\dder{D}_0$ and $\dder{D}_1$ exists we will say that they are \emph{switchable}.
 \end{definition}
 
-\begin{remark}\label{rem:fact}
-	Notice that, since $f_{\der{E}, 0}$ is in $\mathcal{M}$, there is at most one $j_1\colon L_0\to D_{\der{E},0}$ such that $m_0=f_{\der{E}, 0} \circ j_1$. Moreover, we already know that there is at most one $j_0\colon R_1\to D_{\der{E},1}$ such that $m_{\der{E},1}=f_{\der{E},1}\circ j_0$, therefore, the independence pair $(j_0,j_1)$ between the component of a switch is uniquely determined.
+The fact that sequential indepedence implies switchability always holds for linear rules. [REF]
+The result is so fundamental that it is not even stated, in the sense that switchability is not introduced axiomatically as in defition~\ref{def:switch}, but it is based on the explicit construction of a switch.
+
+When working with left-linear rewriting systems, in general (weakly) sequential independence does not imply switchability (while the converse implication clearly holds), as shown by the example below.
+
+
+\rem{remove}{
+  \begin{remark}
+    \label{rem:fact}
+    Notice that, since $f_{\der{E}, 0}$ is in $\mathcal{M}$, there is
+    at most one $j_1\colon L_0\to D_{\der{E},0}$ such that
+    $m_0=f_{\der{E}, 0} \circ j_1$. Moreover, we already know that
+    there is at most one $j_0\colon R_1\to D_{\der{E},1}$ such that
+    $m_{\der{E},1}=f_{\der{E},1}\circ j_0$, therefore, the
+    independence pair $(j_0,j_1)$ between the component of a switch is
+    uniquely determined.
 \end{remark}
-\begin{example}\label{ex:diff1} Recall that, given two posets $(P, \leq)$ and $(Q, \leq)$, we can construct the poset $(P, \leq)\oplus(Q,\leq)$ which has as underlying set the disjoint union $P+Q$ and in which every element of $Q$ is greater then every element of $P$, while elements of $P$ and $Q$ are compared using the original orders. 
+}
+
+
+
+\begin{example}
+  \label{ex:diff1}
+  Recall that, given two posets $(P, \leq)$ and $(Q, \leq)$, we can
+  construct the poset $(P, \leq)\oplus(Q,\leq)$ which has as
+  underlying set the disjoint union $P+Q$ and in which every element
+  of $Q$ is greater then every element of $P$, while elements of $P$
+  and $Q$ are compared using the original orders.
 	
-	Take now the set $S:=\{a,b,c\}$ and endow it with the smallest order such that $a\leq b$ and $a\leq c$. 
-	Take also the set $\mathbb{N}$ ordered by $\geq$, so that $0$ is its maximum. 
-	Let $\X$ be the category associated to the order $(S, \leq)\oplus (\mathbb{N}, \geq)$ which, by \Cref{rem:iso} is $\mathsf{Iso}$-adhesive. Notice that in this category the arrows $(a,b)\colon a\to b$ $(a,c)\colon a\to c$ do not have a pushout because $b$ and $c$ do not have a supremum.  Define $\R$ as  the set containing the following two rules
-	\[\xymatrix{a & a \ar[r]^{(a, 0)} \ar[l]_{\id{a}} & 0 & a & a \ar[r]^{(a, b)} \ar[l]_{\id{a}} & b  }\]
-We can then consider the following derivation $\der{D}=\{\dder{D}_i\}_{i=0}^1$ of length $2$, made by two sequential independent direct derivations.
-	 	\[\xymatrix@C=30pt{a \ar[d]_{m_0}&& a \ar[d]_{k_0}\ar[ll]_{\id{a}} \ar[r]^{(a,0)} & 0 \ar@/^.35cm/[drrr]|(.315)\hole_(.45){\id{0}} \ar[dr]|(.3)\hole_{\id{0}} && a \ar@/_.35cm/[dlll]^(.45){(a,c)} \ar[dl]|(.3)\hole^{(a,0)}& a \ar[d]^{(a,0)}\ar@{>->}[l]_{\id{a}} \ar[rr]^{(a,b)} && b \ar[d]^{(b,0)}\\c && \ar@{>->}[ll]^{(\id{c})} c \ar[rr]_{(c,0)}&& 0  && \ar@{>->}[ll]^{\id{0}} 0 \ar[rr]_{\id{0}}&& 0}\]
+  Take now the set $S:=\{a,b,c\}$ and endow it with the smallest order
+  such that $a\leq b$ and $a\leq c$.  Take also the set $\mathbb{N}$
+  ordered by $\geq$, so that $0$ is its maximum.  Let $\X$ be the
+  category associated to the order
+  $(S, \leq)\oplus (\mathbb{N}, \geq)$ which, by \Cref{rem:iso} is
+  $\mathsf{Iso}$-adhesive. Notice that in this category the arrows
+  $(a,b)\colon a\to b$ $(a,c)\colon a\to c$ do not have a pushout
+  because $b$ and $c$ do not have a supremum.  Define $\R$ as the set
+  containing the following two rules
+  \[\xymatrix{a & a \ar[r]^{(a, 0)} \ar[l]_{\id{a}} & 0 & a & a \ar[r]^{(a, b)} \ar[l]_{\id{a}} & b  }\]
+  We can then consider the following derivation
+  $\der{D}=\{\dder{D}_i\}_{i=0}^1$ of length $2$, made by two
+  sequential independent direct derivations.
+  \[\xymatrix@C=30pt{a \ar[d]_{m_0}&& a \ar[d]_{k_0}\ar[ll]_{\id{a}} \ar[r]^{(a,0)} & 0 \ar@/^.35cm/[drrr]|(.315)\hole_(.45){\id{0}} \ar[dr]|(.3)\hole_{\id{0}} && a \ar@/_.35cm/[dlll]^(.45){(a,c)} \ar[dl]|(.3)\hole^{(a,0)}& a \ar[d]^{(a,0)}\ar@{>->}[l]_{\id{a}} \ar[rr]^{(a,b)} && b \ar[d]^{(b,0)}\\c && \ar@{>->}[ll]^{(\id{c})} c \ar[rr]_{(c,0)}&& 0  && \ar@{>->}[ll]^{\id{0}} 0 \ar[rr]_{\id{0}}&& 0}\]
 	 	
-	 	\noindent 
-	 	\parbox{10cm}{
-	 	\hspace{15pt}On the other hand, the rule applied by $\dder{D}_1$ cannot be applied to $c$. indeed the unique morphism $a\to c$ is $(a,c)$, thus we get a diagram aside. But $b$ and $c$ do not have a supremum in the poset underlying $\X$, thus we do not get a direct derivation from $c$.}
-	 	\parbox{3cm}{ \vspace{-.3cm}$\xymatrix{a  \ar[d]_{(a,c)}& a \ar[d]_{(a,c)}\ar@{>->}[l]_{\id{a}} \ar[r]^{(a,b)} & b \\c & c \ar[l]^{\id{c}} }$}
-	 	
+  \noindent 
+  \parbox{10cm}{ \hspace{15pt}On the other hand, the rule applied by
+    $\dder{D}_1$ cannot be applied to $c$. indeed the unique morphism
+    $a\to c$ is $(a,c)$, thus we get a diagram aside. But $b$ and $c$
+    do not have a supremum in the poset underlying $\X$, thus we do
+    not get a direct derivation from $c$.}  \parbox{3cm}{
+    \vspace{-.3cm}$\xymatrix{a \ar[d]_{(a,c)}& a
+      \ar[d]_{(a,c)}\ar@{>->}[l]_{\id{a}} \ar[r]^{(a,b)} & b \\c & c
+      \ar[l]^{\id{c}} }$}
+  
 \end{example}
 
+\rem{tenere solo una frase e risultati in appendice}{
 Consider a switch $\der{E}=\{\dder{E}_i\}_{i=0}^1$ for $\dder{D}_0$ and $\dder{D}_1$, then by definition $\dder{E}_0$ and $\dder{E}_1$ are weakly sequentially independent. We can then wonder if they are switchable.
 
 \begin{theoremEnd}[category=sec3]{proposition}\label{prop:switch}
 	Let $\der{D}=\{\dder{D}_i\}_{i=0}^1$ be a derivation and suppose that $\der{E}=\{\dder{E}_i\}_{i=0}^1$ is a switch for it. Then $\der{D}$ is a switch for $\dder{E}_0$ and $\dder{E}_1$ along $(j_0, j_1)$.
 \end{theoremEnd}
 \begin{proof}\begin{proofEnd}
-	The first point of \Cref{def:switc} is obviously satisfied. The second one follows at once since 
+	The first point of \Cref{def:switch} is obviously satisfied. The second one follows at once since 
 	\[m_{\der{E},0}= f_0\circ i_1 \qquad h_{\der{E},1}= g_{1}\circ i_0\]
 	Finally, the third point holds because we already know that 
 \[m_{\der{E},0}= f_0\circ i_1 \qquad h_{\der{E},1}= g_{1}\circ i_0\]
@@ -1805,9 +1913,12 @@ Switches are unique up to abstraction equivalence, as shown by the next proposit
 		allowing us to deduce $ \phi_1\circ j_0=a_0$.
 	\end{proofEnd} \qedhere 
 \end{proof}
+}
 
 
-We can now derive another property  of switches.
+
+\rem{appendice?}
+{We can now derive another property  of switches.
 
 \noindent
 \parbox{9.5cm} {\begin{theoremEnd}[category=sec3]{proposition}\label{lem:cose}Let $\der{D}=\{\dder{D}_i\}_{i=0}^1$ be a derivation,  and suppose that $(i_0, i_1)$ is an independence pair between $\dder{D}_0$  and $\der{D}_1$. 	If $\der{E}=\{\dder{E}_i\}_{i=0}^1$ is a switch of $\der{D}$ along $(i_0, i_1)$, then there exists $q_0\colon P\to D_{\der{E},0}$ in the diagram below \end{theoremEnd}} 
@@ -1823,11 +1934,52 @@ We can now derive another property  of switches.
 		\[\xymatrix{K_1 \ar@{>->}[d]_{l_1}\ar[r]^{k_{\der{E},0}}& D_{\der{E},0} \ar@{>->}[d]^{f_{\der{E},0}} & K_1 \ar[r]^{u} \ar@{>->}[d]_{l_1}& P \ar@{>->}[d]^{f_0\circ p_0}\\L_1\ar[r]_{m_{\der{E},0}}&G_0 &L_1 \ar[r]_{m_{\der{E},0}}&G_0}\]	
 	\end{proofEnd} 	
 \end{proof}
+}
 
 
 
 
-When working with left-linear rewriting systems, in general (weakly) sequential independence does not imply switchability, while the converse implication clearly holds. Following \cite{baldan2011adhesivity}, we can nonetheless provide sufficient condition to guarantee switchability which, moreover, are satisfied by a very large class of DPO rewriting systems (see \Cref{app:fill}). The following definition, takes inspiration from the notion of \emph{canonical filler} of \cite{heindel2009category}.
+\begin{example}
+  \todo{sequential independence}
+\end{example}
+\begin{example}
+  \todo{sequential independence che serva anche per es successivo}
+\end{example}
+
+\rem{rimuovere, direi}{
+ Let $(i_0, i_1)$ and $(i'_0, i'_1)$ be independence pairs for the direct derivations $\dder{D}_0$ and $\dder{D}_1$. Notice that, by definition, we have
+ \[f_1\circ i_0=h_0=f_1\circ i'_0 \qquad 	g_0\circ i_1=m_1= g_0\circ i'_1\]
+
+The arrow $f_1\colon D\to G_1$ is  the pushout of $l_1\colon K_1\mto L_1$, thus it is in $\mathcal{M}$ implying $i_0=i'_0$. If, moreover, we suppose that the rule $\rho$ applied in $\dder{D}$ is linear, then $g_0\colon D_0\to G_1$ is in $\mathcal{M}$ too entailing $i'_1=i'_1$, too. Summing up, we have just proved the following.
+	
+\begin{proposition}\label{rem:weak}
+  Let $(\X, \R)$ be a linear DPO rewriting system, then two direct
+  derivations $\dder{D}$ and $\dder{D}'$ are weakly sequential
+  independent if and only if they are sequential independent.
+\end{proposition}
+}
+
+\rem{Questa e' utile solo per definire i filler, giusto?. Sposterei in appendice o integrerei nella def. di filler}
+{
+There is another useful properties of weakly sequentially independent direct derivations which is worth mentioning.
+
+\begin{theoremEnd}[category=sec3]{proposition}\label{prop:tec}
+	Let $(i_0, i_1)$ be an independence pair between two direct derivations $\dder{D}_0$ and $\dder{D}_1$ in a left-linear DPO rewriting system $(\X,\R)$. Consider the pullback of $f_1\colon D_1\mto G_1$ along $g_0\colon D_0\to G_1$ (first square below),  then there exist the arrows $u_1\colon K_1\to P$ and $u_0\colon K_0\to P$ fitting in the central and right square, Moreover, the right one is always a pullback.
+	\[\xymatrix{P \ar@{>->}[r]^{p_0} \ar[d]_{p_1} & D_0 \ar[d]^{g_0}& K_0 \ar[r]^{r_0}  \ar@{.>}[d]_{u_0}& R_0 \ar[d]^{i_0} & K_1 \ar@{>->}[r]^{l_1}  \ar@{.>}[d]_{u_1}& L_1 \ar[d]^{i_1}\\  D_1 \ar@{>->}[r]_{f_1} &G_1 &P \ar[r]_{p_1} & D_1 &P \ar[r]_{p_0}  & D_0}\]
+\end{theoremEnd}
+\begin{proof}
+	\begin{proofEnd}
+We start noticing that
+\[
+f_1\circ i_0\circ r_0=h_0\circ r_0=g_0\circ k_0 \qquad g_0\circ i_1\circ l_1=m_1\circ l_1= f_1 \circ k_1 \] 
+Thus there exists the dotted $u_0\colon K_0\to P$, $u_1\colon K_1\to P$  in the diagram
+\[\xymatrix{K_0 \ar[d]_{r_0} \ar@{.>}[r]_{u_0}\ar@/^.4cm/[rr]^{k_0} &P \ar@{>->}[r]_{p_0} \ar[d]_{p_1}& D_0 \ar[d]^{g_0}&K_1 \ar@{>->}[d]_{l_1} \ar@{.>}[r]_{u_1}\ar@/^.4cm/[rr]^{k_1} &P \ar[r]_{p_1} \ar@{>->}[d]_{p_0}& D_1 \ar@{>->}[d]^{f_1}\\R_0 \ar@/_.4cm/[rr]_{h_0}\ar[r]^{i_0}& D_1 \ar@{>->}[r]^{f_1}& G_1&L_1 \ar@/_.4cm/[rr]_{m_1}\ar[r]^{i_1}& D_0 \ar[r]^{g_0}& G_1}\]
+By \Cref{prop:pbpoad,lem:pb1} we get that the left half of the second rectangle is a pullback. 
+	\end{proofEnd} \qedhere 
+\end{proof}
+}
+
+The conditions which  guarantee switchability takes inspiration from the notion of \emph{canonical filler} of \cite{heindel2009category}.
 
 
 \begin{definition}[Good independence pair]\label{def:filler}
@@ -1837,6 +1989,7 @@ Let also the right square above be a pullback.Let $u_0\colon K_0\to P$ and $u_1\
 				\[\xymatrix{K_0 \ar[r]^{r_0}  \ar[d]_{u_0}& R_0 \ar[d]^{i_0} & K_1 \ar@{>->}[r]^{l_1}  \ar[d]_{u_1}& L_1 \ar[d]^{i_1}&K_1 \ar[r]^{r_1} \ar[d]_{u_1}& R_1\ar@{.>}[d]^{j_0} \\ P \ar[r]_{p_1} & D_1 &P \ar[r]_{p_0}  & D_0&P \ar@{.>}[r]_{q_1} & Q_1}\]
 \end{definition}
 
+\rem{Questa e' la prova che il filler implica lo switch, giusto? In appendice}{
 \begin{remark}\label{rem:deco} Let $(i_0, i_1)$ be a good independence pair between the direct derivations $\dder{D}_0$ and $\dder{D}_1$. We can then build the solid part of the diagram below.
 	\[\xymatrix{&&R_0 \ar@/_1cm/[ddrr]_(.35){i_0}|(.7)\hole  \ar[dr]^{h_0}&& L_1\ar@/^1cm/[ddll]^(.35){i_1}  \ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar@{>->}[dl]_{l_0} \ar@/_.8cm/[ddrr]^(.65){u_0}\ar[ur]^{r_0}&& G_1 && K_1 \ar@/^.8cm/[ddll]_(.65){u_1}\ar[dl]_{k_1}\ar@{>->}[lu]_{l_1} \ar[dr]^{r_1}\\L_0 \ar[dr]^{m_0} \ar@{.>}@/_.8cm/[ddrr]_{j_1}&& D_0 \ar@{>->}[dl]|(.42)\hole_(.64){f_0}\ar[ur]|(.48)\hole^(.7){g_1}&&D_1 \ar[dr]|(.42)\hole^(.65){g_1} \ar@{>->}[ul]|(.48)\hole_(.7){f_1}&&R_1\ar@/^.8cm/[ddll]^{j_0}\ar[dl]^{h_1}\\&G_0 &&P\ar[dr]^{q_1} \ar@{>.>}[dl]_{q_0}\ar[ur]^(.4){p_1}\ar@{>->}[ul]_(.4){p_0}&&G_2\\&&Q_0 \ar@{>->}@{>.>}[ul]_{a_0} &&Q_1\ar@{.>}[ur]^{b_1}}\]
 	
@@ -1851,27 +2004,82 @@ Let also the right square above be a pullback.Let $u_0\colon K_0\to P$ and $u_1\
 	$\xymatrix{K_0 \ar@/^.4cm/[rr]^{k_0}\ar[d]_{r_0}\ar[r]_{u_0} &P\ar[d]^{p_1} \ar@{>->}[r]_{p_0} & D_0 \ar[d]^{g_0}&K_1 \ar@/^.4cm/[rr]^{k_1}\ar@{>->}[d]_{l_1}\ar[r]_{u_1} &P\ar@{>->}[d]^{p_0} \ar[r]_{p_1} & D_1 \ar@{>->}[d]^{f_1}\\  R_0 \ar@/_.4cm/[rr]_{h_0} \ar[r]^{i_0}&D_1 \ar@{>->}[r]^{f_1} & G_1&L_1 \ar@/_.4cm/[rr]_{m_1} \ar[r]^{i_1}&D_0\ar[r]^{g_0} & G_1}$
 		$\xymatrix{K_0 \ar@/^.4cm/[rr]^{k_0}\ar@{>->}[d]_{l_0}\ar[r]_{u_0} &P\ar@{>->}[d]^{q_0} \ar@{>->}[r]_{p_0} & D_0 \ar@{>->}[d]^{f_0}&K_1 \ar@/^.4cm/[rr]^{k_1}\ar[d]_{r_1}\ar[r]_{u_1} &P\ar[d]^{q_1} \ar[r]_{p_1} & D_1 \ar[d]^{g_1}\\ L_0 \ar@/_.4cm/[rr]_{m_0} \ar[r]^{j_1}&Q_0 \ar@{>->}[r]^{a_0} & G_0&R_1 \ar@/_.4cm/[rr]_{h_1} \ar[r]^{j_0}&Q_1 \ar[r]^{b_1} & G_2}$}
 \end{remark}
-
+}
 
 So equipped, we can now prove a version of the Local Church-Rosser Theorem for good independence pairs.
-\begin{theoremEnd}[category=sec3]{theorem}[Local Church-Rosser Theorem]\label{thm:church} Let $(i_0, i_1)$ be a good independence pair between $\dder{D}_0$ and $\dder{D}_1$. Then $\dder{D}_0$ and $\dder{D}_1$ are switchable.
+
+\begin{theoremEnd}[category=sec3]{theorem}[Local Church-Rosser Theorem]
+  \label{thm:church}
+  Let $(i_0, i_1)$ be a good independence pair
+  between $\dder{D}_0$ and $\dder{D}_1$. Then $\dder{D}_0$ and
+  $\dder{D}_1$ are switchable.
 \end{theoremEnd}
-\begin{proof}\begin{proofEnd}Let us begin considering the diagram built in \Cref{rem:deco}:
-		\[\xymatrix{&&R_0 \ar@/_1cm/[ddrr]_(.35){i_0}|(.7)\hole  \ar[dr]^{h_0}&& L_1\ar@/^1cm/[ddll]^(.35){i_1}  \ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar@{>->}[dl]_{l_0} \ar@/_.8cm/[ddrr]^(.65){u_0}\ar[ur]^{r_0}&& G_1 && K_1 \ar@/^.8cm/[ddll]_(.65){u_1}\ar[dl]_{k_1}\ar@{>->}[lu]_{l_1} \ar[dr]^{r_1}\\L_0 \ar[dr]^{m_0} \ar@{>}@/_.8cm/[ddrr]_{j_1}&& D_0 \ar@{>->}[dl]|(.42)\hole_(.64){f_0}\ar[ur]|(.48)\hole^(.7){g_1}&&D_1 \ar[dr]|(.42)\hole^(.65){g_1} \ar@{>->}[ul]|(.48)\hole_(.7){f_1}&&R_1\ar@/^.8cm/[ddll]^{j_0}\ar[dl]^{h_1}\\&G_0 &&P\ar[dr]^{q_1} \ar@{>->}[dl]_{q_0}\ar[ur]^(.4){p_1}\ar@{>->}[ul]_(.4){p_0}&&G_2\\&&Q_0 \ar@{>->}@{>->}[ul]_{a_0} \ar@{.>}[dr]_{b_0} &&Q_1\ar[ur]^{b_1} \ar@{>.>}[dl]^{a_1} \\ &&&H_1 }\]
-		Since $q_0\colon P\to Q_0$ is in $\mathcal{M}$, we can take its pushout along $q_1$ to get the dotted arrows $a_1\colon Q_1\to H_1$ and $q_0\colon Q_0\to H_1$. But then, since the composite of two pushout squares is a pushout, the diagram below is a derivation.
-			\[\xymatrix@C=15pt{L_1 \ar[d]_{f_0 \circ i_1}&& K_1 \ar[d]_{q_0\circ u_1}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]|(.3)\hole_(.4){j_0} \ar[dr]|(.3)\hole_{a_1\circ j_0} && L_0 \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.3)\hole^{b_0\circ j_1}& K_1 \ar[d]^{q_1\circ u_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]^{g_1\circ i_0} \\G_0 && \ar@{>->}[ll]^{a_0} D_0 \ar[rr]_{b_0}&& G_1  && \ar@{>->}[ll]^{a_1} D_1 \ar[rr]_{b_1}&& G_2}\]
-			It is immediate now to see that it is a switch of $\dder{D}_0$ and $\dder{D}_1$ along $(i_0, i_1)$.
-		\end{proofEnd} 
+\begin{proof}
+  \begin{proofEnd}
+    Let us begin considering the diagram
+    built in \Cref{rem:deco}:
+    \[\xymatrix{&&R_0
+        \ar@/_1cm/[ddrr]_(.35){i_0}|(.7)\hole \ar[dr]^{h_0}&&
+        L_1\ar@/^1cm/[ddll]^(.35){i_1}
+        \ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar@{>->}[dl]_{l_0}
+        \ar@/_.8cm/[ddrr]^(.65){u_0}\ar[ur]^{r_0}&& G_1 && K_1
+        \ar@/^.8cm/[ddll]_(.65){u_1}\ar[dl]_{k_1}\ar@{>->}[lu]_{l_1}
+        \ar[dr]^{r_1}\\L_0 \ar[dr]^{m_0} \ar@{>}@/_.8cm/[ddrr]_{j_1}&& D_0
+        \ar@{>->}[dl]|(.42)\hole_(.64){f_0}\ar[ur]|(.48)\hole^(.7){g_1}&&D_1
+        \ar[dr]|(.42)\hole^(.65){g_1}
+        \ar@{>->}[ul]|(.48)\hole_(.7){f_1}&&R_1\ar@/^.8cm/[ddll]^{j_0}\ar[dl]^{h_1}\\&G_0
+        &&P\ar[dr]^{q_1}
+        \ar@{>->}[dl]_{q_0}\ar[ur]^(.4){p_1}\ar@{>->}[ul]_(.4){p_0}&&G_2\\&&Q_0
+        \ar@{>->}@{>->}[ul]_{a_0} \ar@{.>}[dr]_{b_0} &&Q_1\ar[ur]^{b_1}
+        \ar@{>.>}[dl]^{a_1} \\ &&&H_1 }\] Since $q_0\colon P\to Q_0$ is in
+    $\mathcal{M}$, we can take its pushout along $q_1$ to get the dotted
+    arrows $a_1\colon Q_1\to H_1$ and $q_0\colon Q_0\to H_1$. But then,
+    since the composite of two pushout squares is a pushout, the diagram
+    below is a derivation.
+    \[\xymatrix@C=15pt{L_1 \ar[d]_{f_0 \circ i_1}&& K_1
+        \ar[d]_{q_0\circ u_1}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_1
+        \ar@/^.35cm/[drrr]|(.3)\hole_(.4){j_0} \ar[dr]|(.3)\hole_{a_1\circ
+          j_0} && L_0 \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.3)\hole^{b_0\circ
+          j_1}& K_1 \ar[d]^{q_1\circ u_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0
+        \ar[d]^{g_1\circ i_0} \\G_0 && \ar@{>->}[ll]^{a_0} D_0 \ar[rr]_{b_0}&&
+        G_1 && \ar@{>->}[ll]^{a_1} D_1 \ar[rr]_{b_1}&& G_2}\] It is immediate
+    now to see that it is a switch of $\dder{D}_0$ and $\dder{D}_1$ along
+    $(i_0, i_1)$.
+  \end{proofEnd}
 \end{proof}
 
-\begin{remark}\label{rem:church}It is worth to point out that, by \Cref{prop:switch,thm:switch_uni}, the derivation we obtain from \Cref{thm:church} is made by two switchable derivations which will give back the starting derivation (up to abstraction equivalence), if switched again. 
+\rem{appendice, qui una frase}{
+\begin{remark}
+  \label{rem:church}
+  It is worth to point out that, by
+  \Cref{prop:switch,thm:switch_uni}, the derivation we obtain from
+  \Cref{thm:church} is made by two switchable derivations which will
+  give back the starting derivation (up to abstraction equivalence),
+  if switched again.
+  
+  Moreover, by \Cref{prop:pbpoad}, the first square below is a pullback, therefore, by \cref{rem:deco}  the last three squares witness that $(j_0, j_1)$ is a good independence pair too.
+  \[\xymatrix{P\ar[r]^{q_1} \ar@{>->}[d]_{q_0}&Q_1 \ar@{>->}[d]^{a_1}&K_1 \ar[r]^{r_1}  \ar[d]_{u_1}& R_1 \ar[d]^{j_0} & K_0 \ar@{>->}[r]^{l_0}  \ar[d]_{u_0}& L_0 \ar[d]^{j_1}&K_0 \ar[r]^{r_0} \ar[d]_{u_0}& R_0\ar[d]^{i_0} \\ Q_ 0\ar[r]_{b_0}&H_1&P \ar[r]_{q_1} & Q_1 &P \ar[r]_{q_0}  & Q_0&P \ar[r]_{p_1} & D_1}\]
+\end{remark}
+}
 
-Moreover, by \Cref{prop:pbpoad}, the first square below is a pullback, therefore, by \cref{rem:deco}  the last three squares witness that $(j_0, j_1)$ is a good independence pair too.
-		\[\xymatrix{P\ar[r]^{q_1} \ar@{>->}[d]_{q_0}&Q_1 \ar@{>->}[d]^{a_1}&K_1 \ar[r]^{r_1}  \ar[d]_{u_1}& R_1 \ar[d]^{j_0} & K_0 \ar@{>->}[r]^{l_0}  \ar[d]_{u_0}& L_0 \ar[d]^{j_1}&K_0 \ar[r]^{r_0} \ar[d]_{u_0}& R_0\ar[d]^{i_0} \\ Q_ 0\ar[r]_{b_0}&H_1&P \ar[r]_{q_1} & Q_1 &P \ar[r]_{q_0}  & Q_0&P \ar[r]_{p_1} & D_1}\]
-	\end{remark}
+
+\todo[inline]{Forse non introdurrei neppure la classe dei tame, tanto usiamo solo i very tame, o no?}
+
+
+The correspondence between sequential indepedencee and switchability
+is fundamental.  A very large class of DPO rewriting systems - in the
+line of \cite{baldan2011adhesivity} - can be identified where all
+indepedence pairs are good for left-linear rewriting systems. This is
+in \Cref{app:fill}).
+
+\rem{ripetizione}{
+\begin{remark} In \cite{baldan2011adhesivity} large class of (quasi)adhesive categories with the property that every left-linear DPO rewriting system on them is tame is identified. We adapt these results to our context in \Cref{app:fill}. 
+\end{remark}
+}
 
 
 
+\rem{Non introdurrei una classe, come detto sopra}{
 \begin{definition}[Tame rewriting systems]A left-linear DPO rewriting system is \emph{tame} if every independence pair between two direct derivations is good.
 \end{definition}
 \begin{example}\label{ex:diff2}In light of \Cref{thm:church},  \Cref{ex:diff1} provides an example of an independence pair which is not good, and thus of a non tame rewriting system.
@@ -1879,13 +2087,11 @@ Moreover, by \Cref{prop:pbpoad}, the first square below is a pullback, therefore
 \begin{remark}
 	By \Cref{thm:church} the existence of a good independence pair entails switchability which, in turn, entails weak sequential independence by construction. Tame rewriting systems are exactly those rewriting systems in which these three notions coincide.
 \end{remark}
-
-\begin{remark} In \cite{baldan2011adhesivity} large class of (quasi)adhesive categories with the property that every left-linear DPO rewriting system on them is tame is identified. We adapt these results to our context in \Cref{app:fill}. 
-\end{remark}
+}
 
 
 
-A source of tame left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
+\rem{Questo e' quanto gia' asserito sopra, mettere in appendice e riferire}{A source of tame left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
 
 \begin{theoremEnd}[category=sec3]{proposition}\label{prop:equi}Every linear DPO rewriting system $(\X, \R)$ is tame.
 \end{theoremEnd}
@@ -1899,15 +2105,24 @@ Since $(\X, \R)$ is linear, then $r_1\colon K_1\to R_1$ belongs to $\mathcal{M}$
 	By hypothesis $r_0$ and $l_1$ are in $\mathcal{M}$, thus $f_1$ and $g_0$ belong to it too. The first point of \Cref{lem:popb}  yields the thesis. 
 	\end{proofEnd}
 \end{proof}
-
-Let us further explore some properties of good independence pairs.
-
+}
 
 
+Even if we work in a setting where sequential independence ensures switchability, dealing with left-linear rules there is a further - possibly more serious - issue, i.e., the fact that there can be more than one independence pairs between the same derivations. This can hinder the core idea of using sequential independence as a basis of a theory of concurrency for rewriting systems, since exchanges performed using different independence bpairs lead to non abstraction equivalent derivations and thus one would equate computations which are definitively to be taken apart, as shown in the example below.
 
-\subsubsection{Graphical rewriting systems}\label{subsubsec:graphical}
+EXAMPLE FROM DRAFT where derivations non abs equivalent and with different causality are equated
 
-\todo{forse si può anche non mettere la sottosezione e lasciarla nella sez prec}
+Limiting sequential independence to the case in which the independence pair is unique (as suggested in ...) brings to the same problems.
+
+For these reasons we support the idea that a theory of rewriting for left-linear rules in adhesive categories should be developed for systems where uniqueness of the independence pair is always ensured.
+
+
+
+
+
+%\subsubsection{Graphical rewriting systems}\label{subsubsec:graphical}
+
+
 \begin{definition}[Very tameneness]
 	\todo{very tame}
 \end{definition}
@@ -1929,10 +2144,36 @@ While the previous definition sounds very restrictive, our aim in this section i
 \end{proof}
 
 
+\subsection{Switch equivalence via permutation equivalence}
 
-\subsubsection{The $3$-steps lemmas} 
+\begin{itemize}
+\item valutare se si puo' fare senza switch equivalence, forse meglio con
 
-As a beginning step in our analysis of switch equivalence, we will establish three lemmas  dealing with derivations of length $3$. 
+ 
+\item linear: switch iff consistent permutation
+  
+\item left-linear: only one implication
+\end{itemize}
+
+\subsection{The $3$-steps lemmas} 
+
+The characterisation of switch equivalence based on consistent permutation for linear rules allows to derive some simple but fundamental results for the theory:
+\begin{itemize}
+\item the result of switching does not depends on the order, but only on the permutation
+\item indepednence is global: if I have two indepedent steps and I move them forward or backward in a derivation, the remain indepednent
+\end{itemize}
+
+The failure of the charaterisation for left-linear rules poses the question asking whether the results above also fail.
+
+We observe that
+\begin{itemize}
+  
+\item the first can be proved, need of a different proof techniques, taking advantage from the axiomatic characterisation of switching
+  
+\item Independence is global partially fails: one part holds, the other in a weak form, but this is conceptually ok (related to or causality)
+\end{itemize}
+
+As a beginning step in our analysis of switch equivalence, we will establish three lemmas  dealing with derivations of length $3$. \todo{We will probably limit tho this}
 
 
 \begin{lemma}[First $3$-steps Lemma]\label{lem:primo}
@@ -1967,7 +2208,8 @@ As a beginning step in our analysis of switch equivalence, we will establish thr
 		\item If $S_{i_0, i_1}(\dder{D}_0)\updownarrow_! \dder{D}_2$ with a good independence pair $(\alpha_0, \alpha_1)$, then  $S_{i_0,i_1}(\dder{D}_1)$ and $S_{\alpha_0, \alpha_1}(\dder{D}_2)$ are weakly sequentially independent.
 	\end{enumerate}
 	
-\end{lemma}
+      \end{lemma}
+\rem{appendix}{
 \begin{proof}  As a preliminary step, we are going to use \Cref{def:filler,def:switch} to get some diagrams.  First of all, let $(v,v')$ be the filler between $\dder{D}_0$ and $\dder{D}_1$ associated to $(i_0, i_1)$, then we have
 	\[\xymatrix{&&R_0 \ar@/_1cm/[ddrr]_(.35){i_0}|(.7)\hole \ar[dr]^{h_0}&& L_1\ar@/^1cm/[ddll]^(.35){i_1}  \ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar[dl]_{l_0} \ar@/_.8cm/[ddrr]|(.36)\hole^(.65){v}\ar[ur]^{r_0}&& G_1 && K_1 \ar@/^.8cm/[ddll]|(.36)\hole_(.65){v'}\ar[dl]_{k_1}\ar[lu]_{l_1} \ar[dr]^{r_1}\\L_0 \ar@/_.8cm/[ddrr]_(.2){j_0}|(.31)\hole|(.81)\hole \ar[dr]^(.4){m_0}|(.61)\hole && D_0 \ar[dl]|(.4)\hole_(.65){f_0}\ar[ur]|(.5)\hole^(.7){g_0}&&D_1 \ar[dr]|(.4)\hole^(.65){g_1} \ar[ul]|(.5)\hole_(.65){f_1}&&R_1\ar@/^.8cm/[ddll]^(.2){j_1}|(.31)\hole|(.81)\hole\ar[dl]_{h_1}|(.6)\hole\\&G_0 &&P_1\ar[dr]_{q_1} \ar[dl]^{q_0}\ar[ur]^(.4){p_1}\ar[ul]_(.4){p_0}&&G_2\\L_1 \ar@/^.8cm/[uurr]^(.2){i_1} \ar[ur]_(.35){f_0\circ i_1}|(.61)\hole&&Q_0 \ar[ul]|(.4)\hole_(.65){s_0}\ar[dr]|(.5)\hole^(.65){t_0} &&Q_1\ar[ur]|(.4)\hole^(.65){t_1} \ar[dl]|(.5)\hole_(.65){s_1} && R_0  \ar[ul]^(.35){g_1\circ i_0}|(.61)\hole\ar@/_.8cm/[uull]_(.2){i_0}\\&K_1 \ar[ur]_{q_0\circ v'} \ar[dr]_{r_1} \ar[ul]^{l_1}\ar@/^.8cm/[uurr]_(.65){v'}&&H'_1&& K_0 \ar[ur]_{r_0} \ar[ul]^{q_1\circ v} \ar[dl]^{l_0} \ar@/_.8cm/[uull]^(.65){v}\\&& R_1 \ar[ur]_{\hspace{-5pt}s_1\circ j_1}\ar@/^1cm/[uurr]^(.25){j_1}&& L_0 \ar[ul]^{t_0\circ j_0\hspace{-5pt}} \ar@/_1cm/[uull]_(.25){j_0} |(.69)\hole }\]
 	
@@ -2040,7 +2282,7 @@ As a beginning step in our analysis of switch equivalence, we will establish thr
 		\qedhere 
 	\end{enumerate}
 \end{proof}
-
+}
 
 \subsection{Switch equivalence}
 \todo{intro}
@@ -2080,6 +2322,7 @@ Our next step is to relate derivations which are equal ``up to switching''.
 	\todo{il punto due sopra Ã¨ necessario}
 \end{example}
 
+\rem{eliminare}{
 We can now prove some properties of switch equivalence.
 \begin{lemma}\todo{Def. 3 della bozza di Andrea }Let $(\X, \R)$ be a left-linear DPO rewriting system. Then the following hold true: 
 	\begin{enumerate}
@@ -2180,10 +2423,12 @@ If every $\nu_i$ is an inversion for $\sigma$, then there exists a family $\{\nu
 \begin{proof}
 	contenuto...
 \end{proof}
+}
 \newpage
 
 
-NOTES ON THE FUNDAMENTAL LEMMA WE NEED
+\rem{appendice}{
+  NOTES ON THE FUNDAMENTAL LEMMA WE NEED
 
 Everything is very tame, so that sequential independence coincides with switchability and we do not have ambiguity in the choice of an independence pair
 
@@ -2282,7 +2527,7 @@ USO IL PRIMO LEMMA DEI TRE PASSI:
 
 
 
-
+}
 
 
 \newpage 
