@@ -611,15 +611,15 @@ Among rewriting-based formalisms, those manipulating graph-like structures
 proved useful in many settings for representing the dynamics of systems: the 
 graph serves to represent the entities and their relations within states, while 
 rewriting steps, modifying the graph, model computation steps that results 
-in changes to the system state. The DPO (double-pushout) approach~\cite{xxx} is
-nowadays considered the standard one for these structures, thanks to its localality 
-(rule application has a local effect on a state, differently e.g. from the SPO and SqPO 
-approaches~\cite{xxx,xxx}) and most importantly to its flexibility: the rules allow to 
+in changes to the system state. The DPO (double-pushout) approach~\cite{CMREHL:AAGT} 
+is nowadays considered the standard one for these structures, thanks to its locality 
+(rule application has a local effect on a state, differently e.g. from the SqPO 
+approach~\cite{CorradiniHHK06}) and most importantly to its flexibility: the rules allow to 
 specify that,  in a rewriting step, some entities in the current state are removed, 
 some others are needed for the rewriting step to occur but remain unaltered and 
 some new entities can be generated. Concerning concurrency, the chosen notion 
 is shift equivalence, and independence is formally captured by the so-called 
-Church-Rosser theorem of DPO rewriting~\cite{CMREHL:AAGT}.
+Church-Rosser theorem of DPO rewriting~\cite[xxx]{CMREHL:AAGT}.
 
 A noteworthy advantage is that DPO rewriting can be formulated over
 adhesive categories and their variants~\cite{lack2005adhesive,ehrig2006weak}. 
