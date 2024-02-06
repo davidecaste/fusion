@@ -762,23 +762,11 @@ The key property that $\mathcal{M}$-adhesive categories enjoy is given by  the s
 	\begin{itemize}
 		\parbox{11cm}{\item 
 		\emph{stable under pushouts (pullbacks)} if for every pushout (pullbacks) square as the one on the right, 	if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
-			\item \emph{closed under composition} if $g, f\in \mathcal{A}$ implies $g\circ f\in \mathcal{A}$ whenever $g$ and $f$ are composable; }\hfill
+			\item \emph{closed under composition} if $g, f\in \mathcal{A}$ implies $g\circ f\in \mathcal{A}$ whenever $g$ and $f$ are composable.}\hfill
 		\parbox{2cm}{$\xymatrix{A\ar[r]^f  \ar[d]_{m}& B \ar[d]^n \\ C \ar[r]_g & D}$}
 		\parbox{11cm}{}\hfill 
-	
-	
-	
-		\item \emph{closed under decomposition} if $g\circ f, g\in \mathcal{A}$ implies $f\in \mathcal{A}$.
 	\end{itemize}
 \end{definition}
-
-\rem{rimuoverei}{
-\begin{remark}
-  In the previous definition, ``decomposition'' corresponds to
-  ``left cancellation'', but we prefer to stick to the name commonly
-  used in literature (see e.g.~\cite{habel2012mathcal}).
-\end{remark}
-}
 
 So equipped, we can introduce the notion of \emph{$\mathcal{A}$-Van Kampen square}.
 
@@ -851,51 +839,10 @@ We will use $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs t
 \end{example}
 
 
-\rem{Qui l'idea \`e mostrare che valgono per $\mathcal{M}$ le naturali generalizzazioni delle propriet\`a delle adesive. Credo si possa dirle in prosa e metterle in appendice.}{%
-A first result we can prove regards closure under decomposition of $\mathcal{M}$.
-
-\begin{theoremEnd}[category=sec2]{proposition}\label{prop:deco}Let  $\mathcal{A}$ be a class of arrows stable under pullbacks. For every arrow $f\colon X\to Y$ and monomorphism $m\colon Y\to Z$, if $m\circ f \in\mathcal{A}$ then $f\in \mathcal{A}$.
-\end{theoremEnd}
-\begin{proof}\begin{proofEnd}
-	Take the diagram
-	\[\xymatrix{X \ar[d]_{\id{X}}\ar[r]^{f}& Y \ar[r]^{\id{Y}}  \ar[d]_{\id{Y}}& Y \ar[d]^{m}\\
-		X \ar[r]_{f}& Y \ar[r]_{m} & Z}\]
-	Since $m$ is mono the right square is a pullback, while the left square is a pullback by construction. By \Cref{lem:pb1} the whole rectangle is a pullback and the thesis follows.
-	\end{proofEnd}
-\end{proof}
-\begin{corollary}
-  \label{cor:deco}
-  In every $\mathcal{M}$-adhesive category $\X$, the class $\mathcal{M}$ is closed under decomposition.
-\end{corollary}
-
-Another result which can be immediately established, with the aid of \Cref{prop:pbpo}, is the following one.
-
-\begin{proposition}
-  \label{prop:pbpoad}
-  Let $\X$ be an $\mathcal{M}$-adhesive category. Then
-  $\mathcal{M}$-pushouts are pullbacks.
-\end{proposition}
-
-From \Cref{prop:pbpoad}, in turn, we can derive the following corollaries.
-\begin{theoremEnd}[category=sec2]{corollary}\label{cor:rego}
-	In a $\mathcal{M}$-adhesive category $\X$, every $m\in\mathcal{M}$ is a regular mono.
-\end{theoremEnd}
-\begin{proof}\begin{proofEnd}
-    Let $m$ be an element of $\mathcal{M}$ and consider its pushout along itself.
-    \[\xymatrix{X\ar@{>->}[r]^m \ar@{>->}[d]_m& Y\ar@{>->}[d]^{f}\\Y \ar@{>->}[r]_g & Z}\]
-    By \Cref{prop:pbpoad} this square is a pullback, proving that $m$ is the equalizer of the arrows $f,g\colon Y\rightrightarrows Z$. 
-  \end{proofEnd} 
-\end{proof}
-
-The following result now follows at once noticing that a regular monomorphism which is also epic is automatically an isomorphism.
-
-\begin{corollary}\label{prop:bal}
-If $\X$ is an $\mathcal{M}$-adhesive categories, then every epimorphisms in $\mathcal{M}$ is an isomorphisms. In particular, every adhesive category $\X$ is \emph{balanced}: if a morphism is monic and epic, then it is an isomorphism.
-\end{corollary}
-}
 
 
 \todo{P: qui probabilmente si puo' compattare tenendo solo cio' che si usa}
+\todo{Si usa tutto per la classe B+ [DC]}
 $\mathcal{M}$-adhesivity is well-behaved with respect to  the comma construction \cite{mac2013categories}, as shown by the following theorem.
 \begin{theorem}[\cite{ehrig2006fundamentals,lack2005adhesive}]\label{lem:comma}
 	Let $\A$ and $\B$ be respectively an $\mathcal{M}$-adhesive and an $\mathcal{M}'$-adhesive category. Let also $L:\A\rightarrow \C$ be a functor that preserves $\mathcal{M}$-pushouts, and  $R:\B\rightarrow \C$ be a functor which preserves pullbacks.Then $\comma{L}{R}$ is $\cma{M}{M'}$-adhesive, where 
@@ -934,101 +881,8 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see \cite{cas
 \begin{example}\todo{term graph}
 \end{example}
 
-\rem{Questo penso tutto in appendice, eventualmente tenendo la decomposition o richiamandola quando si parla di switch}{%
-We end this section recalling two properties of $\mathcal{M}$-adhesive categories:  $\mathcal{M}$-pushout-pullback decomposition and uniqueness of pushouts complements.
+We will prove in \Cref{app:ade} two key properties of $\mathcal{M}$-adhesive categories,  $\mathcal{M}$-pushout-pullback decomposition and uniqueness of pushouts complements, which will be used in this paper.
 
-
-\begin{theoremEnd}[category=sec2]{lemma}[$\mathcal{M}$-pushout-pullback decomposition]\label{lem:popb} Let $\X$ be an $\mathcal{M}$-adhesive category  and suppose that, in the diagram below, the whole rectangle is a pushout and the right square a pullback.
-\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
-	Then the following statements hold true:
-	\begin{enumerate}
-\item if $a$ belongs to $\mathcal{M}$ and $k$ is a monomorphism,  then both squares are pushouts and pullbacks;
-\item if $f$ and $k $ are in  $\mathcal{M}$, then both squares are pushouts and pullbacks.
-	\end{enumerate}
-\end{theoremEnd}
-\begin{proof}\begin{proofEnd}
-		\begin{enumerate}
-			\item By \Cref{prop:stab}, it follows that both squares are pushouts, thus the thesis follows from \Cref{prop:pbpoad}.
-			\item By hypothesis, $g$ is the pullback of an arrow in $\mathcal{M}$, thus it belongs to it. But then $g\circ f\in \mathcal{M}$ too  and the whole rectangle is a $\mathcal{M}$-pushout. Therefore, by \Cref{prop:pbpoad} a pullback, so that its left half is a pullback too, by \Cref{prop:pbpo}. Moreover $k\circ h$ is in $\mathcal{M}$ as the pushout of $g\circ f$ and, by \Cref{cor:deco}, we also know that $h\in \mathcal{M}$.  
-			
-			Using \Cref{lem:po1}, it is enough to show that the left half of the original rectangle is a pushout. We can build the following cube:
-			\[\xymatrix@C=20pt@R=10pt{ & &X\ar@{>->}[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar@{>->}[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar@{>->}[ddd]_{g} \ar[rrr]^{b}&&& B\ar@{>->}[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar@{>->}[dl]_{f}&&& A \ar@{>->}[dl]^{h}\\ & Y \ar[rrr]|(.67)\hole^{b} \ar@{>->}[dl]_{g}&&& B \ar@{>->}[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
-			Its vertical faces are all pullbacks and all the vertical arrows are in $\mathcal{M}$, hence the top face is a pushout and we can conclude. \qedhere 
-		\end{enumerate}
-	\end{proofEnd}
-\end{proof}
-
-
-
-Let us turn our attention to pushout complements.
-
-\noindent 
-\parbox{11.7cm}{
-\begin{definition}[Pushout complement]
-Let $f\colon X\to Y$ and $g\colon Y\to Z$ be two composable arrows in a category $\X$. A \emph{pushout complement} for the pair $(f,g)$ is a pair $(h,k)$ with $h\colon X\to W$ and $k\colon W\to Z$ such that the square below commutes and it is a pushout.
-\end{definition}} \quad 
-\parbox{4cm}{\vspace{-.15cm}
-	$\xymatrix{X \ar[r]^{f} \ar[d]_{h}& Y \ar[d]^{g} \\ W \ar[r]_{k}& Z}$}
-
-\iffalse 
-\begin{example}
-	In a generic category $\X$, pushout complements may not exist: in $\Set$ the arrows $?_{2}\colon \emptyset \to 2$ and $!_2\colon 2\to 1$ do not have a pushout complement.
-	
-	Moreover, composable arrows $f\colon X\to Y$ and $g\colon Y\to Z$ may have  pushout complements which are non-isomorphic: for instance, in $\Set$ the two squares below are both pushouts.
-	
-	\[\xymatrix{2 \ar[r]^{!_2} \ar[d]_{\id{2}}& 1 \ar[d]^{\id{1}} & 2 \ar[r]^{!_2} \ar[d]_{!_2}& 1 \ar[d]^{\id{1}}\\ 2 \ar[r]_{!_2}& 1 & 1 \ar[r]_{\id{1}}& 1}\]
-\end{example}
-\fi 
-
-Working in an $\mathcal{M}$-adhesive category we can amend the second defect. 
-
-\noindent
-\parbox{9cm}{
-\begin{theoremEnd}[category=sec2]{lemma}\label{lem:radj}
-Let $f\colon X \to Y$ be an arrow in an $\mathcal{M}$-adhesive category $\X$ and suppose that the left square aside is a pushout while the  right one is a pullback, with $ m\colon M \rightarrowtail X$ and $n\colon N \rightarrowtail Y$ in $\mathcal{M}$.
-Then $n\leq k$ if and only if $p_2\leq m$.
-\end{theoremEnd}}
-\parbox{3cm}{\vspace{-0ex}
-	$\xymatrix{M \ar@{>->}[d]_{m}\ar[r]^{h}& Q \ar@{>->}[d]^{k} & P \ar[r]^{p_1} \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\X\ar[r]_{f}&Y &X \ar[r]_f&Y}$}
-
-\begin{proof} 
-\begin{proofEnd}  
-	We start pulling back $n$ along $k$ and then pulling back the resulting arrow along $h$, getting the following two pullbacks square:
-\[\xymatrix{B \ar@{>->}[d]_{b}\ar@{>->}[r]^{s}& N \ar@{>->}[d]^{n} & A \ar[r]^{r} \ar@{>->}[d]_{a}& B \ar@{>->}[d]^{b}\\Q\ar@{>->}[r]_{k}&Y &M \ar[r]_h&Q\\}\]
-Notice that 
-\[
-f\circ m\circ a=k\circ h\circ a=k\circ b\circ r=n\circ s\circ r\]
-
-	Thus there exists a unique $t\colon A\to P$ as in the diagram
-\[\xymatrix{A \ar@{>->}[d]_{a} \ar@{.>}[dr]^{t}\ar[r]^{r} &B \ar@{>->}@/^.2cm/[dr]^{s} \\ M \ar@{>->}@/_.2cm/[dr]_{m}&P\ar[r]^{p_1}  \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\ &X \ar[r]_{f} & Y}\]
-	We can then consider the cube below, in which the front, right and back faces are pullbacks.
-		\[\xymatrix@C=15pt@R=15pt{&A\ar@{>->}[dd]|\hole_(.65){a}\ar[rr]^{r} \ar[dl]_{t} && B \ar@{>->}[dd]^{b} \ar[dl]_{s} \\ P  \ar@{>->}[dd]_{p_2}\ar[rr]^(.7){p_1} & & N \ar@{>->}[dd]_(.3){n}\\&M\ar[rr]|\hole^(.65){h} \ar@{>->}[dl]^{m} && Q \ar@{>->}[dl]^{k} \\X \ar[rr]_{f} & & Y}\]
-	We can notice that the left square is a pullback too. To see this it is enough to apply \Cref{lem:pb1} to the diagram
-	\[\xymatrix{A  \ar@/^.4cm/[rr]^{s\circ r}\ar@{>->}[d]_{a} \ar[r]_{t}& \ar[r]_{p_1} P \ar@{>->}[d]^{p_2}& N \ar[d]^{c}\\ M \ar@/_.4cm/[rr]_{k\circ h}\ar@{>->}[r]^{m}& X \ar[r]^{f}& Y}\]
-
-	The thesis now follows immediately from \Cref{lem:varie}. \qedhere 
-\end{proofEnd}
-\end{proof}
-
-\noindent
-\parbox{10cm}{ 
-\begin{theoremEnd}[category=sec2]{corollary}[Uniqueness of pushouts complements]\label{lem:pocomp} 
-Let $\X$ be a $\mathcal{M}$-adhesive category. Given $m\colon X\mto Y$ in $\mathcal{M}$ and $f\colon Y\to Z$, let $(h_1, k_1)$ and $(h_2, k_2)$ be the pushout complements of $m$  and $f$ depicted aside. Then there exists a unique isomorphism $\phi\colon W_1\to W_2$ making the diagram on the right commutative.
-\end{theoremEnd}}
-\parbox{3cm}{$\xymatrix{&X \ar@{>->}[r]^{m} \ar[d]_{h_1} \ar@/_.3cm/[dl]_{h_2}& Y \ar[d]^{f} \\ W_2 \ar@{>->}@/_.4cm/[rr]_{k_2} &W_1 \ar@{.>}[l]_{\phi} \ar@{>->}[r]^{k_1} & Z }$}
-
-\begin{proof}\begin{proofEnd}
-	Consider the two pushout squares
-	\[\xymatrix{M \ar[r]^{h_1}\ar@{>->}[d]_{m}& W_1 \ar@{>->}[d]^{k_1} & M \ar@{>->}[d]_{m} \ar[r]^{h_1}& W_2 \ar@{>->}[d]^{k_2}\\Y\ar[r]_{f}&Z &Y \ar[r]_{f}&Z}\]
-	Since $\mathcal{M}$ is in $\mathcal{M}$, \cref{prop:pbpoad} guarantees that they are both pullbacks.
-	Since $m\leq m$, by \Cref{lem:radj} we get that now entails that $k_1\leq k_2$ and $k_2\leq k_1$. Thus there exists an isomorphism $\phi\colon W_1\to W_2$ such that $k_1=k_2\circ \phi$. To see that $h_2=\phi\circ h_1$, we can compute:
-	\[
-	k_2\circ \phi \circ h_1  = k_1\circ h_1= n\circ m= k_2\circ h_2\]
-	
-	The claim now follows since $k_2$ is a monomorphism.
-	\end{proofEnd} 
-\end{proof}
-}
 \subsection{DPO rewriting systems derivations}
 $\mathcal{M}$-adhesive categories are the right context in which to perform abstract rewriting using the so-called ``douple pushout approach'' (DPO). We will recall the basic definitions and properties of this approach to abstract rewriting. 
 
@@ -2065,6 +1919,7 @@ So equipped, we can now prove a version of the Local Church-Rosser Theorem for g
 
 \todo[inline]{Forse non introdurrei neppure la classe dei tame, tanto usiamo solo i very tame, o no?}
 
+\todo[inline]{Io invece la introdurrei proprio come punto teorico che mi sembra parecchio importante: qua li condizioni mi garantiscono che gli independence pair implicano la scambiabilità? [DC]}
 
 The correspondence between sequential indepedencee and switchability
 is fundamental.  A very large class of DPO rewriting systems - in the
@@ -2618,9 +2473,216 @@ USO IL PRIMO LEMMA DEI TRE PASSI:
 
 
 \appendix
+\section{Properties of $\mathcal{M}$-adhesive categories}\label{app:ade}
+\subsection{Some results on $\mathcal{A}$-stable and $\mathcal{A}$-Van Kampen squares}
+We will start proving some general results regarding $\mathcal{A}$-Van Kampen and $\mathcal{A}$-stable squares, which, wll be used in the proof of the results of \Cref{sec:ade}. Let us begin recalling some classical results about  about pullbacks and pushouts
+
+\begin{lemma}\label{lem:popb1} \label{lem:pb1}
+	Let $\X$ be a category, and consider the following diagram 	in which the right square is a pullback.
+	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
+	Then the whole rectangle is a pullback if and only if the left square is one.
+\end{lemma}
+
+\begin{lemma}\label{lem:po1}
+	Let $\X$ be a category, and consider the following diagram 	in which the left square is a pushout.
+	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
+	Then the whole rectangle is a pushout if and only if the right square is one.
+\end{lemma}
 
 
-\section{A large class of tame rewriting systems}\label{app:fill}
+The following proposition establishes a key property of $\mathcal{A}$-Van Kampen squares with a mono as a side: they are not only pushouts, but also pullbacks.
+
+\begin{proposition}\label{prop:pbpo} Let $\mathcal{A}$ be a class of arrows stable under pushouts and containing all the isomorphisms.  If $m\colon A\to C$ is mono and belongs to $\mathcal{A}$, then every $\mathcal{A}$-Van Kampen square
+	\[\xymatrix{A\ar[r]^{g} \ar[d]_{m} & B \ar[d]^{n} \\ C \ar[r]_{f}  & D}\]
+	is also a pullback square and $n$ is a monomorphism.
+\end{proposition}
+
+\begin{proof}
+	We can start considering the cube below and noticing that $n$, being the pushout of $m\in \mathcal{M}$, belongs to $\mathcal{A}$ too.
+	\[\xymatrix@C=13pt@R=13pt{&A\ar[dd]|\hole_(.65){\id{A}}\ar[rr]^{g} \ar[dl]_{\id{A}} && B \ar[dd]^{\id{B}} \ar[dl]_{\id{B}} \\ A  \ar[dd]_{m}\ar[rr]^(.65){g} & & B \ar[dd]_(.3){n}\\&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{f} & & D}\]
+	By construction the top face of the cube is a pushout and the back one a pullback. The left face is a pullback because $m$ is mono. Thus the $\mathcal{A}$-Van Kampen property yields that the front and the right faces are pullbacks. 
+\end{proof}
+
+The previous proposition, now, allows us to establish the following result.
+\begin{lemma}\label{lem:varie}Let $\mathcal{A}$ be a class of arrows stable under pullbacks, pushouts and containing all isomorphisms.  Suppose that, the left square below is $\mathcal{A}$-Van Kampen, while the vertical faces in the right cube are pullbacks.
+	\[\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{g'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{g}&&B\ar[dd]^{n}&&C'  \ar[dd]_{c}\ar[rr]^(.7){f'} & & D' \ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{f} &&D&&C \ar[rr]_{f} & & D}\]
+	Supppose, moreover that $m\colon A\to C$ and $d\colon D'\to D$ are mono and that $d$ belongs to $\mathcal{A}$. Then $d\leq n$ if and only if $c \leq m$.
+\end{lemma}
+
+
+\begin{remark}
+	Recall that, given two monos $m:M\to X$ and $n:N\to X$ with the same codomain, $m\leq n$ means that there exists a, necessarily unique and necessarily mono, $k:M\to N$ fitting in the triangle below:
+	\[\xymatrix{M\ar[rr]^{k}  \ar[dr]_{m}&& N \ar[dl]^{n}\\ & X}\]
+	Notice, moreover, that  if $m\leq n$ and $n\leq m$, then the arrow $k:M\to N$ is an isomorphism.  
+\end{remark}
+
+\begin{remark}
+	Notice that, since $d$ is a mono and the vertical faces are pullbacks, then $a, b$ and $c$ are monomorphisms too. Moreover, $n$ is mono by \Cref{prop:pbpo}, so that even $m'$ and $n'$ are monos.
+\end{remark}
+
+\begin{proof}		
+	$(\Rightarrow)$ By hypothesis there exists $k:D'\to B$ such that $n\circ k = d$. By \Cref{prop:pbpo}, the bottom face of the cube is a pullback. Thus there exists a unique $h:C'\to A$ as in the diagram below, implying the thesis.
+	\[\xymatrix@C=40pt{C'  \ar[d]^{h}\ar[r]^{f'} \ar@/_.5cm/[dd]_{c}& D' \ar@/^.5cm/[dd]^{d}\ar[d]_{k}\\ A \ar[d]^{m} \ar[r]^{g} & B \ar[d]_{n} \\  C \ar[r]_f & D}\]
+	
+	\smallskip \noindent 
+	$(\Leftarrow)$ Let $h:C\to A$ be such that $c=m\circ h$. By the $\mathcal{A}$-Van Kampen property the top face of the given cube is a pushout. Thus the dotted $k:D'\to B$ in the following diagram exists.
+	\[\xymatrix@C=40pt{A' \ar@/_.5cm/[dd]_{a} \ar[d]^{m'} \ar[r]^{g'} & B' \ar[d]_{n'} \ar@/^.5cm/[dd]^{b} \\  C' \ar[d]^{h} \ar[r]_{f'} & D' \ar@{.>}[d]_{k}\\ A \ar[r]_g& B }\]
+	Moreover, by construction we have
+	\begin{align*}
+		n\circ k \circ n'&= n\circ b=d\circ n'\\
+		n\circ k \circ f' &= n\circ g\circ h=f\circ m\circ h=f\circ c= d\circ f' 
+	\end{align*}
+	We can therefore conclude that $n\circ k =d$.
+\end{proof}
+
+Finally, we can show that $\mathcal{A}$-stable pushouts enjoy a kind of \emph{pullback-pushout decomposition} property.
+
+\begin{proposition}\label{prop:stab}Let $\X$ be a category and $\mathcal{A}$ a class of arrows stable under pullbacks. Suppose that, in the diagram below, the whole rectangle is an $\mathcal{A}$-stable pushout and the right square a pullback.
+	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
+	If the arrow $k$ is in $\mathcal{A}$ and it is a monomorphism,  then both squares are pushouts.
+\end{proposition}
+
+\begin{proof}
+	We can begin noticing that $g$, being the pullback of $k$, is mono and in $\mathcal{A}$ too. Thus we can build the cube below, in which all the vertical faces are pullbacks, entailing that all the vertical arrows are in $\mathcal{A}$.
+	\[\xymatrix@C=20pt@R=10pt{ & &X\ar[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar[ddd]_{g} \ar[rrr]^{b}&&& B\ar[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar[dl]_{f}&&& A \ar[dl]^{h}\\ & Y  \ar[dl]_{g}&&& B \ar[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
+	By hypothesis the face is an $\mathcal{A}$-stable pushout and so its top one is a pushout. Using \Cref{lem:po1} we can conclude that the right half of the rectangle with which we have started is a pushout too.
+\end{proof}
+
+\subsection{Useful properties of $\mathcal{M}$-adhesive categories}
+
+We can begin with an observation about decompo
+
+\begin{theoremEnd}[category=sec2]{proposition}\label{prop:deco}Let  $\mathcal{A}$ be a class of arrows stable under pullbacks. For every arrow $f\colon X\to Y$ and monomorphism $m\colon Y\to Z$, if $m\circ f \in\mathcal{A}$ then $f\in \mathcal{A}$.
+\end{theoremEnd}
+\begin{proof}\begin{proofEnd}
+		Take the diagram
+		\[\xymatrix{X \ar[d]_{\id{X}}\ar[r]^{f}& Y \ar[r]^{\id{Y}}  \ar[d]_{\id{Y}}& Y \ar[d]^{m}\\
+			X \ar[r]_{f}& Y \ar[r]_{m} & Z}\]
+		Since $m$ is mono the right square is a pullback, while the left square is a pullback by construction. By \Cref{lem:pb1} the whole rectangle is a pullback and the thesis follows.
+	\end{proofEnd}
+\end{proof}
+\begin{corollary}
+	\label{cor:deco}
+	In every $\mathcal{M}$-adhesive category $\X$, the class $\mathcal{M}$ is closed under decomposition.
+\end{corollary}
+
+Another result which can be immediately established, with the aid of \Cref{prop:pbpo}, is the following one.
+
+\begin{proposition}
+	\label{prop:pbpoad}
+	Let $\X$ be an $\mathcal{M}$-adhesive category. Then
+	$\mathcal{M}$-pushouts are pullbacks.
+\end{proposition}
+
+From \Cref{prop:pbpoad}, in turn, we can derive the following corollaries.
+\begin{theoremEnd}[category=sec2]{corollary}\label{cor:rego}
+	In a $\mathcal{M}$-adhesive category $\X$, every $m\in\mathcal{M}$ is a regular mono.
+\end{theoremEnd}
+\begin{proof}\begin{proofEnd}
+		Let $m$ be an element of $\mathcal{M}$ and consider its pushout along itself.
+		\[\xymatrix{X\ar@{>->}[r]^m \ar@{>->}[d]_m& Y\ar@{>->}[d]^{f}\\Y \ar@{>->}[r]_g & Z}\]
+		By \Cref{prop:pbpoad} this square is a pullback, proving that $m$ is the equalizer of the arrows $f,g\colon Y\rightrightarrows Z$. 
+	\end{proofEnd} 
+\end{proof}
+
+The following result now follows at once noticing that a regular monomorphism which is also epic is automatically an isomorphism.
+
+\begin{corollary}\label{prop:bal}
+	If $\X$ is an $\mathcal{M}$-adhesive categories, then every epimorphisms in $\mathcal{M}$ is an isomorphisms. In particular, every adhesive category $\X$ is \emph{balanced}: if a morphism is monic and epic, then it is an isomorphism.
+\end{corollary}
+
+\begin{lemma}[$\mathcal{M}$-pushout-pullback decomposition]\label{lem:popb} Let $\X$ be an $\mathcal{M}$-adhesive category  and suppose that, in the diagram below, the whole rectangle is a pushout and the right square a pullback.
+	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
+	Then the following statements hold true:
+	\begin{enumerate}
+		\item if $a$ belongs to $\mathcal{M}$ and $k$ is a monomorphism,  then both squares are pushouts and pullbacks;
+		\item if $f$ and $k $ are in  $\mathcal{M}$, then both squares are pushouts and pullbacks.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}		\begin{enumerate}
+			\item By \Cref{prop:stab}, it follows that both squares are pushouts, thus the thesis follows from \Cref{prop:pbpoad}.
+			\item By hypothesis, $g$ is the pullback of an arrow in $\mathcal{M}$, thus it belongs to it. But then $g\circ f\in \mathcal{M}$ too  and the whole rectangle is a $\mathcal{M}$-pushout. Therefore, by \Cref{prop:pbpoad} a pullback, so that its left half is a pullback too, by \Cref{prop:pbpo}. Moreover $k\circ h$ is in $\mathcal{M}$ as the pushout of $g\circ f$ and, by \Cref{cor:deco}, we also know that $h\in \mathcal{M}$.  
+			
+			Using \Cref{lem:po1}, it is enough to show that the left half of the original rectangle is a pushout. We can build the following cube:
+			\[\xymatrix@C=20pt@R=10pt{ & &X\ar@{>->}[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar@{>->}[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar@{>->}[ddd]_{g} \ar[rrr]^{b}&&& B\ar@{>->}[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar@{>->}[dl]_{f}&&& A \ar@{>->}[dl]^{h}\\ & Y \ar[rrr]|(.67)\hole^{b} \ar@{>->}[dl]_{g}&&& B \ar@{>->}[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
+			Its vertical faces are all pullbacks and all the vertical arrows are in $\mathcal{M}$, hence the top face is a pushout and we can conclude. \qedhere 
+		\end{enumerate}
+\end{proof}
+
+
+
+Let us turn our attention to pushout complements.
+
+\noindent 
+\parbox{11.7cm}{
+	\begin{definition}[Pushout complement]
+		Let $f\colon X\to Y$ and $g\colon Y\to Z$ be two composable arrows in a category $\X$. A \emph{pushout complement} for the pair $(f,g)$ is a pair $(h,k)$ with $h\colon X\to W$ and $k\colon W\to Z$ such that the square below commutes and it is a pushout.
+\end{definition}} \quad 
+\parbox{4cm}{\vspace{-.15cm}
+	$\xymatrix{X \ar[r]^{f} \ar[d]_{h}& Y \ar[d]^{g} \\ W \ar[r]_{k}& Z}$}
+
+\iffalse 
+\begin{example}
+	In a generic category $\X$, pushout complements may not exist: in $\Set$ the arrows $?_{2}\colon \emptyset \to 2$ and $!_2\colon 2\to 1$ do not have a pushout complement.
+	
+	Moreover, composable arrows $f\colon X\to Y$ and $g\colon Y\to Z$ may have  pushout complements which are non-isomorphic: for instance, in $\Set$ the two squares below are both pushouts.
+	
+	\[\xymatrix{2 \ar[r]^{!_2} \ar[d]_{\id{2}}& 1 \ar[d]^{\id{1}} & 2 \ar[r]^{!_2} \ar[d]_{!_2}& 1 \ar[d]^{\id{1}}\\ 2 \ar[r]_{!_2}& 1 & 1 \ar[r]_{\id{1}}& 1}\]
+\end{example}
+\fi 
+
+Working in an $\mathcal{M}$-adhesive category we can amend the second defect. 
+
+\noindent
+\parbox{9cm}{
+	\begin{theoremEnd}[category=sec2]{lemma}\label{lem:radj}
+		Let $f\colon X \to Y$ be an arrow in an $\mathcal{M}$-adhesive category $\X$ and suppose that the left square aside is a pushout while the  right one is a pullback, with $ m\colon M \rightarrowtail X$ and $n\colon N \rightarrowtail Y$ in $\mathcal{M}$.
+		Then $n\leq k$ if and only if $p_2\leq m$.
+\end{theoremEnd}}
+\parbox{3cm}{\vspace{-0ex}
+	$\xymatrix{M \ar@{>->}[d]_{m}\ar[r]^{h}& Q \ar@{>->}[d]^{k} & P \ar[r]^{p_1} \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\X\ar[r]_{f}&Y &X \ar[r]_f&Y}$}
+
+\begin{proof} 
+	\begin{proofEnd}  
+		We start pulling back $n$ along $k$ and then pulling back the resulting arrow along $h$, getting the following two pullbacks square:
+		\[\xymatrix{B \ar@{>->}[d]_{b}\ar@{>->}[r]^{s}& N \ar@{>->}[d]^{n} & A \ar[r]^{r} \ar@{>->}[d]_{a}& B \ar@{>->}[d]^{b}\\Q\ar@{>->}[r]_{k}&Y &M \ar[r]_h&Q\\}\]
+		Notice that 
+		\[
+		f\circ m\circ a=k\circ h\circ a=k\circ b\circ r=n\circ s\circ r\]
+		
+		Thus there exists a unique $t\colon A\to P$ as in the diagram
+		\[\xymatrix{A \ar@{>->}[d]_{a} \ar@{.>}[dr]^{t}\ar[r]^{r} &B \ar@{>->}@/^.2cm/[dr]^{s} \\ M \ar@{>->}@/_.2cm/[dr]_{m}&P\ar[r]^{p_1}  \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\ &X \ar[r]_{f} & Y}\]
+		We can then consider the cube below, in which the front, right and back faces are pullbacks.
+		\[\xymatrix@C=15pt@R=15pt{&A\ar@{>->}[dd]|\hole_(.65){a}\ar[rr]^{r} \ar[dl]_{t} && B \ar@{>->}[dd]^{b} \ar[dl]_{s} \\ P  \ar@{>->}[dd]_{p_2}\ar[rr]^(.7){p_1} & & N \ar@{>->}[dd]_(.3){n}\\&M\ar[rr]|\hole^(.65){h} \ar@{>->}[dl]^{m} && Q \ar@{>->}[dl]^{k} \\X \ar[rr]_{f} & & Y}\]
+		We can notice that the left square is a pullback too. To see this it is enough to apply \Cref{lem:pb1} to the diagram
+		\[\xymatrix{A  \ar@/^.4cm/[rr]^{s\circ r}\ar@{>->}[d]_{a} \ar[r]_{t}& \ar[r]_{p_1} P \ar@{>->}[d]^{p_2}& N \ar[d]^{c}\\ M \ar@/_.4cm/[rr]_{k\circ h}\ar@{>->}[r]^{m}& X \ar[r]^{f}& Y}\]
+		
+		The thesis now follows immediately from \Cref{lem:varie}. \qedhere 
+	\end{proofEnd}
+\end{proof}
+
+\noindent
+\parbox{10cm}{ 
+	\begin{theoremEnd}[category=sec2]{corollary}[Uniqueness of pushouts complements]\label{lem:pocomp} 
+		Let $\X$ be a $\mathcal{M}$-adhesive category. Given $m\colon X\mto Y$ in $\mathcal{M}$ and $f\colon Y\to Z$, let $(h_1, k_1)$ and $(h_2, k_2)$ be the pushout complements of $m$  and $f$ depicted aside. Then there exists a unique isomorphism $\phi\colon W_1\to W_2$ making the diagram on the right commutative.
+\end{theoremEnd}}
+\parbox{3cm}{$\xymatrix{&X \ar@{>->}[r]^{m} \ar[d]_{h_1} \ar@/_.3cm/[dl]_{h_2}& Y \ar[d]^{f} \\ W_2 \ar@{>->}@/_.4cm/[rr]_{k_2} &W_1 \ar@{.>}[l]_{\phi} \ar@{>->}[r]^{k_1} & Z }$}
+
+\begin{proof}\begin{proofEnd}
+		Consider the two pushout squares
+		\[\xymatrix{M \ar[r]^{h_1}\ar@{>->}[d]_{m}& W_1 \ar@{>->}[d]^{k_1} & M \ar@{>->}[d]_{m} \ar[r]^{h_1}& W_2 \ar@{>->}[d]^{k_2}\\Y\ar[r]_{f}&Z &Y \ar[r]_{f}&Z}\]
+		Since $\mathcal{M}$ is in $\mathcal{M}$, \cref{prop:pbpoad} guarantees that they are both pullbacks.
+		Since $m\leq m$, by \Cref{lem:radj} we get that now entails that $k_1\leq k_2$ and $k_2\leq k_1$. Thus there exists an isomorphism $\phi\colon W_1\to W_2$ such that $k_1=k_2\circ \phi$. To see that $h_2=\phi\circ h_1$, we can compute:
+		\[
+		k_2\circ \phi \circ h_1  = k_1\circ h_1= n\circ m= k_2\circ h_2\]
+		
+		The claim now follows since $k_2$ is a monomorphism.
+	\end{proofEnd} 
+\end{proof}
+
+
+
+\section{$\mathcal{M}$-adhesivity is not enough}\label{app:fill}
  In \Cref{sec:ade} we introduced the notion of tame left-linear DPO rewriting system, a class that contains, for instance, all the linear rewriting systems. This result can be further refined: in a\cite{baldan2011adhesivity} a class  $\mathbb{B}$ of (quasi)adhesive category is defined for which the local Church-Rosser Theorem holds for left-linear DPO rewriting system. In our language, this means that every left-linear DPO rewriting system based on a category in $\mathbb{B}$ is tame. This section is devoted to repropose, and slightly generalize, the results of \cite{baldan2011adhesivity} to our context.
 
 \begin{definition}Let $\mathcal{M}$ be a class of monos in a category $\X$, closed under composition, containing all isomorphisms and stable under pullbacks and pushouts. Suppose that a  diagram
@@ -2752,79 +2814,7 @@ Using \Cref{thm:good1} we finally get the main result of our appendix.
 \section{Omitted proofs}
 In this appendix we will provide the proofs of...
 
-\subsection{Some results on $\mathcal{A}$-stable and $\mathcal{A}$-Van Kampen squares}
-We will start proving some general results regarding $\mathcal{A}$-Van Kampen and $\mathcal{A}$-stable squares, which, wll be used in the proof of the results of \Cref{sec:ade}. Let us begin recalling some classical results about  about pullbacks and pushouts
 
-\begin{lemma}\label{lem:popb1} \label{lem:pb1}
-	Let $\X$ be a category, and consider the following diagram 	in which the right square is a pullback.
-	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
-	Then the whole rectangle is a pullback if and only if the left square is one.
-\end{lemma}
-
-\begin{lemma}\label{lem:po1}
-	Let $\X$ be a category, and consider the following diagram 	in which the left square is a pushout.
-	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
-	Then the whole rectangle is a pushout if and only if the right square is one.
-\end{lemma}
-
-
-The following proposition establishes a key property of $\mathcal{A}$-Van Kampen squares with a mono as a side: they are not only pushouts, but also pullbacks.
-
-\begin{proposition}\label{prop:pbpo} Let $\mathcal{A}$ be a class of arrows stable under pushouts and containing all the isomorphisms.  If $m\colon A\to C$ is mono and belongs to $\mathcal{A}$, then every $\mathcal{A}$-Van Kampen square
-	\[\xymatrix{A\ar[r]^{g} \ar[d]_{m} & B \ar[d]^{n} \\ C \ar[r]_{f}  & D}\]
-	is also a pullback square and $n$ is a monomorphism.
-\end{proposition}
-
-\begin{proof}
-	We can start considering the cube below and noticing that $n$, being the pushout of $m\in \mathcal{M}$, belongs to $\mathcal{A}$ too.
-	\[\xymatrix@C=13pt@R=13pt{&A\ar[dd]|\hole_(.65){\id{A}}\ar[rr]^{g} \ar[dl]_{\id{A}} && B \ar[dd]^{\id{B}} \ar[dl]_{\id{B}} \\ A  \ar[dd]_{m}\ar[rr]^(.65){g} & & B \ar[dd]_(.3){n}\\&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{f} & & D}\]
-	By construction the top face of the cube is a pushout and the back one a pullback. The left face is a pullback because $m$ is mono. Thus the $\mathcal{A}$-Van Kampen property yields that the front and the right faces are pullbacks. 
-\end{proof}
-
-The previous proposition, now, allows us to establish the following result.
-\begin{lemma}\label{lem:varie}Let $\mathcal{A}$ be a class of arrows stable under pullbacks, pushouts and containing all isomorphisms.  Suppose that, the left square below is $\mathcal{A}$-Van Kampen, while the vertical faces in the right cube are pullbacks.
-	\[\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{g'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{g}&&B\ar[dd]^{n}&&C'  \ar[dd]_{c}\ar[rr]^(.7){f'} & & D' \ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{f} &&D&&C \ar[rr]_{f} & & D}\]
-	Supppose, moreover that $m\colon A\to C$ and $d\colon D'\to D$ are mono and that $d$ belongs to $\mathcal{A}$. Then $d\leq n$ if and only if $c \leq m$.
-\end{lemma}
-
-
-\begin{remark}
-	Recall that, given two monos $m:M\to X$ and $n:N\to X$ with the same codomain, $m\leq n$ means that there exists a, necessarily unique and necessarily mono, $k:M\to N$ fitting in the triangle below:
-	\[\xymatrix{M\ar[rr]^{k}  \ar[dr]_{m}&& N \ar[dl]^{n}\\ & X}\]
-	Notice, moreover, that  if $m\leq n$ and $n\leq m$, then the arrow $k:M\to N$ is an isomorphism.  
-\end{remark}
-
-\begin{remark}
-	Notice that, since $d$ is a mono and the vertical faces are pullbacks, then $a, b$ and $c$ are monomorphisms too. Moreover, $n$ is mono by \Cref{prop:pbpo}, so that even $m'$ and $n'$ are monos.
-\end{remark}
-
-\begin{proof}		
-	$(\Rightarrow)$ By hypothesis there exists $k:D'\to B$ such that $n\circ k = d$. By \Cref{prop:pbpo}, the bottom face of the cube is a pullback. Thus there exists a unique $h:C'\to A$ as in the diagram below, implying the thesis.
-	\[\xymatrix@C=40pt{C'  \ar[d]^{h}\ar[r]^{f'} \ar@/_.5cm/[dd]_{c}& D' \ar@/^.5cm/[dd]^{d}\ar[d]_{k}\\ A \ar[d]^{m} \ar[r]^{g} & B \ar[d]_{n} \\  C \ar[r]_f & D}\]
-	
-	\smallskip \noindent 
-	$(\Leftarrow)$ Let $h:C\to A$ be such that $c=m\circ h$. By the $\mathcal{A}$-Van Kampen property the top face of the given cube is a pushout. Thus the dotted $k:D'\to B$ in the following diagram exists.
-	\[\xymatrix@C=40pt{A' \ar@/_.5cm/[dd]_{a} \ar[d]^{m'} \ar[r]^{g'} & B' \ar[d]_{n'} \ar@/^.5cm/[dd]^{b} \\  C' \ar[d]^{h} \ar[r]_{f'} & D' \ar@{.>}[d]_{k}\\ A \ar[r]_g& B }\]
-	Moreover, by construction we have
-	\begin{align*}
-		n\circ k \circ n'&= n\circ b=d\circ n'\\
-		n\circ k \circ f' &= n\circ g\circ h=f\circ m\circ h=f\circ c= d\circ f' 
-	\end{align*}
-	We can therefore conclude that $n\circ k =d$.
-\end{proof}
-
-Finally, we can show that $\mathcal{A}$-stable pushouts enjoy a kind of \emph{pullback-pushout decomposition} property.
-
-\begin{proposition}\label{prop:stab}Let $\X$ be a category and $\mathcal{A}$ a class of arrows stable under pullbacks. Suppose that, in the diagram below, the whole rectangle is an $\mathcal{A}$-stable pushout and the right square a pullback.
-	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
-	If the arrow $k$ is in $\mathcal{A}$ and it is a monomorphism,  then both squares are pushouts.
-\end{proposition}
-
-\begin{proof}
-	We can begin noticing that $g$, being the pullback of $k$, is mono and in $\mathcal{A}$ too. Thus we can build the cube below, in which all the vertical faces are pullbacks, entailing that all the vertical arrows are in $\mathcal{A}$.
-	\[\xymatrix@C=20pt@R=10pt{ & &X\ar[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar[ddd]_{g} \ar[rrr]^{b}&&& B\ar[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar[dl]_{f}&&& A \ar[dl]^{h}\\ & Y  \ar[dl]_{g}&&& B \ar[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
-	By hypothesis the face is an $\mathcal{A}$-stable pushout and so its top one is a pushout. Using \Cref{lem:po1} we can conclude that the right half of the rectangle with which we have started is a pushout too.
-\end{proof}
 
 \subsection{Proofs for \Cref{sec:ade}}
 
