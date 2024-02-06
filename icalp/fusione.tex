@@ -595,8 +595,8 @@ via a suitable equivalence. Intuitively, this equivalence
 captures when steps are causally unrelated and thus could be executed in any 
 order, and possibly concurrently. 
 %
-Two of the seminal contribution to this line of research have been
-Mazurkiewicz's traces~\cite{xxx} and Winskel's event structures~\cite{xxx}
+Two seminal contributions to this line of research have been
+Mazurkiewicz's traces~\cite{Mazurkiewicz86} and Winskel's event structures~\cite{NPW:PNES}
 %
 Concerning formalisms based on the rewriting paradigm, i.e. where the
 behaviour is dictated by a set of rules which have to be instantiated with
@@ -612,13 +612,14 @@ proved useful in many settings for representing the dynamics of systems: the
 graph serves to represent the entities and their relations within states, while 
 rewriting steps, modifying the graph, model computation steps that results 
 in changes to the system state. The DPO (double-pushout) approach~\cite{xxx} is
-nowadays considered the standard one for these structures, mostly thanks to its 
-flexibility: the rules allow to specify that, 
-in a rewriting step, some entities in the current state are removed, some others are 
-needed for the rewriting step to occur but remain unaltered and some new entities 
-can be generated. Concerning concurrency, the chosen notion is shift equivalence,
-and independence is formally captured by the so-called Church-Rosser 
-theorem of DPO rewriting~\cite{CMREHL:AAGT}.
+nowadays considered the standard one for these structures, thanks to its localality 
+(rule application has a local effect on a state, differently e.g. from the SPO and SqPO 
+approaches~\cite{xxx,xxx}) and most importantly to its flexibility: the rules allow to 
+specify that,  in a rewriting step, some entities in the current state are removed, 
+some others are needed for the rewriting step to occur but remain unaltered and 
+some new entities can be generated. Concerning concurrency, the chosen notion 
+is shift equivalence, and independence is formally captured by the so-called 
+Church-Rosser theorem of DPO rewriting~\cite{CMREHL:AAGT}.
 
 A noteworthy advantage is that DPO rewriting can be formulated over
 adhesive categories and their variants~\cite{lack2005adhesive,ehrig2006weak}. 
