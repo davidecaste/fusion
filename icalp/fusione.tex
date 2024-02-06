@@ -584,10 +584,69 @@ We show
 
 \section{Introduction}
 
-\todo{A VERY NICE INTRODUCTION}
+%\todo{A VERY NICE INTRODUCTION}
+%
+%SOME IDEAS (BADLY WRITTEN, JUST TO START TO PUT IDEAS IN ORDER)
 
-SOME IDEAS (BADLY WRITTEN, JUST TO START TO PUT IDEAS IN ORDER)
+One of the key pay-off of concurrency theory is the idea that the behaviour of 
+a computational device can be modelled by abstracting its sequences of steps
+%performed by the device 
+via a suitable equivalence. Intuitively, this equivalence 
+captures when steps are causally unrelated and thus could be executed in any 
+order, and possibly concurrently. 
+%
+Two of the seminal contribution to this line of research have been
+Mazurkiewicz's traces~\cite{xxx} and Winskel's event structures~\cite{xxx}
+%
+Concerning formalisms based on the rewriting paradigm, i.e. where the
+behaviour is dictated by a set of rules which have to be instantiated with
+the system at hand, concurrency often boils down to having a notion of 
+independence between two consecutive steps.
+%thus viewing a sequence of steps as a concurrent computation. 
+As noteworthy examples, we have 
+interchange law~\cite{Mes92} in term rewriting and permutation 
+equivalence~\cite{JJL80} in $\lambda$-calculi. 
 
+Among rewriting-based formalisms, those manipulating graph-like structures
+proved useful in many settings for representing the dynamics of systems: the 
+graph serves to represent the entities and their relations within states, while 
+rewriting steps, modifying the graph, model computation steps that results 
+in changes to the system state. The DPO (double-pushout) approach~\cite{xxx} is
+nowadays considered the standard one for these structures, mostly thanks to its 
+flexibility: the rules allow to specify that, 
+in a rewriting step, some entities in the current state are removed, some others are 
+needed for the rewriting step to occur but remain unaltered and some new entities 
+can be generated. Concerning concurrency, the chosen notion is shift equivalence,
+and independence is formally captured by the so-called Church-Rosser 
+theorem of DPO rewriting~\cite{CMREHL:AAGT}.
+
+A noteworthy advantage is that DPO rewriting can be formulated over
+adhesive categories and their variants~\cite{lack2005adhesive,ehrig2006weak}. 
+%
+Operating within the framework of adhesive categories allows one to devise 
+the foundations of a rewriting theory which can be subsequently instantiated 
+to the context of interest, thus avoiding the need of repeatedly proving
+similar ad-hoc results in for each specific setting. In fact, the framework is
+so general that it allowed to recast in the DPO approach many additional formalisms,
+ranging from xxx to string diagrams~\cite{bonchi2022string}.
+
+So far, most of the theoretical results focussed on what are called \emph{linear rules}: 
+intuitively, a step is required only to consume, preserve and generate entities. 
+However, in some situations it is also necessary to ``merge'' parts of the state. 
+This happens already in the context of string diagram mentioned above, but also 
+in graphical implementations of nominal calculi where, as a result of name passing, 
+the received name is identified with a local one at the
+receiver~\cite{CVY:ESSPE,Gad07} or in the visual modelling of bonding in
+biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms is
+at the core of e-graphs (equality graphs), recently used for
+rewrite-driven compiler optimisations~\cite{WNW:egg}: rather than
+explicitly merging nodes corresponding to equal expression, the idea
+here - conceptually and, as we will see, also mathematically similar -
+is to maintain an equivalence\todo{P: more precisely a congruence}
+over the nodes.  \todo{P: la sequenza di lavori su questo \`e ampia,
+  vedere se c'\`e qualcosa d'altro}
+
+=========DA QUI SUPERSEDED\\
 Rewriting systems over graphs are used in uncountably many setting for
 representing the dynamics of software systems: the graph serves to represent
 the entities and their relations within states , while rewriting steps,
@@ -637,14 +696,13 @@ received name is identified with a local one at the
 receiver~\cite{CVY:ESSPE,Gad07} or in the modelling of bonding in
 biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms is
 at the core of e-graphs (equality graphs), recently used for
-rewrite-driven compiler optimizations~\cite{WNW:egg}. Rather than
+rewrite-driven compiler optimisations~\cite{WNW:egg}. Rather than
 explicitly merging nodes corresponding to equal expression, the idea
 here - conceptually and, as we will see, also mathematically similar -
 is to maintain an equivalence\todo{P: more precisely a congruence}
 over the nodes.  \todo{P: la sequenza di lavori su questo \`e ampia,
-  vedere se c'\`e qualcosa d'altro}
-
-\todo{P: something about string diagrams?}
+  vedere se c'\`e qualcosa d'altro}\\
+=========
 
 Technically, to acquire the expressiveness needed for expressing
 fusions, i.e., the merge of some elements in the state, requires to
