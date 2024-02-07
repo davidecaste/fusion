@@ -584,70 +584,10 @@ We show
 
 \section{Introduction}
 
-%\todo{A VERY NICE INTRODUCTION}
-%
-%SOME IDEAS (BADLY WRITTEN, JUST TO START TO PUT IDEAS IN ORDER)
+\todo{A VERY NICE INTRODUCTION}
 
-One of the key pay-off of concurrency theory is the idea that the behaviour of 
-a computational device can be modelled by abstracting its sequences of steps
-%performed by the device 
-via a suitable equivalence. Intuitively, this equivalence 
-captures when steps are causally unrelated and thus could be executed in any 
-order, and possibly concurrently. 
-%
-Two seminal contributions to this line of research have been
-Mazurkiewicz's traces~\cite{Mazurkiewicz86} and Winskel's event structures~\cite{NPW:PNES}
-%
-Concerning formalisms based on the rewriting paradigm, i.e. where the
-behaviour is dictated by a set of rules which have to be instantiated with
-the system at hand, concurrency often boils down to having a notion of 
-independence between two consecutive steps.
-%thus viewing a sequence of steps as a concurrent computation. 
-As noteworthy examples, we have 
-interchange law~\cite{Mes92} in term rewriting and permutation 
-equivalence~\cite{JJL80} in $\lambda$-calculi. 
+SOME IDEAS (BADLY WRITTEN, JUST TO START TO PUT IDEAS IN ORDER)
 
-Among rewriting-based formalisms, those manipulating graph-like structures
-proved useful in many settings for representing the dynamics of systems: the 
-graph serves to represent the entities and their relations within states, while 
-rewriting steps, modifying the graph, model computation steps that results 
-in changes to the system state. The DPO (double-pushout) approach~\cite{CMREHL:AAGT} 
-is nowadays considered the standard one for these structures, thanks to its locality 
-(rule application has a local effect on a state, differently e.g. from the SqPO 
-approach~\cite{CorradiniHHK06}) and most importantly to its flexibility: the rules allow to 
-specify that,  in a rewriting step, some entities in the current state are removed, 
-some others are needed for the rewriting step to occur but remain unaltered and 
-some new entities can be generated. Concerning concurrency, the chosen notion 
-is shift equivalence, and independence is formally captured by the so-called 
-Church-Rosser theorem of DPO rewriting~\cite[xxx]{CMREHL:AAGT}.
-
-A noteworthy advantage is that DPO rewriting can be formulated over
-adhesive categories and their variants~\cite{lack2005adhesive,ehrig2006weak}. 
-%
-Operating within the framework of adhesive categories allows one to devise 
-the foundations of a rewriting theory which can be subsequently instantiated 
-to the context of interest, thus avoiding the need of repeatedly proving
-similar ad-hoc results in for each specific setting. In fact, the framework is
-so general that it allowed to recast in the DPO approach many additional formalisms,
-ranging from xxx to string diagrams~\cite{bonchi2022string}.
-
-So far, most of the theoretical results focussed on what are called \emph{linear rules}: 
-intuitively, a step is required only to consume, preserve and generate entities. 
-However, in some situations it is also necessary to ``merge'' parts of the state. 
-This happens already in the context of string diagram mentioned above, but also 
-in graphical implementations of nominal calculi where, as a result of name passing, 
-the received name is identified with a local one at the
-receiver~\cite{CVY:ESSPE,Gad07} or in the visual modelling of bonding in
-biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms is
-at the core of e-graphs (equality graphs), recently used for
-rewrite-driven compiler optimisations~\cite{WNW:egg}: rather than
-explicitly merging nodes corresponding to equal expression, the idea
-here - conceptually and, as we will see, also mathematically similar -
-is to maintain an equivalence\todo{P: more precisely a congruence}
-over the nodes.  \todo{P: la sequenza di lavori su questo \`e ampia,
-  vedere se c'\`e qualcosa d'altro}
-
-=========DA QUI SUPERSEDED\\
 Rewriting systems over graphs are used in uncountably many setting for
 representing the dynamics of software systems: the graph serves to represent
 the entities and their relations within states , while rewriting steps,
@@ -697,13 +637,14 @@ received name is identified with a local one at the
 receiver~\cite{CVY:ESSPE,Gad07} or in the modelling of bonding in
 biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms is
 at the core of e-graphs (equality graphs), recently used for
-rewrite-driven compiler optimisations~\cite{WNW:egg}. Rather than
+rewrite-driven compiler optimizations~\cite{WNW:egg}. Rather than
 explicitly merging nodes corresponding to equal expression, the idea
 here - conceptually and, as we will see, also mathematically similar -
 is to maintain an equivalence\todo{P: more precisely a congruence}
 over the nodes.  \todo{P: la sequenza di lavori su questo \`e ampia,
-  vedere se c'\`e qualcosa d'altro}\\
-=========
+  vedere se c'\`e qualcosa d'altro}
+
+\todo{P: something about string diagrams?}
 
 Technically, to acquire the expressiveness needed for expressing
 fusions, i.e., the merge of some elements in the state, requires to
@@ -821,7 +762,7 @@ The key property that $\mathcal{M}$-adhesive categories enjoy is given by  the s
 	\begin{itemize}
 		\parbox{11cm}{\item 
 		\emph{stable under pushouts (pullbacks)} if for every pushout (pullbacks) square as the one on the right, 	if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
-			\item \emph{closed under composition} if $g, f\in \mathcal{A}$ implies $g\circ f\in \mathcal{A}$ whenever $g$ and $f$ are composable.}\hfill
+			\item \emph{closed under composition} if $g, f\in \mathcal{A}$ implies $g\circ f\in \mathcal{A}$ whenever $g$ and $f$ are composable.{\tiny }}\hfill
 		\parbox{2cm}{$\xymatrix{A\ar[r]^f  \ar[d]_{m}& B \ar[d]^n \\ C \ar[r]_g & D}$}
 		\parbox{11cm}{}\hfill 
 	\end{itemize}
@@ -947,17 +888,14 @@ $\mathcal{M}$-adhesive categories are the right context in which to perform abst
 
 
 \begin{definition}[\cite{habel2012mathcal,heindel2009category}]
-	Let $\X$ be a $\mathcal{M}$-adhesive category, a  \emph{left $\mathcal{M}$-linear} rule $\rho$ is a pair $(l,r)$ of arrows with the same domain, such that $l$ belongs to $\mathcal{M}$.  The rule $\rho$ is said to be \emph{$\mathcal{M}$-linear} if $r\in \mathcal{M}$ too. A rule $\rho$ is said to be \emph{consuming} if $l$ is not an isomorphism. We will represent a rule $\rho$ as a span 
-	\[\xymatrix{L & K\ar@{>->}[l]_{l} \ar[r]^{r} & R}\]
-	$L$ is the \emph{left-hand side}, $R$ is the \emph{right-hand side} and $K$ the \emph{glueing object}. 
+	Let $\X$ be a $\mathcal{M}$-adhesive category, a  \emph{left $\mathcal{M}$-linear} rule $\rho$ is a pair $(l,r)$ of arrows with the same domain, such that $l$ belongs to $\mathcal{M}$.  The rule $\rho$ is said to be \emph{$\mathcal{M}$-linear} if $r\in \mathcal{M}$ too. A rule $\rho$ is said to be \emph{consuming} if $l$ is not an isomorphism.  	The object $L$ is the \emph{left-hand side}, $R$ is the \emph{right-hand side} and $K$ the \emph{glueing object}. 
 	
 	
 	A \emph{left-linear DPO rewriting system} is a pair $(\X, \R)$ where $\X$ is an $\mathcal{M}$-adhesive category and $R$ is a set of left $\mathcal{M}$-linear rules. $(\X, \R)$ will be called \emph{linear} if every rule in $R$ is $\mathcal{M}$-linear. Similarly, a \emph{consuming} left-linear DPO rewriting system is one in which every rule is consuming.
 	
-	Given  two objects $G$ and $H$ and a rule $\rho=(l,r)$ in $\R$, a \emph{direct derivation $\mathscr{D}$ from $G$ to $H$ applying the rule $\rho$}, is a diagram as the one below, in which both squares are pushouts. 
-	\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar@{>->}[l]^{f} D \ar[r]_{g}& H}\]
-	The arrow $n$ is called the \emph{match} of the derivation, while $h$ is its \emph{back-match}.
-	We will denote a direct derivation $\dder{D}$ between $G$ and $H$ as $\dder{D}\colon G\Mapsto H$. 
+	\noindent 
+	\parbox{10cm}{\hspace{15pt}Given  two objects $G$ and $H$ and a rule $\rho=(l,r)$ in $\R$, a \emph{direct derivation $\mathscr{D}$ from $G$ to $H$ applying the rule $\rho$}, is a diagram as the one aside, in which both squares are pushouts. The arrow $m$ is called the \emph{match} of the derivation, while $h$ is its \emph{back-match}. 	We will denote a direct derivation $\dder{D}$ between $G$ and $H$ as $\dder{D}\colon G\Mapsto H$. }
+	\parbox{3cm}{$\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar@{>->}[l]^{f} D \ar[r]_{g}& H}$}
 \end{definition}
 
 
@@ -968,8 +906,8 @@ $\mathcal{M}$-adhesive categories are the right context in which to perform abst
 	Let $(\X, \R)$ be a left-linear DPO rewrityng system, with $\X$ $\mathcal{M}$-adhesive. The \emph{DPO-derivation graph} of $(\X, \R)$ is the (large)  directed graph $\gpo$ having as vertices the objects of $\X$ and in which an edge between $G$ and $H$ is a direct derivation $\dder{D}\colon G\Mapsto H$.	A \emph{derivation} $\der{D}$ between two objects $G$ and $H$ is a path between them in $\gpo$. The \emph{source} and \emph{target} of $\der{D}$ are, respectively, $G$ and $H$.
 \end{definition}
 }
-\begin{remark}
-We can spell out more explicitly what  a derivation $\dder{D}$ is.  An \emph{empty derivation} starting and ending in $G$ is just $G$ itself.  A \emph{non-empty derivation} $\dder{D}$ is a sequence $\{\dder{D}_i\}_{i=0}^n$ of direct derivations such that:
+\begin{definition}[Derivation]
+	Let $(\X, \R)$ be a left-linear DPO rewrityng system, with $\X$ $\mathcal{M}$-adhesive.  An \emph{empty derivation} starting and ending in $G$ is just $G$ itself.  A \emph{non-empty derivation} $\dder{D}$ is a sequence $\{\dder{D}_i\}_{i=0}^n$ of direct derivations such that:
 \begin{enumerate}
 	\item for every index $i$, $\dder{D}_i$ is a direct derivation $G_i \Mapsto G_{i+1}$;
 	\item $G_0=G$ and $G_{n+1}=H$.
@@ -978,7 +916,7 @@ We can spell out more explicitly what  a derivation $\dder{D}$ is.  An \emph{emp
 We will call the number $n+1$ the \emph{length} of the derivation, denoted by $\lgh(\der{D})$. We will also say that an empty derivation has length $0$. 
 
 Moreover,  if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then we can define an associated sequence of rules as $r(\der{D})$ as $\{\rho_i\}_{i=0}^n$.
-\end{remark}
+\end{definition}
 
 \begin{remark}
   \label{rem:func}
@@ -991,16 +929,14 @@ Moreover,  if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then we can def
   containing only the bottom row of the derivation.
 \end{remark}
 	
-\begin{notation}
+	\noindent 
+\parbox{10cm}{\begin{notation}
   Let $\der{D}=\{\dder{D}_i\}_{i=0}^n$ be a derivation. We will depict
   the $i^\text{th}$ element $\dder{D}_i$ of $\der{D}$ as in the
-  following diagram.
-  \[\xymatrix{L_i \ar[d]_{m_i}& K_i \ar[d]^{k_i}\ar@{>->}[l]_{l_i} \ar[r]^{r_i} & R_i \ar[d]^{h_i} \\G_{i} & \ar@{>->}[l]^{f_{i}} D_{i} \ar[r]_{g_{i}}& G_{i+1} }\]
-  Notice that, in particular, if $\der{D}\colon G\to H$, then $G_0=G$
-  and $G_{n+1}=H$. When $\der{D}$ has length $1$ we will suppress the
+  diagram on the right. Notice that, in particular, if $\der{D}$ is a derivation between $G$ and $H$, then $G_0=G$ and $G_{n+1}=H$. When $\der{D}$ has length $1$ we will suppress the
   indexes. In such case, we will also identify $\der{D}$ with its only
   element.
-\end{notation} 
+\end{notation} } \parbox{3cm}{$\xymatrix{L_i \ar[d]_{m_i}& K_i \ar[d]^{k_i}\ar@{>->}[l]_{l_i} \ar[r]^{r_i} & R_i \ar[d]^{h_i} \\G_{i} & \ar@{>->}[l]^{f_{i}} D_{i} \ar[r]_{g_{i}}& G_{i+1} }$}
 
 Often, we are interested in derivations only up to some notion of coherent isomorphism between them. This is done with the help of \Cref{rem:func}.
 
@@ -1993,7 +1929,7 @@ in \Cref{app:fill}).
 
 
 
-\rem{Non introdurrei una classe, come detto sopra}{
+%\rem{Non introdurrei una classe, come detto sopra}{
 \begin{definition}[Tame rewriting systems]A left-linear DPO rewriting system is \emph{tame} if every independence pair between two direct derivations is good.
 \end{definition}
 \begin{example}\label{ex:diff2}In light of \Cref{thm:church},  \Cref{ex:diff1} provides an example of an independence pair which is not good, and thus of a non tame rewriting system.
@@ -2001,11 +1937,13 @@ in \Cref{app:fill}).
 \begin{remark}
 	By \Cref{thm:church} the existence of a good independence pair entails switchability which, in turn, entails weak sequential independence by construction. Tame rewriting systems are exactly those rewriting systems in which these three notions coincide.
 \end{remark}
-}
+%}
 
 
 
-\rem{Questo e' quanto gia' asserito sopra, mettere in appendice e riferire}{A source of tame left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
+%\rem{Questo e' quanto gia' asserito sopra, mettere in appendice e riferire}
+
+A source of tame left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
 
 \begin{theoremEnd}[category=sec3]{proposition}\label{prop:equi}Every linear DPO rewriting system $(\X, \R)$ is tame.
 \end{theoremEnd}
@@ -2019,7 +1957,7 @@ Since $(\X, \R)$ is linear, then $r_1\colon K_1\to R_1$ belongs to $\mathcal{M}$
 	By hypothesis $r_0$ and $l_1$ are in $\mathcal{M}$, thus $f_1$ and $g_0$ belong to it too. The first point of \Cref{lem:popb}  yields the thesis. 
 	\end{proofEnd}
 \end{proof}
-}
+
 
 
 Even if we work in a setting where sequential independence ensures switchability, dealing with left-linear rules there is a further - possibly more serious - issue, i.e., the fact that there can be more than one independence pairs between the same derivations. This can hinder the core idea of using sequential independence as a basis of a theory of concurrency for rewriting systems, since exchanges performed using different independence bpairs lead to non abstraction equivalent derivations and thus one would equate computations which are definitively to be taken apart, as shown in the example below.
@@ -2533,8 +2471,11 @@ USO IL PRIMO LEMMA DEI TRE PASSI:
 
 \appendix
 \section{Properties of $\mathcal{M}$-adhesive categories}\label{app:ade}
+
+This first appendix is devoted to the proofs of some well-known results about $\mathcal{M}$-adhesive categories.
+
 \subsection{Some results on $\mathcal{A}$-stable and $\mathcal{A}$-Van Kampen squares}
-We will start proving some general results regarding $\mathcal{A}$-Van Kampen and $\mathcal{A}$-stable squares, which, wll be used in the proof of the results of \Cref{sec:ade}. Let us begin recalling some classical results about  about pullbacks and pushouts
+We will start proving some general results regarding $\mathcal{A}$-Van Kampen and $\mathcal{A}$-stable squares. Let us begin recalling some classical results about  about pullbacks and pushouts
 
 \begin{lemma}\label{lem:popb1} \label{lem:pb1}
 	Let $\X$ be a category, and consider the following diagram 	in which the right square is a pullback.
@@ -2611,14 +2552,13 @@ Finally, we can show that $\mathcal{A}$-stable pushouts enjoy a kind of \emph{pu
 
 We can begin with an observation about decompo
 
-\begin{theoremEnd}[category=sec2]{proposition}\label{prop:deco}Let  $\mathcal{A}$ be a class of arrows stable under pullbacks. For every arrow $f\colon X\to Y$ and monomorphism $m\colon Y\to Z$, if $m\circ f \in\mathcal{A}$ then $f\in \mathcal{A}$.
-\end{theoremEnd}
-\begin{proof}\begin{proofEnd}
+\begin{proposition}\label{prop:deco}Let  $\mathcal{A}$ be a class of arrows stable under pullbacks. For every arrow $f\colon X\to Y$ and monomorphism $m\colon Y\to Z$, if $m\circ f \in\mathcal{A}$ then $f\in \mathcal{A}$.
+\end{proposition}
+\begin{proof}
 		Take the diagram
 		\[\xymatrix{X \ar[d]_{\id{X}}\ar[r]^{f}& Y \ar[r]^{\id{Y}}  \ar[d]_{\id{Y}}& Y \ar[d]^{m}\\
 			X \ar[r]_{f}& Y \ar[r]_{m} & Z}\]
 		Since $m$ is mono the right square is a pullback, while the left square is a pullback by construction. By \Cref{lem:pb1} the whole rectangle is a pullback and the thesis follows.
-	\end{proofEnd}
 \end{proof}
 \begin{corollary}
 	\label{cor:deco}
@@ -2634,14 +2574,13 @@ Another result which can be immediately established, with the aid of \Cref{prop:
 \end{proposition}
 
 From \Cref{prop:pbpoad}, in turn, we can derive the following corollaries.
-\begin{theoremEnd}[category=sec2]{corollary}\label{cor:rego}
+\begin{corollary}\label{cor:rego}
 	In a $\mathcal{M}$-adhesive category $\X$, every $m\in\mathcal{M}$ is a regular mono.
-\end{theoremEnd}
-\begin{proof}\begin{proofEnd}
+\end{corollary}
+\begin{proof}
 		Let $m$ be an element of $\mathcal{M}$ and consider its pushout along itself.
 		\[\xymatrix{X\ar@{>->}[r]^m \ar@{>->}[d]_m& Y\ar@{>->}[d]^{f}\\Y \ar@{>->}[r]_g & Z}\]
-		By \Cref{prop:pbpoad} this square is a pullback, proving that $m$ is the equalizer of the arrows $f,g\colon Y\rightrightarrows Z$. 
-	\end{proofEnd} 
+		By \Cref{prop:pbpoad} this square is a pullback, proving that $m$ is the equalizer of the arrows $f,g\colon Y\rightrightarrows Z$.  
 \end{proof}
 
 The following result now follows at once noticing that a regular monomorphism which is also epic is automatically an isomorphism.
@@ -2694,15 +2633,14 @@ Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
 
 \noindent
 \parbox{9cm}{
-	\begin{theoremEnd}[category=sec2]{lemma}\label{lem:radj}
+	\begin{lemma}\label{lem:radj}
 		Let $f\colon X \to Y$ be an arrow in an $\mathcal{M}$-adhesive category $\X$ and suppose that the left square aside is a pushout while the  right one is a pullback, with $ m\colon M \rightarrowtail X$ and $n\colon N \rightarrowtail Y$ in $\mathcal{M}$.
 		Then $n\leq k$ if and only if $p_2\leq m$.
-\end{theoremEnd}}
+\end{lemma}}
 \parbox{3cm}{\vspace{-0ex}
 	$\xymatrix{M \ar@{>->}[d]_{m}\ar[r]^{h}& Q \ar@{>->}[d]^{k} & P \ar[r]^{p_1} \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\X\ar[r]_{f}&Y &X \ar[r]_f&Y}$}
 
 \begin{proof} 
-	\begin{proofEnd}  
 		We start pulling back $n$ along $k$ and then pulling back the resulting arrow along $h$, getting the following two pullbacks square:
 		\[\xymatrix{B \ar@{>->}[d]_{b}\ar@{>->}[r]^{s}& N \ar@{>->}[d]^{n} & A \ar[r]^{r} \ar@{>->}[d]_{a}& B \ar@{>->}[d]^{b}\\Q\ar@{>->}[r]_{k}&Y &M \ar[r]_h&Q\\}\]
 		Notice that 
@@ -2717,17 +2655,16 @@ Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
 		\[\xymatrix{A  \ar@/^.4cm/[rr]^{s\circ r}\ar@{>->}[d]_{a} \ar[r]_{t}& \ar[r]_{p_1} P \ar@{>->}[d]^{p_2}& N \ar[d]^{c}\\ M \ar@/_.4cm/[rr]_{k\circ h}\ar@{>->}[r]^{m}& X \ar[r]^{f}& Y}\]
 		
 		The thesis now follows immediately from \Cref{lem:varie}. \qedhere 
-	\end{proofEnd}
 \end{proof}
 
 \noindent
 \parbox{10cm}{ 
-	\begin{theoremEnd}[category=sec2]{corollary}[Uniqueness of pushouts complements]\label{lem:pocomp} 
+	\begin{corollary}[Uniqueness of pushouts complements]\label{lem:pocomp} 
 		Let $\X$ be a $\mathcal{M}$-adhesive category. Given $m\colon X\mto Y$ in $\mathcal{M}$ and $f\colon Y\to Z$, let $(h_1, k_1)$ and $(h_2, k_2)$ be the pushout complements of $m$  and $f$ depicted aside. Then there exists a unique isomorphism $\phi\colon W_1\to W_2$ making the diagram on the right commutative.
-\end{theoremEnd}}
+\end{corollary}}
 \parbox{3cm}{$\xymatrix{&X \ar@{>->}[r]^{m} \ar[d]_{h_1} \ar@/_.3cm/[dl]_{h_2}& Y \ar[d]^{f} \\ W_2 \ar@{>->}@/_.4cm/[rr]_{k_2} &W_1 \ar@{.>}[l]_{\phi} \ar@{>->}[r]^{k_1} & Z }$}
 
-\begin{proof}\begin{proofEnd}
+\begin{proof}
 		Consider the two pushout squares
 		\[\xymatrix{M \ar[r]^{h_1}\ar@{>->}[d]_{m}& W_1 \ar@{>->}[d]^{k_1} & M \ar@{>->}[d]_{m} \ar[r]^{h_1}& W_2 \ar@{>->}[d]^{k_2}\\Y\ar[r]_{f}&Z &Y \ar[r]_{f}&Z}\]
 		Since $\mathcal{M}$ is in $\mathcal{M}$, \cref{prop:pbpoad} guarantees that they are both pullbacks.
@@ -2735,8 +2672,7 @@ Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
 		\[
 		k_2\circ \phi \circ h_1  = k_1\circ h_1= n\circ m= k_2\circ h_2\]
 		
-		The claim now follows since $k_2$ is a monomorphism.
-	\end{proofEnd} 
+		The claim now follows since $k_2$ is a monomorphism. 
 \end{proof}
 
 
@@ -2744,14 +2680,14 @@ Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
 \section{$\mathcal{M}$-adhesivity is not enough}\label{app:fill}
  In \Cref{sec:ade} we introduced the notion of tame left-linear DPO rewriting system, a class that contains, for instance, all the linear rewriting systems. This result can be further refined: in a\cite{baldan2011adhesivity} a class  $\mathbb{B}$ of (quasi)adhesive category is defined for which the local Church-Rosser Theorem holds for left-linear DPO rewriting system. In our language, this means that every left-linear DPO rewriting system based on a category in $\mathbb{B}$ is tame. This section is devoted to repropose, and slightly generalize, the results of \cite{baldan2011adhesivity} to our context.
 
-\begin{definition}Let $\mathcal{M}$ be a class of monos in a category $\X$, closed under composition, containing all isomorphisms and stable under pullbacks and pushouts. Suppose that a  diagram
-	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
-	is given and the whole rectangle is a pushout. We say that $\X$ satisfies:
-	\begin{itemize}
+\noindent 
+\parbox{10.4cm}{
+\begin{definition}Let $\mathcal{M}$ be a class of monos in a category $\X$, closed under composition, containing all isomorphisms and stable under pullbacks and pushouts. Suppose that the  diagram on the right 	is given and the whole rectangle is a pushout. We say that $\X$ satisfies:
+	\parbox{14cm}{\begin{itemize}
 		\item the \emph{$\mathcal{M}$-mixed decomposition} property if, whenever $k$ belongs to $\mathcal{M}$ and the right half of the previous diagram is a pullback, then the left one is a pushout.
 		\item the \emph{$\mathcal{M}$-pushout decomposition} property if whenever $a, b$ and $c$ belongs to $\mathcal{M}$ and the right half of the diagram above is a pushout, then its left half is a pushout too.
-	\end{itemize}
-\end{definition}
+	\end{itemize}}
+\end{definition}} \parbox{3cm}{\vspace{-2cm}$\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}$}
 
 
 \begin{lemma}\label{lem:closed}
