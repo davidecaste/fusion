@@ -1126,7 +1126,7 @@ proposition.
   $\dder{D}'$, whose first component is $\id{G}$.
 \end{restatable}
 
-[Proof \ref{propUnique-proof}]
+[Proof in \Cref{propUnique-proof}]
 
 
 \iffalse
@@ -2483,66 +2483,8 @@ Switches are unique up to abstraction equivalence, as shown by the next proposit
       Q_1}\]
 \end{definition}
 
-\rem{Questa e' la prova che il filler implica lo switch, giusto? In
-  appendice}{
-  \begin{remark}\label{rem:deco} Let $(i_0, i_1)$ be a good
-    independence pair between the direct derivations $\dder{D}_0$ and
-    $\dder{D}_1$. We can then build the solid part of the diagram
-    below.
-    \[\xymatrix{&&R_0 \ar@/_1cm/[ddrr]_(.35){i_0}|(.7)\hole
-        \ar[dr]^{h_0}&& L_1\ar@/^1cm/[ddll]^(.35){i_1}
-        \ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar@{>->}[dl]_{l_0}
-        \ar@/_.8cm/[ddrr]^(.65){u_0}\ar[ur]^{r_0}&& G_1 && K_1
-        \ar@/^.8cm/[ddll]_(.65){u_1}\ar[dl]_{k_1}\ar@{>->}[lu]_{l_1}
-        \ar[dr]^{r_1}\\L_0 \ar[dr]^{m_0}
-        \ar@{.>}@/_.8cm/[ddrr]_{j_1}&& D_0
-        \ar@{>->}[dl]|(.42)\hole_(.64){f_0}\ar[ur]|(.48)\hole^(.7){g_1}&&D_1
-        \ar[dr]|(.42)\hole^(.65){g_1}
-        \ar@{>->}[ul]|(.48)\hole_(.7){f_1}&&R_1\ar@/^.8cm/[ddll]^{j_0}\ar[dl]^{h_1}\\&G_0
-        &&P\ar[dr]^{q_1}
-        \ar@{>.>}[dl]_{q_0}\ar[ur]^(.4){p_1}\ar@{>->}[ul]_(.4){p_0}&&G_2\\&&Q_0
-        \ar@{>->}@{>.>}[ul]_{a_0} &&Q_1\ar@{.>}[ur]^{b_1}}
-    \]
 
-    Let us complete this diagram defining the dotted arrows. To get
-    $j_1\colon L_0\to Q_0$ and $q_0\colon P\to Q_0$ it is enough to
-    take a pushout of $l_0$ along $u_0$, which exists since
-    $l_0\in \mathcal{M}$. Moreover, the existence of the wanted
-    $a_0\colon Q_0\to G_0$ and $b_1\colon Q_1\to G_2$ follows from
-    \[
-      f_0\circ p_0 \circ u_0 = f_0\circ k_0 = m_0\circ l_0 \qquad
-      g_1\circ p_1\circ u_1 = g_1\circ k_1=h_1\circ r_1
-    \]
-
-    \noindent
-    \parbox{5.5cm}{\hspace{15pt}We can prove some other properties of
-      the arrows appearing in the diagram above. The four rectangles
-      aside are pushouts and their left halves are pushouts
-      too. Therefore, by \Cref{lem:po1}, also their right halves are
-      pushouts.  Moreover, that $q_0$ and $a_0$ are pushouts of,
-      respectively $l_0$ and $p_0$, thus they are elements of
-      $\mathcal{M}$. By \Cref{prop:pbpoad} the left halves of the
-      first and third rectangles are pullbacks too.}  \parbox{3.5cm}{
-      $\xymatrix{K_0 \ar@/^.4cm/[rr]^{k_0}\ar[d]_{r_0}\ar[r]_{u_0}
-        &P\ar[d]^{p_1} \ar@{>->}[r]_{p_0} & D_0 \ar[d]^{g_0}&K_1
-        \ar@/^.4cm/[rr]^{k_1}\ar@{>->}[d]_{l_1}\ar[r]_{u_1}
-        &P\ar@{>->}[d]^{p_0} \ar[r]_{p_1} & D_1 \ar@{>->}[d]^{f_1}\\
-        R_0 \ar@/_.4cm/[rr]_{h_0} \ar[r]^{i_0}&D_1 \ar@{>->}[r]^{f_1}
-        & G_1&L_1 \ar@/_.4cm/[rr]_{m_1} \ar[r]^{i_1}&D_0\ar[r]^{g_0} &
-        G_1}$
-      $\xymatrix{K_0
-        \ar@/^.4cm/[rr]^{k_0}\ar@{>->}[d]_{l_0}\ar[r]_{u_0}
-        &P\ar@{>->}[d]^{q_0} \ar@{>->}[r]_{p_0} & D_0
-        \ar@{>->}[d]^{f_0}&K_1
-        \ar@/^.4cm/[rr]^{k_1}\ar[d]_{r_1}\ar[r]_{u_1}
-        &P\ar[d]^{q_1} \ar[r]_{p_1} & D_1 \ar[d]^{g_1}\\
-        L_0 \ar@/_.4cm/[rr]_{m_0} \ar[r]^{j_1}&Q_0 \ar@{>->}[r]^{a_0}
-        & G_0&R_1 \ar@/_.4cm/[rr]_{h_1} \ar[r]^{j_0}&Q_1 \ar[r]^{b_1}
-        & G_2}$}
-  \end{remark}
-}
-
-So equipped, we can now prove a version of the Local Church-Rosser Theorem for good independence pairs.
+We can now prove a version of the Local Church-Rosser Theorem for good independence pairs.
 
 \begin{restatable}[Local Church-Rosser Theorem]{theorem}{thmChurch}
   \label{thm:church}
@@ -2550,7 +2492,7 @@ So equipped, we can now prove a version of the Local Church-Rosser Theorem for g
   between $\dder{D}_0$ and $\dder{D}_1$. Then $\dder{D}_0$ and
   $\dder{D}_1$ are switchable.
 \end{restatable}
-[Proof~\ref{thmChurch-proof}]
+[Proof in \Cref{thmChurch-proof}]
 
 
 \rem{appendice, qui una frase}{
@@ -2658,6 +2600,7 @@ While the previous definition sounds very restrictive, our aim in this section i
 
 	\item left-linear: only one implication
 \end{itemize}
+
 
 \subsection{The $3$-steps lemmas}
 
@@ -3561,15 +3504,32 @@ In \Cref{sec:ade} we introduced the notion of tame left-linear DPO rewriting sys
 				\item the \emph{$\mathcal{M}$-mixed decomposition} property if, whenever $k$ belongs to $\mathcal{M}$ and the right half of the previous diagram is a pullback, then the left one is a pushout.
 				\item the \emph{$\mathcal{M}$-pushout decomposition} property if whenever $a, b$ and $c$ belongs to $\mathcal{M}$ and the right half of the diagram above is a pushout, then its left half is a pushout too.
 			\end{itemize}}
-	\end{definition}} \parbox{3cm}{\vspace{-2cm}$\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}$}
+	\end{definition}} \parbox{3cm}{\vspace{-2cm}$\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}$}\\
 
+The class of categories of type $\mathbb{B}$ is closed under the same constructions of \Cref{lem:comma,cor:slice,thm:functors}. This can be deduced at once from the fact that in such categories pullbacks and pushouts are computed componentwise.
 
-\begin{lemma}\label{lem:closed}
-	\todo{chiusura per certe costruzioni}
+\begin{lemma}\label{lem:closed} Let $\X$ be a category satisfying the $\mathcal{M}$-mixed and $\mathcal{M}$-pushout decomposition properties, then the following hold true:
+	\begin{enumerate}
+		\item   if $\Y$ is another category satisfying the $\mathcal{N}$-mixed and $\mathcal{N}$-pushout decomposition properties and $L:\X\rightarrow \A$ is a
+		functor that preserves pushouts, and
+		$R:\Y\rightarrow \A$ one preserving pullbacks.Then
+		$\comma{L}{R}$ satisfies the $\cma{M}{N}$-mixed and the $\cma{M}{N}$-pushout decomposition properties, where
+		\[
+		\cma{M}{N}:=\{(h,k)\in \mor(\comma{L}{R}) \mid h\in
+		\mathcal{M}, k\in \mathcal{N}\}\]
+		\item  for every object $X$, $\X/X$ satisfies  the $\mathcal{M}/X$-mixed and the $\mathcal{M}/X$-pushout decomposition properties, while $X/\mathcal{M}$-adhesive satisfies their $X/\mathcal{M}$ variants, where
+		\[\mathcal{M}/X:=\{m\in \mathcal{A}(\X/X) \mid m\in \mathcal{M} \}
+		\qquad X/\mathcal{M}:=\{m\in \mathcal{A}(X/\X) \mid m\in
+		\mathcal{M} \}
+		\]
+		\item  for every small
+		category $\Y$, the category $\X^\Y$ satisfies the 
+		$\mathcal{M}^{\Y}$-mixed and the $\mathcal{M}^{\Y}$-pushout decomposition properties , where
+		\[\mathcal{M}^{\Y}:=\{\eta \in \mathcal{A}(\X^\Y) \mid \eta_Y \in
+		\mathcal{M} \text{ for every } Y\in \Y\}\]
+	\end{enumerate}
 \end{lemma}
-\begin{proof}
-	contenuto...
-\end{proof}
+
 The following result shows that the mixed and pushout decomposition properties guarantee that every independence pair is good.
 
 \begin{theorem}\label{thm:good1}Let $\X$ be an $\mathcal{M}$-adhesive category with all pushouts and satisfying the $\mathcal{M}$-mixed and the $\mathcal{M}$-pushout decomposition properties. Then every left-linear DPO rewriting system on $\X$ is tame.
@@ -3615,44 +3575,38 @@ Our next step is to identify sufficient conditions for a category $\X$ to satisf
 	\todo{esempi}
 \end{example}
 
-Let us recall the definition of \emph{extensive} category.
+
+Categories of type $\mathbb{B}$ satisfy a property resembling \emph{extensivity} \cite{carboni1993introduction}.
 
 \noindent
-\parbox{10cm}{
-	\begin{definition}[\cite{carboni1993introduction}]\label{def:ext}
-		A category $\X$ is \emph{extensive} if:
-		\begin{enumerate}
-			\item it has finite coproducts;
-			\item pullbacks along coproduct coprojections exist;
-			\item for every diagram as the one aside, in which the bottom row is a coproduct cocone, the top one is a coproduct if and only if the two squares are pullbacks.
-		\end{enumerate}
-	\end{definition}}
-\parbox{2cm}{$\xymatrix{A\ar[r]^-{f} \ar[d]_{r}& C  \ar[d]_{s}& B \ar[d]^{t}\ar[l]_-{g}\\X  \ar[r]_-{\iota_X}& X+Y & Y \ar[l]^-{\iota_Y}}$}
+\parbox{10cm}{\begin{proposition}\label{prop:ext}
+Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$. Then for every diagram as the one aside, in which the bottom row is a coproduct cocone and the vertical arrows are in $\mathcal{M}$, the top row is a coproduct if and only if the two squares are pullbacks.
+\end{proposition}}
+\parbox{2cm}{\vspace{-.4em}$\xymatrix{A\ar[r]^-{f} \ar@{>->}[d]_{r}& C  \ar@{>->}[d]_{s}& B \ar@{>->}[d]^{t}\ar[l]_-{g}\\X  \ar[r]_-{\iota_X}& X+Y & Y \ar[l]^-{\iota_Y}}$}
 
+\noindent 
+\parbox{4cm}{$\xymatrix@C=10pt@R=10pt{&I\ar@{>->}[dd]|\hole_(.65){a}\ar[rr]^{k} \ar[dl]_{h} && B \ar@{>->}[dd]^{t} \ar[dl]_{g} \\ A  \ar@{>->}[dd]_{r}\ar[rr]^(.7){f} & & C \ar@{>->}[dd]_(.3){s}\\&0\ar@{>->}[rr]|\hole^(.65){?_Y} \ar@{>->}[dl]^{?_X} && Y \ar@{>->}[dl]^{\iota_Y} \\X \ar@{>->}[rr]_{\iota_X} & & X+Y}$}
+ \parbox{10cm}{\begin{proof}
+Consider the cube aside, in which the back faces are pullbacks. The bottom faces is an $\mathcal{M}$-Van Kampen pushout, thus the top face is a pushout if and only if the front faces are pullbacks. By strictness of $0$, $a\colon I\to 0$ is an isomorphism, so that $I$ is initial, therefore the $\mathcal{M}$-Van Kampen condition reduces to the request that $(C, \{f,g\})$ is a coproduct cocone if and only if the front faces are pullbacks, as claimed.
+\end{proof}}
 
-\begin{proposition}	\label{prop:ext}
-	Let $\X$ be a $\mathcal{M}$-adhesive category with a initial objects such that, for every object $X$, the arrow $?_X\colon 0\mto X$ is in $\mathcal{M}$. Then the following are equivalent:
-	\begin{enumerate}
-		\item initial objects are strict.
-		\item $\X$ is extensive;
-	\end{enumerate}
-\end{proposition}
-\begin{proof}
-	\smallskip \noindent $(1\Rightarrow 2)$ Let us verify the three point of \Cref{def:ext}.
-	\begin{enumerate}
-		\parbox{10cm}{\item It is enough to construct binary products. Given two object $X$ and $Y$, since $?_X\colon0 \mto X$ and $?_Y\colon0 \mto Y$ belong to $\mathcal{M}$, we can build the diagram aside, which gives us the wanted coproduct.} \parbox{3cm}{$\xymatrix{0 \ar@{>->}[d]_{?_Y}\ar@{>->}[r]^-{?_X}& X  \ar@{>.>}[d]^{\iota_X}\\Y\ar@{>.>}[r]_-{\iota_Y} & X+Y}$}
-		\item The construction of coproducts in the previous points shows that coproduct coprojections belong to $\mathcal{M}$, thus the thesis follows from the existence of $\mathcal{M}$-pullbacks.
+We need a last technical results before proving that  an $\mathcal{M}$-adhesive category of type $\mathbb{B}$ satisfy the $\mathcal{M}$-mixed and $\mathcal{M}$-pushout decomposition properties.
 
-		      \parbox{10cm}{\item Consider the cube below, in which the back faces are pullbacks. The bottom faces is a Van Kampen pushout, thus the top face is a pushout if and only if the front faces are pullbacks, but this is exactly the third point of \Cref{def:ext}.}\parbox{4cm}{$\xymatrix@C=10pt@R=10pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{g} & & D}$}
-	\end{enumerate}
+\noindent
+\parbox{10cm}{\begin{proposition}\label{prop:po2}
+Let $\X$ be a category and suppose that $(X_0+X_1, \{\iota_{X_i}\}_{i=0}^1)$ and $(Y_0+Y_1, \{\iota_{Y_i}\}_{i=0}^1)$ are coproducts. Then for every $f\colon X_0\to Y_0$ the following are equivalent:
+\begin{enumerate}
+	\item the square on the right is a pushout;
+	\item there exists an isomorphism $\phi\colon X_1\to Y_1$ such that $g=f+\phi$.
+\end{enumerate}
+\end{proposition}} \parbox{3cm}{$\xymatrix{X_0  \ar[r]^{f} \ar[d]_{\iota_{X_0}}& Y_0 \ar[d]^{\iota_{Y_0}}\\ X_0+X_1 \ar[r]_{g} & Y_0+Y_1}$}
 
-	$(1\Rightarrow 2)$ Given an arrow $f\colon X\to 0$, we can build the rectangle below
-	which is made by two pullback squares. By extensivity, the top row is a coproduct diagram and, therefore, we can build the unique dotted $\phi\colon X\to X$ on the right.
-	\[\xymatrix{X \ar[r]^-{\id{X}} \ar[d]_{f} & X  \ar[d]_{f}& X \ar[d]^{f}\ar[l]_-{\id{X}} & X \ar@/_.3cm/[dr]_{\id{X}} \ar[r]^{\id{X}}& X  \ar@{.>}[d]^{\phi}&X \ar[l]_{\id{X}} \ar@/^.3cm/[dl]^{?_X\circ f}\\ 0 \ar[r]_-{\id{0}}&0&\ar[l]^-{\id{0}}0 &&X}\]˘
-	The uniqueness of $\phi$ in the diagram on the right now entails $?_X\circ f=\id{X}$, since, using initiality, $f\circ ?_X=\id{0}$ we can conclude.
-\end{proof}
-
-
+\noindent 
+\parbox{9.5cm}{\begin{proof}	$(1\Rightarrow 2)$ We first prove that the inner square in the diagram aside is a pushout. Indeed, if $h\colon Y_0\to Z$ and $k\colon X_0+X_1\to Z$ are two arrows such that $h\circ f= k\circ \iota_{X_0}$, then we can define $z\colon Y_0+X:1\to Z$ as the one induced by $h$ and $k\circ \iota_{X_1}$.
+	
+	\smallskip \noindent $(2\Rightarrow 1)$
+\end{proof}}
+\parbox{2cm}{$\xymatrix{X_0  \ar[r]^{f} \ar[d]_{\iota_{X_0}}& Y_0 \ar[d]_{\iota'_{Y_0}} \ar@/^.8cm/[dd]^{\iota_{Y_0}}\\ X_0+X_1  \ar@/_.4cm/[dr]_{g}\ar[r]_{f+\id{X_1}}  & Y_0+X_1 \ar@{.>}[d]_{\psi}\\& Y_0+Y_1}$}
 
 \begin{lemma}\label{lem:prop} \todo{due proprietÃ  classe B}
 \end{lemma}
@@ -3715,6 +3669,66 @@ In this appendix we will provide the proofs of...
 
 
 \subsection{Proofs for \Cref{sec:equi}}
+
+To prove the Local Church-Rosser Theorem, let us begin deducing some properties from the existence of a good independence pair. 
+
+\begin{remark}\label{rem:deco} 
+	Let $(i_0, i_1)$ be a good
+	independence pair between the direct derivations $\dder{D}_0$ and
+	$\dder{D}_1$. We can then build the solid part of the diagram
+	below.
+	\[\xymatrix{&&R_0 \ar@/_1cm/[ddrr]_(.35){i_0}|(.7)\hole
+		\ar[dr]^{h_0}&& L_1\ar@/^1cm/[ddll]^(.35){i_1}
+		\ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar@{>->}[dl]_{l_0}
+		\ar@/_.8cm/[ddrr]^(.65){u_0}\ar[ur]^{r_0}&& G_1 && K_1
+		\ar@/^.8cm/[ddll]_(.65){u_1}\ar[dl]_{k_1}\ar@{>->}[lu]_{l_1}
+		\ar[dr]^{r_1}\\L_0 \ar[dr]^{m_0}
+		\ar@{.>}@/_.8cm/[ddrr]_{j_1}&& D_0
+		\ar@{>->}[dl]|(.42)\hole_(.64){f_0}\ar[ur]|(.48)\hole^(.7){g_1}&&D_1
+		\ar[dr]|(.42)\hole^(.65){g_1}
+		\ar@{>->}[ul]|(.48)\hole_(.7){f_1}&&R_1\ar@/^.8cm/[ddll]^{j_0}\ar[dl]^{h_1}\\&G_0
+		&&P\ar[dr]^{q_1}
+		\ar@{>.>}[dl]_{q_0}\ar[ur]^(.4){p_1}\ar@{>->}[ul]_(.4){p_0}&&G_2\\&&Q_0
+		\ar@{>->}@{>.>}[ul]_{a_0} &&Q_1\ar@{.>}[ur]^{b_1}}
+	\]
+	
+	Let us complete this diagram defining the dotted arrows. To get
+	$j_1\colon L_0\to Q_0$ and $q_0\colon P\to Q_0$ it is enough to
+	take a pushout of $l_0$ along $u_0$, which exists since
+	$l_0\in \mathcal{M}$. Moreover, the existence of the wanted
+	$a_0\colon Q_0\to G_0$ and $b_1\colon Q_1\to G_2$ follows from
+	\[
+	f_0\circ p_0 \circ u_0 = f_0\circ k_0 = m_0\circ l_0 \qquad
+	g_1\circ p_1\circ u_1 = g_1\circ k_1=h_1\circ r_1
+	\]
+	
+	\noindent
+	\parbox{5.5cm}{\hspace{15pt}We can prove some other properties of
+		the arrows appearing in the diagram above. The four rectangles
+		aside are pushouts and their left halves are pushouts
+		too. Therefore, by \Cref{lem:po1}, also their right halves are
+		pushouts.  Moreover, that $q_0$ and $a_0$ are pushouts of,
+		respectively $l_0$ and $p_0$, thus they are elements of
+		$\mathcal{M}$. By \Cref{prop:pbpoad} the left halves of the
+		first and third rectangles are pullbacks too.}  \parbox{3.5cm}{
+		$\xymatrix{K_0 \ar@/^.4cm/[rr]^{k_0}\ar[d]_{r_0}\ar[r]_{u_0}
+			&P\ar[d]^{p_1} \ar@{>->}[r]_{p_0} & D_0 \ar[d]^{g_0}&K_1
+			\ar@/^.4cm/[rr]^{k_1}\ar@{>->}[d]_{l_1}\ar[r]_{u_1}
+			&P\ar@{>->}[d]^{p_0} \ar[r]_{p_1} & D_1 \ar@{>->}[d]^{f_1}\\
+			R_0 \ar@/_.4cm/[rr]_{h_0} \ar[r]^{i_0}&D_1 \ar@{>->}[r]^{f_1}
+			& G_1&L_1 \ar@/_.4cm/[rr]_{m_1} \ar[r]^{i_1}&D_0\ar[r]^{g_0} &
+			G_1}$
+		$\xymatrix{K_0
+			\ar@/^.4cm/[rr]^{k_0}\ar@{>->}[d]_{l_0}\ar[r]_{u_0}
+			&P\ar@{>->}[d]^{q_0} \ar@{>->}[r]_{p_0} & D_0
+			\ar@{>->}[d]^{f_0}&K_1
+			\ar@/^.4cm/[rr]^{k_1}\ar[d]_{r_1}\ar[r]_{u_1}
+			&P\ar[d]^{q_1} \ar[r]_{p_1} & D_1 \ar[d]^{g_1}\\
+			L_0 \ar@/_.4cm/[rr]_{m_0} \ar[r]^{j_1}&Q_0 \ar@{>->}[r]^{a_0}
+			& G_0&R_1 \ar@/_.4cm/[rr]_{h_1} \ar[r]^{j_0}&Q_1 \ar[r]^{b_1}
+			& G_2}$}
+\end{remark}
+
 
 \thmChurch*
 \label{thmChurch-proof}
@@ -3794,7 +3808,6 @@ In this appendix we will provide the proofs of...
 \end{proof}
 
 sec3
-
 \end{document}
 
 %%% Local Variables:
