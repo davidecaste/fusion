@@ -802,7 +802,7 @@ $r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent. }
 
 \section{$\mathcal{M}$-adhesive categories and DPO rewriting systems}\label{sec:ade}
 
-This first section is devoted to recall the definition and the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive}.
+This first section is devoted to recall the definition and the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}.
 
 \begin{notation}
   We stipulate here some notational conventions which will be used
@@ -872,7 +872,7 @@ So equipped, we can introduce the notion of \emph{$\mathcal{A}$-Van Kampen squar
 \parbox{2cm}{$\xymatrix@C=10pt@R=10pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{g} & & D \\A \ar[dd]_{m}\ar[rr]^{f}&&B\ar[dd]^{n}\\ \\C\ar[rr]_{g} &&D}$ }
 
 
-In this section we will define the notion of $\mathcal{M}$-adhesivity \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,heindel2009category,lack2005adhesive} and explore some of the consequence of such a property.
+We can now define $\mathcal{M}$-adhesive categories.
 
 \begin{definition}[$\mathcal{M}$-adhesive category]
   Let $\X$ be a category and let $\mathcal{M}$ be a subclass of
@@ -974,14 +974,16 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
   \todo{term graph}
 \end{example}
 
-We will prove in \Cref{app:ade} two key properties of
-$\mathcal{M}$-adhesive categories, $\mathcal{M}$-pushout-pullback
-decomposition and uniqueness of pushouts complements, which will be
-used in this paper.
+A number of properties of adhesive categories which play a role in the
+theory of rewriting generalise to $\mathcal{M}$-adhesive
+categories. These include $\mathcal{M}$-pushout-pullback decomposition
+and uniqueness of pushouts complements (details and proofs are in
+\Cref{app:ade}).
 
 \subsection{DPO rewriting systems derivations}
+
 $\mathcal{M}$-adhesive categories are the right context in which to
-perform abstract rewriting using the so-called ``douple pushout
+perform abstract rewriting using the so-called ``double pushout
 approach'' (DPO). We will recall the basic definitions and properties
 of this approach to abstract rewriting.
 
@@ -989,20 +991,18 @@ of this approach to abstract rewriting.
 \begin{definition}[\cite{habel2012mathcal,heindel2009category}]
   Let $\X$ be a $\mathcal{M}$-adhesive category, a \emph{left
     $\mathcal{M}$-linear} rule $\rho$ is a pair $(l,r)$ of arrows with
-  the same domain, such that $l$ belongs to $\mathcal{M}$.  The rule
-  $\rho$ is said to be \emph{$\mathcal{M}$-linear} if
-  $r\in \mathcal{M}$ too. A rule $\rho$ is said to be \emph{consuming}
-  if $l$ is not an isomorphism.  The object $L$ is the \emph{left-hand
-    side}, $R$ is the \emph{right-hand side} and $K$ the \emph{glueing
-    object}.
-
+  $l: K \to L$ and $r: K \to R$, such that $l$ belongs to
+  $\mathcal{M}$.  The rule $\rho$ is said to be
+  \emph{$\mathcal{M}$-linear} if $r\in \mathcal{M}$ too. A rule $\rho$
+  is said to be \emph{consuming} if $l$ is not an isomorphism.  The
+  object $L$ is the \emph{left-hand side}, $R$ is the \emph{right-hand
+    side} and $K$ the \emph{glueing object}.
 
   A \emph{left-linear DPO rewriting system} is a pair $(\X, \R)$ where
   $\X$ is an $\mathcal{M}$-adhesive category and $R$ is a set of left
-  $\mathcal{M}$-linear rules. $(\X, \R)$ will be called \emph{linear}
-  if every rule in $R$ is $\mathcal{M}$-linear. Similarly, a
-  \emph{consuming} left-linear DPO rewriting system is one in which
-  every rule is consuming.
+  $\mathcal{M}$-linear rules. The rewiriting system $(\X, \R)$ is
+  called \emph{linear} (\emph{consuming}) if every rule in $R$ is
+  $\mathcal{M}$-linear (consuming).
 
   \noindent
   \parbox{10cm}{\hspace{15pt}Given two objects $G$ and $H$ and a rule
