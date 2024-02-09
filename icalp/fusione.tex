@@ -3318,8 +3318,8 @@ Our next step is to identify sufficient conditions for a category $\X$ to satisf
 	It is worth to examine more closely conditions $1$ and $3$ of the above definition.
 	\smallskip 
 	\begin{itemize}
-	\parbox{10cm}{\item Let $m_0\colon X_0 \rightarrowtail Y$ be an arrow in $\mathcal{M}$, the first condition means that there exists $m_1\colon X_1\to Y$ such that $(Y, \{m_i\}_{i=0}^1)$ is a coproduct. This, together with property $3$, entails that every coprojection in a coproduct is in $\mathcal{M}$. This follows sinc, any coproduct $(X_1+X_2, \{\iota_{X_i}\}_{i=0}^1)$ fits in a pushout diagram as the one aside.}
-	  \parbox{3.5cm}{\vspace{-2.5em}$\xymatrix@C=25pt{0  \ar@{>->}[r]^-{?_{X_1}} \ar@{>->}[d]^{?_{X_2}}& X_1 \ar@{>->}[d]^{\iota_{X_1}}\\ X_2 \ar@{>->}[r]_-{\iota_{X_2}} & X_1+X_2}$}
+	\parbox{10.3cm}{\item Let $m_0\colon X_0 \rightarrowtail Y$ be an arrow in $\mathcal{M}$, the first condition means that there exists $m_1\colon X_1\to Y$ such that $(Y, \{m_i\}_{i=0}^1)$ is a coproduct. This, together with property $3$, entails that every coprojection in a coproduct is in $\mathcal{M}$. This follows since, any coproduct $(X_1+X_2, \{\iota_{X_i}\}_{i=0}^1)$ fits in a pushout diagram as the one aside.}
+	  \parbox{3cm}{\vspace{-0em}$\xymatrix@C=25pt{0  \ar@{>->}[r]^-{?_{X_1}} \ar@{>->}[d]^{?_{X_2}}& X_1 \ar@{>->}[d]^{\iota_{X_1}}\\ X_2 \ar@{>->}[r]_-{\iota_{X_2}} & X_1+X_2}$}
 		
 	\smallskip 	\noindent 
 	\parbox{13.5cm}{\item $\X$ has strict initial objects if it has initial objects and every arrow $f:X\to 0$ is an isomorphism. Notice that if initial objects are strict, then $?_X\colon 0\to X$ is mono for every $X$: indeed for every pair $f,g\colon Y\rightrightarrows 0$ then, by strictness, $Y$ is initial and so $f=g$.}
@@ -3344,22 +3344,38 @@ Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$. Then for ev
 Consider the cube aside, in which the back faces are pullbacks. The bottom faces is an $\mathcal{M}$-Van Kampen pushout, thus the top face is a pushout if and only if the front faces are pullbacks. By strictness of $0$, $a\colon I\to 0$ is an isomorphism, so that $I$ is initial, therefore the $\mathcal{M}$-Van Kampen condition reduces to the request that $(C, \{f,g\})$ is a coproduct cocone if and only if the front faces are pullbacks, as claimed.
 \end{proof}}
 
-We need a last technical result before proving that  an $\mathcal{M}$-adhesive category of type $\mathbb{B}$ satisfy the $\mathcal{M}$-mixed and $\mathcal{M}$-pushout decomposition properties.
+We need two last technical results before proving that  an $\mathcal{M}$-adhesive category of type $\mathbb{B}$ satisfy the $\mathcal{M}$-mixed and $\mathcal{M}$-pushout decomposition properties.
 
 \noindent
-\parbox{11cm}{\begin{proposition}\label{prop:po2}
-Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$, and suppose that the square on the right is an $\mathcal{M}$ pullback. Then there exists $E\in \X$, $e\mto E\to C$ in $\mathcal{M}$ such that $(C, \{n, e\})$
-\end{proposition}} \parbox{3cm}{$\xymatrix{A  \ar[r]^{f} \ar@{>->}[d]_{n}& B \ar@{>->}[d]^{m}\\ C\ar[r]_{g} & D}$}
+\parbox{10.5cm}{\begin{proposition}\label{prop:po2}
+		Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$, and suppose that the square on the right is an $\mathcal{M}$ pullback. Then there exists $E\in \X$, $e\colon E\mto C$ in $\mathcal{M}$, $\phi:E\to B_1$ such that $(C, \{m, e\})$ is a coproduct and $g=f+\phi$. 
+\end{proposition}} \parbox{3cm}{\vspace{-.15cm}$\xymatrix{A  \ar[r]^{f} \ar@{>->}[d]_{m}& B_0 \ar@{>->}[d]^{\iota_{B_{0}}}\\ C\ar[r]_-{g} & B_0+B_1}$}
 \begin{proof}
-	contenuto...
-\end{proof}
+		Pulling back $\iota_{B_0}\colon B_0\to B_0\to B_1$ and $\iota_{B_1}\colon B_1\to B_0 + B_1$ we get the diagram below and the thesis follows from \Cref{prop:ext}. The same diagram allows us to deduce $g=f+\phi$.	
+	\parbox{5.2cm}{$\xymatrix{A\ar[r]^-{m} \ar@{>->}[d]_{r}& C  \ar@{>->}[d]_{g}& E \ar@{>->}[d]^{\phi}\ar[l]_-{e}\\B_0  \ar[r]_-{\iota_{B_0}}& B_0+B_1 & B_1 \ar[l]^-{\iota_{B_1}} \\ A & B_0 \\C & B_0+E\\ &&B_0+B_1}$}\parbox{8.8cm}{\vspace{-4.2cm}Let us show the second half of the thesis.
+	
+	$(\Rightarrow)$ It is immediat to show that the inner square in the second diagram on the left is a pushout. Thus we get the existence of the dotted isomorphism $\varphi\colon B_0+E\to B_0+B_1$.}
+		
+		\parbox{5cm}{aaaaaaaaaaaaaaaaaaa}
+\end{proof}	
 
+
+
+\noindent
+\parbox{10.7cm}{\begin{corollary}\label{cor:po2}
+Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$, and suppose that the square on the right is an $\mathcal{M}$ pullback. Then there exists $E\in \X$, $e\colon E\mto C$ in $\mathcal{M}$, $\phi:E\to B_1$ such that $(C, \{m, e\})$ is a coproduct and $g=f+\phi$. Moreover, such a square is a pushout if and only if $\phi$ is an isomorphism.
+\end{corollary}} \parbox{3cm}{\vspace{-.5cm}$\xymatrix{A  \ar[r]^{f} \ar@{>->}[d]_{m}& B \ar@{>->}[d]^{\iota_{B_{0}}}\\ C\ar[r]_-{g} & B_0+B_1}$}
+
+
+
+\iffalse 
 \noindent 
-\parbox{9.5cm}{\begin{proof}	$(1\Rightarrow 2)$ We first prove that the inner square in the diagram aside is a pushout. Indeed, if $h\colon Y_0\to Z$ and $k\colon X_0+X_1\to Z$ are two arrows such that $h\circ f= k\circ \iota_{X_0}$, then we can define $z\colon Y_0+X:1\to Z$ as the one induced by $h$ and $k\circ \iota_{X_1}$.
+\parbox{9.5cm}{\begin{proof}	$(1\Rightarrow 2)$ 
 	
 	\smallskip \noindent $(2\Rightarrow 1)$
 \end{proof}}
-\parbox{2cm}{$\xymatrix{X_0  \ar[r]^{f} \ar[d]_{\iota_{X_0}}& Y_0 \ar[d]_{\iota'_{Y_0}} \ar@/^.8cm/[dd]^{\iota_{Y_0}}\\ X_0+X_1  \ar@/_.4cm/[dr]_{g}\ar[r]_{f+\id{X_1}}  & Y_0+X_1 \ar@{.>}[d]_{\psi}\\& Y_0+Y_1}$}
+
+\fi 
 
 \begin{lemma}\label{lem:prop} Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$, then $\X$ satisfies the $\mathcal{M}$-mixed and $\mathcal{M}$-pushout decomposition properties.
 \end{lemma}
