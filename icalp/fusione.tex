@@ -6,11 +6,11 @@
 % full or conference version
 \newif\iffull
 \fulltrue
-%\fullfalse
+\fullfalse
 
 % additional text
 \iffull
-\newcommand{\full}[1]{#1}
+\newcommand{\full}[1]{{\color{blue}#1 full}}
 %\newcommand{\short}[1]{}
 \else 
 \newcommand{\full}[1]{}
@@ -483,20 +483,33 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
 
 
 \begin{abstract}
-When two sequences of steps executed by a computational device can be considered equivalent?
-This is a relevant question if one considers concurrent and distributed systems, since the independence
-of two steps means that they could be executed on any order, and potentially in parallel.
-%
-We investigate the issue in the context of adhesive categories, a very
-general instance of the DPO approach to rewriting. More precisely, we
-focus on left-linear rules, which not only consume, preserve and generate entities,
-as linear rules do, but may ``merge'' parts of the state.
-%
-An apparently minimal, yet technically hard enhancement, which allows to properly extend the 
-formalisms that can be modelled in the adhesive framework, and for which we prove a 
-Church-Rosser property.
-%
-% We refine the established notion of sequential independence between steps, and ...
+  When two sequences of steps executed by a computational device can
+  be considered equivalent?  This is a relevant question if one
+  considers concurrent and distributed systems, since the independence
+  of two steps means that they could be executed on any order, and
+  potentially in parallel.
+  % 
+  We investigate the issue in the context of adhesive categories, a
+  very general instance of the DPO approach to rewriting. More
+  precisely, we focus on left-linear rules, which not only consume,
+  preserve and generate entities, as linear rules do, but may
+  ``merge'' parts of the state.
+  % 
+  An apparently minimal, yet technically hard enhancement, which
+  allows to properly extend the formalisms that can be modelled in the
+  adhesive framework, and for which we prove a Church-Rosser property.
+  % 
+  % We refine the established notion of sequential independence
+  % between steps, and ...
+  The canonical notion of independence used for linear rewriting
+  systems does not work out of the box, but it requires the
+  restriction to suitable well-behaved classes of left-linear
+  rewriting systems.  Additionally, a fundamental characterisation of
+  the notion of independence fails when moving to left-linear
+  rewriting systems. This requires a substantial revision of the
+  theory as in the linear case, a number of basic properties,
+  essential in the development of the theory of concurrency, were
+  derived from such a characterisation.
  \end{abstract}
 
 %\tableofcontents
@@ -770,7 +783,7 @@ linear case. \todo{P: Too technical? Forse qui e' piu' esplicativo un
 \item the result of the switch is uniquely determined.
 \end{itemize}
 
-Here we observe that, in general, both property can fail: sequential
+Here we observe that, in general, both properties can fail: sequential
 independent steps could be not switchable and different independent
 pairs could exist leading to different switches of the same rewriting
 steps.  A refined notion of independence can be considered to ensure
@@ -950,22 +963,7 @@ We will use $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs t
 
 
 
-<<<<<<< HEAD
-%\todo{P: qui probabilmente si puo' compattare tenendo solo cio' che si usa}
-%\todo{Si usa tutto per la classe B+ [DC]}
-%$\mathcal{M}$-adhesivity is well-behaved with respect to  the comma construction \cite{mac2013categories}, as shown by the following theorem.
-%\begin{theorem}[\cite{ehrig2006fundamentals,lack2005adhesive}]\label{lem:comma}
-  %Let $\A$ and $\B$ be respectively an $\mathcal{M}$-adhesive and an
-  %$\mathcal{M}'$-adhesive category. Let also $L:\A\rightarrow \C$ be a
-  %functor that preserves $\mathcal{M}$-pushouts, and
-  %$R:\B\rightarrow \C$ be a functor which preserves pullbacks.Then
- % $\comma{L}{R}$ is $\cma{M}{M'}$-adhesive, where
-  %\[
-    %\cma{M}{M}':=\{(h,k)\in \mathcal{A}(\comma{L}{R}) \mid h\in
-    %\mathcal{M}, k\in \mathcal{M}'\}\]
-%\end{theorem}
-$\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of slice caregories, \cite{mac2013categories}, as shown by the following theorem.
-=======
+
 \todo{P: qui probabilmente si puo' compattare tenendo solo cio' che si usa}
 \todo{Si usa tutto per la classe B+ [DC]}
 $\mathcal{M}$-adhesivity is well-behaved with respect to  the comma construction \cite{mac2013categories}, as shown by the following theorem.
@@ -981,7 +979,6 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the comma construction
     \cma{M}{M}':=\{(h,k)\in \mathcal{A}(\comma{L}{R}) \mid h\in
     \mathcal{M}, k\in \mathcal{M}'\}\]
 \end{theorem}
->>>>>>> refs/remotes/origin/main
 
 \begin{theorem}\label{cor:slice}
   Let $X$ be an object of an $\mathcal{M}$-adhesive category
@@ -1156,7 +1153,7 @@ Often, we are interested in derivations only up to some notion of coherent isomo
 
 \noindent
 \parbox{8cm}{
-  \begin{definition}
+  \begin{definition}[abstraction equivalence]
     Let  $\X$ be an $\mathcal{M}$-adhesive category and 
     $(\X, \R)$ a left-linear DPO rewriting system. 
     An \emph{abstraction equivalence} between two derivations $\der{D}$
@@ -2204,7 +2201,7 @@ consecutive rewriting steps, which is a fundamental ingredient of the
 rewriting theory, which comes into play when viewing a derivation
 sequence as a concurrent computation, the idea being that of
 abstracting out the order of execution of independent rewritings. We
-observe that the shift to left-linear rules leads to the failure of
+observe that moving to left-linear rules leads to the failure of
 various basic properties of the classical notion of independence and
 we single out a framework in which these can be re-established.
 
@@ -2355,9 +2352,14 @@ More precisely, let us formalise what it means for a derivation being the switch
   % they are \emph{switchable}.
 \end{definition}
 
-As already mentioned, when viewing derivations as concurrent computations, 
-for linear graph rewriting systems it is canonical to identify  derivations which are equal 
-``up to switching''. The same notion can be given for left-linear rewriting systems relying on notion of switch.
+It can be shown that switches along the same independence pair are unique up to abstraction
+equivalence (see Proposition~\ref{thm:switch_uni}).
+
+As already mentioned, for linear rewriting systems, when viewing
+derivations as concurrent computations, it is canonical to identify
+derivations which are equal ``up to switching''. The same notion can
+be given for left-linear rewriting systems relying on notion of
+switch.
 
 \begin{definition}[Switch equivalence]
   \label{de:switch-equivalence}
@@ -2373,19 +2375,15 @@ for linear graph rewriting systems it is canonical to identify  derivations whic
   $\der{D} \equiv^s \der{E}$.
 \end{definition}
 
+In words, we let $\der{D} \equiv^s \der{E}$ when one derivation can be obtained from the other via a sequence of switches.
 
 
 \subsection{Relating sequential indepedence and switchability}
 
 
 The fact that sequential indepedence implies switchability always
-<<<<<<< HEAD
 holds for linear rules (see \Cref{prop:equi}). The result is so fundamental that it is
 not even stated, in the sense that switchability is not introduced
-=======
-holds for linear rules. [REF] The result is so fundamental that it is
-not even stated explicitly, in the sense that switchability is not introduced
->>>>>>> refs/remotes/origin/main
 axiomatically as in Definition~\ref{def:switch}, but it is based on
 the explicit construction of a switch.
 
@@ -2450,16 +2448,6 @@ switchability (while the converse implication clearly holds), as shown by the ex
       \ar[d]_{(a,c)}\ar@{>->}[l]_{\id{a}} \ar[r]^{(a,b)} & b \\c
       & c \ar[l]^{\id{c}} }$}  
 \end{example}
-
-
-Switches along the same independence pair are unique up to abstraction
-equivalence (see Proposition~\ref{thm:switch_uni}).
-
-
-
-
-
-
 
 
 \begin{example}
@@ -2582,11 +2570,8 @@ by the notion of \emph{canonical filler}
 % \end{definition}
 
 
-<<<<<<< HEAD
-We can now prove the Local Church-Rosser Theorem for good independence pairs.
-=======
 We can now prove a Local Church-Rosser Theorem for good independence pairs.
->>>>>>> refs/remotes/origin/main
+
 
 \begin{restatable}[Local Church-Rosser Theorem]{theorem}{thmChurch}
   \label{thm:church}
