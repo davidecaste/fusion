@@ -468,7 +468,14 @@
 
 
 \authorrunning{P.~Baldan, D.~Castelnovo, A.~Corradini, F.~Gadducci}
+%
 \Copyright{Paolo Baldan, Davide Castelnovo, Andrea Corradini and Fabio Gadducci}
+%
+\ccsdesc[500]{Theory of Computation~Models of computation}
+%
+\keywords{
+Adhesive categories, double-pushout rewriting, left-linear rules, switch equivalence, local Church-Rosser property.
+}
 
 \begin{document}
 \maketitle
@@ -476,8 +483,21 @@
 
 
 \begin{abstract}
-	\todo{	A VERY NICE ABSTRACT}
-\end{abstract}
+When two sequences of steps executed by a computational device can be considered equivalent?
+This is a relevant question if one considers concurrent and distributed systems, since the independence
+of two steps means that they could be executed on any order, and potentially in parallel.
+%
+We investigate the issue in the context of adhesive categories, a very
+general instance of the DPO approach to rewriting. More precisely, we
+focus on left-linear rules, which not only consume, preserve and generate entities,
+as linear rules do, but may ``merge'' parts of the state.
+%
+An apparently minimal, yet technically hard enhancement, which allows to properly extend the 
+formalisms that can be modelled in the adhesive framework, and for which we prove a 
+Church-Rosser property.
+%
+% We refine the established notion of sequential independence between steps, and ...
+ \end{abstract}
 
 %\tableofcontents
 
@@ -639,7 +659,7 @@ specify that,  in a rewriting step, some entities in the current state are remov
 some others are needed for the rewriting step to occur but remain unaltered and 
 some new entities can be generated. Concerning concurrency, the chosen notion 
 is shift equivalence, and independence is formally captured by the so-called 
-Church-Rosser theorem of DPO rewriting~\cite[xxx]{CMREHL:AAGT}.
+Church-Rosser theorem of DPO rewriting~\cite[Section~xxx]{CMREHL:AAGT}.
 
 A noteworthy advantage is that DPO rewriting can be formulated over
 adhesive categories and their variants~\cite{lack2005adhesive,ehrig2006weak}. 
