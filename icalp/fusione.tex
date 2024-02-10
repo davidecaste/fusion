@@ -1,9 +1,9 @@
-\documentclass[a4paper,UKenglish,cleveref,pdftex, thm-restate,numberwithinsect]{lipics}
+\documentclass[a4paper,UKenglish,cleveref,pdftex, thm-restate,numberwithinsect,anonymous]{lipics}
 \newif\ifreport
 \reporttrue
 %\reportfalse
  
-% full or conference version
+% full includes some additional material
 \newif\iffull
 \fulltrue
 \fullfalse
@@ -452,6 +452,7 @@
 
 
 \title{Left-linear rules in adhesive categories}
+
 \author{Paolo Baldan} 
 {Department of Mathematics, University of Padova, Italy}
 {baldan@math.unipd.it}{}{}
@@ -1006,21 +1007,21 @@ $\mathcal{M}$-adhesivity is the formation of the functor category.
 We can list various examples of $\mathcal{M}$-adhesive categories (see
 \cite{castelnovo2023thesis,CastelnovoGM22,lack2006toposes}).
 
-\begin{example}\todo{Topos, ipergrafi e grafi}
-\end{example}
 
 \begin{example}
-  \todo{grafi semplici}
+  \label{ex:adhesive}
+  Every topos is adhesive~\cite{lack2006toposes}, thus in particular
+  $\cat{Set}$ is adhesive. By the closure properties recalled before
+  every presheaf $[\cat{X},\cat{Set}]$ is adhesive and in particular
+  the category $\cat{Graph} = [ E \rightrightarrows V, \cat{Set}]$ is
+  adhesive where $E \rightrightarrows {V}$ is the two object category
+  with two morphisms $s,t \colon{E} \to {V}$. In a similar way,
+  various categories of hypergraphs can be shown to be adhesive, while
+  the category $\cat{sGraphs}$ of simple graphs, i.e., graphs without
+  parallel edges is quasi-adhesive, i.e.,
+  $\reg{(\cat{sGraphs})}$-adhesive.\todo{Add hierarchical graphs and term graphs\cite{castelnovo2023thesis,CastelnovoGM22}).}
 \end{example}
 
-
-\begin{example}
-  \todo{GRAFI GERARCHICI}
-\end{example}
-
-\begin{example}
-  \todo{term graph}
-\end{example}
 
 A number of properties of adhesive categories which play a role in the
 theory of rewriting generalise to $\mathcal{M}$-adhesive
@@ -1114,10 +1115,10 @@ A derivation can now defined simply as a sequence of direct derivations.
 
 Derivations naturally compose: given $\der{D}: G \Mapsto H$ and $\der{E}: H \Mapsto F$ we can consider their composition $\der{D} \cdot \der{E}: G \to F$, defined in the obvious way.
 
-\todo[inline]{P: se non impatta sul resto forse sarebbe forse piu' carino definire:\\
-  - for each $G \in \X$, $G : G \Mapsto G$ is a derivation\\  
-  - for each direct derivation $\dder{D}: G \Mapsto H$ and derivation $\der{E} : H \Mapsto F$ we have that $\dder{D}; \der{E} : G \Mapsto F$ is a derivation
-}
+% \todo[inline]{P: se non impatta sul resto forse sarebbe forse piu' carino definire:\\
+%   - for each $G \in \X$, $G : G \Mapsto G$ is a derivation\\  
+%   - for each direct derivation $\dder{D}: G \Mapsto H$ and derivation $\der{E} : H \Mapsto F$ we have that $\dder{D}; \der{E} : G \Mapsto F$ is a derivation
+% }
 
 \rem{Suppongo questo serva quando poi si considerano le permutazioni consistenti, spostare? }{
 \begin{remark}
@@ -2720,6 +2721,9 @@ actually very tame.
   contenuto...
 \end{proof}
 
+\begin{example}[E-graphs]
+  Graphs with equivalences on nodes. Formally $V \to$
+\end{example}
 
 \subsection{Switch equivalence via permutation equivalence}
 
