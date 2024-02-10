@@ -2421,7 +2421,7 @@ switch.
 In words, we let $\der{D} \equiv^s \der{E}$ when one derivation can be obtained from the other via a sequence of switches.
 
 
-\subsection{Relating sequential indepedence and switchability}
+\subsection{Church-Rosser: Relating sequential indepedence and switchability}
 
 
 The fact that sequential indepedence implies switchability always
@@ -2634,6 +2634,7 @@ A source of tame left-linear DPO rewriting systems is given by the linear ones, 
 
 [Proof in \Cref{propEqui-proof}]
 
+\subsection{A normal form for derivations: Very tame rewriting systems}
 
 Even if we work in a setting where sequential independence ensures switchability, dealing with left-linear rules there is a further - possibly more serious - issue, i.e., the fact that there can be more than one independence pairs between the same derivations. This can hinder the core idea of using sequential independence as a basis of a theory of concurrency for rewriting systems, since exchanges performed using different independence pairs may lead to derivations that are not abstraction equivalent, and thus one would equate computations that 
 should definitively be taken apart, as shown in the example below.
@@ -2708,7 +2709,25 @@ actually very tame.
 \end{proof}
 
 \begin{example}[E-graphs]
-  Graphs with equivalences on nodes. Formally $V \to$
+  Consider the category $\cat{EGraphs}$, where objects are (directed)
+  graphs endowed with an equivalence over nodes and arrows are graph
+  morphisms which preserve the equialence as considered in~\cite{},
+  closely related to the Egg graphs in~\cite{WNW:egg}. Formally,
+  $\cat{EGraphs}$ can be seen as the subcategory of the presheaf
+  $[E \rightrightarrows V \to Q, \cat{Set}]$ where objects are
+  constrained to have the component $Q$ surjective. Explicitly, an
+  e-graph $G = \langle s_G, t_G, q_G \rangle$ where
+  $\langle s_G, t_G: E_G \rightrightarrows V_G$ provides the graphical
+  structure, while the surjective function $q_G : V_G \to Q_G$ maps
+  each node to the corresponding equivalence class.
+  
+  A morphims in $\cat{EGraph}$ is is mono if the components over $E$
+  and $V$ are mono, i.e., if it is mono as a morphism in
+  $\cat{Graph}$. It is \emph{regular mono} if also the component on
+  $Q$ is mono, i.e., if it reflects equivalence classes besides
+  preserving them.
+
+  \todo[inline]{$\cat{EGraph}$ is quasi-adhesive and very tame}  
 \end{example}
 
 \subsection{Switch equivalence via permutation equivalence}
