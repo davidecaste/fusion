@@ -6,11 +6,11 @@
 % full or conference version
 \newif\iffull
 \fulltrue
-\fullfalse
+%\fullfalse
 
 % additional text
 \iffull
-\newcommand{\full}[1]{{\color{blue}#1 full}}
+\newcommand{\full}[1]{#1}
 %\newcommand{\short}[1]{}
 \else 
 \newcommand{\full}[1]{}
@@ -349,6 +349,9 @@
 
 %%%%GENERAL CATEGORICAL NOTATION
 
+\newcommand{\gph}[1]{\mathcal{G}\textbf{\textup{-Graph}}}
+
+\newcommand{\dph}{\mathsf{dph}}
 %identitÃ 
 \newcommand{\id}[1]{\mathsf{id}_{#1}}
 %codominio
@@ -368,6 +371,7 @@
 \def\D{\textbf {\textup{D}}}
 \def\X{\textbf {\textup{X}}}
 \def\Y{\textbf {\textup{Y}}}
+\def\G{\textbf {\textup{G}}}
 
 \newcommand{\ske}{\mathsf{sk}(\X)}
 \renewcommand{\P}{\textbf {\textup{P}}}
@@ -483,33 +487,20 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
 
 
 \begin{abstract}
-  When two sequences of steps executed by a computational device can
-  be considered equivalent?  This is a relevant question if one
-  considers concurrent and distributed systems, since the independence
-  of two steps means that they could be executed on any order, and
-  potentially in parallel.
-  % 
-  We investigate the issue in the context of adhesive categories, a
-  very general instance of the DPO approach to rewriting. More
-  precisely, we focus on left-linear rules, which not only consume,
-  preserve and generate entities, as linear rules do, but may
-  ``merge'' parts of the state.
-  % 
-  An apparently minimal, yet technically hard enhancement, which
-  allows to properly extend the formalisms that can be modelled in the
-  adhesive framework, and for which we prove a Church-Rosser property.
-  % 
-  % We refine the established notion of sequential independence
-  % between steps, and ...
-  The canonical notion of independence used for linear rewriting
-  systems does not work out of the box, but it requires the
-  restriction to suitable well-behaved classes of left-linear
-  rewriting systems.  Additionally, a fundamental characterisation of
-  the notion of independence fails when moving to left-linear
-  rewriting systems. This requires a substantial revision of the
-  theory as in the linear case, a number of basic properties,
-  essential in the development of the theory of concurrency, were
-  derived from such a characterisation.
+When two sequences of steps executed by a computational device can be considered equivalent?
+This is a relevant question if one considers concurrent and distributed systems, since the independence
+of two steps means that they could be executed on any order, and potentially in parallel.
+%
+We investigate the issue in the context of adhesive categories, a very
+general instance of the DPO approach to rewriting. More precisely, we
+focus on left-linear rules, which not only consume, preserve and generate entities,
+as linear rules do, but may ``merge'' parts of the state.
+%
+An apparently minimal, yet technically hard enhancement, which allows to properly extend the 
+formalisms that can be modelled in the adhesive framework, and for which we prove a 
+Church-Rosser property.
+%
+% We refine the established notion of sequential independence between steps, and ...
  \end{abstract}
 
 %\tableofcontents
@@ -783,7 +774,7 @@ linear case. \todo{P: Too technical? Forse qui e' piu' esplicativo un
 \item the result of the switch is uniquely determined.
 \end{itemize}
 
-Here we observe that, in general, both properties can fail: sequential
+Here we observe that, in general, both property can fail: sequential
 independent steps could be not switchable and different independent
 pairs could exist leading to different switches of the same rewriting
 steps.  A refined notion of independence can be considered to ensure
@@ -960,25 +951,35 @@ We will use $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs t
   isomorphisms, then any category $\X$ is $\mathsf{Iso}$-adhesive.
 \end{example}
 
+%<<<<<<< HEAD
+%\todo{P: qui probabilmente si puo' compattare tenendo solo cio' che si usa}
+%\todo{Si usa tutto per la classe B+ [DC]}
+%$\mathcal{M}$-adhesivity is well-behaved with respect to  the comma construction \cite{mac2013categories}, as shown by the following theorem.
+%\begin{theorem}[\cite{ehrig2006fundamentals,lack2005adhesive}]\label{lem:comma}
+  %Let $\A$ and $\B$ be respectively an $\mathcal{M}$-adhesive and an
+  %$\mathcal{M}'$-adhesive category. Let also $L:\A\rightarrow \C$ be a
+  %functor that preserves $\mathcal{M}$-pushouts, and
+  %$R:\B\rightarrow \C$ be a functor which preserves pullbacks.Then
+ % $\comma{L}{R}$ is $\cma{M}{M'}$-adhesive, where
+  %\[
+    %\cma{M}{M}':=\{(h,k)\in \mathcal{A}(\comma{L}{R}) \mid h\in
+    %\mathcal{M}, k\in \mathcal{M}'\}\]
+%\end{theorem}
+$\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of slice and functor caregories, \cite{mac2013categories}, as shown by the following theorems \cite{ehrig2006fundamentals,lack2005adhesive}.
+   --ò-à
 
-
-
-
-\todo{P: qui probabilmente si puo' compattare tenendo solo cio' che si usa}
-\todo{Si usa tutto per la classe B+ [DC]}
-$\mathcal{M}$-adhesivity is well-behaved with respect to  the comma construction \cite{mac2013categories}, as shown by the following theorem.
-\begin{theorem}
-[\cite{ehrig2006fundamentals,lack2005adhesive}]
-\label{lem:comma}
-  Let $\A$ and $\B$ be respectively an $\mathcal{M}$-adhesive and an
-  $\mathcal{M}'$-adhesive category. Let also $L:\A\rightarrow \C$ be a
-  functor that preserves $\mathcal{M}$-pushouts, and
-  $R:\B\rightarrow \C$ a functor that preserves pullbacks.Then
-  $\comma{L}{R}$ is $\cma{M}{M'}$-adhesive, where
-  \[
-    \cma{M}{M}':=\{(h,k)\in \mathcal{A}(\comma{L}{R}) \mid h\in
-    \mathcal{M}, k\in \mathcal{M}'\}\]
-\end{theorem}
+%\begin{theorem}
+%[\cite{ehrig2006fundamentals,lack2005adhesive}]
+%\label{lem:comma}
+  %Let $\A$ and $\B$ be respectively an $\mathcal{M}$-adhesive and an
+ % $\mathcal{M}'$-adhesive category. Let also $L:\A\rightarrow \C$ be a
+  %functor that preserves $\mathcal{M}$-pushouts, and
+  %$R:\B\rightarrow \C$ a functor that preserves pullbacks.Then
+  %$\comma{L}{R}$ is $\cma{M}{M'}$-adhesive, where
+  %\[
+    %\cma{M}{M}':=\{(h,k)\in \mathcal{A}(\comma{L}{R}) \mid h\in
+   % \mathcal{M}, k\in \mathcal{M}'\}\]
+%\end{theorem}
 
 \begin{theorem}\label{cor:slice}
   Let $X$ be an object of an $\mathcal{M}$-adhesive category
@@ -991,10 +992,7 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the comma construction
 \end{theorem}
 
 
-Another construction that preserves
-$\mathcal{M}$-adhesivity is the formation of the functor category.
-
-\begin{theorem}[\cite{ehrig2006fundamentals,lack2005adhesive}]
+\begin{theorem}
   \label{thm:functors}
   Let $\X$ be an $\mathcal{M}$-adhesive category. Then for every small
   category $\Y$, the category $\X^\Y$ of functors $\Y\to \X$ is
@@ -1153,7 +1151,7 @@ Often, we are interested in derivations only up to some notion of coherent isomo
 
 \noindent
 \parbox{8cm}{
-  \begin{definition}[abstraction equivalence]
+  \begin{definition}
     Let  $\X$ be an $\mathcal{M}$-adhesive category and 
     $(\X, \R)$ a left-linear DPO rewriting system. 
     An \emph{abstraction equivalence} between two derivations $\der{D}$
@@ -2201,7 +2199,7 @@ consecutive rewriting steps, which is a fundamental ingredient of the
 rewriting theory, which comes into play when viewing a derivation
 sequence as a concurrent computation, the idea being that of
 abstracting out the order of execution of independent rewritings. We
-observe that moving to left-linear rules leads to the failure of
+observe that the shift to left-linear rules leads to the failure of
 various basic properties of the classical notion of independence and
 we single out a framework in which these can be re-established.
 
@@ -2352,14 +2350,9 @@ More precisely, let us formalise what it means for a derivation being the switch
   % they are \emph{switchable}.
 \end{definition}
 
-It can be shown that switches along the same independence pair are unique up to abstraction
-equivalence (see Proposition~\ref{thm:switch_uni}).
-
-As already mentioned, for linear rewriting systems, when viewing
-derivations as concurrent computations, it is canonical to identify
-derivations which are equal ``up to switching''. The same notion can
-be given for left-linear rewriting systems relying on notion of
-switch.
+As already mentioned, when viewing derivations as concurrent computations, 
+for linear graph rewriting systems it is canonical to identify  derivations which are equal 
+``up to switching''. The same notion can be given for left-linear rewriting systems relying on notion of switch.
 
 \begin{definition}[Switch equivalence]
   \label{de:switch-equivalence}
@@ -2375,17 +2368,12 @@ switch.
   $\der{D} \equiv^s \der{E}$.
 \end{definition}
 
-In words, we let $\der{D} \equiv^s \der{E}$ when one derivation can be obtained from the other via a sequence of switches.
 
 
 \subsection{Relating sequential indepedence and switchability}
 
 
-The fact that sequential indepedence implies switchability always
-holds for linear rules (see \Cref{prop:equi}). The result is so fundamental that it is
-not even stated, in the sense that switchability is not introduced
-axiomatically as in Definition~\ref{def:switch}, but it is based on
-the explicit construction of a switch.
+The fact that sequential indepedence implies switchability always holds for linear rules (see \Cref{prop:equi}). The result is so fundamental that it is not even stated, in the sense that switchability is not introduced axiomatically as in Definition~\ref{def:switch}, but it is based on the explicit construction of a switch.
 
 When working with left-linear rewriting systems, sequential independence does not imply 
 switchability (while the converse implication clearly holds), as shown by the example below.
@@ -2448,6 +2436,16 @@ switchability (while the converse implication clearly holds), as shown by the ex
       \ar[d]_{(a,c)}\ar@{>->}[l]_{\id{a}} \ar[r]^{(a,b)} & b \\c
       & c \ar[l]^{\id{c}} }$}  
 \end{example}
+
+
+Switches along the same independence pair are unique up to abstraction
+equivalence (see Proposition~\ref{thm:switch_uni}).
+
+
+
+
+
+
 
 
 \begin{example}
@@ -2643,8 +2641,6 @@ A source of tame left-linear DPO rewriting systems is given by the linear ones, 
   \label{prop:equi}
   Every linear DPO rewriting system $(\X, \R)$ is tame.
 \end{restatable}
-
-
 [Proof in \Cref{propEqui-proof}]
 
 
@@ -2693,32 +2689,52 @@ systems where uniqueness of the independence pair is always ensured.
 %\subsubsection{Graphical rewriting systems}\label{subsubsec:graphical}
 
 
-\begin{definition}[Very tameneness]
-	\todo{very tame}
+\begin{definition}[Very tame rewrityng systems]
+A left-linear DPO rewriting system $(\X, \R)$ is \emph{very tame} if it is very tame and, for every derivation $\der{D}:=\{\dder{D}_{i}\}_{i=0}^1$, there is at most one independence paire between $\dder{D}_0$ and $\dder{D}_1$.
 \end{definition}
-\todo{SCRIVERE MEGLIO QUESTE RIGHE CON DELLE REFERENZE PERCHÈ IO NON NE SO NIENTE}
-\todo{SCEGLIERE ANCHE UN NOME}
 
 The previous definition might sound restrictive. First, it is immediate to see that linear rewriting systems are all very tame (see Proposition~\ref{pr:weak}).
 %
 Moreover we next introduce a class of rewriting systems, comprising
 all the ones used in concrete modelling applications of DPO rewriting
-(e.g., in the encoding of process calculi ..., ...) are
+(e.g., in the encoding of process calculi ..., ...) are \todo{INSERIRE ESEMPI QUI}
 actually very tame.
 
-
-\begin{definition}[Node-merging graphical rewriting systems]
-	\todo{sist di riscrittura grafico}
+\begin{definition}
+Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph, we define the \emph{depth} of a vertex $v\in V$ in the following way:
+\[\dph(v)=\begin{cases}
+0 & \text{there is no $e\in E$ such that $t(e)=v$}\\
+m+1 &\text{where } m=\min\{\dph(s(e)) \mid e\in E \text{ such that } t(e)=v \} 
+\end{cases}\]
 \end{definition}
-\todo{esempi (no idea)}
-\begin{lemma}
-  All node-merging graphical rewriting systems are very tame.
-  \todo{tutti very tame}
-\end{lemma}
 
-\begin{proof}
-  contenuto...
-\end{proof}
+
+\begin{remark}
+Since $\mathcal{G}$ is acyclic and finite, then $\dph(v)$ is a natural number.
+\end{remark}
+
+\begin{definition}[Node-merging graphical rewriting systems]\todo{inserire referenze qui}
+Let $\mathcal{G}=(V, E, s, t)$ be a directed acyclic graph, the category  $\gph{G}$ of \emph{$\mathcal{G}$-graphs} is the category $\Set^{\G}$, where $\G$ is the free category over $\mathcal{G}$. A \emph{norde-merging graphical rewriting systems} is a left-linear DPO-rewriting system $(\gph{G}, \R)$ such that, for every rule $(l,r)$, with $l\colon K\to L$ and $r\colon K\to R$  in $\R$, the following hold true:
+\begin{enumerate}
+	\item for every $v\in V$ and $x\in L(v)$, there exists a vertex $w$ with depth $0$ and an arrow $p\colon w\to v$ (i.e.~a path in $\mathcal{G}$) such that  $x$ belongs to the image of $L(p)\colon L(w)\to L(v)$.
+	\item $r\colon K\to R$ is mono on vertices of depth $0$: for every $v\in V$ such that $\dph(v)=0$, the component $r_v:K(v)\to R(v)$ is mono.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}\label{rem:po}
+	Notice that $\gph{G}$ is adhesive and that pushouts are computed componentwise, thus if $g\colon F\to G$ is the pushout of $r\colon K\to R$, then $g_v\colon F(v)\to G(v)$ is mono for every $v$ with depth $0$.
+\end{remark}
+
+\begin{example}
+\todo{esempi (no idea)}
+\end{example}
+
+\begin{restatable}{lemma}{lemVTame}
+  All node-merging graphical rewriting systems are very tame.
+\end{restatable}
+
+[Proof in \Cref{lemVTame}]
+
 
 
 \subsection{Switch equivalence via permutation equivalence}
@@ -3329,17 +3345,18 @@ Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$. Then for ev
 Consider the cube aside, in which the back faces are pullbacks. The bottom faces is an $\mathcal{M}$-Van Kampen pushout, thus the top face is a pushout if and only if the front faces are pullbacks. By strictness of $0$, $a\colon I\to 0$ is an isomorphism, so that $I$ is initial, therefore the $\mathcal{M}$-Van Kampen condition reduces to the request that $(C, \{f,g\})$ is a coproduct cocone if and only if the front faces are pullbacks, as claimed.
 \end{proof}}
 
-We need two last technical results before proving that  an $\mathcal{M}$-adhesive category of type $\mathbb{B}$ satisfy the $\mathcal{M}$-mixed and $\mathcal{M}$-pushout decomposition properties.
+The previous result entails the following one, needed to show that  an $\mathcal{M}$-adhesive category of type $\mathbb{B}$ satisfy the $\mathcal{M}$-mixed and $\mathcal{M}$-pushout decomposition properties.
 
 \noindent
-\parbox{10.5cm}{\begin{proposition}\label{prop:po2}
-		Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$, and suppose that the square on the right is an $\mathcal{M}$ pullback. Then there exists $E\in \X$, $e\colon E\mto C$ in $\mathcal{M}$, $\phi:E\to B_1$ such that $(C, \{m, e\})$ is a coproduct and $g=f+\phi$. 
+\parbox{10.7cm}{\begin{proposition}\label{prop:po2}
+		Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$, and suppose that the square on the right is an $\mathcal{M}$ pullback. Then there exists $E\in \X$, $e\colon E\mto C$ in $\mathcal{M}$, $\phi:E\to B_1$ such that $(C, \{m, e\})$ is a coproduct and $g=f+\phi$. Moreover, such a square is a pushout if and only if $\phi$ is an isomorphism.
 \end{proposition}} \parbox{3cm}{\vspace{-.15cm}$\xymatrix{A  \ar[r]^{f} \ar@{>->}[d]_{m}& B_0 \ar@{>->}[d]^{\iota_{B_{0}}}\\ C\ar[r]_-{g} & B_0+B_1}$}
+\iffalse 
 \begin{proof}
 		Pulling back $\iota_{B_0}\colon B_0\to B_0\to B_1$ and $\iota_{B_1}\colon B_1\to B_0 + B_1$ we get the diagram below and the thesis follows from \Cref{prop:ext}. The same diagram allows us to deduce $g=f+\phi$.	
-	\parbox{5.2cm}{$\xymatrix{A\ar[r]^-{m} \ar@{>->}[d]_{r}& C  \ar@{>->}[d]_{g}& E \ar@{>->}[d]^{\phi}\ar[l]_-{e}\\B_0  \ar[r]_-{\iota_{B_0}}& B_0+B_1 & B_1 \ar[l]^-{\iota_{B_1}} \\ A & B_0 \\C & B_0+E\\ &&B_0+B_1}$}\parbox{8.8cm}{\vspace{-4.2cm}Let us show the second half of the thesis.
+	\parbox{5.2cm}{$\xymatrix{A\ar[r]^-{m} \ar@{>->}[d]_{r}& C  \ar@{>->}[d]_{g}& E \ar@{>->}[d]^{\phi}\ar[l]_-{e}\\B_0  \ar[r]_-{\iota_{B_0}}& B_0+B_1 & B_1 \ar[l]^-{\iota_{B_1}} \\ A & B_0 \\C & B_0+E\\ &&B_0+B_1}$}\parbox{8.8cm}{\vspace{-4.1cm}Let us show the second half of the thesis.
 	
-	$(\Rightarrow)$ It is immediat to show that the inner square in the second diagram on the left is a pushout. Thus we get the existence of the dotted isomorphism $\varphi\colon B_0+E\to B_0+B_1$.}
+	$(\Rightarrow)$ It is immediate to show that the inner square in the second diagram on the left is a pushout. Thus we get the existence of the dotted isomorphism $\varphi\colon B_0+E\to B_0+B_1$.}
 		
 		\parbox{5cm}{aaaaaaaaaaaaaaaaaaa}
 \end{proof}	
@@ -3348,12 +3365,9 @@ We need two last technical results before proving that  an $\mathcal{M}$-adhesiv
 
 \noindent
 \parbox{10.7cm}{\begin{corollary}\label{cor:po2}
-Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$, and suppose that the square on the right is an $\mathcal{M}$ pullback. Then there exists $E\in \X$, $e\colon E\mto C$ in $\mathcal{M}$, $\phi:E\to B_1$ such that $(C, \{m, e\})$ is a coproduct and $g=f+\phi$. Moreover, such a square is a pushout if and only if $\phi$ is an isomorphism.
+Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$, and suppose that the square on the right is an $\mathcal{M}$ pullback. Then there exists $E\in \X$, $e\colon E\mto C$ in $\mathcal{M}$, $\phi:E\to B_1$ such that $(C, \{m, e\})$ is a coproduct and $g=f+\phi$. 
 \end{corollary}} \parbox{3cm}{\vspace{-.5cm}$\xymatrix{A  \ar[r]^{f} \ar@{>->}[d]_{m}& B \ar@{>->}[d]^{\iota_{B_{0}}}\\ C\ar[r]_-{g} & B_0+B_1}$}
 
-
-
-\iffalse 
 \noindent 
 \parbox{9.5cm}{\begin{proof}	$(1\Rightarrow 2)$ 
 	
@@ -3709,6 +3723,28 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 \end{proof}
 
 
+
+\lemVTame*
+\label{lemVTame}
+
+
+\begin{proof}
+	Every node-merging graphical rewriting system is tame because $\gph{G}$ is in the class $\mathbb{B}^+$ defined in \Cref{app:fill}.  Consider the following diagram 
+	\[\xymatrix@R=25pt@C=30pt{L_0 \ar[d]_{m_0}&& K_0
+		\ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0
+		\ar@<-.5ex>@/^.35cm/[drrr]|(.23)\hole|(.34)\hole_(.4){i_0} 	\ar@<.5ex>@/^.35cm/[drrr]^(.2){j_0}|(.31)\hole |(.4)\hole
+		\ar[dr]|(.3)\hole_{h_0} && L_1 \ar@<.5ex>@/_.35cm/[dlll]^(.4){i_1} \ar@<-.5ex>@/_.35cm/[dlll]_(.2){j_1}
+		\ar[dl]|(.3)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1}
+		\ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar@{>->}[ll]^{f_0}
+		D_0 \ar[rr]_{g_0}&& G_1 && \ar@{>->}[ll]^{f_1} D_1
+		\ar[rr]_{g_1}&& G_2}\] 
+	
+	Since $f_1$ is mono then $i_0=j_0$. For every $v$ with depth $0$ we have
+	\[g_{0,v}\circ i_{1,v}=h_{0,v}=g_{0,v}\circ j_{1,v}\]
+	which entails $i_{1,v}=j_{1,v}$. Let now $v$ be a vertex with depth greater than $0$, and take $x\in L_1(v)$. By definition, we have $p:w\to v$ and $y\in L_{1}(w)$  such that $\dph(w)=0$ and $L(p)(y)=x$. By naturality have:
+	\[i_{1,v}(x)=i_{1,v}(L(p)(y))=L(p)(i_{1, w}(y))=L(p)(j_{1, w}(y))=j_{1,v}(L(p)(y))=j_{1,v}(x)\]
+	From this we can deduce that $i_{1,v}=j_{1,v}$ as wanted.
+\end{proof}
 
 \lemThreeSteps*
 \label{lemThreeSteps-proof}
