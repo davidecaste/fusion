@@ -1408,7 +1408,7 @@ So equipped, we can introduce the notion of \emph{consistent permutation}.
   isomorphic sources and targets.
 
   If $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and
-  $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ with assciated sequence of rules
+  $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ with associated sequence of rules
   $r(\der{D})=\{\rho_i\}_{i=0}^n$ and
   $r(\der{D}')=\{\rho'_i\}_{i=0}^n$, a \emph{consistent permutation}
   between $(\der{D}, \alpha, \omega)$ and
@@ -2469,10 +2469,10 @@ switchability (while the converse implication clearly holds), as shown by the ex
     \label{fi:rules}
   \end{figure}
   
-  A derivation $\der{D}$ consisting of three steps $\der{D}_0$,
-  $\der{D}_1$, and $\der{D}_2$, each applying the corresponding rule
+  A derivation $\der{D}$ consisting of three steps $\dder{D}_0$,
+  $\dder{D}_1$, and $\dder{D}_2$, each applying the corresponding rule
   $\rho_i$ ,is depicted in in Fig.~\ref{fi:derD}. The second and third
-  steps $\der{D}_1$ and $\der{D}_2$ are clearly sequential
+  steps $\dder{D}_1$ and $\dder{D}_2$ are clearly sequential
   independent, via an independence pairs that map nodes consistently
   with their numbering.\todo{P: having names for the graphs would
     probably help}
@@ -2483,8 +2483,7 @@ switchability (while the converse implication clearly holds), as shown by the ex
     \label{fi:derD}
   \end{figure}
 
-  The category $\cat{Graph}$ is tame by the result in ...  Thus,
-  sequential independence ensure the existence of a switch $\der{E}$,
+  The independence pair can be used to construct a switch $\der{E}$, as
   depicted in Fig.~\ref{fi:derE}.
   \begin{figure}
     \input{Figure/derE.tex}
@@ -2499,6 +2498,7 @@ The conditions guaranteeing switchability are inspired
 by the notion of \emph{canonical filler}
 \cite{heindel2009category}.
 
+\todo{P: la chiamiamo ``strong indepedence pair''? o ``filler pair''}
 
 \begin{definition}[Good independence pair]
   \label{def:filler}
@@ -2508,38 +2508,44 @@ by the notion of \emph{canonical filler}
   derivations $\dder{D}_0$, $\dder{D}_1$
   as in the solid part of the diagram below
   \[
-    \xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0
-      \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} \ar@/^.20cm/[ddrr]|(.3)\hole|(.55)\hole^(.7){u_0} & R_0
-      \ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0}
-      && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1
-      \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} \ar@/_.20cm/[ddll]|(.3)\hole|(.55)\hole_(.7){u_1} && R_1 \ar[d]^{h_1} \\
+    \xymatrix@C=18pt{L_0 \ar[d]_{m_0}&& K_0
+      \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} \ar@{->}@/^.20cm/[ddrr]|(.3)\hole|(.55)\hole_(.7){u_0} & R_0
+      \ar@/^.25cm/[drrr]|(.3)\hole^(.2){i_0} \ar[dr]|(.3)\hole_{h_0}
+      && L_1 \ar@/_.25cm/[dlll]_(.2){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1
+      \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} \ar@{->}@/_.20cm/[ddll]|(.3)\hole|(.55)\hole^(.7){u_1} && R_1 \ar[d]^{h_1} \\
       %
       G_0 &&
-      \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1 &&
-      \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2\\
+      \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_(.3){g_0}&& G_1 &&
+      \ar@{>->}[ll]^(.3){f_1} D_1 \ar[rr]_{g_1}&& G_2\\
       %
-      & & & & P \ar@/^.3cm/@{>->}[ull]^{p_0} \ar@/_.3cm/[urr]_{p_1}
+      & & & & P \ar@/^.3cm/@{>-->}[ull]^{p_0} \ar@/_.3cm/@{-->}[urr]_{p_1}
     }
   \]
 
   Consider the pullback of $g_0$ and $f_1$, getting $p_i : P \to D_i$
-  ($i \in \{0,1\}$) and the arrows $u_0\colon K_0\to P$ and
-  $u_1\colon K_1\to P$ given by \Cref{prop:tec} .
+  ($i \in \{0,1\}$) and the mediating arrows $u_0\colon K_0\to P$ and
+  $u_1\colon K_1\to P$ into the pullback.
+  %given by \Cref{prop:tec} .
   %
   We will say that $(i_0, i_1)$ is a \emph{good independence pair} if
-  the first and second square below are pushouts and if the third
-  square exists and it is a pushout too
+  the resulting squares, depicted  
+  below, are pushouts and the pushout of $r_1 : K_1 \to R_1$ and $u_1 : K_1 \to P$ exists.
   \[
-    \xymatrix{
+    \xymatrix@R=5pt{
       %
       K_0 \ar[r]^{r_0} \ar[d]_{u_0}& R_0 \ar[d]^{i_0} & K_1
-      \ar@{>->}[r]^{l_1} \ar[d]_{u_1}& L_1 \ar[d]^{i_1}&K_1
-      \ar[r]^{r_1} \ar[d]_{u_1}& R_1\ar@{.>}[d]^{j_0} \\
+      \ar@{>->}[r]^{l_1} \ar[d]_{u_1}& L_1 \ar[d]^{i_1}
+      % &K_1 \ar[r]^{r_1} \ar[d]_{u_1}& R_1\ar@{.>}[d]^{j_0}
+      \\
       %
-      P \ar[r]_{p_1} & D_1 &P \ar[r]_{p_0} & D_0&P \ar@{.>}[r]_{q_1} &
+      P \ar[r]_{p_1} & D_1 &P \ar[r]_{p_0} & D_0
+      % & P \ar@{.>}[r]_{q_1} &
       Q_1}
   \]
 \end{definition}
+
+The category $\cat{Graph}$ is tame by the result in ..., while
+example~\ref{ex:diff1} shows an adhesive non-tame category.
 
 
 % \begin{definition}[Good independence pair]\label{def:filler}
