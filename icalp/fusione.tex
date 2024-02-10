@@ -1,9 +1,9 @@
-\documentclass[a4paper,UKenglish,cleveref,pdftex, thm-restate,numberwithinsect]{lipics}
+\documentclass[a4paper,UKenglish,cleveref,pdftex, thm-restate,numberwithinsect,anonymous]{lipics}
 \newif\ifreport
 \reporttrue
 %\reportfalse
  
-% full or conference version
+% full includes some additional material
 \newif\iffull
 \fulltrue
 %\fullfalse
@@ -456,6 +456,7 @@
 
 
 \title{Left-linear rules in adhesive categories}
+
 \author{Paolo Baldan} 
 {Department of Mathematics, University of Padova, Italy}
 {baldan@math.unipd.it}{}{}
@@ -1004,21 +1005,21 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of sl
 We can list various examples of $\mathcal{M}$-adhesive categories (see
 \cite{castelnovo2023thesis,CastelnovoGM22,lack2006toposes}).
 
-\begin{example}\todo{Topos, ipergrafi e grafi}
-\end{example}
 
 \begin{example}
-  \todo{grafi semplici}
+  \label{ex:adhesive}
+  Every topos is adhesive~\cite{lack2006toposes}, thus in particular
+  $\cat{Set}$ is adhesive. By the closure properties recalled before
+  every presheaf $[\cat{X},\cat{Set}]$ is adhesive and in particular
+  the category $\cat{Graph} = [ E \rightrightarrows V, \cat{Set}]$ is
+  adhesive where $E \rightrightarrows {V}$ is the two object category
+  with two morphisms $s,t \colon{E} \to {V}$. In a similar way,
+  various categories of hypergraphs can be shown to be adhesive, while
+  the category $\cat{sGraphs}$ of simple graphs, i.e., graphs without
+  parallel edges is quasi-adhesive, i.e.,
+  $\reg{(\cat{sGraphs})}$-adhesive.\todo{Add hierarchical graphs and term graphs\cite{castelnovo2023thesis,CastelnovoGM22}).}
 \end{example}
 
-
-\begin{example}
-  \todo{GRAFI GERARCHICI}
-\end{example}
-
-\begin{example}
-  \todo{term graph}
-\end{example}
 
 A number of properties of adhesive categories which play a role in the
 theory of rewriting generalise to $\mathcal{M}$-adhesive
@@ -1112,10 +1113,10 @@ A derivation can now defined simply as a sequence of direct derivations.
 
 Derivations naturally compose: given $\der{D}: G \Mapsto H$ and $\der{E}: H \Mapsto F$ we can consider their composition $\der{D} \cdot \der{E}: G \to F$, defined in the obvious way.
 
-\todo[inline]{P: se non impatta sul resto forse sarebbe forse piu' carino definire:\\
-  - for each $G \in \X$, $G : G \Mapsto G$ is a derivation\\  
-  - for each direct derivation $\dder{D}: G \Mapsto H$ and derivation $\der{E} : H \Mapsto F$ we have that $\dder{D}; \der{E} : G \Mapsto F$ is a derivation
-}
+% \todo[inline]{P: se non impatta sul resto forse sarebbe forse piu' carino definire:\\
+%   - for each $G \in \X$, $G : G \Mapsto G$ is a derivation\\  
+%   - for each direct derivation $\dder{D}: G \Mapsto H$ and derivation $\der{E} : H \Mapsto F$ we have that $\dder{D}; \der{E} : G \Mapsto F$ is a derivation
+% }
 
 \rem{Suppongo questo serva quando poi si considerano le permutazioni consistenti, spostare? }{
 \begin{remark}
@@ -1405,7 +1406,7 @@ So equipped, we can introduce the notion of \emph{consistent permutation}.
   isomorphic sources and targets.
 
   If $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and
-  $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ with assciated sequence of rules
+  $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ with associated sequence of rules
   $r(\der{D})=\{\rho_i\}_{i=0}^n$ and
   $r(\der{D}')=\{\rho'_i\}_{i=0}^n$, a \emph{consistent permutation}
   between $(\der{D}, \alpha, \omega)$ and
@@ -2350,9 +2351,56 @@ More precisely, let us formalise what it means for a derivation being the switch
   % they are \emph{switchable}.
 \end{definition}
 
-As already mentioned, when viewing derivations as concurrent computations, 
-for linear graph rewriting systems it is canonical to identify  derivations which are equal 
-``up to switching''. The same notion can be given for left-linear rewriting systems relying on notion of switch.
+It can be shown that switches along the same independence pair are unique up to abstraction
+equivalence (see Proposition~\ref{thm:switch_uni}).
+
+\begin{example}
+  \label{ex:seq-ind}
+  Consider a rewriting system in $\cat{Graph}$, the category of
+  directed graphs and graph morphisms, which is adhesive. The set of
+  rules $\R = \{ \rho_0, \rho_1, \rho_2\}$ consists of three rules as
+  depicted in Fig.~\ref{fi:rules}, where numbers are used to represent
+  the mappings from the interface to the left- and right-hand
+  sides. Rules $\rho_0$ and $\rho_1$ are linear: $\rho_0$ generates a
+  new node, while $\rho_1$ delete an edge. Instead, $\rho_2$ is non
+  linear as it ``merge'' two nodes.
+
+  \begin{figure}
+    \input{Figure/rules.tex}
+    
+    \caption{Rules of the rewriting system grammar of the example.}
+    \label{fi:rules}
+  \end{figure}
+  
+  A derivation $\der{D}$ consisting of three steps $\dder{D}_0$,
+  $\dder{D}_1$, and $\dder{D}_2$, each applying the corresponding rule
+  $\rho_i$ ,is depicted in in Fig.~\ref{fi:derD}. The second and third
+  steps $\dder{D}_1$ and $\dder{D}_2$ are clearly sequential
+  independent, via an independence pairs that map nodes consistently
+  with their numbering.\todo{P: having names for the graphs would
+    probably help}
+  
+  \begin{figure}
+    \input{Figure/derD.tex}
+    \caption{The derivation $\der{D}$.}
+    \label{fi:derD}
+  \end{figure}
+
+  The independence pair can be used to construct a switch $\der{E}$, as
+  depicted in Fig.~\ref{fi:derE}.
+  \begin{figure}
+    \input{Figure/derE.tex}
+    \caption{The derivation $\der{E}$.}
+    \label{fi:derE}
+  \end{figure}
+\end{example}
+
+
+As already mentioned, for linear rewriting systems, when viewing
+derivations as concurrent computations, it is canonical to identify
+derivations which are equal ``up to switching''. The same notion can
+be given for left-linear rewriting systems relying on notion of
+switch.
 
 \begin{definition}[Switch equivalence]
   \label{de:switch-equivalence}
@@ -2370,14 +2418,26 @@ for linear graph rewriting systems it is canonical to identify  derivations whic
 
 
 
-\subsection{Relating sequential indepedence and switchability}
+\subsection{Church-Rosser: Relating sequential indepedence and switchability}
 
 
+<<<<<<< HEAD
 The fact that sequential indepedence implies switchability always holds for linear rules (see \Cref{prop:equi}). The result is so fundamental that it is not even stated, in the sense that switchability is not introduced axiomatically as in Definition~\ref{def:switch}, but it is based on the explicit construction of a switch.
 
 When working with left-linear rewriting systems, sequential independence does not imply 
 switchability (while the converse implication clearly holds), as shown by the example below.
+=======
+The fact that sequential indepedence implies switchability always
+holds for linear rules (see \Cref{prop:equi}). The result is so
+fundamental that it is not even stated, in the sense that
+switchability is not introduced axiomatically as in
+Definition~\ref{def:switch}, but it is based on the explicit
+construction of a switch.
+>>>>>>> refs/remotes/origin/main
 
+Unfortunately, when working with left-linear rewriting systems,
+sequential independence does not imply switchability (while the
+converse implication clearly holds), as shown by the example below.
 
 \full{
   \begin{remark}
@@ -2392,15 +2452,13 @@ switchability (while the converse implication clearly holds), as shown by the ex
   \end{remark}
 }
 
-
-
 \begin{example}
   \label{ex:diff1}
-  Recall that, given two posets $(P, \leq)$ and $(Q, \leq)$, we can
-  construct the poset $(P, \leq)\oplus(Q,\leq)$ which has as
-  underlying set the disjoint union $P+Q$ and in which every element
-  of $Q$ is greater than every element of $P$, while elements of $P$
-  and $Q$ are compared using the original orders.
+  Given two posets $(P, \leq)$ and $(Q, \leq)$, define
+  $(P, \leq)\oplus(Q,\leq)$ as the poset which has as underlying set
+  the disjoint union $P+Q$ and in which every element of $Q$ is
+  greater than every element of $P$, while elements of $P$ and $Q$ are
+  compared using the original orders.
 
   Take now the set $S:=\{a,b,c\}$ and endow it with the smallest order
   such that $a\leq b$ and $a\leq c$.  Take also the set $\mathbb{N}$
@@ -2409,13 +2467,12 @@ switchability (while the converse implication clearly holds), as shown by the ex
   $(S, \leq)\oplus (\mathbb{N}, \geq)$, which by \Cref{rem:iso} is
   $\mathsf{Iso}$-adhesive. Notice that in this category the arrows
   $(a,b)\colon a\to b$ $(a,c)\colon a\to c$ do not have a pushout
-  because $b$ and $c$ do not have a supremum.  Define $\R$ as the set
-  containing the following two rules
+  because $b$ and $c$ do not have a supremum.  Consider a rewriting
+  system with set of rules $\R$ containing the following two rules
   \[\xymatrix{a & a \ar[r]^{(a, 0)} \ar[l]_{\id{a}} & 0 & a & a
       \ar[r]^{(a, b)} \ar[l]_{\id{a}} & b }\]
-  We can then consider the following derivation
-  $\der{D}=\{\dder{D}_i\}_{i=0}^1$ of length $2$, made by two
-  sequential independent direct derivations
+  We can then consider the  derivation
+  $\der{D}=\{\dder{D}_i\}_{i=0}^1$ of length $2$. 
   \[
     \xymatrix@C=30pt{a \ar[d]_{m_0}&& a \ar[d]_{k_0}\ar[ll]_{\id{a}}
       \ar[r]^{(a,0)} & 0 \ar@/^.35cm/[drrr]|(.315)\hole_(.45){\id{0}}
@@ -2426,8 +2483,11 @@ switchability (while the converse implication clearly holds), as shown by the ex
       \ar@{>->}[ll]^{\id{0}} 0 \ar[rr]_{\id{0}}&& 0}\]
 
   \noindent
-  \parbox{10cm}{ \hspace{15pt}On the other hand, the rule
-    applied by $\dder{D}_1$ cannot be applied to $c$. indeed the
+  \parbox{10cm}{ \hspace{15pt} Notice that the two
+    direct derivations are sequential independent.
+    %
+    On the other hand, the rule
+    applied by $\dder{D}_1$ cannot be applied to $c$. In fact, the
     unique morphism $a\to c$ is $(a,c)$, thus we get a diagram
     aside. But $b$ and $c$ do not have a supremum in the poset
     underlying $\X$, thus we do not get a direct derivation from
@@ -2437,16 +2497,10 @@ switchability (while the converse implication clearly holds), as shown by the ex
       & c \ar[l]^{\id{c}} }$}  
 \end{example}
 
+\iffalse 
 
 Switches along the same independence pair are unique up to abstraction
 equivalence (see Proposition~\ref{thm:switch_uni}).
-
-
-
-
-
-
-
 
 \begin{example}
   \label{ex:seq-ind}
@@ -2489,13 +2543,13 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
     \label{fi:derE}
   \end{figure}
 \end{example}
-
-
+\fi 
 
 The conditions guaranteeing switchability are inspired
 by the notion of \emph{canonical filler}
 \cite{heindel2009category}.
 
+\todo{P: la chiamiamo ``strong indepedence pair''? o ``filler pair''}
 
 \begin{definition}[Good independence pair]
   \label{def:filler}
@@ -2505,36 +2559,39 @@ by the notion of \emph{canonical filler}
   derivations $\dder{D}_0$, $\dder{D}_1$
   as in the solid part of the diagram below
   \[
-    \xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0
-      \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} \ar@/^.20cm/[ddrr]|(.3)\hole|(.55)\hole^(.7){u_0} & R_0
-      \ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0}
-      && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1
-      \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} \ar@/_.20cm/[ddll]|(.3)\hole|(.55)\hole_(.7){u_1} && R_1 \ar[d]^{h_1} \\
+    \xymatrix@C=18pt{L_0 \ar[d]_{m_0}&& K_0
+      \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} \ar@{->}@/^.20cm/[ddrr]|(.3)\hole|(.55)\hole_(.7){u_0} & R_0
+      \ar@/^.25cm/[drrr]|(.3)\hole^(.2){i_0} \ar[dr]|(.3)\hole_{h_0}
+      && L_1 \ar@/_.25cm/[dlll]_(.2){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1
+      \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} \ar@{->}@/_.20cm/[ddll]|(.3)\hole|(.55)\hole^(.7){u_1} && R_1 \ar[d]^{h_1} \\
       %
       G_0 &&
-      \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1 &&
-      \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2\\
+      \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_(.3){g_0}&& G_1 &&
+      \ar@{>->}[ll]^(.3){f_1} D_1 \ar[rr]_{g_1}&& G_2\\
       %
-      & & & & P \ar@/^.3cm/@{>->}[ull]^{p_0} \ar@/_.3cm/[urr]_{p_1}
+      & & & & P \ar@/^.3cm/@{>-->}[ull]^{p_0} \ar@/_.3cm/@{-->}[urr]_{p_1}
     }
   \]
 
   Consider the pullback of $g_0$ and $f_1$, getting $p_i : P \to D_i$
-  ($i \in \{0,1\}$) and the arrows $u_0\colon K_0\to P$ and
-  $u_1\colon K_1\to P$ given by \Cref{prop:tec} .
+  ($i \in \{0,1\}$) and the mediating arrows $u_0\colon K_0\to P$ and
+  $u_1\colon K_1\to P$ into the pullback.
+  %given by \Cref{prop:tec} .
   %
   We will say that $(i_0, i_1)$ is a \emph{good independence pair} if
-  the first and second square below are pushouts and if the third
-  square exists and it is a pushout too
+  the resulting squares, depicted  
+  below, are pushouts and the pushout of $r_1 : K_1 \to R_1$ and $u_1 : K_1 \to P$ exists.
   \[
-    \xymatrix{
+    \xymatrix@R=5pt{
       %
       K_0 \ar[r]^{r_0} \ar[d]_{u_0}& R_0 \ar[d]^{i_0} & K_1
-      \ar@{>->}[r]^{l_1} \ar[d]_{u_1}& L_1 \ar[d]^{i_1}&K_1
-      \ar[r]^{r_1} \ar[d]_{u_1}& R_1\ar@{.>}[d]^{j_0} \\
+      \ar@{>->}[r]^{l_1} \ar[d]_{u_1}& L_1 \ar[d]^{i_1}
+      % &K_1 \ar[r]^{r_1} \ar[d]_{u_1}& R_1\ar@{.>}[d]^{j_0}
+      \\
       %
-      P \ar[r]_{p_1} & D_1 &P \ar[r]_{p_0} & D_0&P \ar@{.>}[r]_{q_1} &
-      Q_1}
+      P \ar[r]_{p_1} & D_1 &P \ar[r]_{p_0} & D_0
+      % & P \ar@{.>}[r]_{q_1} & Q_1
+    }
   \]
 \end{definition}
 
@@ -2580,26 +2637,6 @@ We can now prove a Local Church-Rosser Theorem for good independence pairs.
 [Proof in \Cref{thmChurch-proof}]
 
 
-\begin{remark}
-	\label{rem:church}
-	It is worth to point out that, by
-	\Cref{prop:switch,thm:switch_uni}, the derivation we obtain from
-	\Cref{thm:church} is made by two switchable derivations which will
-	give back the starting derivation (up to abstraction equivalence),
-	if switched again.
-	
-	Moreover, by \Cref{prop:pbpoad}, the first square below is a
-	pullback, therefore, by \cref{rem:deco} the last three squares
-	witness that $(j_0, j_1)$ is a good independence pair too.
-	\[
-	\xymatrix{P\ar[r]^{q_1} \ar@{>->}[d]_{q_0}&Q_1
-		\ar@{>->}[d]^{a_1}&K_1 \ar[r]^{r_1} \ar[d]_{u_1}& R_1
-		\ar[d]^{j_0} & K_0 \ar@{>->}[r]^{l_0} \ar[d]_{u_0}& L_0
-		\ar[d]^{j_1}&K_0 \ar[r]^{r_0} \ar[d]_{u_0}& R_0\ar[d]^{i_0} \\
-		Q_ 0\ar[r]_{b_0}&H_1&P \ar[r]_{q_1} & Q_1 &P \ar[r]_{q_0} &
-		Q_0&P \ar[r]_{p_1} & D_1}
-	\]
-\end{remark}
 
 \todo[inline]{Forse non introdurrei neppure la classe dei tame, tanto usiamo solo i very tame, o no?}
 
@@ -2608,19 +2645,21 @@ We can now prove a Local Church-Rosser Theorem for good independence pairs.
 The correspondence between sequential independence and switchability
 is fundamental.  A very large class of DPO rewriting systems - in the
 line of \cite{baldan2011adhesivity} - can be identified where all
-independence pairs are good for left-linear rewriting systems: ses
-\Cref{app:fill}.
+independence pairs are good for left-linear rewriting systems. The details are in 
+\Cref{app:fill}. Here it is important only to observe that such class includes $\cat{Set}$ and it is closed by comma and functor category constructions. As such it includes essentially all categories (e.g., presheaves over set) which are typically considered for modelling purposes.
 
 
 
 %\rem{Non introdurrei una classe, come detto sopra}{
 \begin{definition}[Tame rewriting systems]A left-linear DPO rewriting system is \emph{tame} if every independence pair between two direct derivations is good.
 \end{definition}
+
 \begin{example}
   \label{ex:diff2}
   In light of \Cref{thm:church}, \Cref{ex:diff1} provides an example
   of an independence pair which is not good, and thus of a non tame
-  rewriting system.
+  adhesive rewriting system. Instead the category $\cat{Graph}$ is
+  tame by the result in ....
 \end{example}
 
 \begin{remark}
@@ -2643,6 +2682,7 @@ A source of tame left-linear DPO rewriting systems is given by the linear ones, 
 \end{restatable}
 [Proof in \Cref{propEqui-proof}]
 
+\subsection{A normal form for derivations: Very tame rewriting systems}
 
 Even if we work in a setting where sequential independence ensures switchability, dealing with left-linear rules there is a further - possibly more serious - issue, i.e., the fact that there can be more than one independence pairs between the same derivations. This can hinder the core idea of using sequential independence as a basis of a theory of concurrency for rewriting systems, since exchanges performed using different independence pairs may lead to derivations that are not abstraction equivalent, and thus one would equate computations that 
 should definitively be taken apart, as shown in the example below.
@@ -2689,7 +2729,7 @@ systems where uniqueness of the independence pair is always ensured.
 %\subsubsection{Graphical rewriting systems}\label{subsubsec:graphical}
 
 
-\begin{definition}[Very tame rewrityng systems]
+\begin{definition}[Very tame rewriting systems]
 A left-linear DPO rewriting system $(\X, \R)$ is \emph{very tame} if it is very tame and, for every derivation $\der{D}:=\{\dder{D}_{i}\}_{i=0}^1$, there is at most one independence paire between $\dder{D}_0$ and $\dder{D}_1$.
 \end{definition}
 
@@ -2736,6 +2776,27 @@ Let $\mathcal{G}=(V, E, s, t)$ be a directed acyclic graph, the category  $\gph{
 [Proof in \Cref{lemVTame}]
 
 
+\begin{example}[E-graphs]
+  Consider the category $\cat{EGraphs}$, where objects are (directed)
+  graphs endowed with an equivalence over nodes and arrows are graph
+  morphisms which preserve the equialence as considered in~\cite{},
+  closely related to the Egg graphs in~\cite{WNW:egg}. Formally,
+  $\cat{EGraphs}$ can be seen as the subcategory of the presheaf
+  $[E \rightrightarrows V \to Q, \cat{Set}]$ where objects are
+  constrained to have the component $Q$ surjective. Explicitly, an
+  e-graph $G = \langle s_G, t_G, q_G \rangle$ where
+  $\langle s_G, t_G: E_G \rightrightarrows V_G$ provides the graphical
+  structure, while the surjective function $q_G : V_G \to Q_G$ maps
+  each node to the corresponding equivalence class.
+  
+  A morphims in $\cat{EGraph}$ is is mono if the components over $E$
+  and $V$ are mono, i.e., if it is mono as a morphism in
+  $\cat{Graph}$. It is \emph{regular mono} if also the component on
+  $Q$ is mono, i.e., if it reflects equivalence classes besides
+  preserving them.
+
+  \todo[inline]{$\cat{EGraph}$ is quasi-adhesive and very tame}  
+\end{example}
 
 \subsection{Switch equivalence via permutation equivalence}
 
@@ -3667,6 +3728,27 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
   now to see that it is a switch of $\dder{D}_0$ and $\dder{D}_1$ along
   $(i_0, i_1)$.
 \end{proof}
+
+\begin{remark}
+	\label{rem:church}
+	It is worth to point out that, by
+	\Cref{prop:switch,thm:switch_uni}, the derivation we obtain from
+	\Cref{thm:church} is made by two switchable derivations which will
+	give back the starting derivation (up to abstraction equivalence),
+	if switched again.
+	
+	Moreover, by \Cref{prop:pbpoad}, the first square below is a
+	pullback, therefore, by \cref{rem:deco} the last three squares
+	witness that $(j_0, j_1)$ is a good independence pair too.
+	\[
+	\xymatrix{P\ar[r]^{q_1} \ar@{>->}[d]_{q_0}&Q_1
+		\ar@{>->}[d]^{a_1}&K_1 \ar[r]^{r_1} \ar[d]_{u_1}& R_1
+		\ar[d]^{j_0} & K_0 \ar@{>->}[r]^{l_0} \ar[d]_{u_0}& L_0
+		\ar[d]^{j_1}&K_0 \ar[r]^{r_0} \ar[d]_{u_0}& R_0\ar[d]^{i_0} \\
+		Q_ 0\ar[r]_{b_0}&H_1&P \ar[r]_{q_1} & Q_1 &P \ar[r]_{q_0} &
+		Q_0&P \ar[r]_{p_1} & D_1}
+	\]
+\end{remark}
 
 
 \propEqui*
