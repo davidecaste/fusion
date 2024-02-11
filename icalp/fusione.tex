@@ -2387,11 +2387,12 @@ by the notion of \emph{canonical filler}
 
   Consider the pullback of $g_0$ and $f_1$, getting $p_i : P \to D_i$
   ($i \in \{0,1\}$) and the mediating arrows $u_0\colon K_0\to P$ and
-  $u_1\colon K_1\to P$ into the pullback given by \Cref{prop:tec} .
+  $u_1\colon K_1\to P$ into the pullback.\todo{P: tolto ``given by \Cref{prop:tec}'', penso non sia bene avere un riferimento all'appendice qui}
+  % given by \Cref{prop:tec} .
   %
   We will say that $(i_0, i_1)$ is a \emph{good independence pair} if
   the first two squares depicted  
-  below are pushouts and if the pushout of $r_1 : K_1 \to R_1$ and $u_1 : K_1 \to P$ exists
+  below are pushouts and if the pushout of $r_1 : K_1 \to R_1$ and $u_1 : K_1 \to P$ exists\todo{P: forse si possono togliere i quadrati sotto e dire a parole?}
   \[
     \xymatrix{
       K_0 \ar[r]^{r_0} \ar[d]_{u_0}& R_0 \ar[d]^{i_0} & K_1
@@ -2825,7 +2826,7 @@ The first result shows that whenever equating two derivation sequences by perfor
   \end{center}
 \end{restatable}
 
-[Proof~\ref{thNoNeed-proof}
+[Proof~\ref{thNoNeed-proof}]
 
 While in the case of linear rewriting systems inversion can be
 performed in any order, this is no longer true for left-linear
@@ -2845,7 +2846,7 @@ canonical form for switching derivations.
   $k = \max \{ j \mid \transp{j} \in \inv{\nu_{i,n}}\}$.\todo{P: $\nu_{i,n} = \sigma \circ \nu_{1,i}$, giusto? forse e' piu' carino}
 \end{restatable}
 
-[Proof~\ref{coCanonical-proof}
+[Proof~\ref{coCanonical-proof}]
 
 \iffalse
 	\begin{corollary} Given a tame  left-linear DPO rewriting system  $(\X,\R)$ with $\X$ an $\mathcal{M}$-adhesive category and a decorated derivation $(\der{D}, \alpha, \omega)$ with $\der{D}=\{\dder{D}_i\}_{i=0}^2$. Then the following are true:
@@ -4846,7 +4847,7 @@ only inversions, we can strip the first and last switches.
 
 
 \begin{lemma}
-  \label{le:switch4}
+  \label{le:switchD}
   Let $\der{D}_i$ for $i \in \interval[0]{n+1}$ be derivation sequences
   and consider a switching sequence
   \begin{center}
@@ -4891,7 +4892,7 @@ only inversions, we can strip the first and last switches.
   sequence
   \begin{center}
     $\der{D} = \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
-    \shift{\nu_n} \der{D}_n=der{D}'$
+    \shift{\nu_n} \der{D}_n=\der{D}'$
   \end{center}
   If it does not consist only of inversions, by Lemma~\ref{le:switchD}
   we can reduce its length by $2$. An inductive reasoning allows us to
