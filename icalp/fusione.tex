@@ -491,7 +491,7 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   When two sequences of steps executed by a computational device can
   be considered equivalent?  This is a relevant question if one
   considers concurrent and distributed systems, since the independence
-  of two steps means that they could be executed on any order, and
+  of two steps means that they could be executed in any order, and
   potentially in parallel.
   % 
   We investigate the issue in the context of adhesive categories, a
@@ -500,21 +500,23 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   preserve and generate entities, as linear rules do, but may
   ``merge'' parts of the state.
   % 
-  An apparently minimal, yet technically hard enhancement, which
-  allows to properly extend the formalisms that can be modelled in the
-  adhesive framework, and for which we prove a Church-Rosser property.
+  An apparently minimal, yet technically hard enhancement, 
   % 
   % We refine the established notion of sequential independence
   % between steps, and ...
-  The canonical notion of independence used for linear rewriting
+  since the canonical notion of independence used for linear rewriting
   systems does not work out of the box, but it requires the
-  restriction to well-behaved classes of left-linear
-  rewriting systems.  Additionally, a fundamental characterisation of
-  the notion of independence fails when moving to left-linear
-  rewriting systems. This requires a substantial revision of the
-  theory as in the linear case, a number of basic properties,
-  essential in the development of the theory of concurrency, were
-  derived from such a characterisation.
+  restriction to well-behaved classes of left-linear rules.
+  %
+  In fact, the standard characterisation of independence does not hold anymore,
+  and this requires a substantial revision of the 
+  theory for the linear case, since a number of basic properties,
+  essential in the development of a theory of concurrency, were
+  derived from such a description.
+  %
+  The paper introduce a novel characterisation of independence, for which we prove a Church-Rosser property,
+  properly extending the class of formalisms 
+  that can be modelled in the adhesive framework. 
 \end{abstract}
 
 
@@ -650,12 +652,12 @@ We show
 One of the key pay-off of concurrency theory is the idea that the behaviour of 
 a computational device can be modelled by abstracting its sequences of steps
 %performed by the device 
-via a suitable equivalence. Intuitively, this equivalence 
+via a suitable equivalence. Intuitively, the equivalence 
 captures when steps are causally unrelated and thus could be executed in any 
 order, and possibly concurrently. 
 %
 Two seminal contributions to this line of research have been
-Mazurkiewicz's traces~\cite{Mazurkiewicz86} and Winskel's event structures~\cite{NPW:PNES}
+Mazurkiewicz's traces~\cite{Mazurkiewicz86} and Winskel's event structures~\cite{NPW:PNES}.
 %
 Concerning formalisms based on the rewriting paradigm, i.e. where the
 behaviour is dictated by a set of rules which have to be instantiated with
