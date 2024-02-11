@@ -2,7 +2,7 @@
 \newif\ifreport
 \reporttrue
 %\reportfalse
- 
+  
 % full includes some additional material
 \newif\iffull
 \fulltrue
@@ -1028,7 +1028,7 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
   with two morphisms $s,t \colon{E} \to {V}$. In a similar way,
   various categories of hypergraphs can be shown to be adhesive, while
   the category $\cat{sGraphs}$ of simple graphs, i.e., graphs without
-  parallel edges is quasi-adhesive, i.e.
+  parallel edges is ?\todo{P: su simple graphs riusciamo a dire qualcosa? Non sono reg-adesivi, giusto?}, i.e.
   $\reg{(\cat{sGraphs})}$-adhesive.\todo{Add hierarchical graphs and term graphs\cite{castelnovo2023thesis,CastelnovoGM22}).}
 \end{example}
 
@@ -2677,6 +2677,7 @@ Then the following are equivalent:
 
 
 \subsection{A canonical form for  switch equivalences}
+\label{subsec:canonical}
 
 The characterisation of switch equivalence based on consistent permutations is the key to
 derive some simple but fundamental properties for linear rewriting systems, namely
@@ -3692,7 +3693,7 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 	From this we can deduce that $i_{1,v}=j_{1,v}$ as wanted.
 \end{proof}
 
-\subsection{Proofs for \Cref{subsec:perm}}
+\subsubsection{Proofs for \Cref{subsec:perm}}
 
 \begin{lemma}\label{lem:colim}
 	Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, \R)$ a
@@ -3960,7 +3961,8 @@ Let $\sigma:[0,n]\to [0,n]$ be a permutation, an \emph{inversion} for $\sigma$ i
 \smallskip \noindent $(2\Rightarrow 1)$
 \end{proof}
 
-\subsubsection{Proofs for \Cref{subsec:3steps}}
+\subsubsection{Proofs for \cref{subsec:canonical}}
+
 
 \lemSwitchConfluence*
 \label{lemSwitchConfluence-proof}
@@ -4290,8 +4292,6 @@ USO IL PRIMO LEMMA DEI TRE PASSI:
   \end{enumerate}
 \end{proof}
 
-
-%%%%%%%%%%% NO NEED OF USELESS SHIFTS
 
 We next prove some technical lemma which will be useful to show the
 possibility of transforming a derivation into a switch equivalent one
