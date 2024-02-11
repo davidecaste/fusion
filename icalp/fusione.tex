@@ -2608,7 +2608,7 @@ Let $\mathcal{G}=(V, E, s, t)$ be a directed acyclic graph, the category  $\gph{
   \todo[inline]{$\cat{EGraph}$ is quasi-adhesive and very tame}  
 \end{example}
 
-\subsection{Switch equivalence via permutation equivalence} \label{subsec:perm}
+\subsection{Switch equivalence via consistent permutations} \label{subsec:perm}
 
 
 Given DPO rewriting system $(\X, \R)$,  a derivation $\der{D}$ determines a diagram
@@ -2634,11 +2634,11 @@ $\Delta(\der{D})$ in $\X$. Using $\mathcal{M}$-adhesivity, it can be shown  that
 	$\dder{D}'_i$.
 	
 	\[
-	\xymatrix@C=30pt{L_i
-		\ar[r]^{m_i} \ar[d]_{m'_{\sigma(i)}}& G_i \ar[r]^{\iota_{G_i}}
+	\xymatrix{
+		G_0 \ar[r]^{\iota'_{G'_0}} \ar[d]_{\iota_{G_0}}& \lpro \der{D}' \rpro &L_i\ar[r]^{m_i} \ar[d]_{m'_{\sigma(i)}}& G_i \ar[r]^{\iota_{G_i}}
 		&\tpro{D} \ar[d]^{\xi_\sigma} & R_i \ar[r]^{h_i}
 		\ar[d]_{h'_{\sigma(i)}}& G_{i+1} \ar[r]^{\iota_{G_{i+1}}}
-		&\tpro{D} \ar[d]^{\xi_\sigma} \\G'_{\sigma(i)}
+		&\tpro{D} \ar[d]^{\xi_\sigma} \\\tpro{D} \ar[ur]_{\xi_\sigma}&&G'_{\sigma(i)}
 		\ar[rr]_{\iota'_{G'_{\sigma(i)}}}&& \lpro \der{D}' \rpro&
 		G'_{\sigma(i)+1} \ar[rr]_{\iota'_{G'_{\sigma(i)+1}}}&& \lpro
 		\der{D}' \rpro}
@@ -2652,16 +2652,23 @@ $\Delta(\der{D})$ in $\X$. Using $\mathcal{M}$-adhesivity, it can be shown  that
 \end{restatable}	
 [Proof in \Cref{propcoswitch-proof}]
 
-\begin{lemma}
-	lineare => identità implica astrazione
-\end{lemma}
-\begin{proof}
-	contenuto...
-\end{proof}
+\begin{restatable}{lemma}{lemIde}\label{lem:ide}
+	Let $\der{D}$ and $\der{D}'$ be two derivations in a linear DPO-rewriting system $(\X, \R)$ with the same length $l$. If $\id{[0,l]}:[0,l-1]\to [0,l-1]$ is a consistent permutation, then $\der{D}$ and $\der{D}'$ are abstraction equivalent.  
+\end{restatable}
+[Proof in \Cref{lemide-proof}]
+
+\begin{example}
+	\todo{questo non è vero in generale}
+\end{example}
 
 \begin{restatable}{theorem}{thmcoswitch}
-lineare iff
+Let $\der{D}$ and $\der{D}'$ be two derivations in a  a linear DPO-rewriting system, $(\X, \R)$, with $\X$ an $\mathcal{M}$-adhesive category. Then the following are equivalent:
+\begin{enumerate}
+	\item $\der{D}$ and $\der{D}'$ are switch equivalent;
+	\item there exists a consistent permutation $\sigma\colon [0,\lgh(D)-1]\to [0,\lgh(D)-1]$ between them.
+\end{enumerate}
 \end{restatable}
+[Proof in \Cref{thmswitch-proof}]
 
 
 \subsection{The $3$-steps lemmas}
@@ -3911,10 +3918,69 @@ This, together with \Cref{lem:colim}, gives us at once the following two results
 
 
 
-\propcoswitch
+\propcoswitch*
 \label{propcoswitch-proof}
 \begin{proof}
 	contenuto...
+\end{proof}
+
+
+\lemIde*
+\label{lemide-proof}
+\begin{proof}
+	If $\der{D}$ and $\der{D}'$ are empty then the thesis follows at once since an abstraction equivalence is just an isomorphism. Let now $\der{D}$ and $\der{D}'$ be, respectively $\{\dder{D}_{i}\}_{i=0}^n$ and $\{\dder{D}'_i\}_{i=0}^n$. We construct by induction on $i\in [0,n]$ an abstraction equivalence such that, for every $i$, $\iota'_{G'_{i+1}}\circ \phi_{G_{i+1}}=\xi_{\id{[0,n]}}\circ \iota_{G_{i+1}}$.
+	
+	\smallskip \noindent \parbox{8cm}{$i=0$. We start noticing that, by consistency
+	\[\iota'_{G_0}\circ m'_0=\xi_\sigma \circ \iota_{G_0}\circ m_0=\iota'_{G_0}\circ m_0\]
+	By linearity and \Cref{lem:colim} $\iota'_{G_0}$ is a mono, thus $m_0=m'_0$. By  \Cref{prop:unique} we deduce the existence of the dotted isomorphisms in the diagram aside.} \parbox{4cm}{\vspace{0em}$\xymatrix@C=40pt{G_0&D'_0 \ar@{>->}[r]^{g'_0}
+		\ar@{>->}[l]_{f'_0}&G'_{1}\\ L_0 \ar[u]^{m'_0} \ar[d]_{m_0}& K_0
+		\ar[u]^{k'_0} \ar[d]_{k_0} \ar@{>->}[r]^{r_0} \ar@{>->}[l]_{l_0}
+		&R_0\ar[u]^{h'_0} \ar[d]_{h_0}\\G_0
+		\ar@/_.45cm/[uu]_(.35){\id{G_0}}|\hole& D_0 \ar@{>->}[l]^{f_0}  \ar@{.>}@/_.45cm/[uu]_(.35){\phi_{D_0}}|\hole
+		\ar@{>->}[r]_{g_0}& G_{1}\ar@{.>}@/_.45cm/[uu]_{\phi_{G_1}}}$}
+	
+	Now, if we compute we have
+		\begin{align*}
+		&\iota'_{G'_1}\circ \phi_{G_1}\circ g_0=\iota'_{G'_1}\circ g'_0\circ \phi_{D_0}=\iota'_{D_0}\circ \phi_{D_0}=\iota'_{G_0}\circ f'_0\circ \phi_{D_0}=\iota'_{G_0}\circ f_0\\=&\xi_{\id{[0,n]}} \circ \iota_{G_0}\circ  f_0=\xi_{\id{[0,n]}} \circ \iota_{D_0}=\xi_{\id{[0,n]}} \circ \iota_{G_1}\circ g_0 
+		\end{align*}
+	This now entails that $\iota'_{G'_1}\circ \phi_{G_1}=\xi_{\id{[0,n]}}\circ \iota_{G_1}$.
+	
+	
+	\smallskip  \noindent \parbox{7.5cm}{$i>0$. By the inductive hypothesis there exists an isomorphism $\phi_{G_{i}}\colon G_{i}\to G'_i$ such that $\phi_{G_{i}}\circ h_{i-1}=h'_{i-1}$. Now, as before we have
+	\[\iota'_{G'_{i}}\circ m'_{i}=\xi_{\id{[0,n]}}\circ \iota_{G_i}\circ m_{i}=\iota'_{G'_{i}}\circ \phi_{G_{i}} \circ m_i \]
+	By linearity $\iota'_{G'_{i}}$ is mono, thus $m'_i=\phi_{G_{i}} \circ m_i$ and \Cref{prop:unique} yields again the dotted part of the diagram aside.}
+	\parbox{4cm}{\vspace{-2em}$\xymatrix@C=40pt{G_i&D'_i \ar@{>->}[r]^{g'_i}
+			\ar@{>->}[l]_{f'_i}&G'_{i+1}\\ L_i \ar[u]^{m'_i} \ar[d]_{m_i}& K_i
+			\ar[u]^{k'_i} \ar[d]_{k_i} \ar@{>->}[r]^{r_i} \ar@{>->}[l]_{l_i}
+			&R_i\ar[u]^{h'_i} \ar[d]_{h_i}\\G_i
+			\ar@/_.45cm/[uu]_(.35){\phi_{G_i}}|\hole& D_i \ar@{>->}[l]^{f_i}  \ar@{.>}@/_.45cm/[uu]_(.35){\phi_{D_i}}|\hole
+			\ar@{>->}[r]_{g_i}& G_{i+1}\ar@{.>}@/_.45cm/[uu]_{\phi_{G_{i+1}}}}$}
+		
+		To conclude, it is now enough to notice that
+	\begin{align*}
+&\iota'_{G'_{i+1}}\circ \phi_{G_{i+1}}\circ g_i=\iota'_{G'_{i+1}}\circ g'_i\circ \phi_{D_{i}}=\iota'_{D_{i}}\circ \phi_{D_{i}}=\iota'_{G_i}\circ f'_i\circ \phi_{D_{i}} =\iota'_{G'_{i}}\circ \phi_{G_{i}}\circ f_i\\=&\xi_{\id{[0,n]}}\circ \iota_{G_{i}}\circ f_i=\xi_{\id{[0,n]}}\circ \iota_{D_{i}}=\xi_{\id{[0,n]}}\circ \iota_{G_{i+1}}\circ g_i
+	\end{align*}
+	Which, 	since $G_{i}$ is obtained pushing $r_{i-1}$ along $k_{i-1}$ gives us the thesis 
+\end{proof}
+
+We need to recall some notion from the theory of permutations.
+\begin{definition}
+Let $\sigma:[0,n]\to [0,n]$ be a permutation, an \emph{inversion} for $\sigma$ is a pair $(i,j)$ such that $i<j$ and $\sigma(j)< \sigma(i)$. 
+\end{definition}
+
+\begin{remark}\label{rem:salvavita}
+	Let 
+\end{remark}
+
+\begin{lemma}
+	contenuto...
+\end{lemma}
+
+\thmcoswitch*
+\label{thmswitch-proof}
+\begin{proof}$(1\Rightarrow 2)$ This follows from \Cref{prop:coswitch}.
+
+\smallskip \noindent $(2\Rightarrow 1)$
 \end{proof}
 
 \subsubsection{Proofs for \Cref{subsec:3steps}}
