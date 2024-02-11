@@ -409,11 +409,12 @@
 % inversions
 \newcommand{\inv}[1]{\ensuremath{inv}({#1})}
 
-% direct shift
-\newcommand{\shift}[1][]{\ensuremath{\mathrel{{\leftrightsquigarrow}^{\mathit{sh}}_{#1}}}}
+% sequential independence
+\newcommand{\seqind}{\ensuremath{\updownarrow}}
 
-% shift preorder
-\newcommand{\shiftpre}[1][]{\ensuremath{\mathrel{{\sqsubseteq}^{\mathit{sh}}_{#1}}}}
+
+% direct shift
+\newcommand{\shift}[1]{\ensuremath{\mathrel{{\leftrightsquigarrow}_{#1}}}}
 
 % shift equivalence
 \newcommand{\shifteq}[1][]{\ensuremath{\mathrel{{\equiv}^\mathit{sh}_{#1}}}}
@@ -2053,7 +2054,7 @@ In the DPO approach the canonical notion of independence is that of sequential i
   % \emph{weakly sequentially independent} if an independence pair
   % exists. If such independence pair is unique we will say that
   % $\dder{D}$ and $\dder{D'}$ are
-  \emph{sequentially independent}.\todo{Eliminata la nozione di weakly
+  \emph{sequentially independent} and write $\dder{D}_0 \seqind \dder{D}_1$.\todo{Eliminata la nozione di weakly
     indepedendent, giusto?}
 \end{definition}
 
@@ -2229,9 +2230,9 @@ switch.
   $\der{E}=\{\dder{E}_{i}\}_{i=0}^n$. If
   $\dder{D}_i \cdot \dder{D}_{i+1}$ is a switch of
   $\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ we write
-  $\der{D} \shift_{(i,i+1)} \der{E}$. Then \emph{switch
+  $\der{D} \shift{\transp{i}} \der{E}$. Then \emph{switch
     equivalence} is the least equivalence on derivation such that if
-  $\der{D} \leftrightsquigarrow_{(i,i+1)} \der{E}$ then
+  $\der{D} \shift{\transp{i}} \der{E}$ then
   $\der{D} \equiv^s \der{E}$.
 \end{definition}
 
@@ -2671,78 +2672,75 @@ Let $\der{D}$ and $\der{D}'$ be two derivations in a  a linear DPO-rewriting sys
 [Proof in \Cref{thmswitch-proof}]
 
 
-\subsection{The $3$-steps lemmas}
+\subsection{A Canonical Form for  Switch Equivalences}
 
-In the case of linear rewriting systems, the characterisation of switch equivalence based on consistent
-permutation allows to derive some simple but
-fundamental results for the theory, namely
-\begin{itemize}
-\item the result of switching does not depends on the order, but only
-  on the permutation;
-\item independence is global, meaning that if two independent steps are
-  moved forward or backward in a derivation, they remain
-  independent.
-\end{itemize}
-
-The failure of the characterisation for left-linear rules poses the
-question asking whether the results above also fail.
-%
-We observe that
-\begin{itemize}
-
-\item the first can be proved, yet a different proof technique is needed,
-  taking advantage from the axiomatic characterisation of switching;
-
-\item Independence is global partially fails: one part holds, the
-  other in a weak form, but this is conceptually fini (related to or
-  causality).
-\end{itemize}
-
-As a beginning step in our analysis of switch equivalence, we will
-establish three lemmas dealing with derivations of length
-$3$.
+In the case of linear rewriting systems, the characterisation of
+switch equivalence based on consistent permutations is the key to
+derive some simple but fundamental properties for the theory, namely
+\begin{enumerate}
+\item \emph{Confluence of switching}: when transforming derivation
+  sequences into equivalent ones by switching independent steps, the
+  result not depends on the order in which switchings are applied, but
+  only on the resulting permutation;
+  
+\item \emph{Globality of independence}: if two independent steps are
+  moved forward or backward due to the application of switchings to a
+  derivation, they remain independent.
+\end{enumerate}
 
 
-\begin{restatable}[First $3$-steps Lemma]{lemma}{lemThreeSteps}
-  \label{lem:three-steps}
-  Let $\X$ be an $\mathcal{M}$-adhesive category and
-  $(\X,\R)$ a left-linear DPO rewriting system.
-%
-  Consider a
-  derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$ and suppose that
-  $(i_0,i_1)$ is a good independence pair between $\dder{D}_0$ and
-  $\dder{D}_1$, $(a_0,a_1)$ one between $\dder{D}_1$ and $\dder{D}_2$
-  and $(e_0, e_1)$ one between $\dder{D}_0$ and
-  $S_{a_0,a_1}(\dder{D}_2)$.
+In particular, the two properties allows one to obtain a \emph{canonical form} for switching sequences: whenever two derivation sequences are switch equivalence via some permutation $\sigma$, then each one can be obtained from the other by applying switchings to pairs of rule applications which $\sigma$ reverses (the so-called inversions).\todo{P: questa prima parte da riportare in parte in intro}
+
+The failure of the characterisation of switch equivalence via
+consistent permutations for left-linear rules naturally leads to the
+question asking whether also the properties above cease to hold.
+
+In this section we show that actually much of the theory can be retained: confluence of switching still holds, globality of independence holds in a weak form conceptually motivated by the fact that fusions introduce disjubctive causality. Finally a canonical form for switching sequences can also be recovered.
+
+We start by proving two lemmas dealing with derivations of length
+$3$. Despite being technical, these lemma are the fundamental building blocks for showing properties (1) and (2) above.
+
+The first lemma capture the essence of the confluence of
+switchings. It shows that if we have a derivation consisting of three
+rewriting steps, say $r_0\, r_1\, r_2$ and we switch them leading to the
+sequence $r_2\, r_1\, r_0$, we obtain the same resulting derivation,
+indepdendently from the order of the switchings.
+
+
+\begin{restatable}[confluence of switchings]{lemma}{lemSwitchConfluence}
+  \label{lem:switch-confluence}
+  Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X,\R)$ a
+  left-linear DPO rewriting system.
+  % 
+  Consider a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$ and suppose
+  that $(i_0,i_1)$ is a good independence pair between $\dder{D}_0$
+  and $\dder{D}_1$, $(a_0,a_1)$ one between $\dder{D}_1$ and
+  $\dder{D}_2$ and $(e_0, e_1)$ one between $\dder{D}_0$ and
+  $S_{a_0,a_1}(\dder{D}_2)$.\todo{P: non e' meglio qui limitarci a very tame, cosi' da evitare riferimenti a good pairs?}
 \end{restatable}
 
-
-[Proof~\ref{lemThreeSteps-proof}]
-
-\rem{remove}{
-\begin{lemma}[Second $3$-steps Lemma]\label{lem:secondo}
-	contenuto...
-\end{lemma}
-\begin{proof}
-	contenuto...
-\end{proof}
+[Proof~\ref{lemSwitchConfluence-proof}]
 
 
+The next technical lemma is at the core of globality of independence. It shows that if we have a derivation consisting of three
+rewriting steps, say $r_0\, r_1\, r_2$ where $r_0$ and $r_1$ are independent, then if we switch $r_2$ to the first position, obtaining a derivation $r_2\, r_0\, r_1$, the steps $r_0$ and $r_1$ are still independent.
 
-\begin{lemma}[Third $3$-steps Lemma]\label{lem:terzo}
-	contenuto...
-\end{lemma}
-\begin{proof}
-	contenuto...
-\end{proof}
-}
+Instead, if in $r_0\, r_1\, r_2$ we have $r_1$ and $r_2$ are
+independent, and we switch $r_0$ to the last position, obtaining a
+derivation $r_1\, r_2\, r_0$, the steps $r_1$ and $r_2$ could be no
+longer independent, unless an additional condition is
+satisfied. Intuitively this is due to the fact that, dealing with
+left-linear rewriting systems introduces disjunctive forms of
+causality. Hence, if in $r_0\, r_1\, r_2$ we have that $r_0, r_1$ are
+disjunctive causes of $r_2$, at least one of the two is needed to
+enable the application of $r_2$ and this explain why in
+$r_1\, r_2\, r_0$ we have that $r_1$ and $r_2$ are no longer
+independent. \todo{P: da dire meglio e Ci vorrebbe un esempio}
 
-\todo{dividere in due il lemma dopo. devono venire tre lemmi}
-\begin{restatable}[Second 3-steps Lemma]{lemma}{lemIndepGlobalLeft}
+\begin{restatable}[Globality of indepedence]{lemma}{lemIndepGlobalLeft}
   \label{lem:indep-global-left}
   Let $\X$ be an $\mathcal{M}$-adhesive category and
   $(\X,\R)$ a left-linear DPO rewriting system.
-  %
   Consider a derivation
   $\der{D}=\{\dder{D}_i\}_{i=0}^2$ and suppose that $(i_0,i_1)$ is a
   good independence pair between $\dder{D}_0$ and $\dder{D}_1$,
@@ -2750,125 +2748,100 @@ $3$.
   $(e_0, e_1)$ one between $\dder{D}_0$ and
   $S_{a_0,a_1}(\dder{D}_2)$. Then the following properties hold true.
   \begin{enumerate}
-  \item $S_{e_0,e_1}(\dder{D}_0)$ and $S_{a_0,a_1}(\dder{D}_1)$ are
-     sequentially independent.
-  \item If $S_{i_0, i_1}(\dder{D}_0)\updownarrow_! \dder{D}_2$ with a
+  \item
+    \label{lem:indep-global-left:1}
+    $S_{e_0,e_1}(\dder{D}_0)$ and $S_{a_0,a_1}(\dder{D}_1)$ are
+    sequentially independent.
+    
+  \item
+    \label{lem:indep-global-left:2}
+    If $S_{i_0, i_1}(\dder{D}_0)\seqind \dder{D}_2$ with a
     good independence pair $(\alpha_0, \alpha_1)$, then
     $S_{i_0,i_1}(\dder{D}_1)$ and $S_{\alpha_0, \alpha_1}(\dder{D}_2)$
     are  sequentially independent.
   \end{enumerate}
 \end{restatable}
 
+\todo{P: anche qui sopra mi limiterei a very tame, cos\i' da evitare riferimenti a good e se si riesce anche alle indepdencen pairs}
+  %
+
 [Proof~\ref{lemIndepGlobalLeft-proof}]
 
+The lemmas above open the way to the key result of this section establishing a canonical form for
+switching derivations.
 
-\rem{eliminare??? Non so come sia legato col resto}{ 
+We first need some notation on permutations. A \emph{permutation} on
+$\interval{n}$ is a bijection
+$\sigma : \interval{n} \to \interval{n}$. We call it a
+\emph{transposition} when there are $i, j \in \interval{n}$,
+$i \neq j$ such that $\sigma(i)=j$, $\sigma(j) = i$ and
+$\sigma(k) = k$ otherwise. Such a transposition is normally denoted as
+$\transp{i}[j]$.
+% Whenever $j = i+1$ we call it an \emph{adjacent transposition}.
 
-  \begin{lemma}\label{lem:consperm} Let $(\X, \R)$ be a left-linear
-    DPO rewriting system $(\X, \R)$. Then the following hold true
-    \begin{enumerate}
-    \item If $\dder{D}$ and $\dder{D'}$ are two direct derivations
-      such that $\dder{D}\updownarrow \dder{D'}$, then for every
-      filler $(u,u')$ between them, the function
-      \[\tau\colon 2\to2 \qquad x \mapsto \begin{cases}
-          1 & x=0 \\
-          0 & x=1
-        \end{cases}\] defines a consistent permutation between
-      $\dder{D}\cdot \dder{D}'$ and $\sder{D}{D'}$;
-    \item if $\der{D}$ and $\der{D}'$ are two switch equivalent
-      derivation, then there exists a consistent permutation between
-      them.
-    \end{enumerate}
-  \end{lemma}
-  \begin{proof}
-    \begin{enumerate}
-    \item
-    \item \qedhere
-    \end{enumerate}
-  \end{proof}
-  This, together with ???
-  \begin{corollary}
-    \todo{unicitÃ }
-  \end{corollary}
+Given a permutation $\perm$ on $\interval{n}$, the set of inversions
+of $\perm$ is
+$\inv{\perm} = \{ (i,j) \mid i,j \in \interval{n-1}\ \land\ i<j\
+\land\ \perm(i) > \perm(j) \}$.
+%
+Clearly, $\perm$ is the identity iff $\inv{\perm}=0$.
 
-  \begin{example}\label{ex:contro}\todo{permutazione consistente non
-      implica scambiabilitÃ }
-  \end{example}
+% Now, if $\perm \neq id$ there is at least an inversion of the kind
+% $(i,i+1)$.  Then we have that $\perm = \transp{i}; \perm'$
+% with $|\inv{\perm'}| = |\inv{\perm}| -1$. Hence we can inductively
+% express $\perm$ as a (minimal length) composition of adjacent
+% transpositions.
 
 
+We also need some notation on switching sequences. Consider derivation sequences $\der{D}_i$ for $i \in \interval[0]{n}$
+related by switches
+\begin{center}
+  $\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots \shift{\nu_n}
+\der{D}_n$
+\end{center}
+It will be referred as a \emph{switching sequence}.  Given $i \leq j$,
+we denote by $\nu_{i,j}$ the composition
+$\nu_j \circ \nu_{i-1} \circ \ldots \nu_i$. We will say that the
+switching sequence consists of inversions if for all
+$i \in \interval[0]{n}$ the transposition $\nu_i$ is an inversion for
+$\nu_{i,n}$.\todo{P: probabilmente questi e forse la notazione sulle
+  permutazioni vanno messi quando si parla di switching, ma ora non
+  ho la forza di ragionare}
 
 
-  \subsubsection{No needs for useless switches}
-  \todo{richiamare cosa sono le inversioni}
+The first result shows that whenever equating two derivation sequences by performing a sequence of switching, we can just limit ourselves to ``useless shwitching'' which invert the order of steps which in the target derivation has to be reversed, i.e., we can limit ourserrvels to inversions.
 
-  \begin{lemma}[Fundamental Lemma] Let $(\der{D}, \alpha,
-    \omega)$ and $(\der{D'}, \alpha, \omega)$ be two decorated
-    derivations and suppose that there exists a non-empty
-    sequence $\{\der{D}_i\}_{i=0}^n$ a of derivations witnessing
-    $\der{D}\equiv^s \der{D}'$. For every $i\in [0,n-1]$, let
-    $\nu_i\colon [0, \lgh(\der{D})-1]\to [0, \lgh(\der{D})-1]$
-    be the $2$-cycle associated to the switch between
-    $\der{D}_i$ and $\der{D}_{i+1}$, let also $\sigma$ be the
-    associated consistent permutation between
-    $(\der{D}, \alpha, \omega)$ and
-    $(\der{D}', \alpha', \omega')$. Define $k$ as the maximum of
-    the set
-    \[M_\sigma:=\{j\in [0, \lgh(\der{D}-1] \mid \sigma(j+1) <
-      \sigma(j) \}\] If every $\nu_i$ is an inversion for
-    $\sigma$, then there exists a family $\{\nu'_i\}_{i=0}^n$ of
-    inversions for $\sigma$ such that jj\todo{capire come
-      scriverlo meglio, l} $\nu'_0=(k, k+1)$.
-  \end{lemma}
-  \begin{remark}
-    Since $\{\der{D}_i\}_{i=0}^n$ is non-empty, then $\sigma$
-    must be different from $\id{[0, \lgh(\der{D}-1)]}$ and
-    $M_{\sigma}\neq \emptyset$.
-  \end{remark}
-  \begin{proof}
-    We proceed by induction on $n$.
+\begin{restatable}[no need of useless switchings]{theorem}{thNoNeed}
+  \label{th:no-need}
+  Let $\der{D}$ and $\der{D}'$ be derivation sequences. If $\der{D} \shifteq \der{D}'$ then there is a switching sequence consisting only of inversions
+  \begin{center}
+    $\der{D} = \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
+    \shift{\nu_n} \der{D}_n=\der{D}'$
+  \end{center}
+\end{restatable}
 
-    \smallskip\noindent $n=1$. In this case there is nothing to
-    prove.
+[Proof~\ref{thNoNeed-proof}
 
-    \smallskip \noindent $n>1$. Then...
-  \end{proof}
-
-  \begin{corollary}
-    contenuto...
-  \end{corollary}
-  \begin{proof}
-    contenuto...
-  \end{proof}
+While in the case of linear rewriting systems inversion can be
+performed in any order, this is no longer true for left-linear
+rewriting systems.\todo{P: copunter example} Still, we can identify a
+canonical form for switching derivations.
 
 
-  \begin{corollary}
-    contenuto...
-  \end{corollary}
-  \begin{proof}
-    contenuto...
-  \end{proof}
+\begin{restatable}[canonical form]{corollary}{coCanonical}
+  \label{co:canonical}
+  Let $\der{D}$ and $\der{D}'$ be derivation sequences. If
+  $\der{D} \shifteq[\sigma]\der{D}'$ then there is a switching sequence
+  \begin{center}
+    $\der{D} = \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
+    \shift{\nu_n} \der{D}_n=\der{D}'$
+  \end{center}
+  where for each $i \in \interval{n}$ the transpostion $\nu_i  = \transp{k}$ is such that 
+  $k = \max \{ j \mid \transp{j} \in \inv{\nu_{i,n}}\}$.\todo{P: $\nu_{i,n} = \sigma \circ \nu_{1,i}$, giusto? forse e' piu' carino}
+\end{restatable}
 
+[Proof~\ref{coCanonical-proof}
 
-
-  \begin{corollary}
-    contenuto...
-  \end{corollary}
-  \begin{proof}
-    contenuto...
-  \end{proof}
-
-
-  \begin{corollary}[No need for useless switches]
-    contenuto...
-  \end{corollary}
-  \begin{proof}
-    contenuto...
-  \end{proof}
-}
-\newpage
-
-
-\newpage
 \iffalse
 	\begin{corollary} Given a tame  left-linear DPO rewriting system  $(\X,\R)$ with $\X$ an $\mathcal{M}$-adhesive category and a decorated derivation $(\der{D}, \alpha, \omega)$ with $\der{D}=\{\dder{D}_i\}_{i=0}^2$. Then the following are true:
 		\begin{enumerate}
@@ -3985,8 +3958,8 @@ Let $\sigma:[0,n]\to [0,n]$ be a permutation, an \emph{inversion} for $\sigma$ i
 
 \subsubsection{Proofs for \Cref{subsec:3steps}}
 
-\lemThreeSteps*
-\label{lemThreeSteps-proof}
+\lemSwitchConfluence*
+\label{lemSwitchConfluence-proof}
 
 \begin{proof}
 NOTES ON THE FUNDAMENTAL LEMMA WE NEED
@@ -4313,6 +4286,621 @@ USO IL PRIMO LEMMA DEI TRE PASSI:
   \end{enumerate}
 \end{proof}
 
+
+%%%%%%%%%%% NO NEED OF USELESS SHIFTS
+
+We next prove some technical lemma which will be useful to show the
+possibility of transforming a derivation into a switch equivalent one
+by switching only step along inversions.
+
+
+
+\begin{lemma}
+  \label{le:switchA}
+  Let $\der{D}_i$ for $i \in \interval[0]{n}$ be derivation sequences
+  and consider a switching sequence consisting only of inversions
+  \begin{center}
+    $\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
+    \shift{\nu_n} \der{D}_n$
+  \end{center}
+  Let $i \in \interval{n}$ be such that
+  $\transp{i} \in \inv{\nu_{1,n}}$ and for all $k > i+1$ it holds
+  $\nu_{1,n}(k) > \nu_{1,n}(i+1)$.  Then there is a switching sequence
+  consisting only of inversions which starts with $\transp{i}$, i.e.,
+  \begin{center}
+    $\der{D}_0 \shift{\transp{i}} \der{D}_1' \shift{\nu_2'} \ldots
+    \shift{\nu_n'} \der{D}_n$
+  \end{center}
+\end{lemma}
+
+\begin{proof}
+  We proceed by induction on $n$. If $n=1$, necessarily
+  $\nu_1 =  \transp{i}$ and thus we are done.
+
+  If $n>1$, let $\nu_1 = \transp{j}$.  We distinguish various case
+  depending on how $\nu_1$ relates to $\transp{i}$.
+
+  \bigskip
+  \noindent
+  (i) $j=i$\\
+  %
+  In this case there is nothing to prove: $\nu_1 = \transp{i}$, hence
+  the original switching sequence is already of the desired shape.
+
+  \bigskip
+  \noindent
+  (ii) $j<i-1$ or $j>i-1$\\
+  %
+  In this case $\nu_1$ does not ``interfere'' with $\transp{i}$, i.e.,
+  $i$ still satisfies the hypotheses of the lemma with respect to the
+  switching sequence
+  $\der{D}_1 \shift{\nu_2} \ldots \shift{\nu_n} \der{D}_n$.
+
+  Hence we can apply the inductive hypothesis and derive the existence
+  of a switching sequence
+  \begin{center}
+    $\der{D}_1 \shift{\transp{i}} \der{D}_2' \shift{\nu_3'} \ldots \shift{\nu_n'} \der{D}_n$
+  \end{center}
+
+  Recall that $\der{D}_0 \shift{\nu_1} \der{D}_1$ and, given the
+  working assumption (ii), the switches $\nu_1$ and $\transp{i}$ can
+  be done in reverse order, thus getting, as desired
+  \begin{center}
+    $\der{D}_0 \shift{\transp{i}} \der{D}_1' \shift{\nu_1} \ldots
+    \shift{\nu_n'} \der{D}_n$
+  \end{center}
+
+
+  \bigskip
+  \noindent
+  (iii) $j=i-1$, i.e., $\nu_1 = \transp{i-1}[i]$\\
+  %
+  In this case $\der{D}_1$ is obtained from $\der{D}_0$ by switching
+  steps $i-1$ and $i$, as pictorially reported in the first two
+  columns of Fig.~\ref{fi:switchA}. Since we are dealing with
+  switching sequence consisting only of inversions and by hypothesis
+  $\nu_{1,n}(i) > \nu_{1,n}(i+1)$, whence
+  $\nu_{2,n}(i-1) > \nu_{2,n}(i+1)$, we deduce that necessarily
+  $\nu_{2,n}(i) > \nu_{2,n}(i+1)$ and $\nu_{2,n}(k) > \nu_{2,n}(i+1)$
+  for all $k > i+1$. Hence we can use the inductive hypothesis to
+  deduce that the switching sequence from $\der{D}_1$ can start by
+  switching $\transp{i}$, i.e., we obtain (see the third column in
+  Fig.~\ref{fi:switchA})
+  \begin{center}
+    $\der{D}_1 \shift{\transp{i}} \der{D}_2' \shift{\nu_3'} \ldots
+    \shift{\nu_n'} \der{D}_n$
+  \end{center}
+
+  Now, if we focus on $\der{D}_2'$ we observe that
+  $\nu_{3,n}'(i-1) > \nu_{3,n}'(i)$ and
+  $\nu_{3,n}'(k) > \nu_{3,n}'(i)$ for all $k > i$. Hence we can apply
+  again the inductive hypothesis and get a switching sequence
+    \begin{center}
+    $\der{D}_2' \shift{\transp{i-1}[i]} \der{D}_3'' \shift{\nu_3''} \ldots
+    \shift{\nu_n''} \der{D}_n$
+  \end{center}
+  as depicted in Fig.~~\ref{fi:switchA}, starting from the fourth column.
+
+  By Lemma~\ref{lem:indep-global-left}(\ref{lem:indep-global-left:1})\todo{Check numbering} we can
+  reorganize the first three switchings as
+
+  \begin{center}
+    $\der{D}_0 \shift{\transp{i}} \der{D}_1'''
+    \shift{\transp{i-1}[i]} \der{D}_2'''
+    \shift{\transp{i}} \der{D}_3''$
+  \end{center}
+
+  The fact that the three switchings above lead to $\der{D}_3''$ is a
+  consequence of Lemma~\ref{lem:switch-confluence}.
+
+  \bigskip
+
+  Observe that it cannot be $j=i+1$, otherwise we would have
+  $\nu_{1,n}(j+1) < \nu_{1,n}(i)$, contradicting the hypotheses. Thus
+  this case does not need to be considered and the proof is completed.  
+\end{proof}
+ 
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[font=\small]
+    % Define arrow colors
+    \def\colorA{green!60!black}
+    \def\colorB{blue}
+    \def\colorC{red!100}
+
+    % Define the length of each line
+    \def\vlen{5mm}
+    \def\hlen{18mm}
+    \def\gap{1mm}
+    
+
+    % First line D0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Draw label on top of the line
+    \node[above] at (0*\hlen,0) {$\der{D}_0$};
+    \node[above] at (0.5*\hlen,0) {$\shift{\nu_1}$};
+
+    % Draw the black part of the line
+    \draw (0*\hlen,0) -- (0*\hlen,-2*\vlen+\gap);
+
+    % Draw the first colored labeled arrow
+    \draw[->, \colorA] (0*\hlen,-2*\vlen) -- (0*\hlen,-3*\vlen+\gap) node[midway, left] {$i-1$};
+    % Draw the second colored labeled arrow
+    \draw[->, \colorB] (0*\hlen,-3*\vlen) -- (0*\hlen,-4*\vlen+\gap) node[midway, left] {$i$};
+    % Draw the third colored labeled arrow
+    \draw[->, \colorC] (0*\hlen,-4*\vlen) -- (0*\hlen,-5*\vlen+\gap) node[midway, left] {$i+1$};
+    % Draw the last black part of the line
+    \draw (0*\hlen,-5*\vlen) -- (0*\hlen,-7*\vlen);
+    
+    % Second line D1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Draw label on top of the line
+    \node[above] at (1*\hlen,0) {$\der{D}_1$};
+    \node[above] at (1.5*\hlen,0) {$\shift{\transp{i}}$};
+
+    % Draw the black part of the line
+    \draw (1*\hlen,0) -- (1*\hlen,-2*\vlen+\gap);
+
+    % Draw the first colored labeled arrow
+    \draw[->, \colorB] (1*\hlen,-2*\vlen) -- (1*\hlen,-3*\vlen+\gap) node[midway, left] {};
+    % Draw the second colored labeled arrow
+    \draw[->, \colorA] (1*\hlen,-3*\vlen) -- (1*\hlen,-4*\vlen+\gap) node[midway, left] {};
+    % Draw the third colored labeled arrow
+    \draw[->, \colorC] (1*\hlen,-4*\vlen) -- (1*\hlen,-5*\vlen+\gap) node[midway, left] {};
+    % Draw the last black part of the line
+    \draw (1*\hlen,-5*\vlen) -- (1*\hlen,-7*\vlen);
+
+    % Repeat similar patterns for the third and fourth lines
+    
+    % Third line: d2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node[above] at (2*\hlen,0) {$\der{D}_2'$};
+    \node[above] at (2.5*\hlen,0) {$\shift{\transp{i-1}[i]}$};
+ 
+    \draw (2*\hlen,0) -- (2*\hlen,-2*\vlen+\gap);
+    
+    \draw[->, \colorB] (2*\hlen,-2*\vlen) -- (2*\hlen,-3*\vlen+\gap) node[midway, left] {};
+    \draw[->, \colorC] (2*\hlen,-3*\vlen) -- (2*\hlen,-4*\vlen+\gap) node[midway, left] {};
+    \draw[->, \colorA] (2*\hlen,-4*\vlen) -- (2*\hlen,-5*\vlen+\gap) node[midway, left] {};
+    \draw (2*\hlen,-5*\vlen) -- (2*\hlen,-7*\vlen);
+
+    % Fourth line %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node[above] at (3*\hlen,0) {$\der{D}_3''$};
+    \node[above] at (3.5*\hlen,0) {$\shift{\nu_3''}$};
+
+    \draw (3*\hlen,0) -- (3*\hlen,-2*\vlen+\gap);
+    \draw[->, \colorC] (3*\hlen,-2*\vlen) -- (3*\hlen,-3*\vlen+\gap) node[midway, left] {};
+    \draw[->, \colorB] (3*\hlen,-3*\vlen) -- (3*\hlen,-4*\vlen+\gap) node[midway, left] {};
+    \draw[->, \colorA] (3*\hlen,-4*\vlen) -- (3*\hlen,-5*\vlen+\gap) node[midway, left] {};
+    \draw (3*\hlen,-5*\vlen) -- (3*\hlen,-7*\vlen);
+
+    % Dots after the last line
+    \draw (4*\hlen,0*\vlen) node[above] {$\dots$};
+
+    % Last line %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node[above] at (5*\hlen,0) {$\der{D}_n$};
+    \node[above] at (4.5*\hlen,0) {$\shift{\nu_{n-1}}$};
+
+  \end{tikzpicture}
+  \caption{Picture for the proof of Lemma~\ref{le:switchingsA}}
+  \label{fi:switchA}
+\end{figure}
+
+
+\begin{remark}
+  \label{rem:switchA}
+  Observe that given a switching sequence as in the lemma above
+  $\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
+  \shift{\nu_n} \der{D}_n$, if we consider the inversion with largest index:
+  \begin{center}
+    $k = \max \{j \mid \transp{j} \in \inv{\nu_{1,n}}\}$
+  \end{center}
+  then it satisfies the hypotheses of the lemma.
+\end{remark}
+
+\begin{lemma}
+  \label{le:switchB}
+  Let $\der{D}_i$ for $i \in \interval[0]{n}$ be derivation sequences
+  and consider a switching sequence consisting only of inversions
+  \begin{center}
+    $\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
+    \shift{\nu_n} \der{D}_n$
+  \end{center}
+  Let $i \in \interval{n}$ be such that
+  $\transp{i} \in \inv{\nu_{1,n}}$ and assume that steps $i$ and $i+1$ in $\der{D}_0$ are sequential independent. Then there is a switching sequence
+  consisting only of inversions which starts with $\transp{i}$, i.e.,
+  \begin{center}
+    $\der{D}_0 \shift{\transp{i}} \der{D}_1' \shift{\nu_2'} \ldots
+    \shift{\nu_n'} \der{D}_n$
+  \end{center}
+\end{lemma}
+
+\begin{proof}
+  We proceed by induction on $n$. If $n=1$, necessarily
+  $\nu_1 =  \transp{i}$ and thus we are done.
+
+  If $n>1$, take $k = \max \{j \mid \transp{j} \in \inv{\nu_{1,n}}\}$, which,
+  as observed in Remark~\ref{rem:switchA}, satisfies the hypotheses of
+  Lemma~\ref{le:switchA}. Hence, by the mentioned lemma, we can start
+  the switching sequence with the transposition $\transp{k}$, thus
+  obtaining:
+  \begin{center}
+    $\der{D}_0 \shift{\transp{k}} \der{D}_1' \shift{\nu_2'} \ldots
+    \shift{\nu_n'} \der{D}_n$
+  \end{center}
+
+  Moreover, since $\transp{i}$ is an inversion, we have that
+  $\i \leq k$.  We distinguish various case depending on how $k$
+  relates to $i$.
+
+  \bigskip
+  \noindent
+  (i) $j=i$\\
+  %
+  In this case we are done: $\nu_1' = \transp{i}$, hence we obtained a
+  switching sequence of the desired shape.
+
+  \bigskip
+  \noindent
+  (ii) $k > i+1$\\
+  %
+  In this case the switching $\transp{k}$ does not ``interfere'' with
+  $\transp{i}$, , as depicted in Fig.~\ref{fi:switchB1} (first two
+  columns).
+
+  Hence if we focus on
+  \begin{center}
+    $\der{D}_1' \shift{\nu_2'} \ldots
+    \shift{\nu_n'} \der{D}_n$
+  \end{center}
+  we can observe that
+  $\nu_{2,n}'(i)=\nu_{1,n}(i) > \nu_{1,n}(i+1)=\nu_{2,n}'(i+1)$.
+  %
+  Thus we can use the inductive hypothesis and obtain (see
+  Fig.~\ref{fi:switchB1}, third column):
+  \begin{center}
+    $\der{D}_1' \shift{\transp{i}} \der{D}_2'' \shift{\nu_3''} \ldots
+    \shift{\nu_n''} \der{D}_n$
+  \end{center}
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[font=\small]
+    % Define arrow colors
+    \def\colorA{red!100}
+    \def\colorB{blue}
+    \def\colorC{green!60!black}
+    \def\colorD{orange!60!black}
+
+    % Define the length of each line
+    \def\vlen{5mm}
+    \def\hlen{20mm}
+    \def\gap{1mm}
+    
+
+    % First line D0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Draw label on top of the line
+    \node[above] at (0*\hlen,0) {$\der{D}_0$};
+    \node[above] at (0.5*\hlen,0) {$\shift{\transp{k}}$};
+
+    % Draw the black part of the line
+    \draw (0*\hlen,0) -- (0*\hlen,-1*\vlen+\gap);
+
+    % Draw the first colored labeled arrow
+    \draw[->, \colorA] (0*\hlen,-1*\vlen) -- (0*\hlen,-2*\vlen+\gap) node[midway, left] {$i$};
+    % Draw the second colored labeled arrow
+    \draw[->, \colorB] (0*\hlen,-2*\vlen) -- (0*\hlen,-3*\vlen+\gap) node[midway, left] {$i+1$};
+    % Draw the second black part of the line
+    \draw (0*\hlen,-3*\vlen) -- (0*\hlen,-4*\vlen+\gap);
+
+    % Draw the third colored labeled arrow
+    \draw[->, \colorC] (0*\hlen,-4*\vlen) -- (0*\hlen,-5*\vlen+\gap) node[midway, left] {$k$};
+    % Draw the fourth colored labeled arrow
+    \draw[->, \colorD] (0*\hlen,-5*\vlen) -- (0*\hlen,-6*\vlen+\gap) node[midway, left] {$k+1$};
+    % Draw the last black part of the line
+    \draw (0*\hlen,-6*\vlen) -- (0*\hlen,-7*\vlen);
+
+    % Second line D1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Draw label on top of the line
+    \node[above] at (1*\hlen,0) {$\der{D}_1'$};
+    \node[above] at (1.5*\hlen,0) {$\shift{\nu_2'}$};
+
+    % Draw the black part of the line
+    \draw (1*\hlen,0) -- (1*\hlen,-1*\vlen+\gap);
+
+    % Draw the first colored labeled arrow
+    \draw[->, \colorA] (1*\hlen,-1*\vlen) -- (1*\hlen,-2*\vlen+\gap) node[midway, left] {};
+    % Draw the second colored labeled arrow
+    \draw[->, \colorB] (1*\hlen,-2*\vlen) -- (1*\hlen,-3*\vlen+\gap) node[midway, left] {};
+    % Draw the second black part of the line
+    \draw (1*\hlen,-3*\vlen) -- (1*\hlen,-4*\vlen+\gap);
+
+    % Draw the third colored labeled arrow
+    \draw[->, \colorD] (1*\hlen,-4*\vlen) -- (1*\hlen,-5*\vlen+\gap) node[midway, left] {};
+    % Draw the fourth colored labeled arrow
+    \draw[->, \colorC] (1*\hlen,-5*\vlen) -- (1*\hlen,-6*\vlen+\gap) node[midway, left] {};
+    % Draw the last black part of the line
+    \draw (1*\hlen,-6*\vlen) -- (1*\hlen,-7*\vlen);
+
+
+    % Third line D2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Draw label on top of the line
+    \node[above] at (2*\hlen,0) {$\der{D}_2''$};
+    \node[above] at (2.5*\hlen,0) {$\shift{\nu_3''}$};
+
+    % Draw the black part of the line
+    \draw (2*\hlen,0) -- (2*\hlen,-1*\vlen+\gap);
+
+    % Draw the first colored labeled arrow
+    \draw[->, \colorB] (2*\hlen,-1*\vlen) -- (2*\hlen,-2*\vlen+\gap) node[midway, left] {};
+    % Draw the second colored labeled arrow
+    \draw[->, \colorA] (2*\hlen,-2*\vlen) -- (2*\hlen,-3*\vlen+\gap) node[midway, left] {};
+    % Draw the second black part of the line
+    \draw (2*\hlen,-3*\vlen) -- (2*\hlen,-4*\vlen+\gap);
+
+    % Draw the third colored labeled arrow
+    \draw[->, \colorC] (2*\hlen,-4*\vlen) -- (2*\hlen,-5*\vlen+\gap) node[midway, left] {};
+    % Draw the fourth colored labeled arrow
+    \draw[->, \colorD] (2*\hlen,-5*\vlen) -- (2*\hlen,-6*\vlen+\gap) node[midway, left] {};
+    % Draw the last black part of the line
+    \draw (2*\hlen,-6*\vlen) -- (2*\hlen,-7*\vlen);
+    
+    % Dots after the last line
+    \draw (3*\hlen,0*\vlen) node[above] {$\dots$};
+
+    % Last line %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node[above] at (4*\hlen,0) {$\der{D}_n$};
+    \node[above] at (3.5*\hlen,0) {$\shift{\nu_{n-1}''}$};
+
+  \end{tikzpicture}
+  \caption{Picture for the proof of Lemma~\ref{le:switchB}, item (ii)}
+  \label{fi:switchB1}
+\end{figure}
+
+  
+  Now, since $k>i+1$, the switchings $\transp{i}$ and $\transp{k}$ can
+  be performed in reverse order and thus we obtain
+  \begin{center}
+    $\der{D}_0 \shift{\transp{i}} \der{D}_1'' \shift{\transp{k}}
+    \der{D}_2'' \shift{\nu_3''} \ldots \shift{\nu_n''} \der{D}_n$
+  \end{center}
+  as desired.
+
+  \bigskip
+  \noindent
+  (iii) $k = i+1$\\
+  %
+  The situation is depicted in Fig.~\ref{fi:switchB2}. In
+  $\der{D}_1'$, by the choice of $k$ and the fact that all $\nu_i$ are
+  inversions, one can deduce that $i$ satisfies the hyp[otheses of
+  Lemma~\ref{le:switchA}. Hence we obatain (see Fig.~\ref{fi:switchB2}, first two coulmns):
+  \begin{center}
+    $\der{D}_1' \shift{\transp{i}} \der{D}_2'' \shift{\nu_2''}
+    \der{D}_3'' \shift{\nu_4''} \ldots \shift{\nu_n''} \der{D}_n$
+  \end{center}
+
+  Since in $\der{D}_0$ steps in positions $i$ and $i+1$ are sequential
+  independent, we can use
+  Lemma~\ref{lem:indep-global-left}(\ref{lem:indep-global-left:1})\todo{Check
+    numbering}, we have that the corresponding steps in positions
+  $i+1$ and $i+2$ in $\der{D}_2''$ are stil sequential
+  independent. Hence, we can use the inductive hypothesis on
+  $\der{D}_2''$ and deduce the existence of a switching sequence where
+  $\transp{i+1}[i+2]$ can be switched first, i.e., we obtain (see
+  Fig.~\ref{fi:switchB2}, third coulmn):
+  \begin{center}
+    $\der{D}_2'' \shift{\transp{i+1}[i+2]}
+    \der{D}_3''' \shift{\nu_4'''} \ldots \shift{\nu_n'''} \der{D}_n$
+  \end{center}
+  
+  Putting things together, we obtain
+  \begin{center}
+    $\der{D}_0 \shift{\transp{i+1}[i+2]} \der{D}_1' \shift{\transp{i}}
+    \der{D}_2'' \shift{\transp{i+1}[i+2]} \der{D}_3''' \shift{\nu_4'''}\ldots \shift{\nu_n'''} \der{D}_n$
+  \end{center}
+  Since we additionally know that in $\der{D}_0$ the steps $i$ and
+  $i+1$ are sequentially independent, we can use
+  Lemma~\ref{lem:indep-global-left}(\ref{lem:indep-global-left:2})\todo{Check numbering} to
+  reorder the first three switchings, obtaining:
+  \begin{center}
+    $\der{D}_0 \shift{\transp{i}} \der{D}_1' \shift{\transp{i+1}[i+2]}
+    \der{D}_2'' \shift{\transp{i}} \der{D}_3''' \shift{\nu_4'''}\ldots \shift{\nu_n'''} \der{D}_n$
+  \end{center}
+  as desired.  The fact that the three switchings above lead to
+  $\der{D}_3'''$ is a consequence of Lemma~\ref{lem:switch-confluence}.
+\end{proof}
+
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[font=\small]
+    % Define arrow colors
+    \def\colorA{red!100}
+    \def\colorB{blue}
+    \def\colorC{green!60!black}
+
+    % Define the length of each line
+    \def\vlen{5mm}
+    \def\hlen{22mm}
+    \def\gap{1mm}
+    
+
+    % First line D0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Draw label on top of the line
+    \node[above] at (0*\hlen,0) {$\der{D}_0$};
+    \node[above] at (0.5*\hlen,0) {$\shift{\transp{i+1}[i+2]}$};
+
+    % Draw the black part of the line
+    \draw (0*\hlen,0) -- (0*\hlen,-2*\vlen+\gap);
+
+    % Draw the first colored labeled arrow
+    \draw[->, \colorA] (0*\hlen,-2*\vlen) -- (0*\hlen,-3*\vlen+\gap) node[midway, left] {$i$};
+    % Draw the second colored labeled arrow
+    \draw[->, \colorB] (0*\hlen,-3*\vlen) -- (0*\hlen,-4*\vlen+\gap) node[midway, left] {$k=i+1$};
+    % Draw the third colored labeled arrow
+    \draw[->, \colorC] (0*\hlen,-4*\vlen) -- (0*\hlen,-5*\vlen+\gap) node[midway, left] {$i+2$};
+    % Draw the last black part of the line
+    \draw (0*\hlen,-5*\vlen) -- (0*\hlen,-7*\vlen);
+    
+    % Second line D1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Draw label on top of the line
+    \node[above] at (1*\hlen,0) {$\der{D}_1'$};
+    \node[above] at (1.5*\hlen,0) {$\shift{\transp{i}}$};
+
+    % Draw the black part of the line
+    \draw (1*\hlen,0) -- (1*\hlen,-2*\vlen+\gap);
+
+    % Draw the first colored labeled arrow
+    \draw[->, \colorA] (1*\hlen,-2*\vlen) -- (1*\hlen,-3*\vlen+\gap) node[midway, left] {};
+    % Draw the second colored labeled arrow
+    \draw[->, \colorC] (1*\hlen,-3*\vlen) -- (1*\hlen,-4*\vlen+\gap) node[midway, left] {};
+    % Draw the third colored labeled arrow
+    \draw[->, \colorB] (1*\hlen,-4*\vlen) -- (1*\hlen,-5*\vlen+\gap) node[midway, left] {};
+    % Draw the last black part of the line
+    \draw (1*\hlen,-5*\vlen) -- (1*\hlen,-7*\vlen);
+
+    % Repeat similar patterns for the third and fourth lines
+    
+    % Third line: d2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node[above] at (2*\hlen,0) {$\der{D}_2''$};
+    \node[above] at (2.5*\hlen,0) {$\shift{\transp{i+1}[i+2]}$};
+ 
+    \draw (2*\hlen,0) -- (2*\hlen,-2*\vlen+\gap);
+    
+    \draw[->, \colorC] (2*\hlen,-2*\vlen) -- (2*\hlen,-3*\vlen+\gap) node[midway, left] {};
+    \draw[->, \colorA] (2*\hlen,-3*\vlen) -- (2*\hlen,-4*\vlen+\gap) node[midway, left] {};
+    \draw[->, \colorB] (2*\hlen,-4*\vlen) -- (2*\hlen,-5*\vlen+\gap) node[midway, left] {};
+    \draw (2*\hlen,-5*\vlen) -- (2*\hlen,-7*\vlen);
+
+    % Fourth line %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node[above] at (3*\hlen,0) {$\der{D}_3'''$};
+    \node[above] at (3.5*\hlen,0) {$\shift{\nu_3'''}$};
+
+    \draw (3*\hlen,0) -- (3*\hlen,-2*\vlen+\gap);
+    \draw[->, \colorC] (3*\hlen,-2*\vlen) -- (3*\hlen,-3*\vlen+\gap) node[midway, left] {};
+    \draw[->, \colorB] (3*\hlen,-3*\vlen) -- (3*\hlen,-4*\vlen+\gap) node[midway, left] {};
+    \draw[->, \colorA] (3*\hlen,-4*\vlen) -- (3*\hlen,-5*\vlen+\gap) node[midway, left] {};
+    \draw (3*\hlen,-5*\vlen) -- (3*\hlen,-7*\vlen);
+
+    % Dots after the last line
+    \draw (4*\hlen,0*\vlen) node[above] {$\dots$};
+
+    % Last line %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node[above] at (5*\hlen,0) {$\der{D}_n$};
+    \node[above] at (4.5*\hlen,0) {$\shift{\nu_{n-1}'''}$};
+
+  \end{tikzpicture}
+  \caption{Picture for the proof of Lemma~\ref{le:switchB} (item (iii))}
+  \label{fi:switchB2}
+\end{figure}
+
+The next lemma intuitively states that if we have a switching sequence
+where the first switch is applied to $\transp{i}$ and the last one
+reverses the same switch, then, assuming that in the middle there are
+only inversions, we can strip the first and last switches.
+
+\begin{lemma}
+  \label{le:switchC}
+  Let $\der{D}_i$ for $i \in \interval[0]{n+1}$ be derivation sequences
+  and consider a switching sequence
+  \begin{center}
+    $\der{D}_0 \shift{\nu_0} \der{D}_1 \shift{\nu_1} \ldots
+     \der{D}_n \shift{\nu_n} \der{D}_{n+1}$
+  \end{center}
+  Assume that the subsequence starting from $\der{D}_1$ consists of
+  inversions and $\nu_0=\transp{i}$ while
+  $\nu_n = \transp{\nu_{1,n}(i)}$.  Then there is shorter switching sequence
+  consisting only of inversions:
+  \begin{center}
+    $\der{D}_0 \shift{\nu_2'} \der{D}_3' \shift{\nu_3'} \ldots
+    \shift{\nu_{n-1}'} \der{D}_n'$
+  \end{center}
+\end{lemma}
+
+\begin{proof}
+  Just observe that in $\der{D}_1$ the steps of position $i$ and $i+1$
+  are sequential independent and $\nu_{1,n}(i) >
+  \nu_{1,n}(i+1)$. Hence we can use Lemma~\ref{le:switchB} and obtain
+  a switching sequence from $\der{D}_1$ where $\transp{i}$ is
+  performed first, hence we obtain:
+  \begin{center}
+    $\der{D}_0 \shift{\transp{i}}
+    \der{D}_1 \shift{\transp{i}}
+    \der{D}_2' \shift{\nu_2'} \ldots
+    \shift{\nu_n'} \der{D}_{n+1}$
+  \end{center}
+
+  Now, since switchings $\transp{i}$ twice one obtains a derivation
+  which is abstraction equivalent to the starting one. Hence we can
+  assume without loss of generality that $\der{D}_2'$ coincides with
+  $\der{D}_0$. Hence we have
+  \begin{center}
+    $\der{D}_0 =
+    \der{D}_2' \shift{\nu_2'} \ldots
+    \shift{\nu_n'} \der{D}_{n+1}$
+  \end{center}
+  as desired.
+\end{proof}
+
+
+\begin{lemma}
+  \label{le:switch4}
+  Let $\der{D}_i$ for $i \in \interval[0]{n+1}$ be derivation sequences
+  and consider a switching sequence
+  \begin{center}
+    $\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
+    \shift{\nu_n}\der{D}_n$
+  \end{center}
+  If the switching sequence does not consists only of inversions,
+  there is a shorter switching sequence relating $\der{D}_0$ and
+  $\der{D}_0$.
+\end{lemma}
+
+\begin{proof}
+  Take a maximal subsequence
+  $\der{D}_i \shift{\nu_{i+1}} \der{D}_{i+1} \shift{\nu_{i+2}} \ldots
+  \shift{\nu_j}\der{D}_j$ consisting only of inversions.
+  %
+  If $i=0$ and $j=n$, there is nothing to show. Hence assume that
+  $i>0$ and consider the sequence
+  \begin{center}
+    $\der{D}_{i-1} \shift{\nu_{i}} \der{D}_{i} \shift{\nu_{i+1}} \ldots
+    \shift{\nu_j}\der{D}_j$
+  \end{center}
+  Then, by maximality, if $\nu_{i-1}=\transp{k}$ it must hold that
+  $\nu_{j}=\transp{\nu_{i,j}(i)}$. Then, by Lemma~\ref{le:switchC},
+  the switching sequence from $\der{D}_{i-1}$ to $\der{D}_{j}$ can be
+  shortened by $2$:
+  \begin{center}
+    $\der{D}_{i-1} = \der{D}_{i+1}' \shift{\nu_{i+1}'} \ldots
+    \shift{\nu_j'}\der{D}_j$
+  \end{center}
+  and thus the same applies to the original switching sequence.
+\end{proof}
+
+
+
+\thNoNeed*
+\label{thNoNeed-proof}
+
+
+\begin{proof}
+  Let $\der{D} \shifteq \der{D}'$. Then there is there is a switching
+  sequence
+  \begin{center}
+    $\der{D} = \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
+    \shift{\nu_n} \der{D}_n=der{D}'$
+  \end{center}
+  If it does not consist only of inversions, by Lemma~\ref{le:switchD}
+  we can reduce its length by $2$. An inductive reasoning allows us to
+  conclude.
+\end{proof}
+
+
+\coCanonical*
+\label{coCanonical-proof}
+
+\begin{proof}
+  Immediate consequence of Theorem~\ref{th:no-need} and Lemma~\ref{le:switchA}.
+\end{proof}
 
 \end{document}
 
