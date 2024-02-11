@@ -410,7 +410,7 @@
 \newcommand{\inv}[1]{\ensuremath{inv}({#1})}
 
 % direct shift
-\newcommand{\shiftdir}[1][]{\ensuremath{\mathrel{{\rightsquigarrow}^{\mathit{sh}}_{#1}}}}
+\newcommand{\shift}[1][]{\ensuremath{\mathrel{{\leftrightsquigarrow}^{\mathit{sh}}_{#1}}}}
 
 % shift preorder
 \newcommand{\shiftpre}[1][]{\ensuremath{\mathrel{{\sqsubseteq}^{\mathit{sh}}_{#1}}}}
@@ -486,23 +486,36 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
 \maketitle
 
 
-
 \begin{abstract}
-When two sequences of steps executed by a computational device can be considered equivalent?
-This is a relevant question if one considers concurrent and distributed systems, since the independence
-of two steps means that they could be executed on any order, and potentially in parallel.
-%
-We investigate the issue in the context of adhesive categories, a very
-general instance of the DPO approach to rewriting. More precisely, we
-focus on left-linear rules, which not only consume, preserve and generate entities,
-as linear rules do, but may ``merge'' parts of the state.
-%
-An apparently minimal, yet technically hard enhancement, which allows to properly extend the 
-formalisms that can be modelled in the adhesive framework, and for which we prove a 
-Church-Rosser property.
-%
-% We refine the established notion of sequential independence between steps, and ...
- \end{abstract}
+  When two sequences of steps executed by a computational device can
+  be considered equivalent?  This is a relevant question if one
+  considers concurrent and distributed systems, since the independence
+  of two steps means that they could be executed on any order, and
+  potentially in parallel.
+  % 
+  We investigate the issue in the context of adhesive categories, a
+  very general instance of the DPO approach to rewriting. More
+  precisely, we focus on left-linear rules, which not only consume,
+  preserve and generate entities, as linear rules do, but may
+  ``merge'' parts of the state.
+  % 
+  An apparently minimal, yet technically hard enhancement, which
+  allows to properly extend the formalisms that can be modelled in the
+  adhesive framework, and for which we prove a Church-Rosser property.
+  % 
+  % We refine the established notion of sequential independence
+  % between steps, and ...
+  The canonical notion of independence used for linear rewriting
+  systems does not work out of the box, but it requires the
+  restriction to suitable well-behaved classes of left-linear
+  rewriting systems.  Additionally, a fundamental characterisation of
+  the notion of independence fails when moving to left-linear
+  rewriting systems. This requires a substantial revision of the
+  theory as in the linear case, a number of basic properties,
+  essential in the development of the theory of concurrency, were
+  derived from such a characterisation.
+\end{abstract}
+
 
 \tableofcontents
 
@@ -2216,7 +2229,7 @@ switch.
   $\der{E}=\{\dder{E}_{i}\}_{i=0}^n$. If
   $\dder{D}_i \cdot \dder{D}_{i+1}$ is a switch of
   $\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ we write
-  $\der{D} \leftrightsquigarrow_{(i,i+1)} \der{E}$. Then \emph{switch
+  $\der{D} \shift_{(i,i+1)} \der{E}$. Then \emph{switch
     equivalence} is the least equivalence on derivation such that if
   $\der{D} \leftrightsquigarrow_{(i,i+1)} \der{E}$ then
   $\der{D} \equiv^s \der{E}$.
@@ -2653,8 +2666,8 @@ lineare iff
 
 \subsection{The $3$-steps lemmas}
 
-The characterisation of switch equivalence based on consistent
-permutation for linear rules allows to derive some simple but
+In the case of linear rewriting systems, the characterisation of switch equivalence based on consistent
+permutation allows to derive some simple but
 fundamental results for the theory, namely
 \begin{itemize}
 \item the result of switching does not depends on the order, but only
@@ -2680,7 +2693,7 @@ We observe that
 
 As a beginning step in our analysis of switch equivalence, we will
 establish three lemmas dealing with derivations of length
-$3$. \todo{We will probably limit tho this}
+$3$.
 
 
 \begin{restatable}[First $3$-steps Lemma]{lemma}{lemThreeSteps}
@@ -2718,7 +2731,7 @@ $3$. \todo{We will probably limit tho this}
 }
 
 \todo{dividere in due il lemma dopo. devono venire tre lemmi}
-\begin{restatable}[Three steps Lemma]{lemma}{lemIndepGlobalLeft}
+\begin{restatable}[Second 3-steps Lemma]{lemma}{lemIndepGlobalLeft}
   \label{lem:indep-global-left}
   Let $\X$ be an $\mathcal{M}$-adhesive category and
   $(\X,\R)$ a left-linear DPO rewriting system.
