@@ -667,7 +667,9 @@ One of the key pay-off of concurrency theory is the idea that the behaviour of
 a computational device can be modelled by abstracting its sequences of steps
 %performed by the device 
 via a suitable equivalence. Intuitively, the equivalence 
-captures when steps are causally unrelated and thus could be executed in any 
+captures when 
+%sequential 
+steps are causally unrelated and thus could be executed in any 
 order, and possibly in parallel. 
 %
 Two seminal contributions to this line of research have been
@@ -702,7 +704,7 @@ adhesive categories and their variants~\cite{lack2005adhesive,ehrig2006weak}.
 Operating within the framework of adhesive categories allows one to devise 
 the foundations of a rewriting theory that can be subsequently instantiated 
 to the context of interest, thus avoiding the need of repeatedly proving
-similar ad-hoc results in for each specific setting. In fact, the framework is
+similar ad-hoc results for each specific setting. In fact, the framework is
 so general that it allowed to recast in the DPO approach many additional formalisms,
 ranging from toposes~\cite{johnstone2007quasitoposes} to string diagrams~\cite{bonchi2022string}.
 
@@ -718,13 +720,14 @@ at the core of e-graphs (equality graphs), recently used for
 rewrite-driven compiler optimisations~\cite{WNW:egg}: rather than
 explicitly merging nodes corresponding to equal expression, the idea
 here -- conceptually and, as we will see, also mathematically similar --
-is to maintain an equivalence\todo{P: more precisely a congruence}
-over the nodes.  \todo{P: la sequenza di lavori su questo \`e ampia,
-  vedere se c'\`e qualcosa d'altro}
+is to maintain an equivalence %\todo{P: more precisely a congruence}
+over the nodes.  
+%\todo{P: la sequenza di lavori su questo \`e ampia,
+%vedere se c'\`e qualcosa d'altro}
 
 
-Technically, to acquire the expressiveness needed for expressing
-fusions, i.e., the merge of some elements in the state, requires to
+Technically, to acquire the expressiveness needed for capturing
+fusions, i.e. the merge of some elements in the state, requires to
 move from linear to left-linear rewriting rules. While left-linear
 rules have been considered in various instances (mainly in categories
 of graphs) and some results concerning the corresponding rewriting
@@ -736,11 +739,14 @@ setting of adhesive and quasi-adhesive categories
 have not been systematically
 explored~\cite{Ehrig1976,EHP:BRfTToHLRS,baldan2011adhesivity} \todo{P: see also \cite{HMP:DPORADD,BHK:CTNL} ... verificare e aggiungere}
 
-Here we perform this exploration working at the level of $\mathcal{M}$-adhesive catgories, which encompass ...
+Here we perform this exploration working at the level of $\mathcal{M}$-adhesive categories, 
+%i.e.such that adhesivity holds only for a class $\mathcal{M}$ of arrows, 
+which encompass a large family of DPO-based formalisms adopted by pratictioners~\cite{xxx}. 
 
-As an initial step in performing this exploration, we observe that for
+As an initial step, % in performing this exploration, 
+we observe that for
 left-linear rules a number of fundamental properties that play a role
-in the corresponding theory of rewriting need to be deeply revised, or
+in the concurrency theory of linear rewriting need to be deeply revised, or
 plainly do not hold.
 %
 Firstly, the notion of sequential independence and Church Rosser
@@ -749,34 +755,35 @@ in reverse order, does not hold out of the box. Even worse, given two
 independent steps it might be possible to switch them in several
 different ways. As we will observe, this might prevent the development
 of a sensible theory of concurrency as switches are used as a basis
-witch equivalence of derivation sequences, identifying rewriting
-sequences of steps which differs only for the order of independent
+for equating sequences of rewriting steps that differs only for the order of independent
 steps.
 
-We single a well-behaved class of left-linear rewriting
-systems referred to as \emph{well-switching rewriting systems}, where sequential independence ensures existence and uniqueness of the
+We single out a class of left-linear rewriting
+systems, referred to as \emph{well-switching rewriting systems}, where sequential independence ensures existence and uniqueness of the
 switch, and argue that this is the right setting for dealing with
 left-linear rewriting systems.
 
 
-On the one hand, we argue that they capture most categories of
+On the one hand, they capture most categories of
 interest for rewriting. In particular, we single out a class of
-left-linear rewriting systems on graph-like structures which are very
-well-switchable and we show that rewriting systems on graphs with
-equivalences, similar in spirit to e-graphs are also
-well-switchable. As a sanity check, also linear rewriting systems on
-$\mathcal{M}$-adhesive categories are well switching.
+left-linear rewriting systems on graph-like structures that are
+well-switching and we show that rewriting systems on graphs with
+equivalences are so. 
+As a sanity check, we prove that linear rewriting systems on
+$\mathcal{M}$-adhesive categories are well-switching.
 
-On the other hand, we show that an appropriate theory of rewriting can
-be developed for well switching rewriting systems, recovering, sometimes in
-weakened form, results which hold in the linear case.  Church-Rosser
-is fully recovered for well-switchable rewriting systems.
+On the other hand, we show that a concurrency theory of rewriting can
+be developed for well-switching rewriting systems, recovering, sometimes in
+weakened form, results which hold in the linear case.  Specifically, 
+the Church-Rosser theorem is fully recovered.
+%for well-switchable rewriting systems.
 
 
-There is, however, a further, serious problem.  For linear
-rewriting systems s, can be characterised in terms of the
-existence of what is called a consistent permutation~\cite{xxx}
-(roughly, an isomorphism between their colimits). This result, which
+There is, however, a further problem.  For linear
+rewriting systems, switch equivalence can be characterised in terms of the
+existence of what is called a consistent permutation~\cite{xxx}.
+%(roughly, an isomorphism between their colimits). 
+This result, which
 is folklore for various categories of graphs, is explicitly proved
 here for $\mathcal{M}$-adhesive categories.
 %
@@ -784,8 +791,8 @@ The characterisation of switch equivalence based on consistent
 permutations is the key to derive some
 properties for linear rewriting systems, namely
 \begin{enumerate}
-\item \emph{confluence of switching}: when transforming derivation
-  sequences into equivalent ones by sqwitching independent steps, the
+\item \emph{confluence of switching}: when transforming
+  sequences of rewriting steps into equivalent ones by switching independent steps, the
   result not depends on the order in which switchings are applied, but
   only on the resulting permutation;
   
