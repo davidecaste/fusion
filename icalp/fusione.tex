@@ -2672,7 +2672,7 @@ Let $\der{D}$ and $\der{D}'$ be two derivations in a  a linear DPO-rewriting sys
 [Proof in \Cref{thmswitch-proof}]
 
 
-\subsection{A Canonical Form for  Switch Equivalences}
+\subsection{A Canonical Form for  Switch Equivalences}\label{subsec:cano}
 
 In the case of linear rewriting systems, the characterisation of
 switch equivalence based on consistent permutations is the key to
@@ -3201,7 +3201,7 @@ The following result shows that the mixed and pushout decomposition properties g
 Our next step is to identify sufficient conditions for a category $\X$ to satisfy the mixed and $\mathcal{M}$-pushout decomposition properties.
 
 \begin{definition} 
-	Let $\X$ be an  $\mathcal{M}$-adhesive category is of \emph{type $\mathbb{B}$} if:
+	Let $\X$ be an  $\mathcal{M}$-adhesive category, the pair $(\X, \mathcal{M})$ is of \emph{type $\mathbb{B}$} if:
 	\begin{enumerate}
 		\item every arrow in $\mathcal{M}$ is a coproduct coprojection;
 		\item $\X$ has all pushouts;
@@ -3230,7 +3230,7 @@ Categories of type $\mathbb{B}$ satisfy a property resembling \emph{extensivity}
 
 \noindent
 \parbox{10cm}{\begin{proposition}\label{prop:ext}
-Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$. Then for every diagram as the one aside, in which the bottom row is a coproduct cocone and the vertical arrows are in $\mathcal{M}$, the top row is a coproduct if and only if the two squares are pullbacks.
+Let $(\X, \mathcal{M})$ be a pair of type $\mathbb{B}$. Then for every diagram as the one aside, in which the bottom row is a coproduct cocone and the vertical arrows are in $\mathcal{M}$, the top row is a coproduct if and only if the two squares are pullbacks.
 \end{proposition}}
 \parbox{2cm}{\vspace{-.4em}$\xymatrix{A\ar[r]^-{f} \ar@{>->}[d]_{r}& C  \ar@{>->}[d]_{s}& B \ar@{>->}[d]^{t}\ar[l]_-{g}\\X  \ar[r]_-{\iota_X}& X+Y & Y \ar[l]^-{\iota_Y}}$}
 
@@ -3240,12 +3240,12 @@ Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$. Then for ev
 Consider the cube aside, in which the back faces are pullbacks. The bottom faces is an $\mathcal{M}$-Van Kampen pushout, thus the top face is a pushout if and only if the front faces are pullbacks. By strictness of $0$, $a\colon I\to 0$ is an isomorphism, so that $I$ is initial, therefore the $\mathcal{M}$-Van Kampen condition reduces to the request that $(C, \{f,g\})$ is a coproduct cocone if and only if the front faces are pullbacks, as claimed.
 \end{proof}}
 
-The previous result entails the following one, needed to show that  an $\mathcal{M}$-adhesive category of type $\mathbb{B}$ satisfy the $\mathcal{M}$-mixed and $\mathcal{M}$-pushout decomposition properties.
+The previous result entails the following one, needed to show that  in any pair $(\X, \mathcal{M})$ of type $\mathbb{B}$, the category $\X$ satisfies the $\mathcal{M}$-mixed and $\mathcal{M}$-pushout decomposition properties.
 
 \noindent
 \parbox{10.7cm}{\begin{proposition}\label{prop:po2}
-		Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$, and suppose that the square on the right is an $\mathcal{M}$ pullback. Then there exists $E\in \X$, $e\colon E\mto C$ in $\mathcal{M}$, $\phi:E\to B_1$ such that $(C, \{m, e\})$ is a coproduct and $g=f+\phi$. Moreover, such a square is a pushout if and only if $\phi$ is an isomorphism.
-\end{proposition}} \parbox{3cm}{\vspace{-.15cm}$\xymatrix{A  \ar[r]^{f} \ar@{>->}[d]_{m}& B_0 \ar@{>->}[d]^{\iota_{B_{0}}}\\ C\ar[r]_-{g} & B_0+B_1}$}
+		Let $(\X, \mathcal{M})$ be a pair of type $\mathbb{B}$, and suppose that the square on the right is an $\mathcal{M}$ pullback. Then there exists $E\in \X$, $e\colon E\mto C$ in $\mathcal{M}$, $\phi:E\to B_1$ such that $(C, \{m, e\})$ is a coproduct and $g=f+\phi$. Moreover, such a square is a pushout if and only if $\phi$ is an isomorphism.
+\end{proposition}} \parbox{3cm}{\vspace{-.2cm}$\xymatrix{A  \ar[r]^{f} \ar@{>->}[d]_{m}& B_0 \ar@{>->}[d]^{\iota_{B_{0}}}\\ C\ar[r]_-{g} & B_0+B_1}$}
 \iffalse 
 \begin{proof}
 		Pulling back $\iota_{B_0}\colon B_0\to B_0\to B_1$ and $\iota_{B_1}\colon B_1\to B_0 + B_1$ we get the diagram below and the thesis follows from \Cref{prop:ext}. The same diagram allows us to deduce $g=f+\phi$.	
@@ -3271,36 +3271,45 @@ Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$, and suppose
 
 \fi 
 
-\begin{lemma}\label{lem:prop} Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$, then $\X$ satisfies the $\mathcal{M}$-mixed and $\mathcal{M}$-pushout decomposition properties.
+\begin{lemma}\label{lem:prop} Let $(\X, \mathcal{M})$ be a pair of type $\mathbb{B}$, then $\X$ satisfies the $\mathcal{M}$-mixed and $\mathcal{M}$-pushout decomposition properties.
 \end{lemma}
 \begin{proof}$\mathcal{M}$-mixed decomposition property. This follows at once from \Cref{prop:stab}.
 	
-	\smallskip \noindent  $\mathcal{M}$-pushout-decomposition property.
-
+	\smallskip \noindent
+	\parbox{3cm}{$\xymatrix{X \ar[r]^f \ar@{>->}[d]_{\iota_X}& Y\ar[r]^g \ar@{>->}[d]^{\iota_Y} & Z\ar@{>->}[d]^{\iota_Z}\\X+A  \ar@/_.4cm/[rr]_{(g\circ f) + (\varphi \circ \phi)}\ar[r]^{f+\phi}& Y+B \ar[r]^{g+\varphi}& Z+C}$} \qquad \qquad  \qquad   \qquad \parbox{8cm}{ $\mathcal{M}$-pushout-decomposition property. Using \Cref{prop:ext,prop:po2} and the fact that arrows in $\mathcal{M}$ are coproduct coprojections, we can reduce to prove our for diagrams as the one on the left. By hypothesis and \Cref{prop:po2} $\varphi$ and $\varphi\circ \phi$ are both isomorphisms. therefore $\phi$ is an isomorphism too and we can conclude again using \Cref{prop:po2}.\qedhere 
+}
+	
+		
 \end{proof}
 
 
-\begin{definition} Let $\X$
-	\todo{classe B+}
+\begin{definition} Let $\X$ be an $\mathcal{M}$-adhesive category, we say that the pair $(\X, \mathcal{M})$ is of \emph{type $\mathbb{B}^+$} if (at least) one of the following holds true:
+	\begin{enumerate}
+		\item $(\X, \mathcal{M})$ is of type $\mathbb{B}$;
+	\item $\X$ is $\Y/Y$ and $\mathcal{M}=\mathcal{N}/Y$for some $(\Y, \mathcal{N})$ of type $\mathbb{B}^+$ and $Y\in \Y$;
+ 	\item $\X$ is $Y/\Y$ and $\mathcal{M}=Y/\mathcal{N}$for some $(\Y, \mathcal{N})$ of type $\mathbb{B}^+$ and $Y\in \Y$:
+ 	\item $\X$ is $\Y^{\A}$ and $\mathcal{M}=\mathcal{N}^{\mathcal{A}}$ for some category category $\A$ and $(\Y, \mathcal{N})$ of type $\mathbb{B}^+$.
+	\end{enumerate}
 \end{definition}
-
-\begin{remark}\todo{adesività B+}
-\end{remark}
+\begin{example}
+	The pair $(\mathbf{Graph}, \mon(\mathbf{Graph}))$ made by the topos of graphs and its class of mons is of type $\mathbb{B}^+$  but not of type $\mathbb{B}$. Indeed not every monomorphism of graphs is a coproduct coprojection.
+\end{example}
 
 From \Cref{lem:closed,lem:prop} we can now deduce at once the following.
 \begin{corollary}
-	\todo{due proprietÃ  classe B+}
+	For every $(\X, \mathcal{M})$ of type $\mathbb{B}^+$, the category $\X$ has the $\mathcal{M}$-mixed and $\mathcal{M}$-pushout decomposition properties.
 \end{corollary}
 
 Using \Cref{thm:good1} we finally get the main result of our appendix.
 \begin{corollary}
-	\todo{filler e classe B+}
+Let $(\mathcal{X}, \mathcal{M})$ be a pair of type $\mathcal{B}^+$, then every left-linear DPO-rewriting system is tame.
 \end{corollary}
 
 
 
 \section{Omitted proofs}
-In this appendix we will provide the proofs of...
+
+In this appendix we will provide the proofs of the main results of this paper. 
 
 
 
@@ -3354,10 +3363,7 @@ sequentially independent. We can then wonder if they are switchable.
 
 \begin{proof}
     The first point of \Cref{def:switch} is obviously satisfied. The
-    second one follows at once since
-    \[m_{\der{E},0}= f_0\circ i_1 \qquad h_{\der{E},1}= g_{1}\circ i_0\]
-    Finally, the third point holds because we already know that
-    \[m_{\der{E},0}= f_0\circ i_1 \qquad h_{\der{E},1}= g_{1}\circ i_0\]
+    second one follows at once since $m_{\der{E},0}= f_0\circ i_1$ and $h_{\der{E},1}= g_{1}\circ i_0$.    Finally, the third point holds because we already know that $m_{\der{E},0}= f_0\circ i_1$ and $h_{\der{E},1}= g_{1}\circ i_0$.
 \end{proof}
 
 \begin{lemma}[Uniqueness of switches]
@@ -3688,7 +3694,7 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 	From this we can deduce that $i_{1,v}=j_{1,v}$ as wanted.
 \end{proof}
 
-\subsection{Proofs for \Cref{subsec:perm}}
+\subsubsection{Proofs for \Cref{subsec:perm}}
 
 \begin{lemma}\label{lem:colim}
 	Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, \R)$ a
@@ -3956,7 +3962,7 @@ Let $\sigma:[0,n]\to [0,n]$ be a permutation, an \emph{inversion} for $\sigma$ i
 \smallskip \noindent $(2\Rightarrow 1)$
 \end{proof}
 
-\subsubsection{Proofs for \Cref{subsec:3steps}}
+\subsubsection{Proofs for \Cref{subsec:cano}}
 
 \lemSwitchConfluence*
 \label{lemSwitchConfluence-proof}
@@ -4887,7 +4893,7 @@ only inversions, we can strip the first and last switches.
   sequence
   \begin{center}
     $\der{D} = \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
-    \shift{\nu_n} \der{D}_n=der{D}'$
+    \shift{\nu_n} \der{D}_n=\der{D}'$
   \end{center}
   If it does not consist only of inversions, by Lemma~\ref{le:switchD}
   we can reduce its length by $2$. An inductive reasoning allows us to
