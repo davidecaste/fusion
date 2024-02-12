@@ -784,7 +784,46 @@ have not been systematically explored. ADD REFS
 As an initial step in performing this exploration, we observe that for left-linear
 rules a number of fundamental properties that play a role in the
 corresponding theory of rewriting need to be deeply revised, or plainly do not hold.
+%
+More to the point, for linear rewriting systems sequential independence of 
+two sequences of steps can be characterised in terms of the existence of 
+what is called a consistent permutation among them, which can be obtained through 
+an isomorphism between their colimits~\cite{xxx}. This result, which is folklore for 
+various categories of graphs, is explicitly proved here for $\mathcal{M}$-adhesive categories. 
+%
+The characterisation of switch equivalence based on consistent permutations is the key to
+derive some simple but fundamental properties for linear rewriting systems, namely
+\begin{enumerate}
+\item \emph{confluence of switching}: when transforming derivation
+  sequences into equivalent ones by switching independent steps, the
+  result not depends on the order in which switchings are applied, but
+  only on the resulting permutation;
+  
+\item \emph{globality of independence}: if two independent steps are
+  moved forward or backward due to the application of switchings to a
+  derivation, they remain independent.
+\end{enumerate}
 
+Unfortunately, we show that for left-linear rewriting systems the characterisation of
+shift equivalence based on consistent permutations fails: the
+existence of a consistent permutation is only necessary but not
+sufficient, hence it cannot be used for proving (1) and (2). 
+%
+Nevertheless, we will show that property (1) still holds, while only a weak form of (2) does.
+
+
+\todo[inline]{
+This fails for left-linear rules where, as observed
+in~\cite{baldan2017domains}, for graph rewriting, the possibility of
+merging parts of the state leads to a sort of disjunctive causality,
+i.e., a rewriting step, say $r_c$ can be enabled by two different
+rewriting steps $r_a$ and $r_b$, in a way that in a derivation
+$r_a r_b r_c$ steps $r_b$ and $r_c$ are independent since the presence
+of $r_a$ in the past is sufficient for enabling $r_a$, while in
+$r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent. }
+
+\todo[inline]{
+DA RIUSARE\\
 Firstly, Church-Rosser theorem does not work out of the box. In
 particular, sequential independence between rewriting steps~\cite{}
 expressed in terms of the existence of a so-called independence pair
@@ -806,17 +845,23 @@ in~\cite{baldan2011adhesivity}, where a subclass of adhesive
 categories was identified where independence as induced by a filler
 coincides with sequential independence (as induced by an independence
 pair). Here it is extended to $\mathcal{M}$-adhesive categories.
+}
 
+First of all, we will provide a refined notion of independence, which is based 
+in the concept of fillers. The issues was identified
+in~\cite{baldan2011adhesivity}, where a subclass of adhesive
+categories was identified where independence as induced by a filler
+coincides with sequential independence (as induced by an independence
+pair). Here it is extended to $\mathcal{M}$-adhesive categories.
 
-We face the problem in the setting of $\mathcal{M}$-adhesive
-categories (which capture adhesive and quasi-adhesive categories).
-A difficult task, since the most natural idea, put forward in~\cite{baldan2017domains}, 
+Then, we move to restrict the class of admissible left-linear rewriting systems,
+always working at the level of $\mathcal{M}$-adhesive categories.
+Unfortunately, the most natural idea, put forward in~\cite{baldan2017domains}, 
 of limiting sequential independence to those cases in which the switch is possible
 and uniquely determined does fall short.
 %
-In this work we focus on a class of rewriting systems, which we call
-\emph{very tame rewriting systems}, in $\mathcal{M}$-adhesive
-categories where sequential independence ensures existence and
+In this work we focus on what we call
+\emph{strongly tame rewriting systems}, where sequential independence ensures existence and
 uniqueness of the switch and argue that this is the right setting for
 dealing with left-linear rewriting systems.
 
@@ -831,53 +876,7 @@ categories are very tame.
 On the other hand, we show that an appropriate theory of rewriting can
 be developed for very tame rewriting systems, recovering, sometimes in
 weakened form, results which hold in the linear case.  Local
-Curch-Rosser is fully recovered for very tame rewriting systems.
-
-For linear rewriting systems sequential independence of derivations
-can be also characterised in terms of the existence of a suitable
-isomorphism between the colimit of the derivations, called
-consistent permutations (which are also strictly related to the notion
-of process). This result, which is folklore for categories of graphs,
-is explicitly proved here for $\mathcal{M}$-adhesive categories. Based on such result one can deduce two fundamental consequences:
-\begin{enumerate}
-\item when switching a derivation consisting of several steps, the result only depends on the overall permutation, not on the order of the switches;
-\item independence of rewriting steps is a ``global property'', independent of the position in which these steps are in the derivation.
-\end{enumerate}
-
-We show that for left-linear rewriting systems the characterisation of
-shift equivalence based on consistent permutations fails: the
-existence of a consistent permutation is only necessary but not
-sufficient, hence it cannot be used for proving (1) and (2). However property (1) still holds. Instead only a weak form of (2) can be proved. This is intimately related to the possibility of expressing disnjuctive forms of causality.
-
-\todo[inline]{
-This fails for left-linear rules where, as observed
-in~\cite{baldan2017domains}, for graph rewriting, the possibility of
-merging parts of the state leads to a sort of disjunctive causality,
-i.e., a rewriting step, say $r_c$ can be enabled by two different
-rewriting steps $r_a$ and $r_b$, in a way that in a derivation
-$r_a r_b r_c$ steps $r_b$ and $r_c$ are independent since the presence
-of $r_a$ in the past is sufficient for enabling $r_a$, while in
-$r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent. }
-
-DA RIUSARE\\
-The characterisation of switch equivalence based on consistent permutations is the key to
-derive some simple but fundamental properties for linear rewriting systems, namely
-\begin{enumerate}
-\item \emph{confluence of switching}: when transforming derivation
-  sequences into equivalent ones by switching independent steps, the
-  result not depends on the order in which switchings are applied, but
-  only on the resulting permutation;
-  
-\item \emph{globality of independence}: if two independent steps are
-  moved forward or backward due to the application of switchings to a
-  derivation, they remain independent.
-\end{enumerate}
-
-In particular, the two properties allows one to obtain a \emph{canonical form} for switching sequences: whenever two derivation sequences are switch equivalence via some permutation $\sigma$, then each one can be obtained from the other by applying switchings to pairs of rule applications which $\sigma$ reverses (the so-called inversions).
-
-The failure of the characterisation of switch equivalence via
-consistent permutations for left-linear rules leads to the
-question asking whether the properties above hold.
+Church-Rosser is fully recovered for very tame rewriting systems.
 
 \section{$\mathcal{M}$-adhesive categories and DPO rewriting systems}\label{sec:ade}
 
