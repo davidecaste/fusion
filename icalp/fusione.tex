@@ -5,8 +5,8 @@
   
 % full includes some additional material
 \newif\iffull
-\fulltrue
-%\fullfalse
+%\fulltrue
+\fullfalse
 
 % additional text
 \iffull
@@ -407,7 +407,7 @@
 \usepackage{xparse}
 
 % inversions
-\newcommand{\inv}[1]{\ensuremath{inv}({#1})}
+\newcommand{\inv}[1]{\mathsf{inv}({#1})}
 
 % sequential independence
 \newcommand{\seqind}{\ensuremath{\updownarrow}}
@@ -1200,7 +1200,7 @@ Often, we are interested in derivations only up to some notion of coherent isomo
     $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ such that the diagram on the right commutes
     for every $i\in [0, \lgh(\der{D})]$. We
     will say that $\der{D}$ are $\der{D}'$ are \emph{abstraction
-      equivalent} if there exists an abstraction equivalence between
+      equivalent}, and use the symbol $\der{D}\equiv_a \der{D}'$, if there exists an abstraction equivalence between
     them.
   \end{definition}
 }
@@ -2211,6 +2211,8 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   new node, while $\rho_1$ delete an edge. Instead, $\rho_2$ is just
   left-linear as it ``merge'' two nodes.
 
+
+\todo{Se inseriamo le figure in fusione.tex si risparmia dello spazio}
   \begin{figure}
     \input{Figure/rules.tex}
     
@@ -2248,6 +2250,46 @@ derivations which are equal ``up to switching''. The same notion can
 be given for left-linear rewriting systems relying on notion of
 switch.
 
+
+We first need to recall some concept and notations regarding permutations. 
+
+\begin{definition}
+	A \emph{permutation} on
+	$\interval[0]{n}$ is a bijection
+	$\sigma : \interval[0]{n} \to \interval[0]{n}$. We call it a
+	\emph{transposition} when there are $i, j \in \interval{n}$,
+	$i \neq j$ such that $\sigma(i)=j$, $\sigma(j) = i$ and
+	$\sigma(k) = k$ otherwise. Such a transposition is normally denoted as
+	$\transp{i}[j]$.
+	
+Given a permutation $\perm$ on $\interval[0]{n}$,  an \emph{inversion} for $\sigma$ is a pair $(i,j)$ such that $i<j$ and $\sigma(j)< \sigma(i)$. The set of inversions
+of $\perm$ will be denoteb by $\inv{\sigma}$.
+\end{definition}
+
+\begin{remark}
+	Clearly, a permutation $\perm$ is the identity if and only if $\inv{\perm}=\emptyset$.
+\end{remark}
+
+% Now, if $\perm \neq id$ there is at least an inversion of the kind
+% $(i,i+1)$.  Then we have that $\perm = \transp{i}; \perm'$
+% with $|\inv{\perm'}| = |\inv{\perm}| -1$. Hence we can inductively
+% express $\perm$ as a (minimal length) composition of adjacent
+% transpositions.
+
+
+We also need to introduce the notion of \emph{switching sequences}.
+
+
+\begin{definition}
+	Consider derivations $\der{D}_i$ for $i \in \interval[0]{n}$
+	related by switches
+	\begin{center}
+		$\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots \shift{\nu_n}
+		\der{D}_n$
+	\end{center}
+	It will be referred as a \emph{switching sequence}.  
+\end{definition}
+
 \begin{definition}[Switch equivalence]
   \label{de:switch-equivalence}
   Let $(\X, \R)$ be a left-linear DPO rewriting system.  Let also
@@ -2256,12 +2298,27 @@ switch.
   $\der{E}=\{\dder{E}_{i}\}_{i=0}^n$. If
   $\dder{D}_i \cdot \dder{D}_{i+1}$ is a switch of
   $\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ we write
-  $\der{D} \shift{\transp{i}} \der{E}$. Then \emph{switch
-    equivalence} is the least equivalence on derivation such that if
-  $\der{D} \shift{\transp{i}} \der{E}$ then
-  $\der{D} \equiv^s \der{E}$.
+  $\der{D} \shift{\transp{i}} \der{E}$. 
+  
+  A \emph{switching sequence} is  a sequence $\{\der{D}_{k}\}_{i=0}^m$ of derivations such that 
+  \[\der{D}_0 \shift{\transp{i_1}} \der{D}_1 \shift{\transp{i_2}} \ldots \shift{\transp{i_m}}
+  \der{D}_m\]
+ In such case, we will often denote by $\nu_{k}$ the transposition $\transp{i_k}$. Given $k \leq h$,
+ we denote by $\nu_{k,h}$ the composition
+ $\nu_h \circ \nu_{h-1} \circ \ldots \nu_k$. We will say that the
+ switching sequence consists of inversions if for all
+ $k \in \interval[0]{m}$ the transposition $\nu_k$ is an inversion for
+ $\nu_{1,m}$.
+  
+  We will say that two derivations $\der{D}, \der{E}:G\Mapsto H$ are \emph{switch
+    equivalent} if there is a switching sequence, possibly empty, $\{\der{D}_{k}\}_{i=0}^m$ such that
+      \[\der{D}\equiv_a \der{D}_0 \shift{\transp{i_1}} \der{D}_1 \shift{\transp{i_2}} \ldots \shift{\transp{i_m}}
+    \der{D}_m\equiv _a \der{E}\]
 \end{definition}
 
+\begin{remark}\label{rem:abst}
+	The possibility of an empty switching sequence assures that two abstraction equivalent derivations are switch equivalent.
+\end{remark}
 
 
 \subsection{Church-Rosser: Relating sequential indepedence and switchability}\label{subsec:CR}
@@ -2399,10 +2456,10 @@ by the notion of \emph{canonical filler}
   as in the solid part of the diagram below
   \[
     \xymatrix@C=18pt{L_0 \ar[d]_{m_0}&& K_0
-      \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} \ar@{->}@/^.20cm/[ddrr]|(.32)\hole|(.57)\hole_(.7){u_0} & R_0
+      \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} \ar@{.>}@/^.20cm/[ddrr]|(.32)\hole|(.57)\hole_(.7){u_0} & R_0
       \ar@/^.35cm/[drrr]|(.3)\hole^(.2){i_0} \ar[dr]|(.3)\hole_{h_0}
       && L_1 \ar@/_.35cm/[dlll]_(.2){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1
-      \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} \ar@{->}@/_.20cm/[ddll]|(.32)\hole|(.57)\hole^(.7){u_1} && R_1 \ar[d]^{h_1} \\
+      \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} \ar@{.>}@/_.20cm/[ddll]|(.32)\hole|(.57)\hole^(.7){u_1} && R_1 \ar[d]^{h_1} \\
       %
       G_0 &&
       \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_(.3){g_0}&& G_1 &&
@@ -2414,12 +2471,12 @@ by the notion of \emph{canonical filler}
 
   Consider the pullback of $g_0$ and $f_1$, getting $p_i : P \to D_i$
   ($i \in \{0,1\}$) and the mediating arrows $u_0\colon K_0\to P$ and
-  $u_1\colon K_1\to P$ into the pullback.\todo{P: tolto ``given by \Cref{prop:tec}'', penso non sia bene avere un riferimento all'appendice qui}
+  $u_1\colon K_1\to P$ into the pullback (see \Cref{prop:tec} for details). 
   % given by \Cref{prop:tec} .
   %
   We will say that $(i_0, i_1)$ is a \emph{good independence pair} if
   the first two squares depicted  
-  below are pushouts and if the pushout of $r_1 : K_1 \to R_1$ and $u_1 : K_1 \to P$ exists\todo{P: forse si possono togliere i quadrati sotto e dire a parole?}
+  below are pushouts and if the pushout of $r_1 : K_1 \to R_1$ and $u_1 : K_1 \to P$ exists.
   \[
     \xymatrix{
       K_0 \ar[r]^{r_0} \ar[d]_{u_0}& R_0 \ar[d]^{i_0} & K_1
@@ -2677,20 +2734,33 @@ then every coprojection is in $\mathcal{M}$ (see \Cref{lem:colim} for details an
 \end{definition}
 
 
-	
-\begin{restatable}{proposition}{propcoswitch}\label{prop:coswitch}
-	consistente tra cose equivalenti
-\end{restatable}	
-[Proof in \Cref{propcoswitch-proof}]
+\begin{remark}\label{rem:abs}
+	Let $\der{D}$ and $(\der{E}, \alpha', \omega')$ be two abstraction equivalent derivations of length $n$. Then the identity permutation $\id{[0,n-1]}\colon [0,n-1]\to [0,n-1]$ is a consistent permutation between them. In such a case we can take as $\xi_{\id{[0,n-1]}}\colon \tpro{D}\to \lpro \der{D}'\rpro$ simply the isomorphism induced by any abstraction equivalence.
+\end{remark}
+
+\begin{remark}\label{rem:compo}
+	It is immediate to see that consistent permutations $\sigma$ and $\tau$ compose: as mediating isomorphism it is enough to take the composite of $\xi_{\sigma}$ and $\xi_\tau$. Similarly, $\xi^{-1}_{\sigma}$ witnesses that $\sigma^{-1}$ is a consistent permutation whenever $\sigma$ is so.
+\end{remark}
+In a linear rewriting system the converse also holds.
 
 \begin{restatable}{lemma}{lemIde}\label{lem:ide}
-	Let $\der{D}$ and $\der{D}'$ be two derivations in a linear DPO-rewriting system $(\X, \R)$ with the same length $l$. If $\id{[0,l]}:[0,l-1]\to [0,l-1]$ is a consistent permutation, then $\der{D}$ and $\der{D}'$ are abstraction equivalent.  
+	Let $\der{D}$ and $\der{D}'$ be two derivations in a linear DPO-rewriting system $(\X, \R)$ with the same length $l$. If $\id{[0,l-1]}:[0,l-1]\to [0,l-1]$ is a consistent permutation, then $\der{D}$ and $\der{D}'$ are abstraction equivalent.  
 \end{restatable}
 [Proof in \Cref{lemide-proof}]
+
 
 \begin{example}
 	\todo{questo non è vero in generale}
 \end{example}
+
+	
+\begin{restatable}{proposition}{propcoswitch}\label{prop:coswitch}
+Let $\der{D}$ and $\der{E}$ be two switch equivalent derivations, then there exists a consistent permutation between them.
+\end{restatable}	
+[Proof in \Cref{propcoswitch-proof}]
+
+In the linear case, the existence of a consistent permutation it is enough to characterize switch equivalence. \todo{FORSE QUA METTEREI DEI POINTER A QUALCHE LAVORO PASSATO?}
+
 
 \begin{restatable}{theorem}{thmcoswitch}
 Let $\X$ be an $\mathcal{M}$-adhesive category and 
@@ -2698,7 +2768,7 @@ $\der{D}$ and $\der{D}'$ be two derivations in a linear DPO-rewriting system $(\
 Then the following are equivalent:
 \begin{enumerate}
 	\item $\der{D}$ and $\der{D}'$ are switch equivalent;
-	\item there exists a consistent permutation $\sigma\colon [0,\lgh(D)-1]\to [0,\lgh(D)-1]$ between them.
+	\item there exists a consistent permutation $\sigma\colon [0,\lgh(\der{D})-1]\to [0,\lgh(\der{D})-1]$ between them.
 \end{enumerate}
 \end{restatable}
 [Proof in \Cref{thmswitch-proof}]
@@ -2808,45 +2878,6 @@ independent. \todo{P: da dire meglio e Ci vorrebbe un esempio}
 
 The lemmas above open the way to the key result of this section establishing a canonical form for
 switching derivations.
-
-We first need some notation on permutations. A \emph{permutation} on
-$\interval{n}$ is a bijection
-$\sigma : \interval{n} \to \interval{n}$. We call it a
-\emph{transposition} when there are $i, j \in \interval{n}$,
-$i \neq j$ such that $\sigma(i)=j$, $\sigma(j) = i$ and
-$\sigma(k) = k$ otherwise. Such a transposition is normally denoted as
-$\transp{i}[j]$.
-% Whenever $j = i+1$ we call it an \emph{adjacent transposition}.
-
-Given a permutation $\perm$ on $\interval{n}$, the set of inversions
-of $\perm$ is
-$\inv{\perm} = \{ (i,j) \mid i,j \in \interval{n-1}\ \land\ i<j\
-\land\ \perm(i) > \perm(j) \}$.
-%
-Clearly, $\perm$ is the identity iff $\inv{\perm}=0$.
-
-% Now, if $\perm \neq id$ there is at least an inversion of the kind
-% $(i,i+1)$.  Then we have that $\perm = \transp{i}; \perm'$
-% with $|\inv{\perm'}| = |\inv{\perm}| -1$. Hence we can inductively
-% express $\perm$ as a (minimal length) composition of adjacent
-% transpositions.
-
-
-We also need some notation on switching sequences. Consider derivation sequences $\der{D}_i$ for $i \in \interval[0]{n}$
-related by switches
-\begin{center}
-  $\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots \shift{\nu_n}
-\der{D}_n$
-\end{center}
-It will be referred as a \emph{switching sequence}.  Given $i \leq j$,
-we denote by $\nu_{i,j}$ the composition
-$\nu_j \circ \nu_{i-1} \circ \ldots \nu_i$. We will say that the
-switching sequence consists of inversions if for all
-$i \in \interval[0]{n}$ the transposition $\nu_i$ is an inversion for
-$\nu_{i,n}$.\todo{P: probabilmente questi e forse la notazione sulle
-  permutazioni vanno messi quando si parla di switching, ma ora non
-  ho la forza di ragionare}
-
 
 The first result shows that whenever equating two derivation sequences by performing a sequence of switching, we can just limit ourselves to ``useless shwitching'' which invert the order of steps which in the target derivation has to be reversed, i.e., we can limit ourserrvels to inversions.
 
@@ -2985,47 +3016,49 @@ axioms~\cite[Prop.~$5.1.21$]{castelnovo2023thesis}.
 
 
 \subsection{Some results on $\mathcal{A}$-stable and $\mathcal{A}$-Van Kampen squares}
-We will start proving some general results regarding $\mathcal{A}$-Van Kampen and $\mathcal{A}$-stable squares. Let us begin recalling some classical results about  about pullbacks and pushouts
+We will start proving some general results regarding $\mathcal{A}$-Van Kampen and $\mathcal{A}$-stable squares. Let us begin recalling some classical results about  about pullbacks and pushouts\cite{mac2013categories}.
 
-\begin{lemma}\label{lem:popb1} \label{lem:pb1}
-	Let $\X$ be a category, and consider the following diagram 	in which the right square is a pullback.
-	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
-	Then the whole rectangle is a pullback if and only if the left square is one.
-\end{lemma}
+\noindent 
+\parbox{10.5cm}{\begin{lemma}\label{lem:popb1} \label{lem:pb1} \label{lem:po1}
+Let $\X$ be a category, and consider the diagram  aside, then the following are true:
+	\begin{enumerate}
+		\item if the right square is a pullback, then the whole rectangle is a pullback if and only if the left square is one;
+		\item if the left square is a pushout, 	then the whole rectangle is a pushout if and only if the right square is one.
+	\end{enumerate}
+\end{lemma}}
+\parbox{4cm}{$\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}$}\\
 
-\begin{lemma}\label{lem:po1}
-	Let $\X$ be a category, and consider the following diagram 	in which the left square is a pushout.
-	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
-	Then the whole rectangle is a pushout if and only if the right square is one.
-\end{lemma}
+The following proposition establishes a key property of $\mathcal{A}$-Van Kampen squares with a mono as a side: they are not only pushouts, but also pullbacks \cite{ehrig2004adhesive,behr2022fundamentals,lack2005adhesive}.
 
-
-The following proposition establishes a key property of $\mathcal{A}$-Van Kampen squares with a mono as a side: they are not only pushouts, but also pullbacks.
-
-\begin{proposition}\label{prop:pbpo} Let $\mathcal{A}$ be a class of arrows stable under pushouts and containing all the isomorphisms.  If $m\colon A\to C$ is mono and belongs to $\mathcal{A}$, then every $\mathcal{A}$-Van Kampen square
-	\[\xymatrix{A\ar[r]^{g} \ar[d]_{m} & B \ar[d]^{n} \\ C \ar[r]_{f}  & D}\]
+\noindent 
+\parbox{11.5cm}{\begin{proposition}\label{prop:pbpo} Let $\mathcal{A}$ be a class of arrows stable under pushouts and containing all the isomorphisms.  If $m\colon A\to C$ is mono and belongs to $\mathcal{A}$, then every $\mathcal{A}$-Van Kampen square
 	is also a pullback square and $n$ is a monomorphism.
-\end{proposition}
+\end{proposition}}
+\parbox{2cm}{\vspace{1.5ex}$\xymatrix{A\ar[r]^{g} \ar[d]_{m} & B \ar[d]^{n} \\ C \ar[r]_{f}  & D}$}
 
+\full{ 
 \begin{proof}
 	We can start considering the cube below and noticing that $n$, being the pushout of $m\in \mathcal{M}$, belongs to $\mathcal{A}$ too.
 	\[\xymatrix@C=13pt@R=13pt{&A\ar[dd]|\hole_(.65){\id{A}}\ar[rr]^{g} \ar[dl]_{\id{A}} && B \ar[dd]^{\id{B}} \ar[dl]_{\id{B}} \\ A  \ar[dd]_{m}\ar[rr]^(.65){g} & & B \ar[dd]_(.3){n}\\&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{f} & & D}\]
 	By construction the top face of the cube is a pushout and the back one a pullback. The left face is a pullback because $m$ is mono. Thus the $\mathcal{A}$-Van Kampen property yields that the front and the right faces are pullbacks.
-\end{proof}
+\end{proof}}
 
 The previous proposition, now, allows us to establish the following result.
-\begin{lemma}\label{lem:varie}Let $\mathcal{A}$ be a class of arrows stable under pullbacks, pushouts and containing all isomorphisms.  Suppose that, the left square below is $\mathcal{A}$-Van Kampen, while the vertical faces in the right cube are pullbacks.
-	\[\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{g'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{g}&&B\ar[dd]^{n}&&C'  \ar[dd]_{c}\ar[rr]^(.7){f'} & & D' \ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{f} &&D&&C \ar[rr]_{f} & & D}\]
-	Supppose, moreover that $m\colon A\to C$ and $d\colon D'\to D$ are mono and that $d$ belongs to $\mathcal{A}$. Then $d\leq n$ if and only if $c \leq m$.
-\end{lemma}
 
+\noindent \parbox{7.4cm}{
+\begin{lemma}\label{lem:varie}Let $\mathcal{A}$ be a class of arrows stable under pullbacks, pushouts and containing all isomorphisms.  Suppose that, the left square below is $\mathcal{A}$-Van Kampen, while the vertical faces in the right cube are pullbacks. 	Supppose, moreover that $m\colon A\to C$ and $d\colon D'\to D$ are mono and that $d$ belongs to $\mathcal{A}$. Then $d\leq n$ if and only if $c \leq m$.
+\end{lemma}}
+	\parbox{6cm}{$\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{g'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{g}&&B\ar[dd]^{n}&&C'  \ar[dd]_{c}\ar[rr]^(.7){f'} & & D' \ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{f} &&D&&C \ar[rr]_{f} & & D}$}
 
-\begin{remark}
-	Recall that, given two monos $m:M\to X$ and $n:N\to X$ with the same codomain, $m\leq n$ means that there exists a, necessarily unique and necessarily mono, $k:M\to N$ fitting in the triangle below:
-	\[\xymatrix{M\ar[rr]^{k}  \ar[dr]_{m}&& N \ar[dl]^{n}\\ & X}\]
-	Notice, moreover, that  if $m\leq n$ and $n\leq m$, then the arrow $k:M\to N$ is an isomorphism.
-\end{remark}
+\noindent 
+\parbox{11cm}{\begin{remark}
+	Recall that, given two monos $m:M\to X$ and $n:N\to X$ with the same codomain, $m\leq n$ means that there exists a, necessarily unique and necessarily mono, $k:M\to N$ fitting in the triangle aside.	
+	
+	\hspace{15pt}Notice, moreover, that  if $m\leq n$ and $n\leq m$, then the arrow $k:M\to N$ is an isomorphism.
+\end{remark}}
+\parbox{4cm}{$\xymatrix@C=15pt{M\ar@{.>}[rr]^{k}  \ar[dr]_{m}&& N \ar[dl]^{n}\\ & X}$}\\
 
+\full{ 
 \begin{remark}
 	Notice that, since $d$ is a mono and the vertical faces are pullbacks, then $a, b$ and $c$ are monomorphisms too. Moreover, $n$ is mono by \Cref{prop:pbpo}, so that even $m'$ and $n'$ are monos.
 \end{remark}
@@ -3043,24 +3076,28 @@ The previous proposition, now, allows us to establish the following result.
 		n\circ k \circ f' & = n\circ g\circ h=f\circ m\circ h=f\circ c= d\circ f'
 	\end{align*}
 	We can therefore conclude that $n\circ k =d$.
-\end{proof}
+\end{proof}}
 
 Finally, we can show that $\mathcal{A}$-stable pushouts enjoy a kind of \emph{pullback-pushout decomposition} property.
 
-\begin{proposition}\label{prop:stab}Let $\X$ be a category and $\mathcal{A}$ a class of arrows stable under pullbacks. Suppose that, in the diagram below, the whole rectangle is an $\mathcal{A}$-stable pushout and the right square a pullback.
-	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
-	If the arrow $k$ is in $\mathcal{A}$ and it is a monomorphism,  then both squares are pushouts.
-\end{proposition}
+\noindent 
+\parbox{10cm}{
+\begin{proposition}\label{prop:stab}Let $\X$ be a category and $\mathcal{A}$ a class of arrows stable under pullbacks. Suppose that, in the diagram below, the whole rectangle is an $\mathcal{A}$-stable pushout and the right square a pullback. If the arrow $k$ is in $\mathcal{A}$ and it is a monomorphism,  then both squares are pushouts.
+\end{proposition}}
+\parbox{4cm}{\vspace{-.3cm}
+	$\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}$}
 
+\full{ 
 \begin{proof}
 	We can begin noticing that $g$, being the pullback of $k$, is mono and in $\mathcal{A}$ too. Thus we can build the cube below, in which all the vertical faces are pullbacks, entailing that all the vertical arrows are in $\mathcal{A}$.
 	\[\xymatrix@C=20pt@R=10pt{ & &X\ar[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar[ddd]_{g} \ar[rrr]^{b}&&& B\ar[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar[dl]_{f}&&& A \ar[dl]^{h}\\ & Y  \ar[dl]_{g}&&& B \ar[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
 	By hypothesis the face is an $\mathcal{A}$-stable pushout and so its top one is a pushout. Using \Cref{lem:po1} we can conclude that the right half of the rectangle with which we have started is a pushout too.
-\end{proof}
+\end{proof}}
 
 \subsection{Useful properties of $\mathcal{M}$-adhesive categories}
 
-We can begin with an observation about decompo
+\full{ 
+We can begin with an observation about decomposition.
 
 \begin{proposition}
   \label{prop:deco}Let $\mathcal{A}$ be a class of arrows stable under
@@ -3077,9 +3114,11 @@ We can begin with an observation about decompo
 \begin{corollary}
   \label{cor:deco}
 	In every $\mathcal{M}$-adhesive category $\X$, the class $\mathcal{M}$ is closed under decomposition.
-\end{corollary}
+\end{corollary}}
 
-Another result which can be immediately established, with the aid of \Cref{prop:pbpo}, is the following one.
+
+We are now going to apply the results of the previous section to $\mathcal{M}$-adhesive categories in order to establish some \emph{high-level replacement properties} \cite{ehrig2004adhesive,ehrig2014adhesive,ehrig2006fundamentals}.  
+A first important  result which can be immediately established, with the aid of \Cref{prop:pbpo}, is the following one.
 
 \begin{proposition}
 	\label{prop:pbpoad}
@@ -3091,11 +3130,12 @@ From \Cref{prop:pbpoad}, in turn, we can derive the following corollaries.
 \begin{corollary}\label{cor:rego}
 	In a $\mathcal{M}$-adhesive category $\X$, every $m\in\mathcal{M}$ is a regular mono.
 \end{corollary}
+\full{ 
 \begin{proof}
 	Let $m$ be an element of $\mathcal{M}$ and consider its pushout along itself.
 	\[\xymatrix{X\ar@{>->}[r]^m \ar@{>->}[d]_m& Y\ar@{>->}[d]^{f}\\Y \ar@{>->}[r]_g & Z}\]
 	By \Cref{prop:pbpoad} this square is a pullback, proving that $m$ is the equalizer of the arrows $f,g\colon Y\rightrightarrows Z$.
-\end{proof}
+\end{proof}}
 
 The following result now follows at once noticing that a regular monomorphism which is also epic is automatically an isomorphism.
 
@@ -3103,14 +3143,18 @@ The following result now follows at once noticing that a regular monomorphism wh
 	If $\X$ is an $\mathcal{M}$-adhesive categories, then every epimorphisms in $\mathcal{M}$ is an isomorphisms. In particular, every adhesive category $\X$ is \emph{balanced}: if a morphism is monic and epic, then it is an isomorphism.
 \end{corollary}
 
-\begin{lemma}[$\mathcal{M}$-pushout-pullback decomposition]\label{lem:popb} Let $\X$ be an $\mathcal{M}$-adhesive category  and suppose that, in the diagram below, the whole rectangle is a pushout and the right square a pullback.
-	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
-	Then the following statements hold true:
-	\begin{enumerate}
-		\item if $a$ belongs to $\mathcal{M}$ and $k$ is a monomorphism,  then both squares are pushouts and pullbacks;
+\noindent 
+\parbox{10cm}{\begin{lemma}[$\mathcal{M}$-pushout-pullback decomposition]\label{lem:popb} Let $\X$ be an $\mathcal{M}$-adhesive category  and suppose that, in the diagram on the right, the whole rectangle is a pushout and the right square a pullback.	Then the following statements hold true:
+\parbox{13cm}	{\begin{enumerate}
+		\item if $a$ belongs to $\mathcal{M}$ and $k$ is a mono,  then both squares are pushouts and pullbacks;
 		\item if $f$ and $k $ are in  $\mathcal{M}$, then both squares are pushouts and pullbacks.
-	\end{enumerate}
-\end{lemma}
+	\end{enumerate}}
+\end{lemma}}
+\parbox{4cm}{\vspace{-1cm}
+	$\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}$}\\
+
+
+\full{ 
 \begin{proof}		\begin{enumerate}
 		\item By \Cref{prop:stab}, it follows that both squares are pushouts, thus the thesis follows from \Cref{prop:pbpoad}.
 		\item By hypothesis, $g$ is the pullback of an arrow in $\mathcal{M}$, thus it belongs to it. But then $g\circ f\in \mathcal{M}$ too  and the whole rectangle is a $\mathcal{M}$-pushout. Therefore, by \Cref{prop:pbpoad} a pullback, so that its left half is a pullback too, by \Cref{prop:pbpo}. Moreover $k\circ h$ is in $\mathcal{M}$ as the pushout of $g\circ f$ and, by \Cref{cor:deco}, we also know that $h\in \mathcal{M}$.
@@ -3119,19 +3163,19 @@ The following result now follows at once noticing that a regular monomorphism wh
 		      \[\xymatrix@C=20pt@R=10pt{ & &X\ar@{>->}[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar@{>->}[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar@{>->}[ddd]_{g} \ar[rrr]^{b}&&& B\ar@{>->}[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar@{>->}[dl]_{f}&&& A \ar@{>->}[dl]^{h}\\ & Y \ar[rrr]|(.67)\hole^{b} \ar@{>->}[dl]_{g}&&& B \ar@{>->}[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
 		      Its vertical faces are all pullbacks and all the vertical arrows are in $\mathcal{M}$, hence the top face is a pushout and we can conclude. \qedhere
 	\end{enumerate}
-\end{proof}
+\end{proof}}
 
 
 
 Let us turn our attention to pushout complements.
 
 \noindent
-\parbox{11.7cm}{
+\parbox{11cm}{
 	\begin{definition}[Pushout complement]
 		Let $f\colon X\to Y$ and $g\colon Y\to Z$ be two composable arrows in a category $\X$. A \emph{pushout complement} for the pair $(f,g)$ is a pair $(h,k)$ with $h\colon X\to W$ and $k\colon W\to Z$ such that the square below commutes and it is a pushout.
 	\end{definition}} \quad
-\parbox{4cm}{\vspace{-.15cm}
-	$\xymatrix{X \ar[r]^{f} \ar[d]_{h}& Y \ar[d]^{g} \\ W \ar[r]_{k}& Z}$}
+\parbox{4cm}{\vspace{.1cm}
+	$\xymatrix{X \ar[r]^{f} \ar[d]_{h}& Y \ar[d]^{g} \\ W \ar[r]_{k}& Z}$}\\
 
 \iffalse
 	\begin{example}
@@ -3146,14 +3190,15 @@ Let us turn our attention to pushout complements.
 Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
 
 \noindent
-\parbox{9cm}{
+\parbox{8.5cm}{
 	\begin{lemma}\label{lem:radj}
 		Let $f\colon X \to Y$ be an arrow in an $\mathcal{M}$-adhesive category $\X$ and suppose that the left square aside is a pushout while the  right one is a pullback, with $ m\colon M \rightarrowtail X$ and $n\colon N \rightarrowtail Y$ in $\mathcal{M}$.
 		Then $n\leq k$ if and only if $p_2\leq m$.
 	\end{lemma}}
-\parbox{3cm}{\vspace{-0ex}
+\parbox{3cm}{\vspace{-2ex}
 	$\xymatrix{M \ar@{>->}[d]_{m}\ar[r]^{h}& Q \ar@{>->}[d]^{k} & P \ar[r]^{p_1} \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\X\ar[r]_{f}&Y &X \ar[r]_f&Y}$}
 
+\full{ 
 \begin{proof}
 	We start pulling back $n$ along $k$ and then pulling back the resulting arrow along $h$, getting the following two pullbacks square:
 	\[\xymatrix{B \ar@{>->}[d]_{b}\ar@{>->}[r]^{s}& N \ar@{>->}[d]^{n} & A \ar[r]^{r} \ar@{>->}[d]_{a}& B \ar@{>->}[d]^{b}\\Q\ar@{>->}[r]_{k}&Y &M \ar[r]_h&Q\\}\]
@@ -3170,14 +3215,15 @@ Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
 
 	The thesis now follows immediately from \Cref{lem:varie}. \qedhere
 \end{proof}
-
+}
 \noindent
 \parbox{10cm}{
 	\begin{corollary}[Uniqueness of pushouts complements]\label{lem:pocomp}
 		Let $\X$ be a $\mathcal{M}$-adhesive category. Given $m\colon X\mto Y$ in $\mathcal{M}$ and $f\colon Y\to Z$, let $(h_1, k_1)$ and $(h_2, k_2)$ be the pushout complements of $m$  and $f$ depicted aside. Then there exists a unique isomorphism $\phi\colon W_1\to W_2$ making the diagram on the right commutative.
 	\end{corollary}}
-\parbox{3cm}{$\xymatrix{&X \ar@{>->}[r]^{m} \ar[d]_{h_1} \ar@/_.3cm/[dl]_{h_2}& Y \ar[d]^{f} \\ W_2 \ar@{>->}@/_.4cm/[rr]_{k_2} &W_1 \ar@{.>}[l]_{\phi} \ar@{>->}[r]^{k_1} & Z }$}
+\parbox{3cm}{\vspace{1em}$\xymatrix{&X \ar@{>->}[r]^{m} \ar[d]_{h_1} \ar@/_.3cm/[dl]_{h_2}& Y \ar[d]^{f} \\ W_2 \ar@{>->}@/_.4cm/[rr]_{k_2} &W_1 \ar@{.>}[l]_{\phi} \ar@{>->}[r]^{k_1} & Z }$}
 
+\full{ 
 \begin{proof}
 	Consider the two pushout squares
 	\[\xymatrix{M \ar[r]^{h_1}\ar@{>->}[d]_{m}& W_1 \ar@{>->}[d]^{k_1} & M \ar@{>->}[d]_{m} \ar[r]^{h_1}& W_2 \ar@{>->}[d]^{k_2}\\Y\ar[r]_{f}&Z &Y \ar[r]_{f}&Z}\]
@@ -3187,7 +3233,7 @@ Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
 		k_2\circ \phi \circ h_1  = k_1\circ h_1= n\circ m= k_2\circ h_2\]
 
 	The claim now follows since $k_2$ is a monomorphism.
-\end{proof}
+\end{proof}}
 
 
 
@@ -3341,7 +3387,7 @@ From \Cref{lem:closed,lem:prop} we can now deduce at once the following.
 
 Using \Cref{thm:good1} we finally get the main result of our appendix.
 \begin{corollary}
-Let $(\mathcal{X}, \mathcal{M})$ be a pair of type $\mathcal{B}^+$, then every left-linear DPO-rewriting system is tame.
+Let $(\X, \mathcal{M})$ be a pair of type $\mathbb{B}^+$, then every left-linear DPO-rewriting system is tame.
 \end{corollary}
 
 
@@ -3771,27 +3817,32 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 		$\lgh(\dder{D})=1$. Suppose that $\dder{D}$
 		has as its single component the derivation
 		\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G& \ar@{>->}[l]^{f} D \ar[r]_{g}& H  \\}\]
-		The arrow $f$ is  the pushout of $l$ and so it is in in $\mathcal{M}$. We can thus consider the $\mathcal{M}$-pushout square
-		\[\xymatrix{D \ar@{>->}[d]_{f} \ar[r]^{g} & H \ar@{>->}[d]^{p} \\G \ar[r]_{q}& P }\]
-		Since $p\in \mathcal{M}$, the thesis follows immediately from \Cref{rem:cof}.
+	
+		\parbox{11cm}{The arrow $f$ is  the pushout of $l$ and so it is in in $\mathcal{M}$. We can thus consider the $\mathcal{M}$-pushout square depicted on the right.
+		Since $p\in \mathcal{M}$, and $q$ is in it if $(\X, \R)$ is linear. The thesis follows immediately from \Cref{rem:cof}.}
+		\parbox{2cm}{
+			$\xymatrix{D \ar@{>->}[d]_{f} \ar[r]^{g} & H \ar@{>->}[d]^{p} \\G \ar[r]_{q}& P }$}
 		
 		\smallskip \noindent
-		$\lgh(\dder{D})\geq 2$. Let $\der{D}$ be
+	\parbox{9cm}{$\lgh(\dder{D})\geq 2$. Let $\der{D}$ be
 		$\{\dder{D}_i\}_{i=0}^n$ with $n\geq 1$. Let also $\der{D}'$ be
 		$\{\dder{D}_i\}^{n-1}_{i=0}$ and $\rho_n=(l_n, r_n)$ be the rule
 		applied in $\dder{D}_n$. The pushout of $l_n$ is the arrow
 		$f_n\colon D_n\to G_n$ is in $\mathcal{M}$ and, by inductive
 		hypothesis, $\iota_{G_{n}}\colon G_{n}\to \lpro \der{D}'\rpro$ is
-		in $\mathcal{M}$ too. Thus, we can consider the diagram below,
+		in $\mathcal{M}$ too. Thus, we can consider the diagram aside,
 		having a pushout as its lower half.
-		\[\xymatrix{L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar@{>->}[l]_{l_{n}} \ar[r]^{r_{n}} & R_{n} \ar[d]^{h_n} \\G_{n} \ar@{>->}[d]_{\iota'_{G_{n}}}& \ar@{>->}[l]^{f_n} D_n \ar[r]_{g_n}& H  \ar@{>->}[d]^{q}\\ \lpro \der{D}' \ar[rr]_{p}\rpro && P}\]
-		Notice that, as in the point above, the arrow $q\colon H\to P$ is the pushout of an element in $\mathcal{M}$, therefore it is enough to show that the diagram so constructed provides a colimiting cocone for $\Delta(\der{D})$.
+
+\smallskip \noindent 
+\parbox{13.45cm} {\hspace{15pt}
+		Notice that, as in the point above, the arrow $q\colon H\to P$ is the pushout of an element in $\mathcal{M}$, and, silimarly, $p$ is so if $(\X, \R)$ is linear.Therefore it is enough to show that the diagram so constructed provides a colimiting cocone for $\Delta(\der{D})$.}}
+		\parbox{4cm}{\vspace{-1.5cm}$\xymatrix@R=15pt{L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar@{>->}[l]_{l_{n}} \ar[r]^{r_{n}} & R_{n} \ar[d]^{h_n} \\G_{n} \ar@{>->}[d]_{\iota'_{G_{n}}}& \ar@{>->}[l]^{f_n} D_n \ar[r]_{g_n}& H  \ar@{>->}[d]^{q}\\ \lpro \der{D}' \ar[rr]_{p}\rpro && P}$}
 		
 		Let $(C, \{c_X\}_{X\in \Delta(\der{D})})$ be a cocone, since $\Delta(\der{D}')$ is a subdiagram of $\Delta(\der{D})$, we get another cocone $(c, \{c_X\}_{X\in \Delta(\der{D}')})$ which induces an arrow $c'\colon \lpro \der{D}' \rpro \to C$ such that
-		\begin{align*}
-			c'\circ \iota_{G_n} \circ f_n & =c_{G_n} \circ f_n \\&= c_{D_n}\\&= c_{H}\circ g_n
-		\end{align*}
-		Therefore the arrows $c'$ and $c_H$ induce a morphism $c\colon P\to C$ and the thesis now follows at once.
+		\[
+		c'\circ \iota_{G_n} \circ f_n  =c_{G_n} \circ f_n = c_{D_n}= c_{H}\circ g_n\]
+		
+		Therefore the arrows $c'$ and $c_H$ induce a morphism $c\colon P\to C$ and the thesis follows.
 		
 		\item As a first step, notice that
 		$(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D}_1)})$ and
@@ -3801,19 +3852,18 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 		$p_2\colon \tproi{D}{2}\to \tpro{D}$ such that, for every
 		$X\in \Delta(\der{D}_1)$ and $Y\in \Delta(\der{D}_2)$
 		\[p_1\circ \iota_{1, X} = \iota_X \qquad p_2\circ \iota_{2, Y}=\iota_{2,Y}\]
-		In particular, this entails the commutativity of the square
-		\[\xymatrix{H \ar[dr]^{\iota_H} \ar[r]^-{\iota_{2, H}} \ar@{>->}[d]_-{\iota_{1, H}} & \tproi{D}{2} \ar[d]^{p_2}\\  \tproi{D}{1} \ar[r]_{p_1}& \tpro{D}}\]
+	\parbox{10cm}{In particular, this entails the commutativity of the square on the right.		Let us now show that the square above is a pushout. Take two arrows $a\colon \tproi{D}{1}\to C$, $b\colon \tproi{D}{2}\to C$ such that  \[a\circ \iota_{1, H}=b\circ \iota_{2, H}\].}
+		\parbox{2cm}{\vspace{-1.1cm}$\xymatrix{H \ar[dr]^{\iota_H} \ar[r]^-{\iota_{2, H}} \ar@{>->}[d]_-{\iota_{1, H}} & \tproi{D}{2} \ar[d]^{p_2}\\  \tproi{D}{1} \ar[r]_{p_1}& \tpro{D}}$}
 		
-		Let us now show that the square above is a pushout. Take two arrows $a\colon \tproi{D}{1}\to C$, $b\colon \tproi{D}{2}\to C$ such that
-		\[a\circ \iota_{1, H}=b\circ \iota_{2, H}\]
-		We can use the previous equality to define a cocone $(C, \{c_X\}_{X\in \Delta(\der{D})})$ putting:
+			We can use the previous equality to define a cocone $(C, \{c_X\}_{X\in \Delta(\der{D})})$ putting:
 		\[c_X:=\begin{cases}
 			a\circ \iota_{1, X} & X\in \Delta(\der{D}_1) \\
 			b\circ \iota_{2, X} & X\in \Delta(\der{D}_2)
 		\end{cases}\]
+		
+		
 		From this, we can deduce at once the existence of a unique $c\colon \tpro{D}\to C$ such that
-		\[c\circ \iota_X = c_X\]
-		By construction, for every $X\in  \Delta(\der{D}_1)$ and $Y\in  \Delta(\der{D}_2)$ we have
+		$c\circ \iota_X = c_X$. By construction, for every $X\in  \Delta(\der{D}_1)$ and $Y\in  \Delta(\der{D}_2)$ we have
 		\begin{align*}
 			c\circ p_1 \circ \iota_{1,X}&=c\circ \iota_{X}=c_X =a\circ \iota_{1,X}=a\circ p_1\circ \iota_{1,X}\\
 			c\circ p_2 \circ \iota_{2,Y}&=c\circ \iota_{Y}=c_Y =b\circ \iota_{2,Y}=b\circ p_2\circ \iota_{2,Y}
@@ -3861,26 +3911,24 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 	$\der{D}^j_3$ are empty too.
 \end{remark}
 
-\begin{proof}
+\noindent 
+\parbox{5cm}{\vspace{1em}$
+\xymatrix@C=30pt@R=15pt{D_{j} \ar[r]^{g_j}\ar@{>->}[d]_{f_j}& G_{j+1}
+	\ar[r]^-{\iota_{3,G_{j+1}}} \ar[d]_{\iota_{2, G_{j+1}}}
+	\ar@/^.5cm/[dd]^{\iota_{1,2, G_{j+1}}}& \lpro \der{D}^j_3\rpro
+	\ar[dd]^{p_2} \\ G_j \ar[r]^{\iota_{2,
+			G_j}}\ar@{>->}[d]_{\iota_{1,G_j}} & \lpro \der{D}^j_2\rpro
+	\ar[d]_a\\ \lpro \der{D}^j_1 \rpro \ar@/_.4cm/[rr]_{p_1}
+	\ar[r]^b &\lpro \der{D}^j_1\cdot \der{D}^j_2 \rpro
+	\ar[r]^c&\tpro{D} }$}\qquad  \qquad
+\parbox{7.5cm}{\begin{proof}
 	We can notice that
 	$\der{D}=\der{D}^j_1\cdot \der{D}^j_2 \cdot \der{D}^j_3$. By the
 	first and the second point of \Cref{lem:colim} then we get the
-	following diagram, in which all squares are $\mathcal{M}$-pushouts.
-	
-	\[
-	\xymatrix@C=30pt{D_{j} \ar[r]^{g_j}\ar@{>->}[d]_{f_j}& G_{j+1}
-		\ar[r]^-{\iota_{3,G_{j+1}}} \ar[d]_{\iota_{2, G_{j+1}}}
-		\ar@/^.5cm/[dd]^{\iota_{1,2, G_{j+1}}}& \lpro \der{D}^j_3\rpro
-		\ar[dd]^{p_2} \\ G_j \ar[r]^{\iota_{2,
-				G_j}}\ar@{>->}[d]_{\iota_{1,G_j}} & \lpro \der{D}^j_2\rpro
-		\ar[d]_a\\ \lpro \der{D}^j_1 \rpro \ar@/_.4cm/[rr]_{p_1}
-		\ar[r]^b &\lpro \der{D}^j_1\cdot \der{D}^j_2 \rpro
-		\ar[r]^c&\tpro{D} }
-	\]
-	Applying \Cref{lem:po1} twice we get that the whole square is an
+	 diagram on the left, in which all squares are $\mathcal{M}$-pushouts. Applying \Cref{lem:po1} twice we get that the whole square is an
 	$\mathcal{M}$-pushout. Then the thesis follows from
 	\Cref{prop:pbpoad}.
-\end{proof}
+\end{proof}}
 
 \begin{corollary}
 	\label{cor:ele}
@@ -3893,8 +3941,48 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 \end{corollary}
 
 
+
+\lemIde*
+\label{lemide-proof}
+\begin{proof}
+	If $\der{D}$ and $\der{D}'$ are empty then the thesis follows at once since an abstraction equivalence is just an isomorphism. Let now $\der{D}$ and $\der{D}'$ be, respectively $\{\dder{D}_{i}\}_{i=0}^n$ and $\{\dder{D}'_i\}_{i=0}^n$. We construct by induction on $i\in [0,n]$ an abstraction equivalence such that, for every $i$, $\iota'_{G'_{i+1}}\circ \phi_{G_{i+1}}=\xi_{\id{[0,n]}}\circ \iota_{G_{i+1}}$.
+	
+	\smallskip \noindent \parbox{8cm}{$i=0$. We start noticing that, by consistency
+		\[\iota'_{G_0}\circ m'_0=\xi_\sigma \circ \iota_{G_0}\circ m_0=\iota'_{G_0}\circ m_0\]
+		By linearity and \Cref{lem:colim} $\iota'_{G_0}$ is a mono, thus $m_0=m'_0$. By  \Cref{prop:unique} we deduce the existence of the dotted isomorphisms in the diagram aside.} \parbox{4cm}{\vspace{0em}$\xymatrix@C=40pt{G_0&D'_0 \ar@{>->}[r]^{g'_0}
+			\ar@{>->}[l]_{f'_0}&G'_{1}\\ L_0 \ar[u]^{m'_0} \ar[d]_{m_0}& K_0
+			\ar[u]^{k'_0} \ar[d]_{k_0} \ar@{>->}[r]^{r_0} \ar@{>->}[l]_{l_0}
+			&R_0\ar[u]^{h'_0} \ar[d]_{h_0}\\G_0
+			\ar@/_.45cm/[uu]_(.35){\id{G_0}}|\hole& D_0 \ar@{>->}[l]^{f_0}  \ar@{.>}@/_.45cm/[uu]_(.35){\phi_{D_0}}|\hole
+			\ar@{>->}[r]_{g_0}& G_{1}\ar@{.>}@/_.45cm/[uu]_{\phi_{G_1}}}$}
+	
+	Now, if we compute we have
+	\begin{align*}
+		&\iota'_{G'_1}\circ \phi_{G_1}\circ g_0=\iota'_{G'_1}\circ g'_0\circ \phi_{D_0}=\iota'_{D_0}\circ \phi_{D_0}=\iota'_{G_0}\circ f'_0\circ \phi_{D_0}=\iota'_{G_0}\circ f_0\\=&\xi_{\id{[0,n]}} \circ \iota_{G_0}\circ  f_0=\xi_{\id{[0,n]}} \circ \iota_{D_0}=\xi_{\id{[0,n]}} \circ \iota_{G_1}\circ g_0 
+	\end{align*}
+	This now entails that $\iota'_{G'_1}\circ \phi_{G_1}=\xi_{\id{[0,n]}}\circ \iota_{G_1}$.
+	
+	
+	\smallskip  \noindent \parbox{7.5cm}{$i>0$. By the inductive hypothesis there exists an isomorphism $\phi_{G_{i}}\colon G_{i}\to G'_i$ such that $\phi_{G_{i}}\circ h_{i-1}=h'_{i-1}$. Now, as before we have
+		\[\iota'_{G'_{i}}\circ m'_{i}=\xi_{\id{[0,n]}}\circ \iota_{G_i}\circ m_{i}=\iota'_{G'_{i}}\circ \phi_{G_{i}} \circ m_i \]
+		By linearity $\iota'_{G'_{i}}$ is mono, thus $m'_i=\phi_{G_{i}} \circ m_i$ and \Cref{prop:unique} yields again the dotted part of the diagram aside.}
+	\parbox{4cm}{\vspace{-2em}$\xymatrix@C=40pt{G_i&D'_i \ar@{>->}[r]^{g'_i}
+			\ar@{>->}[l]_{f'_i}&G'_{i+1}\\ L_i \ar[u]^{m'_i} \ar[d]_{m_i}& K_i
+			\ar[u]^{k'_i} \ar[d]_{k_i} \ar@{>->}[r]^{r_i} \ar@{>->}[l]_{l_i}
+			&R_i\ar[u]^{h'_i} \ar[d]_{h_i}\\G_i
+			\ar@/_.45cm/[uu]_(.35){\phi_{G_i}}|\hole& D_i \ar@{>->}[l]^{f_i}  \ar@{.>}@/_.45cm/[uu]_(.35){\phi_{D_i}}|\hole
+			\ar@{>->}[r]_{g_i}& G_{i+1}\ar@{.>}@/_.45cm/[uu]_{\phi_{G_{i+1}}}}$}
+	
+	To conclude, it is now enough to notice that
+	\begin{align*}
+		&\iota'_{G'_{i+1}}\circ \phi_{G_{i+1}}\circ g_i=\iota'_{G'_{i+1}}\circ g'_i\circ \phi_{D_{i}}=\iota'_{D_{i}}\circ \phi_{D_{i}}=\iota'_{G_i}\circ f'_i\circ \phi_{D_{i}} =\iota'_{G'_{i}}\circ \phi_{G_{i}}\circ f_i\\=&\xi_{\id{[0,n]}}\circ \iota_{G_{i}}\circ f_i=\xi_{\id{[0,n]}}\circ \iota_{D_{i}}=\xi_{\id{[0,n]}}\circ \iota_{G_{i+1}}\circ g_i
+	\end{align*}
+	Which, 	since $G_{i}$ is obtained pushing $r_{i-1}$ along $k_{i-1}$ gives us the thesis 
+\end{proof}
+
+
 \begin{lemma}\label{lem:coswap}
-Let $(\X, \R)$ be a tame rewriting system and $(i_0, i_1)$ an independence pair between $\dder{D}_{0}$ and $\dder{D}_1$, let also $\der{E}=\{\dder{E}_i\}_{i=0}^1$  be a switch of them along $(i_0, i_1)$. Then the swap $(1,2):[0,1]\to [0,1]$ is a consistent permutation.
+Let $(\X, \R)$ be a tame rewriting system and $(i_0, i_1)$ an independence pair between $\dder{D}_{0}$ and $\dder{D}_1$, let also $\der{E}=\{\dder{E}_i\}_{i=0}^1$  be a switch of them along $(i_0, i_1)$. Then the transposition $(1,2):[0,1]\to [0,1]$ is a consistent permutation.
 \end{lemma}
 \begin{proof}
 	Let $(\tpro{D}, \{\iota_{X}\}_{X\in \delta(\der{D})})$ and $(\tpro{E}, \{\iota'_{X}\}_{X\in \delta(\der{E})})$ be the colimiting cocones of $\Delta(\der{D})$ and $\Delta(\der{E})$. Using the notation of \Cref{rem:fill} we have
@@ -3928,77 +4016,41 @@ Let $(\X, \R)$ be a tame rewriting system and $(i_0, i_1)$ an independence pair 
 
 
 
-This, together with \Cref{lem:colim}, gives us at once the following two results.
+\cref{lem:coswap}, together with \Cref{lem:colim}, gives us at once the following two results.
 
 \begin{corollary}\label{cor:coswap}
-	contenuto...
+Let $\der{D}$ and $\der{E}$ be two derivations such that $\der{D} \shift{\transp{i}} \der{E}$, then the transposition $(i,i+1):[0,\lgh{\der{D}}-1] \to [0,\lgh{\der{D}}-1] $ is a consistent permutation.
 \end{corollary}
-
 
 
 \propcoswitch*
 \label{propcoswitch-proof}
 \begin{proof}
+	Let $\{\der{D}_{i}\}_{k=0}^m$ be a switching sequence such that 
+	    \[\der{D}\equiv_a \der{D}_0 \shift{\transp{i_1}} \der{D}_1 \shift{\transp{i_2}} \ldots \shift{\transp{i_m}}
+	\der{D}_m\equiv _a \der{E}\]
+By \Cref{rem:abs,rem:compo} it is enough to find a consistent permutation between $\der{D}_0$ and $\der{D}_m$, but this follows at once from \Cref{rem:compo,cor:coswap}.
+\end{proof}
+
+
+
+
+\begin{lemma}
+	Let $\der{D}$ and $\der{E}$ be two derivations in a linear rewriting system $(\X, \R)$. Suppose that a consistente permutation $\sigma:[0, \lgh(\der{D})-1]\to [0, \lgh(\der{D})-1]$ between them is given. If $i\in [0, \lgh(\der{D})-1]$ is an index such that $\transp{i}$ is an inversion for $\sigma$, then the direct derivations $\dder{D}_i$ and $\dder{D}_{i+1}$ are sequentially independent.
+\end{lemma}
+\begin{proof}
 	contenuto...
 \end{proof}
 
-
-\lemIde*
-\label{lemide-proof}
-\begin{proof}
-	If $\der{D}$ and $\der{D}'$ are empty then the thesis follows at once since an abstraction equivalence is just an isomorphism. Let now $\der{D}$ and $\der{D}'$ be, respectively $\{\dder{D}_{i}\}_{i=0}^n$ and $\{\dder{D}'_i\}_{i=0}^n$. We construct by induction on $i\in [0,n]$ an abstraction equivalence such that, for every $i$, $\iota'_{G'_{i+1}}\circ \phi_{G_{i+1}}=\xi_{\id{[0,n]}}\circ \iota_{G_{i+1}}$.
-	
-	\smallskip \noindent \parbox{8cm}{$i=0$. We start noticing that, by consistency
-	\[\iota'_{G_0}\circ m'_0=\xi_\sigma \circ \iota_{G_0}\circ m_0=\iota'_{G_0}\circ m_0\]
-	By linearity and \Cref{lem:colim} $\iota'_{G_0}$ is a mono, thus $m_0=m'_0$. By  \Cref{prop:unique} we deduce the existence of the dotted isomorphisms in the diagram aside.} \parbox{4cm}{\vspace{0em}$\xymatrix@C=40pt{G_0&D'_0 \ar@{>->}[r]^{g'_0}
-		\ar@{>->}[l]_{f'_0}&G'_{1}\\ L_0 \ar[u]^{m'_0} \ar[d]_{m_0}& K_0
-		\ar[u]^{k'_0} \ar[d]_{k_0} \ar@{>->}[r]^{r_0} \ar@{>->}[l]_{l_0}
-		&R_0\ar[u]^{h'_0} \ar[d]_{h_0}\\G_0
-		\ar@/_.45cm/[uu]_(.35){\id{G_0}}|\hole& D_0 \ar@{>->}[l]^{f_0}  \ar@{.>}@/_.45cm/[uu]_(.35){\phi_{D_0}}|\hole
-		\ar@{>->}[r]_{g_0}& G_{1}\ar@{.>}@/_.45cm/[uu]_{\phi_{G_1}}}$}
-	
-	Now, if we compute we have
-		\begin{align*}
-		&\iota'_{G'_1}\circ \phi_{G_1}\circ g_0=\iota'_{G'_1}\circ g'_0\circ \phi_{D_0}=\iota'_{D_0}\circ \phi_{D_0}=\iota'_{G_0}\circ f'_0\circ \phi_{D_0}=\iota'_{G_0}\circ f_0\\=&\xi_{\id{[0,n]}} \circ \iota_{G_0}\circ  f_0=\xi_{\id{[0,n]}} \circ \iota_{D_0}=\xi_{\id{[0,n]}} \circ \iota_{G_1}\circ g_0 
-		\end{align*}
-	This now entails that $\iota'_{G'_1}\circ \phi_{G_1}=\xi_{\id{[0,n]}}\circ \iota_{G_1}$.
-	
-	
-	\smallskip  \noindent \parbox{7.5cm}{$i>0$. By the inductive hypothesis there exists an isomorphism $\phi_{G_{i}}\colon G_{i}\to G'_i$ such that $\phi_{G_{i}}\circ h_{i-1}=h'_{i-1}$. Now, as before we have
-	\[\iota'_{G'_{i}}\circ m'_{i}=\xi_{\id{[0,n]}}\circ \iota_{G_i}\circ m_{i}=\iota'_{G'_{i}}\circ \phi_{G_{i}} \circ m_i \]
-	By linearity $\iota'_{G'_{i}}$ is mono, thus $m'_i=\phi_{G_{i}} \circ m_i$ and \Cref{prop:unique} yields again the dotted part of the diagram aside.}
-	\parbox{4cm}{\vspace{-2em}$\xymatrix@C=40pt{G_i&D'_i \ar@{>->}[r]^{g'_i}
-			\ar@{>->}[l]_{f'_i}&G'_{i+1}\\ L_i \ar[u]^{m'_i} \ar[d]_{m_i}& K_i
-			\ar[u]^{k'_i} \ar[d]_{k_i} \ar@{>->}[r]^{r_i} \ar@{>->}[l]_{l_i}
-			&R_i\ar[u]^{h'_i} \ar[d]_{h_i}\\G_i
-			\ar@/_.45cm/[uu]_(.35){\phi_{G_i}}|\hole& D_i \ar@{>->}[l]^{f_i}  \ar@{.>}@/_.45cm/[uu]_(.35){\phi_{D_i}}|\hole
-			\ar@{>->}[r]_{g_i}& G_{i+1}\ar@{.>}@/_.45cm/[uu]_{\phi_{G_{i+1}}}}$}
-		
-		To conclude, it is now enough to notice that
-	\begin{align*}
-&\iota'_{G'_{i+1}}\circ \phi_{G_{i+1}}\circ g_i=\iota'_{G'_{i+1}}\circ g'_i\circ \phi_{D_{i}}=\iota'_{D_{i}}\circ \phi_{D_{i}}=\iota'_{G_i}\circ f'_i\circ \phi_{D_{i}} =\iota'_{G'_{i}}\circ \phi_{G_{i}}\circ f_i\\=&\xi_{\id{[0,n]}}\circ \iota_{G_{i}}\circ f_i=\xi_{\id{[0,n]}}\circ \iota_{D_{i}}=\xi_{\id{[0,n]}}\circ \iota_{G_{i+1}}\circ g_i
-	\end{align*}
-	Which, 	since $G_{i}$ is obtained pushing $r_{i-1}$ along $k_{i-1}$ gives us the thesis 
-\end{proof}
-
-We need to recall some notion from the theory of permutations.
-\begin{definition}
-Let $\sigma:[0,n]\to [0,n]$ be a permutation, an \emph{inversion} for $\sigma$ is a pair $(i,j)$ such that $i<j$ and $\sigma(j)< \sigma(i)$. 
-\end{definition}
 
 \begin{remark}\label{rem:salvavita}
 	Let 
 \end{remark}
-
-\begin{lemma}
-	contenuto...
-\end{lemma}
-
 \thmcoswitch*
 \label{thmswitch-proof}
-\begin{proof}$(1\Rightarrow 2)$ This follows from \Cref{prop:coswitch}.
+\begin{proof}$(1\Rightarrow 2)$ This follows from \Cref{rem:abs,prop:coswitch}.
 
-\smallskip \noindent $(2\Rightarrow 1)$
+\smallskip \noindent $(2\Rightarrow 1)$ We proceed by induction
 \end{proof}
 
 \subsubsection{Proofs for \cref{subsec:canonical}}
@@ -4366,14 +4418,14 @@ by switching only step along inversions.
 
   \bigskip
   \noindent
-  (i) $j=i$\\
+  (1) $j=i$\\
   %
   In this case there is nothing to prove: $\nu_1 = \transp{i}$, hence
   the original switching sequence is already of the desired shape.
 
   \bigskip
   \noindent
-  (ii) $j<i-1$ or $j>i-1$\\
+  (2) $j<i-1$ or $j>i-1$\\
   %
   In this case $\nu_1$ does not ``interfere'' with $\transp{i}$, i.e.,
   $i$ still satisfies the hypotheses of the lemma with respect to the
@@ -4397,7 +4449,7 @@ by switching only step along inversions.
 
   \bigskip
   \noindent
-  (iii) $j=i-1$, i.e., $\nu_1 = \transp{i-1}[i]$\\
+  (3) $j=i-1$, i.e., $\nu_1 = \transp{i-1}[i]$\\
   %
   In this case $\der{D}_1$ is obtained from $\der{D}_0$ by switching
   steps $i-1$ and $i$, as pictorially reported in the first two
