@@ -458,19 +458,25 @@
 
 \title{Left-linear rules in adhesive categories}
 
-\author{Paolo Baldan} 
-{Department of Mathematics, University of Padova, Italy}
-{baldan@math.unipd.it}{}{}
-\author{Davide Castelnovo}
-{Department of Mathematics, University of Padova, Italy}
-{davide.castelnovo@math.unipd.it}{}{}
-\author{Andrea Corradini}
-{Department of Computer Science, University of Pisa, Italy}
-{andrea.corradini@unipi.it}{}{}
+% fake author for anonymous submission
+\author{Alan Turing} 
+{Department of Mathematics, Somewhere}
+{alan@turing.com}{}{}
 
-\author{Fabio Gadducci}
-{Department of Computer Science, University of Pisa, Italy}
-{fabio.gadducci@unipi.it}{}{}
+
+% \author{Paolo Baldan} 
+% {Department of Mathematics, University of Padova, Italy}
+% {baldan@math.unipd.it}{}{}
+% \author{Davide Castelnovo}
+% {Department of Mathematics, University of Padova, Italy}
+% {davide.castelnovo@math.unipd.it}{}{}
+% \author{Andrea Corradini}
+% {Department of Computer Science, University of Pisa, Italy}
+% {andrea.corradini@unipi.it}{}{}
+
+% \author{Fabio Gadducci}
+% {Department of Computer Science, University of Pisa, Italy}
+% {fabio.gadducci@unipi.it}{}{}
 
 
 \authorrunning{P.~Baldan, D.~Castelnovo, A.~Corradini, F.~Gadducci}
@@ -508,17 +514,6 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   systems does not work out of the box, but it requires the
   restriction to well-behaved classes of left-linear rules.
   %
-<<<<<<< HEAD
-  In fact, the standard characterisation of independence does not hold anymore,
-  and this requires a substantial revision of the 
-  theory for the linear case, since a number of basic properties,
-  essential in the development of a theory of concurrency, were
-  derived from such a description.
-  %
-  The paper introduce a novel characterisation of independence, for which we prove a Church-Rosser property,
-  properly extending the class of formalisms 
-  that can be modelled in the adhesive framework. 
-=======
   Moreover, a standard characterisation of independence that -- in the
   linear case -- allows one to derive a number of properties,
   essential in the development of a theory of concurrency, no longer
@@ -533,7 +528,6 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   proofs for concurrent computations. These results properly extends
   the class of formalisms that can be modelled in the adhesive
   framework.
->>>>>>> refs/remotes/origin/main
 \end{abstract}
 
 
@@ -602,18 +596,18 @@ Some terminology (Definition~\ref{de:good-switchable})
 \begin{itemize}
   
   
-\item \emph{Tame rewriting systems}\\ An
-  independence pairs induced by a filler is called \emph{good} A
-  rewriting system where all indepedence pairs are good is called
-  \emph{tame}
+\item \emph{Strong Enforcing rewriting systems}\\ An
+  independence pairs induced by a filler is called \emph{strong} A
+  rewriting system where all indepedence pairs are strong is called
+  \emph{strong enforcing}
 
   NOTE: the categories in which
   condition $B$ from~\cite{baldan2011adhesivity} identifies a large
   class of (quasi)adhesive categories where left-linear systems are all
-  tame. Adapted here to M-adhesivity.
+  strong enforcing. Adapted here to M-adhesivity.
   
-\item \emph{Very Tame rewriting
-    systems}\\ Tame and existing indepence pairs are unique (hence
+\item \emph{Well Switching rewriting
+    systems}\\ Strong Enforcing and existing indepence pairs are unique (hence
   switching is unique) (see later for examples)
 \end{itemize}
 
@@ -634,11 +628,11 @@ Some terminology (Definition~\ref{de:good-switchable})
 
 \subsection*{CONCURRENCY}
 
-This part is dealt with for very tame rewriting systems and depends on this assumption. Note that
+This part is dealt with for well switching rewriting systems and depends on this assumption. Note that
 \begin{itemize}
-\item Linear rewriting systems on adhesive categories are very tame
-\item Left-linear rewritint systems on graph-like categories with generalisation of (i) no isolated nodes in $L$ and (ii) right leg injective on nodes is very tame
-\item Graphs with equivalences (Egg) with left-leg regular mono, right leg mono is very tame
+\item Linear rewriting systems on adhesive categories are well switching
+\item Left-linear rewritint systems on graph-like categories with generalisation of (i) no isolated nodes in $L$ and (ii) right leg injective on nodes is well switching
+\item Graphs with equivalences (Egg) with left-leg regular mono, right leg mono is well switching
 \end{itemize}
 
 We show
@@ -725,63 +719,6 @@ is to maintain an equivalence\todo{P: more precisely a congruence}
 over the nodes.  \todo{P: la sequenza di lavori su questo \`e ampia,
   vedere se c'\`e qualcosa d'altro}
 
-% =========DA QUI SUPERSEDED\\
-% Rewriting systems over graphs are used in uncountably many setting for
-% representing the dynamics of software systems: the graph serves to represent
-% the entities and their relations within states , while rewriting steps,
-% modifying the graph, model computational steps that results in
-% changes to the system state.
-
-% Rewriting over many kind of graphs is elegantly captured by the
-% so-called \emph{double pushout} (DPO) approach to rewriting. A
-% noteworthy advantage is that DPO rewriting can be formulated over
-% adhesive categories and their
-% variants~\cite{lack2005adhesive,ehrig2006weak}. Operating within the
-% framework of adhesive categories allows one to devise the foundations
-% of a rewriting theory which can be subsequently instantiated to the
-% context of interest, thus avoiding the need of repeatedly proving
-% similar ad-hoc results in for each specific setting.
-
-% Rewriting over adhesive categories has been widely studied in the last
-% two decades and most of the research focused on the so-called linear
-% rewriting rules. Roughly speaking, linear rewriting rules can specify
-% that, in a rewriting step, some entities in the current state are
-% removed, some other are needed for the rewriting step to occur but
-% remain unaltered and some new entities can be generated.
-
-% The computation described by a rewriting system can be naturally
-% interpreted as a distributed computation and a notion of independence
-% between rewriting steps naturally emerges. When different rules are
-% applied at ``distinct'' parts of the state, possibly overlapping on
-% preserved items, the rewriting steps can be naturally deemed as
-% independent and their application can occur in any order and possibly
-% concurrently. This phenomenon is formally captured by the so-called
-% Church-Rosser theorem of DPO rewriting~\cite{CMREHL:AAGT}.
-% %
-% Having a notion of independence between computation steps sits at the
-% core of the possibility of viewing an execution trace as a concurrent
-% computation. This is obtained by considering traces up to an
-% equivalence that identifies traces differing only for the order of
-% independent steps, referred to as shift equivalence~\cite{CMREHL:AAGT}
-% (similar to interchange law~\cite{Mes92} in term rewriting or
-% permutation equivalence~\cite{JJL80} in the $\lambda$-calculus).
-
-% In some situations rewriting with linear rules are not sufficiently
-% expressive for capturing the dynamic of a system. This is the case
-% when a computational step is required not only to consume, preserve
-% and generated, but also ``merge'' parts of the state. This happens,
-% e.g., in nominal calculi where, as a result of name passing, the
-% received name is identified with a local one at the
-% receiver~\cite{CVY:ESSPE,Gad07} or in the modelling of bonding in
-% biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms is
-% at the core of e-graphs (equality graphs), recently used for
-% rewrite-driven compiler optimisations~\cite{WNW:egg}. Rather than
-% explicitly merging nodes corresponding to equal expression, the idea
-% here - conceptually and, as we will see, also mathematically similar -
-% is to maintain an equivalence\todo{P: more precisely a congruence}
-% over the nodes.  \todo{P: la sequenza di lavori su questo \`e ampia,
-%   vedere se c'\`e qualcosa d'altro}\\
-% =========
 
 Technically, to acquire the expressiveness needed for expressing
 fusions, i.e., the merge of some elements in the state, requires to
@@ -789,26 +726,63 @@ move from linear to left-linear rewriting rules. While left-linear
 rules have been considered in various instances (mainly in categories
 of graphs) and some results concerning the corresponding rewriting
 theory have been put forward, to the best of our knowledge the
-phenomena arising when rewriting with left-linear rules in the general
-setting of adhesive and quasi-adhesive categories 
+phenomena arising when devising a theory of indepedence and
+concurrency for rewriting with left-linear rules in the general
+setting of adhesive and quasi-adhesive categories
 %(which capture most ``applications'') 
-have not been systematically explored. ADD REFS
+have not been systematically
+explored~\cite{Ehrig1976,EHP:BRfTToHLRS,baldan2011adhesivity} \todo{P: see also \cite{HMP:DPORADD,BHK:CTNL} ... verificare e aggiungere}
 
-As an initial step in performing this exploration, we observe that for left-linear
-rules a number of fundamental properties that play a role in the
-corresponding theory of rewriting need to be deeply revised, or plainly do not hold.
+Here we perform this exploration working at the level of $\mathcal{M}$-adhesive catgories, which encompass ...
+
+As an initial step in performing this exploration, we observe that for
+left-linear rules a number of fundamental properties that play a role
+in the corresponding theory of rewriting need to be deeply revised, or
+plainly do not hold.
 %
-More to the point, for linear rewriting systems sequential independence of 
-two sequences of steps can be characterised in terms of the existence of 
-what is called a consistent permutation among them, which can be obtained through 
-an isomorphism between their colimits~\cite{xxx}. This result, which is folklore for 
-various categories of graphs, is explicitly proved here for $\mathcal{M}$-adhesive categories. 
+Firstly, the notion of sequential independence and Church Rosser
+theorem, ensuring that sequential independent steps can be performed
+in reverse order, does not hold out of the box. Even worse, given two
+independent steps it might be possible to switch them in several
+different ways. As we will observe, this might prevent the development
+of a sensible theory of concurrency as switches are used as a basis
+witch equivalence of derivation sequences, identifying rewriting
+sequences of steps which differs only for the order of independent
+steps.
+
+We single a well-behaved class of left-linear rewriting
+systems referred to as \emph{well-switching rewriting systems}, where sequential independence ensures existence and uniqueness of the
+switch, and argue that this is the right setting for dealing with
+left-linear rewriting systems.
+
+
+On the one hand, we argue that they capture most categories of
+interest for rewriting. In particular, we single out a class of
+left-linear rewriting systems on graph-like structures which are very
+well-switchable and we show that rewriting systems on graphs with
+equivalences, similar in spirit to e-graphs are also
+well-switchable. As a sanity check, also linear rewriting systems on
+$\mathcal{M}$-adhesive categories are well switching.
+
+On the other hand, we show that an appropriate theory of rewriting can
+be developed for well switching rewriting systems, recovering, sometimes in
+weakened form, results which hold in the linear case.  Church-Rosser
+is fully recovered for well-switchable rewriting systems.
+
+
+There is, however, a further, serious problem.  For linear
+rewriting systems s, can be characterised in terms of the
+existence of what is called a consistent permutation~\cite{xxx}
+(roughly, an isomorphism between their colimits). This result, which
+is folklore for various categories of graphs, is explicitly proved
+here for $\mathcal{M}$-adhesive categories.
 %
-The characterisation of switch equivalence based on consistent permutations is the key to
-derive some simple but fundamental properties for linear rewriting systems, namely
+The characterisation of switch equivalence based on consistent
+permutations is the key to derive some
+properties for linear rewriting systems, namely
 \begin{enumerate}
 \item \emph{confluence of switching}: when transforming derivation
-  sequences into equivalent ones by switching independent steps, the
+  sequences into equivalent ones by sqwitching independent steps, the
   result not depends on the order in which switchings are applied, but
   only on the resulting permutation;
   
@@ -816,13 +790,20 @@ derive some simple but fundamental properties for linear rewriting systems, name
   moved forward or backward due to the application of switchings to a
   derivation, they remain independent.
 \end{enumerate}
+Properties (1) and (2) allow one to deduce a canonical form for equivalence proofs between derivations seen as concurrent computations.
 
-Unfortunately, we show that for left-linear rewriting systems the characterisation of
-shift equivalence based on consistent permutations fails: the
+Unfortunately, for left-linear rewriting systems the characterisation
+of switch equivalence based on consistent permutations fails: the
 existence of a consistent permutation is only necessary but not
-sufficient, hence it cannot be used for proving (1) and (2). 
+sufficient, hence it cannot be used for proving (1) and (2).
 %
-Nevertheless, we will show that property (1) still holds, while only a weak form of (2) does.
+This leads to the question asking whether the properties above hold.
+We show that actually much of the theory can be retained: confluence
+of switching still holds, while globality of independence holds in a
+weak form, conceptually linked to the fact that fusions introduce a
+form of disjunctive causality. Finally, a canonical form for switching
+sequences can also be recovered.
+
 
 
 % \todo[inline]{
@@ -860,67 +841,18 @@ Nevertheless, we will show that property (1) still holds, while only a weak form
 % pair). Here it is extended to $\mathcal{M}$-adhesive categories.
 % }
 
-First of all, we will provide a refined notion of independence, which is based 
-in the concept of fillers. The issues was identified
-in~\cite{baldan2011adhesivity}, where a subclass of adhesive
-categories was identified where independence as induced by a filler
-coincides with sequential independence (as induced by an independence
-pair). Here it is extended to $\mathcal{M}$-adhesive categories.
+%   First of all, we will provide a refined notion of independence,
+%   which is based in the concept of fillers.
 
-Then, we move to restrict the class of admissible left-linear rewriting systems,
-always working at the level of $\mathcal{M}$-adhesive categories.
-Unfortunately, the most natural idea, put forward in~\cite{baldan2017domains}, 
-of limiting sequential independence to those cases in which the switch is possible
-and uniquely determined does fall short.
-%
-In this work we focus on what we call
-\emph{strongly tame rewriting systems}, where sequential independence ensures existence and
-uniqueness of the switch and argue that this is the right setting for
-dealing with left-linear rewriting systems.
+% Then, we move to restrict the class of admissible left-linear rewriting systems,
+% always working at the level of $\mathcal{M}$-adhesive categories.
+% Unfortunately, the most natural idea, put forward in~\cite{baldan2017domains}, 
+% of limiting sequential independence to those cases in which the switch is possible
+% and uniquely determined does fall short.
 
-On the one hand, we argue that very tame rewriting systems capture most
-categories of interest for rewriting. In particular, we single out a
-class of left-linear rewriting systems on graph-like structures which
-are very tame and we show that rewriting systems on (term)graphs with
-equivalences capturing e-graphs are also very tame. As a sanity
-check, also linear rewriting systems on $\mathcal{M}$-adhesive
-categories are very tame.
 
-On the other hand, we show that an appropriate theory of rewriting can
-be developed for very tame rewriting systems, recovering, sometimes in
-weakened form, results which hold in the linear case.  Local
-<<<<<<< HEAD
-Curch-Rosser is fully recovered for very tame rewriting systems.
 
-For linear rewriting systems sequential independence of derivations
-can be also characterised in terms of the existence of a suitable
-isomorphism between the colimit of the derivations, called
-consistent permutations (which are also strictly related to the notion
-of process). This result, which is folklore for categories of graphs,
-is explicitly proved here for $\mathcal{M}$-adhesive categories. Based on such result one can deduce two fundamental consequences:
-\begin{enumerate}
-\item when switching a derivation consisting of several steps, the result only depends on the overall permutation, not on the order of the switches;
-\item independence of rewriting steps is a ``global property'', independent of the position in which these steps are in the derivation.
-\end{enumerate}
 
-We show that for left-linear rewriting systems the characterisation of
-shift equivalence based on consistent permutations fails: the
-existence of a consistent permutation is only necessary but not
-sufficient, hence it cannot be used for proving (1) and (2). However property (1) still holds. Instead only a weak form of (2) can be proved. This is intimately related to the possibility of expressing disnjuctive forms of causality.
-
-\todo[inline]{
-This fails for left-linear rules where, as observed
-in~\cite{baldan2017domains}, for graph rewriting, the possibility of
-merging parts of the state leads to a sort of disjunctive causality,
-i.e., a rewriting step, say $r_c$ can be enabled by two different
-rewriting steps $r_a$ and $r_b$, in a way that in a derivation
-$r_a r_b r_c$ steps $r_b$ and $r_c$ are independent since the presence
-of $r_a$ in the past is sufficient for enabling $r_a$, while in
-$r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent. }
-
-=======
-Church-Rosser is fully recovered for very tame rewriting systems.
->>>>>>> refs/remotes/origin/main
 
 \section{$\mathcal{M}$-adhesive categories and DPO rewriting systems}\label{sec:ade}
 
@@ -2473,7 +2405,7 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
     \label{fi:derD}
   \end{figure}
 
-  The category $\cat{Graph}$ is tame by the result in ...  Thus,
+  The category $\cat{Graph}$ is strong enforcing by the result in ...  Thus,
   sequential independence ensure the existence of a switch $\der{E}$,
   depicted in Fig.~\ref{fi:derE}.
   \begin{figure}
@@ -2490,7 +2422,7 @@ by the notion of \emph{canonical filler}
 
 \todo{P: la chiamiamo ``strong indepedence pair''? o ``filler pair''}
 
-\begin{definition}[Good independence pair]
+\begin{definition}[strong independence pair]
   \label{def:filler}
   Let $\X$ be an $\mathcal{M}$-adhesive category 
   and $(\X, \R)$ a left-linear DPO rewriting system. 
@@ -2517,7 +2449,7 @@ by the notion of \emph{canonical filler}
   $u_1\colon K_1\to P$ into the pullback (see \Cref{prop:tec} for details). 
   % given by \Cref{prop:tec} .
   %
-  We will say that $(i_0, i_1)$ is a \emph{good independence pair} if
+  We will say that $(i_0, i_1)$ is a \emph{strong independence pair} if
   the first two squares depicted  
   below are pushouts and if the pushout of $r_1 : K_1 \to R_1$ and $u_1 : K_1 \to P$ exists.
   \[
@@ -2534,7 +2466,7 @@ by the notion of \emph{canonical filler}
 \end{definition}
 
 
-% \begin{definition}[Good independence pair]\label{def:filler}
+% \begin{definition}[strong independence pair]\label{def:filler}
 %   Let $(i_0, i_1)$ be an independence pair between two direct
 %   derivations $\dder{D}_0$, $\dder{D}_1$ in $(\X, \R)$ be a
 %   left-linear DPO rewriting system with $\X$ $\mathcal{M}$-adhesive.
@@ -2552,7 +2484,7 @@ by the notion of \emph{canonical filler}
 
 %   Let also the right square above be a pullback. Let
 %   $u_0\colon K_0\to P$ and $u_1\colon K_1\to P$ be the arrows of
-%   \Cref{prop:tec}, we will say that $(i_0, i_1)$ is a \emph{good
+%   \Cref{prop:tec}, we will say that $(i_0, i_1)$ is a \emph{strong
 %     independence pair} if the first and second square below are
 %   pushouts and if the third square exists and it is a pushout too.
 %   \[\xymatrix{K_0 \ar[r]^{r_0} \ar[d]_{u_0}& R_0 \ar[d]^{i_0} & K_1
@@ -2563,12 +2495,12 @@ by the notion of \emph{canonical filler}
 % \end{definition}
 
 
-We can now prove a Local Church-Rosser Theorem for good independence pairs.
+We can now prove a Local Church-Rosser Theorem for strong independence pairs.
 
 
 \begin{restatable}[Local Church-Rosser Theorem]{theorem}{thmChurch}
   \label{thm:church}
-  Let $(i_0, i_1)$ be a good independence pair
+  Let $(i_0, i_1)$ be a strong independence pair
   between $\dder{D}_0$ and $\dder{D}_1$. Then $\dder{D}_0$ and
   $\dder{D}_1$ are switchable.
 \end{restatable}
@@ -2576,35 +2508,35 @@ We can now prove a Local Church-Rosser Theorem for good independence pairs.
 
 
 
-\todo[inline]{Forse non introdurrei neppure la classe dei tame, tanto usiamo solo i very tame, o no?}
+\todo[inline]{Forse non introdurrei neppure la classe dei strong enforcing, tanto usiamo solo i well switching, o no?}
 
 \todo[inline]{Io invece la introdurrei proprio come punto teorico che mi sembra parecchio importante: qua li condizioni mi garantiscono che gli independence pair implicano la scambiabilità? [DC]}
 
 The correspondence between sequential independence and switchability
 is fundamental.  A very large class of DPO rewriting systems -- along the
 lines of \cite{baldan2011adhesivity} -- can be identified where all
-independence pairs are good for left-linear rewriting systems. The details are in 
+independence pairs are strong for left-linear rewriting systems. The details are in 
 \Cref{app:fill}. Here it is important only to observe that such class includes $\cat{Set}$ and it is closed by comma and functor category constructions. 
 As such, it includes essentially all categories (e.g., presheaves over set) that are typically considered for modelling purposes.
 
 
 
 %\rem{Non introdurrei una classe, come detto sopra}{
-\begin{definition}[Tame rewriting systems]A left-linear DPO rewriting system is \emph{tame} if every independence pair between two direct derivations is good.
+\begin{definition}[Strong Enforcing rewriting systems]A left-linear DPO rewriting system is \emph{strong enforcing} if every independence pair between two direct derivations is strong.
 \end{definition}
 
 \begin{example}
   \label{ex:diff2}
   In light of \Cref{thm:church}, \Cref{ex:diff1} provides an example
-  of an independence pair which is not good, and thus of a non tame
+  of an independence pair which is not strong, and thus of a non strong enforcing
   adhesive rewriting system. Instead the category $\cat{Graph}$ is
-  tame by the result in ....
+  strong enforcing by the result in ....
 \end{example}
 
 \begin{remark}
-  By \Cref{thm:church} the existence of a good independence pair
+  By \Cref{thm:church} the existence of a strong independence pair
   entails switchability which, in turn, entails weak sequential
-  independence by construction. Tame rewriting systems are exactly
+  independence by construction. Strong Enforcing rewriting systems are exactly
   those rewriting systems in which these three notions coincide.
 \end{remark}
 %}
@@ -2613,15 +2545,15 @@ As such, it includes essentially all categories (e.g., presheaves over set) that
 
 %\rem{Questo e' quanto gia' asserito sopra, mettere in appendice e riferire}
 
-A source of tame left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
+A source of strong enforcing left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
 
 \begin{restatable}{proposition}{propEqui}
   \label{prop:equi}
-  Every linear DPO rewriting system $(\X, \R)$ is tame.
+  Every linear DPO rewriting system $(\X, \R)$ is strong enforcing.
 \end{restatable}
 [Proof in \Cref{propEqui-proof}]
 
-\subsection{Very tame rewriting systems}\label{subsec:verytame}
+\subsection{well switching rewriting systems}\label{subsec:verytame}
 
 Even if we work in a setting where sequential independence ensures switchability, when dealing with left-linear rules there is a further -- and possibly more serious -- issue, i.e., the fact that there can be more than one independence pairs between the same derivations. This can hinder the core idea of using sequential independence as a basis of a theory of concurrency for rewriting systems, since exchanges performed using different independence pairs may lead to derivations that are not abstraction equivalent, and thus one would equate computations that 
 should definitively be taken apart, as shown in the example below.
@@ -2668,16 +2600,16 @@ systems where uniqueness of the independence pair is always ensured.
 %\subsubsection{Graphical rewriting systems}\label{subsubsec:graphical}
 
 
-\begin{definition}[Very tame rewriting systems]
-A left-linear DPO rewriting system $(\X, \R)$ is \emph{very tame} if it is tame and, for every derivation $\der{D}:=\{\dder{D}_{i}\}_{i=0}^1$, there is at most one independence paire between $\dder{D}_0$ and $\dder{D}_1$.
+\begin{definition}[well switching rewriting systems]
+A left-linear DPO rewriting system $(\X, \R)$ is \emph{well switching} if it is strong enforcing and, for every derivation $\der{D}:=\{\dder{D}_{i}\}_{i=0}^1$, there is at most one independence paire between $\dder{D}_0$ and $\dder{D}_1$.
 \end{definition}
 
-The previous definition might sound restrictive. However, it is immediate to see that linear rewriting systems are all very tame (see Proposition~\ref{pr:weak}).
+The previous definition might sound restrictive. However, it is immediate to see that linear rewriting systems are all well switching (see Proposition~\ref{pr:weak}).
 %
 Moreover, we next introduce a class of rewriting systems, comprising
 all the ones used in concrete modelling applications of DPO rewriting
 (e.g., in the encoding of process calculi ..., ...) are \todo{INSERIRE ESEMPI QUI}
-actually very tame.
+actually well switching.
 
 \begin{definition}
 Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph, we define the \emph{depth} of a vertex $v\in V$ in the following way:
@@ -2709,7 +2641,7 @@ Let $\mathcal{G}=(V, E, s, t)$ be a directed acyclic graph, the category  $\gph{
 \end{example}
 
 \begin{restatable}{lemma}{lemVTame}
-  All node-merging graphical rewriting systems are very tame.
+  All node-merging graphical rewriting systems are well switching.
 \end{restatable}
 
 [Proof in \Cref{lemVTame}]
@@ -2734,7 +2666,7 @@ Let $\mathcal{G}=(V, E, s, t)$ be a directed acyclic graph, the category  $\gph{
   $Q$ is mono, i.e. if it reflects equivalence classes besides
   preserving them.
 
-  \todo[inline]{$\cat{EGraph}$ is quasi-adhesive and very tame}  
+  \todo[inline]{$\cat{EGraph}$ is quasi-adhesive and well switching}  
 \end{example}
 
 \subsection{Switch equivalence via consistent permutations} \label{subsec:perm}
@@ -2835,7 +2767,7 @@ derive some simple but fundamental properties for linear rewriting systems, name
 \end{enumerate}
 
 
-In particular, the two properties allows one to obtain a \emph{canonical form} for switching sequences: whenever two derivation sequences are switch equivalence via some permutation $\sigma$, then each one can be obtained from the other by applying switchings to pairs of rule applications which $\sigma$ reverses (the so-called inversions).\todo{P: questa prima parte da riportare in parte in intro}
+In particular, the two properties allows one to obtain a \emph{canonical form} for switching sequences: whenever two derivation sequences are switch equivalence via some permutation $\sigma$, then each one can be obtained from the other by applying switchings to pairs of rule applications which $\sigma$ reverses (the so-called inversions).\todo{P: un po' di questi discorsi sono copiati nell'intro, ridurre}
 
 The failure of the characterisation of switch equivalence via
 consistent permutations for left-linear rules leads to the
@@ -2859,10 +2791,10 @@ independently from the order of the switchings.
   left-linear DPO rewriting system.
   % 
   Consider a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$ and suppose
-  that $(i_0,i_1)$ is a good independence pair between $\dder{D}_0$
+  that $(i_0,i_1)$ is a strong independence pair between $\dder{D}_0$
   and $\dder{D}_1$, $(a_0,a_1)$ one between $\dder{D}_1$ and
   $\dder{D}_2$ and $(e_0, e_1)$ one between $\dder{D}_0$ and
-  $S_{a_0,a_1}(\dder{D}_2)$.\todo{P: non e' meglio qui limitarci a very tame, cosi' da evitare riferimenti a good pairs?}
+  $S_{a_0,a_1}(\dder{D}_2)$.\todo{P: non e' meglio qui limitarci a well switching, cosi' da evitare riferimenti a strong pairs?}
 \end{restatable}
 
 [Proof~\ref{lemSwitchConfluence-proof}]
@@ -2890,7 +2822,7 @@ independent. \todo{P: da dire meglio e Ci vorrebbe un esempio}
   $(\X,\R)$ a left-linear DPO rewriting system.
   Consider a derivation
   $\der{D}=\{\dder{D}_i\}_{i=0}^2$ and suppose that $(i_0,i_1)$ is a
-  good independence pair between $\dder{D}_0$ and $\dder{D}_1$,
+  strong independence pair between $\dder{D}_0$ and $\dder{D}_1$,
   $(a_0,a_1)$ one between $\dder{D}_1$ and $\dder{D}_2$ and
   $(e_0, e_1)$ one between $\dder{D}_0$ and
   $S_{a_0,a_1}(\dder{D}_2)$. Then the following properties hold true.
@@ -2903,13 +2835,13 @@ independent. \todo{P: da dire meglio e Ci vorrebbe un esempio}
   \item
     \label{lem:indep-global-left:2}
     If $S_{i_0, i_1}(\dder{D}_0)\seqind \dder{D}_2$ with a
-    good independence pair $(\alpha_0, \alpha_1)$, then
+    strong independence pair $(\alpha_0, \alpha_1)$, then
     $S_{i_0,i_1}(\dder{D}_1)$ and $S_{\alpha_0, \alpha_1}(\dder{D}_2)$
     are  sequentially independent.
   \end{enumerate}
 \end{restatable}
 
-\todo{P: anche qui sopra mi limiterei a very tame, cos\i' da evitare riferimenti a good e se si riesce anche alle indepdencen pairs}
+\todo{P: anche qui sopra mi limiterei a well switching, cos\i' da evitare riferimenti a strong e se si riesce anche alle indepdencen pairs}
   %
 
 [Proof~\ref{lemIndepGlobalLeft-proof}]
@@ -2951,7 +2883,7 @@ canonical form for switching derivations.
 [Proof~\ref{coCanonical-proof}]
 
 \iffalse
-	\begin{corollary} Given a tame  left-linear DPO rewriting system  $(\X,\R)$ with $\X$ an $\mathcal{M}$-adhesive category and a decorated derivation $(\der{D}, \alpha, \omega)$ with $\der{D}=\{\dder{D}_i\}_{i=0}^2$. Then the following are true:
+	\begin{corollary} Given a strong enforcing  left-linear DPO rewriting system  $(\X,\R)$ with $\X$ an $\mathcal{M}$-adhesive category and a decorated derivation $(\der{D}, \alpha, \omega)$ with $\der{D}=\{\dder{D}_i\}_{i=0}^2$. Then the following are true:
 		\begin{enumerate}
 			\item suppose that $(a_1,a_2)$ and $(e_0,e_1)$ are independence pairs witnessing  $\dder{D}_1\updownarrow_! \dder{D}_2$ and $\dder{D}_0\updownarrow_! S_{a_1,a_2}(\dder{D}_2)$ respectively, if $\dder{D}_0\updownarrow_!\dder{D}_1$, then $S_{e_0,e_1}(\dder{D}_0)\updownarrow_!S_{a_2,a_2}(\dder{D}_1)$;
 			\item
@@ -2986,7 +2918,7 @@ canonical form for switching derivations.
 	\todo{mettere esempio del perchÃ© fallisce nell'altra direziome}
 	\todo{anche una breve intro}
 
-	\begin{lemma}\label{lem:iig2}Let $(\X,\R)$ be a left-linear DPO rewriting system with $\X$ an $\mathcal{M}$-adhesive category. For every derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$, if $(i_0,i_1)$ is a good independence pair between $\dder{D}_0$ and $\dder{D}_1$, $(a_1,a_2)$ one between $\dder{D}_1$ and $\dder{D}_2$ and $\dder{D}_0\updownarrow S_{a_1,a_2}(\dder{D}_2)$ with good independence pair $(e_0,e_1)$, then $S_{e_0,e_1}(\dder{D}_0)$ and $S_{a_1,a_2}(\dder{D}_1)$ are weakly sequentially independent.
+	\begin{lemma}\label{lem:iig2}Let $(\X,\R)$ be a left-linear DPO rewriting system with $\X$ an $\mathcal{M}$-adhesive category. For every derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$, if $(i_0,i_1)$ is a strong independence pair between $\dder{D}_0$ and $\dder{D}_1$, $(a_1,a_2)$ one between $\dder{D}_1$ and $\dder{D}_2$ and $\dder{D}_0\updownarrow S_{a_1,a_2}(\dder{D}_2)$ with strong independence pair $(e_0,e_1)$, then $S_{e_0,e_1}(\dder{D}_0)$ and $S_{a_1,a_2}(\dder{D}_1)$ are weakly sequentially independent.
 	\end{lemma}
 	\begin{proof} As in the proof of \Cref{lem:indep-global-left}, \Cref{def:filler,def:switch} yield to us some diagrams.  First of all, let $(v,v')$ be the filler between $\dder{D}_0$ and $\dder{D}_1$ associated to $(i_1, i_2)$, then we have
 		\[\xymatrix{&&R_0 \ar@/_1cm/[ddrr]_(.35){i_0}|(.7)\hole \ar[dr]^{h_0}&& L_1\ar@/^1cm/[ddll]^(.35){i_1}  \ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar[dl]_{l_0} \ar@/_.8cm/[ddrr]|(.36)\hole^(.65){v}\ar[ur]^{r_0}&& G_1 && K_1 \ar@/^.8cm/[ddll]|(.36)\hole_(.65){v'}\ar[dl]_{k_1}\ar[lu]_{l_1} \ar[dr]^{r_1}\\L_0 \ar@/_.8cm/[ddrr]_(.2){j_0}|(.31)\hole|(.81)\hole \ar[dr]^(.4){m_0}|(.61)\hole && D_0 \ar[dl]|(.4)\hole_(.65){f_0}\ar[ur]|(.5)\hole^(.7){g_0}&&D_1 \ar[dr]|(.4)\hole^(.65){g_1} \ar[ul]|(.5)\hole_(.65){f_1}&&R_1\ar@/^.8cm/[ddll]^(.2){j_1}|(.31)\hole|(.81)\hole\ar[dl]_{h_1}\\&G_0 &&P_1\ar[dr]_{q_1} \ar[dl]^{q_0}\ar[ur]^(.4){p_1}\ar[ul]_(.4){p_0}&&G_2\\L_1 \ar@/^.8cm/[uurr]^(.2){i_1} \ar[ur]_(.35){f_0\circ i_1}|(.61)\hole&&Q_0 \ar[ul]|(.4)\hole_(.65){s_0}\ar[dr]|(.5)\hole^(.65){t_0} &&Q_1\ar[ur]|(.4)\hole^(.65){t_1} \ar[dl]|(.5)\hole_(.65){s_1} && R_0  \ar[ul]^(.35){g_1\circ i_0}|(.61)\hole\ar@/_.8cm/[uull]_(.2){i_0}\\&K_1 \ar[ur]_{q_0\circ v'} \ar[dr]_{r_1} \ar[ul]^{l_1}\ar@/^.8cm/[uurr]_(.65){v'}&&G'_1&& K_0 \ar[ur]_{r_0} \ar[ul]^{q_1\circ v} \ar[dl]^{l_0} \ar@/_.8cm/[uull]^(.65){v}\\&& R_1 \ar[ur]_{\hspace{-5pt}s_1\circ j_1}\ar@/^1cm/[uurr]^(.25){j_1}&& L_0 \ar[ul]^{t_0\circ j_0\hspace{-5pt}} \ar@/_1cm/[uull]_(.25){j_0} |(.69)\hole }\]
@@ -3276,7 +3208,7 @@ Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
 
 
 \section{$\mathcal{M}$-adhesivity is not enough}\label{app:fill}
-In \Cref{sec:ade} we introduced the notion of tame left-linear DPO rewriting system, a class that contains, for instance, all the linear rewriting systems. This result can be further refined: in a\cite{baldan2011adhesivity} a class  $\mathbb{B}$ of (quasi)adhesive category is defined for which the local Church-Rosser Theorem holds for left-linear DPO rewriting system. In our language, this means that every left-linear DPO rewriting system based on a category in $\mathbb{B}$ is tame. This section is devoted to repropose, and slightly generalize, the results of \cite{baldan2011adhesivity} to our context.
+In \Cref{sec:ade} we introduced the notion of strong enforcing left-linear DPO rewriting system, a class that contains, for instance, all the linear rewriting systems. This result can be further refined: in a\cite{baldan2011adhesivity} a class  $\mathbb{B}$ of (quasi)adhesive category is defined for which the local Church-Rosser Theorem holds for left-linear DPO rewriting system. In our language, this means that every left-linear DPO rewriting system based on a category in $\mathbb{B}$ is strong enforcing. This section is devoted to repropose, and slightly generalize, the results of \cite{baldan2011adhesivity} to our context.
 
 \noindent
 \parbox{10.4cm}{
@@ -3304,15 +3236,15 @@ The class of categories of type $\mathbb{B}$ is closed under the same constructi
 	\end{enumerate}
 \end{lemma}
 
-The following result shows that the mixed and pushout decomposition properties guarantee that every independence pair is good.
+The following result shows that the mixed and pushout decomposition properties guarantee that every independence pair is strong.
 
-\begin{theorem}\label{thm:good1}Let $\X$ be an $\mathcal{M}$-adhesive category with all pushouts and satisfying the $\mathcal{M}$-mixed and the $\mathcal{M}$-pushout decomposition properties. Then every left-linear DPO rewriting system on $\X$ is tame.
+\begin{theorem}\label{thm:good1}Let $\X$ be an $\mathcal{M}$-adhesive category with all pushouts and satisfying the $\mathcal{M}$-mixed and the $\mathcal{M}$-pushout decomposition properties. Then every left-linear DPO rewriting system on $\X$ is strong enforcing.
 \end{theorem}
 \begin{proof}
 	Consider the derivation $\der{D}=\{\dder{D}_i\}_{i=0}^1$, made by two weakly sequentially independent derivations, depicted below.
 	\[\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0} && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} && R_1 \ar[d]^{h_1} \\G_0 && \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2 }\]
 
-	We have to show that $(i_0, i_1)$ is a good independence pair. Now, by hypothesis $\X$ has all pushouts, thus the only thing to show is that the squares below are pushouts (the third one is the usual pullback of $f_1\colon D_1\mto G_0$ along $g_0\colon D_0\to G_1$).
+	We have to show that $(i_0, i_1)$ is a strong independence pair. Now, by hypothesis $\X$ has all pushouts, thus the only thing to show is that the squares below are pushouts (the third one is the usual pullback of $f_1\colon D_1\mto G_0$ along $g_0\colon D_0\to G_1$).
 	\[\xymatrix{K_0 \ar[r]^{r_0}  \ar[d]_{u_0}& R_0 \ar[d]^{i_0} & K_1 \ar@{>->}[r]^{l_1}  \ar[d]_{u_1}& L_1 \ar[d]^{i_1}&P \ar@{>->}[r]^{p_0} \ar[d]_{p_1}& D_0\ar[d]^{g_0} \\ P \ar[r]_{p_1} & D_1 &P \ar[r]_{p_0}  & D_0&D_1 \ar@{>->}[r]_{f_1} & G_1}\]
 
 	To see this, consider the following two diagrams.
@@ -3425,7 +3357,7 @@ From \Cref{lem:closed,lem:prop} we can now deduce at once the following.
 
 Using \Cref{thm:good1} we finally get the main result of our appendix.
 \begin{corollary}
-Let $(\X, \mathcal{M})$ be a pair of type $\mathbb{B}^+$, then every left-linear DPO-rewriting system is tame.
+Let $(\X, \mathcal{M})$ be a pair of type $\mathbb{B}^+$, then every left-linear DPO-rewriting system is strong enforcing.
 \end{corollary}
 
 
@@ -3602,10 +3534,10 @@ derivations which is worth mentioning.
 
 \subsubsection{Proofs for \Cref{subsec:CR}}
 
-To prove the Local Church-Rosser Theorem, let us begin deducing some properties from the existence of a good independence pair. 
+To prove the Local Church-Rosser Theorem, let us begin deducing some properties from the existence of a strong independence pair. 
 
 \begin{remark}\label{rem:deco} 
-	Let $(i_0, i_1)$ be a good
+	Let $(i_0, i_1)$ be a strong
 	independence pair between the direct derivations $\dder{D}_0$ and
 	$\dder{D}_1$. We can then build the solid part of the diagram
 	below.
@@ -3708,7 +3640,7 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 	
 	Moreover, by \Cref{prop:pbpoad}, the first square below is a
 	pullback, therefore, by \cref{rem:deco} the last three squares
-	witness that $(j_0, j_1)$ is a good independence pair too.
+	witness that $(j_0, j_1)$ is a strong independence pair too.
 	\[
 	\xymatrix{P\ar[r]^{q_1} \ar@{>->}[d]_{q_0}&Q_1
 		\ar@{>->}[d]^{a_1}&K_1 \ar[r]^{r_1} \ar[d]_{u_1}& R_1
@@ -3752,7 +3684,7 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
   it too. The first point of \Cref{lem:popb} yields the thesis.
 \end{proof}
 
-\begin{remark}\label{rem:fill} Let $\der{D}=\{\dder{D}_i\}_{i=0}^n$ be a derivation and $(i_0, i_1)$ a good independence pair between $\dder{D}_0$ and $\dder{D}_1$. Let also $\{\der{E}_{i}\}_{i=0}^1$ be a switch for them along $(i_0, i_1)$. Since, by \Cref{thm:switch_uni}, all switches are abstraction equivalent, we get the diagram below.
+\begin{remark}\label{rem:fill} Let $\der{D}=\{\dder{D}_i\}_{i=0}^n$ be a derivation and $(i_0, i_1)$ a strong independence pair between $\dder{D}_0$ and $\dder{D}_1$. Let also $\{\der{E}_{i}\}_{i=0}^1$ be a switch for them along $(i_0, i_1)$. Since, by \Cref{thm:switch_uni}, all switches are abstraction equivalent, we get the diagram below.
 	
 	\[\xymatrix{&&R_0 \ar@/_1cm/[ddrr]_(.35){i_0}|(.7)\hole
 		\ar[dr]^{h_0}&& L_1\ar@/^1cm/[ddll]^(.35){i_1}
@@ -3775,7 +3707,7 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 
 \begin{proposition}
 	\label{pr:weak}
-	Let $(\X, \R)$ be a linear DPO rewriting system. Then it is very tame.
+	Let $(\X, \R)$ be a linear DPO rewriting system. Then it is well switching.
 \end{proposition}
 \begin{proof}
 	
@@ -3800,7 +3732,7 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 
 
 \begin{proof}
-	Every node-merging graphical rewriting system is tame because $\gph{G}$ is in the class $\mathbb{B}^+$ defined in \Cref{app:fill}.  Consider the following diagram 
+	Every node-merging graphical rewriting system is strong enforcing because $\gph{G}$ is in the class $\mathbb{B}^+$ defined in \Cref{app:fill}.  Consider the following diagram 
 	\[\xymatrix@R=25pt@C=30pt{L_0 \ar[d]_{m_0}&& K_0
 		\ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0
 		\ar@<-.5ex>@/^.35cm/[drrr]|(.23)\hole|(.34)\hole_(.4){i_0} 	\ar@<.5ex>@/^.35cm/[drrr]^(.2){j_0}|(.31)\hole |(.4)\hole
@@ -4065,7 +3997,7 @@ From \Cref{lem:idevero} we can deduce at once the following.
 
 
 \begin{lemma}\label{lem:coswap}
-Let $(\X, \R)$ be a tame rewriting system and $(i_0, i_1)$ an independence pair between $\dder{D}_{0}$ and $\dder{D}_1$, let also $\der{E}=\{\dder{E}_i\}_{i=0}^1$  be a switch of them along $(i_0, i_1)$. Then the transposition $(1,2):[0,1]\to [0,1]$ is a consistent permutation.
+Let $(\X, \R)$ be a strong enforcing rewriting system and $(i_0, i_1)$ an independence pair between $\dder{D}_{0}$ and $\dder{D}_1$, let also $\der{E}=\{\dder{E}_i\}_{i=0}^1$  be a switch of them along $(i_0, i_1)$. Then the transposition $(1,2):[0,1]\to [0,1]$ is a consistent permutation.
 \end{lemma}
 \begin{proof}
 	Let $(\tpro{D}, \{\iota_{X}\}_{X\in \delta(\der{D})})$ and $(\tpro{E}, \{\iota'_{X}\}_{X\in \delta(\der{E})})$ be the colimiting cocones of $\Delta(\der{D})$ and $\Delta(\der{E})$. Using the notation of \Cref{rem:fill} we have
@@ -4161,7 +4093,7 @@ By \Cref{rem:abs,rem:compo} it is enough to find a consistent permutation betwee
 \begin{proof}
 NOTES ON THE FUNDAMENTAL LEMMA WE NEED
 
-Everything is very tame, so that sequential independence coincides with switchability and we do not have ambiguity in the choice of an independence pair
+Everything is well switching, so that sequential independence coincides with switchability and we do not have ambiguity in the choice of an independence pair
 
 
 We start with the following situation.
@@ -4183,7 +4115,7 @@ Switch second and third
 \[\xymatrix@C=15pt{L_1\ar[d]_{f_0\circ i_1}&& K_1 \ar[d]_{k'_1}\ar[ll]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){c_0}|(.285)\hole \ar[dr]|(.28)\hole_{h'_1} && L_2 \ar@/_.35cm/[dlll]^(.4){c_1} \ar[dl]|(.28)\hole^{f'_1\circ b_1}& K_2 \ar[d]^{k'_2}\ar[l]_{l_2} \ar[r]^{r_2} & R_2 \ar[dr]|(.28)\hole_{h'_2} \ar@/^.35cm/[drrr]_(.4){d_0}|(.285)\hole  && L_0 \ar@/_.35cm/[dlll]^(.4){d_1} \ar[dl]|(.28)\hole^{\hat{m}_0}& K_0 \ar[d]^{\hat{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]^{g_2\circ b_0} \\G_0 && \ar[ll]^{f'_0} D'_0 \ar[rr]_{g'_0}&& G'_1  && \ar[ll]^{\hat{f}_1} \hat{D}_1 \ar[rr]_{\hat{g}_1}&& G'_2 && \ar[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
 And we know that
 \[m'_0=\hat{f}_1\circ d_1 \qquad h_2=g'_2\circ d_0\]
-\todo{qua abbiamo usato il secondo lemma dei tre passi (quello condizionale)}Since the rewriting system is very tame and using the three steps lemmas we can characterize $c_0\colon R_1\to \hat{D}_1$ and $c_1\colon L_2\to D'_0$ as the unique arrows fitting in the diagrams
+\todo{qua abbiamo usato il secondo lemma dei tre passi (quello condizionale)}Since the rewriting system is well switching and using the three steps lemmas we can characterize $c_0\colon R_1\to \hat{D}_1$ and $c_1\colon L_2\to D'_0$ as the unique arrows fitting in the diagrams
 \[\xymatrix@R=15pt@C=15pt{&&R_1 \ar@/_1.2cm/[dddl]_(.4){a_0}|(.63)\hole\ar[dl]^{j_0}\ar[dd]^{c'_0} \ar@{.>}[dr]^{c_0}\\&D_2 \ar[dl]^(.4){f_2}&&\hat{D}_1 \ar[dr]^{\hat{g}_1}\\G_2 && P\ar[dr]_{p_4} \ar[ur]_{p_3}\ar[dl]^{p_1} \ar[ul]^{p_2}&&G'_2\\& D'_1 \ar[ul]^{g'_1}&&D'_2 \ar[ur]_{f'_2}}\]
 
 \[\xymatrix@R=15pt@C=15pt{&&L_2 \ar[dl]^{j_1} \ar@/_1.2cm/[dddl]_(.4){z_1}|(.63)\hole\ar[dd]^{c'_1} \ar@{.>}[dr]^{c_1}\\&D_1 \ar[dl]^(.4){f_1}&&D'_0 \ar[dr]^{g'_0}\\G_1 && Q\ar[dr]_{q_4} \ar[ur]_{q_3}\ar[dl]^{q_1} \ar[ul]_{q_2}&&G'_1\\& D_0 \ar[ul]^{g_0}&&D'_1 \ar[ur]_{f'_1}}\]
@@ -4193,7 +4125,7 @@ Switch first and second
 \[\xymatrix@C=15pt{L_2\ar[d]_{f'_0\circ c_1}&& K_2 \ar[d]_{\hat{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){e_0}|(.285)\hole \ar[dr]|(.28)\hole_{\hat{h}_2} && L_1 \ar@/_.35cm/[dlll]^(.4){e_1} \ar[dl]|(.28)\hole^{\hat{m}_1}& K_1 \ar[d]^{\hat{k}_1}\ar[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){t_0} \ar[dr]|(.28)\hole_{\hat{g}_1\circ c_0}   && L_0  \ar[dl]|(.28)\hole^{\hat{m}_0} \ar@/_.35cm/[dlll]^(.4){t_1}& K_0 \ar[d]^{\hat{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]^{g_2\circ b_0} \\G_0 && \ar[ll]^{\hat{f}_0} \hat{D}_0 \ar[rr]_{\hat{g}_0}&& \hat{G}_1  && \ar[ll]^{\tilde{f}_1} \tilde{D}_1 \ar[rr]_{\tilde{g}_1}&& G'_2 && \ar[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
 Moreover
 \[f_0\circ i_1=\hat{f}_0\circ e_1 \qquad h'_2=\tilde{g}_1\circ e_0\]
-and $(t_0, t_1)$ is characterized using again very tameness and the first $3$-steps Lemma as the unique arrows fitting in:
+and $(t_0, t_1)$ is characterized using again well switchingness and the first $3$-steps Lemma as the unique arrows fitting in:
 \[\xymatrix{&R_1 \ar[dl]_{a_0} \ar@{.>}[dr]^{t_0} \ar@/^.4cm/[dd]|\hole^(.6){c_0}\ar[d]_{t'_0}\\ D'_1 \ar[d]_{g'_1}&P\ar[d]_{p_3} \ar[r]^{p_4} \ar[l]_{p_1}&D'_2\ar[d]^{f'_2}\\G'_1&\hat{D}_1 \ar[l]^{\hat{f}_1}\ar[r]_{\hat{g}_1}& G'_2}\]
 
 
@@ -4214,7 +4146,7 @@ Switch second and first
 \[\xymatrix@C=15pt{L_2\ar[d]_{f_0\circ z_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){y_0}|(.285)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_0 \ar@/_.35cm/[dlll]^(.4){y_1} \ar[dl]|(.28)\hole^{\check{m}_0}& K_0 \ar[d]^{\check{k}_0}\ar[l]_{l_0} \ar[r]^{r_0} & R_0 \ar[dr]|(.28)\hole_{\check{g}_1\circ z_0} \ar@/^.35cm/[drrr]_(.4){x_0}|(.285)\hole  && L_1 \ar@/_.35cm/[dlll]^(.4){x_1} \ar[dl]|(.28)\hole^{\check{m}_1}& K_1 \ar[d]^{\check{k}_1}\ar[l]_{l_1} \ar[rr]^{r_1} && R_1\ar[d]^{g_2\circ j_0} \\G_0 && \ar[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar[ll]^{\mathring{f}_1} \mathring{D}_1 \ar[rr]_{\mathring{g}_1}&& \check{G}_2 && \ar[ll]^{\check{f}_2} \check{D}_2 \ar[rr]_{\check{g}_2}&& G_3 }\]
 As before we have
 \[m_0=\check{f}_0\circ y_1 \qquad \check{h}_2=\mathring{g}_1\circ y_0\]
-The really important thing to notice is that, by very tameness we have
+The really important thing to notice is that, by well switchingness we have
 \begin{align*}
 	f_0'\circ c_1 & =f'_0\circ q_3\circ c'_1 \\&=f_0\circ q_1\circ c'_1\\&=f_0\circ z_1
 \end{align*}
