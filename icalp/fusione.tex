@@ -2,7 +2,7 @@
 \newif\ifreport
 \reporttrue
 %\reportfalse
-  
+   
 % full includes some additional material
 \newif\iffull
 %\fulltrue
@@ -812,40 +812,40 @@ sufficient, hence it cannot be used for proving (1) and (2).
 Nevertheless, we will show that property (1) still holds, while only a weak form of (2) does.
 
 
-\todo[inline]{
-This fails for left-linear rules where, as observed
-in~\cite{baldan2017domains}, for graph rewriting, the possibility of
-merging parts of the state leads to a sort of disjunctive causality,
-i.e., a rewriting step, say $r_c$ can be enabled by two different
-rewriting steps $r_a$ and $r_b$, in a way that in a derivation
-$r_a r_b r_c$ steps $r_b$ and $r_c$ are independent since the presence
-of $r_a$ in the past is sufficient for enabling $r_a$, while in
-$r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent. }
+% \todo[inline]{
+% This fails for left-linear rules where, as observed
+% in~\cite{baldan2017domains}, for graph rewriting, the possibility of
+% merging parts of the state leads to a sort of disjunctive causality,
+% i.e., a rewriting step, say $r_c$ can be enabled by two different
+% rewriting steps $r_a$ and $r_b$, in a way that in a derivation
+% $r_a r_b r_c$ steps $r_b$ and $r_c$ are independent since the presence
+% of $r_a$ in the past is sufficient for enabling $r_a$, while in
+% $r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent.
+% }
 
-\todo[inline]{
-DA RIUSARE\\
-Firstly, Church-Rosser theorem does not work out of the box. In
-particular, sequential independence between rewriting steps~\cite{}
-expressed in terms of the existence of a so-called independence pair
-is a canonical and well-understood notion of independence in the
-linear case. \todo{P: Too technical? Forse qui e' piu' esplicativo un
-  esempio} Whenever two steps are sequential independent
-\begin{itemize}
-\item they can be switched and 
-\item the result of the switch is uniquely determined.
-\end{itemize}
-
-Here we observe that, in general, both property can fail: sequential
-independent steps could be not switchable and different independent
-pairs could exist leading to different switches of the same rewriting
-steps.  A refined notion of independence needs to be considered to ensure
-that independent rewriting steps can be switched, which is based in the concept
-of fillers. The problem was identified
-in~\cite{baldan2011adhesivity}, where a subclass of adhesive
-categories was identified where independence as induced by a filler
-coincides with sequential independence (as induced by an independence
-pair). Here it is extended to $\mathcal{M}$-adhesive categories.
-}
+% \todo[inline]{
+% DA RIUSARE\\
+% Firstly, Church-Rosser theorem does not work out of the box. In
+% particular, sequential independence between rewriting steps~\cite{}
+% expressed in terms of the existence of a so-called independence pair
+% is a canonical and well-understood notion of independence in the
+% linear case. \todo{P: Too technical? Forse qui e' piu' esplicativo un
+%   esempio} Whenever two steps are sequential independent
+% \begin{itemize}
+% \item they can be switched and 
+% \item the result of the switch is uniquely determined.
+% \end{itemize}
+% Here we observe that, in general, both property can fail: sequential
+% independent steps could be not switchable and different independent
+% pairs could exist leading to different switches of the same rewriting
+% steps.  A refined notion of independence needs to be considered to ensure
+% that independent rewriting steps can be switched, which is based in the concept
+% of fillers. The problem was identified
+% in~\cite{baldan2011adhesivity}, where a subclass of adhesive
+% categories was identified where independence as induced by a filler
+% coincides with sequential independence (as induced by an independence
+% pair). Here it is extended to $\mathcal{M}$-adhesive categories.
+% }
 
 First of all, we will provide a refined notion of independence, which is based 
 in the concept of fillers. The issues was identified
