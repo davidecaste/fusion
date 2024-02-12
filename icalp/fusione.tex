@@ -1,4 +1,4 @@
-\documentclass[a4paper,UKenglish,cleveref,pdftex, thm-restate,numberwithinsect,anonymous]{lipics}
+\documentclass[a4paper,UKenglish,cleveref,pdftex,thm-restate,numberwithinsect,anonymous]{lipics}
 \newif\ifreport
 \reporttrue
 %\reportfalse
@@ -793,16 +793,16 @@ The characterisation of switch equivalence based on consistent
 permutations is the key to derive some
 properties for linear rewriting systems, namely
 \begin{enumerate}
-\item \emph{confluence of switching}: when transforming
+\item \emph{consistency of switching}: when transforming
   sequences of rewriting steps into equivalent ones by switching independent steps, the
   result not depends on the order in which switchings are applied, but
   only on the resulting permutation;
-  
 \item \emph{globality of independence}: if two independent steps are
   moved forward or backward due to the application of switchings to a
   derivation, they remain independent.
 \end{enumerate}
-Properties (1) and (2) allow one to deduce a canonical form for equivalence proofs between derivations seen as concurrent computations.
+Properties (1) and (2) allow one to deduce a canonical form for equivalence proofs 
+between sequences of rewriting steps seen as concurrent computations.
 
 Unfortunately, for left-linear rewriting systems the characterisation
 of switch equivalence based on consistent permutations fails: the
@@ -810,7 +810,7 @@ existence of a consistent permutation is only necessary but not
 sufficient, hence it cannot be used for proving (1) and (2).
 %
 This leads to the question asking whether the properties above hold.
-We show that actually much of the theory can be retained: confluence
+We show that actually much of the theory can be retained: consistency
 of switching still holds, while globality of independence holds in a
 weak form, conceptually linked to the fact that fusions introduce a
 form of disjunctive causality. Finally, a canonical form for switching
@@ -868,7 +868,7 @@ sequences can also be recovered.
 
 \section{$\mathcal{M}$-adhesive categories and DPO rewriting systems}\label{sec:ade}
 
-This first section is devoted to recall the definition and the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}.
+This first section recalls definitions and basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}.
 
 \begin{notation}
   We stipulate some notational conventions that will be used
@@ -1041,9 +1041,10 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
   adhesive where $E \rightrightarrows {V}$ is the two object category
   with two morphisms $s,t \colon{E} \to {V}$. In a similar way,
   various categories of hypergraphs can be shown to be adhesive, 
-  such as term graphs and hierarchical graphs~\cite{CastelnovoGM24}.
-% while the category $\cat{sGraphs}$ of simple graphs, i.e., graphs without
-%  parallel edges is $\reg{(\cat{sGraphs})}$-adhesive.\todo{Add reference for simple graphs, add
+  such as term graphs and hierarchical graphs~\cite{CastelnovoGM24},
+  as well as the category $\cat{sGraphs}$ of simple graphs, i.e. graphs without
+  parallel edges, is $\reg{(\cat{sGraphs})}$-adhesive~\cite{xxx}
+.%\todo{Add reference for simple graphs, add
  %   hierarchical graphs and term
  %   graphs\cite{castelnovo2023thesis,CastelnovoGM22}).}
 \end{example}
@@ -2046,7 +2047,7 @@ Finally, we can show that consistent permutations between composable abstract de
 
 In this section we discuss the notion of independence between
 consecutive rewriting steps, a fundamental ingredient of the rewriting
-theory, which comes into play when viewing a derivation sequence as a
+theory, which comes into play when viewing a sequence of steps as a
 concurrent computation. We observe that moving from linear to
 left-linear rules leads to the failure of various basic properties of
 the classical notion of independence used in the linear setting and we
@@ -2580,7 +2581,7 @@ As a sanity check not that a source of strong enforcing left-linear DPO rewritin
 \end{restatable}
 [Proof in \Cref{propEqui-proof}]
 
-\subsection{well switching rewriting systems}\label{subsec:verytame}
+\subsection{Well-switching rewriting systems}\label{subsec:verytame}
 
 Even if we work in a setting where sequential independence ensures switchability, when dealing with left-linear rules there is a further -- and possibly more serious -- issue, i.e., the fact that there can be more than one independence pairs between the same derivations. This can hinder the core idea of using sequential independence as a basis of a theory of concurrency for rewriting systems, since exchanges performed using different independence pairs may lead to derivations that are not abstraction equivalent, and thus one would equate computations that 
 should definitively be taken apart, as shown in the example below.
