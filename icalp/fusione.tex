@@ -488,35 +488,39 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
 
 
 \begin{abstract}
-  When two sequences of steps executed by a computational device can
+  When can two sequences of steps executed by a computational device
   be considered equivalent?  This is a relevant question if one
   considers concurrent and distributed systems, since the independence
-  of two steps means that they could be executed in any order, and
+  of two steps means that they could be executed in any order and
   potentially in parallel.
   % 
   We investigate the issue in the context of adhesive categories, a
   very general instance of the DPO approach to rewriting. More
   precisely, we focus on left-linear rules, which not only consume,
-  preserve and generate entities, as linear rules do, but may
-  ``merge'' parts of the state.
+  preserve and generate entities, as linear rules do, but also have
+  the capability of ``merging'' parts of the state.
   % 
   An apparently minimal, yet technically hard enhancement, 
   % 
   % We refine the established notion of sequential independence
   % between steps, and ...
   since the canonical notion of independence used for linear rewriting
-  systems does not work out of the box, but it requires the
-  restriction to well-behaved classes of left-linear rules.
+  systems does not work out of the box.
   %
-  In fact, the standard characterisation of independence does not hold anymore,
-  and this requires a substantial revision of the 
-  theory for the linear case, since a number of basic properties,
-  essential in the development of a theory of concurrency, were
-  derived from such a description.
+  Moreover, a standard characterisation of independence that - in the
+  linear case - allows one to derive a number of properties,
+  essential in the development of a theory of concurrency, no longer
+  holds, and this requires a substantial revision of the
+  theory.
   %
-  The paper introduce a novel characterisation of independence, for which we prove a Church-Rosser property,
-  properly extending the class of formalisms 
-  that can be modelled in the adhesive framework. 
+  The paper performs an in-depth study of the notion of independence,
+  for left-linear rules, introduces a novel characterisation of
+  independence, identifies well-behaved classes of left-linear
+  rewriting systems and provides some fundamental results including a
+  Church-Rosser property and the existence of canonical equivalence
+  proofs for concurrent computations. These results properly extends
+  the class of formalisms that can be modelled in the adhesive
+  framework.
 \end{abstract}
 
 
