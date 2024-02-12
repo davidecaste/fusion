@@ -508,6 +508,7 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   systems does not work out of the box, but it requires the
   restriction to well-behaved classes of left-linear rules.
   %
+<<<<<<< HEAD
   In fact, the standard characterisation of independence does not hold anymore,
   and this requires a substantial revision of the 
   theory for the linear case, since a number of basic properties,
@@ -517,6 +518,22 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   The paper introduce a novel characterisation of independence, for which we prove a Church-Rosser property,
   properly extending the class of formalisms 
   that can be modelled in the adhesive framework. 
+=======
+  Moreover, a standard characterisation of independence that -- in the
+  linear case -- allows one to derive a number of properties,
+  essential in the development of a theory of concurrency, no longer
+  holds, and this requires a substantial revision of the
+  theory.
+  %
+  The paper performs an in-depth study of the notion of independence
+  for left-linear rules: it introduces a novel characterisation of
+  independence, identifies well-behaved classes of left-linear
+  rewriting systems and provides some fundamental results including a
+  Church-Rosser property and the existence of canonical equivalence
+  proofs for concurrent computations. These results properly extends
+  the class of formalisms that can be modelled in the adhesive
+  framework.
+>>>>>>> refs/remotes/origin/main
 \end{abstract}
 
 
@@ -703,7 +720,7 @@ biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms is
 at the core of e-graphs (equality graphs), recently used for
 rewrite-driven compiler optimisations~\cite{WNW:egg}: rather than
 explicitly merging nodes corresponding to equal expression, the idea
-here - conceptually and, as we will see, also mathematically similar -
+here -- conceptually and, as we will see, also mathematically similar --
 is to maintain an equivalence\todo{P: more precisely a congruence}
 over the nodes.  \todo{P: la sequenza di lavori su questo \`e ampia,
   vedere se c'\`e qualcosa d'altro}
@@ -773,13 +790,53 @@ rules have been considered in various instances (mainly in categories
 of graphs) and some results concerning the corresponding rewriting
 theory have been put forward, to the best of our knowledge the
 phenomena arising when rewriting with left-linear rules in the general
-setting of adhesive and quasi-adhesive categories (which capture most
-``applications'') have not been systematically explored. ADD REFS
+setting of adhesive and quasi-adhesive categories 
+%(which capture most ``applications'') 
+have not been systematically explored. ADD REFS
 
 As an initial step in performing this exploration, we observe that for left-linear
 rules a number of fundamental properties that play a role in the
 corresponding theory of rewriting need to be deeply revised, or plainly do not hold.
+%
+More to the point, for linear rewriting systems sequential independence of 
+two sequences of steps can be characterised in terms of the existence of 
+what is called a consistent permutation among them, which can be obtained through 
+an isomorphism between their colimits~\cite{xxx}. This result, which is folklore for 
+various categories of graphs, is explicitly proved here for $\mathcal{M}$-adhesive categories. 
+%
+The characterisation of switch equivalence based on consistent permutations is the key to
+derive some simple but fundamental properties for linear rewriting systems, namely
+\begin{enumerate}
+\item \emph{confluence of switching}: when transforming derivation
+  sequences into equivalent ones by switching independent steps, the
+  result not depends on the order in which switchings are applied, but
+  only on the resulting permutation;
+  
+\item \emph{globality of independence}: if two independent steps are
+  moved forward or backward due to the application of switchings to a
+  derivation, they remain independent.
+\end{enumerate}
 
+Unfortunately, we show that for left-linear rewriting systems the characterisation of
+shift equivalence based on consistent permutations fails: the
+existence of a consistent permutation is only necessary but not
+sufficient, hence it cannot be used for proving (1) and (2). 
+%
+Nevertheless, we will show that property (1) still holds, while only a weak form of (2) does.
+
+
+\todo[inline]{
+This fails for left-linear rules where, as observed
+in~\cite{baldan2017domains}, for graph rewriting, the possibility of
+merging parts of the state leads to a sort of disjunctive causality,
+i.e., a rewriting step, say $r_c$ can be enabled by two different
+rewriting steps $r_a$ and $r_b$, in a way that in a derivation
+$r_a r_b r_c$ steps $r_b$ and $r_c$ are independent since the presence
+of $r_a$ in the past is sufficient for enabling $r_a$, while in
+$r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent. }
+
+\todo[inline]{
+DA RIUSARE\\
 Firstly, Church-Rosser theorem does not work out of the box. In
 particular, sequential independence between rewriting steps~\cite{}
 expressed in terms of the existence of a so-called independence pair
@@ -801,17 +858,23 @@ in~\cite{baldan2011adhesivity}, where a subclass of adhesive
 categories was identified where independence as induced by a filler
 coincides with sequential independence (as induced by an independence
 pair). Here it is extended to $\mathcal{M}$-adhesive categories.
+}
 
+First of all, we will provide a refined notion of independence, which is based 
+in the concept of fillers. The issues was identified
+in~\cite{baldan2011adhesivity}, where a subclass of adhesive
+categories was identified where independence as induced by a filler
+coincides with sequential independence (as induced by an independence
+pair). Here it is extended to $\mathcal{M}$-adhesive categories.
 
-We face the problem in the setting of $\mathcal{M}$-adhesive
-categories (which capture adhesive and quasi-adhesive categories).
-A difficult task, since the most natural idea, put forward in~\cite{baldan2017domains}, 
+Then, we move to restrict the class of admissible left-linear rewriting systems,
+always working at the level of $\mathcal{M}$-adhesive categories.
+Unfortunately, the most natural idea, put forward in~\cite{baldan2017domains}, 
 of limiting sequential independence to those cases in which the switch is possible
 and uniquely determined does fall short.
 %
-In this work we focus on a class of rewriting systems, which we call
-\emph{very tame rewriting systems}, in $\mathcal{M}$-adhesive
-categories where sequential independence ensures existence and
+In this work we focus on what we call
+\emph{strongly tame rewriting systems}, where sequential independence ensures existence and
 uniqueness of the switch and argue that this is the right setting for
 dealing with left-linear rewriting systems.
 
@@ -826,6 +889,7 @@ categories are very tame.
 On the other hand, we show that an appropriate theory of rewriting can
 be developed for very tame rewriting systems, recovering, sometimes in
 weakened form, results which hold in the linear case.  Local
+<<<<<<< HEAD
 Curch-Rosser is fully recovered for very tame rewriting systems.
 
 For linear rewriting systems sequential independence of derivations
@@ -854,6 +918,9 @@ $r_a r_b r_c$ steps $r_b$ and $r_c$ are independent since the presence
 of $r_a$ in the past is sufficient for enabling $r_a$, while in
 $r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent. }
 
+=======
+Church-Rosser is fully recovered for very tame rewriting systems.
+>>>>>>> refs/remotes/origin/main
 
 \section{$\mathcal{M}$-adhesive categories and DPO rewriting systems}\label{sec:ade}
 
