@@ -10,7 +10,7 @@
 
 % additional text
 \iffull
-\newcommand{\full}[1]{#1}
+\newcommand{\full}[1]{{color{blue}#1}}
 %\newcommand{\short}[1]{}
 \else 
 \newcommand{\full}[1]{}
@@ -965,7 +965,7 @@ We will use $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs t
 \begin{example}
   \label{rem:iso}
   Let $\mathsf{Iso(\X)}$ be the class of 
-  isomorphisms: Any category $\X$ is $\mathsf{Iso(\X)}$-adhesive.
+  isomorphisms. Any category $\X$ is $\mathsf{Iso(\X)}$-adhesive.
 \end{example}
 
 %\todo{P: qui probabilmente si puo' compattare tenendo solo cio' che si usa}
@@ -1030,8 +1030,9 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
   with two morphisms $s,t \colon{E} \to {V}$. In a similar way,
   various categories of hypergraphs can be shown to be adhesive, while
   the category $\cat{sGraphs}$ of simple graphs, i.e., graphs without
-  parallel edges is ?\todo{P: su simple graphs riusciamo a dire qualcosa? Non sono reg-adesivi, giusto?}, i.e.
-  $\reg{(\cat{sGraphs})}$-adhesive.\todo{Add hierarchical graphs and term graphs\cite{castelnovo2023thesis,CastelnovoGM22}).}
+  parallel edges is $\reg{(\cat{sGraphs})}$-adhesive.\todo{Add reference for simple graphs, add
+    hierarchical graphs and term
+    graphs\cite{castelnovo2023thesis,CastelnovoGM22}).}
 \end{example}
 
 
@@ -1051,19 +1052,28 @@ of this approach to abstract rewriting.
 
 \begin{definition}[\cite{habel2012mathcal,heindel2009category}]
   Let $\X$ be an $\mathcal{M}$-adhesive category. A \emph{left
-    $\mathcal{M}$-linear} rule $\rho$ is a pair $(l,r)$ of arrows with
-  $l: K \to L$ and $r: K \to R$, such that $l$ belongs to
-  $\mathcal{M}$.  The rule $\rho$ is said
-  \emph{$\mathcal{M}$-linear} if $r\in \mathcal{M}$ too. A rule $\rho$
-  is said to be \emph{consuming} if $l$ is not an isomorphism.  The
-  object $L$ is the \emph{left-hand side}, $R$ is the \emph{right-hand
-    side}, and $K$ the \emph{glueing object}.
+    $\mathcal{M}$-linear} rule $\rho$ is a pair $\rho = (l,r)$ of
+  arrows with $l: K \to L$ and $r: K \to R$, such that $l$ belongs to
+  $\mathcal{M}$.  The rule $\rho$ is \emph{$\mathcal{M}$-linear} if
+  $r\in \mathcal{M}$ too.
+  %
+  \full{A rule $\rho$ is said to be
+    \emph{consuming} if $l$ is not an isomorphism.}%
+  %
+  The object $L$ is
+  the \emph{left-hand side}, $R$ is the \emph{right-hand side}, and
+  $K$ the \emph{glueing object}.
 
   A \emph{left-linear DPO rewriting system} is a pair $(\X, \R)$ where
   $\X$ is an $\mathcal{M}$-adhesive category and $R$ is a set of left
   $\mathcal{M}$-linear rules. The rewriting system $(\X, \R)$ is
-  called \emph{linear} (\emph{consuming}) if every rule in $R$ is
-  $\mathcal{M}$-linear (consuming).
+  called \emph{linear}
+  %
+  \full{(\emph{consuming})}
+  %
+  if every rule in $R$ is
+  $\mathcal{M}$-linear.
+  \full{(consuming)}
 
   \noindent
   \parbox{10cm}{\hspace{15pt}Given two objects $G$ and $H$ and a rule
@@ -1109,16 +1119,18 @@ A derivation can now be defined simply as a sequence of direct derivations.
   $\der{D}: G \Mapsto H$, is defined as a sequence
   $\{\dder{D}_i\}_{i=0}^n$ of direct derivations such that
   \begin{enumerate}
-  \item for every index $i$, $\dder{D}_i$ is a direct derivation $G_i \Mapsto G_{i+1}$;
+  \item $\dder{D}_i : G_i \Mapsto G_{i+1}$ is a direct derivation for
+    every index $i$;
   \item $G_0=G$ and $G_{n+1}=H$.
   \end{enumerate}
   Moreover, for each $G \in \X$ we have $G : G \Mapsto G$ is a
   derivation, called an \emph{empty derivation}.
-
+  %
+  We will denote by $\lgh(\der{D})$ the \emph{length} of the derivation.
  
-  We will call the number $n+1$ the \emph{length} of the derivation,
+  \full{We will call the number $n+1$ the \emph{length} of the derivation,
   denoted by $\lgh(\der{D})$. We will also say that an empty
-  derivation has length $0$.
+  derivation has length $0$.}
 
   Moreover, if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then
   we can define an associated sequence of rules as $r(\der{D})$ as
@@ -1172,7 +1184,7 @@ Often, we are interested in derivations only up to some notion of coherent isomo
     An \emph{abstraction equivalence} between two derivations $\der{D}$
     and $\der{D'}$ with the same length and
     $r(\der{D})=r(\der{D}')$, is a family of isomorphisms
-    $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ such that the diagram on the right commutes
+    $\{\phi_X\}_{X\in \{G_i,D_I,H_I\}}$ such that the diagram on the right commutes
     for every $i\in [0, \lgh(\der{D})]$. We
     will say that $\der{D}$ are $\der{D}'$ are \emph{abstraction
       equivalent}, and use the symbol $\der{D}\equiv_a \der{D}'$, if there exists an abstraction equivalence between
@@ -1186,6 +1198,9 @@ Often, we are interested in derivations only up to some notion of coherent isomo
     \ar@/_.45cm/[uu]_(.35){\phi_{G_i}}|\hole&D_i\ar@{>->}[l]^{f_i}\ar@/_.45cm/[uu]_(.35){\phi_{D_i}}|\hole
     \ar[r]_{g_i}&G_{i+1}\ar@/_.45cm/[uu]_{\phi_{H_i}}}$}
 
+
+
+\todo{P: sopra era $X \in\Deltamin(\der{D})$, non definito nel main}
 
 
 $\mathcal{M}$-adhesivity of $\X$ guarantes the essential uniqueness of
@@ -2017,13 +2032,13 @@ Finally, we can show that consistent permutations between composable abstract de
 \label{sec:equi}
 
 In this section we discuss the notion of independence between
-consecutive rewriting steps, which is a fundamental ingredient of the
-rewriting theory, which comes into play when viewing a derivation
-sequence as a concurrent computation, the idea being that of
-abstracting out the order of execution of independent rewritings. We
-observe that the shift to left-linear rules leads to the failure of
-various basic properties of the classical notion of independence and
-we single out a framework in which these can be re-established.
+consecutive rewriting steps, a fundamental ingredient of the rewriting
+theory, which comes into play when viewing a derivation sequence as a
+concurrent computation. We observe that moving from linear to
+left-linear rules leads to the failure of various basic properties of
+the classical notion of independence used in the linear setting and we
+single out a framework in which these can be re-established, possibly
+in a wekened form.
 
 
 \subsection{Sequentially independent and switchable derivations }\label{subsec:switch}
@@ -2265,6 +2280,8 @@ We also need to introduce the notion of \emph{switching sequences}.
 	It will be referred as a \emph{switching sequence}.  
 \end{definition}
 
+Switch equivalence is now defined as the equivalence relating derivations which can be obatained one from another by a sequence of switches. Moreover, intermediate graphs can be taken up to isomorphism.\todo{P: da scrivere meglio e fare}
+
 \begin{definition}[Switch equivalence]
   \label{de:switch-equivalence}
   Let $(\X, \R)$ be a left-linear DPO rewriting system.  Let also
@@ -2301,7 +2318,7 @@ We also need to introduce the notion of \emph{switching sequences}.
 
 The fact that sequential indepedence implies switchability always
 holds for linear rules (see \Cref{prop:equi}). The result is so
-fundamental that it is not even stated, in the sense that
+indispensable that it is not even stated, in the sense that
 in the literature switchability is not introduced axiomatically as in
 Definition~\ref{def:switch}, but it is based on the explicit
 construction of a switch.
@@ -2419,8 +2436,6 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
 The conditions guaranteeing switchability are inspired
 by the notion of \emph{canonical filler}
 \cite{heindel2009category}.
-
-\todo{P: la chiamiamo ``strong indepedence pair''? o ``filler pair''}
 
 \begin{definition}[strong independence pair]
   \label{def:filler}
@@ -2545,7 +2560,7 @@ As such, it includes essentially all categories (e.g., presheaves over set) that
 
 %\rem{Questo e' quanto gia' asserito sopra, mettere in appendice e riferire}
 
-A source of strong enforcing left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
+As a sanity check not that a source of strong enforcing left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
 
 \begin{restatable}{proposition}{propEqui}
   \label{prop:equi}
