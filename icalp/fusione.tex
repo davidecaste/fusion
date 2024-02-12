@@ -18,6 +18,7 @@
 \fi
 
 
+
 \ifreport
 \nolinenumbers %uncomment to disable line numbering
 \hideLIPIcs  %uncomment to remove references to LIPIcs series (logo, DOI, ...), e.g. when preparing a pre-final version to be uploaded to arXiv or another public repository
@@ -76,7 +77,7 @@
 
 % showing labels
 %\usepackage[inline]{showlabels}
-
+ 
 \usepackage{pgf}
 \usepackage{tikz}
 \usepackage{tikz-cd}
@@ -84,6 +85,7 @@
 \tikzstyle{node}=[circle, draw=black, minimum size=1mm]
 \tikzstyle{trans}=[font=\scriptsize]
 \tikzstyle{lab}=[font=\small]
+
 
 
 \newcommand{\pgfBox}{
@@ -2216,7 +2218,7 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   \begin{figure}
     \input{Figure/rules.tex}
     
-    \caption{Rules of the rewriting system grammar of the example.}
+    \caption{Rules of the rewriting system of the running example.}
     \label{fi:rules}
   \end{figure}
   
@@ -2774,7 +2776,13 @@ Then the following are equivalent:
   derivations. This is readily seen by considering derivations
   $\der{D}$ in Fig.~\ref{fi:derD} and $\der{D}'$ in
   Fig.~\ref{fi:derD1}. We already observed that
-  $\der{D} \not\equiv_a \der{D}'$ xxx.
+  $\der{D} \not\equiv_a \der{D}'$\todo{P: osservato?}
+  %
+  Still, it is easy to see that they are related by a consistent
+  permutation, which is the identity on productions. The colimit of
+  both derivations is a single node with a self loop, i.e., the
+  terminal object in $\cat{Graph}$, hence all commutation requirements
+  are trivially satisfied.
 \end{example}
 
 
@@ -2842,7 +2850,13 @@ causality. Hence, if in $r_0\, r_1\, r_2$ we have that $r_0, r_1$ are
 disjunctive causes of $r_2$, at least one of the two is needed to
 enable the application of $r_2$ and this explain why in
 $r_1\, r_2\, r_0$ we have that $r_1$ and $r_2$ are no longer
-independent. \todo{P: da dire meglio e Ci vorrebbe un esempio}
+independent.
+
+\begin{example}
+  Consider the rewriting system used as running example (rules in
+  Fig.~\ref{fi:rules}. Assume to add a fourth rule $\rho_4$ as in
+  Fig.~\ref{fi:rule-cas} and consider the derivation.
+\end{example}
 
 \begin{restatable}[Globality of independence]{lemma}{lemIndepGlobalLeft}
   \label{lem:indep-global-left}
@@ -4626,7 +4640,7 @@ by switching only step along inversions.
     \draw[->, \colorB] (3*\hlen,-3*\vlen) -- (3*\hlen,-4*\vlen+\gap) node[midway, left] {};
     \draw[->, \colorA] (3*\hlen,-4*\vlen) -- (3*\hlen,-5*\vlen+\gap) node[midway, left] {};
     \draw (3*\hlen,-5*\vlen) -- (3*\hlen,-7*\vlen);
-
+  
     % Dots after the last line
     \draw (4*\hlen,0*\vlen) node[above] {$\dots$};
 
