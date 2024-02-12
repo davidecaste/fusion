@@ -494,11 +494,14 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
 
 
 \begin{abstract}
-  When two sequences of steps executed by a computational device can
-  be considered equivalent?  This is a relevant question if one
-  considers concurrent and distributed systems, since the independence
-  of two steps means that they could be executed in any order, and
-  potentially in parallel.
+%  When two sequences of steps executed by a computational device can
+%  be considered equivalent?  This is a relevant question if one
+%  considers concurrent and distributed systems, since the independence
+%  of two steps means that they could be executed in any order, and
+%  potentially in parallel.
+  When can two sequential steps performed by a computing device be considered (causally) independent? 
+  This is a relevant question for concurrent and distributed systems, since independence
+  means that they could be executed in any order, and potentially in parallel.
   % 
   We investigate the issue in the context of adhesive categories, a
   very general instance of the DPO approach to rewriting. More
@@ -517,8 +520,8 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   Moreover, a standard characterisation of independence that -- in the
   linear case -- allows one to derive a number of properties,
   essential in the development of a theory of concurrency, no longer
-  holds, and this requires a substantial revision of the
-  theory.
+  holds.
+  %and this requires a substantial revision of the theory.
   %
   The paper performs an in-depth study of the notion of independence
   for left-linear rules: it introduces a novel characterisation of
@@ -665,22 +668,22 @@ a computational device can be modelled by abstracting its sequences of steps
 %performed by the device 
 via a suitable equivalence. Intuitively, the equivalence 
 captures when steps are causally unrelated and thus could be executed in any 
-order, and possibly concurrently. 
+order, and possibly in parallel. 
 %
 Two seminal contributions to this line of research have been
 Mazurkiewicz's traces~\cite{Mazurkiewicz86} and Winskel's event structures~\cite{NPW:PNES}.
 %
 Concerning formalisms based on the rewriting paradigm, i.e. where the
-behaviour is dictated by a set of rules which have to be instantiated with
+behaviour is dictated by a set of rules that have to be instantiated with
 the system at hand, concurrency often boils down to having a notion of 
 independence between two consecutive steps.
 %thus viewing a sequence of steps as a concurrent computation. 
-As noteworthy examples, we have 
+Noteworthy examples are
 interchange law~\cite{Mes92} in term rewriting and permutation 
 equivalence~\cite{JJL80} in $\lambda$-calculi. 
 
 Among rewriting-based formalisms, those manipulating graph-like structures
-proved useful in many settings for representing the dynamics of systems: the 
+proved useful in many settings for representing the dynamics of distributed systems: the 
 graph serves to represent the entities and their relations within states, while 
 rewriting steps, modifying the graph, model computation steps that result 
 in changes to the system state. The DPO (double-pushout) approach~\cite{CMREHL:AAGT} 
@@ -690,7 +693,7 @@ approach~\cite{CorradiniHHK06}) and most importantly to its flexibility: the rul
 specify that,  in a rewriting step, some entities in the current state are removed, 
 some others are needed for the rewriting step to occur but remain unaltered and 
 some new entities can be generated. Concerning concurrency, the chosen notion 
-is shift equivalence, and independence is formally captured by the so-called 
+is shift equivalence, and independence is formally captured by what is called the
 Church-Rosser theorem of DPO rewriting~\cite[Section~xxx]{CMREHL:AAGT}.
 
 A noteworthy advantage is that DPO rewriting can be formulated over
@@ -701,7 +704,7 @@ the foundations of a rewriting theory that can be subsequently instantiated
 to the context of interest, thus avoiding the need of repeatedly proving
 similar ad-hoc results in for each specific setting. In fact, the framework is
 so general that it allowed to recast in the DPO approach many additional formalisms,
-ranging from xxx to string diagrams~\cite{bonchi2022string}.
+ranging from toposes~\cite{johnstone2007quasitoposes} to string diagrams~\cite{bonchi2022string}.
 
 So far, most of the theoretical results focussed on what are called \emph{linear rules}: 
 intuitively, a step is required only to consume, preserve and generate entities. 
@@ -2763,7 +2766,7 @@ Then the following are equivalent:
   derivations. This is readily seen by considering derivations
   $\der{D}$ in Fig.~\ref{fi:derD} and $\der{D}'$ in
   Fig.~\ref{fi:derD1}. We already observed that
-  $\der{D} \not\equiv_a \der{D}'$generale}
+  $\der{D} \not\equiv_a \der{D}'$ xxx.
 \end{example}
 
 
