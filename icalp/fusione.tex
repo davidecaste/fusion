@@ -503,9 +503,16 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
 %  considers concurrent and distributed systems, since the independence
 %  of two steps means that they could be executed in any order, and
 %  potentially in parallel.
+<<<<<<< HEAD
   When can two sequential steps performed by a computing device be considered (causally) independent? 
   This is a relevant question for concurrent and distributed systems, since independence
   means that they could be executed in any order, and potentially in parallel.
+=======
+  When can two sequential steps performed by a computing device be
+  considered (causally) independent?  This is a relevant question for
+  concurrent and distributed systems, since independence means that
+  those steps could be executed in any order, and potentially in parallel.
+>>>>>>> refs/remotes/origin/main
   % 
   We investigate the issue in the context of adhesive categories, a
   very general instance of the DPO approach to rewriting. More
@@ -712,6 +719,7 @@ similar ad-hoc results for each specific setting. In fact, the framework is
 so general that it allowed to recast in the DPO approach many additional formalisms,
 ranging from toposes~\cite{johnstone2007quasitoposes} to string diagrams~\cite{bonchi2022string}.
 
+<<<<<<< HEAD
 So far, most of the theoretical results focussed on what are called \emph{linear rules}: 
 intuitively, a step is required only to consume, preserve and generate entities. 
 However, in some situations it is also necessary to ``merge'' parts of the state. 
@@ -721,6 +729,18 @@ the received name is identified with a local one at the
 receiver~\cite{CVY:ESSPE,Gad07} or in the visual modelling of bonding in
 biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms is
 at the core of e-graphs (equality graphs), recently used for
+=======
+So far, most of the theoretical results focussed on what are called
+\emph{linear rules}: intuitively, a step is required only to consume,
+preserve and generate entities.  However, in some situations it is
+also necessary to ``merge'' parts of the state.  This happens already
+in the context of string diagrams mentioned above, but also in
+graphical implementations of nominal calculi where, as a result of
+name passing, the received name is identified with a local one at the
+receiver~\cite{CVY:ESSPE,Gad07} or in the visual modelling of bonding
+in biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms
+is at the core of e-graphs (equality graphs), recently used for
+>>>>>>> refs/remotes/origin/main
 rewrite-driven compiler optimisations~\cite{WNW:egg}: rather than
 explicitly merging nodes corresponding to equal expression, the idea
 here -- conceptually and, as we will see, also mathematically similar --
@@ -741,7 +761,11 @@ concurrency for rewriting with left-linear rules in the general
 setting of adhesive and quasi-adhesive categories
 %(which capture most ``applications'') 
 have not been systematically
-explored~\cite{Ehrig1976,EHP:BRfTToHLRS,baldan2011adhesivity} \todo{P: see also \cite{HMP:DPORADD,BHK:CTNL} ... verificare e aggiungere}
+explored~\cite{Ehrig1976,EHP:BRfTToHLRS,baldan2011adhesivity},
+even if an investigation in the alternative setting of quasi-topoi has 
+been presented in~\cite{BehrHK23}.
+
+% \todo{P: see also \cite{HMP:DPORADD,BHK:CTNL} ... verificare e aggiungere}
 
 Here we perform this exploration working at the level of $\mathcal{M}$-adhesive categories, 
 %i.e.such that adhesivity holds only for a class $\mathcal{M}$ of arrows, 
@@ -783,6 +807,7 @@ the Church-Rosser theorem is fully recovered.
 %for well-switchable rewriting systems.
 
 
+<<<<<<< HEAD
 There is, however, a further problem.  For linear
 rewriting systems, switch equivalence can be characterised in terms of the
 existence of what is called a consistent permutation~\cite{xxx}.
@@ -794,6 +819,28 @@ here for $\mathcal{M}$-adhesive categories.
 The characterisation of switch equivalence based on consistent
 permutations is the key to derive some
 properties for linear rewriting systems, namely
+=======
+
+% \begin{enumerate}
+% \item \emph{confluence of switching}: when transforming derivation
+%   sequences into equivalent ones by switching independent steps, the
+%   result not depends on the order in which switchings are applied, but
+%   only on the resulting permutation;
+  
+% \item \emph{globality of independence}: if two independent steps are
+%   moved forward or backward due to the application of switchings to a
+%   derivation, they remain independent.
+% \end{enumerate}
+
+
+There is, however, a further problem. In the literature on linear
+rewriting systems, a central result is the a characterisation of
+switch equivalence of sequences of steps based on what are called
+consistent permutations or processes~\cite{Handbook, tobias}.
+In turn this is the key to derive some simple but fundamental properties 
+for linear rewriting systems, namely
+
+>>>>>>> refs/remotes/origin/main
 \begin{enumerate}
 \item \emph{consistency of switching}: when transforming
   sequences of rewriting steps into equivalent ones by switching independent steps, the
@@ -801,21 +848,23 @@ properties for linear rewriting systems, namely
   only on the resulting permutation;
 \item \emph{globality of independence}: if two independent steps are
   moved forward or backward due to the application of switchings to a
-  derivation, they remain independent.
+  sequence, they remain independent.
 \end{enumerate}
 Properties (1) and (2) allow one to deduce a canonical form for equivalence proofs 
 between sequences of rewriting steps seen as concurrent computations.
 
 Unfortunately, for left-linear rewriting systems the characterisation
-of switch equivalence based on consistent permutations fails: the
-existence of a consistent permutation is only necessary but not
+of switch equivalence based on consistent permutations fails: The 
+existence of a consistent permutation is necessary but not
 sufficient, hence it cannot be used for proving (1) and (2).
 %
-This leads to the question asking whether the properties above hold.
-We show that actually much of the theory can be retained: consistency
+This fact, noted e.g. in~\cite{BaldanGM06}, leads to
+asking whether these properties hold.
+We show that much of the theory can be retained: consistency
 of switching still holds, while globality of independence holds in a
 weak form, conceptually linked to the fact that fusions introduce a
-form of disjunctive causality. Finally, we prove that a canonical form
+form of disjunctive causality~\cite{baldan2017domains}. Finally, 
+we prove that a canonical form
 for switching sequences can also be recovered.
 
 \section{$\mathcal{M}$-adhesive categories and DPO rewriting systems}\label{sec:ade}
@@ -2840,10 +2889,10 @@ independent.
 [Proof~\ref{lemIndepGlobalLeft-proof}]
 
 
-The first lemma capture the essence of the confluence of
+The second lemma capture the essence of the confluence of
 switchings. It shows that if we have a derivation consisting of three
-rewriting steps, say $r_0\, r_1\, r_2$ and we switch them leading to the
-sequence $r_2\, r_1\, r_0$, we obtain the same resulting derivation,
+rewriting steps, say $\dder{D}_0\cdot \dder{D}_1\cdot  \dder{D}_2$ and we switch them leading to the
+sequence $\dder{D}_2\cdot  \dder{D}_1\cdot  \dder{D}_0$, we obtain the same resulting derivation,
 independently from the order of the switchings.
 
 
