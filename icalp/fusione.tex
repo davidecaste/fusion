@@ -761,7 +761,7 @@ left-linear rules a number of fundamental properties that play a role
 in the concurrency theory of linear rewriting need to be deeply revised, or
 plainly do not hold.
 %
-Firstly, the notion of sequential independence and Church Rosser
+Firstly, the notion of sequential independence and Church-Rosser
 theorem, ensuring that sequential independent steps can be performed
 in reverse order, does not hold out of the box. Even worse, given two
 independent steps it might be possible to switch them in several
@@ -771,7 +771,8 @@ for equating sequences of rewriting steps that differs only for the order of ind
 steps.
 
 We single out a class of left-linear rewriting
-systems, referred to as \emph{well-switching rewriting systems}, where sequential independence ensures existence and uniqueness of the
+systems, referred to as \emph{well-switchable rewriting systems}, 
+where sequential independence ensures existence and uniqueness of the
 switch, and argue that this is the right setting for dealing with
 left-linear rewriting systems.
 
@@ -3013,25 +3014,25 @@ canonical form for switching derivations.
 
 \section{Conclusions and further work}
 
-We perform an in-depth investigation of notion of independence between
-computational steps in the setting of left-linear rewriting systems
-over adhesive categories, which encompasses rewriting over most of the
-structures used in semantic and modelling applications.
+We performed an in-depth investigation of notion of independence between
+rewriting steps in the setting of left-linear rewriting systems
+over adhesive categories, which encompasses most of the
+structures commonly used in analysis and modelling applications.
 
 We showed that the canonical notion of independence adopted for linear
-systems does not enjoy some properties which are essential for
-developing a sensible theory of concurrency, notably Church Rosser
-theorem, and we identified the subclass of well switchable rewriting
-systems as an appropriate setting where instead a number of vital
-results can be re-established. Specifically, Church Rosser theorem,
-i.e., the possibility of performing independent steps in any order is
+systems does not enjoy some properties that are essential for
+developing a sensible theory of concurrency, notably a Church-Rosser
+theorem, and we identified a subclass of left-linear rewriting systems,
+which we call well-switchable, as an appropriate setting where 
+many vital results can be re-established. Specifically, a Church-Rosser 
+theorem, i.e. the possibility of performing independent steps in any order, is
 fully recovered. Moreover, the switch construction and correspondingly
-switch equivalence which is at the core of a theory of concurrency for
-adhesive recwritng suystems enjoy a number of fundamental properties:
+the switch equivalence, at the core of a theory of concurrency for
+rewriting systems, enjoy a number of fundamental properties:
 confluence of switching, a weak form of globality of independence and
 the existence of a canonical form for switch equivalence proofs.
 
-The class of well-switchabke adhesive rewting systems is vast. Generalising a result in~\cite{baldan2011adhesivity} we can show that one of its defining properties (the fact that sequential independence implies switchability) holds for a class of adhesive categories which include all presheaves over set. Moreover, the second property, uniqueness of switching, is ensured when rewriting possibly hierarchical graphical structures, as long as elements of the top sorts are not merged (e.g., one can consider rewriting systems over directed graphs where only nodes are merged, as it happens in most approaches to modelling calculi, biological systems and also in string diagrams).\todo{Giusto, referneces?}
+The class of well-switchable adhesive rewriting systems is vast. Generalising a result in~\cite{baldan2011adhesivity} we can show that one of its defining properties (the fact that sequential independence implies switchability) holds for a class of adhesive categories which include all presheaves over set. Moreover, the second property, uniqueness of switching, is ensured when rewriting possibly hierarchical graphical structures, as long as elements of the top sorts are not merged (e.g., one can consider rewriting systems over directed graphs where only nodes are merged, as it happens in most approaches to modelling calculi, biological systems and also in string diagrams).\todo{Giusto, referneces?}
 
 The results in this paper open the way to the development of a
 concurrent semantics for left-linear rewriting systems over adhesive
