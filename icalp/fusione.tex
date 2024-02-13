@@ -2182,7 +2182,7 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   
   A derivation $\der{D}$ consisting of three steps $\dder{D}_0$,
   $\dder{D}_1$, and $\dder{D}_2$, each applying the corresponding rule
-  $\rho_i$, is depicted in in Fig.~\ref{fi:derD}. The second and third
+  $\rho_i$, is depicted in Fig.~\ref{fi:derD}. The second and third
   steps $\dder{D}_1$ and $\dder{D}_2$ are clearly sequential
   independent, via an independence pairs that map nodes consistently
   with their numbering.\todo{P: having names for the graphs would
@@ -2382,7 +2382,7 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   
   A derivation $\der{D}$ consisting of three steps $\der{D}_0$,
   $\der{D}_1$, and $\der{D}_2$, each applying the corresponding rule
-  $\rho_i$ ,is depicted in in Fig.~\ref{fi:derD}. The second and third
+  $\rho_i$, is depicted in Fig.~\ref{fi:derD}. The second and third
   steps $\der{D}_1$ and $\der{D}_2$ are clearly sequential
   independent, via an independence pairs that map nodes consistently
   with their numbering.\todo{P: having names for the graphs would
@@ -3037,7 +3037,7 @@ The following proposition establishes a key property of $\mathcal{A}$-Van Kampen
 The previous proposition, now, allows us to establish the following result.
 
 \noindent \parbox{7.4cm}{
-\begin{lemma}\label{lem:varie}Let $\mathcal{A}$ be a class of arrows stable under pullbacks, pushouts and containing all isomorphisms.  Suppose that, the left square below is $\mathcal{A}$-Van Kampen, while the vertical faces in the right cube are pullbacks. 	Supppose, moreover that $m\colon A\to C$ and $d\colon D'\to D$ are mono and that $d$ belongs to $\mathcal{A}$. Then $d\leq n$ if and only if $c \leq m$.
+\begin{lemma}\label{lem:varie}Let $\mathcal{A}$ be a class of arrows stable under pullbacks, pushouts and containing all isomorphisms.  Suppose that, the left square aside is $\mathcal{A}$-Van Kampen, while the vertical faces in the right cube are pullbacks. 	Supppose, moreover that $m\colon A\to C$ and $d\colon D'\to D$ are mono and that $d$ belongs to $\mathcal{A}$. Then $d\leq n$ if and only if $c \leq m$.
 \end{lemma}}
 	\parbox{6cm}{$\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{g'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{g}&&B\ar[dd]^{n}&&C'  \ar[dd]_{c}\ar[rr]^(.7){f'} & & D' \ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{f} &&D&&C \ar[rr]_{f} & & D}$}
 
@@ -3059,7 +3059,7 @@ The previous proposition, now, allows us to establish the following result.
 	\[\xymatrix@C=40pt{C'  \ar[d]^{h}\ar[r]^{f'} \ar@/_.5cm/[dd]_{c}& D' \ar@/^.5cm/[dd]^{d}\ar[d]_{k}\\ A \ar[d]^{m} \ar[r]^{g} & B \ar[d]_{n} \\  C \ar[r]_f & D}\]
 
 	\smallskip \noindent
-	$(\Leftarrow)$ Let $h:C\to A$ be such that $c=m\circ h$. By the $\mathcal{A}$-Van Kampen property the top face of the given cube is a pushout. Thus the dotted $k:D'\to B$ in the following diagram exists.
+	$(\Leftarrow)$ Let $h:C'\to A$ be such that $c=m\circ h$. By the $\mathcal{A}$-Van Kampen property the top face of the given cube is a pushout. Thus the dotted $k:D'\to B$ in the following diagram exists.
 	\[\xymatrix@C=40pt{A' \ar@/_.5cm/[dd]_{a} \ar[d]^{m'} \ar[r]^{g'} & B' \ar[d]_{n'} \ar@/^.5cm/[dd]^{b} \\  C' \ar[d]^{h} \ar[r]_{f'} & D' \ar@{.>}[d]_{k}\\ A \ar[r]_g& B }\]
 	Moreover, by construction we have
 	\begin{align*}
@@ -3082,7 +3082,7 @@ Finally, we can show that $\mathcal{A}$-stable pushouts enjoy a kind of \emph{pu
 \begin{proof}
 	We can begin noticing that $g$, being the pullback of $k$, is mono and in $\mathcal{A}$ too. Thus we can build the cube below, in which all the vertical faces are pullbacks, entailing that all the vertical arrows are in $\mathcal{A}$.
 	\[\xymatrix@C=20pt@R=10pt{ & &X\ar[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar[ddd]_{g} \ar[rrr]^{b}&&& B\ar[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar[dl]_{f}&&& A \ar[dl]^{h}\\ & Y  \ar[dl]_{g}&&& B \ar[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
-	By hypothesis the face is an $\mathcal{A}$-stable pushout and so its top one is a pushout. Using \Cref{lem:po1} we can conclude that the right half of the rectangle with which we have started is a pushout too.
+	By hypothesis the bottom face is an $\mathcal{A}$-stable pushout and so its top one is a pushout. Using \Cref{lem:po1} we can conclude that the right half of the rectangle we  started with is a pushout too.
 \end{proof}}
 
 \subsection{Useful properties of $\mathcal{M}$-adhesive categories}
@@ -3131,7 +3131,7 @@ From \Cref{prop:pbpoad}, in turn, we can derive the following corollaries.
 The following result now follows at once noticing that a regular monomorphism which is also epic is automatically an isomorphism.
 
 \begin{corollary}\label{prop:bal}
-	If $\X$ is an $\mathcal{M}$-adhesive categories, then every epimorphisms in $\mathcal{M}$ is an isomorphisms. In particular, every adhesive category $\X$ is \emph{balanced}: if a morphism is monic and epic, then it is an isomorphism.
+	If $\X$ is an $\mathcal{M}$-adhesive categories, then every epimorphism in $\mathcal{M}$ is an isomorphism. In particular, every adhesive category $\X$ is \emph{balanced}: if a morphism is monic and epic, then it is an isomorphism.
 \end{corollary}
 
 \noindent 
@@ -3163,7 +3163,7 @@ Let us turn our attention to pushout complements.
 \noindent
 \parbox{11cm}{
 	\begin{definition}[Pushout complement]
-		Let $f\colon X\to Y$ and $g\colon Y\to Z$ be two composable arrows in a category $\X$. A \emph{pushout complement} for the pair $(f,g)$ is a pair $(h,k)$ with $h\colon X\to W$ and $k\colon W\to Z$ such that the square below commutes and it is a pushout.
+		Let $f\colon X\to Y$ and $g\colon Y\to Z$ be two composable arrows in a category $\X$. A \emph{pushout complement} for the pair $(f,g)$ is a pair $(h,k)$ with $h\colon X\to W$ and $k\colon W\to Z$ such that the square aside commutes and it is a pushout.
 	\end{definition}} \quad
 \parbox{4cm}{\vspace{.1cm}
 	$\xymatrix{X \ar[r]^{f} \ar[d]_{h}& Y \ar[d]^{g} \\ W \ar[r]_{k}& Z}$}\\
@@ -3178,7 +3178,8 @@ Let us turn our attention to pushout complements.
 	\end{example}
 \fi
 
-Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
+In $\mathcal{M}$-adhesive categories the pushout complement is unique up to iso, if it exists. 
+% amend the second defect.\todo{A: }
 
 \noindent
 \parbox{8.5cm}{
@@ -3202,7 +3203,7 @@ Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
 	We can then consider the cube below, in which the front, right and back faces are pullbacks.
 	\[\xymatrix@C=15pt@R=15pt{&A\ar@{>->}[dd]|\hole_(.65){a}\ar[rr]^{r} \ar[dl]_{t} && B \ar@{>->}[dd]^{b} \ar[dl]_{s} \\ P  \ar@{>->}[dd]_{p_2}\ar[rr]^(.7){p_1} & & N \ar@{>->}[dd]_(.3){n}\\&M\ar[rr]|\hole^(.65){h} \ar@{>->}[dl]^{m} && Q \ar@{>->}[dl]^{k} \\X \ar[rr]_{f} & & Y}\]
 	We can notice that the left square is a pullback too. To see this it is enough to apply \Cref{lem:pb1} to the diagram
-	\[\xymatrix{A  \ar@/^.4cm/[rr]^{s\circ r}\ar@{>->}[d]_{a} \ar[r]_{t}& \ar[r]_{p_1} P \ar@{>->}[d]^{p_2}& N \ar[d]^{c}\\ M \ar@/_.4cm/[rr]_{k\circ h}\ar@{>->}[r]^{m}& X \ar[r]^{f}& Y}\]
+	\[\xymatrix{A  \ar@/^.4cm/[rr]^{s\circ r}\ar@{>->}[d]_{a} \ar[r]_{t}& \ar[r]_{p_1} P \ar@{>->}[d]^{p_2}& N \ar[d]^{n}\\ M \ar@/_.4cm/[rr]_{k\circ h}\ar@{>->}[r]^{m}& X \ar[r]^{f}& Y}\]
 
 	The thesis now follows immediately from \Cref{lem:varie}. \qedhere
 \end{proof}
@@ -3217,11 +3218,11 @@ Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
 \full{ 
 \begin{proof}
 	Consider the two pushout squares
-	\[\xymatrix{M \ar[r]^{h_1}\ar@{>->}[d]_{m}& W_1 \ar@{>->}[d]^{k_1} & M \ar@{>->}[d]_{m} \ar[r]^{h_1}& W_2 \ar@{>->}[d]^{k_2}\\Y\ar[r]_{f}&Z &Y \ar[r]_{f}&Z}\]
-	Since $\mathcal{M}$ is in $\mathcal{M}$, \cref{prop:pbpoad} guarantees that they are both pullbacks.
+	\[\xymatrix{X \ar[r]^{h_1}\ar@{>->}[d]_{m}& W_1 \ar@{>->}[d]^{k_1} & X \ar@{>->}[d]_{m} \ar[r]^{h_2}& W_2 \ar@{>->}[d]^{k_2}\\Y\ar[r]_{f}&Z &Y \ar[r]_{f}&Z}\]
+	Since $m$ is in $\mathcal{M}$, \cref{prop:pbpoad} guarantees that they are both pullbacks.
 	Since $m\leq m$, by \Cref{lem:radj} we get that now entails that $k_1\leq k_2$ and $k_2\leq k_1$. Thus there exists an isomorphism $\phi\colon W_1\to W_2$ such that $k_1=k_2\circ \phi$. To see that $h_2=\phi\circ h_1$, we can compute:
 	\[
-		k_2\circ \phi \circ h_1  = k_1\circ h_1= n\circ m= k_2\circ h_2\]
+		k_2\circ \phi \circ h_1  = k_1\circ h_1= f\circ m= k_2\circ h_2\]
 
 	The claim now follows since $k_2$ is a monomorphism.
 \end{proof}}
@@ -3397,7 +3398,7 @@ In this appendix we will provide the proofs of the main results of this paper.
 \label{propUnique-proof}
 \begin{proof}
   Both pairs $(k, f)$ and $(k', f')$ are pushout complements of $l$
-  and $n$, thus, \Cref{lem:pocomp} yields an isomorphism
+  and $m$, thus, \Cref{lem:pocomp} yields an isomorphism
   $\phi_D\colon D\to D'$. Computing we have
   \[
     g'\circ \phi_D \circ k= g' \circ k'=h'\circ r
@@ -3460,14 +3461,14 @@ sequentially independent. We can then wonder if they are switchable.
     \[
       f_{\der{F},0}\circ \phi_0\circ j_1=f_{\der{E},0} \circ j_1=m_0=f_{\der{F},0}\circ a_1\]
     which entails $a_1= \phi_0\circ j_1$. This, in turn, gives us that
-    \[\psi\circ m_{\der{E},1}=\psi \circ g_{\der{E},0}\circ j_1=g_{\der{F},0}\circ \phi_0\circ j_1=g_{\der{F},0}\circ a_1=m_{\der{F},1}\]
+    \[\psi_1\circ m_{\der{E},1}=\psi_1 \circ g_{\der{E},0}\circ j_1=g_{\der{F},0}\circ \phi_0\circ j_1=g_{\der{F},0}\circ a_1=m_{\der{F},1}\]
     
     Now, the square
-    \[\xymatrix@C=30pt{K_0 \ar[d]_{k_{\der{E,1}}} \ar@{>->}[r]^{l_0}& L_0 \ar[d]^{\psi_1\circ m_{\der{E},1}} \\D_{\der{E},1} \ar@{>->}[r]_{\psi_1\circ f_{\der{E},1}}& G_{\der{F}, 1}} \]
+    \[\xymatrix@C=30pt{K_0 \ar[d]_{k_{\der{E},1}} \ar@{>->}[r]^{l_0}& L_0 \ar[d]^{\psi_1\circ m_{\der{E},1}} \\D_{\der{E},1} \ar@{>->}[r]_{\psi_1\circ f_{\der{E},1}}& G_{\der{F}, 1}} \]
     is a pushout and $\psi_1\circ m_{\der{E},1}=m_{\der{F},1}$, thus, by \Cref{prop:unique} there are $\phi_1\colon D_{\der{E},1}\to D_{\der{F},1}$ and $\psi_2\colon G_2\to G_2$ fitting in the diagram below
-    \[\xymatrix{G_{\der{F},1} & \ar@{>->}[l]_{f_{\der{F},1}} D_{\der{F},1} \ar[r]^{g_{\der{F},1}}& G_2 \\L_0 \ar[d]^{m_{\der{E},1}} \ar[u]_{m_{\der{F},1}}& K_{1} \ar[d]^{m_{\der{E},1}} \ar[u]_{m_{\der{F},1}}\ar[l]_{l_1} \ar[r]^{r_1} & R_{1}  \ar[d]_{g_1\circ i_0}  \ar[u]^{g_1\circ i_0}\\ \ar@/^.5cm/[uu]^{\psi_1} G_{\der{E},1} & \ar@{>->}[l]^{f_{\der{E},1}} D_{\der{E},1} \ar@/^.5cm/[uu]^(.33){\phi_{1}}|\hole \ar[r]_{g_{\der{E},1}}& G_2 \ar@/_.5cm/[uu]_{\psi_2}}\]
+    \[\xymatrix{G_{\der{F},1} & \ar@{>->}[l]_{f_{\der{F},1}} D_{\der{F},1} \ar[r]^{g_{\der{F},1}}& G_2 \\L_0 \ar[d]^{m_{\der{E},1}} \ar[u]_{m_{\der{F},1}}& K_{1} \ar[d]^{k_{\der{E},1}} \ar[u]_{k_{\der{F},1}}\ar[l]_{l_1} \ar[r]^{r_1} & R_{1}  \ar[d]_{g_1\circ i_0}  \ar[u]^{g_1\circ i_0}\\ \ar@/^.5cm/[uu]^{\psi_1} G_{\der{E},1} & \ar@{>->}[l]^{f_{\der{E},1}} D_{\der{E},1} \ar@/^.5cm/[uu]^(.33){\phi_{1}}|\hole \ar[r]_{g_{\der{E},1}}& G_2 \ar@/_.5cm/[uu]_{\psi_2}}\]
     To conclude, it is now enough to notice that
-    \[f_{\der{F},1} \circ \phi_1\circ j_0=\psi_1\circ f_{\der{E},1}\circ j_0=\psi_1\circ h_{\der{E,0}}=h_{\der{F},0}=f_{\der{F},1}\circ a_0\]
+    \[f_{\der{F},1} \circ \phi_1\circ j_0=\psi_1\circ f_{\der{E},1}\circ j_0=\psi_1\circ h_{\der{E},0}=h_{\der{F},0}=f_{\der{F},1}\circ a_0\]
     allowing us to deduce $ \phi_1\circ j_0=a_0$.
     \qedhere
 \end{proof}
@@ -3479,7 +3480,7 @@ sequentially independent. We can then wonder if they are switchable.
 	derivations $\dder{D}_0$ and $\dder{D}_1$ in a left-linear
 	DPO rewriting system $(\X,\R)$. Consider the pullback of
 	$f_1\colon D_1\mto G_1$ along $g_0\colon D_0\to G_1$ (first
-	square below), then there exist the arrows
+	square below). Then there exist arrows
 	$u_1\colon K_1\to P$ and $u_0\colon K_0\to P$ fitting in the
 	central and right square. Moreover, the right one is always
 	a pullback.
@@ -3516,7 +3517,7 @@ sequentially independent. We can then wonder if they are switchable.
 
 There is another
 useful properties of weakly sequentially independent direct
-derivations which is worth mentioning.
+derivations which is worth mentioning.\todo{A: va tolto weakly?}
 
 \noindent
 \parbox{9.5cm}
@@ -3526,7 +3527,7 @@ derivations which is worth mentioning.
     and $\der{D}_1$.  If $\der{E}=\{\dder{E}_i\}_{i=0}^1$ is a
     switch of $\der{D}$ along $(i_0, i_1)$, then there exists
     $q_0\colon P\to D_{\der{E},0}$ in the diagram
-    below \end{proposition}}
+    aside \end{proposition}}
 \parbox{4cm}{$\xymatrix{D_{\der{E},0} \ar@{>->}[d]_{f_{\der{E},0}}&P
     \ar@{.>}[l]_{q_0} \ar[r]^{p_1} \ar@{>->}[d]_{p_0}& D_1
     \ar@{>->}[d]^{f_1}\\ G_{0}&D_0 \ar@{>->}[l]^{f_0}\ar[r]_{g_0}&
@@ -3743,7 +3744,7 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 	$l_1\colon K_1\mto L_1$, thus it is in $\mathcal{M}$ implying
 	$i_0=i'_0$. If, moreover, we suppose that the rule $\rho$ applied in
 	$\dder{D}$ is linear, then $g_0\colon D_0\to G_1$ is in
-	$\mathcal{M}$ too entailing $i'_1=i'_1$, too.
+	$\mathcal{M}$ too entailing $i_1=i'_1$, too.
 \end{proof}
 
 
@@ -3810,7 +3811,7 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 		has as its single component the derivation
 		\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G& \ar@{>->}[l]^{f} D \ar[r]_{g}& H  \\}\]
 	
-		\parbox{11cm}{The arrow $f$ is  the pushout of $l$ and so it is in in $\mathcal{M}$. We can thus consider the $\mathcal{M}$-pushout square depicted on the right.
+		\parbox{11cm}{The arrow $f$ is  the pushout of $l$ and so it is in $\mathcal{M}$. We can thus consider the $\mathcal{M}$-pushout square depicted on the right.
 		Since $p\in \mathcal{M}$, and $q$ is in it if $(\X, \R)$ is linear. The thesis follows immediately from \Cref{rem:cof}.}
 		\parbox{2cm}{
 			$\xymatrix{D \ar@{>->}[d]_{f} \ar[r]^{g} & H \ar@{>->}[d]^{p} \\G \ar[r]_{q}& P }$}
