@@ -82,10 +82,10 @@
 \usepackage{tikz}
 \usepackage{tikz-cd}
 \usetikzlibrary{arrows,shapes,snakes,automata,backgrounds,petri,fit,positioning}
-\tikzstyle{node}=[circle, draw=black, minimum size=1mm]
+\tikzstyle{node}=[circle, draw=black, minimum size=1mm, inner sep=1.5pt]
 \tikzstyle{trans}=[font=\scriptsize]
 \tikzstyle{lab}=[font=\small]
-
+ 
 
 
 \newcommand{\pgfBox}{
@@ -2945,24 +2945,30 @@ $r_1\, r_2\, r_0$ we have that $r_1$ and $r_2$ are no longer
 independent.
 
 \begin{example}
+  \label{ex:non-global}
   Consider the rewriting system used as running example (rules in
   Fig.~\ref{fi:rules}. Assume to add rules $\rho_3$ and $\rho_4$ as
   depicted in Fig.~\ref{fi:rules-cas}. Consider the derivation
   $\der{F}$ in Fig.~\ref{fi:derF}. Observe that rule $\rho_4$ to be
   applied needs a self loop on node $12$. This can be generated either
   by $\rho_3$ or $\rho_1$ merging nodes $1$ and $2$, hence at least
-  one of them must precede the application of $\rho_4$. Indeed, in $\der{E}$ it can be easily seen that the second and third step applying $\rho_1$ and $\rho_3$ are independent. However, we could switch twice the application of $\rho_3$, bringing it in the last position, obtaining a derivation $\der{F}'$ (see {\color{red} DA FINIRE, se ci sta}), where the applications of  $\rho_1$ and $\rho_3$ are no longer independent.
+  one of them must precede the application of $\rho_4$. Indeed, in $\der{E}$ it can be easily seen that the second and third step applying $\rho_1$ and $\rho_3$ are independent. However, we could switch twice the application of $\rho_3$, bringing it in the last position, obtaining a derivation $\der{F}'$ as deipcted in Fig.~\ref{fi:derF1}, where the applications of  $\rho_1$ and $\rho_3$ are no longer independent.
    
   \begin{figure}
-%    \input{Figure/rules-cas.tex}    
+    \input{Figure/rules-cas.tex}    
     \caption{Additional rules.}
     \label{fi:rules-cas}
   \end{figure}
 
   \begin{figure}
-%    \input{Figure/derF.tex}    
+    \input{Figure/derF.tex}    
     \caption{A derivation $\der{F}$.} 
     \label{fi:derF}
+  \end{figure}
+  \begin{figure}
+    \input{Figure/derF1.tex}    
+    \caption{A derivation $\der{F}'$.} 
+    \label{fi:derF1}
   \end{figure}
 \end{example}
 
@@ -3014,7 +3020,9 @@ The first result shows that whenever equating two derivation sequences by perfor
 
 While in the case of linear rewriting systems inversion can be
 performed in any order, this is no longer true for left-linear
-rewriting systems.\todo{P: counter example} Still, we can identify a
+rewriting systems due to the fact that, as already observed globality of independence holds in a weak form. For instance, if we get back to Example~\ref{ex:non-global} and consider derivations $\der{F}$ in Fig.~\ref{fi:derF}, the last two steps applying rules $\rho_1$ and $\rho_4$ can be switched, thus leading to a derivation, call it $\der{F}''$,  applying $\rho_3, \rho_4, \rho_1$. Such $\der{F}$ is switch equivalent to $\der{F}'$ in Fig.~\ref{fi:derF1}, hence starting from $\der{F}''$ we can obtain $\der{F}'$ via a switching sequence, but we cannot start by switching $\rho_1$ and $\rho_4$, despite the fact that this is an inversion.
+
+Still, we can identify a
 canonical form for switching derivations.
 
 
