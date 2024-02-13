@@ -82,10 +82,10 @@
 \usepackage{tikz}
 \usepackage{tikz-cd}
 \usetikzlibrary{arrows,shapes,snakes,automata,backgrounds,petri,fit,positioning}
-\tikzstyle{node}=[circle, draw=black, minimum size=1mm]
+\tikzstyle{node}=[circle, draw=black, minimum size=1mm, inner sep=1.5pt]
 \tikzstyle{trans}=[font=\scriptsize]
 \tikzstyle{lab}=[font=\small]
-
+ 
 
 
 \newcommand{\pgfBox}{
@@ -521,17 +521,6 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   systems does not work out of the box, but it requires the
   restriction to well-behaved classes of left-linear rules.
   %
-<<<<<<< HEAD
-  In fact, the standard characterisation of independence does not hold anymore,
-  and this requires a substantial revision of the 
-  theory for the linear case, since a number of basic properties,
-  essential in the development of a theory of concurrency, were
-  derived from such a description.
-  %
-  The paper introduce a novel characterisation of independence, for which we prove a Church-Rosser property,
-  properly extending the class of formalisms 
-  that can be modelled in the adhesive framework. 
-=======
   Moreover, a standard characterisation of independence that -- in the
   linear case -- allows one to derive a number of properties,
   essential in the development of a theory of concurrency, no longer
@@ -546,7 +535,6 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   proofs for concurrent computations. These results properly extends
   the class of formalisms that can be modelled in the adhesive
   framework.
->>>>>>> refs/remotes/origin/main
 \end{abstract}
 
 
@@ -735,18 +723,11 @@ biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms is
 at the core of e-graphs (equality graphs), recently used for
 rewrite-driven compiler optimisations~\cite{WNW:egg}: rather than
 explicitly merging nodes corresponding to equal expression, the idea
-<<<<<<< HEAD
-here - conceptually and, as we will see, also mathematically similar -
-is to maintain an equivalence\todo{P: more precisely a congruence}
-over the nodes.  \todo{P: la sequenza di lavori su questo \`e ampia,
-  vedere se c'\`e qualcosa d'altro}
-=======
 here -- conceptually and, as we will see, also mathematically similar --
 is to maintain an equivalence %\todo{P: more precisely a congruence}
 over the nodes.  
 %\todo{P: la sequenza di lavori su questo \`e ampia,
 %vedere se c'\`e qualcosa d'altro}
->>>>>>> refs/remotes/origin/main
 
 
 Technically, to acquire the expressiveness needed for capturing
@@ -755,50 +736,6 @@ move from linear to left-linear rewriting rules. While left-linear
 rules have been considered in various instances (mainly in categories
 of graphs) and some results concerning the corresponding rewriting
 theory have been put forward, to the best of our knowledge the
-<<<<<<< HEAD
-phenomena arising when rewriting with left-linear rules in the general
-setting of adhesive and quasi-adhesive categories (which capture most
-``applications'') have not been systematically explored. ADD REFS
-
-As an initial step in performing this exploration, we observe that for left-linear
-rules a number of fundamental properties that play a role in the
-corresponding theory of rewriting need to be deeply revised, or plainly do not hold.
-
-Firstly, Church-Rosser theorem does not work out of the box. In
-particular, sequential independence between rewriting steps~\cite{}
-expressed in terms of the existence of a so-called independence pair
-is a canonical and well-understood notion of independence in the
-linear case. \todo{P: Too technical? Forse qui e' piu' esplicativo un
-  esempio} Whenever two steps are sequential independent
-\begin{itemize}
-\item they can be switched and 
-\item the result of the switch is uniquely determined.
-\end{itemize}
-
-Here we observe that, in general, both property can fail: sequential
-independent steps could be not switchable and different independent
-pairs could exist leading to different switches of the same rewriting
-steps.  A refined notion of independence needs to be considered to ensure
-that independent rewriting steps can be switched, which is based in the concept
-of fillers. The problem was identified
-in~\cite{baldan2011adhesivity}, where a subclass of adhesive
-categories was identified where independence as induced by a filler
-coincides with sequential independence (as induced by an independence
-pair). Here it is extended to $\mathcal{M}$-adhesive categories.
-
-
-We face the problem in the setting of $\mathcal{M}$-adhesive
-categories (which capture adhesive and quasi-adhesive categories).
-A difficult task, since the most natural idea, put forward in~\cite{baldan2017domains}, 
-of limiting sequential independence to those cases in which the switch is possible
-and uniquely determined does fall short.
-%
-In this work we focus on a class of rewriting systems, which we call
-\emph{very tame rewriting systems}, in $\mathcal{M}$-adhesive
-categories where sequential independence ensures existence and
-uniqueness of the switch and argue that this is the right setting for
-dealing with left-linear rewriting systems.
-=======
 phenomena arising when devising a theory of indepedence and
 concurrency for rewriting with left-linear rules in the general
 setting of adhesive and quasi-adhesive categories
@@ -880,82 +817,6 @@ of switching still holds, while globality of independence holds in a
 weak form, conceptually linked to the fact that fusions introduce a
 form of disjunctive causality. Finally, a canonical form for switching
 sequences can also be recovered.
-
-
-
-% \todo[inline]{
-% This fails for left-linear rules where, as observed
-% in~\cite{baldan2017domains}, for graph rewriting, the possibility of
-% merging parts of the state leads to a sort of disjunctive causality,
-% i.e., a rewriting step, say $r_c$ can be enabled by two different
-% rewriting steps $r_a$ and $r_b$, in a way that in a derivation
-% $r_a r_b r_c$ steps $r_b$ and $r_c$ are independent since the presence
-% of $r_a$ in the past is sufficient for enabling $r_a$, while in
-% $r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent.
-% }
-
-% \todo[inline]{
-% DA RIUSARE\\
-% Firstly, Church-Rosser theorem does not work out of the box. In
-% particular, sequential independence between rewriting steps~\cite{}
-% expressed in terms of the existence of a so-called independence pair
-% is a canonical and well-understood notion of independence in the
-% linear case. \todo{P: Too technical? Forse qui e' piu' esplicativo un
-%   esempio} Whenever two steps are sequential independent
-% \begin{itemize}
-% \item they can be switched and 
-% \item the result of the switch is uniquely determined.
-% \end{itemize}
-% Here we observe that, in general, both property can fail: sequential
-% independent steps could be not switchable and different independent
-% pairs could exist leading to different switches of the same rewriting
-% steps.  A refined notion of independence needs to be considered to ensure
-% that independent rewriting steps can be switched, which is based in the concept
-% of fillers. The problem was identified
-% in~\cite{baldan2011adhesivity}, where a subclass of adhesive
-% categories was identified where independence as induced by a filler
-% coincides with sequential independence (as induced by an independence
-% pair). Here it is extended to $\mathcal{M}$-adhesive categories.
-% }
-
-%   First of all, we will provide a refined notion of independence,
-%   which is based in the concept of fillers.
-
-% Then, we move to restrict the class of admissible left-linear rewriting systems,
-% always working at the level of $\mathcal{M}$-adhesive categories.
-% Unfortunately, the most natural idea, put forward in~\cite{baldan2017domains}, 
-% of limiting sequential independence to those cases in which the switch is possible
-% and uniquely determined does fall short.
->>>>>>> refs/remotes/origin/main
-
-
-<<<<<<< HEAD
-On the other hand, we show that an appropriate theory of rewriting can
-be developed for very tame rewriting systems, recovering, sometimes in
-weakened form, results which hold in the linear case.  Local
-Curch-Rosser is fully recovered for very tame rewriting systems.
-=======
->>>>>>> refs/remotes/origin/main
-
-
-<<<<<<< HEAD
-We show that for left-linear rewriting systems the characterisation of
-shift equivalence based on consistent permutations fails: the
-existence of a consistent permutation is only necessary but not
-sufficient, hence it cannot be used for proving (1) and (2). However property (1) still holds. Instead only a weak form of (2) can be proved. This is intimately related to the possibility of expressing disnjuctive forms of causality.
-
-\todo[inline]{
-This fails for left-linear rules where, as observed
-in~\cite{baldan2017domains}, for graph rewriting, the possibility of
-merging parts of the state leads to a sort of disjunctive causality,
-i.e., a rewriting step, say $r_c$ can be enabled by two different
-rewriting steps $r_a$ and $r_b$, in a way that in a derivation
-$r_a r_b r_c$ steps $r_b$ and $r_c$ are independent since the presence
-of $r_a$ in the past is sufficient for enabling $r_a$, while in
-$r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent. }
-
-=======
->>>>>>> refs/remotes/origin/main
 
 \section{$\mathcal{M}$-adhesive categories and DPO rewriting systems}\label{sec:ade}
 
@@ -2946,24 +2807,31 @@ $r_1\, r_2\, r_0$ we have that $r_1$ and $r_2$ are no longer
 independent.
 
 \begin{example}
+  \label{ex:non-global}
   Consider the rewriting system used as running example (rules in
   Fig.~\ref{fi:rules}. Assume to add rules $\rho_3$ and $\rho_4$ as
   depicted in Fig.~\ref{fi:rules-cas}. Consider the derivation
   $\der{F}$ in Fig.~\ref{fi:derF}. Observe that rule $\rho_4$ to be
   applied needs a self loop on node $12$. This can be generated either
   by $\rho_3$ or $\rho_1$ merging nodes $1$ and $2$, hence at least
-  one of them must precede the application of $\rho_4$. Indeed, in $\der{E}$ it can be easily seen that the second and third step applying $\rho_1$ and $\rho_3$ are independent. However, we could switch twice the application of $\rho_3$, bringing it in the last position, obtaining a derivation $\der{F}'$ (see {\color{red} DA FINIRE, se ci sta}), where the applications of  $\rho_1$ and $\rho_3$ are no longer independent.
+  one of them must precede the application of $\rho_4$. Indeed, in $\der{E}$ it can be easily seen that the second and third step applying $\rho_1$ and $\rho_3$ are independent. However, we could switch twice the application of $\rho_3$, bringing it in the last position, obtaining a derivation $\der{F}'$ as deipcted in Fig.~\ref{fi:derF1}, where the applications of  $\rho_1$ and $\rho_3$ are no longer independent.
    
   \begin{figure}
-   \input{Figure/rules-cas.tex}    
+    \input{Figure/rules-cas.tex}    
     \caption{Additional rules.}
     \label{fi:rules-cas}
   \end{figure}
 
   \begin{figure}
-\input{Figure/derF.tex}    
+    \input{Figure/derF.tex}    
     \caption{A derivation $\der{F}$.} 
     \label{fi:derF}
+  \end{figure}
+
+  \begin{figure}
+    \input{Figure/derF1.tex}    
+    \caption{A derivation $\der{F}'$.} 
+    \label{fi:derF1}
   \end{figure}
 \end{example}
 
@@ -3015,7 +2883,9 @@ The first result shows that whenever equating two derivation sequences by perfor
 
 While in the case of linear rewriting systems inversion can be
 performed in any order, this is no longer true for left-linear
-rewriting systems.\todo{P: counter example} Still, we can identify a
+rewriting systems due to the fact that, as already observed globality of independence holds in a weak form. For instance, if we get back to Example~\ref{ex:non-global} and consider derivations $\der{F}$ in Fig.~\ref{fi:derF}, the last two steps applying rules $\rho_1$ and $\rho_4$ can be switched, thus leading to a derivation, call it $\der{F}''$,  applying $\rho_3, \rho_4, \rho_1$. Such $\der{F}$ is switch equivalent to $\der{F}'$ in Fig.~\ref{fi:derF1}, hence starting from $\der{F}''$ we can obtain $\der{F}'$ via a switching sequence, but we cannot start by switching $\rho_1$ and $\rho_4$, despite the fact that this is an inversion.
+
+Still, we can identify a
 canonical form for switching derivations.
 
 
