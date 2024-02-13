@@ -698,7 +698,7 @@ rewriting steps, modifying the graph, model computation steps that result
 in changes to the system state. The DPO (double-pushout) approach~\cite{EhrigPS73}
 is nowadays considered a standard one for these structures, thanks to its locality 
 (rule application has a local effect on a state, differently from more recent approaches
-like, e.g., SqPO~\cite{CorradiniHHK06}
+like SqPO~\cite{CorradiniHHK06}
 or PBPO$^+$~\cite{OverbeekER23}) and to its flexibility: the rules allow to 
 specify that,  in a rewriting step, some entities in the current state are removed, 
 some others are needed for the rewriting step to occur but remain unaltered and 
@@ -764,7 +764,7 @@ left-linear rules a number of fundamental properties that play a role
 in the concurrency theory of linear rewriting need to be deeply revised, or
 plainly do not hold.
 %
-Firstly, the notion of sequential independence and Church-Rosser
+Firstly, the notion of sequential independence and the Church-Rosser
 theorem, ensuring that sequential independent steps can be performed
 in reverse order, does not hold out of the box. Even worse, given two
 independent steps it might be possible to switch them in several
@@ -789,7 +789,7 @@ As a sanity check, we prove that linear rewriting systems on
 $\mathcal{M}$-adhesive categories are well-switching.
 
 On the other hand, we show that a concurrency theory of rewriting can
-be developed for well-switching rewriting systems, recovering, sometimes in
+be developed for well-switchable rewriting systems, recovering, sometimes in
 weakened form, results which hold in the linear case.  Specifically, 
 the Church-Rosser theorem is fully recovered.
 %for well-switchable rewriting systems.
@@ -820,7 +820,7 @@ systems, namely
 \item \emph{consistency of switching}: when transforming
   sequences of rewriting steps into equivalent ones by switching independent steps, the
   result not depends on the order in which switchings are applied, but
-  only on the resulting permutation;
+  only on the associaterd permutation;
 \item \emph{globality of independence}: if two independent steps are
   moved forward or backward due to the application of switchings to a
   sequence, they remain independent.
@@ -840,8 +840,20 @@ weak form, conceptually linked to the fact that fusions introduce a
 form of disjunctive causality. Finally, we prove that a canonical form
 for switching sequences can also be recovered.
 
-\section{$\mathcal{M}$-adhesive categories and DPO rewriting systems}\label{sec:ade}
+The paper has the following structure. 
+Section~\ref{sec:ade} recalls the basic 
+definitions of DPO rewriting for $\mathcal{M}$-adhesive categories. 
+Section~\ref{sec:equi} presents the key novelties of our proposal,
+first introducing the classical notion of independence and 
+a novel axiomatic notion of switchability, further showing that the
+former fails to imply the latter for left-linear rewriting systems.
+We then define well-switchable systems,
+and prove that all the classical results holding for linear rewriting systems
+can be recovered for such a class of left-linear ones.
+Finally, Section~\ref{conclusions} wraps up the paper and 
+offers some thoughts on possible directions for our work.
 
+\section{$\mathcal{M}$-adhesive categories and DPO rewriting systems}\label{sec:ade}
 This first section recalls definitions and basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}.
 
 \begin{notation}
@@ -2307,7 +2319,7 @@ Switch equivalence is now defined as the equivalence relating derivations which 
 \end{remark}
 
 
-\subsection{Church-Rosser: Relating sequential indepedence and switchability}\label{subsec:CR}
+\subsection{Church-Rosser: Sequential independence and switchability}\label{subsec:CR}
 
 
 The fact that sequential indepedence implies switchability always
@@ -2555,7 +2567,7 @@ As a sanity check note that a source of strong enforcing left-linear DPO rewriti
 \end{restatable}
 [Proof in \Cref{propEqui-proof}]
 
-\subsection{Well-switching rewriting systems}\label{subsec:verytame}
+\subsection{Well-switchable rewriting systems}\label{subsec:verytame}
 
 Even if we work in strong enforcing rewriting systems where sequential
 independence ensures switchability, when dealing with left-linear
@@ -3017,11 +3029,12 @@ canonical form for switching derivations.
 
 
 \section{Conclusions and further work}
+\label{conclusions}
 
-We performed an in-depth investigation of notion of independence between
+We performed an in-depth investigation of the notion of independence between
 rewriting steps in the setting of left-linear rewriting systems
 over adhesive categories, which encompasses most of the
-structures commonly used in analysis and modelling applications.
+structures commonly used in analysing and modelling applications.
 
 We showed that the canonical notion of independence adopted for linear
 systems does not enjoy some properties that are essential for
@@ -3036,18 +3049,26 @@ rewriting systems, enjoy a number of fundamental properties:
 confluence of switching, a weak form of globality of independence and
 the existence of a canonical form for switch equivalence proofs.
 
-The class of well-switchable adhesive rewriting systems is vast. Generalising a result in~\cite{baldan2011adhesivity} we can show that one of its defining properties (the fact that sequential independence implies switchability) holds for a class of adhesive categories which include all presheaves over set. Moreover, the second property, uniqueness of switching, is ensured when rewriting possibly hierarchical graphical structures, as long as elements of the top sorts are not merged (e.g., one can consider rewriting systems over directed graphs where only nodes are merged, as it happens in most approaches to modelling calculi, biological systems and also in string diagrams).\todo{Giusto, referneces?}
+The class of well-switchable adhesive rewriting systems is vast. Generalising a result in~\cite{baldan2011adhesivity} 
+we can show that one of its defining properties (the fact that sequential independence implies switchability) holds 
+for a class of adhesive categories which include all presheaves over set. Moreover, the second property, uniqueness 
+of switching, is ensured when rewriting possibly hierarchical graphical structures, as long as elements of the top sorts 
+are not merged (e.g., one can consider rewriting systems over directed graphs where only nodes are merged, as it 
+happens in most approaches to modelling calculi, biological systems and also in string diagrams).\todo{Giusto, refernences?}
 
 The results in this paper open the way to the development of a
 concurrent semantics for left-linear rewriting systems over adhesive
 categories. In~\cite{baldan2017domains} the authors argue that for
 computational systems which allow one to express merging or fusions,
-the right semantic models are weak prime domains, a generalisation of
+the right semantical models are weak prime domains, a generalisation of
 of prime domains, a staple in concurrency theory, and connected event
 structures, their event-based counterpart. The mentioned paper
 discusses only the case of graph rewriting and does not delve into the
-problems induced by merging to the trheory of rewriting (the systems
-considered there are implicitly assumed to be well switching). We plan to consolidate the statement that weak prime domains are ``the'' model for systems with fusions by showing that they allow to provide a semantics for general left-linear rewriting systems in $\mathcal{M}$-adhesive categioris.
+problems induced by the occurring of ``merges'' to the theory of rewriting (the systems
+considered there are implicitly assumed to be well-switchable). 
+We plan to consolidate the statement that weak prime domains are 
+``the'' model for systems with fusions by showing that they allow to provide a semantics
+for left-linear rewriting systems in $\mathcal{M}$-adhesive categories.
 
 On the practical side, the present paper just surveyed the possibility
 of modelling Egg graphs. This appears to be quite interesying as
