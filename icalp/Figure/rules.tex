@@ -82,7 +82,7 @@
         \pgfBox
       \end{tikzpicture} 
     };
-    \node[font=\scriptsize, above] at (l.north) {$K_1$};
+    \node[font=\scriptsize, above] at (k.north) {$K_1$};
     \node  [right=of k] (r) {
       \begin{tikzpicture}
         \node at (0,0) [node, label=below:$1$] (1) {}
@@ -91,7 +91,7 @@
         \pgfBox
       \end{tikzpicture}
     };
-    \node[font=\scriptsize, above] at (l.north) {$R_1$};
+    \node[font=\scriptsize, above] at (r.north) {$R_1$};
     \path (k) edge[->] node[trans, above] {} (l);
     \path (k) edge[->] node[trans, above] {} (r);
     \end{tikzpicture}
@@ -124,7 +124,7 @@
       \pgfBox
       \end{tikzpicture} 
     };
-    \node[font=\scriptsize, above] at (l.north) {$K_2$};
+    \node[font=\scriptsize, above] at (k.north) {$K_2$};
     \node  [right=of k] (r) {
       \begin{tikzpicture}
         \node at (0,0.53) {}; 
@@ -133,7 +133,7 @@
         \pgfBox
       \end{tikzpicture}
     };
-    \node[font=\scriptsize, above] at (l.north) {$R_2$};
+    \node[font=\scriptsize, above] at (r.north) {$R_2$};
     \path (k) edge[->] node[trans, above] {} (l);
     \path (k) edge[->] node[trans, above] {} (r);
     \end{tikzpicture}

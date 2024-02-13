@@ -503,9 +503,10 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
 %  considers concurrent and distributed systems, since the independence
 %  of two steps means that they could be executed in any order, and
 %  potentially in parallel.
-  When can two sequential steps performed by a computing device be considered (causally) independent? 
-  This is a relevant question for concurrent and distributed systems, since independence
-  means that they could be executed in any order, and potentially in parallel.
+  When can two sequential steps performed by a computing device be
+  considered (causally) independent?  This is a relevant question for
+  concurrent and distributed systems, since independence means that
+  they could be executed in any order, and potentially in parallel.
   % 
   We investigate the issue in the context of adhesive categories, a
   very general instance of the DPO approach to rewriting. More
@@ -705,29 +706,32 @@ Church-Rosser theorem of DPO rewriting~\cite[Section~xxx]{CMREHL:AAGT}.
 A noteworthy advantage is that DPO rewriting can be formulated over
 adhesive categories and their variants~\cite{lack2005adhesive,ehrig2006weak}. 
 %
-Operating within the framework of adhesive categories allows one to devise 
-the foundations of a rewriting theory that can be subsequently instantiated 
-to the context of interest, thus avoiding the need of repeatedly proving
-similar ad-hoc results for each specific setting. In fact, the framework is
-so general that it allowed to recast in the DPO approach many additional formalisms,
-ranging from toposes~\cite{johnstone2007quasitoposes} to string diagrams~\cite{bonchi2022string}.
+Operating within the framework of adhesive categories allows one to
+devise the foundations of a rewriting theory that can be subsequently
+instantiated to the context of interest, thus avoiding the need of
+repeatedly proving similar ad-hoc results for each specific
+setting. In fact, the framework is so general that it allowed to
+recast in the DPO approach many additional formalisms, ranging from
+toposes~\cite{johnstone2007quasitoposes} to string
+diagrams~\cite{bonchi2022string}.
 
-So far, most of the theoretical results focussed on what are called \emph{linear rules}: 
-intuitively, a step is required only to consume, preserve and generate entities. 
-However, in some situations it is also necessary to ``merge'' parts of the state. 
-This happens already in the context of string diagram mentioned above, but also 
-in graphical implementations of nominal calculi where, as a result of name passing, 
-the received name is identified with a local one at the
-receiver~\cite{CVY:ESSPE,Gad07} or in the visual modelling of bonding in
-biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms is
-at the core of e-graphs (equality graphs), recently used for
+So far, most of the theoretical results focussed on what are called
+\emph{linear rules}: intuitively, a step is required only to consume,
+preserve and generate entities.  However, in some situations it is
+also necessary to ``merge'' parts of the state.  This happens already
+in the context of string diagram mentioned above, but also in
+graphical implementations of nominal calculi where, as a result of
+name passing, the received name is identified with a local one at the
+receiver~\cite{CVY:ESSPE,Gad07} or in the visual modelling of bonding
+in biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms
+is at the core of e-graphs (equality graphs), recently used for
 rewrite-driven compiler optimisations~\cite{WNW:egg}: rather than
 explicitly merging nodes corresponding to equal expression, the idea
-here -- conceptually and, as we will see, also mathematically similar --
-is to maintain an equivalence %\todo{P: more precisely a congruence}
-over the nodes.  
-%\todo{P: la sequenza di lavori su questo \`e ampia,
-%vedere se c'\`e qualcosa d'altro}
+here -- conceptually and, as we will see, also mathematically similar
+-- is to maintain an
+equivalence %\todo{P: more precisely a congruence}
+over the nodes.
+
 
 
 Technically, to acquire the expressiveness needed for capturing
@@ -783,17 +787,27 @@ the Church-Rosser theorem is fully recovered.
 %for well-switchable rewriting systems.
 
 
-There is, however, a further problem.  For linear
-rewriting systems, switch equivalence can be characterised in terms of the
-existence of what is called a consistent permutation~\cite{xxx}.
-%(roughly, an isomorphism between their colimits). 
-This result, which
-is folklore for various categories of graphs, is explicitly proved
-here for $\mathcal{M}$-adhesive categories.
-%
-The characterisation of switch equivalence based on consistent
-permutations is the key to derive some
-properties for linear rewriting systems, namely
+
+% \begin{enumerate}
+% \item \emph{confluence of switching}: when transforming derivation
+%   sequences into equivalent ones by switching independent steps, the
+%   result not depends on the order in which switchings are applied, but
+%   only on the resulting permutation;
+  
+% \item \emph{globality of independence}: if two independent steps are
+%   moved forward or backward due to the application of switchings to a
+%   derivation, they remain independent.
+% \end{enumerate}
+
+
+There is, however, a further problem. In the literature on linear
+rewriting systems, a central result is the a characterisation of
+switch equivalence of derivations based on so-called processes or
+consistent permutations~\cite{add citations}.\todo{Handboo, graph processes, tobias}
+In turn this is the key
+to derive some simple but fundamental properties for linear rewriting
+systems, namely
+
 \begin{enumerate}
 \item \emph{consistency of switching}: when transforming
   sequences of rewriting steps into equivalent ones by switching independent steps, the
@@ -1165,10 +1179,6 @@ Often, we are interested in derivations only up to some notion of coherent isomo
     &R_i \ar[u]^{h'_i} \ar[d]_{h_i}\\G_i
     \ar@/_.45cm/[uu]_(.35){\phi_{G_i}}|\hole&D_i\ar@{>->}[l]^{f_i}\ar@/_.45cm/[uu]_(.35){\phi_{D_i}}|\hole
     \ar[r]_{g_i}&G_{i+1}\ar@/_.45cm/[uu]_{\phi_{G_{i+1}}}}$}
-
-
-
-\todo{P: sopra era $X \in\Deltamin(\der{D})$, non definito nel main}
 
 
 $\mathcal{M}$-adhesivity of $\X$ guarantees the essential uniqueness of
@@ -2182,7 +2192,7 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   
   A derivation $\der{D}$ consisting of three steps $\dder{D}_0$,
   $\dder{D}_1$, and $\dder{D}_2$, each applying the corresponding rule
-  $\rho_i$, is depicted in in Fig.~\ref{fi:derD}. The second and third
+  $\rho_i$, is depicted in Fig.~\ref{fi:derD}. The second and third
   steps $\dder{D}_1$ and $\dder{D}_2$ are clearly sequential
   independent, via an independence pairs that map nodes consistently
   with their numbering.\todo{P: having names for the graphs would
@@ -2206,28 +2216,31 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
 
 As already mentioned, for linear rewriting systems, when viewing
 derivations as concurrent computations, it is canonical to identify
-derivations which are equal ``up to switching''. The same notion can
-be given for left-linear rewriting systems by relying on notion of
-switch.
+derivations which are equal ``up to switching'', i.e., which differs
+only for the order of indepedent steps. The same notion can be given
+for left-linear rewriting systems by relying on notion of switch.
 
 
 We first need to recall some concept and notations regarding permutations. 
 
 \begin{definition}
-	A \emph{permutation} on
-	$\interval[0]{n}$ is a bijection
-	$\sigma : \interval[0]{n} \to \interval[0]{n}$. We call it a
-	\emph{transposition} when there are $i, j \in \interval{n}$,
-	$i \neq j$ such that $\sigma(i)=j$, $\sigma(j) = i$ and
-	$\sigma(k) = k$ otherwise. Such a transposition is normally denoted as
-	$\transp{i}[j]$.
-	
-Given a permutation $\perm$ on $\interval[0]{n}$,  an \emph{inversion} for $\sigma$ is a pair $(i,j)$ such that $i<j$ and $\sigma(j)< \sigma(i)$. The set of inversions
-of $\perm$ will be denoted by $\inv{\sigma}$.
+  A \emph{permutation} on
+  $\interval[0]{n}$ is a bijection
+  $\sigma : \interval[0]{n} \to \interval[0]{n}$. We call it a
+  \emph{transposition} when there are $i, j \in \interval{n}$,
+  $i \neq j$ such that $\sigma(i)=j$, $\sigma(j) = i$ and
+  $\sigma(k) = k$ otherwise. Such a transposition is normally denoted as
+  $\transp{i}[j]$.
+  
+  Given a permutation $\perm$ on $\interval[0]{n}$, an
+  \emph{inversion} for $\sigma$ is a pair $(i,j)$ such that $i<j$ and
+  $\sigma(j)< \sigma(i)$. The set of inversions of $\perm$ will be
+  denoted by $\inv{\sigma}$.
 \end{definition}
 
 \begin{remark}
-	Clearly, a permutation $\perm$ is the identity if and only if $\inv{\perm}=\emptyset$.
+  Clearly, a permutation $\perm$ is the identity if and only if
+  $\inv{\perm}=\emptyset$.
 \end{remark}
 
 % Now, if $\perm \neq id$ there is at least an inversion of the kind
@@ -2241,17 +2254,17 @@ We also need to introduce the notion of \emph{switching sequences}.
 
 
 \begin{definition}
-\todo{A: ma questa definizione va tolta, no?}
-Consider derivations $\der{D}_i$ for $i \in \interval[0]{n}$
-	related by switches
-	\begin{center}
-		$\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots \shift{\nu_n}
-		\der{D}_n$
-	\end{center}
-	It will be referred as a \emph{switching sequence}.  
+  \todo{A: ma questa definizione va tolta, no?}
+  Consider derivations $\der{D}_i$ for $i \in \interval[0]{n}$
+  related by switches
+  \begin{center}
+    $\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots \shift{\nu_n}
+    \der{D}_n$
+  \end{center}
+  It will be referred as a \emph{switching sequence}.  
 \end{definition}
 
-Switch equivalence is now defined as the equivalence relating derivations which can be obatained one from another by a sequence of switches. Moreover, intermediate graphs can be taken up to isomorphism.\todo{P: da scrivere meglio e fare}
+Switch equivalence is now defined as the equivalence relating derivations which can be obatained one from another by a sequence of switches. Moreover, intermediate graphs can be taken up to isomorphism according to abstraction equivalence.
 
 \begin{definition}[Switch equivalence]
   \label{de:switch-equivalence}
@@ -2370,8 +2383,8 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   depicted in Fig.~\ref{fi:rules}, where numbers are used to represent
   the mappings from the interface to the left- and right-hand
   sides. Rules $\rho_0$ and $\rho_1$ are linear: $\rho_0$ generates a
-  new node, while $\rho_1$ delete an edge. Instead, $\rho_2$ is non
-  linear as it ``merge'' two nodes.
+  new node, while $\rho_1$ deletes an edge. Instead, $\rho_2$ is non
+  linear as it ``merges'' two nodes.
 
   \begin{figure}
     \input{Figure/rules.tex}
@@ -2382,11 +2395,10 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   
   A derivation $\der{D}$ consisting of three steps $\der{D}_0$,
   $\der{D}_1$, and $\der{D}_2$, each applying the corresponding rule
-  $\rho_i$ ,is depicted in in Fig.~\ref{fi:derD}. The second and third
+  $\rho_i$ is depicted in in Fig.~\ref{fi:derD}. The second and third
   steps $\der{D}_1$ and $\der{D}_2$ are clearly sequential
-  independent, via an independence pairs that map nodes consistently
-  with their numbering.\todo{P: having names for the graphs would
-    probably help}
+  independent, via an independence pair $L_2 \to D_1$ and
+  $R_1 \to G_2$ that map nodes accoording to their numbering.
   
   \begin{figure}
     \input{Figure/derD.tex}
@@ -2503,7 +2515,7 @@ As such, it includes essentially all categories (e.g., presheaves over set) that
 
 
 %\rem{Non introdurrei una classe, come detto sopra}{
-\begin{definition}[Strong Enforcing rewriting systems]A left-linear DPO rewriting system is \emph{strong enforcing} if every independence pair between two direct derivations is strong.
+\begin{definition}[Strong Enforcing rewriting systems]A left-linear DPO rewriting system is \emph{strong enforcing} if every independence pair between two direct derivations is strong. 
 \end{definition}
 
 \begin{example}
@@ -2511,7 +2523,7 @@ As such, it includes essentially all categories (e.g., presheaves over set) that
   In light of \Cref{thm:church}, \Cref{ex:diff1} provides an example
   of an independence pair which is not strong, and thus of a non strong enforcing
   adhesive rewriting system. Instead the category $\cat{Graph}$ is
-  strong enforcing by the result in ....
+  strong enforcing by the result in .... 
 \end{example}
 
 \begin{remark}
@@ -2526,7 +2538,7 @@ As such, it includes essentially all categories (e.g., presheaves over set) that
 
 %\rem{Questo e' quanto gia' asserito sopra, mettere in appendice e riferire}
 
-As a sanity check not that a source of strong enforcing left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
+As a sanity check note that a source of strong enforcing left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
 
 \begin{restatable}{proposition}{propEqui}
   \label{prop:equi}
@@ -2536,8 +2548,16 @@ As a sanity check not that a source of strong enforcing left-linear DPO rewritin
 
 \subsection{Well-switching rewriting systems}\label{subsec:verytame}
 
-Even if we work in a setting where sequential independence ensures switchability, when dealing with left-linear rules there is a further -- and possibly more serious -- issue, i.e., the fact that there can be more than one independence pairs between the same derivations. This can hinder the core idea of using sequential independence as a basis of a theory of concurrency for rewriting systems, since exchanges performed using different independence pairs may lead to derivations that are not abstraction equivalent, and thus one would equate computations that 
-should definitively be taken apart, as shown in the example below.
+Even if we work in strong enforcing rewriting systems where sequential
+independence ensures switchability, when dealing with left-linear
+rules there is a further -- and possibly more serious -- issue, i.e.,
+the fact that there can be more than one independence pairs between
+the same derivations. This can hinder the core idea of using
+sequential independence as a basis of a theory of concurrency for
+rewriting systems, since exchanges performed using different
+independence pairs may lead to derivations that are not abstraction
+equivalent, and thus one would equate computations that should
+definitively be taken apart, as shown in the example below.
 
 \begin{example}
   Consider the derivation $\der{E}$ from Example~\ref{ex:seq-ind}.
@@ -2545,7 +2565,7 @@ should definitively be taken apart, as shown in the example below.
   The last two steps are sequential independent but one easily sees
   that there are two distinct indepedence pair, as the left-hand side
   of $\rho_1$ can be mapped either to node $1$ or to node
-  $2$.\todo{Sarebbe bello dire di quale grafo} Correspondingly, there
+  $2$ in $G_2'$. Correspondingly, there
   are two switches of $\der{E}$: one is the derivation $\der{D}$ in
   Figure~\ref{fi:derD} we started from, the other is the derivation
   $\der{D}'$ in Figure~\ref{fi:derD1}.
@@ -2566,12 +2586,12 @@ should definitively be taken apart, as shown in the example below.
   view, the property of being switch equivalent is not closed by
   prefix, something which prevents to derive a sensible concurrent
   sematics: if we limit to the first two steps, derivations
-  $\der{D}_0; \der{D}_1$ and $\der{D}_0'; \der{D}_1'$ are not switch
+  $\dder{D}_0; \dder{D}_1$ and $\dder{D}_0'; \dder{D}_1'$ are not switch
   equivalent while $\der{D}$ and $\der{D}'$ would be
 \end{example} 
 
-Moreover, limiting sequential independence to the case in which the independence
-pair is unique (as suggested in~ ...) brings to the same problems.
+\full{Moreover, limiting sequential independence to the case in which the independence
+pair is unique (as suggested in~\cite{baldan2017domains}) brings to the same problems.}
 
 For these reasons we support the idea that a theory of rewriting for
 left-linear rules in adhesive categories should be developed for
@@ -2589,8 +2609,10 @@ The previous definition might sound restrictive. However, it is immediate to see
 %
 Moreover, we next introduce a class of rewriting systems, comprising
 all the ones used in concrete modelling applications of DPO rewriting
-(e.g., in the encoding of process calculi ..., ...) are \todo{INSERIRE ESEMPI QUI}
-actually well switching.
+(e.g., in the encoding of process calculi ..., ...) are \todo{INSERIRE
+  ESEMPI QUI} actually well switching.
+%
+Roughly speakings, these are possibly hierarchical graphical structures where rules are contrained not to merge elements of top level sorts in the hiearchy (for graphs, nodes can be merged while edges can not).
 
 \begin{definition}
 Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph, we define the \emph{depth} of a vertex $v\in V$ in the following way:
@@ -2743,27 +2765,33 @@ Then the following are equivalent:
 \subsection{A canonical form for  switch equivalences}
 \label{subsec:canonical}
 
-The characterisation of switch equivalence based on consistent permutations is the key to
-derive some simple but fundamental properties for linear rewriting systems, namely
-\begin{enumerate}
-\item \emph{confluence of switching}: when transforming derivation
-  sequences into equivalent ones by switching independent steps, the
-  result not depends on the order in which switchings are applied, but
-  only on the resulting permutation;
-  
-\item \emph{globality of independence}: if two independent steps are
-  moved forward or backward due to the application of switchings to a
-  derivation, they remain independent.
-\end{enumerate}
 
+As discussed in the introduction, a number of basic properties of
+switch equivalence, i.e., the confluence of swicthing, globality of
+independence and the existence of a canonical form for equivalence
+proofs, can be derived, in the linear case, from a characterisation of
+switch equivalence in terms of so-called consistent permutations or
+processes.
 
-In particular, the two properties allows one to obtain a \emph{canonical form} for switching sequences: whenever two derivation sequences are switch equivalence via some permutation $\sigma$, then each one can be obtained from the other by applying switchings to pairs of rule applications which $\sigma$ reverses (the so-called inversions).\todo{P: un po' di questi discorsi sono copiati nell'intro, ridurre}
+When dealing with left-linear rules, such a characterisation fails. Leaving aside the formal details (the interested reader can consult Appendix~\ref{})\todo{P: possiamo mettere in appendice la def. consistent permutation? e forse anche l'implicazione che vale per i left linear?}, the intuition is quite simple. In the linear case one proves that two derivations is using the same rules in different orders are switch equivalent when the colimits of the two derivations, seen as diagrams, are isomorphic and the isomorphism properly commutes with the embeddings of the rules.
 
-The failure of the characterisation of switch equivalence via
-consistent permutations for left-linear rules leads to the
-question asking whether the properties above hold.
+This result clearly fails when considering left-linear
+derivations. This is readily seen by considering derivations $\der{D}$
+in Fig.~\ref{fi:derD} and $\der{D}'$ in Fig.~\ref{fi:derD1}. We
+already observed that $\der{D} \not\equiv_a \der{D}'$\todo{P:
+  osservato?}
+% 
+Still, it is easy to see that they are related by a consistent
+permutation, which is the identity on productions. The colimit of
+both derivations is a single node with a self loop, i.e., the
+terminal object in $\cat{Graph}$, hence all commutation requirements
+are trivially satisfied.
 
-In this section we show that actually much of the theory can be retained: confluence of switching still holds, while globality of independence holds in a weak form, conceptually linked to the fact that fusions introduce a form of disjunctive causality. Finally, a canonical form for switching sequences can also be recovered.
+In this section we show, despite the failure of the s, actually much of the theory can
+be retained: confluence of switching still holds, while globality of
+independence holds in a weak form, conceptually linked to the fact
+that fusions introduce a form of disjunctive causality. Finally, a
+canonical form for switching sequences can also be recovered.
 
 We start by proving two lemmas dealing with derivations of length
 $3$. Despite being technical, these lemma are the fundamental building blocks for showing properties (1) and (2) above.
@@ -2981,7 +3009,45 @@ canonical form for switching derivations.
 
 
 \section{Conclusions and further work}
-\todo{VERY NICE CONCLUSIONS}
+
+We perform an in-depth investigation of notion of independence between
+computational steps in the setting of left-linear rewriting systems
+over adhesive categories, which encompasses rewriting over most of the
+structures used in semantic and modelling applications.
+
+We showed that the canonical notion of independence adopted for linear
+systems does not enjoy some properties which are essential for
+developing a sensible theory of concurrency, notably Church Rosser
+theorem, and we identified the subclass of well switchable rewriting
+systems as an appropriate setting where instead a number of vital
+results can be re-established. Specifically, Church Rosser theorem,
+i.e., the possibility of performing independent steps in any order is
+fully recovered. Moreover, the switch construction and correspondingly
+switch equivalence which is at the core of a theory of concurrency for
+adhesive recwritng suystems enjoy a number of fundamental properties:
+confluence of switching, a weak form of globality of independence and
+the existence of a canonical form for switch equivalence proofs.
+
+The class of well-switchabke adhesive rewting systems is vast. Generalising a result in~\cite{baldan2011adhesivity} we can show that one of its defining properties (the fact that sequential independence implies switchability) holds for a class of adhesive categories which include all presheaves over set. Moreover, the second property, uniqueness of switching, is ensured when rewriting possibly hierarchical graphical structures, as long as elements of the top sorts are not merged (e.g., one can consider rewriting systems over directed graphs where only nodes are merged, as it happens in most approaches to modelling calculi, biological systems and also in string diagrams).\todo{Giusto, referneces?}
+
+The results in this paper open the way to the development of a
+concurrent semantics for left-linear rewriting systems over adhesive
+categories. In~\cite{baldan2017domains} the authors argue that for
+computational systems which allow one to express merging or fusions,
+the right semantic models are weak prime domains, a generalisation of
+of prime domains, a staple in concurrency theory, and connected event
+structures, their event-based counterpart. The mentioned paper
+discusses only the case of graph rewriting and does not delve into the
+problems induced by merging to the trheory of rewriting (the systems
+considered there are implicitly assumed to be well switching). We plan to consolidate the statement that weak prime domains are ``the'' model for systems with fusions by showing that they allow to provide a semantics for general left-linear rewriting systems in $\mathcal{M}$-adhesive categioris.
+
+On the practical side, the present paper just surveyed the possibility
+of modelling Egg graphs. This appears to be quite interesying as
+concurrent rewriting on Eggs seems to be an actove area of
+reserach. \todo{P: cite} We plan to make the correspondence precise
+and investigate how the analysis techniques enabled by a concurrent
+semantics of rewriting can impact on Eggs.
+
 
 \bibliography{bibliog.bib}
 
@@ -3034,7 +3100,7 @@ The following proposition establishes a key property of $\mathcal{A}$-Van Kampen
 The previous proposition, now, allows us to establish the following result.
 
 \noindent \parbox{7.4cm}{
-\begin{lemma}\label{lem:varie}Let $\mathcal{A}$ be a class of arrows stable under pullbacks, pushouts and containing all isomorphisms.  Suppose that, the left square below is $\mathcal{A}$-Van Kampen, while the vertical faces in the right cube are pullbacks. 	Supppose, moreover that $m\colon A\to C$ and $d\colon D'\to D$ are mono and that $d$ belongs to $\mathcal{A}$. Then $d\leq n$ if and only if $c \leq m$.
+\begin{lemma}\label{lem:varie}Let $\mathcal{A}$ be a class of arrows stable under pullbacks, pushouts and containing all isomorphisms.  Suppose that, the left square aside is $\mathcal{A}$-Van Kampen, while the vertical faces in the right cube are pullbacks. 	Supppose, moreover that $m\colon A\to C$ and $d\colon D'\to D$ are mono and that $d$ belongs to $\mathcal{A}$. Then $d\leq n$ if and only if $c \leq m$.
 \end{lemma}}
 	\parbox{6cm}{$\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{g'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{g}&&B\ar[dd]^{n}&&C'  \ar[dd]_{c}\ar[rr]^(.7){f'} & & D' \ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{f} &&D&&C \ar[rr]_{f} & & D}$}
 
@@ -3056,7 +3122,7 @@ The previous proposition, now, allows us to establish the following result.
 	\[\xymatrix@C=40pt{C'  \ar[d]^{h}\ar[r]^{f'} \ar@/_.5cm/[dd]_{c}& D' \ar@/^.5cm/[dd]^{d}\ar[d]_{k}\\ A \ar[d]^{m} \ar[r]^{g} & B \ar[d]_{n} \\  C \ar[r]_f & D}\]
 
 	\smallskip \noindent
-	$(\Leftarrow)$ Let $h:C\to A$ be such that $c=m\circ h$. By the $\mathcal{A}$-Van Kampen property the top face of the given cube is a pushout. Thus the dotted $k:D'\to B$ in the following diagram exists.
+	$(\Leftarrow)$ Let $h:C'\to A$ be such that $c=m\circ h$. By the $\mathcal{A}$-Van Kampen property the top face of the given cube is a pushout. Thus the dotted $k:D'\to B$ in the following diagram exists.
 	\[\xymatrix@C=40pt{A' \ar@/_.5cm/[dd]_{a} \ar[d]^{m'} \ar[r]^{g'} & B' \ar[d]_{n'} \ar@/^.5cm/[dd]^{b} \\  C' \ar[d]^{h} \ar[r]_{f'} & D' \ar@{.>}[d]_{k}\\ A \ar[r]_g& B }\]
 	Moreover, by construction we have
 	\begin{align*}
@@ -3079,7 +3145,7 @@ Finally, we can show that $\mathcal{A}$-stable pushouts enjoy a kind of \emph{pu
 \begin{proof}
 	We can begin noticing that $g$, being the pullback of $k$, is mono and in $\mathcal{A}$ too. Thus we can build the cube below, in which all the vertical faces are pullbacks, entailing that all the vertical arrows are in $\mathcal{A}$.
 	\[\xymatrix@C=20pt@R=10pt{ & &X\ar[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar[ddd]_{g} \ar[rrr]^{b}&&& B\ar[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar[dl]_{f}&&& A \ar[dl]^{h}\\ & Y  \ar[dl]_{g}&&& B \ar[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
-	By hypothesis the face is an $\mathcal{A}$-stable pushout and so its top one is a pushout. Using \Cref{lem:po1} we can conclude that the right half of the rectangle with which we have started is a pushout too.
+	By hypothesis the bottom face is an $\mathcal{A}$-stable pushout and so its top one is a pushout. Using \Cref{lem:po1} we can conclude that the right half of the rectangle we  started with is a pushout too.
 \end{proof}}
 
 \subsection{Useful properties of $\mathcal{M}$-adhesive categories}
@@ -3128,7 +3194,7 @@ From \Cref{prop:pbpoad}, in turn, we can derive the following corollaries.
 The following result now follows at once noticing that a regular monomorphism which is also epic is automatically an isomorphism.
 
 \begin{corollary}\label{prop:bal}
-	If $\X$ is an $\mathcal{M}$-adhesive categories, then every epimorphisms in $\mathcal{M}$ is an isomorphisms. In particular, every adhesive category $\X$ is \emph{balanced}: if a morphism is monic and epic, then it is an isomorphism.
+	If $\X$ is an $\mathcal{M}$-adhesive categories, then every epimorphism in $\mathcal{M}$ is an isomorphism. In particular, every adhesive category $\X$ is \emph{balanced}: if a morphism is monic and epic, then it is an isomorphism.
 \end{corollary}
 
 \noindent 
@@ -3160,7 +3226,7 @@ Let us turn our attention to pushout complements.
 \noindent
 \parbox{11cm}{
 	\begin{definition}[Pushout complement]
-		Let $f\colon X\to Y$ and $g\colon Y\to Z$ be two composable arrows in a category $\X$. A \emph{pushout complement} for the pair $(f,g)$ is a pair $(h,k)$ with $h\colon X\to W$ and $k\colon W\to Z$ such that the square below commutes and it is a pushout.
+		Let $f\colon X\to Y$ and $g\colon Y\to Z$ be two composable arrows in a category $\X$. A \emph{pushout complement} for the pair $(f,g)$ is a pair $(h,k)$ with $h\colon X\to W$ and $k\colon W\to Z$ such that the square aside commutes and it is a pushout.
 	\end{definition}} \quad
 \parbox{4cm}{\vspace{.1cm}
 	$\xymatrix{X \ar[r]^{f} \ar[d]_{h}& Y \ar[d]^{g} \\ W \ar[r]_{k}& Z}$}\\
@@ -3175,7 +3241,8 @@ Let us turn our attention to pushout complements.
 	\end{example}
 \fi
 
-Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
+In $\mathcal{M}$-adhesive categories the pushout complement is unique up to iso, if it exists. 
+% amend the second defect.\todo{A: }
 
 \noindent
 \parbox{8.5cm}{
@@ -3199,7 +3266,7 @@ Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
 	We can then consider the cube below, in which the front, right and back faces are pullbacks.
 	\[\xymatrix@C=15pt@R=15pt{&A\ar@{>->}[dd]|\hole_(.65){a}\ar[rr]^{r} \ar[dl]_{t} && B \ar@{>->}[dd]^{b} \ar[dl]_{s} \\ P  \ar@{>->}[dd]_{p_2}\ar[rr]^(.7){p_1} & & N \ar@{>->}[dd]_(.3){n}\\&M\ar[rr]|\hole^(.65){h} \ar@{>->}[dl]^{m} && Q \ar@{>->}[dl]^{k} \\X \ar[rr]_{f} & & Y}\]
 	We can notice that the left square is a pullback too. To see this it is enough to apply \Cref{lem:pb1} to the diagram
-	\[\xymatrix{A  \ar@/^.4cm/[rr]^{s\circ r}\ar@{>->}[d]_{a} \ar[r]_{t}& \ar[r]_{p_1} P \ar@{>->}[d]^{p_2}& N \ar[d]^{c}\\ M \ar@/_.4cm/[rr]_{k\circ h}\ar@{>->}[r]^{m}& X \ar[r]^{f}& Y}\]
+	\[\xymatrix{A  \ar@/^.4cm/[rr]^{s\circ r}\ar@{>->}[d]_{a} \ar[r]_{t}& \ar[r]_{p_1} P \ar@{>->}[d]^{p_2}& N \ar[d]^{n}\\ M \ar@/_.4cm/[rr]_{k\circ h}\ar@{>->}[r]^{m}& X \ar[r]^{f}& Y}\]
 
 	The thesis now follows immediately from \Cref{lem:varie}. \qedhere
 \end{proof}
@@ -3214,11 +3281,11 @@ Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
 \full{ 
 \begin{proof}
 	Consider the two pushout squares
-	\[\xymatrix{M \ar[r]^{h_1}\ar@{>->}[d]_{m}& W_1 \ar@{>->}[d]^{k_1} & M \ar@{>->}[d]_{m} \ar[r]^{h_1}& W_2 \ar@{>->}[d]^{k_2}\\Y\ar[r]_{f}&Z &Y \ar[r]_{f}&Z}\]
-	Since $\mathcal{M}$ is in $\mathcal{M}$, \cref{prop:pbpoad} guarantees that they are both pullbacks.
+	\[\xymatrix{X \ar[r]^{h_1}\ar@{>->}[d]_{m}& W_1 \ar@{>->}[d]^{k_1} & X \ar@{>->}[d]_{m} \ar[r]^{h_2}& W_2 \ar@{>->}[d]^{k_2}\\Y\ar[r]_{f}&Z &Y \ar[r]_{f}&Z}\]
+	Since $m$ is in $\mathcal{M}$, \cref{prop:pbpoad} guarantees that they are both pullbacks.
 	Since $m\leq m$, by \Cref{lem:radj} we get that now entails that $k_1\leq k_2$ and $k_2\leq k_1$. Thus there exists an isomorphism $\phi\colon W_1\to W_2$ such that $k_1=k_2\circ \phi$. To see that $h_2=\phi\circ h_1$, we can compute:
 	\[
-		k_2\circ \phi \circ h_1  = k_1\circ h_1= n\circ m= k_2\circ h_2\]
+		k_2\circ \phi \circ h_1  = k_1\circ h_1= f\circ m= k_2\circ h_2\]
 
 	The claim now follows since $k_2$ is a monomorphism.
 \end{proof}}
@@ -3394,7 +3461,7 @@ In this appendix we will provide the proofs of the main results of this paper.
 \label{propUnique-proof}
 \begin{proof}
   Both pairs $(k, f)$ and $(k', f')$ are pushout complements of $l$
-  and $n$, thus, \Cref{lem:pocomp} yields an isomorphism
+  and $m$, thus, \Cref{lem:pocomp} yields an isomorphism
   $\phi_D\colon D\to D'$. Computing we have
   \[
     g'\circ \phi_D \circ k= g' \circ k'=h'\circ r
@@ -3451,6 +3518,7 @@ sequentially independent. We can then wonder if they are switchable.
 \begin{proof}
     By definition of switch we know that $\der{E}_0$ and $\der{F}_0$ have the same match $f_0\circ i_1$ and that $\der{E}_1$ and $\der{F}_1$ have the same comatch $g_1\circ i_0$. Thus we can build the solid part of the diagram below.
     \[\xymatrix@C=22pt{G_{0} && \ar@{>->}[ll]_{f_{\der{F},0}} D_{\der{F},0} \ar[rr]^{g_{\der{F},0}}&& G_{\der{F},1} && \ar@{>->}[ll]_{f_{\der{F},1}} D_{\der{F},1} \ar[rr]^{g_{\der{F},1}}&& G_{2}\\L_1 \ar[d]^{f_0\circ i_1} \ar[u]_{f_0\circ i_1}&& K_{1} \ar[d]^{k_{\der{E},0}} \ar[u]_{k_{\der{F},0}}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_{1} \ar@/^.35cm/[drrr]|(.3)\hole_(.4){j_0} \ar[dr]|(.3)\hole_{h_{\der{E},0}} \ar@/_.35cm/[urrr]|(.3)\hole^(.4){a_0} \ar[ur]|(.3)\hole^{h_{\der{F},0}}& &L_{0} \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.3)\hole^{m_{\der{E},1}} \ar@/^.35cm/[ulll]_(.4){a_1} \ar[ul]|(.3)\hole_{m_{\der{F},1}}& K_{0} \ar[d]_{k_{\der{E},1}} \ar[u]^{k_{\der{F},1}}\ar@{>->}[l]_{l_{0}} \ar[rr]^{r_0} && R_{0} \ar[d]_{g_1\circ i_0} \ar[u]^{g_1\circ i_0}\\ \ar@/^.5cm/[uu]^{\id{G_0}} G_{0} && \ar[ll]^{f_{\der{E},0}} D_{\der{E},0} \ar@{.>}@/^.5cm/[uu]^(.33){\phi_{0}}|\hole \ar[rr]_{g_{\der{E},0}}&& G_{\der{E},1} \ar@{.>}[uu]^(.76){\psi_1}|(.45)\hole |(.55)\hole&& \ar@{>->}[ll]^{f_{\der{E},1}} D_{\der{E},1} \ar@{.>}@/_.5cm/[uu]_(.33){\phi_{1}}|\hole\ar[rr]_{g_{\der{E},1}}&& G_{2}\ar@{.>}@/_.5cm/[uu]_{\psi_2}}\]
+<<<<<<< HEAD
     
     \parbox{7cm}{\hspace{15pt}Now, by \Cref{prop:unique} we get $\phi_0\colon D_{\der{E},0}\to D_{\der{F},0}$ and $\psi_1 \colon G_{\der{E},1}\to G_{\der{F},1}$ such that the diagram on the right commutes. But then we have
     	\[
@@ -3460,13 +3528,22 @@ sequentially independent. We can then wonder if they are switchable.
     
      This, in turn, gives us that
     \[\psi\circ m_{\der{E},1}=\psi \circ g_{\der{E},0}\circ j_1=g_{\der{F},0}\circ \phi_0\circ j_1=g_{\der{F},0}\circ a_1=m_{\der{F},1}\]
+=======
+    Now, by \Cref{prop:unique} we get $\phi_0\colon D_{\der{E},0}\to D_{\der{F},0}$ and $\psi_1 \colon G_{\der{E},1}\to G_{\der{F},1}$ such that
+    \[\xymatrix{G_{0} & \ar@{>->}[l]_{f_{\der{F},0}} D_{\der{F},0} \ar[r]^{g_{\der{F},0}}& G_{\der{F},1} \\L_1 \ar[d]^{f_0\circ i_1} \ar[u]_{f_0\circ i_1}& K_{1} \ar[d]^{k_{\der{E},0}} \ar[u]_{k_{\der{F},0}}\ar[l]_{l_1} \ar[r]^{r_1} & R_{1}  \ar[d]_{h_{\der{E},0}}  \ar[u]^{h_{\der{F},0}}\\ \ar@/^.5cm/[uu]^{\id{G_0}} G_{0} & \ar@{>->}[l]^{f_{\der{E},0}} D_{\der{E},0} \ar@/^.5cm/[uu]^(.33){\phi_{0}}|\hole \ar[r]_{g_{\der{E},0}}& G_{\der{E},1} \ar@/_.5cm/[uu]_{\psi_1}}\]
+    commutes. But then we have
+    \[
+      f_{\der{F},0}\circ \phi_0\circ j_1=f_{\der{E},0} \circ j_1=m_0=f_{\der{F},0}\circ a_1\]
+    which entails $a_1= \phi_0\circ j_1$. This, in turn, gives us that
+    \[\psi_1\circ m_{\der{E},1}=\psi_1 \circ g_{\der{E},0}\circ j_1=g_{\der{F},0}\circ \phi_0\circ j_1=g_{\der{F},0}\circ a_1=m_{\der{F},1}\]
+>>>>>>> refs/remotes/origin/main
     
     Now, the square
-    \[\xymatrix@C=30pt{K_0 \ar[d]_{k_{\der{E,1}}} \ar@{>->}[r]^{l_0}& L_0 \ar[d]^{\psi_1\circ m_{\der{E},1}} \\D_{\der{E},1} \ar@{>->}[r]_{\psi_1\circ f_{\der{E},1}}& G_{\der{F}, 1}} \]
+    \[\xymatrix@C=30pt{K_0 \ar[d]_{k_{\der{E},1}} \ar@{>->}[r]^{l_0}& L_0 \ar[d]^{\psi_1\circ m_{\der{E},1}} \\D_{\der{E},1} \ar@{>->}[r]_{\psi_1\circ f_{\der{E},1}}& G_{\der{F}, 1}} \]
     is a pushout and $\psi_1\circ m_{\der{E},1}=m_{\der{F},1}$, thus, by \Cref{prop:unique} there are $\phi_1\colon D_{\der{E},1}\to D_{\der{F},1}$ and $\psi_2\colon G_2\to G_2$ fitting in the diagram below
-    \[\xymatrix{G_{\der{F},1} & \ar@{>->}[l]_{f_{\der{F},1}} D_{\der{F},1} \ar[r]^{g_{\der{F},1}}& G_2 \\L_0 \ar[d]^{m_{\der{E},1}} \ar[u]_{m_{\der{F},1}}& K_{1} \ar[d]^{m_{\der{E},1}} \ar[u]_{m_{\der{F},1}}\ar[l]_{l_1} \ar[r]^{r_1} & R_{1}  \ar[d]_{g_1\circ i_0}  \ar[u]^{g_1\circ i_0}\\ \ar@/^.5cm/[uu]^{\psi_1} G_{\der{E},1} & \ar@{>->}[l]^{f_{\der{E},1}} D_{\der{E},1} \ar@/^.5cm/[uu]^(.33){\phi_{1}}|\hole \ar[r]_{g_{\der{E},1}}& G_2 \ar@/_.5cm/[uu]_{\psi_2}}\]
+    \[\xymatrix{G_{\der{F},1} & \ar@{>->}[l]_{f_{\der{F},1}} D_{\der{F},1} \ar[r]^{g_{\der{F},1}}& G_2 \\L_0 \ar[d]^{m_{\der{E},1}} \ar[u]_{m_{\der{F},1}}& K_{1} \ar[d]^{k_{\der{E},1}} \ar[u]_{k_{\der{F},1}}\ar[l]_{l_1} \ar[r]^{r_1} & R_{1}  \ar[d]_{g_1\circ i_0}  \ar[u]^{g_1\circ i_0}\\ \ar@/^.5cm/[uu]^{\psi_1} G_{\der{E},1} & \ar@{>->}[l]^{f_{\der{E},1}} D_{\der{E},1} \ar@/^.5cm/[uu]^(.33){\phi_{1}}|\hole \ar[r]_{g_{\der{E},1}}& G_2 \ar@/_.5cm/[uu]_{\psi_2}}\]
     To conclude, it is now enough to notice that
-    \[f_{\der{F},1} \circ \phi_1\circ j_0=\psi_1\circ f_{\der{E},1}\circ j_0=\psi_1\circ h_{\der{E,0}}=h_{\der{F},0}=f_{\der{F},1}\circ a_0\]
+    \[f_{\der{F},1} \circ \phi_1\circ j_0=\psi_1\circ f_{\der{E},1}\circ j_0=\psi_1\circ h_{\der{E},0}=h_{\der{F},0}=f_{\der{F},1}\circ a_0\]
     allowing us to deduce $ \phi_1\circ j_0=a_0$.
     \qedhere
 \end{proof}
@@ -3478,7 +3555,7 @@ sequentially independent. We can then wonder if they are switchable.
 	derivations $\dder{D}_0$ and $\dder{D}_1$ in a left-linear
 	DPO rewriting system $(\X,\R)$. Consider the pullback of
 	$f_1\colon D_1\mto G_1$ along $g_0\colon D_0\to G_1$ (first
-	square below), then there exist the arrows
+	square below). Then there exist arrows
 	$u_1\colon K_1\to P$ and $u_0\colon K_0\to P$ fitting in the
 	central and right square. Moreover, the right one is always
 	a pullback.
@@ -3515,7 +3592,7 @@ sequentially independent. We can then wonder if they are switchable.
 
 There is another
 useful properties of weakly sequentially independent direct
-derivations which is worth mentioning.
+derivations which is worth mentioning.\todo{A: va tolto weakly?}
 
 \noindent
 \parbox{9.5cm}
@@ -3525,7 +3602,7 @@ derivations which is worth mentioning.
     and $\der{D}_1$.  If $\der{E}=\{\dder{E}_i\}_{i=0}^1$ is a
     switch of $\der{D}$ along $(i_0, i_1)$, then there exists
     $q_0\colon P\to D_{\der{E},0}$ in the diagram
-    below \end{proposition}}
+    aside \end{proposition}}
 \parbox{4cm}{$\xymatrix{D_{\der{E},0} \ar@{>->}[d]_{f_{\der{E},0}}&P
     \ar@{.>}[l]_{q_0} \ar[r]^{p_1} \ar@{>->}[d]_{p_0}& D_1
     \ar@{>->}[d]^{f_1}\\ G_{0}&D_0 \ar@{>->}[l]^{f_0}\ar[r]_{g_0}&
@@ -3742,7 +3819,7 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 	$l_1\colon K_1\mto L_1$, thus it is in $\mathcal{M}$ implying
 	$i_0=i'_0$. If, moreover, we suppose that the rule $\rho$ applied in
 	$\dder{D}$ is linear, then $g_0\colon D_0\to G_1$ is in
-	$\mathcal{M}$ too entailing $i'_1=i'_1$, too.
+	$\mathcal{M}$ too entailing $i_1=i'_1$, too.
 \end{proof}
 
 
@@ -3809,7 +3886,7 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 		has as its single component the derivation
 		\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h} \\G& \ar@{>->}[l]^{f} D \ar[r]_{g}& H  \\}\]
 	
-		\parbox{11cm}{The arrow $f$ is  the pushout of $l$ and so it is in in $\mathcal{M}$. We can thus consider the $\mathcal{M}$-pushout square depicted on the right.
+		\parbox{11cm}{The arrow $f$ is  the pushout of $l$ and so it is in $\mathcal{M}$. We can thus consider the $\mathcal{M}$-pushout square depicted on the right.
 		Since $p\in \mathcal{M}$, and $q$ is in it if $(\X, \R)$ is linear. The thesis follows immediately from \Cref{rem:cof}.}
 		\parbox{2cm}{
 			$\xymatrix{D \ar@{>->}[d]_{f} \ar[r]^{g} & H \ar@{>->}[d]^{p} \\G \ar[r]_{q}& P }$}
