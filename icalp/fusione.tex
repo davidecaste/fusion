@@ -509,7 +509,9 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   they could be executed in any order, and potentially in parallel.
   % 
   We investigate the issue in the context of adhesive categories, a
-  very general instance of the DPO approach to rewriting. More
+  very general instance of the DPO approach to rewriting.\todo{[A] direi: ``...
+    in the context of the Double Pushout (DPO) Approach to rewriting in adhesive categories.''}
+    More
   precisely, we focus on left-linear rules, which not only consume,
   preserve and generate entities, as linear rules do, but may
   ``merge'' parts of the state.
@@ -693,15 +695,16 @@ Among rewriting-based formalisms, those manipulating graph-like structures
 proved useful in many settings for representing the dynamics of distributed systems: the 
 graph serves to represent the entities and their relations within states, while 
 rewriting steps, modifying the graph, model computation steps that result 
-in changes to the system state. The DPO (double-pushout) approach~\cite{CMREHL:AAGT} 
-is nowadays considered the standard one for these structures, thanks to its locality 
-(rule application has a local effect on a state, differently e.g. from the SqPO 
-approach~\cite{CorradiniHHK06}) and most importantly to its flexibility: the rules allow to 
+in changes to the system state. The DPO (double-pushout) approach~\cite{EhrigPS73}
+is nowadays considered a standard one for these structures, thanks to its locality 
+(rule application has a local effect on a state, differently from more recent approaches
+like SqPO~\cite{CorradiniHHK06}
+or PBPO$^+$~\cite{OverbeekER23}) and to its flexibility: the rules allow to 
 specify that,  in a rewriting step, some entities in the current state are removed, 
 some others are needed for the rewriting step to occur but remain unaltered and 
 some new entities can be generated. Concerning concurrency, the chosen notion 
 is shift equivalence, and independence is formally captured by what is called the
-Church-Rosser theorem of DPO rewriting~\cite[Section~xxx]{CMREHL:AAGT}.
+Church-Rosser theorem of DPO rewriting~\cite[Section~4]{Ehrig78}.
 
 A noteworthy advantage is that DPO rewriting can be formulated over
 adhesive categories and their variants~\cite{lack2005adhesive,ehrig2006weak}. 
@@ -719,14 +722,14 @@ So far, most of the theoretical results focussed on what are called
 \emph{linear rules}: intuitively, a step is required only to consume,
 preserve and generate entities.  However, in some situations it is
 also necessary to ``merge'' parts of the state.  This happens already
-in the context of string diagram mentioned above, but also in
+in the context of string diagrams mentioned above, but also in
 graphical implementations of nominal calculi where, as a result of
 name passing, the received name is identified with a local one at the
-receiver~\cite{CVY:ESSPE,Gad07} or in the visual modelling of bonding
+receiver~\cite{CVY:ESSPE,Gad07}, or in the visual modelling of bonding
 in biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms
 is at the core of e-graphs (equality graphs), recently used for
 rewrite-driven compiler optimisations~\cite{WNW:egg}: rather than
-explicitly merging nodes corresponding to equal expression, the idea
+explicitly merging nodes corresponding to equal expressions, the idea
 here -- conceptually and, as we will see, also mathematically similar
 -- is to maintain an
 equivalence %\todo{P: more precisely a congruence}
@@ -735,7 +738,7 @@ over the nodes.
 
 
 Technically, to acquire the expressiveness needed for capturing
-fusions, i.e. the merge of some elements in the state, requires to
+fusions, i.e. the merge of some elements in the state, one is required to
 move from linear to left-linear rewriting rules. While left-linear
 rules have been considered in various instances (mainly in categories
 of graphs) and some results concerning the corresponding rewriting
@@ -761,7 +764,7 @@ left-linear rules a number of fundamental properties that play a role
 in the concurrency theory of linear rewriting need to be deeply revised, or
 plainly do not hold.
 %
-Firstly, the notion of sequential independence and Church-Rosser
+Firstly, the notion of sequential independence and the Church-Rosser
 theorem, ensuring that sequential independent steps can be performed
 in reverse order, does not hold out of the box. Even worse, given two
 independent steps it might be possible to switch them in several
@@ -786,7 +789,7 @@ As a sanity check, we prove that linear rewriting systems on
 $\mathcal{M}$-adhesive categories are well-switching.
 
 On the other hand, we show that a concurrency theory of rewriting can
-be developed for well-switching rewriting systems, recovering, sometimes in
+be developed for well-switchable rewriting systems, recovering, sometimes in
 weakened form, results which hold in the linear case.  Specifically, 
 the Church-Rosser theorem is fully recovered.
 %for well-switchable rewriting systems.
@@ -806,9 +809,9 @@ the Church-Rosser theorem is fully recovered.
 
 
 There is, however, a further problem. In the literature on linear
-rewriting systems, a central result is the a characterisation of
+rewriting systems, a central result is the characterisation of
 switch equivalence of sequences of steps based on what are called processes or
-consistent permutations~\cite{Handbook, tobias}.\todo{Handbook, graph processes, tobias}
+consistent permutations~\cite{Handbook, BaldanCHKS06, tobias}.\todo{Handbook, graph processes, tobias}
 In turn this is the key
 to derive some simple but fundamental properties for linear rewriting
 systems, namely
@@ -816,8 +819,8 @@ systems, namely
 \begin{enumerate}
 \item \emph{consistency of switching}: when transforming
   sequences of rewriting steps into equivalent ones by switching independent steps, the
-  result not depends on the order in which switchings are applied, but
-  only on the resulting permutation;
+  result does not depend on the order in which switchings are applied, but
+  only on the associaterd permutation;
 \item \emph{globality of independence}: if two independent steps are
   moved forward or backward due to the application of switchings to a
   sequence, they remain independent.
@@ -833,12 +836,24 @@ sufficient, hence it cannot be used for proving (1) and (2).
 This leads to asking whether the properties above hold.
 We show that actually much of the theory can be retained: consistency
 of switching still holds, while globality of independence holds in a
-weak form, conceptually linked to the fact that fusions introduce a
+weaker form, conceptually linked to the fact that fusions introduce a
 form of disjunctive causality. Finally, we prove that a canonical form
 for switching sequences can also be recovered.
 
-\section{$\mathcal{M}$-adhesive categories and DPO rewriting systems}\label{sec:ade}
+The paper has the following structure. 
+Section~\ref{sec:ade} recalls the basic 
+definitions of DPO rewriting for $\mathcal{M}$-adhesive categories. 
+Section~\ref{sec:equi} presents the key novelties of our proposal,
+first introducing the classical notion of independence and 
+a novel axiomatic notion of switchability, further showing that the
+former fails to imply the latter for left-linear rewriting systems.
+We then define well-switchable systems,
+and prove that all the classical results holding for linear rewriting systems
+can be recovered for such a class of left-linear ones.
+Finally, Section~\ref{conclusions} wraps up the paper and 
+offers some thoughts on possible directions for our work.
 
+\section{$\mathcal{M}$-adhesive categories and DPO rewriting systems}\label{sec:ade}
 This first section recalls definitions and basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}.
 
 \begin{notation}
@@ -1030,7 +1045,7 @@ and uniqueness of pushouts complements (details and proofs are in
 \subsection{DPO rewriting systems derivations}\label{subsec:DPO}
 
 $\mathcal{M}$-adhesive categories are the right context in which to
-perform abstract rewriting using what is called the ``double pushout
+perform abstract rewriting using what is called the ``Double-Pushout
 approach'' (DPO). We will recall the basic definitions and properties
 of this approach to abstract rewriting.
 
@@ -2059,8 +2074,8 @@ In the DPO approach the canonical notion of independence is that of sequential i
 Intuitively, the existence of the independence pair
 captures the possibility of switching the application of the two rules:
 $f_0 \circ i_1$ is a match for $\rho_1$ in $G_0$ and the
-existence of $i_0 : R_0 \to D_1$ indicates that $\rho_1$ does not delete
-items in the image of $K_0$ and thus $\rho_0$ can be applied after
+existence of $i_0 : R_0 \to D_1$ means that $\rho_1$ does not delete
+items in the image of $K_0$, thus $\rho_0$ can be applied after
 $\rho_1$.
 
 More precisely, let us formalise what it means for a derivation being the switch of another.
@@ -2224,7 +2239,7 @@ As already mentioned, for linear rewriting systems, when viewing
 derivations as concurrent computations, it is canonical to identify
 derivations which are equal ``up to switching'', i.e., which differs
 only for the order of indepedent steps. The same notion can be given
-for left-linear rewriting systems by relying on notion of switch.
+for left-linear rewriting systems by relying on the notion of switch.
 
 
 We first need to recall some concept and notations regarding permutations. 
@@ -2279,13 +2294,13 @@ Switch equivalence is now defined as the equivalence relating derivations which 
   length, $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and
   $\der{E}=\{\dder{E}_{i}\}_{i=0}^n$. If
   $\dder{D}_i \cdot \dder{D}_{i+1}$ is a switch of
-  $\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ we write
+  $\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ \todo{A: ma manca ``and  $\dder{D}_j = \dder{E}_j$ for each $j \not \in \{i,i+1\}$''??} we write
   $\der{D} \shift{\transp{i}} \der{E}$. 
   
-  A \emph{switching sequence} is  a sequence $\{\der{D}_{k}\}_{i=0}^m$ of derivations such that 
+  A \emph{switching sequence} is  a sequence $\{\der{D}_{k}\}_{k=0}^m$ of derivations such that 
   \[\der{D}_0 \shift{\transp{i_1}} \der{D}_1 \shift{\transp{i_2}} \ldots \shift{\transp{i_m}}
   \der{D}_m\]
- In such case, we will often denote by $\nu_{k}$ the transposition $\transp{i_k}$. Given $k \leq h$,
+ In such case, we will\todo{A: io cambierei tutti i ``we will'' in ``we''.} often denote by $\nu_{k}$ the transposition $\transp{i_k}$. Given $k \leq h$,
  we denote by $\nu_{k,h}$ the composition
  $\nu_h \circ \nu_{h-1} \circ \ldots \nu_k$. We will say that the
  switching sequence consists of inversions if for all
@@ -2304,7 +2319,7 @@ Switch equivalence is now defined as the equivalence relating derivations which 
 \end{remark}
 
 
-\subsection{Church-Rosser: Relating sequential indepedence and switchability}\label{subsec:CR}
+\subsection{Church-Rosser: Sequential independence and switchability}\label{subsec:CR}
 
 
 The fact that sequential indepedence implies switchability always
@@ -2389,7 +2404,7 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   depicted in Fig.~\ref{fi:rules}, where numbers are used to represent
   the mappings from the interface to the left- and right-hand
   sides. Rules $\rho_0$ and $\rho_1$ are linear: $\rho_0$ generates a
-  new node, while $\rho_1$ deletes an edge. Instead, $\rho_2$ is non
+  new node, while $\rho_1$ deletes an edge. Instead, $\rho_2$ is not
   linear as it ``merges'' two nodes.
 
   \begin{figure}
@@ -2527,9 +2542,9 @@ As such, it includes essentially all categories (e.g., presheaves over set) that
 \begin{example}
   \label{ex:diff2}
   In light of \Cref{thm:church}, \Cref{ex:diff1} provides an example
-  of an independence pair which is not strong, and thus of a non strong enforcing
-  adhesive rewriting system. Instead the category $\cat{Graph}$ is
-  strong enforcing by the result in .... 
+  of an independence pair which is not strong, and thus of a non-strong enforcing
+  adhesive rewriting system. Instead every left-linear system in category $\cat{Graph}$ is
+  strong enforcing, by the results of Appendix~\ref{app:fill}, summarized in~\Cref{ex:graph-type-bb} and~\Cref{cor:llr-is-strEnf}.
 \end{example}
 
 \begin{remark}
@@ -2552,7 +2567,7 @@ As a sanity check note that a source of strong enforcing left-linear DPO rewriti
 \end{restatable}
 [Proof in \Cref{propEqui-proof}]
 
-\subsection{Well-switching rewriting systems}\label{subsec:verytame}
+\subsection{Well-switchable rewriting systems}\label{subsec:verytame}
 
 Even if we work in strong enforcing rewriting systems where sequential
 independence ensures switchability, when dealing with left-linear
@@ -3014,11 +3029,12 @@ canonical form for switching derivations.
 
 
 \section{Conclusions and further work}
+\label{conclusions}
 
-We performed an in-depth investigation of notion of independence between
+We performed an in-depth investigation of the notion of independence between
 rewriting steps in the setting of left-linear rewriting systems
 over adhesive categories, which encompasses most of the
-structures commonly used in analysis and modelling applications.
+structures commonly used in analysing and modelling applications.
 
 We showed that the canonical notion of independence adopted for linear
 systems does not enjoy some properties that are essential for
@@ -3033,18 +3049,26 @@ rewriting systems, enjoy a number of fundamental properties:
 confluence of switching, a weak form of globality of independence and
 the existence of a canonical form for switch equivalence proofs.
 
-The class of well-switchable adhesive rewriting systems is vast. Generalising a result in~\cite{baldan2011adhesivity} we can show that one of its defining properties (the fact that sequential independence implies switchability) holds for a class of adhesive categories which include all presheaves over set. Moreover, the second property, uniqueness of switching, is ensured when rewriting possibly hierarchical graphical structures, as long as elements of the top sorts are not merged (e.g., one can consider rewriting systems over directed graphs where only nodes are merged, as it happens in most approaches to modelling calculi, biological systems and also in string diagrams).\todo{Giusto, referneces?}
+The class of well-switchable adhesive rewriting systems is vast. Generalising a result in~\cite{baldan2011adhesivity} 
+we can show that one of its defining properties (the fact that sequential independence implies switchability) holds 
+for a class of adhesive categories which include all presheaves over set. Moreover, the second property, uniqueness 
+of switching, is ensured when rewriting possibly hierarchical graphical structures, as long as elements of the top sorts 
+are not merged (e.g., one can consider rewriting systems over directed graphs where only nodes are merged, as it 
+happens in most approaches to modelling calculi, biological systems and also in string diagrams).\todo{Giusto, refernences?}
 
 The results in this paper open the way to the development of a
 concurrent semantics for left-linear rewriting systems over adhesive
 categories. In~\cite{baldan2017domains} the authors argue that for
 computational systems which allow one to express merging or fusions,
-the right semantic models are weak prime domains, a generalisation of
+the right semantical models are weak prime domains, a generalisation of
 of prime domains, a staple in concurrency theory, and connected event
 structures, their event-based counterpart. The mentioned paper
 discusses only the case of graph rewriting and does not delve into the
-problems induced by merging to the trheory of rewriting (the systems
-considered there are implicitly assumed to be well switching). We plan to consolidate the statement that weak prime domains are ``the'' model for systems with fusions by showing that they allow to provide a semantics for general left-linear rewriting systems in $\mathcal{M}$-adhesive categioris.
+problems induced by the occurring of ``merges'' to the theory of rewriting (the systems
+considered there are implicitly assumed to be well-switchable). 
+We plan to consolidate the statement that weak prime domains are 
+``the'' model for systems with fusions by showing that they allow to provide a semantics
+for left-linear rewriting systems in $\mathcal{M}$-adhesive categories.
 
 On the practical side, the present paper just surveyed the possibility
 of modelling Egg graphs. This appears to be quite interesying as
@@ -3087,7 +3111,7 @@ Let $\X$ be a category, and consider the diagram  aside, then the following are 
 \end{lemma}}
 \parbox{4cm}{$\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}$}\\
 
-The following proposition establishes a key property of $\mathcal{A}$-Van Kampen squares with a mono as a side: they are not only pushouts, but also pullbacks \cite{ehrig2004adhesive,behr2022fundamentals,lack2005adhesive}.
+The following proposition establishes a key property of $\mathcal{A}$-Van Kampen squares with a mono as a side: they are not only pushouts, but also pullbacks \cite{ehrig2004adhesive,BehrHK23,lack2005adhesive}.
 
 \noindent 
 \parbox{11.5cm}{\begin{proposition}\label{prop:pbpo} Let $\mathcal{A}$ be a class of arrows stable under pushouts and containing all the isomorphisms.  If $m\colon A\to C$ is mono and belongs to $\mathcal{A}$, then every $\mathcal{A}$-Van Kampen square
@@ -3436,6 +3460,7 @@ Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$, and suppose
 	\end{enumerate}
 \end{definition}
 \begin{example}
+  \label{ex:graph-type-bb}
 	The pair $(\mathbf{Graph}, \mon(\mathbf{Graph}))$ made by the topos of graphs and its class of mons is of type $\mathbb{B}^+$  but not of type $\mathbb{B}$. Indeed not every monomorphism of graphs is a coproduct coprojection.
 \end{example}
 
@@ -3446,6 +3471,7 @@ From \Cref{lem:closed,lem:prop} we can now deduce at once the following.
 
 Using \Cref{thm:good1} we finally get the main result of our appendix.
 \begin{corollary}
+  \label{cor:llr-is-strEnf}
 Let $(\X, \mathcal{M})$ be a pair of type $\mathbb{B}^+$, then every left-linear DPO-rewriting system is strong enforcing.
 \end{corollary}
 
@@ -3992,7 +4018,7 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 \begin{lemma}\label{lem:idevero}
 	Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ be two non-empty derivations in a linear DPO-rewriting system $(\X, \R)$ . Let  $\sigma:[0,n-1]\to [0,n-1]$  is a consistent permutation and suppose that the set 
 	\[E_{\sigma}=\{i\in [0,n-1]\mid \sigma(i)=i\}\]
-	is non empty with maximum $s_\sigma$. Then $\{\dder{D}_i\}_{i=0}^{s_\sigma}$ and $\{\der{D}'_i\}_{i=0}^{s_\sigma}$ are abstraction equivalent.  
+	is not empty with maximum $s_\sigma$. Then $\{\dder{D}_i\}_{i=0}^{s_\sigma}$ and $\{\der{D}'_i\}_{i=0}^{s_\sigma}$ are abstraction equivalent.  
 \end{lemma}
 
 \begin{proof}We construct are going to construct by induction on $i\in [0,s_\sigma]$ an abstraction equivalence such that, for every $i$, $\iota'_{G'_{i+1}}\circ \phi_{G_{i+1}}=\xi_{\id{[0,n]}}\circ \iota_{G_{i+1}}$.
