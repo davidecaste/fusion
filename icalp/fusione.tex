@@ -2989,7 +2989,7 @@ performed in any order, this is no longer true for left-linear
 rewriting systems due to the fact that, as already observed globality of independence holds in a weak form. For instance, if we get back to Example~\ref{ex:non-global} and consider derivations $\der{F}$ in Fig.~\ref{fi:derF}, the last two steps applying rules $\rho_1$ and $\rho_4$ can be switched, thus leading to a derivation, call it $\der{F}''$,  applying $\rho_3, \rho_4, \rho_1$. Such $\der{F}$ is switch equivalent to $\der{F}'$ in Fig.~\ref{fi:derF1}, hence starting from $\der{F}''$ we can obtain $\der{F}'$ via a switching sequence, but we cannot start by switching $\rho_1$ and $\rho_4$, despite the fact that this is an inversion.
 
 Still, we can identify a
-canonical form for switching derivations.
+canonical form for switching derivations: at each step one can apply a switch to the inversion with higher index. 
 
 
 \begin{restatable}[Canonical form]{corollary}{coCanonical}
@@ -3000,7 +3000,7 @@ canonical form for switching derivations.
     $\der{D} = \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
     \shift{\nu_n} \der{D}_n=\der{D}'$
   \end{center}
-  where for each $i \in \interval{n}$ the transpostion $\nu_i  = \transp{k}$ is such that 
+  where for each $i \in \interval{n}$ the transposition $\nu_i  = \transp{k}$ is such that 
   $k = \max \{ j \mid \transp{j} \in \inv{\nu_{i,n}}\}$.\todo{P: $\nu_{i,n} = \sigma \circ \nu_{1,i}$, giusto? forse e' piu' carino}
 \end{restatable}
 
