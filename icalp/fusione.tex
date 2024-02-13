@@ -503,9 +503,10 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
 %  considers concurrent and distributed systems, since the independence
 %  of two steps means that they could be executed in any order, and
 %  potentially in parallel.
-  When can two sequential steps performed by a computing device be considered (causally) independent? 
-  This is a relevant question for concurrent and distributed systems, since independence
-  means that they could be executed in any order, and potentially in parallel.
+  When can two sequential steps performed by a computing device be
+  considered (causally) independent?  This is a relevant question for
+  concurrent and distributed systems, since independence means that
+  they could be executed in any order, and potentially in parallel.
   % 
   We investigate the issue in the context of adhesive categories, a
   very general instance of the DPO approach to rewriting. More
@@ -705,27 +706,31 @@ Church-Rosser theorem of DPO rewriting~\cite[Section~xxx]{CMREHL:AAGT}.
 A noteworthy advantage is that DPO rewriting can be formulated over
 adhesive categories and their variants~\cite{lack2005adhesive,ehrig2006weak}. 
 %
-Operating within the framework of adhesive categories allows one to devise 
-the foundations of a rewriting theory that can be subsequently instantiated 
-to the context of interest, thus avoiding the need of repeatedly proving
-similar ad-hoc results for each specific setting. In fact, the framework is
-so general that it allowed to recast in the DPO approach many additional formalisms,
-ranging from toposes~\cite{johnstone2007quasitoposes} to string diagrams~\cite{bonchi2022string}.
+Operating within the framework of adhesive categories allows one to
+devise the foundations of a rewriting theory that can be subsequently
+instantiated to the context of interest, thus avoiding the need of
+repeatedly proving similar ad-hoc results for each specific
+setting. In fact, the framework is so general that it allowed to
+recast in the DPO approach many additional formalisms, ranging from
+toposes~\cite{johnstone2007quasitoposes} to string
+diagrams~\cite{bonchi2022string}.
 
-So far, most of the theoretical results focussed on what are called \emph{linear rules}: 
-intuitively, a step is required only to consume, preserve and generate entities. 
-However, in some situations it is also necessary to ``merge'' parts of the state. 
-This happens already in the context of string diagram mentioned above, but also 
-in graphical implementations of nominal calculi where, as a result of name passing, 
-the received name is identified with a local one at the
-receiver~\cite{CVY:ESSPE,Gad07} or in the visual modelling of bonding in
-biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms is
-at the core of e-graphs (equality graphs), recently used for
+So far, most of the theoretical results focussed on what are called
+\emph{linear rules}: intuitively, a step is required only to consume,
+preserve and generate entities.  However, in some situations it is
+also necessary to ``merge'' parts of the state.  This happens already
+in the context of string diagram mentioned above, but also in
+graphical implementations of nominal calculi where, as a result of
+name passing, the received name is identified with a local one at the
+receiver~\cite{CVY:ESSPE,Gad07} or in the visual modelling of bonding
+in biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms
+is at the core of e-graphs (equality graphs), recently used for
 rewrite-driven compiler optimisations~\cite{WNW:egg}: rather than
 explicitly merging nodes corresponding to equal expression, the idea
-here -- conceptually and, as we will see, also mathematically similar --
-is to maintain an equivalence %\todo{P: more precisely a congruence}
-over the nodes.  
+here -- conceptually and, as we will see, also mathematically similar
+-- is to maintain an
+equivalence %\todo{P: more precisely a congruence}
+over the nodes.
 %\todo{P: la sequenza di lavori su questo \`e ampia,
 %vedere se c'\`e qualcosa d'altro}
 
@@ -2206,28 +2211,31 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
 
 As already mentioned, for linear rewriting systems, when viewing
 derivations as concurrent computations, it is canonical to identify
-derivations which are equal ``up to switching''. The same notion can
-be given for left-linear rewriting systems by relying on notion of
-switch.
+derivations which are equal ``up to switching'', i.e., which differs
+only for the order of indepedent steps. The same notion can be given
+for left-linear rewriting systems by relying on notion of switch.
 
 
 We first need to recall some concept and notations regarding permutations. 
 
 \begin{definition}
-	A \emph{permutation} on
-	$\interval[0]{n}$ is a bijection
-	$\sigma : \interval[0]{n} \to \interval[0]{n}$. We call it a
-	\emph{transposition} when there are $i, j \in \interval{n}$,
-	$i \neq j$ such that $\sigma(i)=j$, $\sigma(j) = i$ and
-	$\sigma(k) = k$ otherwise. Such a transposition is normally denoted as
-	$\transp{i}[j]$.
-	
-Given a permutation $\perm$ on $\interval[0]{n}$,  an \emph{inversion} for $\sigma$ is a pair $(i,j)$ such that $i<j$ and $\sigma(j)< \sigma(i)$. The set of inversions
-of $\perm$ will be denoted by $\inv{\sigma}$.
+  A \emph{permutation} on
+  $\interval[0]{n}$ is a bijection
+  $\sigma : \interval[0]{n} \to \interval[0]{n}$. We call it a
+  \emph{transposition} when there are $i, j \in \interval{n}$,
+  $i \neq j$ such that $\sigma(i)=j$, $\sigma(j) = i$ and
+  $\sigma(k) = k$ otherwise. Such a transposition is normally denoted as
+  $\transp{i}[j]$.
+  
+  Given a permutation $\perm$ on $\interval[0]{n}$, an
+  \emph{inversion} for $\sigma$ is a pair $(i,j)$ such that $i<j$ and
+  $\sigma(j)< \sigma(i)$. The set of inversions of $\perm$ will be
+  denoted by $\inv{\sigma}$.
 \end{definition}
 
 \begin{remark}
-	Clearly, a permutation $\perm$ is the identity if and only if $\inv{\perm}=\emptyset$.
+  Clearly, a permutation $\perm$ is the identity if and only if
+  $\inv{\perm}=\emptyset$.
 \end{remark}
 
 % Now, if $\perm \neq id$ there is at least an inversion of the kind
@@ -2241,17 +2249,17 @@ We also need to introduce the notion of \emph{switching sequences}.
 
 
 \begin{definition}
-\todo{A: ma questa definizione va tolta, no?}
-Consider derivations $\der{D}_i$ for $i \in \interval[0]{n}$
-	related by switches
-	\begin{center}
-		$\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots \shift{\nu_n}
-		\der{D}_n$
-	\end{center}
-	It will be referred as a \emph{switching sequence}.  
+  \todo{A: ma questa definizione va tolta, no?}
+  Consider derivations $\der{D}_i$ for $i \in \interval[0]{n}$
+  related by switches
+  \begin{center}
+    $\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots \shift{\nu_n}
+    \der{D}_n$
+  \end{center}
+  It will be referred as a \emph{switching sequence}.  
 \end{definition}
 
-Switch equivalence is now defined as the equivalence relating derivations which can be obatained one from another by a sequence of switches. Moreover, intermediate graphs can be taken up to isomorphism.\todo{P: da scrivere meglio e fare}
+Switch equivalence is now defined as the equivalence relating derivations which can be obatained one from another by a sequence of switches. Moreover, intermediate graphs can be taken up to isomorphism according to abstraction equivalence.
 
 \begin{definition}[Switch equivalence]
   \label{de:switch-equivalence}
@@ -2370,8 +2378,8 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   depicted in Fig.~\ref{fi:rules}, where numbers are used to represent
   the mappings from the interface to the left- and right-hand
   sides. Rules $\rho_0$ and $\rho_1$ are linear: $\rho_0$ generates a
-  new node, while $\rho_1$ delete an edge. Instead, $\rho_2$ is non
-  linear as it ``merge'' two nodes.
+  new node, while $\rho_1$ deletes an edge. Instead, $\rho_2$ is non
+  linear as it ``merges'' two nodes.
 
   \begin{figure}
     \input{Figure/rules.tex}
@@ -2382,11 +2390,10 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   
   A derivation $\der{D}$ consisting of three steps $\der{D}_0$,
   $\der{D}_1$, and $\der{D}_2$, each applying the corresponding rule
-  $\rho_i$ ,is depicted in in Fig.~\ref{fi:derD}. The second and third
+  $\rho_i$ is depicted in in Fig.~\ref{fi:derD}. The second and third
   steps $\der{D}_1$ and $\der{D}_2$ are clearly sequential
-  independent, via an independence pairs that map nodes consistently
-  with their numbering.\todo{P: having names for the graphs would
-    probably help}
+  independent, via an independence pair $L_2 \to D_1$ and
+  $R_1 \to G_2$ that map nodes accoording to their numbering.
   
   \begin{figure}
     \input{Figure/derD.tex}
@@ -2526,7 +2533,7 @@ As such, it includes essentially all categories (e.g., presheaves over set) that
 
 %\rem{Questo e' quanto gia' asserito sopra, mettere in appendice e riferire}
 
-As a sanity check not that a source of strong enforcing left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
+As a sanity check note that a source of strong enforcing left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
 
 \begin{restatable}{proposition}{propEqui}
   \label{prop:equi}
@@ -2536,8 +2543,16 @@ As a sanity check not that a source of strong enforcing left-linear DPO rewritin
 
 \subsection{Well-switching rewriting systems}\label{subsec:verytame}
 
-Even if we work in a setting where sequential independence ensures switchability, when dealing with left-linear rules there is a further -- and possibly more serious -- issue, i.e., the fact that there can be more than one independence pairs between the same derivations. This can hinder the core idea of using sequential independence as a basis of a theory of concurrency for rewriting systems, since exchanges performed using different independence pairs may lead to derivations that are not abstraction equivalent, and thus one would equate computations that 
-should definitively be taken apart, as shown in the example below.
+Even if we work in strong enforcing rewriting systems where sequential
+independence ensures switchability, when dealing with left-linear
+rules there is a further -- and possibly more serious -- issue, i.e.,
+the fact that there can be more than one independence pairs between
+the same derivations. This can hinder the core idea of using
+sequential independence as a basis of a theory of concurrency for
+rewriting systems, since exchanges performed using different
+independence pairs may lead to derivations that are not abstraction
+equivalent, and thus one would equate computations that should
+definitively be taken apart, as shown in the example below.
 
 \begin{example}
   Consider the derivation $\der{E}$ from Example~\ref{ex:seq-ind}.
@@ -2545,7 +2560,7 @@ should definitively be taken apart, as shown in the example below.
   The last two steps are sequential independent but one easily sees
   that there are two distinct indepedence pair, as the left-hand side
   of $\rho_1$ can be mapped either to node $1$ or to node
-  $2$.\todo{Sarebbe bello dire di quale grafo} Correspondingly, there
+  $2$ in $G_2'$. Correspondingly, there
   are two switches of $\der{E}$: one is the derivation $\der{D}$ in
   Figure~\ref{fi:derD} we started from, the other is the derivation
   $\der{D}'$ in Figure~\ref{fi:derD1}.
@@ -2570,8 +2585,8 @@ should definitively be taken apart, as shown in the example below.
   equivalent while $\der{D}$ and $\der{D}'$ would be
 \end{example} 
 
-Moreover, limiting sequential independence to the case in which the independence
-pair is unique (as suggested in~ ...) brings to the same problems.
+\full{Moreover, limiting sequential independence to the case in which the independence
+pair is unique (as suggested in~\cite{baldan2017domains}) brings to the same problems.}
 
 For these reasons we support the idea that a theory of rewriting for
 left-linear rules in adhesive categories should be developed for
@@ -2589,8 +2604,10 @@ The previous definition might sound restrictive. However, it is immediate to see
 %
 Moreover, we next introduce a class of rewriting systems, comprising
 all the ones used in concrete modelling applications of DPO rewriting
-(e.g., in the encoding of process calculi ..., ...) are \todo{INSERIRE ESEMPI QUI}
-actually well switching.
+(e.g., in the encoding of process calculi ..., ...) are \todo{INSERIRE
+  ESEMPI QUI} actually well switching.
+%
+Roughly speakings, these are possibly hierarchical graphical structures where rules are contrained not to merge elements of top level sorts in the hiearchy (for graphs, nodes can be merged while edges can not).
 
 \begin{definition}
 Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph, we define the \emph{depth} of a vertex $v\in V$ in the following way:
@@ -2984,7 +3001,45 @@ canonical form for switching derivations.
 
 
 \section{Conclusions and further work}
-\todo{VERY NICE CONCLUSIONS}
+
+We perform an in-depth investigation of notion of independence between
+computational steps in the setting of left-linear rewriting systems
+over adhesive categories, which encompasses rewriting over most of the
+structures used in semantic and modelling applications.
+
+We showed that the canonical notion of independence adopted for linear
+systems does not enjoy some properties which are essential for
+developing a sensible theory of concurrency, notably Church Rosser
+theorem, and we identified the subclass of well switchable rewriting
+systems as an appropriate setting where instead a number of vital
+results can be re-established. Specifically, Church Rosser theorem,
+i.e., the possibility of performing independent steps in any order is
+fully recovered. Moreover, the switch construction and correspondingly
+switch equivalence which is at the core of a theory of concurrency for
+adhesive recwritng suystems enjoy a number of fundamental properties:
+confluence of switching, a weak form of globality of independence and
+the existence of a canonical form for switch equivalence proofs.
+
+The class of well-switchabke adhesive rewting systems is vast. Generalising a result in~\cite{baldan2011adhesivity} we can show that one of its defining properties (the fact that sequential independence implies switchability) holds for a class of adhesive categories which include all presheaves over set. Moreover, the second property, uniqueness of switching, is ensured when rewriting possibly hierarchical graphical structures, as long as elements of the top sorts are not merged (e.g., one can consider rewriting systems over directed graphs where only nodes are merged, as it happens in most approaches to modelling calculi, biological systems and also in string diagrams).\todo{Giusto, referneces?}
+
+The results in this paper open the way to the development of a
+concurrent semantics for left-linear rewriting systems over adhesive
+categories. In~\cite{baldan2017domains} the authors argue that for
+computational systems which allow one to express merging or fusions,
+the right semantic models are weak prime domains, a generalisation of
+of prime domains, a staple in concurrency theory, and connected event
+structures, their event-based counterpart. The mentioned paper
+discusses only the case of graph rewriting and does not delve into the
+problems induced by merging to the trheory of rewriting (the systems
+considered there are implicitly assumed to be well switching). We plan to consolidate the statement that weak prime domains are ``the'' model for systems with fusions by showing that they allow to provide a semantics for general left-linear rewriting systems in $\mathcal{M}$-adhesive categioris.
+
+On the practical side, the present paper just surveyed the possibility
+of modelling Egg graphs. This appears to be quite interesying as
+concurrent rewriting on Eggs seems to be an actove area of
+reserach. \todo{P: cite} We plan to make the correspondence precise
+and investigate how the analysis techniques enabled by a concurrent
+semantics of rewriting can impact on Eggs.
+
 
 \bibliography{bibliog.bib}
 
