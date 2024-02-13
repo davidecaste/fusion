@@ -503,10 +503,10 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
 %  considers concurrent and distributed systems, since the independence
 %  of two steps means that they could be executed in any order, and
 %  potentially in parallel.
-  When can two sequential steps performed by a computing device be
+  When can two consecutive steps performed by a computing device be
   considered (causally) independent?  This is a relevant question for
   concurrent and distributed systems, since independence means that
-  they could be executed in any order, and potentially in parallel.
+  those steps could be executed in any order, and potentially in parallel.
   % 
   We investigate the issue in the context of adhesive categories, a
   very general instance of the DPO approach to rewriting. More
@@ -674,10 +674,10 @@ a computational device can be modelled by abstracting its sequences of steps
 via a suitable equivalence. Intuitively, the equivalence 
 captures when 
 %sequential 
-steps are causally unrelated and thus could be executed in any 
+two steps are causally unrelated and thus could be executed in any 
 order, and possibly in parallel. 
 %
-Two seminal contributions to this line of research have been
+Seminal contributions to this line of research have been
 Mazurkiewicz's traces~\cite{Mazurkiewicz86} and Winskel's event structures~\cite{NPW:PNES}.
 %
 Concerning formalisms based on the rewriting paradigm, i.e. where the
@@ -790,28 +790,14 @@ weakened form, results which hold in the linear case.  Specifically,
 the Church-Rosser theorem is fully recovered.
 %for well-switchable rewriting systems.
 
-
-
-% \begin{enumerate}
-% \item \emph{confluence of switching}: when transforming derivation
-%   sequences into equivalent ones by switching independent steps, the
-%   result not depends on the order in which switchings are applied, but
-%   only on the resulting permutation;
-  
-% \item \emph{globality of independence}: if two independent steps are
-%   moved forward or backward due to the application of switchings to a
-%   derivation, they remain independent.
-% \end{enumerate}
-
-
 There is, however, a further problem. In the literature on linear
 rewriting systems, a central result is the a characterisation of
-switch equivalence of sequences of steps based on what are called processes or
-consistent permutations~\cite{Handbook, tobias}.\todo{Handbook, graph processes, tobias}
+switch equivalence of sequences of steps based on what are 
+called processes or consistent permutations~\cite{Handbook,tobias}.
+%\todo{Handbook, graph processes, tobias}
 In turn this is the key
 to derive some simple but fundamental properties for linear rewriting
 systems, namely
-
 \begin{enumerate}
 \item \emph{consistency of switching}: when transforming
   sequences of rewriting steps into equivalent ones by switching independent steps, the
