@@ -508,13 +508,11 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   concurrent and distributed systems, since independence means that
   they could be executed in any order, and potentially in parallel.
   % 
-  We investigate the issue in the context of adhesive categories, a
-  very general instance of the DPO approach to rewriting.\todo{[A] direi: ``...
-    in the context of the Double Pushout (DPO) Approach to rewriting in adhesive categories.''}
-    More
-  precisely, we focus on left-linear rules, which not only consume,
-  preserve and generate entities, as linear rules do, but may
-  ``merge'' parts of the state.
+  We investigate the issue in the context of the Double Pushout (DPO)
+  Approach to rewriting in adhesive categories, a very general setting
+  for rewriting.  More precisely, we focus on left-linear rules, which
+  not only consume, preserve and generate entities, as linear rules
+  do, but may ``merge'' parts of the state.
   % 
   An apparently minimal, yet technically hard enhancement, 
   % 
@@ -691,20 +689,23 @@ Noteworthy examples are
 interchange law~\cite{Mes92} in term rewriting and permutation 
 equivalence~\cite{JJL80} in $\lambda$-calculi. 
 
-Among rewriting-based formalisms, those manipulating graph-like structures
-proved useful in many settings for representing the dynamics of distributed systems: the 
-graph serves to represent the entities and their relations within states, while 
-rewriting steps, modifying the graph, model computation steps that result 
-in changes to the system state. The DPO (double-pushout) approach~\cite{EhrigPS73}
-is nowadays considered a standard one for these structures, thanks to its locality 
-(rule application has a local effect on a state, differently from more recent approaches
-like SqPO~\cite{CorradiniHHK06}
-or PBPO$^+$~\cite{OverbeekER23}) and to its flexibility: the rules allow to 
-specify that,  in a rewriting step, some entities in the current state are removed, 
-some others are needed for the rewriting step to occur but remain unaltered and 
-some new entities can be generated. Concerning concurrency, the chosen notion 
-is shift equivalence, and independence is formally captured by what is called the
-Church-Rosser theorem of DPO rewriting~\cite[Section~4]{Ehrig78}.
+Among rewriting-based formalisms, those manipulating graph-like
+structures proved useful in many settings for representing the
+dynamics of distributed systems: the graph serves to represent the
+entities and their relations within states, while rewriting steps,
+modifying the graph, model computation steps that result in changes to
+the system state. The DPO (double-pushout) approach~\cite{EhrigPS73}
+is nowadays considered a standard one for these structures, thanks to
+its locality (rule application has a local effect on a state,
+differently from more recent approaches like
+SqPO~\cite{CorradiniHHK06} or PBPO$^+$~\cite{OverbeekER23}) and to its
+flexibility: the rules allow to specify that, in a rewriting step,
+some entities in the current state are removed, some others are needed
+for the rewriting step to occur but remain unaltered and some new
+entities can be generated. Concerning concurrency, the chosen notion
+is shift equivalence, and independence is formally captured by what is
+called the Church-Rosser theorem of DPO
+rewriting~\cite[Section~4]{Ehrig78}\cite[Chapter 3, Sec. 3.4]{CorradiniMREHL97}.
 
 A noteworthy advantage is that DPO rewriting can be formulated over
 adhesive categories and their variants~\cite{lack2005adhesive,ehrig2006weak}. 
@@ -781,7 +782,7 @@ left-linear rewriting systems.
 
 
 On the one hand, they capture most categories of
-interest for rewriting. In particular, we single out a class of
+interest for rewriting. In particular, we identify a class of
 left-linear rewriting systems on graph-like structures that are
 well-switching and we show that rewriting systems on graphs with
 equivalences are so. 
@@ -811,7 +812,7 @@ the Church-Rosser theorem is fully recovered.
 There is, however, a further problem. In the literature on linear
 rewriting systems, a central result is the characterisation of
 switch equivalence of sequences of steps based on what are called processes or
-consistent permutations~\cite{Handbook, BaldanCHKS06, tobias}.\todo{Handbook, graph processes, tobias}
+consistent permutations~\cite{CMR:GP,Handbook,BaldanCHKS06,heindel2009category}.
 In turn this is the key
 to derive some simple but fundamental properties for linear rewriting
 systems, namely
@@ -829,9 +830,10 @@ Properties (1) and (2) allow one to deduce a canonical form for equivalence proo
 between sequences of rewriting steps seen as concurrent computations.
 
 Unfortunately, for left-linear rewriting systems the characterisation
-of switch equivalence based on consistent permutations fails: the
-existence of a consistent permutation is only necessary but not
-sufficient, hence it cannot be used for proving (1) and (2).
+of switch equivalence based on consistent permutations fails,
+% : the existence of a consistent permutation is only necessary but
+% not sufficient
+hence it cannot be used for proving (1) and (2).
 %
 This leads to asking whether the properties above hold.
 We show that actually much of the theory can be retained: consistency
@@ -949,7 +951,7 @@ We can now define $\mathcal{M}$-adhesive categories.
   if $\mathcal{M}$-pushouts are Van Kampen squares.
 \end{definition}
 
-We will use $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
+We will write $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
 
 \begin{remark}
   \label{rem:salva}
@@ -1219,8 +1221,9 @@ proposition.
   $\dder{D}'$, whose first component is $\id{G}$.
 \end{restatable}
 
+\full{
 [Proof in \Cref{propUnique-proof}]
-
+}
 
 \iffalse
 \subsection{Consistent permutations}
@@ -2201,8 +2204,6 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   new node, while $\rho_1$ creates an edge. Instead, $\rho_2$ is
   left-linear but not linear, as it ``merges'' two nodes.
 
-
-\todo{Se inseriamo le figure in fusione.tex si risparmia dello spazio}
   \begin{figure}
     \input{Figure/rules.tex}
     
@@ -2217,8 +2218,8 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   Steps $\dder{D}_1$ and $\dder{D}_2$ are clearly sequential
   independent via independence pair $(R_1 \to D_2, L_2 \to D_1)$.
   %that map nodes consistently with their numbering.\todo{P: having names for the graphs would probably help}
-  This pair can be used to construct a switch $\der{E}$, shown
-  in Fig.~\ref{fi:derE}.
+  A switch of $\der{D}$ along such independence pair is the derivation
+  $\der{E}$ in Fig.~\ref{fi:derE}.
   
   \begin{figure}
     \input{Figure/derD.tex}
@@ -2274,16 +2275,15 @@ We first need to recall some concept and notations regarding permutations.
 We also need to introduce the notion of \emph{switching sequences}.
 
 
-\begin{definition}
-  \todo{A: ma questa definizione va tolta, no?}
-  Consider derivations $\der{D}_i$ for $i \in \interval[0]{n}$
-  related by switches
-  \begin{center}
-    $\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots \shift{\nu_n}
-    \der{D}_n$
-  \end{center}
-  It will be referred as a \emph{switching sequence}.  
-\end{definition}
+% \begin{definition}
+%   Consider derivations $\der{D}_i$ for $i \in \interval[0]{n}$
+%   related by switches
+%   \begin{center}
+%     $\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots \shift{\nu_n}
+%     \der{D}_n$
+%   \end{center}
+%   It will be referred as a \emph{switching sequence}.  
+% \end{definition}
 
 Switch equivalence is now defined as the equivalence relating derivations which can be obatained one from another by a sequence of switches. Moreover, intermediate graphs can be taken up to isomorphism according to abstraction equivalence.
 
@@ -2524,27 +2524,38 @@ We can now prove a Local Church-Rosser Theorem for strong independence pairs.
   between $\dder{D}_0$ and $\dder{D}_1$. Then $\dder{D}_0$ and
   $\dder{D}_1$ are switchable.
 \end{restatable}
-[Proof in \Cref{thmChurch-proof}]
+\full{
+  [Proof in \Cref{thmChurch-proof}]
+}
 
 The correspondence between sequential independence and switchability
-is fundamental.  A very large class of DPO rewriting systems -- along the
-lines of \cite{baldan2011adhesivity} -- can be identified where all
-independence pairs are strong for left-linear rewriting systems. The details are in 
-\Cref{app:fill}. Here it is important only to observe that such class includes $\cat{Set}$ and it is closed by comma and functor category constructions. 
-As such, it includes essentially all categories (e.g., presheaves over set) that are typically considered for modelling purposes.
+is fundamental. We name the class of rewriting systems where this property holds.
 
-
-
-%\rem{Non introdurrei una classe, come detto sopra}{
-\begin{definition}[Strong Enforcing rewriting systems]A left-linear DPO rewriting system is \emph{strong enforcing} if every independence pair between two direct derivations is strong. 
+\begin{definition}[Strong Enforcing rewriting systems]
+  A left-linear DPO rewriting system is \emph{strong enforcing} if
+  every independence pair between two direct derivations is strong.
 \end{definition}
 
-\begin{example}
+Along the lines of \cite{baldan2011adhesivity} we can identify a large
+class of adhesive categories such that all left-linear rewriting
+systems over such categories are strong enforcing. The details are in
+\Cref{app:fill}. Here it is important only to remark that such class
+includes $\cat{Set}$ and it is closed by comma and functor category
+constructions.  As such, it includes essentially all categories (e.g.,
+presheaves over set) that are typically considered for modelling
+purposes. Notably, it contains the category $\cat{Graph}$ of directed
+graphs.
+
+Still, there are adhesive rewriting systems which are not strong enforcing, as shown by the following example, which is however somehow pathological.
+
+\begin{example}[Non-strong enforcing left-linear rewriting system]
   \label{ex:diff2}
   In light of \Cref{thm:church}, \Cref{ex:diff1} provides an example
-  of an independence pair which is not strong, and thus of a non-strong enforcing
-  adhesive rewriting system. Instead every left-linear system in category $\cat{Graph}$ is
-  strong enforcing, by the results of Appendix~\ref{app:fill}, summarized in~\Cref{ex:graph-type-bb} and~\Cref{cor:llr-is-strEnf}.
+  of an independence pair which is not strong, and thus of a
+  non-strong enforcing adhesive rewriting system.%  Instead every
+  % left-linear system in category $\cat{Graph}$ is strong enforcing, by
+  % the results of Appendix~\ref{app:fill}, summarized
+  % in~\Cref{ex:graph-type-bb} and~\Cref{cor:llr-is-strEnf}.
 \end{example}
 
 \begin{remark}
@@ -2555,25 +2566,24 @@ As such, it includes essentially all categories (e.g., presheaves over set) that
 \end{remark}
 %}
 
-
-
-%\rem{Questo e' quanto gia' asserito sopra, mettere in appendice e riferire}
-
 As a sanity check note that a source of strong enforcing left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
 
 \begin{restatable}{proposition}{propEqui}
   \label{prop:equi}
   Every linear DPO rewriting system $(\X, \R)$ is strong enforcing.
 \end{restatable}
+\full{
 [Proof in \Cref{propEqui-proof}]
+}
 
-\subsection{Well-switchable rewriting systems}\label{subsec:verytame}
+\subsection{Well-switchable rewriting systems}
+\label{subsec:verytame}
 
 Even if we work in strong enforcing rewriting systems where sequential
 independence ensures switchability, when dealing with left-linear
 rules there is a further -- and possibly more serious -- issue, i.e.,
-the fact that there can be more than one independence pairs between
-the same derivations. This can hinder the core idea of using
+the fact that there can be more than one independence pair between
+the same derivations. This can hinder the very idea of using
 sequential independence as a basis of a theory of concurrency for
 rewriting systems, since exchanges performed using different
 independence pairs may lead to derivations that are not abstraction
@@ -2597,18 +2607,21 @@ definitively be taken apart, as shown in the example below.
     \label{fi:derD1}
   \end{figure}
   
-  As a consequence, $\der{D}$ and $\der{D}'$ are switch equivalent, but
-  this is not acceptable when viewing equivalence classes of
-  derivations as concurrent computations: in $\der{D}$ the first two
-  steps are not sequential independent, while in $\der{D}'$ they are,
-  intuitively because in $\der{D}$ rule $\rho_1$ uses the node
-  generated by $\rho_0$, while in $\der{D}'$ rule $\rho_1$ uses the
-  node which was in the initial graph. From the technical point of
-  view, the property of being switch equivalent is not closed by
-  prefix, something which prevents to derive a sensible concurrent
-  sematics: if we limit to the first two steps, derivations
-  $\dder{D}_0; \dder{D}_1$ and $\dder{D}_0'; \dder{D}_1'$ are not switch
-  equivalent while $\der{D}$ and $\der{D}'$ would be
+  As a consequence, $\der{D}$ and $\der{D}'$ would be switch
+  equivalent, but this is not acceptable when viewing equivalence
+  classes of derivations as concurrent computations: in $\der{D}$ the
+  first two steps are not sequential independent, while in $\der{D}'$
+  they are, intuitively because in $\der{D}$ rule $\rho_1$ uses the
+  node generated by $\rho_0$ (adding a self loop to it), while in
+  $\der{D}'$ rule $\rho_1$ uses the node which was in the initial
+  graph. From the technical point of view, the property of being
+  switch equivalent is not closed by prefix, something which prevents
+  to derive a sensible concurrent sematics: if we limit to the first
+  two steps, we obatain derivations $\dder{D}_0 \cdot \dder{D}_1$ and
+  $\dder{D}_0' \cdot \dder{D}_1'$ are not switch equivalent while
+  $\der{D} = \dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ and
+  $\der{D}' = \dder{D}_0'\cdot \dder{D}_1' \cdot \dder{D}_2'$ would
+  be.
 \end{example} 
 
 \full{Moreover, limiting sequential independence to the case in which the independence
@@ -2668,8 +2681,9 @@ Let $\mathcal{G}=(V, E, s, t)$ be a directed acyclic graph, the category  $\gph{
   All node-merging graphical rewriting systems are well switching.
 \end{restatable}
 
+\full{
 [Proof in \Cref{lemVTame}]
-
+}
 
 \begin{example}[E-graphs]
   Consider the category $\cat{EGraphs}$, where objects are (directed)
@@ -2745,13 +2759,18 @@ In a linear rewriting system the converse also holds.
 \begin{restatable}{proposition}{lemIde}\label{lem:ide}
 	Let $\der{D}$ and $\der{D}'$ be two derivations in a linear DPO-rewriting system $(\X, \R)$ with the same length $l$. If $\id{[0,l-1]}:[0,l-1]\to [0,l-1]$ is a consistent permutation, then $\der{D}$ and $\der{D}'$ are abstraction equivalent.  
 \end{restatable}
-[Proof in \Cref{lemide-proof}]
 
+\full{
+[Proof in \Cref{lemide-proof}]
+}
 
 \begin{restatable}{proposition}{propcoswitch}\label{prop:coswitch}
 Let $\der{D}$ and $\der{E}$ be two switch equivalent derivations, then there exists a consistent permutation between them.
 \end{restatable}	
+
+\full{
 [Proof in \Cref{propcoswitch-proof}]
+}
 
 In the linear case, the existence of a consistent permutation it is enough to characterize switch equivalence. \todo{FORSE QUA METTEREI DEI POINTER A QUALCHE LAVORO PASSATO?}
 
@@ -2765,7 +2784,8 @@ Then the following are equivalent:
 	\item there exists a consistent permutation $\sigma\colon [0,\lgh(\der{D})-1]\to [0,\lgh(\der{D})-1]$ between them.
 \end{enumerate}
 \end{restatable}
-[Proof in \Cref{thmswitch-proof}]
+
+\full{[Proof in \Cref{thmswitch-proof}]}
 
 
 \begin{example}
@@ -2885,7 +2905,7 @@ independent.
 
   %
 
-[Proof~\ref{lemIndepGlobalLeft-proof}]
+\full{[Proof~\ref{lemIndepGlobalLeft-proof}]}
 
 
 The second lemma capture the essence of the confluence of
@@ -2907,7 +2927,7 @@ independently from the order of the switchings.
 	$S_{a_0,a_1}(\dder{D}_2)$.\todo{P: non e' meglio qui limitarci a well switching, cosi' da evitare riferimenti a strong pairs?}
 \end{restatable}
 
-[Proof~\ref{lemSwitchConfluence-proof}]
+\full{[Proof~\ref{lemSwitchConfluence-proof}]}
 
 
 The lemmas above open the way to the key result of this section establishing a canonical form for
@@ -2924,7 +2944,7 @@ The first result shows that whenever equating two derivation sequences by perfor
   \end{center}
 \end{restatable}
 
-[Proof~\ref{thNoNeed-proof}]
+\full{[Proof~\ref{thNoNeed-proof}]}
 
 While in the case of linear rewriting systems inversion can be
 performed in any order, this is no longer true for left-linear
@@ -2946,7 +2966,7 @@ canonical form for switching derivations.
   $k = \max \{ j \mid \transp{j} \in \inv{\nu_{i,n}}\}$.\todo{P: $\nu_{i,n} = \sigma \circ \nu_{1,i}$, giusto? forse e' piu' carino}
 \end{restatable}
 
-[Proof~\ref{coCanonical-proof}]
+\full{[Proof~\ref{coCanonical-proof}]}
 
 \iffalse
 	\begin{corollary} Given a strong enforcing  left-linear DPO rewriting system  $(\X,\R)$ with $\X$ an $\mathcal{M}$-adhesive category and a decorated derivation $(\der{D}, \alpha, \omega)$ with $\der{D}=\{\dder{D}_i\}_{i=0}^2$. Then the following are true:
