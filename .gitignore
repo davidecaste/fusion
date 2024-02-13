@@ -9,3 +9,9 @@
 *.vtc
 fusione-pratendsec2.tex
 fusione-pratendsec3.tex
+.DS_Store
+fusione.fdb_latexmk
+*.fls
+Notes.fdb_latexmk
+Related/.vscode/launch.json
+Related/GraphShift.fdb_latexmk

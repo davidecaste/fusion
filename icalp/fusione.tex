@@ -890,7 +890,7 @@ This first section recalls definitions and basic theory of \emph{$\mathcal{M}$-a
     all arrows, monos and regular monos of $\X$, respectively.
 
   \item Given an integer $n\in \mathbb{Z}$, $[0,n]$ will denote the
-    set of natural numbers less or equal than $n$, assuming that
+    set of natural numbers less than or equal to $n$, assuming that
     $[0,n]=\emptyset$ whenever $n<0$.
   \end{itemize}
 \end{notation}
@@ -926,9 +926,9 @@ So equipped, we can introduce the notion of \emph{$\mathcal{A}$-Van Kampen squar
 %    \hspace{15pt}
     Given  a class of arrows $\mathcal{A}\subseteq \mor(\X)$, we say that the bottom square
     % \emph{has the Van Kampen property relatively to $\mathcal{A}$}, or that it
-    is a \emph{$\mathcal{A}$-Van Kampen square} if
+    is an \emph{$\mathcal{A}$-Van Kampen square} if
     \begin{enumerate}
-    \item is a pushout square;
+    \item it is a pushout square;
     \item 	whenever the cube above has pullbacks as back and left faces and the vertical arrows belong to $\mathcal{A}$, then its top face is a pushout 
     if and only if the front and right faces are pullbacks.
     \end{enumerate}
@@ -1064,7 +1064,7 @@ approach'' (DPO). We will recall the basic definitions and properties
 of this approach to abstract rewriting.
 
 
-\begin{definition}[\cite{habel2012mathcal,heindel2009category}]
+\begin{definition}[\!\!\cite{habel2012mathcal,heindel2009category}]
   Let $\X$ be an $\mathcal{M}$-adhesive category. A \emph{left
     $\mathcal{M}$-linear} rule $\rho$ is a pair $\rho = (l,r)$ of
   arrows with $l: K \to L$ and $r: K \to R$, such that $l$ belongs to
@@ -1076,16 +1076,17 @@ of this approach to abstract rewriting.
   %
   The object $L$ is
   the \emph{left-hand side}, $R$ is the \emph{right-hand side}, and
-  $K$ the \emph{glueing object}.
+  $K$ the \emph{interface}. 
+  % \emph{glueing object}.   AC: sempre chiamato interface
 
   A \emph{left-linear DPO rewriting system} is a pair $(\X, \R)$ where
-  $\X$ is an $\mathcal{M}$-adhesive category and $R$ is a set of left
+  $\X$ is an $\mathcal{M}$-adhesive category and $\R$ is a set of left
   $\mathcal{M}$-linear rules. The rewriting system $(\X, \R)$ is
   called \emph{linear}
   %
-  \full{(\emph{consuming})}
+  \full{\emph{(consuming)}}
   %
-  if every rule in $R$ is
+  if every rule in $\R$ is
   $\mathcal{M}$-linear.
   \full{(consuming)}
 
@@ -1105,7 +1106,7 @@ of this approach to abstract rewriting.
 
 \full{
   %
-  If we look to direct derivations as
+  If we look at direct derivations as
   transitions, it is natural to consider them as edges in a direct
   graph. Taking objects as vertices leads us to the following
   definition \cite{heindel2009category}.
@@ -1137,18 +1138,19 @@ A derivation can now be defined simply as a sequence of direct derivations.
     every index $i$;
   \item $G_0=G$ and $G_{n+1}=H$.
   \end{enumerate}
-  Moreover, for each $G \in \X$ we have $G : G \Mapsto G$ is a
-  derivation, called an \emph{empty derivation}.
+  Moreover, we have an \emph{empty derivation} $G : G \Mapsto G$ for each $G \in \X$.
   %
-  We will denote by $\lgh(\der{D})$ the \emph{length} of the derivation.
- 
+  We will denote by $\lgh(\der{D})$ the \emph{length} of derivation $\der{D}$.
+ %
   \full{We will call the number $n+1$ the \emph{length} of the derivation,
   denoted by $\lgh(\der{D})$. We will also say that an empty
   derivation has length $0$.}
 
-  Moreover, if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then
-  we can define an associated sequence of rules as $r(\der{D})$ as
-  $\{\rho_i\}_{i=0}^n$.
+ Given a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^n$, we define $r(\der{D})  = \{\rho_i\}_{i=0}^n$ as the sequence of 
+ rules such that every $\dder{D}_i$ applies rule $\rho_i\in \R$.  
+%  Moreover, if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then
+ % we can define an associated sequence of rules as $r(\der{D})$ as
+ % $\{\rho_i\}_{i=0}^n$.
 \end{definition}
 
 Derivations naturally compose: given $\der{D}: G \Mapsto H$ and $\der{E}: H \Mapsto F$ we can consider their composition $\der{D} \cdot \der{E}: G \to F$, defined in the obvious way.
@@ -1198,7 +1200,7 @@ Often, we are interested in derivations only up to some notion of coherent isomo
     An \emph{abstraction equivalence} between two derivations $\der{D}$
     and $\der{D'}$ with the same length and
     $r(\der{D})=r(\der{D}')$, is a family of isomorphisms
-    $\{\phi_X\}_{X\in \{G_i,D_I,H_I\}}$ such that the diagram on the right commutes
+    $\{\phi_X\}_{X\in \{G_i,D_i,H_i\}}$ such that the diagram on the right commutes
     for every $i\in [0, \lgh(\der{D})]$. We
     will say that $\der{D}$ are $\der{D}'$ are \emph{abstraction
       equivalent}, and use the symbol $\der{D}\equiv_a \der{D}'$, if there exists an abstraction equivalence between
@@ -1208,17 +1210,17 @@ Often, we are interested in derivations only up to some notion of coherent isomo
 \parbox{4cm}{\vspace{-1.35em}$\xymatrix@C=40pt{G'_i&D'_i \ar[r]^{g'_i}
     \ar@{>->}[l]_{f'_i}&G'_{i+1}\\ L_i \ar[u]^{m'_i} \ar[d]_{m_i}& K_i
     \ar[u]^{k'_i} \ar[d]_{k_i} \ar[r]^{r_i} \ar@{>->}[l]_{l_i}
-    &R\ar[u]^{h'_i} \ar[d]_{h_i}\\G_i
+    &R_i \ar[u]^{h'_i} \ar[d]_{h_i}\\G_i
     \ar@/_.45cm/[uu]_(.35){\phi_{G_i}}|\hole&D_i\ar@{>->}[l]^{f_i}\ar@/_.45cm/[uu]_(.35){\phi_{D_i}}|\hole
-    \ar[r]_{g_i}&G_{i+1}\ar@/_.45cm/[uu]_{\phi_{H_i}}}$}
+    \ar[r]_{g_i}&G_{i+1}\ar@/_.45cm/[uu]_{\phi_{G_{i+1}}}}$}
 
 
 
 \todo{P: sopra era $X \in\Deltamin(\der{D})$, non definito nel main}
 
 
-$\mathcal{M}$-adhesivity of $\X$ guarantes the essential uniqueness of
-the result obtained rewriting an object, as shown by the next
+$\mathcal{M}$-adhesivity of $\X$ guarantees the essential uniqueness of
+the result obtained by applying a rule to an object, as shown by the next
 proposition.
 
 
@@ -2052,7 +2054,7 @@ concurrent computation. We observe that moving from linear to
 left-linear rules leads to the failure of various basic properties of
 the classical notion of independence used in the linear setting and we
 single out a framework in which these can be re-established, possibly
-in a wekened form.
+in a weakened form.
 
 
 \subsection{Sequentially independent and switchable derivations }\label{subsec:switch}
@@ -2079,7 +2081,7 @@ In the DPO approach the canonical notion of independence is that of sequential i
       \ar[dl]|(.3)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1}
       \ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar@{>->}[ll]^{f_0}
       D_0 \ar[rr]_{g_0}&& G_1 && \ar@{>->}[ll]^{f_1} D_1
-      \ar[rr]_{g_1}&& G_2}\] We will say that $\dder{D}_0$ and
+      \ar[rr]_{g_1}&& G_2}\] In this case we say that $\dder{D}_0$ and
   $\dder{D}_1$ are
   % \emph{weakly sequentially independent} if an independence pair
   % exists. If such independence pair is unique we will say that
@@ -2090,9 +2092,9 @@ In the DPO approach the canonical notion of independence is that of sequential i
 Intuitively, the existence of the independence pair
 captures the possibility of switching the application of the two rules:
 $f_0 \circ i_1$ is a match for $\rho_1$ in $G_0$ and the
-existence of $i_0 : R_0 \to D_1$ indicates that $\rho_1$ do not delete
-items in the image of $K_0$ and thus $\rho_1$ can be applied after
-$\rho_0$.
+existence of $i_0 : R_0 \to D_1$ indicates that $\rho_1$ does not delete
+items in the image of $K_0$ and thus $\rho_0$ can be applied after
+$\rho_1$.
 
 More precisely, let us formalise what it means for a derivation being the switch of another.
 
@@ -2127,7 +2129,7 @@ More precisely, let us formalise what it means for a derivation being the switch
       & & {D_0} \ar@{>->}[ll]^{f_0} \ar[rrrr]_{g_0}
       & & & & {G_1} & &
       & &  {D_1} \ar@{>->}[llll]^{f_1} \ar[rr]_{g_1}
-      & & {G_0}
+      & & {G_2}
     }
     % 
     \xymatrix@C=1.1mm@R=8mm{
@@ -2142,9 +2144,9 @@ More precisely, let us formalise what it means for a derivation being the switch
       % 
       % 
       {G_0}
-      & & {D_1'} \ar@{>->}[ll]^{f_0'} \ar[rrrr]_{g_0'}
+      & & {D_0'} \ar@{>->}[ll]^{f_0'} \ar[rrrr]_{g_0'}
       & & & & {G'_1} & &
-      & &  {D_0'} \ar@{>->}[llll]^{f_1'} \ar[rr]_{g_1'}
+      & &  {D_1'} \ar@{>->}[llll]^{f_1'} \ar[rr]_{g_1'}
       & & {G_2}  }
     %
   \]
@@ -2211,8 +2213,8 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   depicted in Fig.~\ref{fi:rules}, where numbers are used to represent
   the mappings from the interface to the left- and right-hand
   sides. Rules $\rho_0$ and $\rho_1$ are linear: $\rho_0$ generates a
-  new node, while $\rho_1$ delete an edge. Instead, $\rho_2$ is just
-  left-linear as it ``merge'' two nodes.
+  new node, while $\rho_1$ creates an edge. Instead, $\rho_2$ is
+  left-linear but not linear, as it ``merges'' two nodes.
 
 
 \todo{Se inseriamo le figure in fusione.tex si risparmia dello spazio}
@@ -2225,7 +2227,7 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   
   A derivation $\der{D}$ consisting of three steps $\dder{D}_0$,
   $\dder{D}_1$, and $\dder{D}_2$, each applying the corresponding rule
-  $\rho_i$ ,is depicted in in Fig.~\ref{fi:derD}. The second and third
+  $\rho_i$, is depicted in in Fig.~\ref{fi:derD}. The second and third
   steps $\dder{D}_1$ and $\dder{D}_2$ are clearly sequential
   independent, via an independence pairs that map nodes consistently
   with their numbering.\todo{P: having names for the graphs would
@@ -2250,7 +2252,7 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
 As already mentioned, for linear rewriting systems, when viewing
 derivations as concurrent computations, it is canonical to identify
 derivations which are equal ``up to switching''. The same notion can
-be given for left-linear rewriting systems relying on notion of
+be given for left-linear rewriting systems by relying on notion of
 switch.
 
 
@@ -2266,7 +2268,7 @@ We first need to recall some concept and notations regarding permutations.
 	$\transp{i}[j]$.
 	
 Given a permutation $\perm$ on $\interval[0]{n}$,  an \emph{inversion} for $\sigma$ is a pair $(i,j)$ such that $i<j$ and $\sigma(j)< \sigma(i)$. The set of inversions
-of $\perm$ will be denoteb by $\inv{\sigma}$.
+of $\perm$ will be denoted by $\inv{\sigma}$.
 \end{definition}
 
 \begin{remark}
@@ -2284,7 +2286,8 @@ We also need to introduce the notion of \emph{switching sequences}.
 
 
 \begin{definition}
-	Consider derivations $\der{D}_i$ for $i \in \interval[0]{n}$
+\todo{A: ma questa definizione va tolta, no?}
+Consider derivations $\der{D}_i$ for $i \in \interval[0]{n}$
 	related by switches
 	\begin{center}
 		$\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots \shift{\nu_n}
@@ -2338,7 +2341,7 @@ construction of a switch.
 
 Unfortunately, for left-linear rewriting systems
 sequential independence does not imply switchability (while the
-converse implication clearly holds), as shown by the example below.
+converse implication clearly holds), as shown by the next example.
 
 \full{
   \begin{remark}
@@ -2380,7 +2383,7 @@ converse implication clearly holds), as shown by the example below.
       \ar[dr]|(.3)\hole_{\id{0}} && a \ar@/_.35cm/[dlll]^(.45){(a,c)}
       \ar[dl]|(.3)\hole^{(a,0)}& a \ar[d]^{(a,0)}\ar@{>->}[l]_{\id{a}}
       \ar[rr]^{(a,b)} && b \ar[d]^{(b,0)}\\c &&
-      \ar@{>->}[ll]^{(\id{c})} c \ar[rr]_{(c,0)}&& 0 &&
+      \ar@{>->}[ll]^{\id{c}} c \ar[rr]_{(c,0)}&& 0 &&
       \ar@{>->}[ll]^{\id{0}} 0 \ar[rr]_{\id{0}}&& 0}\]
 
   \noindent
@@ -2389,7 +2392,7 @@ converse implication clearly holds), as shown by the example below.
     %
     On the other hand, the rule
     applied by $\dder{D}_1$ cannot be applied to $c$. In fact, the
-    unique morphism $a\to c$ is $(a,c)$, thus we get a diagram
+    unique morphism $a\to c$ is $(a,c)$, thus we get the diagram
     aside. But $b$ and $c$ do not have a supremum in the poset
     underlying $\X$, thus we do not get a direct derivation from
     $c$.}  \parbox{3cm}{
@@ -2474,7 +2477,7 @@ by the notion of \emph{canonical filler}
 
   Consider the pullback of $g_0$ and $f_1$, getting $p_i : P \to D_i$
   ($i \in \{0,1\}$) and the mediating arrows $u_0\colon K_0\to P$ and
-  $u_1\colon K_1\to P$ into the pullback (see \Cref{prop:tec} for details). 
+  $u_1\colon K_1\to P$ into the pullback object (see \Cref{prop:tec} for details). 
   % given by \Cref{prop:tec} .
   %
   We will say that $(i_0, i_1)$ is a \emph{strong independence pair} if
