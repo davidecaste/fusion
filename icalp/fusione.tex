@@ -2296,6 +2296,9 @@ More precisely, let us formalise what it means for a derivation being the switch
 It can be shown that switches along the same independence pair are unique up to abstraction
 equivalence (see Proposition~\ref{thm:switch_uni}).
 
+\begin{notation} We will denote any switch of two switchable direct derivations $\dder{D}_0$ and $\dder{D}_1$ along $(i_0, i_1)$ by $S_{i_0, i_1}(\dder{D}_0, \dder{D}_1)$. Moreover, we will use $S_{i_0,i_1}(\dder{D}_1)$ and  $S_{i_0,i_1}(\dder{D}_0)$ to denote its components, in such a way that \[S_{i_0, i_1}(\dder{D}_0, \dder{D}_1)=S_{i_0,i_1}(\dder{D}_1)\cdot S_{i_0,i_1}(\dder{D}_0)\]
+\end{notation}
+
 \begin{example}
   \label{ex:seq-ind}
   Consider a rewriting system in $\cat{Graph}$, the category of
@@ -2629,12 +2632,6 @@ We can now prove a Local Church-Rosser Theorem for strong independence pairs.
 \end{restatable}
 [Proof in \Cref{thmChurch-proof}]
 
-
-
-\todo[inline]{Forse non introdurrei neppure la classe dei strong enforcing, tanto usiamo solo i well switching, o no?}
-
-\todo[inline]{Io invece la introdurrei proprio come punto teorico che mi sembra parecchio importante: qua li condizioni mi garantiscono che gli independence pair implicano la scambiabilità? [DC]}
-
 The correspondence between sequential independence and switchability
 is fundamental.  A very large class of DPO rewriting systems -- along the
 lines of \cite{baldan2011adhesivity} -- can be identified where all
@@ -2917,7 +2914,7 @@ sequence $r_2\, r_1\, r_0$, we obtain the same resulting derivation,
 independently from the order of the switchings.
 
 
-\begin{restatable}[confluence of switchings]{lemma}{lemSwitchConfluence}
+\begin{restatable}[Confluence of switchings]{lemma}{lemSwitchConfluence}
   \label{lem:switch-confluence}
   Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X,\R)$ a
   left-linear DPO rewriting system.
@@ -3005,7 +3002,7 @@ switching derivations.
 
 The first result shows that whenever equating two derivation sequences by performing a sequence of switching, we can just limit ourselves to ``useless shwitching'' which invert the order of steps which in the target derivation has to be reversed, i.e., we can limit ourserrvels to inversions.
 
-\begin{restatable}[no need of useless switchings]{theorem}{thNoNeed}
+\begin{restatable}[No need of useless switchings]{theorem}{thNoNeed}
   \label{th:no-need}
   Let $\der{D}$ and $\der{D}'$ be derivation sequences. If $\der{D} \shifteq \der{D}'$ then there is a switching sequence consisting only of inversions
   \begin{center}
@@ -3022,7 +3019,7 @@ rewriting systems.\todo{P: counter example} Still, we can identify a
 canonical form for switching derivations.
 
 
-\begin{restatable}[canonical form]{corollary}{coCanonical}
+\begin{restatable}[Canonical form]{corollary}{coCanonical}
   \label{co:canonical}
   Let $\der{D}$ and $\der{D}'$ be derivation sequences. If
   $\der{D} \shifteq[\sigma]\der{D}'$ then there is a switching sequence
