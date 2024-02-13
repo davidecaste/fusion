@@ -503,10 +503,10 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
 %  considers concurrent and distributed systems, since the independence
 %  of two steps means that they could be executed in any order, and
 %  potentially in parallel.
-  When can two consecutive steps performed by a computing device be
+  When can two sequential steps performed by a computing device be
   considered (causally) independent?  This is a relevant question for
   concurrent and distributed systems, since independence means that
-  those steps could be executed in any order, and potentially in parallel.
+  they could be executed in any order, and potentially in parallel.
   % 
   We investigate the issue in the context of adhesive categories, a
   very general instance of the DPO approach to rewriting. More
@@ -674,10 +674,10 @@ a computational device can be modelled by abstracting its sequences of steps
 via a suitable equivalence. Intuitively, the equivalence 
 captures when 
 %sequential 
-two steps are causally unrelated and thus could be executed in any 
+steps are causally unrelated and thus could be executed in any 
 order, and possibly in parallel. 
 %
-Seminal contributions to this line of research have been
+Two seminal contributions to this line of research have been
 Mazurkiewicz's traces~\cite{Mazurkiewicz86} and Winskel's event structures~\cite{NPW:PNES}.
 %
 Concerning formalisms based on the rewriting paradigm, i.e. where the
@@ -791,14 +791,28 @@ weakened form, results which hold in the linear case.  Specifically,
 the Church-Rosser theorem is fully recovered.
 %for well-switchable rewriting systems.
 
+
+
+% \begin{enumerate}
+% \item \emph{confluence of switching}: when transforming derivation
+%   sequences into equivalent ones by switching independent steps, the
+%   result not depends on the order in which switchings are applied, but
+%   only on the resulting permutation;
+  
+% \item \emph{globality of independence}: if two independent steps are
+%   moved forward or backward due to the application of switchings to a
+%   derivation, they remain independent.
+% \end{enumerate}
+
+
 There is, however, a further problem. In the literature on linear
 rewriting systems, a central result is the a characterisation of
-switch equivalence of sequences of steps based on what are 
-called processes or consistent permutations~\cite{Handbook,tobias}.
-%\todo{Handbook, graph processes, tobias}
+switch equivalence of sequences of steps based on what are called processes or
+consistent permutations~\cite{Handbook, tobias}.\todo{Handbook, graph processes, tobias}
 In turn this is the key
 to derive some simple but fundamental properties for linear rewriting
 systems, namely
+
 \begin{enumerate}
 \item \emph{consistency of switching}: when transforming
   sequences of rewriting steps into equivalent ones by switching independent steps, the
@@ -3447,16 +3461,12 @@ In this appendix we will provide the proofs of the main results of this paper.
 
 
 \propUnique*
-
 \label{propUnique-proof}
+%\vspace{-.2cm}
 \begin{proof}
   Both pairs $(k, f)$ and $(k', f')$ are pushout complements of $l$
   and $n$, thus, \Cref{lem:pocomp} yields an isomorphism
-  $\phi_D\colon D\to D'$. Computing we have
-  \[
-    g'\circ \phi_D \circ k= g' \circ k'=h'\circ r
-  \]
-
+  $\phi_D\colon D\to D'$. An easy computation shows that $g'\circ \phi_D \circ k=h'\circ r$.
   \noindent
   \parbox{3cm}{
     $\xymatrix{K \ar@/^.4cm/[rr]^{k'}\ar[d]_{r} \ar[r]_{k}&
@@ -3506,7 +3516,7 @@ sequentially independent. We can then wonder if they are switchable.
 \end{lemma}
 
 \begin{proof}
-    By definition of switch we know that $\der{E}_0$ and $\der{F}_0$ have the same match $f_0\circ i_1$ and that $\der{E}_1$ and $\der{F}_1$ have the same comatch $g_1\circ i_0$. Thus we can build the solid part of the diagram below.
+    By definition of switch $\der{E}_0$ and $\der{F}_0$ have the same match $f_0\circ i_1$ and that $\der{E}_1$ and $\der{F}_1$ have the same comatch $g_1\circ i_0$. Thus we get the solid part of the diagram below.
     \[\xymatrix@C=22pt{G_{0} && \ar@{>->}[ll]_{f_{\der{F},0}} D_{\der{F},0} \ar[rr]^{g_{\der{F},0}}&& G_{\der{F},1} && \ar@{>->}[ll]_{f_{\der{F},1}} D_{\der{F},1} \ar[rr]^{g_{\der{F},1}}&& G_{2}\\L_1 \ar[d]^{f_0\circ i_1} \ar[u]_{f_0\circ i_1}&& K_{1} \ar[d]^{k_{\der{E},0}} \ar[u]_{k_{\der{F},0}}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_{1} \ar@/^.35cm/[drrr]|(.3)\hole_(.4){j_0} \ar[dr]|(.3)\hole_{h_{\der{E},0}} \ar@/_.35cm/[urrr]|(.3)\hole^(.4){a_0} \ar[ur]|(.3)\hole^{h_{\der{F},0}}& &L_{0} \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.3)\hole^{m_{\der{E},1}} \ar@/^.35cm/[ulll]_(.4){a_1} \ar[ul]|(.3)\hole_{m_{\der{F},1}}& K_{0} \ar[d]_{k_{\der{E},1}} \ar[u]^{k_{\der{F},1}}\ar@{>->}[l]_{l_{0}} \ar[rr]^{r_0} && R_{0} \ar[d]_{g_1\circ i_0} \ar[u]^{g_1\circ i_0}\\ \ar@/^.5cm/[uu]^{\id{G_0}} G_{0} && \ar[ll]^{f_{\der{E},0}} D_{\der{E},0} \ar@{.>}@/^.5cm/[uu]^(.33){\phi_{0}}|\hole \ar[rr]_{g_{\der{E},0}}&& G_{\der{E},1} \ar@{.>}[uu]^(.76){\psi_1}|(.45)\hole |(.55)\hole&& \ar@{>->}[ll]^{f_{\der{E},1}} D_{\der{E},1} \ar@{.>}@/_.5cm/[uu]_(.33){\phi_{1}}|\hole\ar[rr]_{g_{\der{E},1}}&& G_{2}\ar@{.>}@/_.5cm/[uu]_{\psi_2}}\]
     
     \parbox{7cm}{\hspace{15pt}Now, by \Cref{prop:unique} we get $\phi_0\colon D_{\der{E},0}\to D_{\der{F},0}$ and $\psi_1 \colon G_{\der{E},1}\to G_{\der{F},1}$ such that the diagram on the right commutes. But then we have
@@ -3518,10 +3528,9 @@ sequentially independent. We can then wonder if they are switchable.
      This, in turn, gives us that
     \[\psi\circ m_{\der{E},1}=\psi \circ g_{\der{E},0}\circ j_1=g_{\der{F},0}\circ \phi_0\circ j_1=g_{\der{F},0}\circ a_1=m_{\der{F},1}\]
     
-    Now, the square
-    \[\xymatrix@C=30pt{K_0 \ar[d]_{k_{\der{E,1}}} \ar@{>->}[r]^{l_0}& L_0 \ar[d]^{\psi_1\circ m_{\der{E},1}} \\D_{\der{E},1} \ar@{>->}[r]_{\psi_1\circ f_{\der{E},1}}& G_{\der{F}, 1}} \]
-    is a pushout and $\psi_1\circ m_{\der{E},1}=m_{\der{F},1}$, thus, by \Cref{prop:unique} there are $\phi_1\colon D_{\der{E},1}\to D_{\der{F},1}$ and $\psi_2\colon G_2\to G_2$ fitting in the diagram below
-    \[\xymatrix{G_{\der{F},1} & \ar@{>->}[l]_{f_{\der{F},1}} D_{\der{F},1} \ar[r]^{g_{\der{F},1}}& G_2 \\L_0 \ar[d]^{m_{\der{E},1}} \ar[u]_{m_{\der{F},1}}& K_{1} \ar[d]^{m_{\der{E},1}} \ar[u]_{m_{\der{F},1}}\ar[l]_{l_1} \ar[r]^{r_1} & R_{1}  \ar[d]_{g_1\circ i_0}  \ar[u]^{g_1\circ i_0}\\ \ar@/^.5cm/[uu]^{\psi_1} G_{\der{E},1} & \ar@{>->}[l]^{f_{\der{E},1}} D_{\der{E},1} \ar@/^.5cm/[uu]^(.33){\phi_{1}}|\hole \ar[r]_{g_{\der{E},1}}& G_2 \ar@/_.5cm/[uu]_{\psi_2}}\]
+    Now, the square on the left in the diagram below is a pushout and $\psi_1\circ m_{\der{E},1}=m_{\der{F},1}$. Thus, by \Cref{prop:unique} there are the dotted $\phi_1\colon D_{\der{E},1}\to D_{\der{F},1}$ and $\psi_2\colon G_2\to G_2$ in the diagram on the right.
+    \[\xymatrix{&&G_{\der{F},1} & \ar@{>->}[l]_{f_{\der{F},1}} D_{\der{F},1} \ar[r]^{g_{\der{F},1}}& G_2 \\K_0 \ar[d]_{k_{\der{E,1}}} \ar@{>->}[r]^{l_0}& L_0 \ar[d]^{\psi_1\circ m_{\der{E},1}}&L_0 \ar[d]^{m_{\der{E},1}} \ar[u]_{m_{\der{F},1}}& K_{1} \ar[d]^{m_{\der{E},1}} \ar[u]_{m_{\der{F},1}}\ar@{>->}[l]_{l_1} \ar[r]^{r_1} & R_{1}  \ar[d]_{g_1\circ i_0}  \ar[u]^{g_1\circ i_0}\\D_{\der{E},1} \ar@{>->}[r]_{\psi_1\circ f_{\der{E},1}}& G_{\der{F}, 1}& \ar@/^.5cm/[uu]^{\psi_1} G_{\der{E},1} & \ar@{>->}[l]^{f_{\der{E},1}} D_{\der{E},1} \ar@{.>}@/^.5cm/[uu]^(.33){\phi_{1}}|\hole \ar[r]_{g_{\der{E},1}}& G_2 \ar@{.>}@/_.5cm/[uu]_{\psi_2}}\]
+    
     To conclude, it is now enough to notice that
     \[f_{\der{F},1} \circ \phi_1\circ j_0=\psi_1\circ f_{\der{E},1}\circ j_0=\psi_1\circ h_{\der{E,0}}=h_{\der{F},0}=f_{\der{F},1}\circ a_0\]
     allowing us to deduce $ \phi_1\circ j_0=a_0$.
@@ -3538,7 +3547,7 @@ sequentially independent. We can then wonder if they are switchable.
 	$u_1\colon K_1\to P$ and $u_0\colon K_0\to P$ fitting in the
 	central and right square. Moreover, the right one is always
 	a pullback.
-	\[\xymatrix{P \ar@{>->}[r]^{p_0} \ar[d]_{p_1} & D_0
+	\[\xymatrix@R=15pt{P \ar@{>->}[r]^{p_0} \ar[d]_{p_1} & D_0
 		\ar[d]^{g_0}& K_0 \ar[r]^{r_0} \ar@{.>}[d]_{u_0}& R_0
 		\ar[d]^{i_0} & K_1 \ar@{>->}[r]^{l_1} \ar@{.>}[d]_{u_1}&
 		L_1 \ar[d]^{i_1}\\ D_1 \ar@{>->}[r]_{f_1} &G_1 &P
@@ -3554,7 +3563,7 @@ sequentially independent. We can then wonder if they are switchable.
 	\]
 	Thus there exists the dotted $u_0\colon K_0\to P$,
 	$u_1\colon K_1\to P$ in the diagram
-	\[\xymatrix{K_0 \ar[d]_{r_0}
+	\[\xymatrix@R=15pt{K_0 \ar[d]_{r_0}
 		\ar@{.>}[r]_{u_0}\ar@/^.4cm/[rr]^{k_0} &P
 		\ar@{>->}[r]_{p_0} \ar[d]_{p_1}& D_0 \ar[d]^{g_0}&K_1
 		\ar@{>->}[d]_{l_1}
@@ -3589,24 +3598,22 @@ derivations which is worth mentioning.\todo{A: va tolto weakly?}
 
 \begin{proof}
   Consider the arrow $u_1\colon K_1\to P$ obtained using
-  \Cref{prop:tec}. It fits in the diagram:
-\[		\xymatrix{K_1 \ar[r]^{u_1} \ar@{>->}[d]_{l_1}&P
+  \Cref{prop:tec}. It fits in the big square on the left:
+\[		\xymatrix@R=15pt{K_1 \ar[r]^{u_1} \ar@{>->}[d]_{l_1}&P
 	\ar[r]^{\id{P}}\ar@{>->}[d]_{p_0}& P\ar@{>->}[d]^{p_0}\\L_1
 	\ar[d]_{\id{L_1}}\ar[r]^{i_1}&D_0 \ar[r]^{\id{D_0}}
-	\ar[d]_{\id{D_0}}& D_{0} \ar@{>->}[d]^{f_0}\\
+	\ar[d]_{\id{D_0}}& D_{0} \ar@{>->}[d]^{f_0}&K_1 \ar@{>->}[d]_{l_1}\ar[r]^{k_{\der{E},0}}&
+	D_{\der{E},0} \ar@{>->}[d]^{f_{\der{E},0}} & K_1 \ar[r]^{u}
+	\ar@{>->}[d]_{l_1}& P \ar@{>->}[d]^{f_0\circ
+		p_0}\\
 	L_1\ar[r]^{i_1} \ar@/_.4cm/[rr]_{m_{\der{E},0}}&D_0
-	\ar@{>->}[r]^{f_0}&G_0}\]
+	\ar@{>->}[r]^{f_0}&G_0 & L_1\ar[r]_{m_{\der{E},0}}&G_0 &L_1
+	\ar[r]_{m_{\der{E},0}}&G_0}\]
 
-\smallskip \noindent 
-  \parbox{4cm}{$\xymatrix{K_1 \ar@{>->}[d]_{l_1}\ar[r]^{k_{\der{E},0}}&
-  		D_{\der{E},0} \ar@{>->}[d]^{f_{\der{E},0}} & K_1 \ar[r]^{u}
-  		\ar@{>->}[d]_{l_1}& P \ar@{>->}[d]_{f_0\circ
-  			p_0}\\L_1\ar[r]_{m_{\der{E},0}}&G_0 &L_1
-  		\ar[r]_{m_{\der{E},0}}&G_0} $}\hspace{2cm}
-  	\parbox{8cm}{\hspace{15pt} Since $f_0$ is a monomorphism, every square in the above diagram
-  is a pullback. Thus the whole right square is a pullback too.
-  Applying \Cref{lem:radj} to the pair of squares on the left now gives
-  us the wanted $q_0\colon P\to D_{\der{E},0}$. \qedhere}
+  	Since $f_0$ is a monomorphism, every square in the diagram on the left above
+  	is a pullback. Thus the whole big square is a pullback too.
+  	Applying \Cref{lem:radj} to the pair of squares on the right now gives
+  	us the wanted $q_0\colon P\to D_{\der{E},0}$
   
 \end{proof}
 
@@ -3721,7 +3728,7 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 	pullback, therefore, by \cref{rem:deco} the last three squares
 	witness that $(j_0, j_1)$ is a strong independence pair too.
 	\[
-	\xymatrix{P\ar[r]^{q_1} \ar@{>->}[d]_{q_0}&Q_1
+	\xymatrix@R=15pt{P\ar[r]^{q_1} \ar@{>->}[d]_{q_0}&Q_1
 		\ar@{>->}[d]^{a_1}&K_1 \ar[r]^{r_1} \ar[d]_{u_1}& R_1
 		\ar[d]^{j_0} & K_0 \ar@{>->}[r]^{l_0} \ar[d]_{u_0}& L_0
 		\ar[d]^{j_1}&K_0 \ar[r]^{r_0} \ar[d]_{u_0}& R_0\ar[d]^{i_0} \\
@@ -4501,64 +4508,48 @@ We can now turn to the proofs of the results of \Cref{subsec:canonical}.
 \label{lemSwitchConfluence-proof}
 
 \begin{proof}
-	To fix the notation, let us depict the$\der{D}=\{\dder{D}_i\}_{i=0}^2$:
-	\[\xymatrix@C=15pt{L_0\ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]_(.4){i_0}|(.285)\hole \ar[dr]|(.28)\hole_{h_0} && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.28)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[r]^{r_1} & R_1 \ar[dr]|(.28)\hole_{h_1} \ar@/^.35cm/[drrr]_(.4){j_0}|(.285)\hole  && L_2 \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.28)\hole^{m_2}& K_2 \ar[d]^{k_2}\ar@{>->}[l]_{l_2} \ar[rr]^{r_2} && R_2 \ar[d]^{h_2} \\G_0 && \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2 && \ar@{>->}[ll]^{f_2} D_2 \ar[rr]_{g_2}&& G_3 }\]
+	To fix the notation, let us depict the derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$:
+	\[\xymatrix@C=13pt{L_0\ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]_(.4){i_0}|(.285)\hole \ar[dr]|(.28)\hole_{h_0} && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.28)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[r]^{r_1} & R_1 \ar[dr]|(.28)\hole_{h_1} \ar@/^.35cm/[drrr]_(.4){j_0}|(.285)\hole  && L_2 \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.28)\hole^{m_2}& K_2 \ar[d]^{k_2}\ar@{>->}[l]_{l_2} \ar[rr]^{r_2} && R_2 \ar[d]_{h_2} \\G_0 && \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2 && \ar@{>->}[ll]^{f_2} D_2 \ar[rr]_{g_2}&& G_3 }\]
 	
 	We are going to do the two sequences of switches and compare the results.
 	
 	\smallskip \noindent First sequence of switches.
 	
-	We begin switching $\dder{D}_0$ and $\dder{D}_1$.
+	We begin switching $\dder{D}_0$ and $\dder{D}_1$ to get the following diagram.
+	\[\xymatrix@C=15pt{L_1\ar[d]^{f_0\circ i_1}&& K_1 \ar[d]_{k'_1}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){a_0}|(.285)\hole \ar[dr]|(.28)\hole_{h'_1} && L_0 \ar@/_.35cm/[dlll]^(.4){a_1} \ar[dl]|(.28)\hole^{m'_0}& K_0 \ar[d]^{k'_0}\ar@{>->}[l]_{l_0} \ar[r]^{r_0} & R_0 \ar[dr]|(.28)\hole_{g_1\circ i_0} \ar@/^.35cm/[drrr]_(.4){b_0}|(.285)\hole  && L_2 \ar@/_.35cm/[dlll]^(.4){b_1} \ar[dl]|(.28)\hole^{m_2}& K_2 \ar[d]^{k_2}\ar@{>->}[l]_{l_2} \ar[rr]^{r_2} && R_2 \ar[d]_{h_2} \\G_0 && \ar@{>->}[ll]^{f'_0} D'_0 \ar[rr]_{g'_0}&& G'_1  && \ar@{>->}[ll]^{f'_1} D'_1 \ar[rr]_{g'_1}&& G_2 && \ar@{>->}[ll]^{f_2} D_2 \ar[rr]_{g_2}&& G_3 }\]
+
+	By \Cref{def:switch} we also know that $m_0=f'_0\circ a_1$ and $h_1=g'_1\circ a_0$. Now, let us switch $S_{i_0, i_1}(\dder{D}_0)$ and $\dder{D}_2$. In this case we obtain:
+	\[\xymatrix@C=15pt{L_1\ar[d]^{f_0\circ i_1}&& K_1 \ar[d]_{k'_1}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){c_0}|(.285)\hole \ar[dr]|(.28)\hole_{h'_1} && L_2 \ar@/_.35cm/[dlll]^(.4){c_1} \ar[dl]|(.28)\hole^{f'_1\circ b_1}& K_2 \ar[d]^{k'_2}\ar@{>->}[l]_{l_2} \ar[r]^{r_2} & R_2 \ar[dr]|(.28)\hole_{h'_2} \ar@/^.35cm/[drrr]_(.4){d_0}|(.285)\hole  && L_0 \ar@/_.35cm/[dlll]^(.4){d_1} \ar[dl]|(.28)\hole^{\hat{m}_0}& K_0 \ar[d]^{\hat{k}_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]_{g_2\circ b_0} \\G_0 && \ar@{>->}[ll]^{f'_0} D'_0 \ar[rr]_{g'_0}&& G'_1  && \ar@{>->}[ll]^{\hat{f}_1} \hat{D}_1 \ar[rr]_{\hat{g}_1}&& G'_2 && \ar@{>->}[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
+	Using again the definition of switch, we know that $m'_0=\hat{f}_1\circ d_1$ and $h_2=g'_2\circ d_0$. Moreover, by hypothesis $(\X, \R)$ is well switching and the hypothesis of the second point of \Cref{lem:indep-global-left} are satisfied by $\der{D}$. Thus we can characterize $c_0\colon R_1\to \hat{D}_1$ and $c_1\colon L_2\to D'_0$ as the unique arrows fitting in the diagrams below, where the bottom squares are pullbacks.
+	\[\xymatrix@R=15pt@C=15pt{&&R_1 \ar@/_1.2cm/[dddl]_(.4){a_0}|(.63)\hole\ar[dl]^{j_0}\ar[dd]^{c'_0} \ar@{.>}[dr]^{c_0}&&&&&L_2 \ar[dl]^{j_1} \ar@/_1.2cm/[dddl]_(.4){z_1}|(.63)\hole\ar[dd]^{c'_1} \ar@{.>}[dr]^{c_1}\\&D_2 \ar@{>->}[dl]^(.4){f_2}&&\hat{D}_1 \ar[dr]^{\hat{g}_1}  &&&D_1 \ar@{>->}[dl]^(.4){f_1}&&D'_0 \ar[dr]^{g'_0}\\G_2 && P\ar[dr]_{p_4} \ar@{>->}[ur]_{p_3}\ar@{>->}[dl]^{p_1} \ar[ul]^{p_2}&&G'_2&G_1 && Q\ar[dr]_{q_4} \ar@{>->}[ur]_{q_3}\ar@{>->}[dl]^{q_1} \ar[ul]^{q_2}&&G'_1\\& D'_1 \ar[ul]^{g'_1}&&D'_2 \ar@{>->}[ur]_{f'_2}&&& D_0 \ar[ul]^{g_0}&&D'_1 \ar@{>->}[ur]_{f'_1}}\]
 	
-	\[\xymatrix@C=15pt{L_1\ar[d]_{f_0\circ i_1}&& K_1 \ar[d]_{k'_1}\ar[ll]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){a_0}|(.285)\hole \ar[dr]|(.28)\hole_{h'_1} && L_0 \ar@/_.35cm/[dlll]^(.4){a_1} \ar[dl]|(.28)\hole^{m'_0}& K_0 \ar[d]^{k'_0}\ar[l]_{l_0} \ar[r]^{r_0} & R_0 \ar[dr]|(.28)\hole_{g_1\circ j_0} \ar@/^.35cm/[drrr]_(.4){b_0}|(.285)\hole  && L_2 \ar@/_.35cm/[dlll]^(.4){b_1} \ar[dl]|(.28)\hole^{m_2}& K_2 \ar[d]^{k_2}\ar[l]_{l_2} \ar[rr]^{r_2} && R_2 \ar[d]^{h_2} \\G_0 && \ar[ll]^{f'_0} D'_0 \ar[rr]_{g'_0}&& G'_1  && \ar[ll]^{f'_1} D'_1 \ar[rr]_{g'_1}&& G_2 && \ar[ll]^{f_2} D_2 \ar[rr]_{g_2}&& G_3 }\]
+Finally, we switch the first two direct derivations.
+	\[\xymatrix@C=15pt{L_2\ar[d]^{f'_0\circ c_1}&& K_2 \ar[d]_{\hat{k}_2}\ar@{>->}[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){e_0}|(.285)\hole \ar[dr]|(.28)\hole_{\hat{h}_2} && L_1 \ar@/_.35cm/[dlll]^(.4){e_1} \ar[dl]|(.28)\hole^{\hat{m}_1}& K_1 \ar[d]^{\hat{k}_1}\ar@{>->}[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){t_0} \ar[dr]|(.28)\hole_{\hat{g}_1\circ c_0}   && L_0  \ar[dl]|(.28)\hole^{\hat{m}_0} \ar@/_.35cm/[dlll]^(.4){t_1}& K_0 \ar[d]^{\hat{k}_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]_{g_2\circ b_0} \\G_0 && \ar@{>->}[ll]^{\hat{f}_0} \hat{D}_0 \ar[rr]_{\hat{g}_0}&& \hat{G}_1  && \ar@{>->}[ll]^{\tilde{f}_1} \tilde{D}_1 \ar[rr]_{\tilde{g}_1}&& G'_2 && \ar@{>->}[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
+	As before, we have identities $f_0\circ i_1=\hat{f}_0\circ e_1$ and $h'_2=\tilde{g}_1\circ e_0$. Now, the derivation $S_{i_0, i_1}(\dder{D}_1)\cdot S_{i_0, i_1}(\dder{D}_0)\cdot \dder{D}_2$ satisfies the hypothesis of the first point of \Cref{lem:indep-global-left}. Thus, since there is at most one independence pair between two direct derivations, we know that  $t_0\colon R_1\to \tilde{D}_1$ and $t_1\colon L_0\to D'_2$  fit in:
+	\[\xymatrix{&R_1 \ar[dl]_{a_0} \ar@{.>}[dr]^{t_0} \ar@/^.4cm/[dd]|\hole^(.6){c_0}\ar[d]_{t'_0}&&L_ 0\ar[d]_{d_1} \ar@/_.4cm/[ddrr]|(.41)\hole_(.7){a_1}\ar[drr]^{t'_1} \ar@{.>}[rr]^{t_1}&&\tilde{D}_1 \ar@{>->}[r]^{\tilde{f}_1}&\hat{G}_1\\ D'_1 \ar@{>->}[d]_{f'_1}&P\ar@{>->}[d]_{p_3} \ar[r]^{p_4} \ar@{>->}[l]_{p_1}&D'_2\ar@{>->}[d]^{f'_2}&\hat{D}_1 \ar@{>->}[d]_{\hat{f}_1}&&S\ar@{>->}[r]_{s_4} \ar[u]_{s_3}\ar@{>->}[d]^{s_1} \ar[ll]_{s_2} &\hat{D}_0 \ar[u]_{\hat{g}_0} \ar@{>->}[d]^{\hat{f}_0}\\G'_1&\hat{D}_1 \ar@{>->}[l]^{\hat{f}_1}\ar[r]_{\hat{g}_1}& G'_2&G'_1 && D'_0 \ar[ll]^{g'_0}  \ar@{>->}[r]_{f'_0}& G_0 }\]
 	
-	Moreover, we know that
-	\[m_0=f'_0\circ a_1 \qquad h_1=g'_1\circ a_0\]
+	\smallskip \noindent Second sequence of switches.
 	
-	Switch second and third
-	\[\xymatrix@C=15pt{L_1\ar[d]_{f_0\circ i_1}&& K_1 \ar[d]_{k'_1}\ar[ll]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){c_0}|(.285)\hole \ar[dr]|(.28)\hole_{h'_1} && L_2 \ar@/_.35cm/[dlll]^(.4){c_1} \ar[dl]|(.28)\hole^{f'_1\circ b_1}& K_2 \ar[d]^{k'_2}\ar[l]_{l_2} \ar[r]^{r_2} & R_2 \ar[dr]|(.28)\hole_{h'_2} \ar@/^.35cm/[drrr]_(.4){d_0}|(.285)\hole  && L_0 \ar@/_.35cm/[dlll]^(.4){d_1} \ar[dl]|(.28)\hole^{\hat{m}_0}& K_0 \ar[d]^{\hat{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]^{g_2\circ b_0} \\G_0 && \ar[ll]^{f'_0} D'_0 \ar[rr]_{g'_0}&& G'_1  && \ar[ll]^{\hat{f}_1} \hat{D}_1 \ar[rr]_{\hat{g}_1}&& G'_2 && \ar[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
-	And we know that
-	\[m'_0=\hat{f}_1\circ d_1 \qquad h_2=g'_2\circ d_0\]
-	\todo{qua abbiamo usato il secondo lemma dei tre passi (quello condizionale)}Since the rewriting system is well switching and using the three steps lemmas we can characterize $c_0\colon R_1\to \hat{D}_1$ and $c_1\colon L_2\to D'_0$ as the unique arrows fitting in the diagrams
-	\[\xymatrix@R=15pt@C=15pt{&&R_1 \ar@/_1.2cm/[dddl]_(.4){a_0}|(.63)\hole\ar[dl]^{j_0}\ar[dd]^{c'_0} \ar@{.>}[dr]^{c_0}\\&D_2 \ar[dl]^(.4){f_2}&&\hat{D}_1 \ar[dr]^{\hat{g}_1}\\G_2 && P\ar[dr]_{p_4} \ar[ur]_{p_3}\ar[dl]^{p_1} \ar[ul]^{p_2}&&G'_2\\& D'_1 \ar[ul]^{g'_1}&&D'_2 \ar[ur]_{f'_2}}\]
+	This time we start switching $\dder{D}_1$ and $\dder{D}_2$.
+	\[\xymatrix@C=15pt{L_0\ar[d]^{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]_(.4){z_0}|(.285)\hole \ar[dr]|(.28)\hole_{h_0} && L_2 \ar@/_.35cm/[dlll]^(.4){z_1} \ar[dl]|(.28)\hole^{f_1\circ j_1}& K_2 \ar[d]^{\check{k}_2}\ar@{>->}[l]_{l_2} \ar[r]^{r_2} & R_2 \ar[dr]|(.28)\hole_{\check{h}_2} \ar@/^.35cm/[drrr]_(.4){w_0}|(.285)\hole  && L_1 \ar@/_.35cm/[dlll]^(.4){w_1} \ar[dl]|(.28)\hole^{\check{m}_1}& K_1 \ar[d]^{\check{k}_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} && R_1\ar[d]_{g_2\circ j_0} \\G_0 && \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar@{>->}[ll]^{\check{f}_1} \check{D}_1 \ar[rr]_{\check{g}_1}&& \check{G}_2 && \ar@{>->}[ll]^{\check{f}_2} \check{D}_2 \ar[rr]_{\check{g}_2}&& G_3 }\]
+	As in the previous case, we already know that $m_1=\check{f}_1\circ w_1$ and $h_2=\check{g}_2\circ w_0$.
 	
-	\[\xymatrix@R=15pt@C=15pt{&&L_2 \ar[dl]^{j_1} \ar@/_1.2cm/[dddl]_(.4){z_1}|(.63)\hole\ar[dd]^{c'_1} \ar@{.>}[dr]^{c_1}\\&D_1 \ar[dl]^(.4){f_1}&&D'_0 \ar[dr]^{g'_0}\\G_1 && Q\ar[dr]_{q_4} \ar[ur]_{q_3}\ar[dl]^{q_1} \ar[ul]_{q_2}&&G'_1\\& D_0 \ar[ul]^{g_0}&&D'_1 \ar[ur]_{f'_1}}\]
+	Next, we switch $\dder{D}_0$ and $S_{j_0, j_1}(\dder{D}_2)$ getting
+	\[\xymatrix@C=15pt{L_2\ar[d]^{f_0\circ z_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar@{>->}[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){y_0}|(.285)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_0 \ar@/_.35cm/[dlll]^(.4){y_1} \ar[dl]|(.28)\hole^{\check{m}_0}& K_0 \ar[d]^{\check{k}_0}\ar@{>->}[l]_{l_0} \ar[r]^{r_0} & R_0 \ar[dr]|(.28)\hole_{\check{g}_1\circ z_0} \ar@/^.35cm/[drrr]_(.4){x_0}|(.285)\hole  && L_1 \ar@/_.35cm/[dlll]^(.4){x_1} \ar[dl]|(.28)\hole^{\check{m}_1}& K_1 \ar[d]^{\check{k}_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} && R_1\ar[d]_{g_2\circ j_0} \\G_0 && \ar@{>->}[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar@{>->}[ll]^{\mathring{f}_1} \mathring{D}_1 \ar[rr]_{\mathring{g}_1}&& \check{G}_2 && \ar@{>->}[ll]^{\check{f}_2} \check{D}_2 \ar[rr]_{\check{g}_2}&& G_3 }\]
+	The usual identities $m_0=\check{f}_0\circ y_1$, $\check{h}_2=\mathring{g}_1\circ y_0$ hold. But the really important thing to notice is that the first match of these derivation coincide with $f'_0\circ c_1$:
+	\[	f_0'\circ c_1  =f'_0\circ q_3\circ c'_1 =f_0\circ q_1\circ c'_1=f_0\circ z_1\]
 	
+	Moreover, we can characterize the pair $(x_0, x_1)$. If we apply the first point of \Cref{lem:indep-global-left} to $\dder{D}$ we get an independence pair between the last two steps of the derivation above, which, since $(\X, \R)$ is well switching, must coincide with $(x_0, x_1)$. Thus we have two diagrams:
 	
-	Switch first and second
-	\[\xymatrix@C=15pt{L_2\ar[d]_{f'_0\circ c_1}&& K_2 \ar[d]_{\hat{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){e_0}|(.285)\hole \ar[dr]|(.28)\hole_{\hat{h}_2} && L_1 \ar@/_.35cm/[dlll]^(.4){e_1} \ar[dl]|(.28)\hole^{\hat{m}_1}& K_1 \ar[d]^{\hat{k}_1}\ar[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){t_0} \ar[dr]|(.28)\hole_{\hat{g}_1\circ c_0}   && L_0  \ar[dl]|(.28)\hole^{\hat{m}_0} \ar@/_.35cm/[dlll]^(.4){t_1}& K_0 \ar[d]^{\hat{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]^{g_2\circ b_0} \\G_0 && \ar[ll]^{\hat{f}_0} \hat{D}_0 \ar[rr]_{\hat{g}_0}&& \hat{G}_1  && \ar[ll]^{\tilde{f}_1} \tilde{D}_1 \ar[rr]_{\tilde{g}_1}&& G'_2 && \ar[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
-	Moreover
-	\[f_0\circ i_1=\hat{f}_0\circ e_1 \qquad h'_2=\tilde{g}_1\circ e_0\]
-	and $(t_0, t_1)$ is characterized using again well switchingness and the first $3$-steps Lemma as the unique arrows fitting in:
-	\[\xymatrix{&R_1 \ar[dl]_{a_0} \ar@{.>}[dr]^{t_0} \ar@/^.4cm/[dd]|\hole^(.6){c_0}\ar[d]_{t'_0}\\ D'_1 \ar[d]_{g'_1}&P\ar[d]_{p_3} \ar[r]^{p_4} \ar[l]_{p_1}&D'_2\ar[d]^{f'_2}\\G'_1&\hat{D}_1 \ar[l]^{\hat{f}_1}\ar[r]_{\hat{g}_1}& G'_2}\]
-	
-	
-	
-	\[\xymatrix@R=15pt@C=15pt{&&L_ 0\ar[dl]^{a_1} \ar@/_1.2cm/[dddl]_(.4){d_1}|(.63)\hole\ar[dd]^{t'_1} \ar@{.>}[dr]^{t_1}\\&D'_0 \ar[dl]^(.4){g'_0}&&\tilde{D}_1 \ar[dr]^{\tilde{f}_1}\\G'_1 && S\ar[dr]_{s_4} \ar[ur]_{s_3}\ar[dl]^{s_1} \ar[ul]_{s_2}&&\hat{G}_1\\& \hat{D}_1 \ar[ul]^{\hat{f}_1}&&\hat{D}_0 \ar[ur]_{\hat{g}_0}}\]
+	\[\xymatrix{&R_0 \ar[dl]_{i_0} \ar@{.>}[dr]^{x_0} \ar@/^.4cm/[dd]|\hole^(.6){z_0}\ar[d]_{x'_0}&&L_ 1\ar[d]_{w_1} \ar@/_.4cm/[ddrr]|(.41)\hole_(.7){i_1}\ar[drr]^{x'_1} \ar@{.>}[rr]^{x_1}&&\mathring{D}_1 \ar@{>->}[r]^{\mathring{f}_1}&\check{G}_1\\ D_1 \ar@{>->}[d]_{f_1}&P'\ar@{>->}[d]_{p'_3} \ar[r]^{p'_4} \ar@{>->}[l]_{p'_1}&\check{D}_2\ar@{>->}[d]^{\check{f}_2}&\check{D}_1 \ar@{>->}[d]_{\hat{f}_1}&&S'\ar@{>->}[r]_{s'_4} \ar[u]_{s'_3}\ar@{>->}[d]^{s'_1} \ar[ll]_{s'_2} &\hat{D}_0 \ar[u]_{\hat{g}_0} \ar@{>->}[d]^{\hat{f}_0}\\G_1&\check{D}_1 \ar@{>->}[l]^{\check{f}_1}\ar[r]_{\check{g}_1}& \check{G}_2&G_1 && D_0 \ar[ll]^{g_0}  \ar@{>->}[r]_{f_0}& G_0 }\]
+	From this diagram we can recover another identity. Notice that, if $p'_2\colon P'\to D_2$ is the last projection from $P'$, then
+	\[f_2\circ p'_2\circ x'_0=g_1\circ p'_1\circ x'_0=g_1\circ i_0=f_2\circ b_0\]
+	Implying, since $f_2$ is mono, that $p'_2\circ x'_0=b_0$. From this, we can also deduce that 
+	\[\check{g}_2\circ x_0=\check{g}_2\circ p'_4\circ x'_0=g_2\circ p'_2\circ x'_0=g_2\circ b_0 \]
 	
 	
-	SECOND SEQUENCE OF SWITCHINGS:
-	
-	Switch third and second
-	
-	
-	\[\xymatrix@C=15pt{L_0\ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]_(.4){z_0}|(.285)\hole \ar[dr]|(.28)\hole_{h_0} && L_2 \ar@/_.35cm/[dlll]^(.4){z_1} \ar[dl]|(.28)\hole^{f_1\circ j_1}& K_2 \ar[d]^{\check{k}_2}\ar[l]_{l_2} \ar[r]^{r_2} & R_2 \ar[dr]|(.28)\hole_{\check{h}_2} \ar@/^.35cm/[drrr]_(.4){w_0}|(.285)\hole  && L_1 \ar@/_.35cm/[dlll]^(.4){w_1} \ar[dl]|(.28)\hole^{\check{m}_1}& K_1 \ar[d]^{\check{k}_1}\ar[l]_{l_1} \ar[rr]^{r_1} && R_1\ar[d]^{g_2\circ j_0} \\G_0 && \ar[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar[ll]^{\check{f}_1} \check{D}_1 \ar[rr]_{\check{g}_1}&& \check{G}_2 && \ar[ll]^{\check{f}_2} \check{D}_2 \ar[rr]_{\check{g}_2}&& G_3 }\]
-	Moreover
-	\[m_1=\check{f}_1\circ w_1 \qquad h_2=\check{g}_2\circ w_0\]
-	
-	Switch second and first
-	\[\xymatrix@C=15pt{L_2\ar[d]_{f_0\circ z_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){y_0}|(.285)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_0 \ar@/_.35cm/[dlll]^(.4){y_1} \ar[dl]|(.28)\hole^{\check{m}_0}& K_0 \ar[d]^{\check{k}_0}\ar[l]_{l_0} \ar[r]^{r_0} & R_0 \ar[dr]|(.28)\hole_{\check{g}_1\circ z_0} \ar@/^.35cm/[drrr]_(.4){x_0}|(.285)\hole  && L_1 \ar@/_.35cm/[dlll]^(.4){x_1} \ar[dl]|(.28)\hole^{\check{m}_1}& K_1 \ar[d]^{\check{k}_1}\ar[l]_{l_1} \ar[rr]^{r_1} && R_1\ar[d]^{g_2\circ j_0} \\G_0 && \ar[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar[ll]^{\mathring{f}_1} \mathring{D}_1 \ar[rr]_{\mathring{g}_1}&& \check{G}_2 && \ar[ll]^{\check{f}_2} \check{D}_2 \ar[rr]_{\check{g}_2}&& G_3 }\]
-	As before we have
-	\[m_0=\check{f}_0\circ y_1 \qquad \check{h}_2=\mathring{g}_1\circ y_0\]
-	The really important thing to notice is that, by well switchingness we have
-	\begin{align*}
-		f_0'\circ c_1 & =f'_0\circ q_3\circ c'_1 \\&=f_0\circ q_1\circ c'_1\\&=f_0\circ z_1
-	\end{align*}
-	
-	\todo{GOOD! i primi match sono uguali, ora giochiamoci il primo lemma dei tre passi}
-	
-	Switch second and third
-	\[\xymatrix@C=15pt{L_2\ar[d]_{f_0\circ z_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){v_0}|(.285)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_1 \ar@/_.35cm/[dlll]^(.4){v_1} \ar[dl]|(.28)\hole^{\mathring{f}_1 \circ x_1}& K_1 \ar[d]^{\mathring{k}_1}\ar[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){u_0}|(.285)\hole\ar[dr]_{\check{h}_1}   && L_0 \ar@/_.35cm/[dlll]^(.4){u_1} \ar[dl]^{\mathring{m}_0}& K_0 \ar[d]^{\mathring{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0\ar[d]^{\check{g}_2\circ x_0} \\G_0 && \ar[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar[ll]^{\bar{f}_1} \bar{D}_1 \ar[rr]_{\bar{g}_1}&& \bar{G}_2 && \ar[ll]^{\bar{f}_2} \bar{D}_2 \ar[rr]_{\bar{g}_2}&& G_3 }\]
+	Finally, we switch the second and the third step to get
+	\[\xymatrix@C=15pt{L_2\ar[d]^{f_0\circ z_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){v_0}|(.285)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_1 \ar@/_.35cm/[dlll]^(.4){v_1} \ar[dl]|(.28)\hole^{\mathring{f}_1 \circ x_1}& K_1 \ar[d]^{\mathring{k}_1}\ar[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){u_0}|(.285)\hole\ar[dr]_{\check{h}_1}   && L_0 \ar@/_.35cm/[dlll]^(.4){u_1} \ar[dl]^{\mathring{m}_0}& K_0 \ar[d]^{\mathring{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0\ar[d]_{\check{g}_2\circ x_0} \\G_0 && \ar[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar[ll]^{\bar{f}_1} \bar{D}_1 \ar[rr]_{\bar{g}_1}&& \bar{G}_2 && \ar[ll]^{\bar{f}_2} \bar{D}_2 \ar[rr]_{\bar{g}_2}&& G_3 }\]
 	
 	\[\xymatrix@R=15pt@C=15pt{&&R_1 \ar@/_1.2cm/[dddl]_(.4){a_0}|(.63)\hole\ar[dl]^{j_0}\ar[dd]^{c'_0} \ar@{.>}[dr]^{c_0}\\&D_2 \ar[dl]^(.4){f_2}&&\hat{D}_1 \ar[dr]^{\hat{g}_1}\\G_2 && P\ar[dr]_{p_4} \ar[ur]_{p_3}\ar[dl]^{p_1} \ar[ul]^{p_2}&&G'_2\\& D'_1 \ar[ul]^{g'_1}&&D'_2 \ar[ur]_{f'_2}}\]
 	
@@ -4570,7 +4561,7 @@ We can now turn to the proofs of the results of \Cref{subsec:canonical}.
 	HUGE DIAGRAM
 	
 	
-	\[\xymatrix@C=15pt{
+	\[\xymatrix@C=13pt@R=25pt{
 		& K_1 \ar[d]^{\hat{k}_1}\ar[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){t_0} \ar[dr]|(.28)\hole_{\hat{g}_1\circ c_0}   && L_0  \ar[dl]|(.28)\hole^{\hat{m}_0} \ar@/_.35cm/[dlll]^(.4){t_1}& K_0 \ar[d]^{\hat{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]^{g_2\circ b_0} \\G_0 && \ar[ll]^{\hat{f}_0} \hat{D}_0 \ar[rr]_{\hat{g}_0}&& \hat{G}_1  && \ar[ll]^{\tilde{f}_1} \tilde{D}_1 \ar[rr]_{\tilde{g}_1}&& G'_2 && \ar[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 \\
 		L_2\ar[d]_{f_0\circ z_1} \ar[u]^{f'_0\circ c_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/_.35cm/[urrr]^(.4){e_0}|(.285)\hole \ar[ur]|(.28)\hole^{\hat{h}_2} \ar@/^.35cm/[drrr]_(.4){v_0}|(.285)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_1 \ar@/^.35cm/[ulll]_(.4){e_1} \ar[ul]|(.28)\hole_{\hat{m}_1} \ar@/_.35cm/[dlll]^(.4){v_1} \ar[dl]|(.28)\hole^{\mathring{f}_1 \circ x_1}& K_1 \ar[d]^{\mathring{k}_1}\ar[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){u_0}|(.285)\hole\ar[dr]_{\check{h}_1}   && L_0 \ar@/_.35cm/[dlll]^(.4){u_1} \ar[dl]^{\mathring{m}_0}& K_0 \ar[d]^{\mathring{k}_0}\ar[l]_{l_0} \ar[rr]^{r_0} && R_0\ar[d]^{\check{g}_2\circ x_0} \\G_0 && \ar[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar[ll]^{\bar{f}_1} \bar{D}_1 \ar[rr]_{\bar{g}_1}&& \bar{G}_2 && \ar[ll]^{\bar{f}_2} \bar{D}_2 \ar[rr]_{\bar{g}_2}&& G_3 }\]
 	
@@ -4586,7 +4577,7 @@ We can now turn to the proofs of the results of \Cref{subsec:canonical}.
 	
 	USO IL PRIMO LEMMA DEI TRE PASSI:
 	
-	\[\xymatrix{&R_0 \ar[dl]_{i_0} \ar@{.>}[dr]^{x_0} \ar@/^.4cm/[dd]|\hole^(.6){j_0}\ar[d]_{x'_0}\\ D_1 \ar[d]_{g_1}&P'\ar[d]_{p'_3} \ar[r]^{p'_4} \ar[l]_{p'_1}&\check{D}_2\ar[d]^{\check{g}_2}\\G_2&D_2 \ar[l]^{f_2}\ar[r]_{g_2}& G_3}\]
+
 	
 	
 	
