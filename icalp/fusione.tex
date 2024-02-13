@@ -503,16 +503,10 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
 %  considers concurrent and distributed systems, since the independence
 %  of two steps means that they could be executed in any order, and
 %  potentially in parallel.
-<<<<<<< HEAD
-  When can two sequential steps performed by a computing device be considered (causally) independent? 
-  This is a relevant question for concurrent and distributed systems, since independence
-  means that they could be executed in any order, and potentially in parallel.
-=======
   When can two sequential steps performed by a computing device be
   considered (causally) independent?  This is a relevant question for
   concurrent and distributed systems, since independence means that
   those steps could be executed in any order, and potentially in parallel.
->>>>>>> refs/remotes/origin/main
   % 
   We investigate the issue in the context of adhesive categories, a
   very general instance of the DPO approach to rewriting. More
@@ -719,17 +713,6 @@ similar ad-hoc results for each specific setting. In fact, the framework is
 so general that it allowed to recast in the DPO approach many additional formalisms,
 ranging from toposes~\cite{johnstone2007quasitoposes} to string diagrams~\cite{bonchi2022string}.
 
-<<<<<<< HEAD
-So far, most of the theoretical results focussed on what are called \emph{linear rules}: 
-intuitively, a step is required only to consume, preserve and generate entities. 
-However, in some situations it is also necessary to ``merge'' parts of the state. 
-This happens already in the context of string diagram mentioned above, but also 
-in graphical implementations of nominal calculi where, as a result of name passing, 
-the received name is identified with a local one at the
-receiver~\cite{CVY:ESSPE,Gad07} or in the visual modelling of bonding in
-biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms is
-at the core of e-graphs (equality graphs), recently used for
-=======
 So far, most of the theoretical results focussed on what are called
 \emph{linear rules}: intuitively, a step is required only to consume,
 preserve and generate entities.  However, in some situations it is
@@ -740,7 +723,6 @@ name passing, the received name is identified with a local one at the
 receiver~\cite{CVY:ESSPE,Gad07} or in the visual modelling of bonding
 in biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms
 is at the core of e-graphs (equality graphs), recently used for
->>>>>>> refs/remotes/origin/main
 rewrite-driven compiler optimisations~\cite{WNW:egg}: rather than
 explicitly merging nodes corresponding to equal expression, the idea
 here -- conceptually and, as we will see, also mathematically similar --
@@ -809,21 +791,6 @@ weakened form, results which hold in the linear case.  Specifically,
 the Church-Rosser theorem is fully recovered.
 %for well-switchable rewriting systems.
 
-
-<<<<<<< HEAD
-There is, however, a further problem.  For linear
-rewriting systems, switch equivalence can be characterised in terms of the
-existence of what is called a consistent permutation~\cite{xxx}.
-%(roughly, an isomorphism between their colimits). 
-This result, which
-is folklore for various categories of graphs, is explicitly proved
-here for $\mathcal{M}$-adhesive categories.
-%
-The characterisation of switch equivalence based on consistent
-permutations is the key to derive some
-properties for linear rewriting systems, namely
-=======
-
 % \begin{enumerate}
 % \item \emph{confluence of switching}: when transforming derivation
 %   sequences into equivalent ones by switching independent steps, the
@@ -835,15 +802,13 @@ properties for linear rewriting systems, namely
 %   derivation, they remain independent.
 % \end{enumerate}
 
-
 There is, however, a further problem. In the literature on linear
 rewriting systems, a central result is the a characterisation of
 switch equivalence of sequences of steps based on what are called
 consistent permutations or processes~\cite{Handbook, tobias}.
 In turn this is the key to derive some simple but fundamental properties 
 for linear rewriting systems, namely
-
->>>>>>> refs/remotes/origin/main
+%
 \begin{enumerate}
 \item \emph{consistency of switching}: when transforming
   sequences of rewriting steps into equivalent ones by switching independent steps, the
