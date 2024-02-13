@@ -614,7 +614,7 @@ Some terminology (Definition~\ref{de:good-switchable})
   class of (quasi)adhesive categories where left-linear systems are all
   strong enforcing. Adapted here to M-adhesivity.
   
-\item \emph{Well Switching rewriting
+\item \emph{Well-Switching rewriting
     systems}\\ Strong Enforcing and existing indepence pairs are unique (hence
   switching is unique) (see later for examples)
 \end{itemize}
@@ -636,11 +636,11 @@ Some terminology (Definition~\ref{de:good-switchable})
 
 \subsection*{CONCURRENCY}
 
-This part is dealt with for well switching rewriting systems and depends on this assumption. Note that
+This part is dealt with for well-switching rewriting systems and depends on this assumption. Note that
 \begin{itemize}
-\item Linear rewriting systems on adhesive categories are well switching
-\item Left-linear rewritint systems on graph-like categories with generalisation of (i) no isolated nodes in $L$ and (ii) right leg injective on nodes is well switching
-\item Graphs with equivalences (Egg) with left-leg regular mono, right leg mono is well switching
+\item Linear rewriting systems on adhesive categories are well-switching
+\item Left-linear rewritint systems on graph-like categories with generalisation of (i) no isolated nodes in $L$ and (ii) right leg injective on nodes is well-switching
+\item Graphs with equivalences (Egg) with left-leg regular mono, right leg mono is well-switching
 \end{itemize}
 
 We show
@@ -775,7 +775,7 @@ for equating sequences of rewriting steps that differs only for the order of ind
 steps.
 
 We single out a class of left-linear rewriting
-systems, referred to as \emph{well-switchable rewriting systems}, 
+systems, referred to as \emph{well-switching rewriting systems}, 
 where sequential independence ensures existence and uniqueness of the
 switch, and argue that this is the right setting for dealing with
 left-linear rewriting systems.
@@ -790,10 +790,10 @@ As a sanity check, we prove that linear rewriting systems on
 $\mathcal{M}$-adhesive categories are well-switching.
 
 On the other hand, we show that a concurrency theory of rewriting can
-be developed for well-switchable rewriting systems, recovering, sometimes in
+be developed for well-switching rewriting systems, recovering, sometimes in
 weakened form, results which hold in the linear case.  Specifically, 
 the Church-Rosser theorem is fully recovered.
-%for well-switchable rewriting systems.
+%for well-switching rewriting systems.
 
 
 
@@ -849,7 +849,7 @@ Section~\ref{sec:equi} presents the key novelties of our proposal,
 first introducing the classical notion of independence and 
 a novel axiomatic notion of switchability, further showing that the
 former fails to imply the latter for left-linear rewriting systems.
-We then define well-switchable systems,
+We then define well-switching systems,
 and prove that all the classical results holding for linear rewriting systems
 can be recovered for such a class of left-linear ones.
 Finally, Section~\ref{conclusions} wraps up the paper and 
@@ -2576,7 +2576,7 @@ As a sanity check note that a source of strong enforcing left-linear DPO rewriti
 [Proof in \Cref{propEqui-proof}]
 }
 
-\subsection{Well-switchable rewriting systems}
+\subsection{well-switching rewriting systems}
 \label{subsec:verytame}
 
 Even if we work in strong enforcing rewriting systems where sequential
@@ -2635,39 +2635,68 @@ systems where uniqueness of the independence pair is always ensured.
 %\subsubsection{Graphical rewriting systems}\label{subsubsec:graphical}
 
 
-\begin{definition}[Well switching rewriting systems]
-A left-linear DPO rewriting system $(\X, \R)$ is \emph{well switching} if it is strong enforcing and, for every derivation $\der{D}:=\{\dder{D}_{i}\}_{i=0}^1$, there is at most one independence pair between $\dder{D}_0$ and $\dder{D}_1$.
+\begin{definition}[Well-switching rewriting systems]
+A left-linear DPO rewriting system $(\X, \R)$ is \emph{well-switching} if it is strong enforcing and, for every derivation $\der{D}:=\{\dder{D}_{i}\}_{i=0}^1$, there is at most one independence pair between $\dder{D}_0$ and $\dder{D}_1$.
 \end{definition}
 
-The previous definition might sound restrictive. However, it is immediate to see that linear rewriting systems are all well switching (see Proposition~\ref{pr:weak}).
+The previous definition might sound restrictive. However, it is immediate to see that linear rewriting systems are all well-switching (see Proposition~\ref{pr:weak}).
 %
-Moreover, we next introduce a class of rewriting systems, comprising
+Moreover, we next show that a class of rewriting systems, comprising
 all the ones used in concrete modelling applications of DPO rewriting
-(e.g., in the encoding of process calculi ..., ...) are \todo{INSERIRE
-  ESEMPI QUI} actually well switching.
+(e.g., in the encoding of process calculi, modelling of bio and chemical systems) are actually well-switching.\todo{citazioni?}
 %
-Roughly speakings, these are possibly hierarchical graphical structures where rules are contrained not to merge elements of top level sorts in the hiearchy (for graphs, nodes can be merged while edges can not).
+Roughly speakings, these are rewriting systems over possibly
+hierarchical graphical structures obtained as algebras of suitable
+signatures where rules are constrained not to merge elements of top
+level sorts in the hierarchy (for graphs, nodes can be merged while
+edges can not). We first introduce the signature which is essentially
+an acyclic graph where nodes can be seen as sorts.
 
-\begin{definition}
-Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph, we define the \emph{depth} of a vertex $v\in V$ in the following way:
-\[\dph(v)=\begin{cases}
-0 & \text{there is no $e\in E$ such that $t(e)=v$}\\
-m+1 &\text{where } m=\min\{\dph(s(e)) \mid e\in E \text{ such that } t(e)=v \} 
-\end{cases}\]
+\begin{definition}[Graph signature]
+  Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph,
+  we define the \emph{depth} of a vertex $v\in V$ in the following
+  way:
+  \[
+    \dph(v)=\begin{cases}
+      0 & \text{there is no $e\in E$ such that $t(e)=v$}\\
+      m+1 &\text{where } m=\min\{\dph(s(e)) \mid e\in E \text{ such that } t(e)=v
+      \} 
+    \end{cases}
+  \]
 \end{definition}
 
+Observe that
+since $\mathcal{G}$ is acyclic and finite, then $\dph(v)$ is a natural number.
 
-\begin{remark}
-Since $\mathcal{G}$ is acyclic and finite, then $\dph(v)$ is a natural number.
-\end{remark}
 
-\begin{definition}[Node-merging graphical rewriting systems]\todo{inserire referenze qui}
-Let $\mathcal{G}=(V, E, s, t)$ be a directed acyclic graph, the category  $\gph{G}$ of \emph{$\mathcal{G}$-graphs} is the category $\Set^{\G}$, where $\G$ is the free category over $\mathcal{G}$. A \emph{node-merging graphical rewriting systems} is a left-linear DPO-rewriting system $(\gph{G}, \R)$ such that, for every rule $(l,r)$, with $l\colon K\to L$ and $r\colon K\to R$  in $\R$, the following hold true:
-\begin{enumerate}
-	\item for every $v\in V$ and $x\in L(v)$, there exists a vertex $w$ with depth $0$ and an arrow $p\colon w\to v$ (i.e.~a path in $\mathcal{G}$) such that  $x$ belongs to the image of $L(p)\colon L(w)\to L(v)$.
-	\item $r\colon K\to R$ is mono on vertices of depth $0$: for every $v\in V$ such that $\dph(v)=0$, the component $r_v:K(v)\to R(v)$ is mono.
-\end{enumerate}
+\todo{cite something here? graph signatures?}
+
+\begin{definition}[Node-merging graphical rewriting systems]
+  Let $\mathcal{G}=(V, E, s, t)$ be a directed acyclic graph, the
+  category $\gph{G}$ of \emph{$\mathcal{G}$-graphs} is the category
+  $\Set^{\G}$, where $\G$ is the free category over $\mathcal{G}$. A
+  \emph{node-merging graphical rewriting systems} is a left-linear
+  DPO-rewriting system $(\gph{G}, \R)$ such that, for every rule
+  $(l,r)$, with $l\colon K\to L$ and $r\colon K\to R$ in $\R$, the
+  following hold true:
+  \begin{enumerate}
+  \item for every $v\in V$ and $x\in L(v)$, there exists a vertex $w$
+    with depth $0$ and an arrow $p\colon w\to v$ (i.e.~a path in
+    $\mathcal{G}$) such that $x$ belongs to the image of
+    $L(p)\colon L(w)\to L(v)$.
+  \item $r\colon K\to R$ is mono on vertices of depth $0$: for every
+    $v\in V$ such that $\dph(v)=0$, the component $r_v:K(v)\to R(v)$
+    is mono.
+  \end{enumerate}
 \end{definition}
+
+For instance, in this view, the category $\cat{Graph}$ can be obtained
+by taking as $\mathcal{G}$ the graph $e \rightrightarrows v$. The sort
+of edges $e$ has depth $0$ while $v$, the sort of nodes, has depth
+$1$. Hence condition $1$ asks that in the left-hand side of each rule
+there are no isolated nodes, while condition $2$ asks that the
+morphism $r: K \to R$ is mono on edges, i.e., it can only merge nodes.
+
 
 \begin{remark}\label{rem:po}
 	Notice that $\gph{G}$ is adhesive and that pushouts are computed componentwise, thus if $g\colon F\to G$ is the pushout of $r\colon K\to R$, then $g_v\colon F(v)\to G(v)$ is mono for every $v$ with depth $0$.
@@ -2678,19 +2707,22 @@ Let $\mathcal{G}=(V, E, s, t)$ be a directed acyclic graph, the category  $\gph{
 \end{example}
 
 \begin{restatable}{lemma}{lemVTame}
-  All node-merging graphical rewriting systems are well switching.
+  All node-merging graphical rewriting systems are well-switching.
 \end{restatable}
 
 \full{
 [Proof in \Cref{lemVTame}]
 }
 
+Another interesting class of well-switching rewriting systems is given by the so-called E-graphs.
+
 \begin{example}[E-graphs]
   Consider the category $\cat{EGraphs}$, where objects are (directed)
   graphs endowed with an equivalence over nodes and arrows are graph
-  morphisms which preserve the equivalence, as considered in~\cite{},
-  closely related to Egg graphs~\cite{WNW:egg}. Formally,
-  $\cat{EGraphs}$ can be seen as the subcategory of the presheaf
+  morphisms which preserve the equivalence, as considered
+  in~\cite{BaldanGM06}, closely related to Egg
+  graphs~\cite{WNW:egg}. Formally, $\cat{EGraphs}$ can be seen as the
+  subcategory of the presheaf
   $[E \rightrightarrows V \to Q, \cat{Set}]$ where objects are
   constrained to have the component $Q$ surjective. Explicitly, an
   e-graph $G = \langle s_G, t_G, q_G \rangle$ where
@@ -2704,7 +2736,7 @@ Let $\mathcal{G}=(V, E, s, t)$ be a directed acyclic graph, the category  $\gph{
   $Q$ is mono, i.e. if it reflects equivalence classes besides
   preserving them.
 
-  \todo[inline]{$\cat{EGraph}$ is quasi-adhesive and well switching}  
+  \todo[inline]{$\cat{EGraph}$ is quasi-adhesive and well-switching}  
 \end{example}
 
 \iffalse 
@@ -2796,7 +2828,7 @@ Then the following are equivalent:
   $\der{D} \not\equiv_a \der{D}'$\todo{P: osservato?}
   %
   Still, it is easy to see that they are related by a consistent
-  permutation, which is the identity on productions. The colimit of
+  permutation, which is the identity on productions. In fact, the colimit of
   both derivations is a single node with a self loop, i.e., the
   terminal object in $\cat{Graph}$, hence all commutation requirements
   are trivially satisfied.
@@ -2828,14 +2860,16 @@ both derivations is a single node with a self loop, i.e., the
 terminal object in $\cat{Graph}$, hence all commutation requirements
 are trivially satisfied.
 
-In this section we show, despite the failure of the s, actually much of the theory can
-be retained: confluence of switching still holds, while globality of
-independence holds in a weak form, conceptually linked to the fact
-that fusions introduce a form of disjunctive causality. Finally, a
-canonical form for switching sequences can also be recovered.
+In this section we show that, despite the failure of such
+characterisation, actually much of the theory can be retained, taking
+a different and sensibly more complex route for the proofs: confluence
+of switching still holds, while globality of independence holds in a
+weak form, conceptually linked to the fact that fusions introduce a
+form of disjunctive causality. Finally, a canonical form for switching
+sequences can also be recovered.
 
 We start by proving two lemmas dealing with derivations of length
-$3$. Despite being technical, these lemma are the fundamental building blocks for showing properties (1) and (2) above.
+$3$. Despite being technical, these lemma are the fundamental building blocks for obtaining our results.
 
 The first technical lemma is at the core of globality for independence. It shows that if we have a derivation consisting of three rewriting steps, say $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ where $\dder{D}_0$ and $\dder{D}_1$ are independent, then if we switch $\dder{D}_2$ to the first position, 
 obtaining a derivation $\dder{D}_2 \cdot  \dder{D}_0\cdot\dder{D}_1$, the steps $\dder{D}_0$ and $\dder{D}_1$ are still independent.
@@ -2855,7 +2889,7 @@ independent.
 \begin{example}
   \label{ex:non-global}
   Consider the rewriting system used as running example (rules in
-  Fig.~\ref{fi:rules}. Assume to add rules $\rho_3$ and $\rho_4$ as
+  Fig.~\ref{fi:rules}). Assume to add rules $\rho_3$ and $\rho_4$ as
   depicted in Fig.~\ref{fi:rules-cas}. Consider the derivation
   $\der{F}$ in Fig.~\ref{fi:derF}. Observe that rule $\rho_4$ to be
   applied needs a self loop on node $12$. This can be generated either
@@ -2898,7 +2932,7 @@ independent.
 		
 		\item
 		\label{lem:indep-global-left:2}
-		If, moreover, $(\X, \R)$ is well switching and $S_{i_0, i_1}(\dder{D}_0)\seqind \dder{D}_2$ with an independence pair $(\alpha_0, \alpha_1)$, then
+		If, moreover, $(\X, \R)$ is well-switching and $S_{i_0, i_1}(\dder{D}_0)\seqind \dder{D}_2$ with an independence pair $(\alpha_0, \alpha_1)$, then
 		$S_{i_0,i_1}(\dder{D}_1)\seqind S_{\alpha_0, \alpha_1}(\dder{D}_2)$.
 	\end{enumerate}
 \end{restatable}
@@ -2924,7 +2958,7 @@ independently from the order of the switchings.
 	that $(i_0,i_1)$ is a strong independence pair between $\dder{D}_0$
 	and $\dder{D}_1$, $(a_0,a_1)$ one between $\dder{D}_1$ and
 	$\dder{D}_2$ and $(e_0, e_1)$ one between $\dder{D}_0$ and
-	$S_{a_0,a_1}(\dder{D}_2)$.\todo{P: non e' meglio qui limitarci a well switching, cosi' da evitare riferimenti a strong pairs?}
+	$S_{a_0,a_1}(\dder{D}_2)$.\todo{P: non e' meglio qui limitarci a well-switching, cosi' da evitare riferimenti a strong pairs?}
 \end{restatable}
 
 \full{[Proof~\ref{lemSwitchConfluence-proof}]}
@@ -3060,7 +3094,7 @@ We showed that the canonical notion of independence adopted for linear
 systems does not enjoy some properties that are essential for
 developing a sensible theory of concurrency, notably a Church-Rosser
 theorem, and we identified a subclass of left-linear rewriting systems,
-which we call well-switchable, as an appropriate setting where 
+which we call well-switching, as an appropriate setting where 
 many vital results can be re-established. Specifically, a Church-Rosser 
 theorem, i.e. the possibility of performing independent steps in any order, is
 fully recovered. Moreover, the switch construction and correspondingly
@@ -3069,9 +3103,9 @@ rewriting systems, enjoy a number of fundamental properties:
 confluence of switching, a weak form of globality of independence and
 the existence of a canonical form for switch equivalence proofs.
 
-The class of well-switchable adhesive rewriting systems is large. Generalising a result in~\cite{baldan2011adhesivity},
-we can show that one of its defining properties (the fact that sequential independence implies switchability) holds 
-for a class of adhesive categories which include all presheaves over \cat{Set}. Moreover, the second property, uniqueness 
+The class of well-switching adhesive rewriting systems is large. Generalising a result in~\cite{baldan2011adhesivity},
+we showed that one of its defining properties (the fact that sequential independence implies switchability) holds 
+for a general class of adhesive categories which include all presheaves over $\cat{Set}$. Moreover, the second property, uniqueness 
 of switching, is ensured when rewriting possibly hierarchical graphical structures, as long as elements of the sorts 
 of depth 0  are not merged (e.g., one can consider rewriting systems over directed graphs where only nodes are merged, as it 
 happens in most of the approaches to the modelling of calculi and biological systems that we cited in the introduction, 
@@ -3087,7 +3121,7 @@ of prime domains, a staple in concurrency theory, and connected event
 structures, their event-based counterpart. The mentioned paper
 discusses only the case of graph rewriting and does not delve into the
 problems induced by the occurring of ``merges'' to the theory of rewriting (the systems
-considered there are implicitly assumed to be well-switchable). 
+considered there are implicitly assumed to be well-switching). 
 We plan to consolidate the statement that weak prime domains are 
 ``the'' model for systems with fusions by showing that they allow to provide a semantics
 for left-linear rewriting systems in $\mathcal{M}$-adhesive categories.
@@ -3095,7 +3129,7 @@ for left-linear rewriting systems in $\mathcal{M}$-adhesive categories.
 On the practical side, the present paper just surveyed the possibility
 of modelling e-graphs. This appears to be quite interesting as
 concurrent rewriting on such structures is an active area of
-research. \todo{P: cite} We plan to make the correspondence precise
+research. \todo{P: cite, forse questo? https://arxiv.org/abs/2208.06295} We plan to make the correspondence precise
 and investigate how the analysis techniques enabled by a concurrent
 semantics of rewriting can impact on e-graphs.
 
@@ -3840,7 +3874,7 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 
 \begin{proposition}
 	\label{pr:weak}
-	Let $(\X, \R)$ be a linear DPO rewriting system. Then it is well switching.
+	Let $(\X, \R)$ be a linear DPO rewriting system. Then it is well-switching.
 \end{proposition}
 \begin{proof}
 	
@@ -4535,7 +4569,7 @@ We can now turn to the proofs of the results of \Cref{subsec:canonical}.
 		t_1\circ q_1\circ \epsilon'_1  =g_1\circ p_1\circ \epsilon'_1  =g_1\circ a_1 =m_2
 		\]
 		Hence $(\alpha_0, q_1\circ \epsilon'_1)$ is an independence pair
-		for $S_{i_0, i_1}(\dder{D}_0)$ and $\dder{D}_2$. By hypothesis $(\X, \R)$ is well switching and therefore
+		for $S_{i_0, i_1}(\dder{D}_0)$ and $\dder{D}_2$. By hypothesis $(\X, \R)$ is well-switching and therefore
 		$q_1\circ \epsilon'_1$ must coincide with $\alpha_1$.	
 		
 		
@@ -4568,7 +4602,7 @@ We can now turn to the proofs of the results of \Cref{subsec:canonical}.
 
 	By \Cref{def:switch} we also know that $m_0=f'_0\circ a_1$ and $h_1=g'_1\circ a_0$. Now, let us switch $S_{i_0, i_1}(\dder{D}_0)$ and $\dder{D}_2$. In this case we obtain:
 	\[\xymatrix@C=15pt{L_1\ar[d]^{f_0\circ i_1}&& K_1 \ar[d]_{k'_1}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){c_0}|(.29)\hole \ar[dr]|(.28)\hole_{h'_1} && L_2 \ar@/_.35cm/[dlll]^(.4){c_1} \ar[dl]|(.28)\hole^{f'_1\circ b_1}& K_2 \ar[d]^{k'_2}\ar@{>->}[l]_{l_2} \ar[r]^{r_2} & R_2 \ar[dr]|(.28)\hole_{h'_2} \ar@/^.35cm/[drrr]_(.4){d_0}|(.29)\hole  && L_0 \ar@/_.35cm/[dlll]^(.4){d_1} \ar[dl]|(.28)\hole^{\hat{m}_0}& K_0 \ar[d]^{\hat{k}_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]_{g_2\circ b_0} \\G_0 && \ar@{>->}[ll]^{f'_0} D'_0 \ar[rr]_{g'_0}&& G'_1  && \ar@{>->}[ll]^{\hat{f}_1} \hat{D}_1 \ar[rr]_{\hat{g}_1}&& G'_2 && \ar@{>->}[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
-	Using again the definition of switch, we know that $m'_0=\hat{f}_1\circ d_1$ and $h_2=g'_2\circ d_0$. Moreover, by hypothesis $(\X, \R)$ is well switching and the hypothesis of the second point of \Cref{lem:indep-global-left} are satisfied by $\der{D}$. Thus we can characterize $c_0\colon R_1\to \hat{D}_1$ and $c_1\colon L_2\to D'_0$ as the unique arrows fitting in the diagrams below, where the bottom squares are pullbacks.
+	Using again the definition of switch, we know that $m'_0=\hat{f}_1\circ d_1$ and $h_2=g'_2\circ d_0$. Moreover, by hypothesis $(\X, \R)$ is well-switching and the hypothesis of the second point of \Cref{lem:indep-global-left} are satisfied by $\der{D}$. Thus we can characterize $c_0\colon R_1\to \hat{D}_1$ and $c_1\colon L_2\to D'_0$ as the unique arrows fitting in the diagrams below, where the bottom squares are pullbacks.
 	\[\xymatrix@R=15pt@C=15pt{&&R_1 \ar@/_1.2cm/[dddl]_(.4){a_0}|(.63)\hole\ar[dl]^{j_0}\ar[dd]^{c'_0} \ar@{>}[dr]^{c_0}&&&&&L_2 \ar[dl]^{j_1} \ar@/_1.2cm/[dddl]_(.4){z_1}|(.63)\hole\ar[dd]^{c'_1} \ar@{>}[dr]^{c_1}\\&D_2 \ar@{>->}[dl]^(.4){f_2}&&\hat{D}_1 \ar[dr]^{\hat{g}_1}  &&&D_1 \ar@{>->}[dl]^(.4){f_1}&&D'_0 \ar[dr]^{g'_0}\\G_2 && P\ar[dr]_{p_4} \ar@{>->}[ur]_{p_3}\ar@{>->}[dl]^{p_1} \ar[ul]^{p_2}&&G'_2&G_1 && Q\ar[dr]_{q_4} \ar@{>->}[ur]_{q_3}\ar@{>->}[dl]^{q_1} \ar[ul]^{q_2}&&G'_1\\& D'_1 \ar[ul]^{g'_1}&&D'_2 \ar@{>->}[ur]_{f'_2}&&& D_0 \ar[ul]^{g_0}&&D'_1 \ar@{>->}[ur]_{f'_1}}\]
 	
 Finally, we switch the first two direct derivations.
@@ -4587,7 +4621,7 @@ Finally, we switch the first two direct derivations.
 	The usual identities $m_0=\check{f}_0\circ y_1$, $\check{h}_2=\mathring{g}_1\circ y_0$ hold. But the really important thing to notice is that the first match of these derivation coincide with $f'_0\circ c_1$:
 	\[	f_0'\circ c_1  =f'_0\circ q_3\circ c'_1 =f_0\circ q_1\circ c'_1=f_0\circ z_1\]
 	
-	Moreover, we can characterize the pair $(x_0, x_1)$. If we apply the first point of \Cref{lem:indep-global-left} to $\dder{D}$ we get an independence pair between the last two steps of the derivation above, which, since $(\X, \R)$ is well switching, must coincide with $(x_0, x_1)$. Thus we have two diagrams:
+	Moreover, we can characterize the pair $(x_0, x_1)$. If we apply the first point of \Cref{lem:indep-global-left} to $\dder{D}$ we get an independence pair between the last two steps of the derivation above, which, since $(\X, \R)$ is well-switching, must coincide with $(x_0, x_1)$. Thus we have two diagrams:
 	
 	\[\xymatrix{&R_0 \ar[dl]_{i_0} \ar@{>}[dr]^{x_0} \ar@/^.4cm/[dd]|\hole^(.6){z_0}\ar[d]_{x'_0}&&L_ 1\ar[d]_{w_1} \ar@/_.4cm/[ddrr]|(.41)\hole_(.7){i_1}\ar[drr]^{x'_1} \ar@{>}[rr]^{x_1}&&\mathring{D}_1 \ar@{>->}[r]^{\mathring{f}_1}&\check{G}_1\\ D_1 \ar@{>->}[d]_{f_1}&P'\ar@{>->}[d]_{p'_3} \ar[r]^{p'_4} \ar@{>->}[l]_{p'_1}&\check{D}_2\ar@{>->}[d]^{\check{f}_2}&\check{D}_1 \ar@{>->}[d]_{\check{f}_1}&&S'\ar@{>->}[r]_{s'_4} \ar[u]_{s'_3}\ar@{>->}[d]^{s'_1} \ar[ll]_{s'_2} &\check{D}_0 \ar[u]_{\check{g}_0} \ar@{>->}[d]^{\check{f}_0}\\G_1&\check{D}_1 \ar@{>->}[l]^{\check{f}_1}\ar[r]_{\check{g}_1}& \check{G}_2&G_1 && D_0 \ar[ll]^{g_0}  \ar@{>->}[r]_{f_0}& G_0 }\]
 	From this diagram we can recover another identity. Notice that, if $p'_2\colon P'\to D_2$ is the last projection from $P'$, then
@@ -4598,7 +4632,7 @@ Finally, we switch the first two direct derivations.
 	
 	Finally, switch the second and the third step we get
 	\[\xymatrix@C=15pt{L_2\ar[d]^{f_0\circ z_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar@{>->}[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){v_0}|(.29)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_1 \ar@/_.35cm/[dlll]^(.4){v_1} \ar[dl]|(.28)\hole^{\mathring{f}_1 \circ x_1}& K_1 \ar[d]^{\mathring{k}_1}\ar@{>->}[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){u_0}|(.29)\hole\ar[dr]_{\check{h}_1}|(.28)\hole   && L_0 \ar@/_.35cm/[dlll]^(.4){u_1} \ar[dl]^{\mathring{m}_0}|(.28)\hole& K_0 \ar[d]^{\mathring{k}_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0\ar[d]_{\check{g}_2\circ x_0} \\G_0 && \ar[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar@{>->}[ll]^{\bar{f}_1} \bar{D}_1 \ar[rr]_{\bar{g}_1}&& \bar{G}_2 && \ar@{>->}[ll]^{\bar{f}_2} \bar{D}_2 \ar[rr]_{\bar{g}_2}&& G_3 }\]
-	As usual, this last switch brings identities $\check{m}_0=\bar{f}_1\circ u_1$ and $g_2\circ j_0=\bar{g}_2\circ u_0$. Applyng the second point of \Cref{lem:indep-global-left} to $\dder{D}_0\cdot S_{j_0, j_1}(\dder{D}_2)\cdot S_{j_0, j_1}(\dder{D}_1)$ and the fact that $(\X, \R)$ is well switching we get the following diagrams:
+	As usual, this last switch brings identities $\check{m}_0=\bar{f}_1\circ u_1$ and $g_2\circ j_0=\bar{g}_2\circ u_0$. Applyng the second point of \Cref{lem:indep-global-left} to $\dder{D}_0\cdot S_{j_0, j_1}(\dder{D}_2)\cdot S_{j_0, j_1}(\dder{D}_1)$ and the fact that $(\X, \R)$ is well-switching we get the following diagrams:
 
 	\[\xymatrix@R=15pt@C=15pt{&&R_2 \ar@/_1.2cm/[dddl]_(.4){y_0}|(.63)\hole\ar[dl]^{w_0}\ar[dd]^{v'_0} \ar@{>}[dr]^{v_0}&&&&&L_1 \ar[dl]^{w_1} \ar@/_1.2cm/[dddl]_(.4){i_1}|(.63)\hole\ar[dd]^{v'_1} \ar@{>}[dr]^{v_1}\\&\check{D}_2 \ar@{>->}[dl]^(.4){\check{f}_2}&&\bar{D}_1 \ar[dr]^{\bar{g}_1}  &&&\check{D}_1 \ar@{>->}[dl]^(.4){\check{f}_1}&&\check{D}_0 \ar[dr]^{\check{g}_0}\\\check{G}_2 && \bar{P}\ar[dr]_{\bar{p}_4} \ar@{>->}[ur]_{\bar{p}_3}\ar@{>->}[dl]^{\bar{p}_1} \ar[ul]^{\bar{p}_2}&&\bar{G}_2&G_1 && \bar{Q}\ar[dr]_{\bar{q}_4} \ar@{>->}[ur]_{\bar{q}_3}\ar@{>->}[dl]^{\bar{q}_1} \ar[ul]^{\bar{q}_2}&&\check{G}_1\\& \mathring{D}_1 \ar[ul]^{\mathring{g}_1}&&\bar{D}_2 \ar@{>->}[ur]_{\bar{f}_2}&&& D_0 \ar[ul]^{g_0}&&\mathring{D}_1 \ar@{>->}[ur]_{\mathring{f}_1}}\]
 	
