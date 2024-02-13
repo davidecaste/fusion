@@ -506,7 +506,7 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   When can two sequential steps performed by a computing device be
   considered (causally) independent?  This is a relevant question for
   concurrent and distributed systems, since independence means that
-  they could be executed in any order, and potentially in parallel.
+  those steps could be executed in any order, and potentially in parallel.
   % 
   We investigate the issue in the context of adhesive categories, a
   very general instance of the DPO approach to rewriting. More
@@ -719,7 +719,7 @@ So far, most of the theoretical results focussed on what are called
 \emph{linear rules}: intuitively, a step is required only to consume,
 preserve and generate entities.  However, in some situations it is
 also necessary to ``merge'' parts of the state.  This happens already
-in the context of string diagram mentioned above, but also in
+in the context of string diagrams mentioned above, but also in
 graphical implementations of nominal calculi where, as a result of
 name passing, the received name is identified with a local one at the
 receiver~\cite{CVY:ESSPE,Gad07} or in the visual modelling of bonding
@@ -745,7 +745,11 @@ concurrency for rewriting with left-linear rules in the general
 setting of adhesive and quasi-adhesive categories
 %(which capture most ``applications'') 
 have not been systematically
-explored~\cite{Ehrig1976,EHP:BRfTToHLRS,baldan2011adhesivity} \todo{P: see also \cite{HMP:DPORADD,BHK:CTNL} ... verificare e aggiungere}
+explored~\cite{Ehrig1976,EHP:BRfTToHLRS,baldan2011adhesivity},
+even if an investigation in the alternative setting of quasi-topoi has 
+been presented in~\cite{BehrHK23}.
+
+% \todo{P: see also \cite{HMP:DPORADD,BHK:CTNL} ... verificare e aggiungere}
 
 Here we perform this exploration working at the level of $\mathcal{M}$-adhesive categories, 
 %i.e.such that adhesivity holds only for a class $\mathcal{M}$ of arrows, 
@@ -802,11 +806,10 @@ the Church-Rosser theorem is fully recovered.
 
 There is, however, a further problem. In the literature on linear
 rewriting systems, a central result is the a characterisation of
-switch equivalence of derivations based on so-called processes or
-consistent permutations~\cite{add citations}.\todo{Handboo, graph processes, tobias}
-In turn this is the key
-to derive some simple but fundamental properties for linear rewriting
-systems, namely
+switch equivalence of sequences of steps based on what are called
+consistent permutations or processes~\cite{Handbook, tobias}.
+In turn this is the key to derive some simple but fundamental properties 
+for linear rewriting systems, namely
 
 \begin{enumerate}
 \item \emph{consistency of switching}: when transforming
@@ -815,21 +818,23 @@ systems, namely
   only on the resulting permutation;
 \item \emph{globality of independence}: if two independent steps are
   moved forward or backward due to the application of switchings to a
-  derivation, they remain independent.
+  sequence, they remain independent.
 \end{enumerate}
 Properties (1) and (2) allow one to deduce a canonical form for equivalence proofs 
 between sequences of rewriting steps seen as concurrent computations.
 
 Unfortunately, for left-linear rewriting systems the characterisation
-of switch equivalence based on consistent permutations fails: the
-existence of a consistent permutation is only necessary but not
+of switch equivalence based on consistent permutations fails: The 
+existence of a consistent permutation is necessary but not
 sufficient, hence it cannot be used for proving (1) and (2).
 %
-This leads to the question asking whether the properties above hold.
-We show that actually much of the theory can be retained: consistency
+This fact, noted e.g. in~\cite{BaldanGM06}, leads to
+asking whether these properties hold.
+We show that much of the theory can be retained: consistency
 of switching still holds, while globality of independence holds in a
 weak form, conceptually linked to the fact that fusions introduce a
-form of disjunctive causality. Finally, we prove that a canonical form
+form of disjunctive causality~\cite{baldan2017domains}. Finally, 
+we prove that a canonical form
 for switching sequences can also be recovered.
 
 \section{$\mathcal{M}$-adhesive categories and DPO rewriting systems}\label{sec:ade}
