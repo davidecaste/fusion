@@ -2165,9 +2165,9 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   \label{ex:seq-ind}
   Consider a rewriting system in $\cat{Graph}$, the category of
   directed graphs and graph morphisms, which is adhesive. The set of
-  rules $\R = \{ \rho_0, \rho_1, \rho_2\}$ consists of three rules as
-  depicted in Fig.~\ref{fi:rules}, where numbers are used to represent
-  the mappings from the interface to the left- and right-hand
+  rules $\R = \{ \rho_0, \rho_1, \rho_2\}$ consists of the three rules
+  of Fig.~\ref{fi:rules}, where numbers are used to represent
+  the morphisms from the interface to the left- and right-hand
   sides. Rules $\rho_0$ and $\rho_1$ are linear: $\rho_0$ generates a
   new node, while $\rho_1$ creates an edge. Instead, $\rho_2$ is
   left-linear but not linear, as it ``merges'' two nodes.
@@ -2183,11 +2183,13 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   
   A derivation $\der{D}$ consisting of three steps $\dder{D}_0$,
   $\dder{D}_1$, and $\dder{D}_2$, each applying the corresponding rule
-  $\rho_i$, is depicted in Fig.~\ref{fi:derD}. The second and third
-  steps $\dder{D}_1$ and $\dder{D}_2$ are clearly sequential
-  independent, via an independence pairs that map nodes consistently
-  with their numbering.\todo{P: having names for the graphs would
-    probably help}
+  $\rho_i$, is depicted in Fig.~\ref{fi:derD}. Note that the numbers in $\rho_1$
+  were changed consistently to represent the vertical morphisms.
+  Steps $\dder{D}_1$ and $\dder{D}_2$ are clearly sequential
+  independent via independence pair $(R_1 \to D_2, L_2 \to D_1)$.
+  %that map nodes consistently with their numbering.\todo{P: having names for the graphs would probably help}
+  This pair can be used to construct a switch $\der{E}$, shown
+  in Fig.~\ref{fi:derE}.
   
   \begin{figure}
     \input{Figure/derD.tex}
@@ -2195,8 +2197,7 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
     \label{fi:derD}
   \end{figure}
 
-  The independence pair can be used to construct a switch $\der{E}$, as
-  depicted in Fig.~\ref{fi:derE}.
+  
   \begin{figure}
     \input{Figure/derE.tex}
     \caption{The derivation $\der{E}$.}

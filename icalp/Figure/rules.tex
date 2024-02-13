@@ -18,10 +18,11 @@
     %
     %%% RULES 
     % 
-    \subcaptionbox*{$\rho_0$}{
+%    \subcaptionbox*{}{
     % RULE P0
     %
-    \begin{tikzpicture}[node distance=2mm, font=\small, baseline=(current bounding box.center), font=\small]
+  \begin{tikzpicture}[node distance=2mm, font=\small]
+    %, baseline=(current bounding box.center), font=\small]
       \node (l) {
       \begin{tikzpicture}
       %
@@ -42,6 +43,7 @@
       \end{tikzpicture} 
     };
     \node[font=\scriptsize, above] at (k.north) {$K_0$};
+    \node[below] at (k.south) {$\rho_0$};
     \node  [right=of k] (r) {
       \begin{tikzpicture}
         \node at (0,0.53) {}; 
@@ -55,11 +57,12 @@
     \path (k) edge[->] node[trans, above] {} (l);
     \path (k) edge[->] node[trans, above] {} (r);
     \end{tikzpicture}
-  }
+%  }
+    %
+    \hspace{1cm}
+%  \hfill
   %
-  \hfill
-  %
-  \subcaptionbox*{$\rho_1$}{
+%  \subcaptionbox*{}{
     % RULE P1
     %
     \begin{tikzpicture}[node distance=2mm, font=\small]
@@ -83,6 +86,7 @@
       \end{tikzpicture} 
     };
     \node[font=\scriptsize, above] at (k.north) {$K_1$};
+    \node[below] at (k.south) {$\rho_1$};
     \node  [right=of k] (r) {
       \begin{tikzpicture}
         \node at (0,0) [node, label=below:$1$] (1) {}
@@ -95,11 +99,12 @@
     \path (k) edge[->] node[trans, above] {} (l);
     \path (k) edge[->] node[trans, above] {} (r);
     \end{tikzpicture}
-  }
+%  }
   % 
-  \hfill
+    \hspace{1cm}
+    %\hfill
   %
-    \subcaptionbox*{$\rho_2$}{
+%    \subcaptionbox*{}{
     % RULE P2
     %
     \begin{tikzpicture}[node distance=2mm, font=\small]
@@ -125,6 +130,7 @@
       \end{tikzpicture} 
     };
     \node[font=\scriptsize, above] at (k.north) {$K_2$};
+    \node[below] at (k.south) {$\rho_2$};
     \node  [right=of k] (r) {
       \begin{tikzpicture}
         \node at (0,0.53) {}; 
@@ -137,7 +143,7 @@
     \path (k) edge[->] node[trans, above] {} (l);
     \path (k) edge[->] node[trans, above] {} (r);
     \end{tikzpicture}
-  }
+ % }
   %
 \end{center}
 

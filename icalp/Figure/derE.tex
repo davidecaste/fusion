@@ -18,7 +18,8 @@
           \pgfBox
         \end{tikzpicture} 
       };
-      \node [above=of K1] {$\rho_0$};
+ %     \node [above=of K1] {$\rho_0$};
+      \node [above] at (K1.north) {$\rho_0$};
       \node [right=of K1](R1) {
         \begin{tikzpicture}
           \node at (0,0.53) {}; 
@@ -52,7 +53,8 @@
           \pgfBox
         \end{tikzpicture} 
       };
-      \node [above=of K3] {$\rho_2$};
+ %     \node [above=of K3] {$\rho_2$};
+      \node [above] at (K3.north) {$\rho_2$};
       \node [right=of K3] (R3) {
         \begin{tikzpicture}
           \node at (0,0.53) {}; 
@@ -82,7 +84,9 @@
           \pgfBox
         \end{tikzpicture} 
       };
-      \node [above=of K2] {$\rho_1$};
+ %     \node [above=of K2] {$\rho_1$};
+      \node [above] at (K2.north) {$\rho_1$};
+
       \node [right=of K2] (R2) {
         \begin{tikzpicture}
           \node at (0,0) [node, label=below:$12$] (1) {}
@@ -176,8 +180,8 @@
       };
 
       \node[font=\scriptsize, below] at (G1.south) {$G_0$};
-      \node[font=\scriptsize, below] at (D1.south) {$D_0'$};      
-      \node[font=\scriptsize, below] at (G2.south) {$G_1'$};
+      \node[font=\scriptsize, below] at (D1.south) {$D_0$};      
+      \node[font=\scriptsize, below] at (G2.south) {$G_1$};
       \node[font=\scriptsize, below] at (D2.south) {$D_1'$};      
       \node[font=\scriptsize, below] at (G3.south) {$G_2'$};
       \node[font=\scriptsize, below] at (D3.south) {$D_2'$};      
