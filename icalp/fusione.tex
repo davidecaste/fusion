@@ -509,7 +509,9 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   they could be executed in any order, and potentially in parallel.
   % 
   We investigate the issue in the context of adhesive categories, a
-  very general instance of the DPO approach to rewriting. More
+  very general instance of the DPO approach to rewriting.\todo{[A] direi: ``...
+    in the context of the Double Pushout (DPO) Approach to rewriting in adhesive categories.''}
+    More
   precisely, we focus on left-linear rules, which not only consume,
   preserve and generate entities, as linear rules do, but may
   ``merge'' parts of the state.
@@ -693,15 +695,16 @@ Among rewriting-based formalisms, those manipulating graph-like structures
 proved useful in many settings for representing the dynamics of distributed systems: the 
 graph serves to represent the entities and their relations within states, while 
 rewriting steps, modifying the graph, model computation steps that result 
-in changes to the system state. The DPO (double-pushout) approach~\cite{CMREHL:AAGT} 
-is nowadays considered the standard one for these structures, thanks to its locality 
-(rule application has a local effect on a state, differently e.g. from the SqPO 
-approach~\cite{CorradiniHHK06}) and most importantly to its flexibility: the rules allow to 
+in changes to the system state. The DPO (double-pushout) approach~\cite{EhrigPS73}
+is nowadays considered a standard one for these structures, thanks to its locality 
+(rule application has a local effect on a state, differently from more recent approaches
+like, e.g., SqPO~\cite{CorradiniHHK06}
+or PBPO$^+$~\cite{OverbeekER23}) and to its flexibility: the rules allow to 
 specify that,  in a rewriting step, some entities in the current state are removed, 
 some others are needed for the rewriting step to occur but remain unaltered and 
 some new entities can be generated. Concerning concurrency, the chosen notion 
 is shift equivalence, and independence is formally captured by what is called the
-Church-Rosser theorem of DPO rewriting~\cite[Section~xxx]{CMREHL:AAGT}.
+Church-Rosser theorem of DPO rewriting~\cite[Section~4]{Ehrig78}.
 
 A noteworthy advantage is that DPO rewriting can be formulated over
 adhesive categories and their variants~\cite{lack2005adhesive,ehrig2006weak}. 
@@ -719,14 +722,14 @@ So far, most of the theoretical results focussed on what are called
 \emph{linear rules}: intuitively, a step is required only to consume,
 preserve and generate entities.  However, in some situations it is
 also necessary to ``merge'' parts of the state.  This happens already
-in the context of string diagram mentioned above, but also in
+in the context of string diagrams mentioned above, but also in
 graphical implementations of nominal calculi where, as a result of
 name passing, the received name is identified with a local one at the
-receiver~\cite{CVY:ESSPE,Gad07} or in the visual modelling of bonding
+receiver~\cite{CVY:ESSPE,Gad07}, or in the visual modelling of bonding
 in biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms
 is at the core of e-graphs (equality graphs), recently used for
 rewrite-driven compiler optimisations~\cite{WNW:egg}: rather than
-explicitly merging nodes corresponding to equal expression, the idea
+explicitly merging nodes corresponding to equal expressions, the idea
 here -- conceptually and, as we will see, also mathematically similar
 -- is to maintain an
 equivalence %\todo{P: more precisely a congruence}
@@ -735,7 +738,7 @@ over the nodes.
 
 
 Technically, to acquire the expressiveness needed for capturing
-fusions, i.e. the merge of some elements in the state, requires to
+fusions, i.e. the merge of some elements in the state, one is required to
 move from linear to left-linear rewriting rules. While left-linear
 rules have been considered in various instances (mainly in categories
 of graphs) and some results concerning the corresponding rewriting
@@ -3087,7 +3090,7 @@ Let $\X$ be a category, and consider the diagram  aside, then the following are 
 \end{lemma}}
 \parbox{4cm}{$\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}$}\\
 
-The following proposition establishes a key property of $\mathcal{A}$-Van Kampen squares with a mono as a side: they are not only pushouts, but also pullbacks \cite{ehrig2004adhesive,behr2022fundamentals,lack2005adhesive}.
+The following proposition establishes a key property of $\mathcal{A}$-Van Kampen squares with a mono as a side: they are not only pushouts, but also pullbacks \cite{ehrig2004adhesive,BehrHK23,lack2005adhesive}.
 
 \noindent 
 \parbox{11.5cm}{\begin{proposition}\label{prop:pbpo} Let $\mathcal{A}$ be a class of arrows stable under pushouts and containing all the isomorphisms.  If $m\colon A\to C$ is mono and belongs to $\mathcal{A}$, then every $\mathcal{A}$-Van Kampen square
