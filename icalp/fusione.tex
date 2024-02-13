@@ -1152,7 +1152,7 @@ Often, we are interested in derivations only up to some notion of coherent isomo
     An \emph{abstraction equivalence} between two derivations $\der{D}$
     and $\der{D'}$ with the same length and
     $r(\der{D})=r(\der{D}')$, is a family of isomorphisms
-    $\{\phi_X\}_{X\in \{G_i,D_i,H_i\}}$ such that the diagram on the right commutes
+    $\{\phi_X\}_{X\in \{G_i,D_i\}}$ such that the diagram on the right commutes
     for every $i\in [0, \lgh(\der{D})]$. We
     will say that $\der{D}$ are $\der{D}'$ are \emph{abstraction
       equivalent}, and use the symbol $\der{D}\equiv_a \der{D}'$, if there exists an abstraction equivalence between
@@ -5051,11 +5051,9 @@ only inversions, we can strip the first and last switches.
   \end{center}
 
   Now, since switchings $\transp{i}$ twice one obtains a derivation
-  which is abstraction equivalent to the starting one. Hence we can
-  assume without loss of generality that $\der{D}_2'$ coincides with
-  $\der{D}_0$. Hence we have
+  which is abstraction equivalent to the starting one.  Hence we have
   \begin{center}
-    $\der{D}_0 =
+    $\der{D}_0 \equiv_a
     \der{D}_2' \shift{\nu_2'} \ldots
     \shift{\nu_n'} \der{D}_{n+1}$
   \end{center}
