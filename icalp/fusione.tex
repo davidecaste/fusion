@@ -509,8 +509,9 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   they could be executed in any order, and potentially in parallel.
   % 
   We investigate the issue in the context of the Double Pushout (DPO)
-  Approach to rewriting in adhesive categories, a very general setting
-  for rewriting.  More precisely, we focus on left-linear rules, which
+  approach to rewriting in the general setting of adhesive categories.
+  %, a very general setting for rewriting.  
+  More precisely, we focus on left-linear rules, which
   not only consume, preserve and generate entities, as linear rules
   do, but may ``merge'' parts of the state.
   % 
@@ -835,10 +836,10 @@ of switch equivalence based on consistent permutations fails,
 % not sufficient
 hence it cannot be used for proving (1) and (2).
 %
-This leads to asking whether the properties above hold.
-We show that actually much of the theory can be retained: consistency
-of switching still holds, while globality of independence holds in a
-weaker form, conceptually linked to the fact that fusions introduce a
+This leads to asking whether the two properties above hold.
+We show that much of the theory can be retained: consistency
+of switching still holds, while globality of independence  in a
+weaker form only, conceptually linked to the fact that fusions introduce a
 form of disjunctive causality. Finally, we prove that a canonical form
 for switching sequences can also be recovered.
 
@@ -864,7 +865,7 @@ This first section recalls definitions and basic theory of \emph{$\mathcal{M}$-a
   \begin{itemize}
   \item
     Given a category $\X$ we will not distinguish notationally
-    between $\X$ and its class of objects: so that ``$X\in \X$'' means
+    between $\X$ and its class of objects, so that ``$X\in \X$'' means
     that $X$ belongs to the class of objects of $\X$.
 
   \item
@@ -886,10 +887,10 @@ This first section recalls definitions and basic theory of \emph{$\mathcal{M}$-a
 
 \subsection{$\mathcal{M}$-adhesivity}\label{subsec:ade}
 The key property that $\mathcal{M}$-adhesive categories enjoy is given
-by the so-called \emph{Van Kampen condition}
+by the \emph{Van Kampen condition}
 \cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. We
 will recall it and examine some of its consequences. First of all, we
-need to recall some terminology and facts regarding subclasses of
+need to introduce some terminology and facts regarding subclasses of
 $\mor(\X)$.
 
 \begin{definition}
@@ -1047,15 +1048,15 @@ and uniqueness of pushouts complements (details and proofs are in
 \subsection{DPO rewriting systems derivations}\label{subsec:DPO}
 
 $\mathcal{M}$-adhesive categories are the right context in which to
-perform abstract rewriting using what is called the ``Double-Pushout
-approach'' (DPO). We will recall the basic definitions and properties
+perform abstract rewriting using what is called the Double-Pushout
+approach (DPO). We will recall the basic definitions and properties
 of this approach to abstract rewriting.
 
 
 \begin{definition}[\!\!\cite{habel2012mathcal,heindel2009category}]
   Let $\X$ be an $\mathcal{M}$-adhesive category. A \emph{left
     $\mathcal{M}$-linear} rule $\rho$ is a pair $\rho = (l,r)$ of
-  arrows with $l: K \to L$ and $r: K \to R$, such that $l$ belongs to
+  arrows with $l: K \to L$ and $r: K \to R$ such that $l$ belongs to
   $\mathcal{M}$.  The rule $\rho$ is \emph{$\mathcal{M}$-linear} if
   $r\in \mathcal{M}$ too.
   %
@@ -1078,6 +1079,7 @@ of this approach to abstract rewriting.
   $\mathcal{M}$-linear.
   \full{(consuming)}
 
+  \vspace{.1cm}
   \noindent
   \parbox{10cm}{\hspace{15pt}Given two objects $G$ and $H$ and a rule
     $\rho=(l,r)$ in $\R$, a \emph{direct derivation $\mathscr{D}$ from
@@ -1141,7 +1143,7 @@ A derivation can now be defined simply as a sequence of direct derivations.
  % $\{\rho_i\}_{i=0}^n$.
 \end{definition}
 
-Derivations naturally compose: given $\der{D}: G \Mapsto H$ and $\der{E}: H \Mapsto F$ we can consider their composition $\der{D} \cdot \der{E}: G \to F$, defined in the obvious way.
+Derivations naturally compose: given $\der{D}: G \Mapsto H$ and $\der{E}: H \Mapsto F$, we can consider their composition $\der{D} \cdot \der{E}: G \to F$, defined in the obvious way.
 
 % \todo[inline]{P: se non impatta sul resto forse sarebbe forse piu' carino definire:\\
 %   - for each $G \in \X$, $G : G \Mapsto G$ is a derivation\\  
@@ -2032,7 +2034,7 @@ Finally, we can show that consistent permutations between composable abstract de
 \section{Independence in rewriting}
 \label{sec:equi}
 
-In this section we discuss the notion of independence between
+In this section we discuss the notion of independence between two
 consecutive rewriting steps, a fundamental ingredient of the rewriting
 theory, which comes into play when viewing a sequence of steps as a
 concurrent computation. We observe that moving from linear to
@@ -2046,7 +2048,7 @@ in a weakened form.
 
 
 
-In the DPO approach the canonical notion of independence is that of sequential independence.
+Sequential independence is the canonical notion of independence in the DPO approach.
 %recalled below.
 
 \begin{definition}[Sequential independence]
@@ -2236,10 +2238,11 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
 \end{example}
 
 
-As already mentioned, for linear rewriting systems, when viewing
-derivations as concurrent computations, it is canonical to identify
-derivations which are equal ``up to switching'', i.e., which differs
-only for the order of indepedent steps. The same notion can be given
+As we mentioned, for linear rewriting systems
+%when viewing  derivations as concurrent computations, 
+it is canonical to identify
+derivations that are equal ``up to switching'', i.e. that differs
+only for the order of independent steps. The same notion can be given
 for left-linear rewriting systems by relying on the notion of switch.
 
 
@@ -2285,7 +2288,8 @@ We also need to introduce the notion of \emph{switching sequences}.
 %   It will be referred as a \emph{switching sequence}.  
 % \end{definition}
 
-Switch equivalence is now defined as the equivalence relating derivations which can be obatained one from another by a sequence of switches. Moreover, intermediate graphs can be taken up to isomorphism according to abstraction equivalence.
+Switch equivalence is now defined as the equivalence relating derivations that 
+can be obtained one from another by a sequence of switches. Moreover, intermediate graphs can be taken up to isomorphism according to abstraction equivalence.
 
 \begin{definition}[Switch equivalence]
   \label{de:switch-equivalence}
@@ -2322,7 +2326,7 @@ Switch equivalence is now defined as the equivalence relating derivations which 
 \subsection{Church-Rosser: Sequential independence and switchability}\label{subsec:CR}
 
 
-The fact that sequential indepedence implies switchability always
+The fact that sequential independence implies switchability always
 holds for linear rules (see \Cref{prop:equi}). The result is so
 indispensable that it is not even stated, in the sense that
 in the literature switchability is not introduced axiomatically as in
@@ -2354,15 +2358,15 @@ converse implication clearly holds), as shown by the next example.
   greater than every element of $P$, while elements of $P$ and $Q$ are
   compared using the original orders.
 
-  Take now the set $S:=\{a,b,c\}$ and endow it with the smallest order
+  Take the set $S:=\{a,b,c\}$ and endow it with the smallest order
   such that $a\leq b$ and $a\leq c$.  Take also the set $\mathbb{N}$
   ordered by $\geq$, so that $0$ is its maximum.  Let $\X$ be the
   category associated to the order
   $(S, \leq)\oplus (\mathbb{N}, \geq)$, which by \Cref{rem:iso} is
-  $\mathsf{Iso(\X)}$-adhesive. Notice that in this category the arrows
+  $\mathsf{Iso(\X)}$-adhesive. Notice that the arrows
   $(a,b)\colon a\to b$ and $(a,c)\colon a\to c$ do not have a pushout
   because $b$ and $c$ do not have a supremum.  Consider a rewriting
-  system whose set of rules $\R$ contains the following two rules
+  system whose set of rules $\R$ contains the following %two rules
   \[\xymatrix{a & a \ar[r]^{(a, 0)} \ar[l]_{\id{a}} & 0 & a & a
       \ar[r]^{(a, b)} \ar[l]_{\id{a}} & b }\]
   We can then consider the  derivation
@@ -2465,13 +2469,13 @@ by the notion of \emph{canonical filler}
   \]
 
   Consider the pullback of $g_0$ and $f_1$, getting $p_i : P \to D_i$
-  ($i \in \{0,1\}$) and the mediating arrows $u_0\colon K_0\to P$ and
+  for $i \in \{0,1\}$ and the mediating arrows $u_0\colon K_0\to P$ and
   $u_1\colon K_1\to P$ into the pullback object (see \Cref{prop:tec} for details). 
   % given by \Cref{prop:tec} .
   %
   We will say that $(i_0, i_1)$ is a \emph{strong independence pair} if
   the first two squares depicted  
-  below are pushouts and if the pushout of $r_1 : K_1 \to R_1$ and $u_1 : K_1 \to P$ exists.
+  below are pushouts and if the pushout of $r_1 : K_1 \to R_1$ and $u_1 : K_1 \to P$ exists
   \[
     \xymatrix{
       K_0 \ar[r]^{r_0} \ar[d]_{u_0}& R_0 \ar[d]^{i_0} & K_1
@@ -2560,13 +2564,13 @@ Still, there are adhesive rewriting systems which are not strong enforcing, as s
 
 \begin{remark}
   By \Cref{thm:church} the existence of a strong independence pair
-  entails switchability which, in turn, entails weak sequential
+  entails switchability, which in turn entails weak sequential
   independence by construction. Strong Enforcing rewriting systems are exactly
   those rewriting systems in which these three notions coincide.
 \end{remark}
 %}
 
-As a sanity check note that a source of strong enforcing left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
+As a sanity check, note that a source of strong enforcing left-linear DPO rewriting systems is given by the linear ones, as shown by the following proposition.
 
 \begin{restatable}{proposition}{propEqui}
   \label{prop:equi}
