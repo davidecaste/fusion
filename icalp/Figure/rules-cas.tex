@@ -1,7 +1,7 @@
 \begin{center}
-    \hfill
+ %   \hfill
     %
-    \subcaptionbox*{$\rho_3$}{
+%    \subcaptionbox*{$\rho_3$}{
     % RULE P3
     %
     \begin{tikzpicture}[node distance=2mm, font=\small]
@@ -29,6 +29,7 @@
       \end{tikzpicture} 
     };
     \node[font=\scriptsize, above] at (k.north) {$K_3$};
+    \node[below] at (k.south) {$\rho_3$};
     \node  [right=of k] (r) {
       \begin{tikzpicture}
         \node at (0,0.53) {}; 
@@ -41,11 +42,11 @@
     \path (k) edge[->] node[trans, above] {} (l);
     \path (k) edge[->] node[trans, above] {} (r);
     \end{tikzpicture}
-  }
+  % }
   %
-  \hfill
+  \hspace{1cm} %\hfill
   %
-  \subcaptionbox*{$\rho_4$}{
+  % \subcaptionbox*{$\rho_4$}{
     % RULE P1
     %
     \begin{tikzpicture}[node distance=2mm, font=\small]
@@ -70,6 +71,7 @@
       \end{tikzpicture} 
     };
     \node[font=\scriptsize, above] at (k.north) {$K_4$};
+    \node[below] at (k.south) {$\rho_4$};
     \node  [right=of k] (r) {
       \begin{tikzpicture}
         \node at (0,0.53) {}; 
@@ -82,9 +84,9 @@
     \path (k) edge[->] node[trans, above] {} (l);
     \path (k) edge[->] node[trans, above] {} (r);
     \end{tikzpicture}
-  }
+  %}
   % 
-  \hfill \
+%  \hfill 
   %
 \end{center}
 
