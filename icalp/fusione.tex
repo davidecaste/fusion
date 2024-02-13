@@ -508,10 +508,8 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   concurrent and distributed systems, since independence means that
   they could be executed in any order, and potentially in parallel.
   % 
-  We investigate the issue in the context of adhesive categories, a
-  very general instance of the DPO approach to rewriting.\todo{[A] direi: ``...
-    in the context of the Double Pushout (DPO) Approach to rewriting in adhesive categories.''}
-    More
+  We investigate the issue in the context of the Double Pushout (DPO) approach
+  to rewriting in adhesive categories. More
   precisely, we focus on left-linear rules, which not only consume,
   preserve and generate entities, as linear rules do, but may
   ``merge'' parts of the state.
@@ -830,7 +828,7 @@ between sequences of rewriting steps seen as concurrent computations.
 
 Unfortunately, for left-linear rewriting systems the characterisation
 of switch equivalence based on consistent permutations fails: the
-existence of a consistent permutation is only necessary but not
+existence of a consistent permutation is necessary but not
 sufficient, hence it cannot be used for proving (1) and (2).
 %
 This leads to asking whether the properties above hold.
@@ -851,7 +849,7 @@ We then define well-switchable systems,
 and prove that all the classical results holding for linear rewriting systems
 can be recovered for such a class of left-linear ones.
 Finally, Section~\ref{conclusions} wraps up the paper and 
-offers some thoughts on possible directions for our work.
+offers some thoughts on possible directions for future work.
 
 \section{$\mathcal{M}$-adhesive categories and DPO rewriting systems}\label{sec:ade}
 This first section recalls definitions and basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}.
@@ -3049,12 +3047,14 @@ rewriting systems, enjoy a number of fundamental properties:
 confluence of switching, a weak form of globality of independence and
 the existence of a canonical form for switch equivalence proofs.
 
-The class of well-switchable adhesive rewriting systems is vast. Generalising a result in~\cite{baldan2011adhesivity} 
+The class of well-switchable adhesive rewriting systems is large. Generalising a result in~\cite{baldan2011adhesivity},
 we can show that one of its defining properties (the fact that sequential independence implies switchability) holds 
-for a class of adhesive categories which include all presheaves over set. Moreover, the second property, uniqueness 
-of switching, is ensured when rewriting possibly hierarchical graphical structures, as long as elements of the top sorts 
-are not merged (e.g., one can consider rewriting systems over directed graphs where only nodes are merged, as it 
-happens in most approaches to modelling calculi, biological systems and also in string diagrams).\todo{Giusto, refernences?}
+for a class of adhesive categories which include all presheaves over \cat{Set}. Moreover, the second property, uniqueness 
+of switching, is ensured when rewriting possibly hierarchical graphical structures, as long as elements of the sorts 
+of depth 0  are not merged (e.g., one can consider rewriting systems over directed graphs where only nodes are merged, as it 
+happens in most of the approaches to the modelling of calculi and biological systems that we cited in the introduction, 
+as well as in string diagrams).
+%\todo{Giusto, refernences?}
 
 The results in this paper open the way to the development of a
 concurrent semantics for left-linear rewriting systems over adhesive
@@ -3071,11 +3071,11 @@ We plan to consolidate the statement that weak prime domains are
 for left-linear rewriting systems in $\mathcal{M}$-adhesive categories.
 
 On the practical side, the present paper just surveyed the possibility
-of modelling Egg graphs. This appears to be quite interesying as
-concurrent rewriting on Eggs seems to be an actove area of
-reserach. \todo{P: cite} We plan to make the correspondence precise
+of modelling e-graphs. This appears to be quite interesting as
+concurrent rewriting on such structures is an active area of
+research. \todo{P: cite} We plan to make the correspondence precise
 and investigate how the analysis techniques enabled by a concurrent
-semantics of rewriting can impact on Eggs.
+semantics of rewriting can impact on e-graphs.
 
 
 \bibliography{bibliog.bib}
