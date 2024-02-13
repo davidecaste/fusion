@@ -408,6 +408,8 @@
 
 % inversions
 \newcommand{\inv}[1]{\mathsf{inv}({#1})}
+\newcommand{\tnv}[1]{\mathsf{tnv}({#1})}
+
 
 % sequential independence
 \newcommand{\seqind}{\ensuremath{\updownarrow}}
@@ -508,7 +510,6 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   systems does not work out of the box, but it requires the
   restriction to well-behaved classes of left-linear rules.
   %
-<<<<<<< HEAD
   In fact, the standard characterisation of independence does not hold anymore,
   and this requires a substantial revision of the 
   theory for the linear case, since a number of basic properties,
@@ -518,22 +519,6 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   The paper introduce a novel characterisation of independence, for which we prove a Church-Rosser property,
   properly extending the class of formalisms 
   that can be modelled in the adhesive framework. 
-=======
-  Moreover, a standard characterisation of independence that -- in the
-  linear case -- allows one to derive a number of properties,
-  essential in the development of a theory of concurrency, no longer
-  holds, and this requires a substantial revision of the
-  theory.
-  %
-  The paper performs an in-depth study of the notion of independence
-  for left-linear rules: it introduces a novel characterisation of
-  independence, identifies well-behaved classes of left-linear
-  rewriting systems and provides some fundamental results including a
-  Church-Rosser property and the existence of canonical equivalence
-  proofs for concurrent computations. These results properly extends
-  the class of formalisms that can be modelled in the adhesive
-  framework.
->>>>>>> refs/remotes/origin/main
 \end{abstract}
 
 
@@ -720,7 +705,7 @@ biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms is
 at the core of e-graphs (equality graphs), recently used for
 rewrite-driven compiler optimisations~\cite{WNW:egg}: rather than
 explicitly merging nodes corresponding to equal expression, the idea
-here -- conceptually and, as we will see, also mathematically similar --
+here - conceptually and, as we will see, also mathematically similar -
 is to maintain an equivalence\todo{P: more precisely a congruence}
 over the nodes.  \todo{P: la sequenza di lavori su questo \`e ampia,
   vedere se c'\`e qualcosa d'altro}
@@ -790,53 +775,13 @@ rules have been considered in various instances (mainly in categories
 of graphs) and some results concerning the corresponding rewriting
 theory have been put forward, to the best of our knowledge the
 phenomena arising when rewriting with left-linear rules in the general
-setting of adhesive and quasi-adhesive categories 
-%(which capture most ``applications'') 
-have not been systematically explored. ADD REFS
+setting of adhesive and quasi-adhesive categories (which capture most
+``applications'') have not been systematically explored. ADD REFS
 
 As an initial step in performing this exploration, we observe that for left-linear
 rules a number of fundamental properties that play a role in the
 corresponding theory of rewriting need to be deeply revised, or plainly do not hold.
-%
-More to the point, for linear rewriting systems sequential independence of 
-two sequences of steps can be characterised in terms of the existence of 
-what is called a consistent permutation among them, which can be obtained through 
-an isomorphism between their colimits~\cite{xxx}. This result, which is folklore for 
-various categories of graphs, is explicitly proved here for $\mathcal{M}$-adhesive categories. 
-%
-The characterisation of switch equivalence based on consistent permutations is the key to
-derive some simple but fundamental properties for linear rewriting systems, namely
-\begin{enumerate}
-\item \emph{confluence of switching}: when transforming derivation
-  sequences into equivalent ones by switching independent steps, the
-  result not depends on the order in which switchings are applied, but
-  only on the resulting permutation;
-  
-\item \emph{globality of independence}: if two independent steps are
-  moved forward or backward due to the application of switchings to a
-  derivation, they remain independent.
-\end{enumerate}
 
-Unfortunately, we show that for left-linear rewriting systems the characterisation of
-shift equivalence based on consistent permutations fails: the
-existence of a consistent permutation is only necessary but not
-sufficient, hence it cannot be used for proving (1) and (2). 
-%
-Nevertheless, we will show that property (1) still holds, while only a weak form of (2) does.
-
-
-\todo[inline]{
-This fails for left-linear rules where, as observed
-in~\cite{baldan2017domains}, for graph rewriting, the possibility of
-merging parts of the state leads to a sort of disjunctive causality,
-i.e., a rewriting step, say $r_c$ can be enabled by two different
-rewriting steps $r_a$ and $r_b$, in a way that in a derivation
-$r_a r_b r_c$ steps $r_b$ and $r_c$ are independent since the presence
-of $r_a$ in the past is sufficient for enabling $r_a$, while in
-$r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent. }
-
-\todo[inline]{
-DA RIUSARE\\
 Firstly, Church-Rosser theorem does not work out of the box. In
 particular, sequential independence between rewriting steps~\cite{}
 expressed in terms of the existence of a so-called independence pair
@@ -858,23 +803,17 @@ in~\cite{baldan2011adhesivity}, where a subclass of adhesive
 categories was identified where independence as induced by a filler
 coincides with sequential independence (as induced by an independence
 pair). Here it is extended to $\mathcal{M}$-adhesive categories.
-}
 
-First of all, we will provide a refined notion of independence, which is based 
-in the concept of fillers. The issues was identified
-in~\cite{baldan2011adhesivity}, where a subclass of adhesive
-categories was identified where independence as induced by a filler
-coincides with sequential independence (as induced by an independence
-pair). Here it is extended to $\mathcal{M}$-adhesive categories.
 
-Then, we move to restrict the class of admissible left-linear rewriting systems,
-always working at the level of $\mathcal{M}$-adhesive categories.
-Unfortunately, the most natural idea, put forward in~\cite{baldan2017domains}, 
+We face the problem in the setting of $\mathcal{M}$-adhesive
+categories (which capture adhesive and quasi-adhesive categories).
+A difficult task, since the most natural idea, put forward in~\cite{baldan2017domains}, 
 of limiting sequential independence to those cases in which the switch is possible
 and uniquely determined does fall short.
 %
-In this work we focus on what we call
-\emph{strongly tame rewriting systems}, where sequential independence ensures existence and
+In this work we focus on a class of rewriting systems, which we call
+\emph{very tame rewriting systems}, in $\mathcal{M}$-adhesive
+categories where sequential independence ensures existence and
 uniqueness of the switch and argue that this is the right setting for
 dealing with left-linear rewriting systems.
 
@@ -889,7 +828,6 @@ categories are very tame.
 On the other hand, we show that an appropriate theory of rewriting can
 be developed for very tame rewriting systems, recovering, sometimes in
 weakened form, results which hold in the linear case.  Local
-<<<<<<< HEAD
 Curch-Rosser is fully recovered for very tame rewriting systems.
 
 For linear rewriting systems sequential independence of derivations
@@ -918,9 +856,6 @@ $r_a r_b r_c$ steps $r_b$ and $r_c$ are independent since the presence
 of $r_a$ in the past is sufficient for enabling $r_a$, while in
 $r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent. }
 
-=======
-Church-Rosser is fully recovered for very tame rewriting systems.
->>>>>>> refs/remotes/origin/main
 
 \section{$\mathcal{M}$-adhesive categories and DPO rewriting systems}\label{sec:ade}
 
@@ -2357,6 +2292,7 @@ We also need to introduce the notion of \emph{switching sequences}.
     equivalent} if there is a switching sequence, possibly empty, $\{\der{D}_{k}\}_{k=0}^m$ such that
       \[\der{D}\equiv_a \der{D}_0 \shift{\transp{i_1}} \der{D}_1 \shift{\transp{i_2}} \ldots \shift{\transp{i_m}}
     \der{D}_m\equiv _a \der{E}\]
+    We will denote this relation by $\der{D}\equiv^{sh} \der{E}$. 
 \end{definition}
 
 \begin{remark}\label{rem:abst}
@@ -2762,8 +2698,7 @@ then every coprojection is in $\mathcal{M}$ (see \Cref{lem:colim} for details an
 	$\xi_\sigma\colon \tpro{D} \to \lpro \der{D}' \rpro$ fitting in the
 	following diagrams, where $m_i, m'_i, h_i$ and $h'_i$ are,
 	respectively, the matches and back-matches of $\dder{D}_i$ and
-	$\dder{D}'_i$
-	
+	$\dder{D}'_i$.
 	\[
 	\xymatrix{
 		G_0 \ar[r]^{\iota'_{G'_0}} \ar[d]_{\iota_{G_0}}& \lpro \der{D}' \rpro &L_i\ar[r]^{m_i} \ar[d]_{m'_{\sigma(i)}}& G_i \ar[r]^{\iota_{G_i}}
@@ -3968,22 +3903,14 @@ To prove the Local Church-Rosser Theorem, let us begin deducing some properties 
 	\Cref{prop:pbpoad}.
 \end{proof}}
 
-\begin{corollary}
-	\label{cor:ele}
-	Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ be a derivation between $G$
-	and $H$. Let $j$ and $k$ be two indexes less or equal than $n+1$ and
-	suppose that $j< k$.  Consider two arrows $a\colon T\to G_j$,
-	$b\colon T\to G_k$. If $\iota_{G_j}\circ a = \iota_{G_k}\circ b$,
-	then there exist a unique arrow $c\colon T\to D_j $ such
-	that \[f_j\circ c = a\qquad \iota_{D_j}\circ c =\iota_{G_k}\circ b\]
-\end{corollary}
+
 \begin{lemma}\label{lem:idevero}
 	Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ be two non-empty derivations in a linear DPO-rewriting system $(\X, \R)$ . Let  $\sigma:[0,n-1]\to [0,n-1]$  is a consistent permutation and suppose that the set 
 	\[E_{\sigma}=\{i\in [0,n-1]\mid \sigma(i)=i\}\]
-	is non empty with maximum $k$. Then $\{\dder{D}_i\}_{i=0}^k$ and $\{\der{D}'_i\}_{i=0}^k$ are abstraction equivalent.  
+	is non empty with maximum $s_\sigma$. Then $\{\dder{D}_i\}_{i=0}^{s_\sigma}$ and $\{\der{D}'_i\}_{i=0}^{s_\sigma}$ are abstraction equivalent.  
 \end{lemma}
 
-\begin{proof}We construct are going to construct by induction on $i\in [0,n]$ an abstraction equivalence such that, for every $i$, $\iota'_{G'_{i+1}}\circ \phi_{G_{i+1}}=\xi_{\id{[0,n]}}\circ \iota_{G_{i+1}}$.
+\begin{proof}We construct are going to construct by induction on $i\in [0,s_\sigma]$ an abstraction equivalence such that, for every $i$, $\iota'_{G'_{i+1}}\circ \phi_{G_{i+1}}=\xi_{\id{[0,n]}}\circ \iota_{G_{i+1}}$.
 	
 	\smallskip \noindent \parbox{8.2cm}{$i=0$. We start noticing that, by consistency
 		\[\iota'_{G_0}\circ m'_0=\xi_\sigma \circ \iota_{G_0}\circ m_0=\iota'_{G_0}\circ m_0\]
@@ -4102,7 +4029,7 @@ Let $(\X, \R)$ be a tame rewriting system and $(i_0, i_1)$ an independence pair 
 \cref{lem:coswap}, together with \Cref{lem:colim}, gives us at once the following two results.
 
 \begin{corollary}\label{cor:coswap}
-Let $\der{D}$ and $\der{E}$ be two derivations such that $\der{D} \shift{\transp{i}} \der{E}$, then the transposition $(i,i+1):[0,\lgh{\der{D}}-1] \to [0,\lgh{\der{D}}-1] $ is a consistent permutation.
+Let $\der{D}$ and $\der{E}$ be two derivations such that $\der{D} \shift{\transp{i}} \der{E}$, then the transposition $(i,i+1):[0,\lgh(\der{D})-1] \to [0,\lgh(\der{D})-1] $ is a consistent permutation.
 \end{corollary}
 
 
@@ -4115,21 +4042,75 @@ Let $\der{D}$ and $\der{E}$ be two derivations such that $\der{D} \shift{\transp
 By \Cref{rem:abs,rem:compo} it is enough to find a consistent permutation between $\der{D}_0$ and $\der{D}_m$, but this follows at once from \Cref{rem:compo,cor:coswap}.
 \end{proof}
 
+\iffalse 
+\begin{remark}\label{rem:salvavita}
+Before proceeding further, it is worth to point out the following fact about inversions.  Take a permutation $\sigma\colon [0,1]\to [0,1]$ and define 
+\[\tnv{\sigma}:=\{(i,j)\in \inv{\sigma}\mid j=i+1\}\]
+
+We still can prove that $\sigma$ is the identity if and only if $\tnv{\sigma}=\empty$. Indeed, if $(i,j)$ is an inversion for$\sigma$, then we have two case:
+\begin{itemize}
+	\item for every $h,k\in[i,j-1]$, $(h,k)$ is not an inversion, thus $(j-1, j)$ is an inversion belonging to $\tnv{\sigma}$; 
+	\item there exists an inversion $(h,k)$ made by elements of $[i,j-1]$: then we can repeat the same argument and conclude proceeding by induction on $k-h$.
+\end{itemize}
+
+Now, let $\sigma$ be a permutation different from the identity, recall that $E_{\sigma}$ is the set all all $i$ such that $\sigma(i)=i$, then we have:
+\begin{itemize}
+	\item if $E_{\sigma}=\emptyset$ then the minimum $i$ such that $(i-1,i)$ belongs to $\tnv{\sigma}$ is $\sigma^{-1}(0)$. On the one hand,  $\sigma(\sigma^{-1}(0)-1)$ cannot be $0$ and thus $(\sigma^{-1}(0)-1, \sigma^{-1}(0))$ is in $\tnv{\sigma}$. On the other hand  
+	\item 
+\end{itemize}
 
 
+let $k_{\sigma}$ the minimum $i$ such that $(i, i+1)$
+\end{remark}
+\fi 
 
 \begin{lemma}
-	Let $\der{D}$ and $\der{D}$ be two derivations in a linear rewriting system $(\X, \R)$. Suppose that a consistent permutation $\sigma:[0, \lgh(\der{D})-1]\to [0, \lgh(\der{D})-1]$ between them is given. If $i\in [0, \lgh(\der{D})-1]$ is the smallest index such that $\transp{i}$ is an inversion for $\sigma$, then the direct derivations $\dder{D}_i$ and $\dder{D}_{i+1}$ are sequentially independent.
+	Let $\der{D}$ and $\der{D}$ be two derivations in a linear rewriting system $(\X, \R)$. Suppose that a consistent permutation $\sigma:[0, \lgh(\der{D})-1]\to [0, \lgh(\der{D})-1]$ between them is given. Then the following hold true:
+	\begin{enumerate}
+		\item if $E_{\sigma} = \emptyset$, so that $\sigma(0)>0$ then the direct derivations $\dder{D}_{\sigma^{-1}(0)-1}$ and $\dder{D}_{\sigma^{-1}(0)}$ are sequentially independent;
+		\item if $E_{\sigma}\neq \emptyset$ and $s_\sigma$ is its maximum, then $\dder{D}_{\sigma^{-1}(s_\sigma)-1}$ and $\dder{D}_{\sigma^{-1}(s_\sigma)}$ are sequentially independent.
+	\end{enumerate}
 \end{lemma}
 \begin{proof}
+	In both cases, we start with the diagram below, where $t=\sigma^{-1}(0)-1$ or $t=\sigma{^-1}(s_\sigma)-1$
+	\[\xymatrix@C=15pt{L_t \ar[d]_{m_t}&& K_t
+		\ar[d]_{k_t}\ar@{>->}[ll]_{l_t} \ar@{>->}[r]^{r_t} & R_t
+		\ar@{.>}@/^.35cm/[drrr]|(.3)\hole_(.4){i_0}
+		\ar[dr]|(.3)\hole_{h_t} && L_{t+1} \ar@{.>}@/_.4cm/[dlll]^(.4){i_1}
+		\ar[dl]|(.3)\hole^{m_{t+1}}& K_{t+1} \ar[d]^{k_{t+1}}\ar@{>->}[l]_{l_{t+1}}
+		\ar@{>->}[rr]^{r_{t+1}} && R_{t+1} \ar[d]^{h_{t+1}}\\G_t && \ar@{>->}[ll]^{f_t}
+		D_t \ar@{>->}[rr]_{g_t}&& G_{t+1} && \ar@{>->}[ll]^{f_{t+1}} D_{t+1}\ar@{>->}[rr]_{g_{t+1}}&& G_{t+2}}\]
+	
+	
+	\begin{enumerate}
+		\item If $E_{\sigma}=\emptyset$, so that $t=\sigma^{-1}(0)-1$, then $\sigma(t+1)=0$. Thus
+		\[\xi_\sigma\circ \iota_{G_0}\circ m_{0}=\iota'_{G_0}\circ m'_{}\]
+		 Therefore we have the solid part of the diagram below. \[\xymatrix@C=30pt{D_{j} \ar[ddrr]^{\iota_{D_j}}
+		 	\ar[r]^{g_j}\ar@{>->}[d]_{f_j}& G_{j+1}
+		 	\ar[ddr]^{\iota_{G_{j+1}}}
+		 	\ar[r]^-{\iota_{3, G_{j+1}}} & \lpro \der{D}^j_3\rpro \ar[dd]^{p_2} \\
+		 	G_0\ar[drr]_{\iota_{G_{j}}} \ar@{>->}[d]_{\iota_{1,G_j}}\\ \lpro
+		 	\der{D}^j_1 \rpro \ar[rr]_{p_1} &&\tpro{D} }\]
+		 	
+		 	and\Cref{cor:colim} yields $i_0\colon L_{t+1}\to$
+		\item 
+	\end{enumerate}
 	Let us start with the diagram below
-	  \[\xymatrix@C=15pt{L_i \ar[d]_{m_i}&& K_i
+	\[\xymatrix@C=15pt{L_i \ar[d]_{m_i}&& K_i
 		\ar[d]_{k_i}\ar@{>->}[ll]_{l_i} \ar@{>->}[r]^{r_i} & R_i
 		\ar@{.>}@/^.35cm/[drrr]|(.3)\hole_(.4){j_0}
 		\ar[dr]|(.3)\hole_{h_i} && L_{i+1} \ar@{.>}@/_.4cm/[dlll]^(.4){j_1}
 		\ar[dl]|(.3)\hole^{m_{i+1}}& K_{i+1} \ar[d]^{k_{i+1}}\ar@{>->}[l]_{l_{i+1}}
 		\ar@{>->}[rr]^{r_{i+1}} && R_{i+1} \ar[d]^{h_{i+1}}\\G_i && \ar@{>->}[ll]^{f_i}
 		D_i \ar@{>->}[rr]_{g_i}&& G_{i+1} && \ar@{>->}[ll]^{f_{i+1}} D_{i+1}\ar@{>->}[rr]_{g_{i+1}}&& G_{i+2}}\]
+	We have two cases.
+	
+	\smallskip \noindent $i=0$. 
+	
+	
+	\smallskip\noindent $i>0$
+	
+	
 	\parbox{9cm}{Notice that $\sigma$ restrict to the identity $[0, i-1]\to [0,i-1]$, which remains consistent. In particular, there exists an isomorphism $\phi_{i}\colon G_i\to G'_i$ such that the square on the right commutes.}
 	\parbox{3cm}{\vspace{-.5cm}$\xymatrix{G_i \ar[d]_{\iota_{G_i}}\ar@/^.4cm/[rr]^{\phi_{G_i}}& L_0  \ar[l]^{m_i}\ar[r]_{m'_{i}} & G'_{i} \ar[d]^{\iota'_{G'_i}}\\ \tpro{D} \ar[rr]_{\xi_\sigma} & &\lpro\der{D}'\rpro  }$}
 	
@@ -4142,9 +4123,31 @@ By \Cref{rem:abs,rem:compo} it is enough to find a consistent permutation betwee
 	\end{split}\]
 \end{proof}
 
-\begin{remark}\label{rem:salvavita}
-	Before proceeding further, it is worth to point out the following fact about inversions.
-\end{remark}
+
+
+\begin{lemma}\label{lem:fix1}
+	Let $\der{D}$ and $\der{D}'$ be two derivations in a linear rewriting system $(\X, \R)$. Suppose that a consistent permutation $\sigma:[0, \lgh(\der{D})-1]\to [0, \lgh(\der{D})-1]$ between them is given. Then there is a derivation $\der{E}$ and a switching sequence 
+	  \[\der{D}\equiv_a \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots \shift{\transp{\nu_m}}
+	\der{D}_m = \der{E}\]
+proving that  $\der{D}\equiv^{sh} \der{E}$ and such that $\sigma\circ \nu_{1,m}(0)=0$.
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+
+
+\begin{lemma}\label{lem:fix2}
+	Let $\der{D}$ and $\der{D}'$ be two derivations in a linear rewriting system $(\X, \R)$. Suppose that a consistent permutation $\sigma:[0, \lgh(\der{D})-1]\to [0, \lgh(\der{D})-1]$ between them is given. Then there is a derivation $\der{E}$ and a switching sequence 
+	\[\der{D}\equiv_a \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots \shift{\transp{\nu_m}}
+	\der{D}_m = \der{E}\]
+	proving that  $\der{D}\equiv^{sh} \der{E}$ and such that $\sigma\circ \nu_{1,m}(0)=0$.
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+
 \thmcoswitch*
 \label{thmswitch-proof}
 \begin{proof}$(1\Rightarrow 2)$ This follows from \Cref{rem:abs,prop:coswitch}.
