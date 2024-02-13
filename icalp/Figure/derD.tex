@@ -1,5 +1,5 @@
   \begin{center}
-    \begin{tikzpicture}[node distance=2mm, baseline=(current bounding box.center)]      
+    \begin{tikzpicture}[node distance=2mm, font=\small, baseline=(current bounding box.center)]      
       \node (L1) at (0,2) {
         \begin{tikzpicture}
           % 
@@ -175,7 +175,13 @@
           \pgfBox
         \end{tikzpicture} 
       };
-
+      \node[font=\scriptsize, below] at (G1.south) {$G_0$};
+      \node[font=\scriptsize, below] at (D1.south) {$D_0$};      
+      \node[font=\scriptsize, below] at (G2.south) {$G_1$};
+      \node[font=\scriptsize, below] at (D2.south) {$D_1$};      
+      \node[font=\scriptsize, below] at (G3.south) {$G_2$};
+      \node[font=\scriptsize, below] at (D3.south) {$D_2$};      
+      \node[font=\scriptsize, below] at (G4.south) {$G_3$};      
       \path (D3) edge[->] node[trans, above] {} (G3);
       \path (D3) edge[->] node[trans, above] {} (G4);
       \path (L3) edge[->] node[trans, above] {} (G3);
