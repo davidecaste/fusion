@@ -879,10 +879,10 @@ This first section recalls definitions and basic theory of \emph{$\mathcal{M}$-a
     %$!_X$. Similarly, if $0$ is initial in $\X$ then $?_X$ will denote
     %the unique arrow $0\to X$. %When $\X$ is $\Set$ and $1$ is a singleton, $\delta_x$ will denote the arrow $1\to X$ with value $x\in X$.
 
-  \item $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ will denote the class of
+  \item $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of
     all arrows, monos and regular monos of $\X$, respectively.
 
-  \item Given an integer $n\in \mathbb{Z}$, $[0,n]$ will denote the
+  \item Given an integer $n\in \mathbb{Z}$, $[0,n]$ denotes the
     set of natural numbers less than or equal to $n$, assuming that
     $[0,n]=\emptyset$ whenever $n<0$.
   \end{itemize}
@@ -927,7 +927,7 @@ So equipped, we can introduce the notion of \emph{$\mathcal{A}$-Van Kampen squar
     \end{enumerate}
     Pushout squares which enjoy the ``if'' half of item (2) above are called \emph{$\mathcal{A}$-stable}.
     
-    We will call a $\mor(\X)$-Van Kampen ($\mor(\X)$-stable) square simply a \emph{Van Kampen} (\emph{stable}) square.
+    We call a $\mor(\X)$-Van Kampen ($\mor(\X)$-stable) square simply a \emph{Van Kampen} (\emph{stable}) square.
   \end{definition}}
 \parbox{2cm}{$\xymatrix@C=10pt@R=10pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{g} & & D \\A \ar[dd]_{m}\ar[rr]^{f}&&B\ar[dd]^{n}\\ \\C\ar[rr]_{g} &&D}$ }
 
@@ -956,7 +956,7 @@ We can now define $\mathcal{M}$-adhesive categories.
   if $\mathcal{M}$-pushouts are Van Kampen squares.
 \end{definition}
 
-We will write $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
+We write $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
 
 \begin{remark}
   \label{rem:salva}
@@ -1034,12 +1034,8 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
   adhesive where $E \rightrightarrows {V}$ is the two object category
   with two morphisms $s,t \colon{E} \to {V}$. In a similar way,
   various categories of hypergraphs can be shown to be adhesive, 
-  such as term graphs and hierarchical graphs~\cite{CastelnovoGM24},
-  as well as the category $\cat{sGraphs}$ of simple graphs, i.e. graphs without
-  parallel edges, is $\reg{(\cat{sGraphs})}$-adhesive~\cite{xxx}
-.%\todo{Add reference for simple graphs, add
- %   hierarchical graphs and term
- %   graphs\cite{castelnovo2023thesis,CastelnovoGM22}).}
+  such as term graphs and hierarchical graphs~\cite{CastelnovoGM24}. We can also notice that the category $\cat{sGraphs}$ of simple graphs, i.e. graphs without
+  parallel edges, is $\reg{(\cat{sGraphs})}$-adhesive~\cite{behr2022fundamentals} but not quasiadhesive.
 \end{example}
 
 
@@ -1090,7 +1086,7 @@ of this approach to abstract rewriting.
       $G$ to $H$ applying the rule $\rho$} is a diagram as the one
     aside, in which both squares are pushouts. The arrow $m$ is called
     the \emph{match} of the derivation, while $h$ is its
-    \emph{back-match}.  We will denote a direct derivation $\dder{D}$
+    \emph{back-match}.  We denote a direct derivation $\dder{D}$
     between $G$ and $H$ as $\dder{D}\colon G\Mapsto H$. }
   \parbox{3cm}{$\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l}
       \ar[r]^{r} & R \ar[d]^{h}\\G & \ar@{>->}[l]^{f} D \ar[r]_{g}&
@@ -1134,10 +1130,10 @@ A derivation can now be defined simply as a sequence of direct derivations.
   \end{enumerate}
   Moreover, we have an \emph{empty derivation} $G : G \Mapsto G$ for each $G \in \X$.
   %
-  We will denote by $\lgh(\der{D})$ the \emph{length} of derivation $\der{D}$.
+  We denote by $\lgh(\der{D})$ the \emph{length} of derivation $\der{D}$.
  %
   \full{We will call the number $n+1$ the \emph{length} of the derivation,
-  denoted by $\lgh(\der{D})$. We will also say that an empty
+  denoted by $\lgh(\der{D})$. We also say that an empty
   derivation has length $0$.}
 
  Given a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^n$, we define $r(\der{D})  = \{\rho_i\}_{i=0}^n$ as the sequence of 
@@ -1195,8 +1191,7 @@ Often, we are interested in derivations only up to some notion of coherent isomo
     and $\der{D'}$ with the same length and
     $r(\der{D})=r(\der{D}')$, is a family of isomorphisms
     $\{\phi_X\}_{X\in \{G_i,D_i\}}$ such that the diagram on the right commutes
-    for every $i\in [0, \lgh(\der{D})]$. We
-    will say that $\der{D}$ are $\der{D}'$ are \emph{abstraction
+    for every $i\in [0, \lgh(\der{D})]$. We say that $\der{D}$ are $\der{D}'$ are \emph{abstraction
       equivalent}, and use the symbol $\der{D}\equiv_a \der{D}'$, if there exists an abstraction equivalence between
     them.
   \end{definition}
@@ -1850,19 +1845,19 @@ Finally, we can show that consistent permutations between composable abstract de
 \begin{proof}
   Let us start fixing some notation. Given $X_1\in \Delta(\der{D}_1)$,
   $X_2\in \Delta(\der{D}_2)$, $X'_1\in \Delta(\der{D}'_1)$,
-  $X'_2\in \Delta(\der{D}'_2)$, we will denote their coprojections
+  $X'_2\in \Delta(\der{D}'_2)$, we denote their coprojections
   into, respectively, $\lpro \der{D}_1\rpro$, $\lpro \der{D}'_2\rpro$,
   $\lpro \der{D}'_1\rpro$, $\lpro \der{D}'_2\rpro$ by
   $\iota_{1, X_1}\colon X_1\to \lpro\der{D}_1\rpro$,
   $\iota_{1, X_2}\colon X_2\to \lpro\der{D}_1\rpro$,
   $\iota'_{1, X'_1}\colon X'_1\to \lpro\der{D}'_1\rpro$ and
   $\iota'_{2, X'_2}\colon X'_2\to \lpro\der{D}_1\rpro$. Similarly,
-  given $X\in \Delta(\der{D})$ and $\X'\in \Delta(\der{D}')$ we will
+  given $X\in \Delta(\der{D})$ and $\X'\in \Delta(\der{D}')$ we
   use $\iota_X\colon X\to \tpro{D}$ and
   $\iota'_{X'}\colon X'\to \lpro \der{D}' \rpro$ for the
   coprojections.
 
-  Now that these preliminaries matters have been addressed, we will proceed with the rest of the proof.. We split the proof in three cases.
+  Now that these preliminaries matters have been addressed, we can proceed with the rest of the proof. We split the proof in three cases.
   \begin{itemize}
   \item $\lgh(\der{D}_1)=0$. Thus $\lgh(\der{D}'_1)=0$ too  and we have
     \begin{align*}
@@ -2151,7 +2146,7 @@ More precisely, let us formalise what it means for a derivation being the switch
   \end{center}
 
 
-  If a switch of $\dder{D}_0$ and $\dder{D}_1$ exists we will say that
+  If a switch of $\dder{D}_0$ and $\dder{D}_1$ exists we say that
   they are \emph{switchable}.
 
   % \[
@@ -2196,7 +2191,7 @@ More precisely, let us formalise what it means for a derivation being the switch
 It can be shown that switches along the same independence pair are unique up to abstraction
 equivalence (see Proposition~\ref{thm:switch_uni}).
 
-\begin{notation} We will denote any switch of two switchable direct derivations $\dder{D}_0$ and $\dder{D}_1$ along $(i_0, i_1)$ by $S_{i_0, i_1}(\dder{D}_0, \dder{D}_1)$. Moreover, we will use $S_{i_0,i_1}(\dder{D}_1)$ and  $S_{i_0,i_1}(\dder{D}_0)$ to denote its components, in such a way that \[S_{i_0, i_1}(\dder{D}_0, \dder{D}_1)=S_{i_0,i_1}(\dder{D}_1)\cdot S_{i_0,i_1}(\dder{D}_0)\]
+\begin{notation} We  denote any switch of two switchable direct derivations $\dder{D}_0$ and $\dder{D}_1$ along $(i_0, i_1)$ by $S_{i_0, i_1}(\dder{D}_0, \dder{D}_1)$. Moreover, we use $S_{i_0,i_1}(\dder{D}_1)$ and  $S_{i_0,i_1}(\dder{D}_0)$ to denote its components, in such a way that \[S_{i_0, i_1}(\dder{D}_0, \dder{D}_1)=S_{i_0,i_1}(\dder{D}_1)\cdot S_{i_0,i_1}(\dder{D}_0)\]
 \end{notation}
 
 \begin{example}
@@ -2267,10 +2262,10 @@ We first need to recall some concept and notations regarding permutations.
   denoted by $\inv{\sigma}$.
 \end{definition}
 
-\begin{remark}
-  Clearly, a permutation $\perm$ is the identity if and only if
-  $\inv{\perm}=\emptyset$.
-\end{remark}
+%\begin{remark}
+  %Clearly, a permutation $\perm$ is the identity if and only if
+  %$\inv{\perm}=\emptyset$.
+%\end{remark}
 
 % Now, if $\perm \neq id$ there is at least an inversion of the kind
 % $(i,i+1)$.  Then we have that $\perm = \transp{i}; \perm'$
@@ -2279,7 +2274,7 @@ We first need to recall some concept and notations regarding permutations.
 % transpositions.
 
 
-We also need to introduce the notion of \emph{switching sequences}.
+%We also need to introduce the notion of \emph{switching sequences}.
 
 
 % \begin{definition}
@@ -2302,24 +2297,24 @@ can be obtained one from another by a sequence of switches. Moreover, intermedia
   length, $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and
   $\der{E}=\{\dder{E}_{i}\}_{i=0}^n$. If
   $\dder{D}_i \cdot \dder{D}_{i+1}$ is a switch of
-  $\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ \todo{A: ma manca ``and  $\dder{D}_j = \dder{E}_j$ for each $j \not \in \{i,i+1\}$''??} we write
+  $\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ `and  $\dder{D}_j = \dder{E}_j$ for each $j \not \in \{i,i+1\}$. We write
   $\der{D} \shift{\transp{i}} \der{E}$. 
   
   A \emph{switching sequence} is  a sequence $\{\der{D}_{k}\}_{k=0}^m$ of derivations such that 
   \[\der{D}_0 \shift{\transp{i_1}} \der{D}_1 \shift{\transp{i_2}} \ldots \shift{\transp{i_m}}
   \der{D}_m\]
- In such case, we will\todo{A: io cambierei tutti i ``we will'' in ``we''.} often denote by $\nu_{k}$ the transposition $\transp{i_k}$. Given $k \leq h$,
+ In such case, we denote by $\nu_{k}$ the transposition $\transp{i_k}$. Given $k \leq h$,
  we denote by $\nu_{k,h}$ the composition
- $\nu_h \circ \nu_{h-1} \circ \ldots \nu_k$. We will say that the
+ $\nu_h \circ \nu_{h-1} \circ \ldots \nu_k$. We say that the
  switching sequence consists of inversions if for all
  $k \in \interval[0]{m}$ the transposition $\nu_k$ is an inversion for
  $\nu_{1,m}$.
   
-  We will say that two derivations $\der{D}, \der{E}:G\Mapsto H$ are \emph{switch
+  We say that two derivations $\der{D}, \der{E}:G\Mapsto H$ are \emph{switch
     equivalent} if there is a switching sequence, possibly empty, $\{\der{D}_{k}\}_{k=0}^m$ such that
       \[\der{D}\equiv_a \der{D}_0 \shift{\transp{i_1}} \der{D}_1 \shift{\transp{i_2}} \ldots \shift{\transp{i_m}}
     \der{D}_m\equiv _a \der{E}\]
-    We will denote this relation by $\der{D}\equiv^{sh} \der{E}$. 
+    We denote this relation by $\der{D}\equiv^{sh} \der{E}$. 
 \end{definition}
 
 \begin{remark}\label{rem:abst}
@@ -2477,7 +2472,7 @@ by the notion of \emph{canonical filler}
   $u_1\colon K_1\to P$ into the pullback object (see \Cref{prop:tec} for details). 
   % given by \Cref{prop:tec} .
   %
-  We will say that $(i_0, i_1)$ is a \emph{strong independence pair} if
+  We say that $(i_0, i_1)$ is a \emph{strong independence pair} if
   the first two squares depicted  
   below are pushouts and if the pushout of $r_1 : K_1 \to R_1$ and $u_1 : K_1 \to P$ exists
   \[
@@ -2662,7 +2657,7 @@ edges can not). We first introduce the signature which is essentially
 an acyclic graph where nodes can be seen as sorts.
 
 \begin{definition}[Graph signature]
-  Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph,
+  Let $\mathcal{G}=(V, E, s, t)$, with $s,t\colon E\rightrightarrows V$, be a finite directed acyclic graph,
   we define the \emph{depth} of a vertex $v\in V$ as
   \[
     \dph(v)=\begin{cases}
@@ -2743,10 +2738,7 @@ Another interesting class of well-switching rewriting systems is given by e-grap
   $Q$ is mono, i.e. if it reflects equivalence classes besides
   preserving them. This characterization of regular monos and the fact that pullbacks and pushouts are computed componenetwise allows us to prove quasiadhesivity of $\cat{EGraphs}$ at once. Moreover, one can deduce that every rewriting system $(\X, \R)$ which is left-linear with respect to $\reg(\cat{EGraphs})$ is strong enforcing: this is done exploiting again the inclusion functor into $[E \rightrightarrows V \to Q, \cat{Set}]$.
   
-  Finally, in applications, one is interested in rewriting systems in which the right half of a rule is always mono but not regular in general, allowing us to identify more nodes. These rewring systems are all well-switching.
-  
-
-  \todo[inline]{Noi prendiamo sistemi di riscrittura left-linear e mono a destra, c'è una refernza?}  
+As in \cite{BaldanGM06}, one can study  left-linear rewriting systems  on $\cat{eGraphs}$ in which the right half of a rule is mono but not regular in general, allowing us to identify, but not merging, more nodes . These rewring systems are well-switching.
 \end{example}
 
 \iffalse 
@@ -3159,7 +3151,7 @@ axioms~\cite[Prop.~$5.1.21$]{castelnovo2023thesis}.
 
 
 \subsection{Some results on $\mathcal{A}$-stable and $\mathcal{A}$-Van Kampen squares}
-We will start proving some general results regarding $\mathcal{A}$-Van Kampen and $\mathcal{A}$-stable squares. Let us begin recalling some classical results about  about pullbacks and pushouts\cite{mac2013categories}.
+We start proving some general results regarding $\mathcal{A}$-Van Kampen and $\mathcal{A}$-stable squares. Let us begin recalling some classical results about  about pullbacks and pushouts\cite{mac2013categories}.
 
 \noindent 
 \parbox{10.5cm}{\begin{lemma}\label{lem:popb1} \label{lem:pb1} \label{lem:po1}
@@ -3529,7 +3521,7 @@ Let $(\X, \mathcal{M})$ be a pair of type $\mathbb{B}^+$, then every left-linear
 
 \section{Omitted proofs}\label{omitted}
 
-In this appendix we will provide the proofs of the main results of this paper. 
+In this appendix we provide the proofs of the main results of this paper. 
 
 
 
