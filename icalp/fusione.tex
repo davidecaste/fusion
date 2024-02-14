@@ -2297,7 +2297,7 @@ can be obtained one from another by a sequence of switches. Moreover, intermedia
   length, $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and
   $\der{E}=\{\dder{E}_{i}\}_{i=0}^n$. If
   $\dder{D}_i \cdot \dder{D}_{i+1}$ is a switch of
-  $\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ `and  $\dder{D}_j = \dder{E}_j$ for each $j \not \in \{i,i+1\}$. We write
+  $\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ and  $\dder{D}_j = \dder{E}_j$ for each $j \not \in \{i,i+1\}$. We write
   $\der{D} \shift{\transp{i}} \der{E}$. 
   
   A \emph{switching sequence} is  a sequence $\{\der{D}_{k}\}_{k=0}^m$ of derivations such that 
@@ -2656,7 +2656,7 @@ level sorts in the hierarchy (for graphs, nodes can be merged while
 edges can not). We first introduce the signature which is essentially
 an acyclic graph where nodes can be seen as sorts.
 
-\begin{definition}[Graph signature]
+\begin{definition}
   Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph where $s,t\colon E\rightrightarrows V$.
   We define the \emph{depth} of a vertex $v\in V$ as
   \[
@@ -2670,9 +2670,6 @@ an acyclic graph where nodes can be seen as sorts.
 
 Observe that
 since $\mathcal{G}$ is acyclic and finite, then $\dph(v)$ is a natural number.
-
-
-\todo{cite something here? graph signatures?}
 
 \begin{definition}[Node-merging graphical rewriting systems]
   Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph
@@ -2738,7 +2735,7 @@ Another interesting class of well-switching rewriting systems is given by e-grap
   $Q$ is mono, i.e. if it reflects equivalence classes besides
   preserving them. This characterization of regular monos and the fact that pullbacks and pushouts are computed componenetwise allows us to prove quasiadhesivity of $\cat{EGraphs}$ at once. Moreover, one can deduce that every rewriting system $(\X, \R)$ which is left-linear with respect to $\reg(\cat{EGraphs})$ is strong enforcing: this is done exploiting again the inclusion functor into $[E \rightrightarrows V \to Q, \cat{Set}]$.
   
-Left-linear rewriting systems on $\cat{eGraphs}$, i.e. in which the right half of a rule is mono but not regular in general, 
+Left-linear rewriting systems on $\cat{EGraphs}$, i.e. in which the right half of a rule is mono but not regular in general, 
 are well-switching. They have been used in~\cite{BaldanGM06} for the graphical implementation of nominal calculi, where,
 differently from~\cite{Gad07}, as a result of name passing the received name is not merged with a local one at the receiver,
 but put instead in the same equivalence class, thus better tracing the causal dependencies among processes reductions.
@@ -2830,7 +2827,7 @@ Then the following are equivalent:
   derivations. This is readily seen by considering derivations
   $\der{D}$ in Fig.~\ref{fi:derD} and $\der{D}'$ in
   Fig.~\ref{fi:derD1}. We already observed that
-  $\der{D} \not\equiv_a \der{D}'$\todo{P: osservato?}
+  $\der{D}$ and $\der{D}'$ are not switch equivalent.
   %
   Still, it is easy to see that they are related by a consistent
   permutation, which is the identity on productions. In fact, the colimit of
@@ -2856,8 +2853,7 @@ When dealing with left-linear rules, such a characterisation fails. Leaving asid
 This result clearly fails when considering left-linear
 derivations. This is readily seen by considering derivations $\der{D}$
 in Fig.~\ref{fi:derD} and $\der{D}'$ in Fig.~\ref{fi:derD1}. We
-already observed that $\der{D} \not\equiv_a \der{D}'$\todo{P:
-  osservato?}
+already observed that $\der{D}$ and $\der{D}'$ are not switch equivalent.
 % 
 Still, it is easy to see that they are related by a consistent
 permutation, which is the identity on productions. The colimit of
