@@ -2657,8 +2657,8 @@ edges can not). We first introduce the signature which is essentially
 an acyclic graph where nodes can be seen as sorts.
 
 \begin{definition}[Graph signature]
-  Let $\mathcal{G}=(V, E, s, t)$, with $s,t\colon E\rightrightarrows V$, be a finite directed acyclic graph,
-  we define the \emph{depth} of a vertex $v\in V$ as
+  Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph where $s,t\colon E\rightrightarrows V$.
+  We define the \emph{depth} of a vertex $v\in V$ as
   \[
     \dph(v)=\begin{cases}
       0 & \text{there is no $e\in E$ such that $t(e)=v$}\\
@@ -2727,7 +2727,7 @@ Another interesting class of well-switching rewriting systems is given by e-grap
   constrained to have the component $Q$ surjective. 
   
   Explicitly, an
-  e-graph $G = \langle s_G, t_G, q_G \rangle$ where
+  e-graph $G$ is a triple $\langle s_G, t_G, q_G \rangle$ where
   $s_G, t_G: E_G \rightrightarrows V_G$ provides the graphical
   structure, while the surjective function $q_G : V_G \to Q_G$ maps
   each node to the corresponding equivalence class. Notice that the inclusion functor into  $[E \rightrightarrows V \to Q, \cat{Set}]$ creates pullbacks and pushouts \cite{mac2013categories} so that they are computed componentwise.
@@ -2738,7 +2738,10 @@ Another interesting class of well-switching rewriting systems is given by e-grap
   $Q$ is mono, i.e. if it reflects equivalence classes besides
   preserving them. This characterization of regular monos and the fact that pullbacks and pushouts are computed componenetwise allows us to prove quasiadhesivity of $\cat{EGraphs}$ at once. Moreover, one can deduce that every rewriting system $(\X, \R)$ which is left-linear with respect to $\reg(\cat{EGraphs})$ is strong enforcing: this is done exploiting again the inclusion functor into $[E \rightrightarrows V \to Q, \cat{Set}]$.
   
-As in \cite{BaldanGM06}, one can study  left-linear rewriting systems  on $\cat{eGraphs}$ in which the right half of a rule is mono but not regular in general, allowing us to identify, but not merging, more nodes . These rewring systems are well-switching.
+Left-linear rewriting systems on $\cat{eGraphs}$, i.e. in which the right half of a rule is mono but not regular in general, 
+are well-switching. They have been used in~\cite{BaldanGM06} for the graphical implementation of nominal calculi, where,
+differently from~\cite{Gad07}, as a result of name passing the received name is not merged with a local one at the receiver,
+but put instead in the same equivalence class, thus better tracing the causal dependencies among processes reductions.
 \end{example}
 
 \iffalse 
