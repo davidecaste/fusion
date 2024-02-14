@@ -2864,25 +2864,22 @@ independent.
 \begin{restatable}[Globality of independence]{lemma}{lemIndepGlobalLeft}
 	\label{lem:indep-global-left}
 	Let $\X$ be an $\mathcal{M}$-adhesive category and
-	$(\X,\R)$ strong enforcing DPO rewriting system.
-	Consider a derivation
-	$\der{D}=\{\dder{D}_i\}_{i=0}^2$ and suppose that $(i_0,i_1)$ is an independence pair between $\dder{D}_0$ and $\dder{D}_1$,
-	$(a_0,a_1)$ one between $\dder{D}_1$ and $\dder{D}_2$ and
-	$(e_0, e_1)$ one between $\dder{D}_0$ and
-	$S_{a_0,a_1}(\dder{D}_2)$. Then the following properties hold true.
+	$(\X,\R)$ a well switching DPO rewriting system.
+For every  derivation
+	$\der{D}=\{\dder{D}_i\}_{i=0}^2$  of lenght $3$, the following hold true:
 	\begin{enumerate}
 		\item
-		\label{lem:indep-global-left:1}
-		$S_{e_0,e_1}(\dder{D}_0)$ and $S_{a_0,a_1}(\dder{D}_1)$ are
-		switchable.
+		\label{lem:indep-global-left:1} if $\dder{D}_0\seqind \dder{D}_1$ and there is a switching sequence
+		\[\der{D}\shift{(1,2)} \der{D}_1\shift{(0,1)} \der{D}_2\]
+		then the last two steps of $\der{D}_2$ are switchable;
 		
 		\item
 		\label{lem:indep-global-left:2}
-		If, moreover, $(\X, \R)$ is well switching and $S_{i_0, i_1}(\dder{D}_0)\seqind \dder{D}_2$ with an independence pair $(\alpha_0, \alpha_1)$, then
-		$S_{i_0,i_1}(\dder{D}_1)\seqind S_{\alpha_0, \alpha_1}(\dder{D}_2)$.
+		suppose that $\dder{D}_1 \seqind\dder{D}_2$ with independence pair $(\alpha_0, \alpha_1)$ and that, moreover,  $\dder{D}_0\seqind S_{\alpha_0, \alpha_1}(\dder{D}_2)\seqind $, if there is a switching sequence
+			\[\der{D}\shift{(0,1)} \der{E}_1\shift{(1,2)} \der{E}_2\]
+	then the first two steps of $\der{E}_2$ are switchable.
 	\end{enumerate}
 \end{restatable}
-
   %
 
 [Proof~\ref{lemIndepGlobalLeft-proof}]
@@ -2898,13 +2895,11 @@ independently from the order of the switchings.
 \begin{restatable}[Confluence of switchings]{lemma}{lemSwitchConfluence}
 	\label{lem:switch-confluence}
 	Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X,\R)$ a
-	left-linear DPO rewriting system.
+	well-switching DPO rewriting system.
 	% 
-	Consider a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$ and suppose
-	that $(i_0,i_1)$ is a strong independence pair between $\dder{D}_0$
-	and $\dder{D}_1$, $(a_0,a_1)$ one between $\dder{D}_1$ and
-	$\dder{D}_2$ and $(e_0, e_1)$ one between $\dder{D}_0$ and
-	$S_{a_0,a_1}(\dder{D}_2)$.\todo{P: non e' meglio qui limitarci a well switching, cosi' da evitare riferimenti a strong pairs?}
+	Consider a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$ and suppose that we have the following two switching sequences
+	\[\der{D} \shift{(0,1)} \der{D}_1 \shift{(1,2)} \der{D}_2 \shift{(0,1)}\der{D}_3\\ \qquad \der{D}\shift{(1,2)}\der{E}_1\shift{(0,1)} \der{E}_2 \shift{(1,2)}\der{E}_3 \]
+Then $\der{D}_3$ and $\der{E}_3$ are abstraction equivalent. 
 \end{restatable}
 
 [Proof~\ref{lemSwitchConfluence-proof}]
@@ -4320,7 +4315,9 @@ We can now turn to the proofs of the results of \Cref{subsec:canonical}.
 
 
 \begin{proof}   
-	Using \Cref{rem:fill} we can build the diagrams in \Cref{fi:first,fi:second,fi:third}.  The first depicts the  switching $\dder{D}_0$ and $\dder{D}_1$ along  $(i_0, i_1)$, the second that of $\dder{D}_1$ and $\dder{D}_2$ along $a_0$ and $a_1$, while the third refers to $\dder{D}_0$ and
+	Since $(\X, \R)$ is well switching, then, there exist, unique, independence pair 
+$(i_0,i_1)$ between $\dder{D}_0$ and $\dder{D}_1$,	$(a_0,a_1)$ between $\dder{D}_1$ and $\dder{D}_2$ and	$(e_0, e_1)$ one between $\dder{D}_0$ and
+	$S_{a_0,a_1}(\dder{D}_2)$. 	Using \Cref{rem:fill} we can build the diagrams in \Cref{fi:first,fi:second,fi:third}.  The first depicts the  switching $\dder{D}_0$ and $\dder{D}_1$ along  $(i_0, i_1)$, the second that of $\dder{D}_1$ and $\dder{D}_2$ along $a_0$ and $a_1$, while the third refers to $\dder{D}_0$ and
 	$S_{a_0,a_1}(\dder{D}_2)$.
 	
 	\begin{figure}[h]
@@ -4481,7 +4478,7 @@ We can now turn to the proofs of the results of \Cref{subsec:canonical}.
 				\ar[ul]^{\xi'_0\circ \gamma_0\hspace{-7pt}}
 				\ar@/_.8cm/[uull]_(.2){\gamma_0} |(.69)\hole 
 			}	$
-			\caption{Picture for the proof of \Cref{lem:indep-global-left}: switch of $S_{i_0, i_2}(\dder{D}_0)$ and $\dder{D}_2$.}
+			\caption{Picture for the proof of \Cref{lem:indep-global-left}: switch of $S_{i_0, i_1}(\dder{D}_0)$ and $\dder{D}_2$.}
 			\label{fi:fourth}
 		\end{figure}
 		
