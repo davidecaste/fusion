@@ -2651,8 +2651,9 @@ A left-linear rewriting system $(\X, \R)$ is \emph{well-switching} if it is stro
 The previous definition might sound restrictive. However, it is immediate to see that linear rewriting systems are all well-switching (see Proposition~\ref{pr:weak}).
 %
 Moreover, Lemma~\ref{bono} will show that a class of rewriting systems, comprising
-all the ones used in concrete modelling applications of DPO rewriting
-(e.g., in the encoding of process calculi, modelling of bio and chemical systems) are actually well-switching.\todo{citazioni?}
+all the ones used in modelling the applications to the encoding of process calculi or of bio and chemical systems mentioned in the Introduction,
+are actually well-switching.
+%\todo{citazioni?}
 %
 Roughly speakings, these are rewriting systems over possibly
 hierarchical graphical structures obtained as algebras of suitable
@@ -2681,9 +2682,10 @@ since $\mathcal{G}$ is acyclic and finite, then $\dph(v)$ is a natural number.
 \todo{cite something here? graph signatures?}
 
 \begin{definition}[Node-merging graphical rewriting systems]
-  Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph, the
+  Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph
+  and $\G$ the free category over $\mathcal{G}$. The
   category $\gph{G}$ of \emph{$\mathcal{G}$-graphs} is the category
-  $\Set^{\G}$, where $\G$ is the free category over $\mathcal{G}$. A
+  $\Set^{\G}$. A
   \emph{node-merging graphical rewriting systems} is a left-linear
   rewriting system $(\gph{G}, \R)$ such that, for every rule
   $(l,r)$, with $l\colon K\to L$ and $r\colon K\to R$ in $\R$, the
