@@ -508,12 +508,12 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   concurrent and distributed systems, since independence means that
   they could be executed in any order, and potentially in parallel.
   % 
-  We investigate the issue in the context of the Double Pushout (DPO)
+  We investigate the issue in the context of the double pushout
   approach to rewriting in the general setting of adhesive categories.
   %, a very general setting for rewriting.  
   More precisely, we focus on left-linear rules, which
   not only consume, preserve and generate entities, as linear rules
-  do, but may ``merge'' parts of the state.
+  do, but may also ``merge'' parts of the state.
   % 
   An apparently minimal, yet technically hard enhancement, 
   % 
@@ -704,7 +704,7 @@ flexibility: the rules allow to specify that, in a rewriting step,
 some entities in the current state are removed, some others are needed
 for the rewriting step to occur but remain unaltered and some new
 entities can be generated. Concerning concurrency, the chosen notion
-is shift equivalence, and independence is formally captured by what is
+is switch (also referred to as shift) equivalence, and independence is formally captured by what is
 called the Church-Rosser theorem of DPO
 rewriting~\cite[Chapter 3, Section~3.4]{CorradiniMREHL97}. %cite[Section~4]{Ehrig78}
 
@@ -770,8 +770,8 @@ Firstly, the notion of sequential independence and the Church-Rosser
 theorem, ensuring that sequential independent steps can be performed
 in reverse order, does not hold out of the box. Even worse, given two
 independent steps it might be possible to switch them in several
-different ways. As we will observe, this might prevent the development
-of a sensible theory of concurrency as switches are used as a basis
+different ways. As we will observe, this prevents the development
+of a sensible theory of concurrency since switches are used as a basis
 for equating sequences of rewriting steps that differs only for the order of independent
 steps.
 
@@ -783,7 +783,7 @@ left-linear rewriting systems.
 
 
 On the one hand, they capture most categories of
-interest for rewriting. In particular, we identify a class of
+interest for rewriting. In particular, we identify a vast class of
 left-linear rewriting systems on graph-like structures that are
 well-switching and we show that rewriting systems on graphs with
 equivalences are so. 
@@ -815,17 +815,17 @@ rewriting systems, a central result is the characterisation of
 switch equivalence of sequences of steps based on what are called processes or
 consistent permutations~\cite{CMR:GP,Handbook,BaldanCHKS06,heindel2009category}.
 In turn this is the key
-to derive some simple but fundamental properties for linear rewriting
+to derive some basic but fundamental properties for linear rewriting
 systems, namely
 
 \begin{enumerate}
+\item \emph{globality of independence}: if two independent steps are
+  moved forward or backward due to the application of switchings to a
+  sequence, they remain independent;
 \item \emph{consistency of switching}: when transforming
   sequences of rewriting steps into equivalent ones by switching independent steps, the
   result does not depend on the order in which switchings are applied, but
-  only on the associaterd permutation;
-\item \emph{globality of independence}: if two independent steps are
-  moved forward or backward due to the application of switchings to a
-  sequence, they remain independent.
+  only on the associated permutation.
 \end{enumerate}
 Properties (1) and (2) allow one to deduce a canonical form for equivalence proofs 
 between sequences of rewriting steps seen as concurrent computations.
@@ -837,10 +837,10 @@ of switch equivalence based on consistent permutations fails,
 hence it cannot be used for proving (1) and (2).
 %
 This leads to asking whether the two properties above hold.
-We show that much of the theory can be retained: consistency
-of switching still holds, while globality of independence  in a
-weaker form only, conceptually linked to the fact that fusions introduce a
-form of disjunctive causality. Finally, we prove that a canonical form
+We show that much of the theory can be retained: globality of independence holds in a
+weaker form, conceptually linked to the fact that fusions introduce a
+form of disjunctive causality, while consistency
+of switching holds unchanged. Finally, we prove that a canonical form
 for switching sequences can also be recovered.
 
 The paper has the following structure. 
@@ -857,7 +857,7 @@ Finally, Section~\ref{conclusions} wraps up the paper and
 offers some thoughts on possible directions for future work.
 The appendixes collect additional data, recalling basic results on
 adhesive categories (Appendix~\ref{app:ade}), introducing and 
-proving properties for \emph{strong enforcing} rewriting systems
+proving properties for \emph{strong enforcing} rewriting systems, a class of systems where sequential independence is well-behaved\todo{P: altrimenti mai menzionata nell'intro}
 (Appendix~\ref{app:fill}), and giving the proofs of the main 
 results of our work (Appendix~\ref{omitted}).
 
@@ -890,9 +890,7 @@ This first section recalls definitions and basic theory of \emph{$\mathcal{M}$-a
 
 
 \subsection{$\mathcal{M}$-adhesivity}\label{subsec:ade}
-The key property that $\mathcal{M}$-adhesive categories enjoy is given
-by the \emph{Van Kampen condition}
-\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. We
+The key property that $\mathcal{M}$-adhesive categories enjoy is the so-called \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. We
 will recall it and examine some of its consequences. First of all, we
 need to introduce some terminology and facts regarding subclasses of
 $\mor(\X)$.
@@ -914,7 +912,7 @@ So equipped, we can introduce the notion of \emph{$\mathcal{A}$-Van Kampen squar
 \noindent
 \parbox{10cm}{
   \begin{definition}[Van Kampen property]
-    Let $\X$ be a category and consider the two diagrams aside.
+    Let $\X$ be a category and consider the diagrams aside.
  %   
 %    \hspace{15pt}
     Given  a class of arrows $\mathcal{A}\subseteq \mor(\X)$, we say that the bottom square
@@ -986,7 +984,7 @@ We write $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $
     %\cma{M}{M}':=\{(h,k)\in \mathcal{A}(\comma{L}{R}) \mid h\in
     %\mathcal{M}, k\in \mathcal{M}'\}\]
 %\end{theorem}
-$\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of slice and functor caregories \cite{mac2013categories}, as shown by the following theorems \cite{ehrig2006fundamentals,lack2005adhesive}.
+$\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of slice and functor caregories \cite{mac2013categories}, as shown by the following theorems from~\cite{ehrig2006fundamentals,lack2005adhesive}.
 
 %\begin{theorem}
 %[\cite{ehrig2006fundamentals,lack2005adhesive}]
@@ -1071,7 +1069,7 @@ of this approach to abstract rewriting.
   A \emph{left-linear rewriting system} is a pair $(\X, \R)$ where
   $\X$ is an $\mathcal{M}$-adhesive category and $\R$ is a set of left
   $\mathcal{M}$-linear rules. The rewriting system $(\X, \R)$ is
-  called \emph{linear}
+  called $\mathcal{M}$-\emph{linear}\todo{P: giusto?}
   %
   \full{\emph{(consuming)}}
   %
@@ -1083,7 +1081,7 @@ of this approach to abstract rewriting.
   \noindent
   \parbox{10cm}{\hspace{15pt}Given two objects $G$ and $H$ and a rule
     $\rho=(l,r)$ in $\R$, a \emph{direct derivation $\mathscr{D}$ from
-      $G$ to $H$ applying the rule $\rho$} is a diagram as the one
+      $G$ to $H$ applying rule $\rho$} is a diagram as the one
     aside, in which both squares are pushouts. The arrow $m$ is called
     the \emph{match} of the derivation, while $h$ is its
     \emph{back-match}.  We denote a direct derivation $\dder{D}$
@@ -1184,7 +1182,7 @@ Often, we are interested in derivations only up to some notion of coherent isomo
 
 \noindent
 \parbox{8cm}{
-  \begin{definition}
+  \begin{definition}[abstraction equivalence]
     Let  $\X$ be an $\mathcal{M}$-adhesive category and 
     $(\X, \R)$ a left-linear rewriting system. 
     An \emph{abstraction equivalence} between two derivations $\der{D}$
@@ -2217,10 +2215,14 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   $\rho_i$, is depicted in Fig.~\ref{fi:derD}. Note that the numbers in $\rho_1$
   were changed consistently to represent the vertical morphisms.
   Steps $\dder{D}_1$ and $\dder{D}_2$ are clearly sequential
-  independent via independence pair $(R_1 \to D_2, L_2 \to D_1)$.
-  %that map nodes consistently with their numbering.\todo{P: having names for the graphs would probably help}
+  independent via the independence pair $(R_1 \to D_2, L_2 \to D_1)$
+  mapping nodes according to their numbering.
+  %
   A switch of $\der{D}$ along such independence pair is the derivation
-  $\der{E}$ in Fig.~\ref{fi:derE}.
+  $\der{E}$ in Fig.~\ref{fi:derE}. Instead, in $\der{D}$ the first two
+  steps applying $\rho_0$ and $\rho_1$ are not sequential independent,
+  intuitively because $\rho_1$ uses the node produced by $\rho_0$ for
+  attaching a self-loop.
   
   \begin{figure}
     \input{Figure/derD.tex}
@@ -2311,10 +2313,9 @@ can be obtained one from another by a sequence of switches. Moreover, intermedia
  $\nu_{1,m}$.
   
   We say that two derivations $\der{D}, \der{E}:G\Mapsto H$ are \emph{switch
-    equivalent} if there is a switching sequence, possibly empty, $\{\der{D}_{k}\}_{k=0}^m$ such that
+    equivalent}, written $\der{D}\equiv^{sh} \der{E}$, if there is a switching sequence, possibly empty, $\{\der{D}_{k}\}_{k=0}^m$ such that
       \[\der{D}\equiv_a \der{D}_0 \shift{\transp{i_1}} \der{D}_1 \shift{\transp{i_2}} \ldots \shift{\transp{i_m}}
     \der{D}_m\equiv _a \der{E}\]
-    We denote this relation by $\der{D}\equiv^{sh} \der{E}$. 
 \end{definition}
 
 \begin{remark}\label{rem:abst}
@@ -2327,10 +2328,11 @@ can be obtained one from another by a sequence of switches. Moreover, intermedia
 
 The fact that sequential independence implies switchability always
 holds for linear rules (see \Cref{prop:equi}). The result is so
-indispensable that it is not even stated, in the sense that
-in the literature switchability is not introduced axiomatically as in
-Definition~\ref{def:switch}, but it is based on the explicit
-construction of a switch.
+indispensable that typically in the literature
+it is not even stated,
+in the sense that in the literature switchability is not introduced
+axiomatically as in Definition~\ref{def:switch}, but it is based on
+the explicit construction of a switch.
 
 Unfortunately, for left-linear rewriting systems
 sequential independence does not imply switchability (while the
@@ -2380,18 +2382,16 @@ converse implication clearly holds), as shown by the next example.
       \ar@{>->}[ll]^{\id{0}} 0 \ar[rr]_{\id{0}}&& 0}\]
 
   \noindent
-  \parbox{10cm}{ \hspace{15pt} Notice that the two
-    direct derivations are sequential independent.
-    %
-    On the other hand, the rule
-    applied by $\dder{D}_1$ cannot be applied to $c$. In fact, the
-    unique morphism $a\to c$ is $(a,c)$, thus we get the diagram
+  \parbox{10cm}{ \hspace{15pt} Note that the two direct derivations
+    are sequential independent. Howver there is no switch since the
+    rule applied by $\dder{D}_1$ cannot be applied to $c$. In fact,
+    the unique morphism $a\to c$ is $(a,c)$, thus we get the diagram
     aside. But $b$ and $c$ do not have a supremum in the poset
-    underlying $\X$, thus we do not get a direct derivation from
-    $c$.}  \parbox{3cm}{
+    underlying $\X$, thus we do not get a direct derivation from $c$.}
+  \parbox{3cm}{
     \vspace{-.3cm}$\xymatrix{a \ar[d]_{(a,c)}& a
-      \ar[d]_{(a,c)}\ar@{>->}[l]_{\id{a}} \ar[r]^{(a,b)} & b \\c
-      & c \ar[l]^{\id{c}} }$}  
+      \ar[d]_{(a,c)}\ar@{>->}[l]_{\id{a}} \ar[r]^{(a,b)} & b \\c & c
+      \ar[l]^{\id{c}} }$}
 \end{example}
 
 \iffalse 
@@ -2555,7 +2555,7 @@ Still, there are adhesive rewriting systems which are not strong enforcing, as s
   \label{ex:diff2}
   In light of \Cref{thm:church}, \Cref{ex:diff1} provides an example
   of an independence pair which is not strong, and thus of a
-  non-strong enforcing adhesive rewriting system.%  Instead every
+  non-strong enforcing left-linear adhesive rewriting system.%  Instead every
   % left-linear system in category $\cat{Graph}$ is strong enforcing, by
   % the results of Appendix~\ref{app:fill}, summarized
   % in~\Cref{ex:graph-type-bb} and~\Cref{cor:llr-is-strEnf}.
@@ -2621,7 +2621,7 @@ definitively be taken apart, as shown in the example below.
   switch equivalent is not closed by prefix, and this prevents
   to derive a sensible concurrent semantics: if we limit to the first
   two steps, we obtain derivations $\dder{D}_0 \cdot \dder{D}_1$ and
-  $\dder{D}_0' \cdot \dder{D}_1'$ are not switch equivalent while
+  $\dder{D}_0' \cdot \dder{D}_1'$ which are not switch equivalent while
   $\der{D} = \dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ and
   $\der{D}' = \dder{D}_0'\cdot \dder{D}_1' \cdot \dder{D}_2'$ would
   be.
@@ -2645,7 +2645,7 @@ A left-linear rewriting system $(\X, \R)$ is \emph{well-switching} if it is stro
 The previous definition might sound restrictive. However, it is immediate to see that linear rewriting systems are all well-switching (see Proposition~\ref{pr:weak}).
 %
 Moreover, Lemma~\ref{bono} will show that a class of rewriting systems, comprising
-all the ones used in modelling the applications to the encoding of process calculi or of bio and chemical systems mentioned in the Introduction,
+all the ones used in modelling the applications to the encoding of process calculi or of bio and chemical systems mentioned in the introduction,
 are actually well-switching.
 %\todo{citazioni?}
 %
@@ -2653,7 +2653,7 @@ Roughly speakings, these are rewriting systems over possibly
 hierarchical graphical structures obtained as algebras of suitable
 signatures where rules are constrained not to merge elements of top
 level sorts in the hierarchy (for graphs, nodes can be merged while
-edges can not). We first introduce the signature which is essentially
+edges cannot). We first introduce the signature which is essentially
 an acyclic graph where nodes can be seen as sorts.
 
 \begin{definition}
@@ -2842,11 +2842,11 @@ Then the following are equivalent:
 
 
 As discussed in the introduction, a number of basic properties of
-switch equivalence, i.e. the confluence of switching, the globality of
-independence, and the existence of a canonical form for equivalence
-proofs, can be derived, in the linear case, from a characterisation of
-switch equivalence in terms of consistent permutations or
-processes.
+switch equivalence, i.e. the globality of independence, the
+consistency of switching and the existence of a canonical form for
+equivalence proofs, can be derived, in the linear case, from a
+characterisation of switch equivalence in terms of consistent
+permutations or processes.
 
 When dealing with left-linear rules, such a characterisation fails. Leaving aside the formal details (the interested reader can refer to \Cref{def:permcon}), the intuition is quite simple. In the linear case one proves that two derivations using the same rules in different orders are switch equivalent when the colimits of the two derivations, seen as diagrams, are isomorphic and the isomorphism properly commutes with the embeddings of the rules.
 
@@ -2863,11 +2863,11 @@ are trivially satisfied.
 
 In this section we show that, despite the failure of such
 characterisation, actually much of the theory can be retained, taking
-a different and sensibly more complex route for the proofs: confluence
-of switching still holds, while globality of independence holds in a
-weak form, conceptually linked to the fact that fusions introduce a
-form of disjunctive causality. Finally, a canonical form for switching
-sequences can also be recovered.
+a different and sensibly more complex route for the proofs: globality
+of independence holds in a weak form, conceptually linked to the fact
+that fusions introduce a form of disjunctive causality, while
+consistency of switching holds unchanged. Finally, a canonical form
+for switching sequences can also be recovered.
 
 We start by proving two lemmas dealing with derivations of length
 $3$. Despite being technical, these lemma are the fundamental building blocks for obtaining our results.
@@ -2885,7 +2885,7 @@ causality. Hence, if in $\dder{D}_0\cdot \dder{D}_1\cdot \dder{D}_2$ we have tha
 disjunctive causes of $\dder{D}_2$, at least one of the two is needed to
 enable the application of $\dder{D}_2$ and this explain why in
 $\dder{D}_1\cdot \dder{D}_2\cdot \dder{D}_0$ we have that $\dder{D}_1$ and $\dder{D}_2$ are no longer
-independent.
+independent. This is exemplified below.
 
 \begin{example}
   \label{ex:non-global}
@@ -2895,7 +2895,7 @@ independent.
   $\der{F}$ in Fig.~\ref{fi:derF}. Observe that rule $\rho_4$ needs a self loop on node $12$ to be
   applied. This can be generated either
   by $\rho_3$ or by $\rho_1$ merging nodes $1$ and $2$, hence at least
-  one of them must precede the application of $\rho_4$. Indeed, in $\der{E}$ it can be easily seen that the second and the third step applying $\rho_1$ and $\rho_3$ are independent. However, we could switch twice the application of $\rho_3$, bringing it in the last position, obtaining a derivation $\der{F}'$ as depicted in Fig.~\ref{fi:derF1}, where the applications of  $\rho_1$ and $\rho_3$ are no longer independent.
+  one of them must precede the application of $\rho_4$. Indeed, in $\der{E}$ it can be easily seen that the second and the third step applying $\rho_1$ and $\rho_4$ are independent. However, we could switch twice the application of $\rho_3$, bringing it in the last position, obtaining a derivation $\der{F}'$ as depicted in Fig.~\ref{fi:derF1}, where the applications of  $\rho_1$ and $\rho_4$ are no longer independent.
    
   \begin{figure}
     \input{Figure/rules-cas.tex}    
@@ -2917,42 +2917,43 @@ independent.
 \end{example}
 
 \begin{restatable}[Globality of independence]{lemma}{lemIndepGlobalLeft}
-	\label{lem:indep-global-left}
-	Let $\X$ be an $\mathcal{M}$-adhesive category and	$(\X,\R)$ a well-switching DPO rewriting system.
-For every  derivation
-	$\der{D}=\{\dder{D}_i\}_{i=0}^2$  of lenght $3$, the following hold true:
-	\begin{enumerate}
-		\item
-		\label{lem:indep-global-left:1} if $\dder{D}_0\seqind \dder{D}_1$ and there is a switching sequence
-		\[\der{D}\shift{(1,2)} \der{D}_1\shift{(0,1)} \der{D}_2\]
-		then the last two steps of $\der{D}_2$ are switchable;
-		
-		\item
-		\label{lem:indep-global-left:2}
-		suppose that $\dder{D}_1 \seqind\dder{D}_2$ with independence pair $(\alpha_0, \alpha_1)$ and that, moreover,  $\dder{D}_0\seqind S_{\alpha_0, \alpha_1}(\dder{D}_2)$, if there is a switching sequence
-			\[\der{D}\shift{(0,1)} \der{E}_1\shift{(1,2)} \der{E}_2\]
-	then the first two steps of $\der{E}_2$ are switchable.
-	\end{enumerate}
+  \label{lem:indep-global-left}
+  Let $\X$ be an $\mathcal{M}$-adhesive category and	$(\X,\R)$ a well-switching DPO rewriting system.
+  For every  derivation
+  $\der{D}=\{\dder{D}_i\}_{i=0}^2$  of lenght $3$, the following hold true:
+  \begin{enumerate}
+  \item
+    \label{lem:indep-global-left:1} if $\dder{D}_0\seqind \dder{D}_1$ and there is a switching sequence
+    \[\der{D}\shift{(1,2)} \der{D}'\shift{(0,1)} \der{D}''\]
+    then the last two steps of $\der{D}''$ are switchable;
+    
+  \item
+    \label{lem:indep-global-left:2}
+    suppose that $\dder{D}_1 \seqind\dder{D}_2$ with independence pair $(\alpha_0, \alpha_1)$ and that, moreover,  $\dder{D}_0\seqind S_{\alpha_0, \alpha_1}(\dder{D}_2)$, if there is a switching sequence
+    \[\der{D}\shift{(0,1)} \der{E}'\shift{(1,2)} \der{E}''\]
+    then the first two steps of $\der{E}''$ are switchable.
+  \end{enumerate}
 \end{restatable}
   %
 
 \full{[Proof~\ref{lemIndepGlobalLeft-proof}]}
 
 
-The second lemma capture the essence of the confluence of
+The second lemma capture the essence of the consistency of
 switchings. It shows that if we have a derivation consisting of three
 rewriting steps, say $\dder{D}_0\cdot \dder{D}_1\cdot  \dder{D}_2$ and we switch them leading to the
 sequence $\dder{D}_2\cdot  \dder{D}_1\cdot  \dder{D}_0$, we obtain the same resulting derivation,
 independently from the order of the switchings.
 
 
-\begin{restatable}[Confluence of switchings]{lemma}{lemSwitchConfluence}
+\begin{restatable}[Consistency of switchings]{lemma}{lemSwitchConfluence}
 	\label{lem:switch-confluence}
 	Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X,\R)$ a	well-switching DPO rewriting system.
 	% 
 	Consider a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$ and suppose that we have the following two switching sequences
-	\[\der{D} \shift{(0,1)} \der{D}_1 \shift{(1,2)} \der{D}_2 \shift{(0,1)}\der{D}_3\\ \qquad \der{D}\shift{(1,2)}\der{E}_1\shift{(0,1)} \der{E}_2 \shift{(1,2)}\der{E}_3 \]
-Then $\der{D}_3$ and $\der{E}_3$ are abstraction equivalent. 
+	\[\der{D} \shift{(0,1)} \der{D}' \shift{(1,2)} \der{D}'' \shift{(0,1)}\der{D}'''\\
+          \qquad \der{D}\shift{(1,2)}\der{E}'\shift{(0,1)} \der{E}'' \shift{(1,2)}\der{E}''' \]
+Then $\der{D}'''$ and $\der{E}'''$ are abstraction equivalent. 
 \end{restatable}
 
 \full{[Proof~\ref{lemSwitchConfluence-proof}]}
@@ -2961,7 +2962,7 @@ Then $\der{D}_3$ and $\der{E}_3$ are abstraction equivalent.
 The lemmas above open the way to the key result of this section establishing a canonical form for
 switching derivations.
 
-The first result shows that whenever equating two derivation sequences by performing a sequence of switching, we can limit ourselves to switchings inverting the order of steps that in the target derivation has to be reversed, i.e. we can limit ourselves to inversions.
+The first result shows that whenever equating two derivation sequences by performing a sequence of switching, we can limit ourselves to switchings inverting the order of steps that in the target derivation has to be reversed, i.e. we can limit ourselves to applying inversions.
 
 \begin{restatable}[No need of useless switchings]{theorem}{thNoNeed}
   \label{th:no-need}
@@ -3093,8 +3094,8 @@ many vital results can be re-established. Specifically, a Church-Rosser
 theorem, i.e. the possibility of performing independent steps in any order, is
 fully recovered. Moreover, the switch construction and correspondingly
 the switch equivalence, at the core of a theory of concurrency for
-rewriting systems, enjoy a number of fundamental properties:
-confluence of switching, a weak form of globality of independence and
+rewriting systems, enjoy a number of fundamental properties: a weak form of globality of independence, 
+consistency of switching and
 the existence of a canonical form for switch equivalence proofs.
 
 The class of well-switching adhesive rewriting systems is large. Generalising a result in~\cite{baldan2011adhesivity},
