@@ -2967,8 +2967,8 @@ The first result shows that whenever equating two derivation sequences by perfor
   \label{th:no-need}
   Let $\der{D}$ and $\der{D}'$ be derivation sequences. If $\der{D} \shifteq \der{D}'$ then there is a switching sequence consisting only of inversions
   \begin{center}
-    $\der{D} = \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
-    \shift{\nu_n} \der{D}_n=\der{D}'$
+    $\der{D} \equiv_a \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
+    \shift{\nu_n} \der{D}_n \equiv_a \der{D}'$
   \end{center}
 \end{restatable}
 
@@ -2987,8 +2987,8 @@ canonical form for switching derivations: at each step one can apply a switch to
   Let $\der{D}$ and $\der{D}'$ be derivation sequences. If
   $\der{D} \shifteq[\sigma]\der{D}'$ then there is a switching sequence
   \begin{center}
-    $\der{D} = \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
-    \shift{\nu_n} \der{D}_n=\der{D}'$
+    $\der{D} \equiv_a \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
+    \shift{\nu_n} \der{D}_n \equiv_a\der{D}'$
   \end{center}
   where for each $i \in \interval{n}$ the transposition $\nu_i  = \transp{k}$ is such that 
   $k = \max \{ j \mid \transp{j} \in \inv{\nu_{i,n}}\}$.\todo{P: $\nu_{i,n} = \sigma \circ \nu_{1,i}$, giusto? forse e' piu' carino}
@@ -5177,7 +5177,7 @@ only inversions, we can strip the first and last switches.
   $\nu_n = \transp{\nu_{1,n}(i)}$.  Then there is shorter switching sequence
   consisting only of inversions:
   \begin{center}
-    $\der{D}_0 \shift{\nu_2'} \der{D}_3' \shift{\nu_3'} \ldots
+    $\der{D}_0 \equiv_a \der{D}_0' \shift{\nu_2'} \der{D}_3' \shift{\nu_3'} \ldots
     \shift{\nu_{n-1}'} \der{D}_n'$
   \end{center}
 \end{lemma}
@@ -5195,7 +5195,7 @@ only inversions, we can strip the first and last switches.
     \shift{\nu_n'} \der{D}_{n+1}$
   \end{center}
 
-  Now, since switchings $\transp{i}$ twice one obtains a derivation
+  Now, switching $\transp{i}$ twice one obtains a derivation
   which is abstraction equivalent to the starting one.  Hence we have
   \begin{center}
     $\der{D}_0 \equiv_a
@@ -5233,9 +5233,9 @@ only inversions, we can strip the first and last switches.
   Then, by maximality, if $\nu_{i-1}=\transp{k}$ it must hold that
   $\nu_{j}=\transp{\nu_{i,j}(i)}$. Then, by Lemma~\ref{le:switchC},
   the switching sequence from $\der{D}_{i-1}$ to $\der{D}_{j}$ can be
-  shortened by $2$:
+  shortened by $2$, i.e., 
   \begin{center}
-    $\der{D}_{i-1} = \der{D}_{i+1}' \shift{\nu_{i+1}'} \ldots
+    $\der{D}_{i-1} \equiv_a \der{D}_{i+1}' \shift{\nu_{i+1}'} \ldots
     \shift{\nu_j'}\der{D}_j$
   \end{center}
   and thus the same applies to the original switching sequence.
@@ -5251,8 +5251,8 @@ only inversions, we can strip the first and last switches.
   Let $\der{D} \shifteq \der{D}'$. Then there is there is a switching
   sequence
   \begin{center}
-    $\der{D} = \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
-    \shift{\nu_n} \der{D}_n=\der{D}'$
+    $\der{D} \equiv_a \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
+    \shift{\nu_n} \der{D}_n \equiv_a \der{D}'$
   \end{center}
   If it does not consist only of inversions, by Lemma~\ref{le:switchD}
   we can reduce its length by $2$. An inductive reasoning allows us to
