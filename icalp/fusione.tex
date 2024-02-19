@@ -32,7 +32,8 @@
 
 
 \usepackage{hyperref}
-\usepackage[disable,textsize=tiny]{todonotes}
+\usepackage[%disable,%
+textsize=tiny]{todonotes}
 %\usepackage{etex}
 \usepackage[all]{xy}
 \SelectTips{cm}{}
@@ -1070,9 +1071,9 @@ of this approach. %to abstract rewriting.
   A \emph{left-linear rewriting system} is a pair $(\X, \R)$ where
   $\X$ is an $\mathcal{M}$-adhesive category and $\R$ a set of left
   $\mathcal{M}$-linear rules. The rewriting system $(\X, \R)$ is
-  called $\mathcal{M}$-\emph{linear}\todo{P: giusto?}
+  called $\mathcal{M}$-\emph{linear}
   %
-  \full{\emph{(consuming)}}
+  \full{\emph{(consuming)}}%
   %
   if every rule in $\R$ is
   $\mathcal{M}$-linear.
@@ -2966,7 +2967,7 @@ switching derivations.
 
 The first result shows that whenever equating two derivation sequences by performing a sequence of switching, we can limit ourselves to switchings inverting the order of steps that in the target derivation has to be reversed, i.e. we can limit ourselves to applying inversions.
 
-\begin{restatable}[No need of useless switchings]{theorem}{thNoNeed}
+\begin{restatable}[No need of useless switches]{theorem}{thNoNeed}
   \label{th:no-need}
   Let $\der{D}$ and $\der{D}'$ be derivation sequences. If $\der{D} \shifteq \der{D}'$ then there is a switching sequence consisting only of inversions
   \begin{center}
@@ -2982,7 +2983,7 @@ performed in any order in the case of linear rewriting systems, this is no longe
 rewriting systems due to the fact that, as already observed, globality of independence holds in a weak form. For instance, if we get back to Example~\ref{ex:non-global} and consider derivation $\der{F}$ in Fig.~\ref{fi:derF}, the last two steps applying rules $\rho_1$ and $\rho_4$ can be switched, thus leading to a derivation, call it $\der{F}''$,  applying $\rho_3, \rho_4, \rho_1$. Such $\der{F}$ is switch equivalent to $\der{F}'$ in Fig.~\ref{fi:derF1}, hence starting from $\der{F}''$ we can obtain $\der{F}'$ via a switching sequence, but we cannot start by switching $\rho_1$ and $\rho_4$, despite the fact that this is an inversion.
 
 Still, we can identify a
-canonical form for switching derivations: at each step one can apply a switch to the inversion with higher index. 
+canonical form for switching derivations: at each step one can apply a switch to the inversion with largest index. 
 
 
 \begin{restatable}[Canonical form]{corollary}{coCanonical}
@@ -2994,7 +2995,7 @@ canonical form for switching derivations: at each step one can apply a switch to
     \shift{\nu_n} \der{D}_n \equiv_a\der{D}'$
   \end{center}
   where for each $i \in \interval{n}$ the transposition $\nu_i  = \transp{k}$ is such that 
-  $k = \max \{ j \mid \transp{j} \in \inv{\nu_{i,n}}\}$.\todo{P: $\nu_{i,n} = \sigma \circ \nu_{1,i}$, giusto? forse e' piu' carino}
+  $k = \max \{ j \mid \transp{j} \in \inv{\nu_{i,n}}\}$.
 \end{restatable}
 
 \full{[Proof~\ref{coCanonical-proof}]}
@@ -3643,7 +3644,7 @@ sequentially independent. We can then wonder if they are switchable.
 
 There is another
 useful property of  sequentially independent direct
-derivations which is worth mentioning.\todo{A: va tolto weakly?}
+derivations which is worth mentioning.
 
 \noindent
 \parbox{9.5cm}
@@ -4745,8 +4746,8 @@ by switching only step along inversions.
   \end{center}
   as depicted in Fig.~~\ref{fi:switchA}, starting from the fourth column.
 
-  By Lemma~\ref{lem:indep-global-left}(\ref{lem:indep-global-left:1})\todo{Check numbering} we can
-  reorganise the first three switchings as
+  By Lemma~\ref{lem:indep-global-left}(\ref{lem:indep-global-left:1})
+  we can reorganise the first three switchings as
 
   \begin{center}
     $\der{D}_0 \shift{\transp{i}} \der{D}_1'''
@@ -5043,13 +5044,12 @@ by switching only step along inversions.
 
   Since in $\der{D}_0$ steps in positions $i$ and $i+1$ are sequential
   independent, we can use
-  Lemma~\ref{lem:indep-global-left}(\ref{lem:indep-global-left:1})\todo{Check
-    numbering} and we have that the corresponding steps in positions
-  $i+1$ and $i+2$ in $\der{D}_2''$ are still sequential
-  independent. Hence, we can use the inductive hypothesis on
-  $\der{D}_2''$ and deduce the existence of a switching sequence where
-  $\transp{i+1}[i+2]$ can be switched first, i.e. we obtain (see
-  Fig.~\ref{fi:switchB2}, third column)
+  Lemma~\ref{lem:indep-global-left}(\ref{lem:indep-global-left:1}) and
+  we have that the corresponding steps in positions $i+1$ and $i+2$ in
+  $\der{D}_2''$ are still sequential independent. Hence, we can use
+  the inductive hypothesis on $\der{D}_2''$ and deduce the existence
+  of a switching sequence where $\transp{i+1}[i+2]$ can be switched
+  first, i.e. we obtain (see Fig.~\ref{fi:switchB2}, third column)
   \begin{center}
     $\der{D}_2'' \shift{\transp{i+1}[i+2]}
     \der{D}_3''' \shift{\nu_4'''} \ldots \shift{\nu_n'''} \der{D}_n$
@@ -5062,7 +5062,7 @@ by switching only step along inversions.
   \end{center}
   Since we additionally know that in $\der{D}_0$ the steps $i$ and
   $i+1$ are sequentially independent, we can use
-  Lemma~\ref{lem:indep-global-left}(\ref{lem:indep-global-left:2})\todo{Check numbering} to
+  Lemma~\ref{lem:indep-global-left}(\ref{lem:indep-global-left:2}) to
   reorder the first three switchings, obtaining
   \begin{center}
     $\der{D}_0 \shift{\transp{i}} \der{D}_1' \shift{\transp{i+1}[i+2]}
