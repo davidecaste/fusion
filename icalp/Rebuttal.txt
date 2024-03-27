@@ -1,0 +1,27 @@
+We thank the reviewer for carefully reading the paper and for their comments. Here are some answers:
+
+REVIEWER 1
+We believe that the paper fits into "Algebraic and Categorical Models of Computation" which is one of the topics of ICALP. We did our best to make the paper accessible to people having a basic knowledge of category theory and we inserted a number of examples aimed at communicating the main problems and solution of dealing with non-linear rewriting (which apply to a number of cincrete visual rewriting formalisms like string diagrams [9]). In the preparation of the final version we can put further effort in conveying intuition.\
+
+
+REVIEWER 2
+- "it is unfortunate that you did not find space for describing the class in any detail, but please at least indicate how it compare to the class studied in [6]."
+
+As mentioned in the paper, the class is the natural generalisation of the one in [6] from adhesive to M-adhesive categories. In the final version we can make this more explicit and add some further details.
+
+- Ex. 3.7 does not look quite right. The was not adhesive, wasn't it? It was only iso-adhesive.
+
+The idea here is to provide an example of a M-left linear rewriting systems over an M-adhesive category which is not strong enforcing. Hence left-linear and adheive should read M-left linear and M-adhesive. Omitting the M- prefix which is done also in other parts of the paper here is definitively confusing and we will amend this.
+
+REVIEWER 3
+
+- Is Church-Rosser essentially a consequence of the definition of strong independence pair?
+
+Yes, the idea here was to distill the minimal assumptions needed to make Church-Rosser result work. This is then used to show that for a large class of M-adhesive rewriting systems (the one generalising [6]) this assumptions reduce to the existence of an independence pair.
+
+- well-switching rewriting systems feel overly restrictive and, as such, the development feels slightly preliminary.
+
+Actually, the counterexamples discussed in the paper (ex. 3.14) suggest that out of the class of well-switching rewriting systems no reasonable theory of rewriting can be developed. And, as the reviewer correctly observe, despite the fact that the condition could look restrictive, classes of rewriting systems (Node-merging graphical rewriting systems and E-graphs) which cover many concrete applications in the literature are well-switching.
+
+
+
