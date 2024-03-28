@@ -1,7 +1,7 @@
 We thank the reviewers for the careful reading of our paper and for their comments. Here are some answers:
 
 REVIEWER 1
-- Adequate for ICALP?
+- In scope for ICALP?
 
 We believe that the paper fits into "Algebraic and Categorical Models of Computation" which is one of the topics of ICALP. We did our best to make the paper accessible to people having a basic knowledge of category theory and we inserted a number of examples aimed at communicating the main problems and solutions of dealing with non-linear rewriting (which apply to a number of concrete visual rewriting formalisms like string diagrams [9]). In the preparation of the final version we can put further effort in conveying intuition.
 
