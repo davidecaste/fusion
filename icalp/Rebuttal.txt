@@ -11,7 +11,7 @@ Indeed, the class is constructed using a generalisation of the methods exploited
 
 - Ex. 3.7 does not look quite right. The was not adhesive, wasn't it? It was only iso-adhesive.
 
-The idea here is to provide an example of a M-left linear rewriting systems over an M-adhesive category which is not strong enforcing. Hence left-linear and adhesive should read M-left linear and M-adhesive. Omitting the M- prefix which is done also in other parts of the paper here is definitively confusing and we will amend this. It is worth noticing that, having in mind the results of [6] and of our Appendix B, in every category built from Set using the comma construction or taking the category of functors is strong enforcing, thus every example of an independence pair which is not strong, must live in a rather "pathological" category.
+The idea here is to provide an example of a M-left linear rewriting systems over an M-adhesive category which is not strong enforcing. Hence left-linear and adhesive should read M-left linear and M-adhesive. Omitting the M- prefix which is done also in other parts of the paper here is definitively confusing and we will amend this. It is worth noticing that, having in mind the results of [6] and of our Appendix B, in every category built from Set using the comma construction or taking the category of functors is strong enforcing, thus every example of an independence pair which is not strong, must live in a rather "pathological" example of M-adhesive category.
 
 REVIEWER 3
 
