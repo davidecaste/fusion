@@ -950,6 +950,144 @@ Let $\X$ be a $\mathcal{M}$-adhesive category. Given $m\colon X\mto Y$ in $\math
 	The claim now follows since $k_2$ is a monomorphism. \qedhere 
 \end{proof}
 
+\subsubsection{Final pullback complements}
+
+\subsubsection{Factorization systems and $\mathcal{M}$-adhesivity} \todo{Da sistemare}
+ Let us start by recalling the notion of a factorization system \cite{bousfield1977constructions,kelly1991note,rosicky2007factorization,tholen1983factorizations}.
+
+\begin{definition}\label{def:fs}\index{factorization system} \index{left lifting property} \index{factorization system!proper -} \index{factorization system!stable -}
+	Let $\X$ be a category and $\mathcal{E}$, $\mathcal{M}$ two classes of arrows, we will say that $(\mathcal{E},\mathcal{M})$ is a (orthogonal) \emph{factorization system} if:
+	\begin{enumerate}
+		\item every isomorphism is in both $\mathcal{E}$ and $\mathcal{M}$;
+		\item $\mathcal{E}$ and $\mathcal{M}$ are closed under composition;
+		
+		\item  every arrow $f\colon X\to Y$ of $\X$ admits a \emph{$(\mathcal{E}, \mathcal{M})$-factorization}, i.e.~there are arrows $e_f\in \mathcal{E}$ and $m_f\in \mathcal{M}$ with the property that $f=m_f\circ e_f$;
+		\item every $e\in \mathcal{E}$ has the \emph{left lifting property} with respect to every $m\in \mathcal{M}$: for every commutative square
+		\[\xymatrix{X \ar[r]^g \ar[d]_{e}& Z \ar[d]^{m}\\ Y \ar[r]_{f} \ar@{.>}[ur]^{k}& V}\] 	with $e\in \mathcal{E}$ and $m\in \mathcal{M}$ there exists a unique $k\colon Y\rightarrow Z$ such that 
+		\[m\circ k=f \qquad k\circ e=g\]
+	\end{enumerate}
+	
+	A factorization system is \emph{proper} if every $e\in \mathcal{E}$ is epi and every $m\in \mathcal{M}$ is mono; it's \emph{stable} if for every pullback square ast the one below,  $e\in \mathcal{E}$ implies $e'\in \mathcal{E}$.
+	\[\xymatrix{P\ar[r]^{g} \ar[d]_{e'} & X \ar[d]^{e} \\ Z \ar[r]_{f}  & Y}\]
+\end{definition}
+
+The following proposition assures us that the factorization of an arrow is unique up to isomorphism.
+
+\begin{proposition}\label{prop:iso}
+	Let $(\mathcal{E}, \mathcal{M})$ be a factorization system on a category $\X$. If $e\colon X\to Y$, $e'\colon X\to Y'$ and $m\colon Y\to Z$, $m'\colon Y'\to Z $ are arrows, respectively, in $\mathcal{E}$ and $\mathcal{M}$ such that
+	$e'\circ m'=e\circ m$,  then  there exist a unique isomorphism $\phi\colon Y \rightarrow Y$ such that the following diagram commutes
+	\[\xymatrix@C=35pt@R=20pt{X \ar[r]^{e'} \ar[d]_{e}& Y' \ar[d]^{m'}\\ Y \ar[r]_{m} \ar@{.>}[ur]^{\phi}& V}\]
+\end{proposition}
+\begin{proof}Using the left lifting property we get two commutative diagrams:
+	\[\xymatrix@C=35pt@R=20pt{
+		X\ar[r]^{e'}  \ar[d]_{e}& Y'  \ar[d]^{m'} &  X 	\ar[d]_{e'} \ar[r]^{e} &Y \ar[d]^{m}\\
+		Y \ar[r]_{m} \ar[ur]^{f} & Z & Y'  \ar[r]_{m'}\ar[ur]^{g} & Z
+	}\]
+	thus
+	\[	\begin{split}
+		m'\circ f \circ g &= m\circ g \\&= m'
+	\end{split} \qquad 
+	\begin{split}
+		f \circ g \circ e' &= f\circ e \\&= e'
+	\end{split}\qquad 
+	\begin{split}
+		m\circ g \circ f &= m'\circ f \\&= m
+	\end{split} \qquad 
+	\begin{split}
+		g \circ f \circ e &= g\circ e' \\&= e
+	\end{split}
+	\]
+	So we have two square
+	\[\xymatrix@C=35pt@R=20pt{
+		X\ar[r]^{e}  \ar[d]_{e}& Y  \ar[d]^{m} &  X 	\ar[d]_{e'} \ar[r]^{e'} &Y '\ar[d]^{m'}\\
+		Y \ar[r]_{m} \ar[ur]^{g\circ f} & Z & Y'  \ar[r]_{m'}\ar[ur]^{f\circ g} & Z
+	}\]		
+	and the thesis follows from the uniqueness half of the left lifting property.
+\end{proof}
+
+\begin{corollary}\label{cor:iso} Given a factorization system $(\mathcal{E}, \mathcal{M})$ on a category $\X$, the following hold:
+	\begin{enumerate}
+		\item an arrow $f\colon X\to Y$ is in $\mathcal{E}$ (in $\mathcal{M}$) if and only if $m_f$ ($e_f$) is an isomorphism;
+		\item $f\in \mathcal{E}$ and $f\in \mathcal{M}$ if and only if $f$ is an isomorphism;
+		\item  if $(\mathcal{E}, \mathcal{M})$ is proper, then $g\circ f$ is in $\mathcal{M}$ (in $\mathcal{E}$) implies $f\in \mathcal{M}$ ($g\in \mathcal{E}$).
+	\end{enumerate}
+\end{corollary}
+\begin{proof}
+	\begin{enumerate}
+		\item  ($\Rightarrow$) By hypothesis $f=\id{Y}\circ f$ ($f=f\circ \id{X}$) is a factorization with $\id{Y}\in \mathcal{M}$ and $f\in \mathcal{E}$ ($\id{X}\in \mathcal{E}, f\in \mathcal{M}$), so the thesis follows from \cref{prop:iso}.
+		
+		\smallskip \noindent
+		($\Leftarrow$) $f=m_f\circ e_f$, thus if $m_f$ ($e_f$) is an isomorphism then we have $f$ is the composition of two arrows in $\mathcal{E}$ ($\mathcal{M}$) and we can conclude.
+		
+		\item This follows immediately from the previous point.
+		
+		\item 
+		Factor $f$ and $g$ as $m_f\circ e_f$ and $m_g\circ e_g$, let also $h$ be $e_g\circ m_f$ and factor it as $m_h\circ e_h$ so that we get 
+		\[\xymatrix@C=45pt{& C \ar[dr]^{m_h}&\\
+			A\ar[ur]^{e_h} \ar[rr]^{h}  \ar[dr]^{m_f}& &B \ar[d]^{m_g}\\
+			X \ar[u]^{e_f} \ar[r]_f& Y \ar[r]_g \ar[ur]^{e_g} & Z}\]
+		Since $\mathcal{E}$ and $\mathcal{M}$ are closed under composition we know that $e_h\circ e_f\in \mathcal{E}$ and $m_g \circ m_h\in \mathcal{M}$, thus  these arrows gives a $(\mathcal{E}, \mathcal{M})$-factorization of $g\circ f$. On the other hand $g\circ f\in \mathcal{E}$ ($g\circ f\in \mathcal{M}$), thus point $1$ above  implies that  $e_h\circ e_f$ ($m_g\circ m_h$) is an isomorphism. In particular:
+		\[(e_h\circ e_f)^{-1}\circ e_h \circ e_f =\id{X} \qquad \text{(}m_g\circ m_h \circ (m_g\circ m_h)^{-1}=\id{Z}\text{)}  \]
+		so $e_f$ has a retraction ($m_g$ has a section). The thesis now follows since $e_f$ is epic ($m_g$ is mono). \qedhere 
+	\end{enumerate}
+\end{proof}
+
+\begin{definition} \index{source} \index{sink} \index{pushout!wide -} \index{pullback!wide -}
+	Given a set $I$, a  \emph{source}  (\emph{sink}) is a family $\{f_i\}_{i\in I}$ of arrows  $f_i\colon X\to Y_i$ ($f_i\colon Y_i\to X$) with the same (co)domain. A $\emph{wide pushout}$ (pullback) is the colimit (limit) of a source (sink). We will use $c_i$ ($p_i$) to denote the coprojection from $Y_i$ (the projection to $Y_i$) and $c_X$ to denote the one from $X$.
+\end{definition}
+
+\begin{remark}\label{rem:copro}
+	Given a wide pushout $(C, \{c_i\}_{i\in I\cup \{X\}})$ on a source $\{f_i\}_{i\in I}$ with $f_i\colon X\to Y_i$, the coprojection $c_X$ is such that, for every $i\in I$, the following diagram commute
+	\[\xymatrix{&X\ar[dl]_{f_i} \ar[dr]^{c_X}\\
+		Y_i\ar[rr]_{c_{i}} && C}\]
+\end{remark}
+
+\begin{proposition} \label{prop:mp} For every proper factorization system $(\mathcal{E}, \mathcal{M})$ on a category $\X$ the following hold:
+	\begin{enumerate}
+		\item  for every pushout square as the one below,  $e\in \mathcal{E}$ implies $n\in \mathcal{E}$ 
+		\[\xymatrix{X\ar[r]^{g} \ar[d]_{e} & V \ar[d]^{n} \\ Y \ar[r]_{f}  & Z}\] 
+		\item  if $(C, \{c_i\}_{i\in I\cup \{X\}})$ is a wide pushout on a source $\{e_i\}_{i\in I}$ such that $e_i\colon X\to Y_i$ is in $\mathcal{E}$ for every $i\in I$, then every coprojection is in $\mathcal{E}$ too. 
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item 
+		Take a pushout square
+		\[\xymatrix{X\ar[r]^{g} \ar[d]_{e} & V \ar[d]^{n} \\ Y \ar[r]_{f}  & Z}\] 
+		with $e$ in $\mathcal{E}$. By hypothesis  $n=m_n\circ e_n$ for $m_n\colon E\to Y$ in $ \mathcal{M}$  and $e_n\colon V\to E$ in  $\mathcal{E}$.  If we show that $m_n$ is an isomorphism we are done. We can apply again the left lifting property to get $l\colon E\to X$ which makes the following diagram commute.
+		\[\xymatrix{X \ar[d]_{e}\ar[r]^{g}&  V \ar[r]^{e_n} &E\ar[d]^{m_n}\\  Z  \ar[urr]^{l} \ar[rr]_{f} && Y}\]
+		Therefore we get another diagram
+		\[\xymatrix{ X \ar[d]_{e}\ar[r]^{g}& V \ar@/^.5cm/[ddr]^{e_n} \ar[d]^{n} \\
+			Z\ar@/_.5cm/[drr]_{l} \ar[r]_{f} & Y \ar@{.>}[dr]^{k}\\
+			& &E }\]
+		and thus we can deduce the existence of the dotted $k\colon E\to V$. On the one hand, computing we get
+		\[\begin{split}
+			m_n\circ k\circ n &=m_n  \circ  e_n\\ &=n
+		\end{split}\qquad \begin{split}
+			m_n\circ k\circ f &=m_n\circ l\\ &=f \end{split}\]
+		and so $m_n\circ k= \id{Y}$.  On the other hand 
+		\[\begin{split}
+			m_n\circ k \circ m_n &= \id{Y} \circ m_n \\&= m_n
+		\end{split} \qquad 
+		\begin{split}
+			k \circ m_n \circ e_n &= k\circ n \\&= e_n
+		\end{split}
+		\]	
+		so the following diagaram commutes 
+		\[
+		\xymatrix@C=50pt{V \ar[d]_{e_n}\ar[r]^{e_n}& E \ar[d]^{m_n} \\
+			E\ar[ur]^{k\circ m_n}\ar[r]_{m_n} & Y}\]
+		and thus  $k\circ m_n=\id{E}$ by the uniqueness clause of the left lifting property. Therefore $e_n$ is an isomorphism and the thesis now follows from  point $1$ of \cref{cor:iso}.
+		\item By \cref{rem:copro} and point three of \cref{cor:iso} it is enough to show that $c_X$ is in $\mathcal{E}$. Since $(\mathcal{E}, \mathcal{M})$ is a factorization system then $c_X=m\circ e$ for some $m\colon E\to C$ in $\mathcal{M}$ and $e\colon X\to E$ in $\mathcal{E}$ to get, from \cref{rem:copro}, a square
+		\[\xymatrix{X\ar[r]^{e} \ar[d]_{e_i} & V \ar[d]^{m} \\ Y_i \ar@{.>}^{k_i}[ur] \ar[r]_{c_i}  & Z}\]
+		and the left lifting property provides, for every $i\in I$, the dotted arrow $k_i\colon Y_i\to e$. Let $k$ be the the induced arrow $Z\to V$. Then
+		\begin{align*}
+			m\circ k\circ c_i&=m\circ k_i\\&=c_i
+		\end{align*}
+		hence $m\circ k=\id{Z}$. By \cref{cor:iso} $m\in \mathcal{M}$ thus it is an isomorphism and we can conclude. \qedhere 
+	\end{enumerate}
+\end{proof}
+
 
 \section{DPO rewriting and derivations}
 
@@ -2533,7 +2671,7 @@ If every $\nu_i$ is an inversion for $\sigma$, then there exists a family $\{\nu
 \newpage
 
 
-NOTES ON THE FUNDAMENTAL LEMMA WE NEED
+NOTES ON THE FUNDAMENTAL LEMMA WE NEED\todo{da integrare sopra}
 
 Everything is very tame, so that sequential independence coincides with switchability and we do not have ambiguity in the choice of an independence pair
 
@@ -2748,9 +2886,105 @@ Before moving forward, we will prove some other useful properties of the switch 
 
 \subsection{From adhesive grammars to weak domains}
 
+\todo{integrare sopra}
+\newpage
+QUOZIENTI VARI
+
+The setting from now on is: $\X$ $\mathcal{M}$-adhesive, $(\mathcal{E}, \mathcal{M})$ a proper (maybe also stable) factorization system. $\X$ has all pushouts.
+
+\begin{lemma}\label{lem:pushandpullpb}
+	Let $\X$ be a category and suppose that the diagram below is given.
+	\[\xymatrix{ P \ar[r]^{p_0} \ar[d]_{p_1}& A  \ar@/^.2cm/[ddr]^{k_0}\ar[d]^{f}\\  B  \ar@/_.2cm/[drr]_{k_1} \ar[r]_g & C \ar[dr]^{h}\\&& D }\]
+	Then the following hold true:
+	\begin{enumerate}
+		\item if the outer boundary is a pullback, then the inner square is a pullback too;
+		\item if the inner square is a pullback and $h$ is mono then also the outer square is a pullback.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}\begin{enumerate}
+		\item Let $e_0\colon E\to A$ and $e_1\colon E\to B$ be a pair of arrows such that 
+		\[f\circ e_0=g\circ e_1\]
+		Then we also have 
+		\begin{align*}
+		k_0\circ e_0 &= h\circ f\circ e_0\\&=h\circ g \circ e_1\\&=k_1\circ e_1
+		\end{align*}
+		Thus there exists a unique arrow $e\colon E\to P$ such that
+		\[p_0\circ e= e_0 \qquad p_1\circ e=e_1\]
+		which entails our claim.
+		\item We proceed as before considering two arrows $e_0\colon E\to A$ and $e_1\colon E\to B$, but in this case we suppose that 
+		\[k_0\circ e_0=k_1\circ e_1\]
+		In particular, we have
+		\begin{align*}
+			h\circ f \circ e_0 &= k_0\circ e_0\\&=k_1\circ e_1\\&=h\circ g\circ e_1
+		\end{align*}
+		Thus, since $h$ is mono, we can deduce that $f\circ e_0$ and $g\circ e_1$ are equal and the thesis now follows immediately.
+		\qedhere 
+	\end{enumerate}
+	\end{proof} 
+	In particular, we will use the first point of the previous lemma to deduce the following result.
+	
+	
+	\begin{corollary}\label{cor:cond} Let $f\colon A\to C$, $g\colon B\to C$ and $h\colon C\to D$ be arrows in a category $\X$, let also $l_0\colon A'\to A$, $l_1\colon B'\to B$ be two monomorphisms. Suppose moreover, that the following squares are pullbacks:
+		\[\xymatrix@C=35pt{Q \ar[r]^{q_0} \ar[d]_{q_1} & A' \ar[d]^{h\circ f\circ l_0} & P \ar[r]^{p_0} \ar[d]_{p_1} & A \ar[d]^{f} & Q  \ar[r]^{l_0\circ q_0} \ar[d]_{l_1\circ q_1}& A \ar[d]^{h\circ f}\\ B \ar[r]_{h\circ g\circ l_1} &D& B \ar[r]_{g}& C &  B \ar[r]_{h\circ g} & D}\]
+		Then there exists an arrow $\phi\colon P\to Q$ such that $(P, \{q_i\circ \phi\}_{i=0}^1)$ is a pullback for $f\circ l_0$ along $g\circ l_1$.
+	\end{corollary} 
+	\begin{proof}
+To prove the existence of $\phi\colon P\to Q$ it's enough to consider the solid part of the diagram below.
+\[\xymatrix@C=30pt{P \ar@{.>}[dr]^{\phi} \ar@/^.2cm/[drr]^{p_0} \ar@/_.2cm/[ddr]_{p_1}\\ & Q  \ar[r]^(.4){l_0\circ q_0} \ar[d]^{l_1\circ q_1}& A \ar[d]^{h\circ f} \\ &B \ar[r]_{h\circ g} & D}\]
+Notice that $\phi$ is a monomorphism. If $\phi\circ a=\phi \circ b$ for some $a,b\colon T\rightrightarrows P$ then
+\[\begin{split}
+	p_0\circ a&=l_0\circ q_0\circ \phi \circ a\\&=l_0\circ q_0\circ \phi \circ b\\&=p_0\circ b
+\end{split} \qquad \begin{split}
+p_1\circ a&=l_1\circ q_1\circ \phi \circ a\\&=l_1\circ q_1\circ \phi \circ b\\&=p_1\circ b
+\end{split} \]
+
+Moreover, we also have the following chain of equalities, showing that  $(P, \{q_i\circ \phi\}_{i=0}^1)$  is a candidate to be a pullback of $f\circ l_0$ along $g\circ l_1$.
+\begin{align*}
+f\circ l_0\circ q_0\circ \phi &=f\circ p_0\\&=g\circ p_1\\&=g\circ l_1\circ q_1\circ \phi 
+\end{align*}
+Let now $e_0\colon E\to A'$ and $e_1\colon E\to B'$ be arrows such that 
+\[f\circ l_0\circ e_0=g\circ l_1\circ e_1\]
+By hypothesis $(P, \{p_i\}_{i=0}^1)$ is a pullback of $f$ along $g$, therefore we there is a unique  arrow $e\colon E\to P$ such that
+\[p_0\circ e = l_0\circ e_0 \qquad p_1\circ e=l_1\circ e_1\]
+But then the two identities
+\[\begin{split}
+	l_0\circ q_0\circ \phi\circ e&=p_0\circ e\\& =l_0\circ e_0 \end{split} \qquad \begin{split}l_1\circ q_1\circ \phi\circ e&=p_1\circ e\\& =l_1\circ e_1
+\end{split}\]
+allow us to conclude that 
+\[q_0\circ \phi\circ e=l_0\circ e_0 \qquad q_1\circ \phi\circ e=l_1\circ e_1\]
+	
+Finally, if $e'\colon E \to P$ is another arrow such that 		
+\[q_0\circ \phi\circ e'=l_0\circ e_0 \qquad q_1\circ \phi\circ e'=l_1\circ e_1\]
+then we have 
+\[q_0\circ \phi\circ e'=q_0\circ \phi\circ e \qquad q_1\circ \phi\circ e'=q_1\circ \phi\circ e\]
+Therefore $\phi\circ e'=\phi \circ e$ and we can conclude since $\phi$ is mono.
+	\end{proof}
+
+
+\begin{lemma}
+	Da ind pair a pb
+\end{lemma}
+
+\begin{proof}
+	contenuto...
+\end{proof}
+
+\begin{lemma}
+	da pb a ind pair
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+\begin{corollary}
+	caratterizzazione
+\end{corollary}
 
 \section{Conclusions and further work}
 \todo{VERY NICE CONCLUSIONS}
+
+
+
 
 \bibliographystyle{plain}
 \bibliography{bibliog.bib}
@@ -2759,7 +2993,7 @@ Before moving forward, we will prove some other useful properties of the switch 
 \appendix
 
 
-\section{A note on fillers and sequential independence}\label{app:fill}
+\section{$\mathcal{M}$-adhesivity is not enough}\label{app:fill}
  In \Cref{prop:equi} we proved that, in the linear case, the existence of an indpendence pair between two derivation is equivalent to that of a filler between them. This result can be further refined: in a\cite{baldan2011adhesivity} a class  $\mathbb{B}$ of (quasi)adhesive category is defined for which the local Church-Rosser Theorem holds even for left-linear DPO-rewriting system. In our language, and given \Cref{prop:fil} and \Cref{rem:locCR}, this amount to prove that, for elements of $\mathbb{B}$, every independence pair induces a filler. 
 
 \begin{definition}Let $\X$ be a category, we say that $\X$ satisfies
