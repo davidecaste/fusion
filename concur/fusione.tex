@@ -859,7 +859,7 @@ and give full proofs of the results
 (Appendix~\ref{omitted}).
 
 \section{$\mathcal{M}$-adhesive categories and rewriting systems}\label{sec:ade}
-This first section recalls definitions and basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}.
+This first section recalls some definitions and the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}.
 %
 %Throughout the paper
 Given a category $\X$ we will not distinguish
@@ -917,7 +917,7 @@ $n<0$.
 
 
 \subsection{$\mathcal{M}$-adhesivity}\label{subsec:ade}
-The key property that $\mathcal{M}$-adhesive categories enjoy is the so-called \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. % We
+The key property of $\mathcal{M}$-adhesive categories is the \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. % We
 % will recall it and examine some of its consequences.
 In order to define it we need to introduce some terminology.
 % and facts regarding subclasses of
@@ -925,7 +925,7 @@ In order to define it we need to introduce some terminology.
 %
 %\begin{definition}
   Let  $\X$ be a category. A subclass $\mathcal{A}$ of
-  $\mor(\X)$ is called
+  $\mor(\X)$ is called\todo{il diagramma confonde la composizione}
   \begin{itemize}
     \parbox{11cm}{\item
       \emph{stable under pushouts (pullbacks)} if for every pushout (pullback) square as the one on the right, 	if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
@@ -939,7 +939,7 @@ In order to define it we need to introduce some terminology.
 
 
   \begin{definition}[Van Kampen property]
-    Let $\X$ be a category and consider the diagrams\\
+    Let $\X$ be a category and consider\todo{diagramS?} the diagrams\\
     %
     \parbox{10cm}{
       aside.
@@ -1237,8 +1237,9 @@ Often, we are interested in derivations only up to some notion of coherent isomo
     \ar[r]_{g_i}&G_{i+1}\ar@/_.45cm/[uu]_{\phi_{G_{i+1}}}}$}
 
 
-It can be seen that $\mathcal{M}$-adhesivity of $\X$ guarantees the
-uniqueness of the result of applying a rule to an object, i.e., two
+%It can be seen that 
+$\mathcal{M}$-adhesivity of $\X$ guarantees the
+uniqueness of the result of applying a rule to an object, i.e. two
 direct derivations using the same match are abstraction equivalent
 (see Proposition~\ref{prop:unique}).
 
@@ -2073,13 +2074,13 @@ Sequential independence is the canonical notion of independence in the DPO appro
   and $(\X, \R)$ a left-linear rewriting system. 
   Let also
   $\der{D}=\{\dder{D}_i\}_{i=0}^1$ be a derivation of length $2$, with
-  $\dder{D}_i$ using rule $\rho_i = (l_i,r_i)$.  We say taht $\dder{D}_0$ and
+  $\dder{D}_i$ using rule $\rho_i = (l_i,r_i)$.  We say that $\dder{D}_0$ and
   $\dder{D}_1$ are
   \emph{sequentially independent}
   if there is pair of arrows
   $i_0\colon R_0\to D_1$ and $i_1\colon L_1\to D_0$ such that the
   following diagram commutes, referred to as an  \emph{independence
-    pair}: 
+    pair}
   \[\xymatrix@R=16pt@C=15pt{L_0 \ar[d]_{m_0}&& K_0
       \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0
       \ar@{.>}@/^.35cm/[drrr]|(.3)\hole_(.4){i_0}
@@ -2319,7 +2320,7 @@ can be obtained one from another by a sequence of switches. Moreover, intermedia
   length, $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and
   $\der{E}=\{\dder{E}_{i}\}_{i=0}^n$. If
   $\dder{D}_i \cdot \dder{D}_{i+1}$ is a switch of
-  $\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ and  $\dder{D}_j = \dder{E}_j$ for each $j \not \in \{i,i+1\}$ then ee write
+  $\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ and  $\dder{D}_j = \dder{E}_j$ for each $j \not \in \{i,i+1\}$ then we write
   $\der{D} \shift{\transp{i}} \der{E}$. 
   %
   A \emph{switching sequence} is a sequence $\{\der{D}_{k}\}_{k=0}^m$
@@ -2416,15 +2417,15 @@ converse implication clearly holds), as shown by the next example.
     \label{ex:diff1:no-step}
     \caption{No rewriting step}
   \end{subfigure}
-  \label{fig:diff1}
+  \label{fig:diff1} 
   \caption{Sequential independence does not imply switchability}
 \end{figure}
 
 
 \begin{example}
   \label{ex:diff1}
-  Consider the poset $(P, \sqsubseteq)$ in Fig.~\ref{fig:diff1:P} where
-  $P = \mathbb{Z} \cup \{a,b,c\}$ and $\sqsubseteq$ defined by
+  Consider the poset $(P, \sqsubseteq)$ in Fig.~\ref{fig:diff1} where
+  $P = \mathbb{Z} \cup \{a,b,c\}$ and $\sqsubseteq$ is defined by
   $m \sqsubseteq n$ if $m \geq n$, $a \sqsubseteq x$ for all $x \in P$
   and $b, c \sqsubseteq n$ for all $n \in \mathbb{N}$.
   %
@@ -2450,7 +2451,7 @@ converse implication clearly holds), as shown by the next example.
   Note that the two direct derivations are sequential
   independent. However there is no switch since the rule applied by
   $\dder{D}_1$ cannot be applied to $c$. In fact, the unique morphism
-  $a\to c$ is $(a,c)$, thus we get the diagram aside. But $b$ and $c$
+  $a\to c$ is $(a,c)$, thus we get the diagram in Fig.~\ref{ex:diff1:no-step}. But $b$ and $c$
   do not have a supremum in the poset underlying $\X$, thus the arrows
   $(a,b)\colon a\to b$ and $(a,c)\colon a\to c$ do not have a
   pushout. Hence we do not get a direct derivation from $c$.
@@ -2530,8 +2531,10 @@ by the notion of \emph{canonical filler}
   \]
 
   Consider the pullback of $g_0$ and $f_1$, getting $p_i : P \to D_i$
-  for $i \in \{0,1\}$ and the mediating arrows $u_0\colon K_0\to P$ and
-  $u_1\colon K_1\to P$ into the pullback object (see \Cref{prop:tec} for details). 
+  for $i \in \{0,1\}$ and the mediating arrows $u_i\colon K_i\to P$ 
+  for $i \in \{0,1\}$ 
+  %and $u_1\colon K_1\to P$ 
+  into the pullback object (see \Cref{prop:tec} for details). 
   % given by \Cref{prop:tec} .
   %
   We say that $(i_0, i_1)$ is a \emph{strong independence pair} if
@@ -2706,7 +2709,8 @@ A left-linear rewriting system $(\X, \R)$ is \emph{well-switching} if it is stro
 \end{definition}
 
 % The previous definition might sound restrictive.
-It is immediate to see that linear rewriting systems are well-switching (see Proposition~\ref{pr:weak}).
+Clearly, %It is immediate to see that 
+linear rewriting systems are well-switching (see Proposition~\ref{pr:weak}).
 
 Moreover, we next observe that various classes of rewriting systems,
 comprising all the ones used in modelling the applications to the
@@ -2741,9 +2745,9 @@ since $\mathcal{G}$ is acyclic and finite, then $\dph(v)$ is a natural number.
   category $\gph{G}$ of \emph{$\mathcal{G}$-graphs} is the category
   $\Set^{\G}$. A
   \emph{node-merging graphical rewriting system} is a left-linear
-  rewriting system $(\gph{G}, \R)$ such that, for each rule
-  $(l\colon K\to L, r\colon K\to R)$ in $\R$, the
-  following hold
+  rewriting system $(\gph{G}, \R)$ such that  the
+  following hold for each rule
+  $(l\colon K\to L, r\colon K\to R)$ in $\R$
   \begin{enumerate}
   \item for every $v\in V$ and $x\in L(v)$, there exists a vertex $w$
     with depth $0$ and an arrow $p\colon w\to v$ (i.e.~a path in
@@ -3192,7 +3196,7 @@ computational systems that allow one to express merging or fusions,
 the right semantical models are weak prime domains, a generalisation
 of prime domains, a staple in concurrency theory, and connected event
 structures, their event-based counterpart. The mentioned paper
-discusses only the case of graph rewriting and does not delve into the
+discusses only the case of graph rewriting and does not focus into the
 problems induced by the occurring of ``merges'' to the theory of rewriting (the systems
 considered there are implicitly assumed to be well-switching). 
 We plan to consolidate the statement that weak prime domains are 
