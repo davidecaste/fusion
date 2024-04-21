@@ -2389,8 +2389,8 @@ converse implication clearly holds), as shown by the next example.
         & a 
       }
     }
-    \label{fig:diff1:P}
     \caption{Poset $(P, \leq)$}
+    \label{fig:diff1:P}
   \end{subfigure}
   \begin{subfigure}{0.58\textwidth}
     \xymatrix@C=12pt{
@@ -2406,25 +2406,25 @@ converse implication clearly holds), as shown by the next example.
       \ar@{>->}[l]^{\id{c}} c \ar[rrr]_{(c,0)}& & & 0 &&&
       \ar@{>->}[lll]^{\id{0}} 0 \ar[rr]_{\id{0}}&& 0
     }
-    \label{fig:diff1:rew}
     \caption{Two rewriting steps}
+    \label{fig:diff1:rew}
   \end{subfigure}
   \begin{subfigure}{0.20\textwidth}
     \xymatrix@C=16pt{a \ar[d]_{(a,c)}& a
       \ar[d]_{(a,c)}\ar@{>->}[l]_{\id{a}} \ar[r]^{(a,b)} & b \\c & c
       \ar[l]^{\id{c}}
     }
-    \label{ex:diff1:no-step}
     \caption{No rewriting step}
+    \label{ex:diff1:no-step}
   \end{subfigure}
-  \label{fig:diff1} 
   \caption{Sequential independence does not imply switchability}
+  \label{fig:diff1} 
 \end{figure}
 
 
 \begin{example}
   \label{ex:diff1}
-  Consider the poset $(P, \sqsubseteq)$ in Fig.~\ref{fig:diff1} where
+  Consider the poset $(P, \sqsubseteq)$ in Fig.~\ref{fig:diff1:P} where
   $P = \mathbb{Z} \cup \{a,b,c\}$ and $\sqsubseteq$ is defined by
   $m \sqsubseteq n$ if $m \geq n$, $a \sqsubseteq x$ for all $x \in P$
   and $b, c \sqsubseteq n$ for all $n \in \mathbb{N}$.
@@ -2726,7 +2726,7 @@ essentially acyclic graphs whose nodes can be seen as sorts.
 
 \begin{definition}
   Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph where $s,t\colon E\rightrightarrows V$.
-  We define the \emph{depth} of a vertex $v\in V$ as
+  We define the \emph{depth} of a vertex $v\in V$ as\todo{ma ci serve tutta la depth?}
   \[
     \dph(v)=\begin{cases}
       0 & \text{there is no $e\in E$ such that $t(e)=v$}\\
@@ -2744,7 +2744,7 @@ since $\mathcal{G}$ is acyclic and finite, then $\dph(v)$ is a natural number.
   and $\G$ the free category over $\mathcal{G}$. The
   category $\gph{G}$ of \emph{$\mathcal{G}$-graphs} is the category
   $\Set^{\G}$. A
-  \emph{node-merging graphical rewriting system} is a left-linear
+  \emph{node-merging graphical rewriting system}\todo{altro nome? source/leaf preserving} is a left-linear
   rewriting system $(\gph{G}, \R)$ such that  the
   following hold for each rule
   $(l\colon K\to L, r\colon K\to R)$ in $\R$
