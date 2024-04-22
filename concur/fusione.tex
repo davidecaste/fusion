@@ -709,16 +709,18 @@ called the Church-Rosser theorem of DPO
 rewriting~\cite[Chapter 3, Section~3.4]{CorradiniMREHL97}. %cite[Section~4]{Ehrig78}
 
 A noteworthy advantage of DPO rewriting is that it can be formulated over
-adhesive categories and their variants~\cite{lack2005adhesive,ehrig2006weak}. 
+adhesive categories and their variants~\cite{lack2005adhesive,ehrig2006weak}, which include, among others, 
+toposes~\cite{johnstone2007quasitoposes} and string
+diagrams~\cite{bonchi2022string}.
 %
 Operating within the framework of adhesive categories allows one to
-devise the foundations of a rewriting theory that can be subsequently
+devise the foundations of a rewriting theory that can be then
 instantiated to the context of interest, thus avoiding the need of
 repeatedly proving similar ad-hoc results for each specific
-setting. In fact, the framework is so general that it allowed to
-recast in the DPO approach many additional formalisms, ranging from
-toposes~\cite{johnstone2007quasitoposes} to string
-diagrams~\cite{bonchi2022string}.
+setting. % In fact, the framework is so general that it allowed to
+% recast in the DPO approach many additional formalisms, ranging from
+% toposes~\cite{johnstone2007quasitoposes} to string
+% diagrams~\cite{bonchi2022string}.
 
 So far, most of the theoretical results focused on what are called
 \emph{linear rules}: intuitively, a step is required only to consume,
@@ -785,11 +787,12 @@ left-linear rewriting systems.
 
 
 On the one hand, they capture most categories of
-interest for rewriting. In particular, we identify a vast class of
+interest for rewriting. Indeed, we identify quite general classes of
 left-linear rewriting systems on graph-like structures that are
-well-switching and we show that rewriting systems on graphs with
-equivalences are so.\todo{weaker statement?}
-As a sanity check, we prove that linear rewriting systems on
+well-switching.
+% and we show that rewriting systems on graphs with
+% equivalences are so.
+As a sanity check, we also prove that linear rewriting systems on
 $\mathcal{M}$-adhesive categories are well-switching.
 
 On the other hand, we argue that a concurrency theory of rewriting can
@@ -958,9 +961,9 @@ In order to define it we need to introduce some terminology.
     %    
     Pushout squares that enjoy only the ``if'' half of item (2) above are called \emph{$\mathcal{A}$-stable}.
     
-    We call a $\mor(\X)$-Van Kampen ($\mor(\X)$-stable) square
-    % simply
-    a \emph{Van Kampen} (\emph{stable}) square.
+    A $\mor(\X)$-Van Kampen square will be called simply \emph{Van
+      Kampen} and similarly, a $\mor(\X)$-stable square is called
+    \emph{stable}.
   \end{definition}
 
 % old version
@@ -2478,7 +2481,7 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   \begin{figure}
     \input{Figure/rules.tex}
     
-    \caption{Rules of the rewriting system grammar of the example.}
+    \caption{A rewriting system $\cat{Graph}$.}
     \label{fi:rules}
   \end{figure}
   
@@ -2606,23 +2609,25 @@ is fundamental. We name the class of rewriting systems where this property holds
   every independence pair between two direct derivations is strong.
 \end{definition}
 
-Along the lines of \cite{baldan2011adhesivity} we can identify a large
-class of adhesive categories such that all left-linear rewriting
-systems over such categories are strong enforcing. The details are in
-\Cref{app:fill}. Here it is important only to remark that such class
-includes $\cat{Set}$ and it is closed by comma and functor category
-constructions.  As such, it includes essentially all categories (e.g.,
-presheaves over set) that are typically considered for modelling
-purposes. Notably, it contains the category $\cat{Graph}$ of directed
-graphs.\todo{P: un reviewer dice ``it is unfortunate that you did not find space for describing the class in any detail, but please at least indicate how it compare to the class studied in [6].''. Mi pare sia chiaro, ma ...}
+We can identify a large class of adhesive categories such that all
+left-linear rewriting systems over such categories are strong
+enforcing. Such class includes $\cat{Set}$ and it is closed
+by comma and functor category constructions.  As such, it includes
+essentially all categories (e.g., presheaves over set) that are
+typically considered for modelling purposes. Notably, it contains the
+category $\cat{Graph}$ of directed graphs.
+This is a natural generalisation from adhesive to $\mathcal{M}$-adhesive catgeories of a class studied in \cite{baldan2011adhesivity} (see \Cref{app:fill} for details).
 
-Still, there are adhesive rewriting systems that are not strong enforcing, as shown by the following example, which is however somehow pathological (recall that we fix $\mathcal{M}=\mathsf{Iso(\X)}$).
+Still, there are $\mathcal{M}$-adhesive rewriting systems that are not strong enforcing, as shown by the following example.
 
 \begin{example}[Non-strong enforcing left-linear rewriting system]
   \label{ex:diff2}
-  In light of \Cref{pr:church}, \Cref{ex:diff1} provides an example
-  of an independence pair which is not strong, and thus of a
-  non-strong enforcing left-linear adhesive rewriting system.\todo{P: rev2 dice "I don't think that's quite right. The category in Ex. 3.7 was not adhesive, wasn't it? It was only iso-adhesive, which is a non-condition.". Mi pare chiaro, ma se viene in mente un modo di esserlo di piu' ...}
+  In light of \Cref{pr:church}, \Cref{ex:diff1} provides an example of
+  an independence pair which is not strong. This gives an example of a
+  left-linear rewriting system in a $\mathcal{M}$-adhesive category
+  which is not strong enforcing. The example is somehow
+  pathological since $\mathcal{M}=\mathsf{Iso(\X)}$, but it needs to be so, since natural examples are all in the well-beahved class mentioned above. 
+  .\todo{P: Scritto qualcosa, probabilmente da migliorare}
   % Instead every
   % left-linear system in category $\cat{Graph}$ is strong enforcing, by
   % the results of Appendix~\ref{app:fill}, summarized
@@ -2719,7 +2724,7 @@ A left-linear rewriting system $(\X, \R)$ is \emph{well-switching} if it is stro
 % The previous definition might sound restrictive.
 Clearly, %It is immediate to see that 
 linear rewriting systems are well-switching (see Proposition~\ref{pr:weak}).
-
+%
 Moreover, we next observe that various classes of rewriting systems,
 comprising all the ones used in modelling the applications to the
 encoding of process calculi or of bio and chemical systems mentioned
@@ -2931,12 +2936,12 @@ When dealing with left-linear rules, such a characterisation fails. Leaving asid
 This result fails when considering left-linear
 derivations. This is readily seen by considering derivations $\der{D}$
 in Fig.~\ref{fi:derD} and $\der{D}'$ in Fig.~\ref{fi:derD1}. We
-already observed that $\der{D}$ and $\der{D}'$ are not switch equivalent.
+observed that $\der{D}$ and $\der{D}'$ are not switch equivalent.
 % 
 Still, it is easy to see that they are related by a consistent
 permutation, which is the identity on productions. The colimit of
 both derivations is a single node with a self loop, i.e.~the
-terminal object in $\cat{Graph}$, hence all commutation requirements
+terminal object in $\cat{Graph}$, hence all commutativity requirements
 are trivially satisfied.
 
 In this section we show that, despite the failure of such
@@ -2967,20 +2972,21 @@ independent. This is exemplified below.
 
 \begin{example}
   \label{ex:non-global}
-  Consider the rewriting system used as running example (rules in
-  Fig.~\ref{fi:rules}) and add the rules $\rho_3$ and $\rho_4$ in
-  Fig.~\ref{fi:rules-cas}.\todo{P: rev.2 dice ``In the top-left and top-middle nodes of $\rho_3$, the labels "12" should be "1" and "2".''. Non e' corretto, ma magari si capisce poco ...}
-  Consider the derivation $\der{F}$ in
-  Fig.~\ref{fi:derF}. Note that rule $\rho_4$ needs a self-loop on
-  node $12$ to be applied. This can be generated either by $\rho_3$ or
-  by $\rho_2$ merging nodes $1$ and $2$, hence at least one of them
-  must precede the application of $\rho_4$. Indeed, in $\der{F}$ it
-  can be easily seen that the second and the third step applying
-  $\rho_2$ and $\rho_4$ are independent. However, we could switch
-  twice the application of $\rho_3$, bringing it in the last position,
-  obtaining a derivation $\der{F}'$ as depicted in
-  Fig.~\ref{fi:derF1}, where the applications of $\rho_2$ and $\rho_4$
-  are no longer independent.
+  Consider a new rewriting system in $\cat{Graph}$ consisting of the
+  rules in $\rho_0$, $\rho_1$ and $\rho_2$ in
+  Fig.~\ref{fi:rules-cas}.\todo{P: rev.2 dice ``In the top-left and
+    top-middle nodes of $\rho_3$, the labels "12" should be "1" and
+    "2".''. Non e' corretto, ma magari si capisce poco ...}  Consider
+  the derivation $\der{F}$ in Fig.~\ref{fi:derF}. Note that rule
+  $\rho_2$ needs the black self-loop on node $12$ to be applied. This can be
+  generated either by $\rho_0$ or by $\rho_1$ merging nodes $1$ and
+  $2$, hence at least one of them must precede the application of
+  $\rho_2$. Indeed, in $\der{F}$ it can be easily seen that the second
+  and the third step applying $\rho_1$ and $\rho_2$ are
+  independent. However, we could switch twice the application of
+  $\rho_0$, bringing it in the last position, obtaining a derivation
+  $\der{F}'$ as depicted in Fig.~\ref{fi:derF1}, where the
+  applications of $\rho_1$ and $\rho_2$ are no longer independent.
    
   \begin{figure}[t]
     \input{Figure/rules-cas.tex}    
@@ -3067,7 +3073,7 @@ The first result shows that whenever equating two derivation sequences by perfor
 
 While inversions can be
 performed in any order in the case of linear rewriting systems, this is no longer true for left-linear
-rewriting systems due to the fact that, as already observed, globality of independence holds in a weak form. For instance, if we get back to Example~\ref{ex:non-global} and consider derivation $\der{F}$ in Fig.~\ref{fi:derF}, the last two steps applying rules $\rho_2$ and $\rho_4$ can be switched, thus leading to a derivation, call it $\der{F}''$,  applying $\rho_3, \rho_4, \rho_2$. Such $\der{F}$ is switch equivalent to $\der{F}'$ in Fig.~\ref{fi:derF1}, hence starting from $\der{F}''$ we can obtain $\der{F}'$ via a switching sequence, but we cannot start by switching $\rho_2$ and $\rho_4$, despite the fact that this is an inversion.
+rewriting systems due to the fact that, as already observed, globality of independence holds in a weak form. For instance, if we get back to Example~\ref{ex:non-global} and consider derivation $\der{F}$ in Fig.~\ref{fi:derF}, the last two steps applying rules $\rho_1$ and $\rho_2$ can be switched, thus leading to a derivation, call it $\der{F}''$,  applying $\rho_0, \rho_2, \rho_1$. Such $\der{F}''$ is switch equivalent to $\der{F}'$ in Fig.~\ref{fi:derF1}, hence starting from $\der{F}''$ we can obtain $\der{F}'$ via a switching sequence, but we cannot start by switching $\rho_0$ and $\rho_2$, despite the fact that this is an inversion.
 
 Still, we can identify a
 canonical form for switching derivations: at each step one can apply a switch to the inversion with largest index. 
@@ -3172,7 +3178,7 @@ canonical form for switching derivations: at each step one can apply a switch to
 
 We performed an in-depth investigation of the notion of independence between
 rewriting steps in the setting of left-linear rewriting systems
-over adhesive categories, which encompasses most of the
+over $\mathcal{M}$-adhesive categories, which encompasses most of the
 structures commonly used in analysing and modelling applications.
 
 We showed that the canonical notion of independence adopted for linear
@@ -3188,9 +3194,9 @@ rewriting systems, enjoy a number of fundamental properties: a weak form of glob
 consistency of switching and
 the existence of a canonical form for switch equivalence proofs.
 
-The class of well-switching adhesive rewriting systems is large. Generalising a result in~\cite{baldan2011adhesivity},
+The class of well-switching $\mathcal{M}$-adhesive rewriting systems is large. Generalising a result in~\cite{baldan2011adhesivity},
 we showed that one of its defining properties (the fact that sequential independence implies switchability) holds 
-for a general class of adhesive categories that include all presheaves over $\cat{Set}$. Moreover, the second property, uniqueness 
+for a general class of $\mathcal{M}$-adhesive categories that include all presheaves over $\cat{Set}$. Moreover, the second property, uniqueness 
 of switching, is ensured when rewriting possibly hierarchical graphical structures, as long as elements of the sorts 
 of depth 0  are not merged (e.g., one can consider rewriting systems over directed graphs where only nodes are merged, as it 
 happens in most of the approaches to the modelling of calculi and biological systems that we cited in the introduction, 
@@ -3198,7 +3204,7 @@ as well as in string diagrams).
 %\todo{Giusto, refernences?}
 
 The results in this paper open the way to the development of a
-concurrent semantics for left-linear rewriting systems over adhesive
+concurrent semantics for left-linear rewriting systems over $\mathcal{M}$-adhesive
 categories. In~\cite{baldan2017domains} the authors argue that for
 computational systems that allow one to express merging or fusions,
 the right semantical models are weak prime domains, a generalisation
