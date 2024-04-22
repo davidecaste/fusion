@@ -14,7 +14,7 @@
 %\newcommand{\short}[1]{}
 \else 
 \newcommand{\full}[1]{}
-%\newcommand{\short}[1]{#1}
+%\newcommand{\short}[1]{#1}  
 \fi
 
 
@@ -682,7 +682,7 @@ Two seminal contributions to this line of research have been
 Mazurkiewicz's traces~\cite{Mazurkiewicz86} and Winskel's event structures~\cite{NPW:PNES}.
 %
 Concerning formalisms based on the rewriting paradigm,
-% i.e. where the behaviour is dictated by a set of rules that have to be instantiated with the system at hand,
+% i.e.~where the behaviour is dictated by a set of rules that have to be instantiated with the system at hand,
 concurrency often boils down to having a notion of 
 independence between two consecutive steps.
 %thus viewing a sequence of steps as a concurrent computation. 
@@ -740,7 +740,7 @@ over the nodes.
 
 
 Technically, to acquire the expressiveness needed for capturing
-fusions, i.e. the merge of some elements in the state, requires to
+fusions, i.e.~the merge of some elements in the state, requires to
 move from linear to left-linear rewriting rules. While left-linear
 rules have been considered in various instances (mainly in categories
 of graphs) and some results concerning the corresponding rewriting
@@ -840,7 +840,7 @@ rules.
 % The paper has the following structure. 
 In \S\ref{sec:ade} we recall the basic 
 definitions of DPO rewriting for $\mathcal{M}$-adhesive categories. 
-In we \S\ref{sec:equi} present the key novelties of our proposal,
+In \S\ref{sec:equi} we present the key novelties of our proposal,
 first introducing the classical notion of independence and 
 a novel axiomatic notion of switchability, further showing that the
 former fails to imply the latter for left-linear rewriting systems.
@@ -864,11 +864,11 @@ This first section recalls some definitions and the basic theory of \emph{$\math
 %Throughout the paper
 Given a category $\X$ we will not distinguish
 notationally between $\X$ and its class of objects, so that
-``$X\in \X$'' means that $X$ belongs to the class of objects of $\X$.
+``$X\in \X$'' means that $X$ is an object of $\X$.
 We will use $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of
 all arrows, monos and regular monos of $\X$, respectively.  Given an
 integer $n\in \mathbb{Z}$, $[0,n]$ denotes the set of natural numbers
-less than or equal to $n$, assuming that $[0,n]=\emptyset$ whenever
+less than or equal to $n$; in particular, $[0,n]=\emptyset$ whenever
 $n<0$.
 
 % \begin{notation}
@@ -925,11 +925,11 @@ In order to define it we need to introduce some terminology.
 %
 %\begin{definition}
   Let  $\X$ be a category. A subclass $\mathcal{A}$ of
-  $\mor(\X)$ is called\todo{il diagramma confonde la composizione}
+  $\mor(\X)$ is called %\todo{il diagramma confonde la composizione}
   \begin{itemize}
     \parbox{11cm}{\item
       \emph{stable under pushouts (pullbacks)} if for every pushout (pullback) square as the one on the right, 	if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
-    \item \emph{closed under composition} if $g, f\in \mathcal{A}$ implies $g\circ f\in \mathcal{A}$ whenever $g$ and $f$ are composable.{\tiny }}\hfill
+    \item \emph{closed under composition} if $h, k\in \mathcal{A}$ implies $h\circ k\in \mathcal{A}$ whenever $h$ and $k$ are composable.{\tiny }}\hfill
     \parbox{2cm}{$\xymatrix{A\ar[r]^f  \ar[d]_{m}& B \ar[d]^n \\ C \ar[r]_g & D}$}
     \parbox{11cm}{}\hfill
   \end{itemize}
@@ -939,7 +939,9 @@ In order to define it we need to introduce some terminology.
 
 
   \begin{definition}[Van Kampen property]
-    Let $\X$ be a category and consider\todo{diagramS?} the diagrams\\
+    Let $\X$ be a category and consider
+    %\todo{diagramS?} 
+    the diagram\\
     %
     \parbox{10cm}{
       aside.
@@ -997,8 +999,8 @@ We can now define $\mathcal{M}$-adhesive categories.
   % 
   $\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
   \begin{enumerate}
-  \item it has \emph{$\mathcal{M}$-pullbacks}, i.e. pullbacks along arrows of $\mathcal{M}$;
-  \item it has \emph{$\mathcal{M}$-pushouts}, i.e. pushouts along arrows of $\mathcal{M}$;
+  \item it has \emph{$\mathcal{M}$-pullbacks}, i.e.~pullbacks along arrows of $\mathcal{M}$;
+  \item it has \emph{$\mathcal{M}$-pushouts}, i.e.~pushouts along arrows of $\mathcal{M}$;
   \item  $\mathcal{M}$-pushouts are $\mathcal{M}$-Van Kampen squares.
   \end{enumerate}
   
@@ -1043,8 +1045,8 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of sl
   Let $\X$ be an $\mathcal{M}$-adhesive category. Given an object $X$
   the category $\X/X$ is $\mathcal{M}/X$-adhesive with
   $\mathcal{M}/X:=\{m\in \mathcal{A}(\X/X) \mid m\in
-  \mathcal{M}$. Similarly, $X/\X$ is $X/\mathcal{M}$-adhesive with
-  $X/\mathcal{M}:=\{m\in \mathcal{A}(X/\X) \mid m\in \mathcal{M}$.
+  \mathcal{M}\}$. Similarly, $X/\X$ is $X/\mathcal{M}$-adhesive with
+  $X/\mathcal{M}:=\{m\in \mathcal{A}(X/\X) \mid m\in \mathcal{M}\}$.
   
   Moreover for every small category $\Y$, the category $\X^\Y$ of
   functors $\Y\to \X$ is $\mathcal{M}^{\Y}$-adhesive, where
@@ -1064,8 +1066,8 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
   where $E \rightrightarrows {V}$ is the two objects category with two
   morphisms $s,t \colon{E} \to {V}$. Similarly, various
   categories of hypergraphs can be shown to be adhesive, such as term
-  graphs and hierarchical graphs~\cite{CastelnovoGM24}. Note that the category $\cat{sGraphs}$ of simple graphs, i.e.
-  graphs without parallel edges, is
+  graphs and hierarchical graphs~\cite{CastelnovoGM24}. Note that the category $\cat{sGraphs}$ of simple graphs, 
+  i.e.~graphs without parallel edges, is
   $\reg{(\cat{sGraphs})}$-adhesive~\cite{BehrHK23} but not
   quasiadhesive.
 \end{example}
@@ -1088,7 +1090,7 @@ perform abstract rewriting using what is called the Double-Pushout
 \begin{definition}[\!\!\cite{habel2012mathcal,heindel2009category}]
   Let $\X$ be an $\mathcal{M}$-adhesive category. A \emph{left
     $\mathcal{M}$-linear} rule $\rho$ is a pair  of
-  arrows $\rho = (l: K \to L, r: K \to r)$ such that $l$ belongs to
+  arrows $\rho = (l: K \to L, r: K \to R)$ such that $l$ belongs to
   $\mathcal{M}$.  The rule $\rho$ is \emph{$\mathcal{M}$-linear} if
   $r\in \mathcal{M}$ too.
   %
@@ -1119,7 +1121,7 @@ perform abstract rewriting using what is called the Double-Pushout
     aside, in which both squares are pushouts. The arrow $m$ is called
     the \emph{match} of the derivation, while $h$ is its
     \emph{back-match}.  We denote a direct derivation $\dder{D}$
-    between $G$ and $H$ as $\dder{D}\colon G\Mapsto H$. }
+    from $G$ to $H$ as $\dder{D}\colon G\Mapsto H$. }
   \parbox{3cm}{$\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l}
       \ar[r]^{r} & R \ar[d]^{h}\\G & \ar@{>->}[l]^{f} D \ar[r]_{g}&
       H}$}
@@ -1239,7 +1241,7 @@ Often, we are interested in derivations only up to some notion of coherent isomo
 
 %It can be seen that 
 $\mathcal{M}$-adhesivity of $\X$ guarantees the
-uniqueness of the result of applying a rule to an object, i.e. two
+uniqueness of the result of applying a rule to an object, i.e.~two
 direct derivations using the same match are abstraction equivalent
 (see Proposition~\ref{prop:unique}).
 
@@ -2077,10 +2079,10 @@ Sequential independence is the canonical notion of independence in the DPO appro
   $\dder{D}_i$ using rule $\rho_i = (l_i,r_i)$.  We say that $\dder{D}_0$ and
   $\dder{D}_1$ are
   \emph{sequentially independent}
-  if there is pair of arrows
+  if there is a pair of arrows
   $i_0\colon R_0\to D_1$ and $i_1\colon L_1\to D_0$ such that the
-  following diagram commutes, referred to as an  \emph{independence
-    pair}
+  following diagram commutes. In this case $(i_0,i_1)$ is called an  \emph{independence
+    pair}.
   \[\xymatrix@R=16pt@C=15pt{L_0 \ar[d]_{m_0}&& K_0
       \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0
       \ar@{.>}@/^.35cm/[drrr]|(.3)\hole_(.4){i_0}
@@ -2110,7 +2112,7 @@ We next formalise what it means for a derivation being the switch of another.
   and $(\X, \R)$ a left-linear rewriting system. 
   Let also
   $\der{D}=\{\dder{D}_i\}_{i=0}^1$ be a derivation made
-  by two sequentially independent derivations $\dder{D}_0$,
+  of two sequentially independent derivations $\dder{D}_0$,
   $\dder{D}_1$ with independence pair $(i_0, i_1)$, as in the diagram
   on the left below. A \emph{switch} of $\der{D}$ along $(i_0,i_1)$ is
   a derivation $\der{E}=\{\dder{E}_i\}_{i=0}^1$, between the same objects and using the same rules
@@ -2261,7 +2263,7 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
 As we mentioned, for linear rewriting systems
 %when viewing  derivations as concurrent computations, 
 it is canonical to identify
-derivations that are equal ``up to switching'', i.e. that differs
+derivations that are equal ``up to switching'', i.e.~that differs
 only for the order of independent steps. The same notion can be given
 for left-linear rewriting systems by relying on the notion of switch.
 
@@ -2332,7 +2334,7 @@ can be obtained one from another by a sequence of switches. Moreover, intermedia
 
     Let us denote by $\nu_{k,h}$ the composition
   $\nu_h \circ \nu_{h-1} \circ \ldots \nu_k$. We say that the
-  switching sequence consists of inversions if for all
+  switching sequence \emph{consists of inversions} if for all
   $k \in \interval[0]{m}$ the transposition $\nu_k$ is an inversion
   for $\nu_{1,m}$.
   
@@ -2383,9 +2385,9 @@ converse implication clearly holds), as shown by the next example.
         &  & \\
         & 1 \ar@{-}[dd] \ar@{-}[ddddl]  \ar@{-}[ddddr]   &  \\
         &  & \\
-        & 2 \ar@{.}[d] \ar@{.}[ddl]   \ar@{-}[ddr]     &  \\
-        &  \ar@{.}[dl]   \ar@{-}[dr] & \\
-        b \ar@{-}[dr] & & b \ar@{-}[dl]\\
+        & 2 \ar@{.}[d] \ar@{-}[ddl]   \ar@{-}[ddr]     &  \\
+        &  \ar@{.}[dl]   \ar@{.}[dr] & \\
+        b \ar@{-}[dr] & & c \ar@{-}[dl]\\
         & a 
       }
     }
@@ -2425,12 +2427,12 @@ converse implication clearly holds), as shown by the next example.
 \begin{example}
   \label{ex:diff1}
   Consider the poset $(P, \sqsubseteq)$ in Fig.~\ref{fig:diff1:P} where
-  $P = \mathbb{Z} \cup \{a,b,c\}$ and $\sqsubseteq$ is defined by
+  $P = \mathbb{N} \cup \{a,b,c\}$ and $\sqsubseteq$ is defined by
   $m \sqsubseteq n$ if $m \geq n$, $a \sqsubseteq x$ for all $x \in P$
   and $b, c \sqsubseteq n$ for all $n \in \mathbb{N}$.
   %
   Let $\X$ be the  
-  category associated to such order, which by \Cref{rem:iso} is
+  category associated with such order, which by \Cref{rem:iso} is
   $\mathsf{Iso(\X)}$-adhesive. 
   %
   Consider a rewriting
@@ -2650,8 +2652,8 @@ Back consistency with the theory of linear rewriting systems is ensured by the f
 
 Even if we work in strong enforcing rewriting systems where sequential
 independence ensures switchability, when dealing with left-linear
-rules there is a further -- and possibly more serious -- issue, i.e.
-the fact that there can be more than one independence pair between
+rules there is a further -- and possibly more serious -- issue, 
+i.e.~the fact that there can be more than one independence pair between
 the same derivations. This hinders the very idea of using
 sequential independence as a basis of a theory of concurrency for
 rewriting systems, since exchanges performed using different
@@ -2660,12 +2662,12 @@ equivalent, and thus one would equate computations that should
 definitively be taken apart, as shown in the example below.
 
 \begin{example}
-  Consider the derivation $\der{E}$ from Example~\ref{ex:seq-ind}.
+  Consider the derivation $\der{E}$ from Example~\ref{ex:seq-ind} (see Fig.~\ref{fi:derE}).
   %
   The last two steps are sequential independent, but one easily sees
   that there are two distinct independence pairs, as the left-hand side
   of $\rho_1$ can be mapped either to node $1$ or to node
-  $2$ in $G_2'$. Correspondingly, there
+  $2$ in $D_1'$. Correspondingly, there
   are two switches of $\der{E}$: one is the derivation $\der{D}$ in
   Fig.~\ref{fi:derD} we started from, the other is the derivation
   $\der{D}'$ in Fig.~\ref{fi:derD1}.
@@ -2685,12 +2687,18 @@ definitively be taken apart, as shown in the example below.
   $\der{D}'$ rule $\rho_1$ uses the node that was in the initial
   graph. From the technical point of view, the property of being
   switch equivalent is not closed by prefix, and this prevents
-  to derive a sensible concurrent semantics: if we limit to the first
-  two steps, we obtain derivations $\dder{D}_0 \cdot \dder{D}_1$ and
-  $\dder{D}_0' \cdot \dder{D}_1'$ that are not switch equivalent, while
-  $\der{D} = \dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ and
-  $\der{D}' = \dder{D}_0'\cdot \dder{D}_1' \cdot \dder{D}_2'$ would
-  be.
+  to derive a sensible concurrent semantics: 
+  In fact $\der{D} = \dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ and
+  $\der{D}' = \dder{D}_0'\cdot \dder{D}_1' \cdot \dder{D}_2'$ are switch 
+  equivalent, while if we consider the first
+  two steps, derivations $\dder{D}_0 \cdot \dder{D}_1$ and
+  $\dder{D}_0' \cdot \dder{D}_1'$  are not switch equivalent.
+  % if we limit to the first
+  %two steps, we obtain derivations $\dder{D}_0 \cdot \dder{D}_1$ and
+  %$\dder{D}_0' \cdot \dder{D}_1'$ that are not switch equivalent, while
+  %$\der{D} = \dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ and
+  %$\der{D}' = \dder{D}_0'\cdot \dder{D}_1' \cdot \dder{D}_2'$ would
+  %be.
 \end{example} 
 
 \full{Moreover, limiting sequential independence to the case in which the independence
@@ -2753,7 +2761,7 @@ since $\mathcal{G}$ is acyclic and finite, then $\dph(v)$ is a natural number.
     with depth $0$ and an arrow $p\colon w\to v$ (i.e.~a path in
     $\mathcal{G}$) such that $x$ belongs to the image of
     $L(p)\colon L(w)\to L(v)$;
-  \item $r\colon K\to R$ is mono on vertices of depth $0$, i.e. for every
+  \item $r\colon K\to R$ is mono on vertices of depth $0$, i.e.~for every
     $v\in V$ such that $\dph(v)=0$, the component $r_v:K(v)\to R(v)$
     is mono.
   \end{enumerate}
@@ -2764,7 +2772,7 @@ by taking as $\mathcal{G}$ the graph $e \rightrightarrows v$. The sort
 of edges $e$ has depth $0$ while $v$, the sort of nodes, has depth
 $1$. Hence, condition $1$ asks that in the left-hand side of each rule
 there are no isolated nodes, while condition $2$ asks that the
-morphism $r: K \to R$ is mono on edges, i.e. it can only merge nodes.
+morphism $r: K \to R$ is mono on edges, i.e.~it can only merge nodes.
 
 %\begin{example}
 %\todo{esempi (no idea)}
@@ -2783,13 +2791,13 @@ Another interesting class of well-switching rewriting systems is given by e-grap
 
 \begin{example}[E-graphs]
   Consider the category $\cat{EGraphs}$, where objects are (directed)
-  graphs endowed with an equivalence over nodes and arrows are graph
+  graphs endowed with an equivalence over nodes, and arrows are graph
   morphisms that preserve the equivalence, as considered
   in~\cite{BaldanGM06}, closely related to e-graphs~\cite{WNW:egg}. 
   Formally, $\cat{EGraphs}$ can be seen as the
   subcategory of the presheaf
   $[E \rightrightarrows V \to Q, \cat{Set}]$ where objects are
-  constrained to have the component $Q$ surjective. 
+  constrained to have the component $V \to Q$ surjective. 
   
   Explicitly, an
   e-graph $G$ is a triple $\langle s_G, t_G, q_G \rangle$ where
@@ -2800,12 +2808,12 @@ Another interesting class of well-switching rewriting systems is given by e-grap
   creates pullbacks and pushouts \cite{mac2013categories}, so that they are computed component-wise.
   
   A morphism in $\cat{EGraph}$ is mono if the components over $E$
-  and $V$ are mono, i.e. if it is mono as a morphism in
+  and $V$ are mono, i.e.~if it is mono as a morphism in
   $\cat{Graph}$. It is regular mono if also the component on
-  $Q$ is mono, i.e. if it reflects equivalence classes besides
+  $Q$ is mono, i.e.~if it reflects equivalence classes besides
   preserving them. This characterisation of regular monos and the fact that pullbacks and pushouts are computed component-wise allows us to prove quasi-adhesivity of $\cat{EGraphs}$ at once. Moreover, one can deduce that every rewriting system $(\X, \R)$ that is left-linear with respect to $\reg(\cat{EGraphs})$ is strong enforcing: this is done exploiting again the inclusion functor into $[E \rightrightarrows V \to Q, \cat{Set}]$.
   
-Left-linear rewriting systems on $\cat{EGraphs}$, i.e. in which the right half of a rule is mono but not regular in general, 
+Left-linear rewriting systems on $\cat{EGraphs}$, i.e.~in which the right half of a rule is mono but not regular in general, 
 are well-switching. They have been used in~\cite{BaldanGM06} for the graphical implementation of nominal calculi, where,
 differently from~\cite{Gad07}, as a result of name passing the received name is not merged with a local one at the receiver,
 but put instead in the same equivalence class, thus better tracing the causal dependencies among processes reductions.
@@ -2912,7 +2920,7 @@ Then the following are equivalent:
 
 
 As discussed in the introduction, in the linear case a number of
-basic properties of switch equivalence, i.e. the globality of
+basic properties of switch equivalence, i.e.~the globality of
 independence, the consistency of switching, and the existence of a
 canonical form for equivalence proofs, can be derived from a
 characterisation of switch equivalence in terms of consistent
@@ -2927,7 +2935,7 @@ already observed that $\der{D}$ and $\der{D}'$ are not switch equivalent.
 % 
 Still, it is easy to see that they are related by a consistent
 permutation, which is the identity on productions. The colimit of
-both derivations is a single node with a self loop, i.e. the
+both derivations is a single node with a self loop, i.e.~the
 terminal object in $\cat{Graph}$, hence all commutation requirements
 are trivially satisfied.
 
@@ -2965,13 +2973,13 @@ independent. This is exemplified below.
   Consider the derivation $\der{F}$ in
   Fig.~\ref{fi:derF}. Note that rule $\rho_4$ needs a self-loop on
   node $12$ to be applied. This can be generated either by $\rho_3$ or
-  by $\rho_1$ merging nodes $1$ and $2$, hence at least one of them
-  must precede the application of $\rho_4$. Indeed, in $\der{E}$ it
+  by $\rho_2$ merging nodes $1$ and $2$, hence at least one of them
+  must precede the application of $\rho_4$. Indeed, in $\der{F}$ it
   can be easily seen that the second and the third step applying
-  $\rho_1$ and $\rho_4$ are independent. However, we could switch
+  $\rho_2$ and $\rho_4$ are independent. However, we could switch
   twice the application of $\rho_3$, bringing it in the last position,
   obtaining a derivation $\der{F}'$ as depicted in
-  Fig.~\ref{fi:derF1}, where the applications of $\rho_1$ and $\rho_4$
+  Fig.~\ref{fi:derF1}, where the applications of $\rho_2$ and $\rho_4$
   are no longer independent.
    
   \begin{figure}[t]
@@ -3043,7 +3051,7 @@ Then $\der{D}'''$ and $\der{E}'''$ are abstraction equivalent.
 The lemmas above open the way to the key result of this section establishing a canonical form for
 switching derivations.
 
-The first result shows that whenever equating two derivation sequences by performing a sequence of switching, we can limit ourselves to switchings inverting the order of steps that in the target derivation has to be reversed, i.e. we can limit ourselves to applying inversions.
+The first result shows that whenever equating two derivation sequences by performing a sequence of switching, we can limit ourselves to switchings inverting the order of steps that in the target derivation has to be reversed, i.e.~we can limit ourselves to applying inversions.
 
 \begin{restatable}[No need of useless switches]{theorem}{thNoNeed}
   \label{th:no-need}
@@ -3059,7 +3067,7 @@ The first result shows that whenever equating two derivation sequences by perfor
 
 While inversions can be
 performed in any order in the case of linear rewriting systems, this is no longer true for left-linear
-rewriting systems due to the fact that, as already observed, globality of independence holds in a weak form. For instance, if we get back to Example~\ref{ex:non-global} and consider derivation $\der{F}$ in Fig.~\ref{fi:derF}, the last two steps applying rules $\rho_1$ and $\rho_4$ can be switched, thus leading to a derivation, call it $\der{F}''$,  applying $\rho_3, \rho_4, \rho_1$. Such $\der{F}$ is switch equivalent to $\der{F}'$ in Fig.~\ref{fi:derF1}, hence starting from $\der{F}''$ we can obtain $\der{F}'$ via a switching sequence, but we cannot start by switching $\rho_1$ and $\rho_4$, despite the fact that this is an inversion.
+rewriting systems due to the fact that, as already observed, globality of independence holds in a weak form. For instance, if we get back to Example~\ref{ex:non-global} and consider derivation $\der{F}$ in Fig.~\ref{fi:derF}, the last two steps applying rules $\rho_2$ and $\rho_4$ can be switched, thus leading to a derivation, call it $\der{F}''$,  applying $\rho_3, \rho_4, \rho_2$. Such $\der{F}$ is switch equivalent to $\der{F}'$ in Fig.~\ref{fi:derF1}, hence starting from $\der{F}''$ we can obtain $\der{F}'$ via a switching sequence, but we cannot start by switching $\rho_2$ and $\rho_4$, despite the fact that this is an inversion.
 
 Still, we can identify a
 canonical form for switching derivations: at each step one can apply a switch to the inversion with largest index. 
@@ -3173,7 +3181,7 @@ developing a sensible theory of concurrency, notably a Church-Rosser
 theorem, and we identified a subclass of left-linear rewriting systems,
 which we call well-switching, as an appropriate setting where 
 many vital results can be re-established. Specifically, a Church-Rosser 
-theorem, i.e. the possibility of performing independent steps in any order, is
+theorem, i.e.~the possibility of performing independent steps in any order, is
 fully recovered. Moreover, the switch construction and correspondingly
 the switch equivalence, at the core of a theory of concurrency for
 rewriting systems, enjoy a number of fundamental properties: a weak form of globality of independence, 
@@ -4787,8 +4795,7 @@ by switching only step along inversions.
   \noindent
   (2) $j<i-1$ or $j>i-1$\\
   %
-  In this case $\nu_1$ does not ``interfere'' with $\transp{i}$, i.e.
-  $i$ still satisfies the hypotheses of the lemma with respect to the
+  In this case $\nu_1$ does not ``interfere'' with $\transp{i}$, i.e.~$i$ still satisfies the hypotheses of the lemma with respect to the
   switching sequence
   $\der{D}_1 \shift{\nu_2} \ldots \shift{\nu_n} \der{D}_n$.
 
@@ -4820,7 +4827,7 @@ by switching only step along inversions.
   $\nu_{2,n}(i) > \nu_{2,n}(i+1)$ and $\nu_{2,n}(k) > \nu_{2,n}(i+1)$
   for all $k > i+1$. Hence we can use the inductive hypothesis to
   deduce that the switching sequence from $\der{D}_1$ can start by
-  switching $\transp{i}$, i.e. we obtain (see the third column in
+  switching $\transp{i}$, i.e.~we obtain (see the third column in
   Fig.~\ref{fi:switchA})
   \begin{center}
     $\der{D}_1 \shift{\transp{i}} \der{D}_2' \shift{\nu_3'} \ldots
@@ -5140,7 +5147,7 @@ by switching only step along inversions.
   $\der{D}_2''$ are still sequential independent. Hence, we can use
   the inductive hypothesis on $\der{D}_2''$ and deduce the existence
   of a switching sequence where $\transp{i+1}[i+2]$ can be switched
-  first, i.e. we obtain (see Fig.~\ref{fi:switchB2}, third column)
+  first, i.e.~we obtain (see Fig.~\ref{fi:switchB2}, third column)
   \begin{center}
     $\der{D}_2'' \shift{\transp{i+1}[i+2]}
     \der{D}_3''' \shift{\nu_4'''} \ldots \shift{\nu_n'''} \der{D}_n$
