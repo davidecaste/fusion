@@ -1120,7 +1120,7 @@ perform abstract rewriting using what is called the Double-Pushout
       $G$ to $H$ applying rule $\rho$} is a diagram as the one
     aside, in which both squares are pushouts. The arrow $m$ is called
     the \emph{match} of the derivation, while $h$ is its
-    \emph{back-match}.  We denote a direct derivation $\dder{D}$
+    \emph{co-match}.  We denote a direct derivation $\dder{D}$
     from $G$ to $H$ as $\dder{D}\colon G\Mapsto H$. }
   \parbox{3cm}{$\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l}
       \ar[r]^{r} & R \ar[d]^{h}\\G & \ar@{>->}[l]^{f} D \ar[r]_{g}&
@@ -1274,7 +1274,7 @@ So equipped, we can introduce the notion of \emph{consistent permutation}.
   \emph{mediating isomorphism}
   $\xi_\sigma\colon \tpro{D} \to \lpro \der{D}' \rpro$ fitting in the
   following diagrams, where $m_i, m'_i, h_i$ and $h'_i$ are,
-  respectively, the matches and back-matches of $\dder{D}_i$ and
+  respectively, the matches and co-matches of $\dder{D}_i$ and
   $\dder{D}'_i$.
 
   \[
@@ -2844,7 +2844,7 @@ then every coprojection is in $\mathcal{M}$ (see \Cref{lem:colim} for details an
 	\emph{mediating isomorphism}
 	$\xi_\sigma\colon \tpro{D} \to \lpro \der{D}' \rpro$ fitting in the
 	following diagrams, where $m_i, m'_i, h_i$ and $h'_i$ are,
-	respectively, the matches and back-matches of $\dder{D}_i$ and
+	respectively, the matches and co-matches of $\dder{D}_i$ and
 	$\dder{D}'_i$.
 	\[
 	\xymatrix{
@@ -2990,13 +2990,13 @@ independent. This is exemplified below.
 
   \begin{figure}[t]
     \input{Figure/derF.tex}    
-    \caption{A derivation $\der{F}$.} 
+    \caption{The derivation $\der{F}$.} 
     \label{fi:derF}
   \end{figure}
 
   \begin{figure}[t]
     \input{Figure/derF1.tex}    
-    \caption{A derivation $\der{F}'$.} 
+    \caption{The derivation $\der{F}'$.} 
     \label{fi:derF1}
   \end{figure}
 \end{example}
@@ -3969,7 +3969,7 @@ To prove the Local Church-Rosser Theorem, let us begin by deducing some properti
 	$l_1\colon K_1\mto L_1$, thus it is in $\mathcal{M}$ implying
 	$i_0=i'_0$. If, moreover, we suppose that the rule $\rho$ applied in
 	$\dder{D}$ is linear, then $g_0\colon D_0\to G_1$ is in
-	$\mathcal{M}$ too entailing $i'_1=i'_1$, too.
+	$\mathcal{M}$ too entailing $i_1=i'_1$, too.
 \end{proof}
 
 \begin{remark}\label{rem:po}
@@ -3993,7 +3993,7 @@ To prove the Local Church-Rosser Theorem, let us begin by deducing some properti
 		\ar[rr]_{g_1}&& G_2}\] 
 	
 	Since $f_1$ is mono then $i_0=j_0$. For every $v$ with depth $0$ we have
-	\[g_{0,v}\circ i_{1,v}=h_{0,v}=g_{0,v}\circ j_{1,v}\]
+	\[g_{0,v}\circ i_{1,v}=m_{1,v}=g_{0,v}\circ j_{1,v}\]
 	which entails $i_{1,v}=j_{1,v}$. Let now $v$ be a vertex with depth greater than $0$, and take $x\in L_1(v)$. By definition, we have $p:w\to v$ and $y\in L_{1}(w)$  such that $\dph(w)=0$ and $L(p)(y)=x$. By naturality we have
 	\[i_{1,v}(x)=i_{1,v}(L(p)(y))=L(p)(i_{1, w}(y))=L(p)(j_{1, w}(y))=j_{1,v}(L(p)(y))=j_{1,v}(x)\]
 	From this we can deduce that $i_{1,v}=j_{1,v}$, as wanted.
@@ -4433,7 +4433,7 @@ for the interested reader.
 	\emph{mediating isomorphism}
 	$\xi_\sigma\colon \tpro{D} \to \lpro \der{D}' \rpro$ fitting in the
 	following diagrams, where $m_i, m'_i, h_i$ and $h'_i$ are,
-	respectively, the matches and back-matches of $\dder{D}_i$ and
+	respectively, the matches and co-matches of $\dder{D}_i$ and
 	$\dder{D}'_i$
 	
 	\[
