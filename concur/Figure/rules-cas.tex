@@ -1,9 +1,7 @@
 \begin{center}
- %   \hfill
-    %
-%    \subcaptionbox*{$\rho_3$}{
-    % RULE P3
-    %
+    % \subcaptionbox*{$\rho_0$}{
+    % RULE P0
+    % 
     \begin{tikzpicture}[node distance=2mm, font=\small]
       \node (l) {
       \begin{tikzpicture}
@@ -11,25 +9,23 @@
         \node at (0,0.53) {}; 
         \node at (0,0) [node, label=below:$1$] (1) {};
         \node at (0.5,0) [node, label=below:$2$] (2) {} ;
-        \node at (1,0) [node, label=below:$3$] (3) {} ;
       %
       \pgfBox
       \end{tikzpicture} 
     };
-    \node[font=\scriptsize, above] at (l.north) {$L_3$};
+    \node[font=\scriptsize, above] at (l.north) {$L_0$};
     \node [right=of l] (k) {
       \begin{tikzpicture}
         %
         \node at (0,0.53) {}; 
         \node at (0,0) [node, label=below:$1$] (1) {};
         \node at (0.5,0) [node, label=below:$2$] (2) {} ;
-        \node at (1,0) [node, label=below:$3$] (3) {} ;
       %
       \pgfBox
       \end{tikzpicture} 
     };
-    \node[font=\scriptsize, above] at (k.north) {$K_3$};
-    \node[below] at (k.south) {$\rho_3$};
+    \node[font=\scriptsize, above] at (k.north) {$K_0$};
+    \node[below] at (k.south) {$\rho_0$};
     \node  [right=of k] (r) {
       \begin{tikzpicture}
         \node at (0,0.53) {}; 
@@ -38,7 +34,53 @@
         \pgfBox
       \end{tikzpicture}
     };
-    \node[font=\scriptsize, above] at (r.north) {$R_3$};
+    \node[font=\scriptsize, above] at (r.north) {$R_0$};
+    \path (k) edge[->] node[trans, above] {} (l);
+    \path (k) edge[->] node[trans, above] {} (r);
+    \end{tikzpicture}
+  % }
+  %
+  \hspace{1cm} %\hfill
+  %
+  % \subcaptionbox*{$\rho_1$}{
+  % RULE P1
+  % 
+  \begin{tikzpicture}[node distance=2mm, font=\small]
+      \node (l) {
+      \begin{tikzpicture}
+        %
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$1$] (1) {};
+        \node at (0.5,0) [node, label=below:$2$] (2) {} ;
+        \draw[->, color=blue] (1) to[out=20, in=160] (2);
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node[font=\scriptsize, above] at (l.north) {$L_1$};
+    \node [right=of l] (k) {
+      \begin{tikzpicture}
+        %
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$1$] (1) {};
+        \node at (0.5,0) [node, label=below:$2$] (2) {} ;
+        \draw[->, color=blue] (1) to[out=20, in=160] (2);                
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node[font=\scriptsize, above] at (k.north) {$K_1$};
+    \node[below] at (k.south) {$\rho_1$};
+    \node  [right=of k] (r) {
+      \begin{tikzpicture}
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$12$] (12) {}
+        edge [color=blue,in=85, out=55, loop] ();
+        %
+        \pgfBox
+      \end{tikzpicture}
+    };
+    \node[font=\scriptsize, above] at (r.north) {$R_1$};
     \path (k) edge[->] node[trans, above] {} (l);
     \path (k) edge[->] node[trans, above] {} (r);
     \end{tikzpicture}

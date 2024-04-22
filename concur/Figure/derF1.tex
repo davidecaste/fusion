@@ -4,28 +4,31 @@
         \begin{tikzpicture}
           % 
           \node at (0,0.53) {}; 
-          \node at (0,0) [node, label=below:$1$] (1) {} ;
-          \node at (0.5,0) [node, label=below:$2$] (2) {} ;
+          \node at (0,0) [node, label=below:$12$] (1) {} ;
+          \node at (0.5,0) [node, label=below:$12$] (2) {} ;
+          \draw[->,color=blue] (1) to[out=20, in=160] (2);
           % 
           \pgfBox
         \end{tikzpicture} 
       };
-      \node (K1) at (2,2) {
+      \node [right=of L1] (K1) {
         \begin{tikzpicture}
           % 
           \node at (0,0.53) {}; 
-          \node at (0,0) [node, label=below:$1$] (1) {} ;
-          \node at (0.5,0) [node, label=below:$2$] (2) {} ;
+          \node at (0,0) [node, label=below:$12$] (1) {} ;
+          \node at (0.5,0) [node, label=below:$12$] (2) {} ;
+          \draw[->,color=blue] (1) to[out=20, in=160] (2);
           % 
           \pgfBox
-        \end{tikzpicture} 
+        \end{tikzpicture}         
       };
 %      \node [above=of K1] {$\rho_2$};
-      \node [above] at (K1.north) {$\rho_2$};
+      \node [above] at (K1.north) {$\rho_1$};
       \node [right=of K1](R1) {
         \begin{tikzpicture}
           \node at (0,0.53) {}; 
-          \node at (0,0) [node, label=below:$12$] (12) {};
+          \node at (0,0) [node, label=below:$12$] (12) {}
+          edge [color=blue,in=65, out=35, loop] ();
           % 
           \pgfBox
         \end{tikzpicture}
@@ -37,22 +40,22 @@
         \begin{tikzpicture}
           % 
           \node at (0,0) [node, label=below:$12$] (2) {}
-          edge [in=95, out=65, loop] ();
+          edge [in=145, out=115, loop] ();        
           % 
           \pgfBox
-        \end{tikzpicture} 
+        \end{tikzpicture}
       };
       \node [right=of L2] (K2) {
         \begin{tikzpicture}
           % 
-          \node at (0,0) [node, label=below:$12$] (2) {}
-          edge [in=95, out=65, loop] ();
+          \node at (0,0.53) {}; 
+          \node at (0,0) [node, label=below:$12$] (12) {};
           % 
           \pgfBox
         \end{tikzpicture} 
       };
-%      \node [above=of K2] {$\rho_4$};
-      \node [above] at (K2.north) {$\rho_4$};
+%      \node [above=of K2] {$\rho_2$};
+      \node [above] at (K2.north) {$\rho_2$};
       \node [right=of K2] (R2) {
         \begin{tikzpicture}
           \node at (0,0.53) {}; 
@@ -64,30 +67,28 @@
       \path (K2) edge[->] node[trans, above] {} (L2);
       \path (K2) edge[->] node[trans, above] {} (R2);
 
-      \node at (9,2) (L3) {
+      \node at (9,2) (L0) {
         \begin{tikzpicture}
           % 
           \node at (0,0.53) {}; 
           \node at (0,0) [node, label=below:$12$] (1) {};
           \node at (0.5,0) [node, label=below:$12$] (2) {} ;
-          \node at (1,0) [node, label=below:$3$] (3) {} ;         % 
           \pgfBox
         \end{tikzpicture} 
       };
-      \node [right=of L3] (K3) {
+      \node [right=of L0] (K0) {
         \begin{tikzpicture}
           %
           \node at (0,0.53) {}; 
           \node at (0,0) [node, label=below:$12$] (1) {};
           \node at (0.5,0) [node, label=below:$12$] (2) {} ;
-          \node at (1,0) [node, label=below:$3$] (3) {} ;
           % 
           \pgfBox
         \end{tikzpicture} 
       };
-%      \node [above=of K3] {$\rho_3$};
-      \node [above] at (K3.north) {$\rho_3$};
-      \node [right=of K3] (R3) {
+%      \node [above=of K0] {$\rho_0$};
+      \node [above] at (K0.north) {$\rho_0$};
+      \node [right=of K0] (R0) {
         \begin{tikzpicture}
           %
           \node at (0,0.53) {}; 
@@ -96,111 +97,110 @@
           \pgfBox
         \end{tikzpicture}
       };
-      \path (K3) edge[->] node[trans, above] {} (L3);
-      \path (K3) edge[->] node[trans, above] {} (R3);
+      \path (K0) edge[->] node[trans, above] {} (L0);
+      \path (K0) edge[->] node[trans, above] {} (R0);
 
       %%%%%% second row
-      \node at (0,0) (G1) {
+      \node at (0,0) (G0) {
         \begin{tikzpicture}
           % 
           \node at (0,0.53) {}; 
           \node at (0,0) [node, label=below:$1$] (1) {};
           \node at (0.5,0) [node, label=below:$2$] (2) {} ;
-          \node at (1,0) [node, label=below:$3$] (3) {} ;
-          \draw[->] (1) to[out=20, in=160] (2);
+          \draw[->,color=blue] (1) to[out=30, in=150] (2);
+          \draw[->] (2) to[out=210, in=330] (1);
           % 
           \pgfBox
-        \end{tikzpicture} 
+        \end{tikzpicture}  
       };
-      \node at (2,0) (D1) {
-        \begin{tikzpicture}
+      \node at (1.6,0) (D0) {
+         \begin{tikzpicture}
           % 
           \node at (0,0.53) {}; 
           \node at (0,0) [node, label=below:$1$] (1) {};
           \node at (0.5,0) [node, label=below:$2$] (2) {} ;
-          \node at (1,0) [node, label=below:$3$] (3) {} ;
-          \draw[->] (1) to[out=20, in=160] (2);
+          \draw[->,color=blue] (1) to[out=30, in=150] (2);
+          \draw[->] (2) to[out=210, in=330] (1);
           % 
           \pgfBox
-        \end{tikzpicture} 
+        \end{tikzpicture}  
       };
-      \node at (4,0) (G2) {
-        \begin{tikzpicture}
-          %
-          \node at (0,0.53) {}; 
-          \node at (0,0) [node, label=below:$12$] (12) {}
-          edge [in=95, out=65, loop] ();
-          \node at (0.5,0) [node, label=below:$3$] (3) {} ;
-          % 
-          \pgfBox
-        \end{tikzpicture} 
-      };
-      \path (D1) edge[->] node[trans, above] {} (G1);
-      \path (D1) edge[->] node[trans, above] {} (G2);
-      \path (L1) edge[->] node[trans, above] {} (G1);
-      \path (K1) edge[->] node[trans, above] {} (D1);
-      \path (R1) edge[->] node[trans, above] {} (G2);
-
-      \node at (6.1,0) (D2) {
+      \node at (4,0) (G1) {
         \begin{tikzpicture}
           % 
           \node at (0,0.53) {}; 
           \node at (0,0) [node, label=below:$12$] (12) {}
-          edge [in=95, out=65, loop] ();
-          \node at (0.5,0) [node, label=below:$3$] (3) {} ;                    
+          edge [color=blue,in=65, out=35, loop] ()
+          edge [in=145, out=115, loop] (); 
           % 
           \pgfBox
         \end{tikzpicture} 
       };
-      \node at (8.2,0) (G3) {
-        \begin{tikzpicture}
-          % 
-          \node at (0,0.53) {}; 
-          \node at (0,0) [node, label=below:$12$] (12) {};
-          \node at (0.5,0) [node, label=below:$3$] (3) {} ;
-          % 
-          \pgfBox
-        \end{tikzpicture} 
-      };
+      \path (D0) edge[->] node[trans, above] {} (G0);
+      \path (D0) edge[->] node[trans, above] {} (G1);
+      \path (L1) edge[->] node[trans, above] {} (G0);
+      \path (K1) edge[->] node[trans, above] {} (D0);
+      \path (R1) edge[->] node[trans, above] {} (G1);
 
-      \path (D2) edge[->] node[trans, above] {} (G2);
-      \path (D2) edge[->] node[trans, above] {} (G3);
-      \path (L2) edge[->] node[trans, above] {} (G2);
-      \path (K2) edge[->] node[trans, above] {} (D2);
-      \path (R2) edge[->] node[trans, above] {} (G3);
-      
-      \node at (11.1,0) (D3) {
-        \begin{tikzpicture}
-          %
-          \node at (0,0.53) {};
-          \node at (0,0) [node, label=below:$12$] (12) {};
-          \node at (0.5,0) [node, label=below:$3$] (3) {} ;
-                    
-          % 
-          \pgfBox
-        \end{tikzpicture} 
-      };
-      \node [right=of D3] (G4) {
+      \node at (6.2,0) (D1) {
         \begin{tikzpicture}
           %
           \node at (0,0.53) {};                    
-          \node at (0,0) [node, label=below:$12$] (12) {};
+          \node at (0,0) [node, label=below:$12$] (12) {}
+          edge [color=blue,in=65, out=35, loop] ();
           % 
           \pgfBox
-        \end{tikzpicture} 
+        \end{tikzpicture}
       };
-      \node[font=\scriptsize, below] at (G1.south) {$G_0$};
-      \node[font=\scriptsize, below] at (D1.south) {$D_0'$};      
-      \node[font=\scriptsize, below] at (G2.south) {$G_1'$};
-      \node[font=\scriptsize, below] at (D2.south) {$D_1'$};      
-      \node[font=\scriptsize, below] at (G3.south) {$G_2'$};
-      \node[font=\scriptsize, below] at (D3.south) {$D_2'$};      
-      \node[font=\scriptsize, below] at (G4.south) {$G_3$};      
-      \path (D3) edge[->] node[trans, above] {} (G3);
-      \path (D3) edge[->] node[trans, above] {} (G4);
-      \path (L3) edge[->] node[trans, above] {} (G3);
-      \path (K3) edge[->] node[trans, above] {} (D3);
-      \path (R3) edge[->] node[trans, above] {} (G4);
+      \node at (8.2,0) (G2) {
+        \begin{tikzpicture}
+          %
+          \node at (0,0.53) {};                    
+          \node at (0,0) [node, label=below:$12$] (12) {}
+          edge [color=blue,in=65, out=35, loop] ();
+          % 
+          \pgfBox
+        \end{tikzpicture}
+      };
+
+      \path (D1) edge[->] node[trans, above] {} (G1);
+      \path (D1) edge[->] node[trans, above] {} (G2);
+      \path (L2) edge[->] node[trans, above] {} (G1);
+      \path (K2) edge[->] node[trans, above] {} (D1);
+      \path (R2) edge[->] node[trans, above] {} (G2);
+      
+      \node at (10.6,0) (D2) {
+        \begin{tikzpicture}
+          %
+          \node at (0,0.53) {};                    
+          \node at (0,0) [node, label=below:$12$] (12) {}
+          edge [color=blue,in=65, out=35, loop] ();
+          % 
+          \pgfBox
+        \end{tikzpicture}
+      };
+      \node [right=of D2] (G3) {
+        \begin{tikzpicture}
+          %
+          \node at (0,0.53) {};                    
+          \node at (0,0) [node, label=below:$12$] (12) {}
+          edge [color=blue,in=65, out=35, loop] ();
+          % 
+          \pgfBox
+        \end{tikzpicture}
+      };
+      \node[font=\scriptsize, below] at (G0.south) {$G_0$};
+      \node[font=\scriptsize, below] at (D0.south) {$D_0'$};      
+      \node[font=\scriptsize, below] at (G1.south) {$G_1'$};
+      \node[font=\scriptsize, below] at (D1.south) {$D_1'$};      
+      \node[font=\scriptsize, below] at (G2.south) {$G_2'$};
+      \node[font=\scriptsize, below] at (D2.south) {$D_2'$};      
+      \node[font=\scriptsize, below] at (G3.south) {$G_3$};      
+      \path (D2) edge[->] node[trans, above] {} (G2);
+      \path (D2) edge[->] node[trans, above] {} (G3);
+      \path (L0) edge[->] node[trans, above] {} (G2);
+      \path (K0) edge[->] node[trans, above] {} (D2);
+      \path (R0) edge[->] node[trans, above] {} (G3);
     \end{tikzpicture}
   %
 \end{center}
