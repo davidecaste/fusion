@@ -799,6 +799,10 @@ A category $\X$ is said to be \emph{strictly $\mathcal{M}$-adhesive} if $\mathca
 	\emph{Adhesivity} and \emph{quasiadhesivity} as defined in \cite{lack2005adhesive,garner2012axioms}  coincide with  strict $\mon(\X) $-adhesivity and strict $\reg(\X)$-adhesivity, respectively. 
 \end{remark}
 
+\begin{remark}\label{rem:pb}
+	Let $X$ be an object of $\X$, with $\X$ $\mathcal{M}$-adhesive. We can consider  the full subcategory $\mathcal{M}/X$ of $\X/X$ made by arrows in $\mathcal{M}$. Since $\X$ has all $\mathcal{M}$-pullbacks, for every arrow $f\colon X\to Y$ we have a functor $f^*\colon \mathcal{M}/Y\to \mathcal{M}/X $ sending $m\colon \mto X$ to a chosen pullback of it along $f$.
+	\end{remark}
+
 A first result we can prove regards closure under decomposition of $\mathcal{M}$.
 
 \begin{proposition}\label{prop:deco}Let  $\mathcal{A}$ be a class of arrows stable under pullbacks. For every arrow $f\colon X\to Y$ and monomorphism $m\colon Y\to Z$, if $m\circ f \in\mathcal{A}$ then $f\in \mathcal{A}$.
@@ -844,8 +848,8 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the comma construction
 In particular, we can apply this result to slices over and under a given object.
 
 \begin{corollary}\label{cor:slice}
-	Let  $X$ be an object of an $\mathcal{M}$-adhesive category $\X$. Then  $\X/X$ and $X/\X$ are, respectively, is $\mathcal{M}/X$- and $X/\mathcal{M}$-adhesive, where
-	\[\mathcal{M}/X:=\{m\in  \mathcal{A}(\X/X) \mid m\in \mathcal{M} \} \qquad X/\mathcal{M}:=\{m\in  \mathcal{A}(X/\X) \mid m\in \mathcal{M} \}\]
+	Let  $X$ be an object of an $\mathcal{M}$-adhesive category $\X$. Then  $\X/X$ and $X/\X$ are, respectively, $\mathcal{M}_X$- and $\mathcal{M}^X$-adhesive, where
+	\[\mathcal{M}_X:=\{m\in  \mathcal{A}(\X/X) \mid m\in \mathcal{M} \} \qquad \mathcal{M}^X:=\{m\in  \mathcal{A}(X/\X) \mid m\in \mathcal{M} \}\]
 \end{corollary}
 
 
@@ -872,7 +876,7 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see \cite{cas
 \begin{example}\todo{term graph}
 \end{example}
 
-We end this section proving two properties of $\mathcal{M}$-adhesive categories:  $\mathcal{M}$-pushout-pullback decomposition and uniqueness of pushouts complements.
+We end this section proving a useful property of $\mathcal{M}$-adhesive categories:  $\mathcal{M}$-pushout-pullback decomposition.
 
 
 \begin{lemma}[$\mathcal{M}$-pushout-pullback decomposition]\label{lem:popb} Let $\X$ be an $\mathcal{M}$-adhesive category  and suppose that, in the diagram below, the whole rectangle is a pushout and the right square a pullback.
@@ -894,10 +898,12 @@ We end this section proving two properties of $\mathcal{M}$-adhesive categories:
 \end{enumerate}
 \end{proof}
 
-Let us turn our attention to pushout complements.
+\subsubsection{Pushout complements}
+
+We turn now to the exam of the notion of \emph{pushout complement}. We will prove that, in an $\mathcal{M}$-adhesive category $\X$ certain pushout complements are unique and are \emph{final pullbacks complements} in the sense of \cite{dyckhoff1987exponentiable,corradini2006sesqui}.
 
 \begin{definition}[Pushout complement]
-Let $f\colon X\to Y$ and $g\colon Y\to Z$ ba two composable arrows in a category $\X$. A \emph{pushout complement} for the pair $(f,g)$ is a pair $(h,k)$ with $h\colon X\to W$ and $k\colon W\to Z$ such that the square below commutes and it is a pushout.
+Let $f\colon X\to Y$ and $g\colon Y\to Z$ be two composable arrows in a category $\X$. A \emph{pushout complement} for the composable pair $(f,g)$ is a pair $(h,k)$ with $h\colon X\to W$ and $k\colon W\to Z$ such that the square below commutes and it is a pushout.
 \[\xymatrix{X \ar[r]^{f} \ar[d]_{h}& Y \ar[d]^{g} \\ W \ar[r]_{k}& Z}\]
 \end{definition}
 
@@ -909,32 +915,109 @@ Let $f\colon X\to Y$ and $g\colon Y\to Z$ ba two composable arrows in a category
 	\[\xymatrix{2 \ar[r]^{!_2} \ar[d]_{\id{2}}& 1 \ar[d]^{\id{1}} & 2 \ar[r]^{!_2} \ar[d]_{!_2}& 1 \ar[d]^{\id{1}}\\ 2 \ar[r]_{!_2}& 1 & 1 \ar[r]_{\id{1}}& 1}\]
 \end{example}
 
-Working in an $\mathcal{M}$-adhesive category we can amend the second defect. 
 
+In an $\mathcal{M}$-adhesive category we can approach pushout complements in a more abstract way, using the pullback functor of \Cref{rem:pb}.
 
-\begin{lemma}\label{lem:radj}
-Let $f\colon X\to Y$ be an arrow in an $\mathcal{M}$-adhesive category $\X$ and suppose that the left square below is a pushout while the  right one is a pullback, with $ m\colon M\to X$ and $n\colon N\to Y$ in $\mathcal{M}$.
-\[\xymatrix{M \ar@{>->}[d]_{m}\ar[r]^{h}& Q \ar@{>->}[d]^{k} & P \ar[r]^{p_1} \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\X\ar[r]_{f}&Y &X \ar[r]_f&Y\\}\]
-Then $n\leq k$ if and only if $p_2\leq m$.
+\begin{definition}
+Let $F\colon \X \to \Y$ be a functor and $Y$ an object of $\Y$. We say that $F$ has a \emph{partial right adjoint at $Y$} if there exists an object $G(Y)$ in $\X$ and an arrow $\epsilon_Y\colon F(G(Y))\to Y$ such that, for every  $f\colon F(X)\to Y$ there exists a unique $g\colon X\to G(Y)$ making the diagram below commutative.
+\[\xymatrix@C=15pt{F(X) \ar[rr]^{F(g)} \ar[dr]_{f}&&F(G(Y)) \ar[dl]^{\epsilon_Y}\\ & Y}\]
+\end{definition} 
+
+\begin{remark}
+	It is immediate to see that $F$ is a left adjoint if and only if it has a partial right adjoint at every $Y\in \Y$.
+\end{remark}
+
+We can prove two  useful properties of partial right adjoints.
+
+\begin{proposition}\label{prop:uni}
+	Let $F\colon \X\to \Y$ be a functor and suppose that it has a partial right adjoint $(G(Y), \epsilon_Y)$ at $Y$. Then the following hold true:
+	\begin{enumerate}
+\item there is a natural isomorphism $\psi\colon \X(-, G(Y))\to \Y(F(-), Y)$;
+\item if $(G'(Y), \epsilon'_Y)$ is another partial right adjoint to $F$ at $Y$, then there exists a unique isomorphism $\phi_Y\colon G(Y)\to G'(Y)$ such that the diagram below commutes.
+\[\xymatrix@C=15pt{F(G(Y)) \ar[rr]^{F(\phi_Y)} \ar[dr]_{\epsilon_Y} & &F(G'(Y)) \ar[dl]^{\epsilon'_Y}\\ & Y}\]
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Given an object $X$ of $\X$ we can define $\phi_X$ putting
+		\begin{align*}
+			\phi_X \colon \X(X, G(Y))&\to \Y(F(X), Y)\\
+			g&\mapsto \epsilon_Y\circ F(g)
+		\end{align*}
+		By definition of partial right adjoint $\phi_X$ is a bijection. Consider now an arrow $f\colon X_1\to X_2$, then, for every $g\colon X_2\to G(Y)$ we have:
+		\begin{align*}
+			\phi_X(g)\circ F(f)&=\epsilon_Y\circ F(g)\circ F(f)\\&= \epsilon_Y\circ F(g\circ f)\\&=\phi_X(g\circ f)
+		\end{align*}
+		Naturality now follows at once.
+		
+		\item Let $\phi_Y\colon G(Y)\to G'(Y)$ and $\phi'_Y\colon G(Y)\to G'(Y)$ be the unique arrows making the diagram below commutative.
+\[\xymatrix@C=15pt{F(G(Y)) \ar[rr]^{F(\phi_Y)} \ar[dr]_{\epsilon_Y} & &F(G'(Y)) \ar[dl]^{\epsilon'_Y} && F(G'(Y)) \ar[rr]^{F(\phi_Y)} \ar[dr]_{\epsilon'_Y} & &F(G(Y)) \ar[dl]^{\epsilon_Y}\\ & Y &&&&Y}\]
+		Now, we can notice that the diagram belows commute.
+	
+	\[\xymatrix{F(G(Y)) \ar[r]^{F(\phi_Y)} \ar[dr]_{\epsilon_Y} &F(G'(Y)) \ar[r]^{F(\phi_Y)} \ar[d]_{\epsilon'_Y} & F(G(Y)) \ar[dl]^{\epsilon_Y} \\ & Y \\ F(G'(Y)) \ar[r]_{F(\phi'_Y)} \ar[ur]^{\epsilon'_Y} &F(G(Y)) \ar[r]_{F(\phi'_Y)} \ar[u]_{\epsilon_Y} & F(G'(Y)) \ar[ul]_{\epsilon'_Y}}\]	
+This implies at once that $\phi_Y$ and $\phi'_Y$ are mutally inverse. \qedhere 
+	\end{enumerate}
+	
+\end{proof}
+
+\begin{lemma}\label{lem:part}
+	Let $\X$ be an  an $\mathcal{M}$-adhesive category  and cosinder a pair $(m,f)$ with $m\colon M\mto X $ in $\mathcal{M}$ and $f:X\to Y$. If $(h, k)$ is a pushout complement for the pair $(m,f)$, then there exists an isomorphism $\epsilon_k:f^*(k)\to m$ in $\mathcal{M}/X$ such that $(k, \epsilon_k)$ is  a partial right adjoint at $m$ to the pullback functor $f^*\colon \mathcal{M}/Y\to \mathcal{M}/X$.
 \end{lemma}
-\begin{proof}  
-	We start pulling back $n$ along $k$ and then pulling back the resulting arrow along $h$, getting the following two pullbacks square:
-\[\xymatrix{B \ar@{>->}[d]_{b}\ar@{>->}[r]^{s}& N \ar@{>->}[d]^{n} & A \ar[r]^{r} \ar@{>->}[d]_{a}& B \ar@{>->}[d]^{b}\\Q\ar@{>->}[r]_{k}&Y &M \ar[r]_h&Q\\}\]
+\begin{proof}
+	By \Cref{prop:pbpoad}, in the diagram below the inner square is both  a pushout and a pullback, yielding the dotted isomorphism $\epsilon_k\colon f^*(Q)\to M$.
+\[\xymatrix{f^*(Q) \ar@{.>}[dr]^{\epsilon_k} \ar@{>->}@/^.2cm/[drr]^{f^*(k)} \ar@/_.2cm/[ddr]_{p}\\& M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^f \\&Q\ar@{>->}[r]_{k}&Y}\]
+
+To see that in this way we get a partial right adjoint, let $g\colon f^*(n)\to m $ be a morphism in $\mathcal{M}/X$, then we have the solid diagram below
+\[\xymatrix{f^*(N) \ar[dr]^{g} \ar@{>->}@/^.2cm/[drr]^{f^*(n)} \ar[ddd]_{q}\\& M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^f \\&Q\ar@{>->}[r]_{k}&Y\\N \ar@{>->}@/_.2cm/[urr]_{n} \ar@{.>}[ur]^{t}}\]
+Now, since $n$ and $f^*(n)$ are in $\mathcal{M}$we can form two other pullback squares:
+\[\xymatrix{A \ar@{>->}[d]_{a}\ar@{>->}[r]^-{r}& f^*(N) \ar@{>->}[d]^{f^*(n)} & B \ar@{>->}[r]^{s} \ar@{>->}[d]_{b}& N \ar@{>->}[d]^{n}\\M \ar@{>->}[r]_{m}&X &Q \ar@{>->}[r]_k&Y\\}\]
 Notice that 
 \begin{align*}
-	f\circ m\circ a&=k\circ h\circ a\\&=k\circ b\circ r\\&=n\circ s\circ r
+	k\circ h\circ a&=f\circ m\circ a\\&=f\circ f^*(n)\circ r\\&=n\circ q \circ r
 \end{align*}
+Thus there exists a unique $c\colon A\to B$ as in the diagram
+\[\xymatrix{A \ar@{>->}[d]_{a} \ar@{.>}[dr]^{c}\ar@{>->}[r]^{r} &f^*(N) \ar@/^.2cm/[dr]^{q} \\ M \ar@/_.2cm/[dr]_{h}&B\ar[r]^{s}  \ar@{>->}[d]_{b}& N \ar@{>->}[d]^{n}\\ &Q \ar@{>->}[r]_{k} & Y}\]
+We can then consider the two diagrams below, noticing that the left one is $\mathcal{M}$-Van Kampen and in the cube on the right the front, right and left faces are pullbacks.
+		\[\xymatrix@C=10pt@R=10pt{&&&&&A\ar@{>->}[dd]|\hole_(.65){a}\ar[rr]^{c} \ar@{>->}[dl]_{r} && B \ar@{>->}[dd]^{b} \ar@{>->}[dl]_{s} \\ M \ar@{>->}[dd]_{m}\ar[rr]^{h}&&Q\ar@{>->}[dd]^{k}&&f^*(N)  \ar@{>->}[dd]_{f^*(n)}\ar[rr]^(.7){q} & & N \ar@{>->}[dd]_(.3){n}\\&&&&&M\ar[rr]|\hole^(.65){h} \ar@{>->}[dl]^{m} && Q \ar@{>->}[dl]^{k} \\X\ar[rr]_{f} &&Y&&X \ar[rr]_{f} & & Y}\]
+Now, we can also notice that the back square is a pullback too. To see this it is enough to apply \Cref{lem:pb1} to the diagram
+\[\xymatrix{A  \ar@/^.4cm/[rr]^{a\circ r}\ar@{>->}[d]_{a} \ar[r]_{c}& \ar@{>->}[r]_{s}B \ar@{>->}[d]^{b}& N \ar[d]^{n}\\ M \ar@/_.4cm/[rr]_{f\circ m}\ar[r]^{h}& Q \ar@{>->}[r]^{k}& Y}\]
+
+By hypothesis we have $g\colon f^*(n)\to m$ in $\mathcal{M}/X$, thus \Cref{lem:varie} yields a unique morphism $\bar{g}\colon n\to k$ in $\mathcal{M}/Y$. By the commutativity of the diagram
+\[\xymatrix{f^*(N) \ar[r]^{f^*(\bar{g})}& f^*(Q) \ar[dr]^{\epsilon_k} \ar@{>->}@/^.2cm/[drr]^{f^*(k)} \ar@/_.2cm/[ddr]_{p}\\&& M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^f \\&N &Q\ar@{>->}[r]_{k}&Y}\]
+we can deduce that $\epsilon_k \circ $ as wanted.
+\end{proof}
+
+We can deduce a host of properties of pushout complements from \Cref{lem:part}.
+
+\begin{corollary}\label{lem:radj}
+	Let $f\colon X\to Y$ be an arrow in an $\mathcal{M}$-adhesive category $\X$ and suppose that the left square below is a pushout while the  right one is a pullback, with $ m\colon M\to X$ and $n\colon N\to Y$ in $\mathcal{M}$.
+	\[\xymatrix{M \ar@{>->}[d]_{m}\ar[r]^{h}& Q \ar@{>->}[d]^{k} & P \ar[r]^{p_1} \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\X\ar[r]_{f}&Y &X \ar[r]_f&Y\\}\]
+	Then $n\leq k$ if and only if $p_2\leq m$.
+\end{corollary}
+\begin{proof}  
+	We start pulling back $n$ along $k$ and then pulling back the resulting arrow along $h$, getting the following two pullbacks square:
+	\[\xymatrix{B \ar@{>->}[d]_{b}\ar@{>->}[r]^{s}& N \ar@{>->}[d]^{n} & A \ar[r]^{r} \ar@{>->}[d]_{a}& B \ar@{>->}[d]^{b}\\Q\ar@{>->}[r]_{k}&Y &M \ar[r]_h&Q\\}\]
+	Notice that 
+	\begin{align*}
+		f\circ m\circ a&=k\circ h\circ a\\&=k\circ b\circ r\\&=n\circ s\circ r
+	\end{align*}
 	Thus there exists a unique $t\colon A\to P$ as in the diagram
-\[\xymatrix{A \ar@{>->}[d]_{a} \ar@{.>}[dr]^{t}\ar[r]^{r} &B \ar@{>->}@/^.2cm/[dr]^{s} \\ M \ar@{>->}@/_.2cm/[dr]_{m}&P\ar[r]^{p_1}  \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\ &X \ar[r]_{f} & Y}\]
+	\[\xymatrix{A \ar@{>->}[d]_{a} \ar@{.>}[dr]^{t}\ar[r]^{r} &B \ar@{>->}@/^.2cm/[dr]^{s} \\ M \ar@{>->}@/_.2cm/[dr]_{m}&P\ar[r]^{p_1}  \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\ &X \ar[r]_{f} & Y}\]
 	We can then consider the cube below, in which the front, right and back faces are pullbacks.
-		\[\xymatrix@C=15pt@R=15pt{&A\ar@{>->}[dd]|\hole_(.65){a}\ar[rr]^{r} \ar[dl]_{t} && B \ar@{>->}[dd]^{b} \ar[dl]_{s} \\ P  \ar@{>->}[dd]_{p_2}\ar[rr]^(.7){p_1} & & N \ar@{>->}[dd]_(.3){n}\\&M\ar[rr]|\hole^(.65){h} \ar@{>->}[dl]^{m} && Q \ar@{>->}[dl]^{k} \\X \ar[rr]_{f} & & Y}\]
+	\[\xymatrix@C=15pt@R=15pt{&A\ar@{>->}[dd]|\hole_(.65){a}\ar[rr]^{r} \ar[dl]_{t} && B \ar@{>->}[dd]^{b} \ar[dl]_{s} \\ P  \ar@{>->}[dd]_{p_2}\ar[rr]^(.7){p_1} & & N \ar@{>->}[dd]_(.3){n}\\&M\ar[rr]|\hole^(.65){h} \ar@{>->}[dl]^{m} && Q \ar@{>->}[dl]^{k} \\X \ar[rr]_{f} & & Y}\]
 	We can notice that the left square is a pullback too. To see this it is enough to apply \Cref{lem:pb1} to the diagram
 	\[\xymatrix{A  \ar@/^.4cm/[rr]^{s\circ r}\ar@{>->}[d]_{a} \ar[r]_{t}& \ar[r]_{p_1} P \ar@{>->}[d]^{p_2}& N \ar[d]^{c}\\ M \ar@/_.4cm/[rr]_{k\circ h}\ar@{>->}[r]^{m}& X \ar[r]^{f}& Y}\]
-
+	
 	The thesis now follows immediately from \Cref{lem:varie}.
 \end{proof}
 
+
 \begin{corollary}[Uniqueness of pushouts complements]\label{lem:pocomp} 
+	contenuto...
+\end{corollary}
+
+
+\begin{corollary}\label{cor:pbc}
 Let $\X$ be a $\mathcal{M}$-adhesive category. Given $m\colon X\mto Y$ in $\mathcal{M}$ and $f\colon Y\to Z$, let $(h_1, k_1)$ and $(h_2, k_2)$ be pushout complements of $m$  and $f$ and $W_1=\cod{h_1}$, $W_2=\cod{h_2}$. Then there exists a unique isomorphism $\phi\colon W_1\to W_2$ making the following diagram commutative.
 \[\xymatrix{&X \ar@{>->}[r]^{m} \ar[d]_{h_1} \ar@/_.3cm/[ddl]_{h_2}& Y \ar[d]^{f} \\ &W_1 \ar@{.>}[dl]^{\phi} \ar@{>->}[r]_{k_1} & Z \\ W_2 \ar@{>->}@/_.3cm/[urr]_{k_2}}\]
  
@@ -950,7 +1033,6 @@ Let $\X$ be a $\mathcal{M}$-adhesive category. Given $m\colon X\mto Y$ in $\math
 	The claim now follows since $k_2$ is a monomorphism. \qedhere 
 \end{proof}
 
-\subsubsection{Final pullback complements}
 
 \subsubsection{Factorization systems and $\mathcal{M}$-adhesivity} \todo{Da sistemare}
  Let us start by recalling the notion of a factorization system \cite{bousfield1977constructions,kelly1991note,rosicky2007factorization,tholen1983factorizations}.
@@ -2921,13 +3003,12 @@ The setting from now on is: $\X$ $\mathcal{M}$-adhesive, $(\mathcal{E}, \mathcal
 		\qedhere 
 	\end{enumerate}
 	\end{proof} 
-	In particular, we will use the first point of the previous lemma to deduce the following result.
 	
 	
-	\begin{corollary}\label{cor:cond} Let $f\colon A\to C$, $g\colon B\to C$ and $h\colon C\to D$ be arrows in a category $\X$, let also $l_0\colon A'\to A$, $l_1\colon B'\to B$ be two monomorphisms. Suppose moreover, that the following squares are pullbacks:
+	\begin{lemma}\label{lem:cond} Let $f\colon A\to C$, $g\colon B\to C$ and $h\colon C\to D$ be arrows in a category $\X$, let also $l_0\colon A'\to A$, $l_1\colon B'\to B$ be two monomorphisms. Suppose moreover, that the following squares are pullbacks:
 		\[\xymatrix@C=35pt{Q \ar[r]^{q_0} \ar[d]_{q_1} & A' \ar[d]^{h\circ f\circ l_0} & P \ar[r]^{p_0} \ar[d]_{p_1} & A \ar[d]^{f} & Q  \ar[r]^{l_0\circ q_0} \ar[d]_{l_1\circ q_1}& A \ar[d]^{h\circ f}\\ B \ar[r]_{h\circ g\circ l_1} &D& B \ar[r]_{g}& C &  B \ar[r]_{h\circ g} & D}\]
 		Then there exists an arrow $\phi\colon P\to Q$ such that $(P, \{q_i\circ \phi\}_{i=0}^1)$ is a pullback for $f\circ l_0$ along $g\circ l_1$.
-	\end{corollary} 
+	\end{lemma} 
 	\begin{proof}
 To prove the existence of $\phi\colon P\to Q$ it's enough to consider the solid part of the diagram below.
 \[\xymatrix@C=30pt{P \ar@{.>}[dr]^{\phi} \ar@/^.2cm/[drr]^{p_0} \ar@/_.2cm/[ddr]_{p_1}\\ & Q  \ar[r]^(.4){l_0\circ q_0} \ar[d]^{l_1\circ q_1}& A \ar[d]^{h\circ f} \\ &B \ar[r]_{h\circ g} & D}\]
@@ -3057,6 +3138,9 @@ Our next step is to identify sufficient conditions for a category $\X$ to satisf
 \begin{corollary}
 	\todo{filler e classe B+}
 \end{corollary}
+
+
+
 
 
 \section{Rewriting systems on $\Set$.}\label{app:set}
