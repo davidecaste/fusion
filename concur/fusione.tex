@@ -352,7 +352,7 @@ textsize=tiny]{todonotes}
 
 %%%%GENERAL CATEGORICAL NOTATION
 
-\newcommand{\gph}[1]{\mathcal{G}\textbf{\textup{-Graph}}}
+\newcommand{\gph}[1]{\textbf{\textup{{#1}-Graph}}}
 
 \newcommand{\dph}{\mathsf{dph}}
 %identitÃ 
@@ -2230,7 +2230,7 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
   \begin{figure}
     \input{Figure/rules.tex}
     
-    \caption{A rewriting system in $\cat{Graph}.}
+    \caption{A rewriting system in $\cat{Graph}$.}
     \label{fi:rules}
   \end{figure}
   
@@ -2394,30 +2394,29 @@ converse implication clearly holds), as shown by the next example.
         & a 
       }
     }
-    \caption{Poset $(P, \leq)$}
+    \caption{Poset $(P, \sqsubseteq)$}
     \label{fig:diff1:P}
   \end{subfigure}
   \begin{subfigure}{0.58\textwidth}
-    \xymatrix@C=12pt{
-      a \ar[d]_{m_0} &
-      a \ar[d]_{k_0} \ar[l]_{\id{a}} \ar[rr]^{(a,0)} & &
-      0 \ar@/^.35cm/[drrrr]|(.315)\hole^(.75){\id{0}}
-      \ar[dr]|(.3)\hole_{\id{0}} & & 
-      a \ar@/_.35cm/[dllll]_(.75){(a,c)}
-      \ar[dl]|(.3)\hole^{(a,0)} & &
-      a \ar[d]^{(a,0)}\ar@{>->}[ll]_{\id{a}} \ar[rr]^{(a,b)} &&
-      b \ar[d]^{(b,0)}\\
+    \xymatrix@C=20pt{
+      a \ar[d]_{\sqsubseteq} & a \ar[d]_{\sqsubseteq} \ar@{>->}[l]_{\id{a}} \ar[r]^{\sqsubseteq} & 
+      0 \ar@{>->}@/^.35cm/[drrr]|(.3)\hole^(.75){\id{0}}
+      \ar@{>->}[dr]|(.3)\hole_{\id{0}} &  &
+      a \ar@/_.35cm/[dlll]_(.75){\sqsubseteq}
+      \ar[dl]|(.3)\hole^{\sqsubseteq} & 
+      a \ar[d]^{\sqsubseteq}\ar@{>->}[l]_{\id{a}} \ar[r]^{\sqsubseteq} &
+      b \ar[d]_{\sqsubseteq}\\
       c &
-      \ar@{>->}[l]^{\id{c}} c \ar[rrr]_{(c,0)}& & & 0 &&&
-      \ar@{>->}[lll]^{\id{0}} 0 \ar[rr]_{\id{0}}&& 0
+      \ar@{>->}[l]^{\id{c}} c \ar[rr]_{\sqsubseteq}& &  0 &&
+      \ar@{>->}[ll]^{\id{0}} 0 \ar@{>->}[r]_{\id{0}}& 0
     }
     \caption{Two rewriting steps}
     \label{fig:diff1:rew}
   \end{subfigure}
   \begin{subfigure}{0.20\textwidth}
-    \xymatrix@C=16pt{a \ar[d]_{(a,c)}& a
-      \ar[d]_{(a,c)}\ar@{>->}[l]_{\id{a}} \ar[r]^{(a,b)} & b \\c & c
-      \ar[l]^{\id{c}}
+    \xymatrix@C=20pt{a \ar[d]^{\sqsubseteq}& a
+      \ar[d]^{\sqsubseteq}\ar@{>->}[l]_{\id{a}} \ar[r]^{\sqsubseteq} & b \\c & c
+      \ar@{>->}[l]^{\id{c}}
     }
     \caption{No rewriting step}
     \label{ex:diff1:no-step}
@@ -2440,8 +2439,8 @@ converse implication clearly holds), as shown by the next example.
   %
   Consider a rewriting
   system whose set of rules contains the following 
-  \[\xymatrix{a & a \ar[r]^{(a, 0)} \ar[l]_{\id{a}} & 0 & a & a
-      \ar[r]^{(a, b)} \ar[l]_{\id{a}} & b }\]
+  \[\xymatrix{a & a \ar[r]^{\sqsubseteq} \ar@{>->}[l]_{\id{a}} & 0 & a & a
+      \ar[r]^{\sqsubseteq} \ar@{>->}[l]_{\id{a}} & b }\]
   We can then consider the  derivation
   $\der{D}=\{\dder{D}_i\}_{i=0}^1$ in Fig.~\ref{fig:diff1:rew}.
   % \[
@@ -2455,10 +2454,10 @@ converse implication clearly holds), as shown by the next example.
   %
   Note that the two direct derivations are sequential
   independent. However there is no switch since the rule applied by
-  $\dder{D}_1$ cannot be applied to $c$. In fact, the unique morphism
-  $a\to c$ is $(a,c)$, thus we get the diagram in Fig.~\ref{ex:diff1:no-step}. But $b$ and $c$
+  $\dder{D}_1$ cannot be applied to $c$. In fact, there is a unique morphism
+  $a\to c$, yielding the diagram in Fig.~\ref{ex:diff1:no-step}. But $b$ and $c$
   do not have a supremum in the poset underlying $\X$, thus the arrows
-  $(a,b)\colon a\to b$ and $(a,c)\colon a\to c$ do not have a
+  $a\to b$ and $a\to c$ do not have a
   pushout. Hence we do not get a direct derivation from $c$.
 \end{example}
 
@@ -2627,7 +2626,7 @@ Still, there are $\mathcal{M}$-adhesive rewriting systems that are not strong en
   left-linear rewriting system in a $\mathcal{M}$-adhesive category
   which is not strong enforcing. The example is somehow
   pathological since $\mathcal{M}=\mathsf{Iso(\X)}$, but it needs to be so, since natural examples are all in the well-beahved class mentioned above. 
-  .\todo{P: Scritto qualcosa, probabilmente da migliorare}
+  .\todo{P: Scritto qualcosa, probabilmente da migliorare \\ D: per me va bene così}
   % Instead every
   % left-linear system in category $\cat{Graph}$ is strong enforcing, by
   % the results of Appendix~\ref{app:fill}, summarized
@@ -2734,9 +2733,26 @@ A first class consists of those rewriting systems over
 possibly hierarchical graphical structures obtained as algebras of
 suitable signatures where rules are constrained not to merge elements
 of top level sorts in the hierarchy (e.g., for graphs, nodes can be
-merged while edges cannot). We first introduce signatures that are
-essentially acyclic graphs whose nodes can be seen as sorts.
+merged while edges cannot). The idea here is to consider as graphs presheaves on categories in which there are object which plays the roles of \emph{roots}, i.e.~objects which are not codomains of any arrows beside the identity. \todo{D: quest'ultima frase ha senso?}%We first introduce signatures that are
+%essentially acyclic graphs whose nodes can be seen as sorts.
 
+\begin{definition}[Root-preserving graphical rewriting systems]
+	Let $\X$ be a category, an object $X\in \X$ is a \emph{root} if the only arrow with codomain $X$ is $\id{X}$. The category The
+	category $\gph{X}$ of \emph{$\X$-graphs} is the category
+	$\Set^{\X}$. A
+	\emph{root-preserving graphical rewriting system} is a left-linear
+	rewriting system $(\gph{X}, \R)$ such that  the
+	following hold for each rule
+	$(l\colon K\to L, r\colon K\to R)$ in $\R$
+	\begin{enumerate}
+		\item for every $X\in \X$ and $x\in L(X)$, there exists a root $Y$
+		 and an arrow $f\colon Y\to X$ such that $x$ belongs to the image of
+		$L(f)\colon L(Y)\to L(X)$;
+		\item $r\colon K\to R$ is mono on the roots, i.e.~for every root $X\in \X$, the component $r_X:K(X)\to R(X)$ is injective.
+	\end{enumerate}
+\end{definition}
+
+\iffalse 
 \begin{definition}
   Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph where $s,t\colon E\rightrightarrows V$.
   We define the \emph{depth} of a vertex $v\in V$ as\todo{ma ci serve tutta la depth?}
@@ -2752,12 +2768,12 @@ essentially acyclic graphs whose nodes can be seen as sorts.
 Observe that
 since $\mathcal{G}$ is acyclic and finite, then $\dph(v)$ is a natural number.
 
-\begin{definition}[Node-merging graphical rewriting systems]
+\begin{definition}[root-preserving graphical rewriting systems]
   Let $\mathcal{G}=(V, E, s, t)$ be a finite directed acyclic graph
   and $\G$ the free category over $\mathcal{G}$. The
   category $\gph{G}$ of \emph{$\mathcal{G}$-graphs} is the category
   $\Set^{\G}$. A
-  \emph{node-merging graphical rewriting system}\todo{altro nome? source/leaf preserving} is a left-linear
+  \emph{root-preserving graphical rewriting system}\todo{altro nome? source/leaf preserving} is a left-linear
   rewriting system $(\gph{G}, \R)$ such that  the
   following hold for each rule
   $(l\colon K\to L, r\colon K\to R)$ in $\R$
@@ -2771,11 +2787,16 @@ since $\mathcal{G}$ is acyclic and finite, then $\dph(v)$ is a natural number.
     is mono.
   \end{enumerate}
 \end{definition}
-
 For instance, the category $\cat{Graph}$ can be obtained
-by taking as $\mathcal{G}$ the graph $e \rightrightarrows v$. The sort
+by taking as $\X$ the category generated by $E \rightrightarrows V$. The sort
 of edges $e$ has depth $0$ while $v$, the sort of nodes, has depth
 $1$. Hence, condition $1$ asks that in the left-hand side of each rule
+there are no isolated nodes, while condition $2$ asks that the
+morphism $r: K \to R$ is mono on edges, i.e.~it can only merge nodes.
+\fi 
+
+For instance, the category $\cat{Graph}$ can be obtained
+by taking as $\X$ the category generated by $E \rightrightarrows V$. In this case $E$ is the only root, hence, condition $1$ asks that in the left-hand side of each rule
 there are no isolated nodes, while condition $2$ asks that the
 morphism $r: K \to R$ is mono on edges, i.e.~it can only merge nodes.
 
@@ -2785,7 +2806,7 @@ morphism $r: K \to R$ is mono on edges, i.e.~it can only merge nodes.
 
 \begin{restatable}{lemma}{lemVTame}
 \label{bono}
-  All node-merging graphical rewriting systems are well-switching.
+  All root-preserving graphical rewriting systems are well-switching.
 \end{restatable}
 
 \full{
@@ -3979,7 +4000,7 @@ To prove the Local Church-Rosser Theorem, let us begin by deducing some properti
 \end{proof}
 
 \begin{remark}\label{rem:po}
-	Notice that $\gph{G}$ is adhesive and that pushouts are computed component-wise, thus if $g\colon F\to G$ is the pushout of $r\colon K\to R$, then $g_v\colon F(v)\to G(v)$ is mono for every $v$ with depth $0$.
+	Notice that $\gph{X}$ is adhesive and that pushouts are computed component-wise, thus if $g\colon F\to G$ is the pushout of $r\colon K\to R$, then $g_X\colon F(X)\to G(X)$ is mono for every root $X$.
 \end{remark}
 
 
@@ -3988,7 +4009,7 @@ To prove the Local Church-Rosser Theorem, let us begin by deducing some properti
 
 
 \begin{proof}
-	Every node-merging graphical rewriting system is strong enforcing because $\gph{G}$ is in the class $\mathbb{B}^+$ defined in \Cref{app:fill}.  Consider the following diagram 
+	Every root-preserving graphical rewriting system is strong enforcing because $\gph{G}$ is in the class $\mathbb{B}^+$ defined in \Cref{app:fill}.  Consider the following diagram 
 	\[\xymatrix@R=25pt@C=30pt{L_0 \ar[d]_{m_0}&& K_0
 		\ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0
 		\ar@<-.5ex>@/^.35cm/[drrr]|(.23)\hole|(.34)\hole_(.4){i_0} 	\ar@<.5ex>@/^.35cm/[drrr]^(.2){j_0}|(.31)\hole |(.4)\hole
@@ -3998,11 +4019,11 @@ To prove the Local Church-Rosser Theorem, let us begin by deducing some properti
 		D_0 \ar[rr]_{g_0}&& G_1 && \ar@{>->}[ll]^{f_1} D_1
 		\ar[rr]_{g_1}&& G_2}\] 
 	
-	Since $f_1$ is mono then $i_0=j_0$. For every $v$ with depth $0$ we have
-	\[g_{0,v}\circ i_{1,v}=m_{1,v}=g_{0,v}\circ j_{1,v}\]
-	which entails $i_{1,v}=j_{1,v}$. Let now $v$ be a vertex with depth greater than $0$, and take $x\in L_1(v)$. By definition, we have $p:w\to v$ and $y\in L_{1}(w)$  such that $\dph(w)=0$ and $L(p)(y)=x$. By naturality we have
-	\[i_{1,v}(x)=i_{1,v}(L(p)(y))=L(p)(i_{1, w}(y))=L(p)(j_{1, w}(y))=j_{1,v}(L(p)(y))=j_{1,v}(x)\]
-	From this we can deduce that $i_{1,v}=j_{1,v}$, as wanted.
+	Since $f_1$ is mono then $i_0=j_0$. For every  root $X$ we have
+	\[g_{0,X}\circ i_{1,X}=m_{1,X}=g_{0,X}\circ j_{1,X}\]
+	which entails $i_{1,X}=j_{1,X}$. Let now $Y$ be another object, and take $y\in L_1(Y)$. By definition, we have a root $X$ and an arrow $f:X\to Y$ and $x\in L_{1}(X)$ such that $L(f)(y)=x$. By naturality we have
+	\[i_{1,Y}(y)=i_{1,Y}(L(f)(x))=L(f)(i_{1, X}(x))=L(f)(j_{1, X}(x))=j_{1,X}(L(f)(x))=j_{1,Y}(y)\]
+Thus $i_{1,Y}=j_{1,Y}$, as wanted.
 \end{proof}
 
 \iffalse 
