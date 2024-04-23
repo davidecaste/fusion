@@ -2615,7 +2615,7 @@ by comma and functor category constructions.  As such, it includes
 essentially all categories (e.g., presheaves over set) that are
 typically considered for modelling purposes. Notably, it contains the
 category $\cat{Graph}$ of directed graphs.
-This is a natural generalisation from adhesive to $\mathcal{M}$-adhesive catgeories of a class studied in \cite{baldan2011adhesivity} (see \Cref{app:fill} for details).
+This is a natural generalisation from adhesive to $\mathcal{M}$-adhesive categories of a class studied in \cite{baldan2011adhesivity} (see \Cref{app:fill} for details).
 
 Still, there are $\mathcal{M}$-adhesive rewriting systems that are not strong enforcing, as shown by the following example.
 
@@ -2625,7 +2625,7 @@ Still, there are $\mathcal{M}$-adhesive rewriting systems that are not strong en
   an independence pair which is not strong. This gives an example of a
   left-linear rewriting system in a $\mathcal{M}$-adhesive category
   which is not strong enforcing. The example is somehow
-  pathological since $\mathcal{M}=\mathsf{Iso(\X)}$, but it needs to be so, since natural examples are all in the well-beahved class mentioned above. 
+  pathological since $\mathcal{M}=\mathsf{Iso(\X)}$, but it needs to be so, since natural examples are all in the well-behaved class mentioned above. 
   .\todo{P: Scritto qualcosa, probabilmente da migliorare \\ D: per me va bene così}
   % Instead every
   % left-linear system in category $\cat{Graph}$ is strong enforcing, by
@@ -2733,11 +2733,14 @@ A first class consists of those rewriting systems over
 possibly hierarchical graphical structures obtained as algebras of
 suitable signatures where rules are constrained not to merge elements
 of top level sorts in the hierarchy (e.g., for graphs, nodes can be
-merged while edges cannot). The idea here is to consider as graphs presheaves on categories in which there are object which plays the roles of \emph{roots}, i.e.~objects which are not codomains of any arrows besides the identity. \todo{D: quest'ultima frase ha senso?}%We first introduce signatures that are
+merged while edges cannot). The idea here is to consider graphical structures as 
+presheaves on categories in which there are objects which play the role of 
+\emph{roots}, i.e.~objects which are not codomains of any arrow besides 
+the identity. \todo{D: quest'ultima frase ha senso? A: Ok. Ho cambiato ``as graphs'' con ``graphical structures''.}%We first introduce signatures that are
 %essentially acyclic graphs whose nodes can be seen as sorts.
 
 \begin{definition}[Root-preserving graphical rewriting systems]
-	Let $\X$ be a category, an object $X\in \X$ is a \emph{root} if the only arrow with codomain $X$ is $\id{X}$. The category The
+	Let $\X$ be a category, an object $X\in \X$ is a \emph{root} if the only arrow with codomain $X$ is $\id{X}$. The
 	category $\gph{X}$ of \emph{$\X$-graphs} is the category
 	$\Set^{\X}$. A
 	\emph{root-preserving graphical rewriting system} is a left-linear
@@ -2839,7 +2842,7 @@ Another interesting class of well-switching rewriting systems is given by e-grap
   $Q$ is mono, i.e.~if it reflects equivalence classes besides
   preserving them. This characterisation of regular monos and the fact that pullbacks and pushouts are computed component-wise allows us to prove quasi-adhesivity of $\cat{EGraphs}$ at once. Moreover, one can deduce that every rewriting system $(\X, \R)$ that is left-linear with respect to $\reg(\cat{EGraphs})$ is strong enforcing: this is done exploiting again the inclusion functor into $[E \rightrightarrows V \to Q, \cat{Set}]$.
   
-Left-linear rewriting systems on $\cat{EGraphs}$, i.e.~in which the right half of a rule is mono but not regular in general, 
+Left-linear rewriting systems on $\cat{EGraphs}$,\todo{A: sostituirei ``, i.e. in which'' con ``where''. Giusto?} i.e.~in which the right half of a rule is mono but not regular in general, 
 are well-switching. They have been used in~\cite{BaldanGM06} for the graphical implementation of nominal calculi, where,
 differently from~\cite{Gad07}, as a result of name passing the received name is not merged with a local one at the receiver,
 but put instead in the same equivalence class, thus better tracing the causal dependencies among processes reductions.
