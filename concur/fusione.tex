@@ -2737,10 +2737,10 @@ A first class consists of those rewriting systems over
 possibly hierarchical graphical structures obtained as algebras of
 suitable signatures where rules are constrained not to merge elements
 of top level sorts in the hierarchy (for graphs, nodes can be
-merged while edges cannot). The idea here is to consider as graphs 
-those presheaves on categories in which there are object that plays 
-the roles of \emph{roots}, i.e.~objects that are not the codomain of 
-any arrow besides the identity). 
+merged while edges cannot). The idea here is to consider graph
+structures as presheaves on categories in which there are objects that play 
+the role of \emph{roots}, i.e.~objects that are not the codomain of 
+any arrow besides the identity. 
 %\todo{D: quest'ultima frase ha senso?}
 %We first introduce signatures that are
 %essentially acyclic graphs whose nodes can be seen as sorts.
@@ -2751,7 +2751,7 @@ any arrow besides the identity).
 	$\Set^{\X}$. A
 	\emph{root-preserving graphical rewriting system} is a left-linear
 	rewriting system $(\gph{X}, \R)$ such that for each rule
-	$(l\colon K\to L, r\colon K\to R)$ in $\R$ hold
+	$(l\colon K\to L, r\colon K\to R)$ in $\R$ it holds
 	\begin{enumerate}
 		\item for every $X\in \X$ and $x\in L(X)$, there exists a root $Y$
 		 and an arrow $f\colon Y\to X$ such that $x$ belongs to the image of
@@ -2847,8 +2847,7 @@ Another interesting class of well-switching rewriting systems is given by e-grap
   $Q$ is mono, i.e.~if it reflects equivalence classes besides
   preserving them. This characterisation of regular monos and the fact that pullbacks and pushouts are computed component-wise allows us to prove quasi-adhesivity of $\cat{EGraphs}$ at once. Moreover, one can deduce that every rewriting system $(\X, \R)$ that is left-linear with respect to $\reg(\cat{EGraphs})$ is strong enforcing: this is done exploiting again the inclusion functor into $[E \rightrightarrows V \to Q, \cat{Set}]$.
   
-Left-linear rewriting systems on $\cat{EGraphs}$, %\todo{A: sostituirei ``, i.e. in which'' con ``where''. Giusto?} 
-i.e.~where the right half of a rule is mono but not regular in general, 
+Left-linear (w.r.t.~$\reg(\cat{EGraphs})$) rewriting systems on $\cat{EGraphs}$ where the right half of a rule might be mono but not regular 
 are well-switching. They have been used in~\cite{BaldanGM06} for the graphical implementation of nominal calculi, where,
 differently from~\cite{Gad07}, as a result of name passing the received name is not merged with a local one at the receiver,
 but put instead in the same equivalence class, thus better tracing the causal dependencies among processes reductions.
