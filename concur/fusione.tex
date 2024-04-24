@@ -3950,7 +3950,8 @@ To prove the Local Church-Rosser Theorem, let us begin by deducing some properti
 	\label{rem:church}
 	It is worth to point out that, by
 	\Cref{prop:switch,thm:switch_uni}, the derivation we obtain from
-	\Cref{pr:church}\todo{missing} is made by two switchable derivations that will
+	\Cref{pr:church} %\todo{missing} 
+	is made by two switchable derivations that will
 	give back the starting derivation (up to abstraction equivalence),
 	if switched again.
 	
@@ -4780,11 +4781,9 @@ Finally, we switch the first two direct derivations
 	Finally, switching the second and the third step we get
 	\[\xymatrix@C=15pt{L_2\ar[d]^{f_0\circ z_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar@{>->}[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){v_0}|(.29)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_1 \ar@/_.35cm/[dlll]^(.4){v_1} \ar[dl]|(.28)\hole^{\mathring{f}_1 \circ x_1}& K_1 \ar[d]^{\mathring{k}_1}\ar@{>->}[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){u_0}|(.29)\hole\ar[dr]_{\check{h}_1}|(.28)\hole   && L_0 \ar@/_.35cm/[dlll]^(.4){u_1} \ar[dl]^{\mathring{m}_0}|(.28)\hole& K_0 \ar[d]^{\mathring{k}_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0\ar[d]_{\check{g}_2\circ x_0} \\G_0 && \ar[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar@{>->}[ll]^{\bar{f}_1} \bar{D}_1 \ar[rr]_{\bar{g}_1}&& \bar{G}_2 && \ar@{>->}[ll]^{\bar{f}_2} \bar{D}_2 \ar[rr]_{\bar{g}_2}&& G_3 }\]
 	As usual, this last switch brings identities $\check{m}_0=\bar{f}_1\circ u_1$ and $g_2\circ j_0=\bar{g}_2\circ u_0$. Applying the second point of \Cref{lem:indep-global-left} to $\dder{D}_0\cdot S_{j_0, j_1}(\dder{D}_2)\cdot S_{j_0, j_1}(\dder{D}_1)$ and the fact that $(\X, \R)$ is well-switching we get the following diagrams
-
 	\[\xymatrix@R=15pt@C=15pt{&&R_2 \ar@/_1.2cm/[dddl]_(.4){y_0}|(.63)\hole\ar[dl]^{w_0}\ar[dd]^{v'_0} \ar@{>}[dr]^{v_0}&&&&&L_1 \ar[dl]^{w_1} \ar@/_1.2cm/[dddl]_(.4){i_1}|(.63)\hole\ar[dd]^{v'_1} \ar@{>}[dr]^{v_1}\\&\check{D}_2 \ar@{>->}[dl]^(.4){\check{f}_2}&&\bar{D}_1 \ar[dr]^{\bar{g}_1}  &&&\check{D}_1 \ar@{>->}[dl]^(.4){\check{f}_1}&&\check{D}_0 \ar[dr]^{\check{g}_0}\\\check{G}_2 && \bar{P}\ar[dr]_{\bar{p}_4} \ar@{>->}[ur]_{\bar{p}_3}\ar@{>->}[dl]^{\bar{p}_1} \ar[ul]^{\bar{p}_2}&&\bar{G}_2&G_1 && \bar{Q}\ar[dr]_{\bar{q}_4} \ar@{>->}[ur]_{\bar{q}_3}\ar@{>->}[dl]^{\bar{q}_1} \ar[ul]^{\bar{q}_2}&&\check{G}_1\\& \mathring{D}_1 \ar[ul]^{\mathring{g}_1}&&\bar{D}_2 \ar@{>->}[ur]_{\bar{f}_2}&&& D_0 \ar[ul]^{g_0}&&\mathring{D}_1 \ar@{>->}[ur]_{\mathring{f}_1}}\]
 	
 We have to build the dotted arrows in the diagram below
-	
 	\[\xymatrix@C=15pt@R=30pt{G_0 && \ar@{>->}[ll]_{\hat{f}_0} \hat{D}_0 \ar[rr]^{\hat{g}_0}&& \hat{G}_1  && \ar@{>->}[ll]_{\tilde{f}_1} \tilde{D}_1 \ar[rr]^{\tilde{g}_1}&& G'_2 && \ar@{>->}[ll]_{f'_2} D'_2 \ar[rr]^{g'_2}&& G_3 \\
 		L_2\ar[d]^{f_0\circ z_1} \ar[u]_{f'_0\circ c_1}&& K_2 \ar[u]^{\hat{k}_2}\ar[d]_{\mathring{k}_2}\ar@{>->}[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/_.35cm/[urrr]^(.4){e_0}|(.29)\hole \ar[ur]|(.28)\hole^{\hat{h}_2} \ar@/^.35cm/[drrr]_(.4){v_0}|(.29)\hole \ar@/_.2cm/[dr]|(.28)\hole_{\mathring{h}_2} && L_1 \ar@/^.35cm/[ulll]_(.4){e_1} \ar[ul]|(.28)\hole_{\hat{m}_1} \ar@/_.35cm/[dlll]^(.4){v_1} \ar[dl]|(.28)\hole^{\mathring{f}_1 \circ x_1}& K_1  \ar[u]_{\hat{k}_1}\ar[d]^{\mathring{k}_1}\ar@{>->}[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){u_0}|(.29)\hole\ar@/_.2cm/[dr]_{\check{h}_1}|(.28)\hole \ar@/_.35cm/[urrr]^(.4){t_0}|(.29)\hole \ar[ur]|(.28)\hole^{\hat{g}_1\circ c_0}  && L_0\ar[ul]|(.28)\hole_{\hat{m}_0} \ar@/^.35cm/[ulll]_(.4){t_1} \ar@/_.35cm/[dlll]^(.4){u_1} \ar[dl]^{\mathring{m}_0}& K_0 \ar[d]_{\mathring{k}_0}\ar[u]^{\hat{k}_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[u]^{g_2\circ b_0}\ar[d]_{\check{g}_2\circ x_0} \\G_0 \ar@/^.3cm/[uu]^{\id{G_0}}&& \ar@{>->}[ll]^{\check{f}_0} \check{D}_0 \ar@{.>}@/_.3cm/[uu]_(.3){\phi_{0}}|\hole  \ar[rr]_{\check{g}_0}&& \check{G}_1  \ar@{.>}@/_.0cm/[uu]^(.2){\psi_{1}}|(.43)\hole |(.57)\hole  && \ar@{>->}[ll]^{\bar{f}_1} \bar{D}_1 \ar@{.>}@/^.3cm/[uu]^(.3){\phi_{1}}|\hole \ar[rr]_{\bar{g}_1}&& \bar{G}_2 \ar@{.>}@/_.0cm/[uu]^(.2){\psi_{2}}|(.43)\hole |(.57)\hole && \ar@{>->}[ll]^{\bar{f}_2} \ar@{.>}@/_.4cm/[uu]_(.3){\phi_{2}}|\hole \bar{D}_2 \ar[rr]_{\bar{g}_2}&& G_3 \ar@{.>}@/_.3cm/[uu]_{\psi_{3}} }\]
 	
