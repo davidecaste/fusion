@@ -976,14 +976,14 @@ Notice that
 	k\circ h\circ a&=f\circ m\circ a\\&=f\circ f^*(n)\circ r\\&=n\circ q \circ r
 \end{align*}
 Thus there exists a unique $c\colon A\to B$ as in the diagram
-\[\xymatrix{A \ar@{>->}[d]_{a} \ar@{.>}[dr]^{c}\ar@{>->}[r]^{r} &f^*(N) \ar@/^.2cm/[dr]^{q} \\ M \ar@/_.2cm/[dr]_{h}&B\ar[r]^{s}  \ar@{>->}[d]_{b}& N \ar@{>->}[d]^{n}\\ &Q \ar@{>->}[r]_{k} & Y}\]
+\[\xymatrix{A \ar@{>->}[d]_{a} \ar@{.>}[dr]^{c}\ar@{>->}[r]^{r} &f^*(N) \ar@/^.2cm/[dr]^{q} \\ M \ar@/_.2cm/[dr]_{h}&B\ar@{>->}[r]^{s}  \ar@{>->}[d]_{b}& N \ar@{>->}[d]^{n}\\ &Q \ar@{>->}[r]_{k} & Y}\]
 We can then consider the two diagrams below, noticing that the left one is $\mathcal{M}$-Van Kampen and in the cube on the right the front, right and left faces are pullbacks.
 		\[\xymatrix@C=10pt@R=10pt{&&&&&A\ar@{>->}[dd]|\hole_(.65){a}\ar[rr]^{c} \ar@{>->}[dl]_{r} && B \ar@{>->}[dd]^{b} \ar@{>->}[dl]_{s} \\ M \ar@{>->}[dd]_{m}\ar[rr]^{h}&&Q\ar@{>->}[dd]^{k}&&f^*(N)  \ar@{>->}[dd]_{f^*(n)}\ar[rr]^(.7){q} & & N \ar@{>->}[dd]_(.3){n}\\&&&&&M\ar[rr]|\hole^(.65){h} \ar@{>->}[dl]^{m} && Q \ar@{>->}[dl]^{k} \\X\ar[rr]_{f} &&Y&&X \ar[rr]_{f} & & Y}\]
 Now, we can also notice that the back square is a pullback too. To see this it is enough to apply \Cref{lem:pb1} to the diagram
 \[\xymatrix{A  \ar@/^.4cm/[rr]^{a\circ r}\ar@{>->}[d]_{a} \ar[r]_{c}& \ar@{>->}[r]_{s}B \ar@{>->}[d]^{b}& N \ar[d]^{n}\\ M \ar@/_.4cm/[rr]_{f\circ m}\ar[r]^{h}& Q \ar@{>->}[r]^{k}& Y}\]
 
 By hypothesis we have $g\colon f^*(n)\to m$ in $\mathcal{M}/X$, thus \Cref{lem:varie} yields a unique morphism $\bar{g}\colon n\to k$ in $\mathcal{M}/Y$. By the commutativity of the diagram
-\[\xymatrix{f^*(N) \ar[r]^{f^*(\bar{g})}& f^*(Q) \ar[dr]^{\epsilon_k} \ar@{>->}@/^.2cm/[drr]^{f^*(k)} \ar@/_.2cm/[ddr]_{p}\\&& M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^f \\&N &Q\ar@{>->}[r]_{k}&Y}\]
+\[\xymatrix{f^*(N) \ar[r]^{f^*(\bar{g})}& f^*(Q) \ar[dr]^{\epsilon_k} \ar@{>->}@/^.2cm/[drr]^{f^*(k)} \ar@/_.2cm/[ddr]_{p}\\&& M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^f \\&N \ar@{>->}[r]^{\bar{g}} \ar@{>->}@/_.4cm/[rr]_{n} &Q\ar@{>->}[r]_{k}&Y}\]
 we can deduce that $\epsilon_k \circ $ as wanted.
 \end{proof}
 
