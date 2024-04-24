@@ -1,7 +1,7 @@
 \documentclass[a4paper,UKenglish,cleveref,pdftex,thm-restate,numberwithinsect,anonymous]{lipics}
 \newif\ifreport
-\reporttrue
-%\reportfalse
+\reporttrue 
+%\reportfalse 
    
 % full includes some additional material
 \newif\iffull
@@ -86,7 +86,22 @@ textsize=tiny]{todonotes}
 \tikzstyle{node}=[circle, draw=black, minimum size=1mm, inner sep=1.5pt]
 \tikzstyle{trans}=[font=\scriptsize]
 \tikzstyle{lab}=[font=\small]
- 
+\tikzset{
+  coloredge/.style={
+        ->,
+        color=red
+        %densely dotted
+    }
+}
+
+\tikzset{
+  colorloop/.style={
+        loop,
+        color=red
+        %densely dotted
+    }
+}
+  
 
 
 \newcommand{\pgfBox}{
@@ -2968,7 +2983,7 @@ different orders are switch equivalent when the colimits of the two
 derivations, seen as diagrams, are isomorphic and the isomorphism
 properly commutes with the embeddings of the rules. When considering
 left-linear derivations, this is no longer true. Intuitively this is
-due to the fact that a rewriting steps can merge parts of an
+due to the fact that a rewriting step can merge parts of an
 object thus making the colimit little informative.
 %
 This effect can be seen for derivations $\der{D}$ in

@@ -25,7 +25,7 @@
           \node at (0,0.53) {}; 
           \node at (0,0) [node, label=below:$1$] (1) {};
           \node at (.5,0) [node, label=below:$2$] (2) {}; 
-          \draw[->, color=blue] (1) to[out=20, in=160] (2);
+          \draw[coloredge] (1) to[out=20, in=160] (2);
           % 
           \pgfBox
         \end{tikzpicture}
@@ -125,7 +125,7 @@
           \node at (0,0.53) {}; 
           \node at (0,0) [node, label=below:$1$] (1) {} ;
           \node at (0.5,0) [node, label=below:$2$] (2) {} ;
-          \draw[->, color=blue] (1) to[out=20, in=160] (2);
+          \draw[coloredge] (1) to[out=20, in=160] (2);
           % 
           \pgfBox
         \end{tikzpicture} 
@@ -142,7 +142,7 @@
           \node at (0,0.53) {};
           \node at (0,0) [node, label=below:$1$] (1) {} ;
           \node at (0.5,0) [node, label=below:$2$] (2) {} ;
-          \draw[->, color=blue] (1) to[out=20, in=160] (2);
+          \draw[coloredge] (1) to[out=20, in=160] (2);
           % 
           \pgfBox
         \end{tikzpicture} 
@@ -152,7 +152,7 @@
           % 
           \node at (0,0.53) {}; 
           \node at (0,0) [node, label=below:$12$] (12) {}
-          edge [in=125, out=155, color=blue, loop] ();
+          edge [in=125, out=155, colorloop] ();
           % 
           \pgfBox
         \end{tikzpicture} 
@@ -169,7 +169,7 @@
           % 
           \node at (0,0.53) {}; 
           \node at (0,0) [node, label=below:$12$] (12) {}
-          edge [in=125, out=155, color=blue, loop] ();
+          edge [in=125, out=155, colorloop] ();
           % 
           \pgfBox
         \end{tikzpicture} 
@@ -179,7 +179,7 @@
           % 
           \node at (0,0) [node, label=below:$12$] (12) {}
           edge [in=55, out=85, loop] ()
-          edge [in=125, out=155, color=blue, loop] ();
+          edge [in=125, out=155, colorloop] ();
           % 
           \pgfBox
         \end{tikzpicture} 
