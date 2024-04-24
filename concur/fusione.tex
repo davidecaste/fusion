@@ -2960,18 +2960,32 @@ canonical form for equivalence proofs, can be derived from a
 characterisation of switch equivalence in terms of consistent
 permutations or processes.
 
-When dealing with left-linear rules, such a characterisation fails. Leaving aside the formal details (the interested reader can refer to \Cref{def:permcon}), the intuition is quite simple. In the linear case one proves that two derivations using the same rules in different orders are switch equivalent when the colimits of the two derivations, seen as diagrams, are isomorphic and the isomorphism properly commutes with the embeddings of the rules.
-
-This result fails when considering left-linear
-derivations. This is readily seen by considering derivations $\der{D}$
-in Fig.~\ref{fi:derD} and $\der{D}'$ in Fig.~\ref{fi:derD1}. We
-observed that $\der{D}$ and $\der{D}'$ are not switch equivalent.
-% 
-Still, it is easy to see that they are related by a consistent\todo{le definiamo solo nell'appendice}
-permutation, which is the identity on productions. The colimit of
-both derivations is a single node with a self-loop, i.e.~the
-terminal object in $\cat{Graph}$, hence all commutativity requirements
-are trivially satisfied.
+When dealing with left-linear rules, such a characterisation
+fails. Leaving aside the formal details (the interested reader can
+refer to \Cref{def:permcon}), the intuition is quite simple. In the
+linear case one proves that two derivations using the same rules in
+different orders are switch equivalent when the colimits of the two
+derivations, seen as diagrams, are isomorphic and the isomorphism
+properly commutes with the embeddings of the rules. When considering
+left-linear derivations, this is no longer true. Intuitively this is
+due to the fact that the application of a rule can merge parts of an
+object thus making the colimit little informative.
+%
+This effect can be seen for derivations $\der{D}$ in
+Fig.~\ref{fi:derD} and $\der{D}'$ in Fig.~\ref{fi:derD1}. They are not
+abstraction equivalent but the colimit of both derivations is a single node with a self-loop, i.e.~the terminal
+object in $\cat{Graph}$, in a way that  all commutativity requirements are
+trivially satisfied.
+% OLD VERSION
+% This is readily seen by considering derivations $\der{D}$
+% in Fig.~\ref{fi:derD} and $\der{D}'$ in Fig.~\ref{fi:derD1}. We
+% observed that $\der{D}$ and $\der{D}'$ are not switch equivalent.
+% % 
+% Still, it is easy to see that they are related by a consistent\todo{le definiamo solo nell'appendice}
+% permutation, which is the identity on productions. The colimit of
+% both derivations is a single node with a self-loop, i.e.~the
+% terminal object in $\cat{Graph}$, hence all commutativity requirements
+% are trivially satisfied.
 
 In this section we show that, despite the failure of such
 characterisation, actually much of the theory can be retained, taking
@@ -3921,7 +3935,7 @@ To prove the Local Church-Rosser Theorem, let us begin by deducing some properti
 	\label{rem:church}
 	It is worth to point out that, by
 	\Cref{prop:switch,thm:switch_uni}, the derivation we obtain from
-	\Cref{thm:church}\todo{missing} is made by two switchable derivations that will
+	\Cref{pr:church}\todo{missing} is made by two switchable derivations that will
 	give back the starting derivation (up to abstraction equivalence),
 	if switched again.
 	
