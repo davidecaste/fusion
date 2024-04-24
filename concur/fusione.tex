@@ -714,7 +714,7 @@ the system state. The DPO (double-pushout) approach~\cite{EhrigPS73}
 is nowadays considered a standard one for these structures, thanks to
 its locality (rule application has a local effect on a state,
 differently from more recent approaches like
-SqPO~\cite{CorradiniHHK06} or PBPO$^+$~\cite{OverbeekER23}) and to its
+SqPO~\cite{CorradiniHHK06} or PBPO$^+$~\cite{OverbeekER23}) and 10to its
 flexibility: the rules allow to specify that, in a rewriting step,
 some entities in the current state are removed, some others are needed
 for the rewriting step to occur but remain unaltered, and some new
@@ -4488,32 +4488,21 @@ for the interested reader.
 \begin{definition}[Consistent permutation]
 	\label{def:permcon}
 	Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, \R)$ 
-	a left-linear rewriting system.  Take two
-	non-empty decorated\todo{never introduced} derivations $(\der{D}, \alpha, \omega)$ and
-	$(\der{D}', \alpha', \omega')$ with the same length and with
-	isomorphic sources and targets.
-	
-	If $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and
-	$\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ with associated sequence of rules
-	$r(\der{D})=\{\rho_i\}_{i=0}^n$ and
-	$r(\der{D}')=\{\rho'_i\}_{i=0}^n$, a \emph{consistent permutation}
-	between $(\der{D}, \alpha, \omega)$ and
-	$(\der{D}', \alpha', \omega')$ is a permutation
+	a left-linear rewriting system.  Take two derivations $\der{D}:=\{\dder{D}_i\}_{i=0}^n$ and
+	$\der{D}':=\{\dder{D}'_i\}_{i=0}^n$ with the same length and with isomorphic sources and targets.
+	Let also $r(\der{D})=\{\rho_i\}_{i=0}^n$ and
+	$r(\der{D}')=\{\rho'_i\}_{i=0}^n$ be the  associated sequence of rules. 
+	A \emph{consistent permutation}
+	between $\der{D}$ and
+	$\der{D}'$ is a permutation
 	$\sigma\colon [0,n]\to [0,n]$ such that, for every $i\in [0,n]$,
 	$\rho_i=\rho'_{\sigma(i)}$ and, moreover, there exists a
 	\emph{mediating isomorphism}
 	$\xi_\sigma\colon \tpro{D} \to \lpro \der{D}' \rpro$ fitting in the
-	following diagrams, where $m_i, m'_i, h_i$ and $h'_i$ are,
-	respectively, the matches and co-matches of $\dder{D}_i$ and
-	$\dder{D}'_i$
-	
+	following diagrams, where $m_i, m'_i, h_i$ and $h'_i$ are, the matches and co-matches of $\dder{D}_i$ and
+	$\dder{D}'_i$.
 	\[
-	\xymatrix@C=30pt{\pi(G_0)\ar[r]^{\alpha} \ar[d]_{\alpha'} & G_0
-		\ar[r]^{\iota_{G_0}} &\tpro{D} \ar[d]^{\xi_\sigma}& \pi(G_{n+1})
-		\ar[r]^{\omega} \ar[d]_{\omega'} & G_{n+1}
-		\ar@{>->}[r]^{\iota_{G_{n+1}}} &\tpro{D} \ar[d]^{\xi_\sigma}\\
-		G'_0 \ar[rr]_{\iota'_{G'_0}} & &\lpro \der{D}' \rpro& G'_{n+1}
-		\ar@{>->}[rr]_{\iota'_{G'_{n+1}}} & &\lpro \der{D}' \rpro\\L_i
+	\xymatrix@C=30pt{L_i
 		\ar[r]^{m_i} \ar[d]_{m'_{\sigma(i)}}& G_i \ar[r]^{\iota_{G_i}}
 		&\tpro{D} \ar[d]^{\xi_\sigma} & R_i \ar[r]^{h_i}
 		\ar[d]_{h'_{\sigma(i)}}& G_{i+1} \ar[r]^{\iota_{G_{i+1}}}
