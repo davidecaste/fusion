@@ -3139,8 +3139,8 @@ independent. This is exemplified below.
 
 The second lemma captures the essence of the consistency of
 switchings. It shows that if we have a derivation consisting of three
-rewriting steps, say $\dder{D}_0\cdot \dder{D}_1\cdot  \dder{D}_2$ and we switch them leading to the
-sequence $\dder{D}_2\cdot  \dder{D}_1\cdot  \dder{D}_0$, we obtain the same resulting derivation,
+rewriting steps, say $\dder{D}_0\cdot \dder{D}_1\cdot  \dder{D}_2$ and we switch them leading to a
+sequence reordered as $\dder{D}_2\cdot  \dder{D}_1\cdot  \dder{D}_0$, we obtain the same resulting derivation,
 independently from the order of the switchings.
 
 
@@ -3153,6 +3153,20 @@ independently from the order of the switchings.
           \qquad \der{D}\shift{(1,2)}\der{E}'\shift{(0,1)} \der{E}'' \shift{(1,2)}\der{E}''' \]
 Then $\der{D}'''$ and $\der{E}'''$ are abstraction equivalent. 
 \end{restatable}
+
+\todo{P: Qui si potrebbe fare lo stesso cambiamento del lemma precedente, usando
+  
+    $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2 \shift{(0,1)}
+    \dder{D}_1' \cdot \dder{D}_0' \cdot \dder{D}_2 \shift{(1,2)}
+    \dder{D}_1' \cdot \dder{D}_2' \cdot \dder{D}_0''\shift{(0,1)}
+    \dder{D}_2'' \cdot \dder{D}_1'' \cdot \dder{D}_0''$
+
+$\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2 \shift{(1,2)}
+    \dder{D}_0 \cdot \dder{E}_2' \cdot \dder{E}_1' \shift{(0,1)}
+    \dder{E}_2'' \cdot \dder{E}_0' \cdot \dder{E}_1' \shift{(1,2)}
+    \dder{E}_2'' \cdot \dder{E}_1'' \cdot \dder{E}_0''
+    $
+    ma credo che il dover usare $E$ renda meno facile la lettura}    
 
 \full{[Proof~\ref{lemSwitchConfluence-proof}]}
 
