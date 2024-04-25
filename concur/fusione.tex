@@ -102,6 +102,13 @@ textsize=tiny]{todonotes}
     }
 }
   
+\tikzcdset{
+  perm/.style={
+    shorten >=-1mm, shorten <=-1mm,
+    -,
+    % dotted
+  }
+}
 
 
 \newcommand{\pgfBox}{
@@ -2228,8 +2235,8 @@ We next formalise what it means for a derivation being the switch of another.
 It can be shown that switches along the same independence pair are unique up to abstraction
 equivalence (see Proposition~\ref{thm:switch_uni}).
 
-\begin{notation} We  denote any switch of two switchable direct derivations $\dder{D}_0$ and $\dder{D}_1$ along $(i_0, i_1)$ by $S_{i_0, i_1}(\dder{D}_0, \dder{D}_1)$. Moreover, we use $S_{i_0,i_1}(\dder{D}_1)$ and  $S_{i_0,i_1}(\dder{D}_0)$ to denote its components, in such a way that $S_{i_0, i_1}(\dder{D}_0, \dder{D}_1)=S_{i_0,i_1}(\dder{D}_1)\cdot S_{i_0,i_1}(\dder{D}_0)$.
-\end{notation}
+% \begin{notation} We  denote any switch of two switchable direct derivations $\dder{D}_0$ and $\dder{D}_1$ along $(i_0, i_1)$ by $S_{i_0, i_1}(\dder{D}_0, \dder{D}_1)$. Moreover, we use $S_{i_0,i_1}(\dder{D}_1)$ and  $S_{i_0,i_1}(\dder{D}_0)$ to denote its components, in such a way that $S_{i_0, i_1}(\dder{D}_0, \dder{D}_1)=S_{i_0,i_1}(\dder{D}_1)\cdot S_{i_0,i_1}(\dder{D}_0)$.
+% \end{notation}
 
 \begin{example}
   \label{ex:seq-ind}
@@ -3013,21 +3020,54 @@ for switching sequences can also be recovered.
 We start by proving two lemmas dealing with derivations of length
 $3$. Despite being technical, these lemmas are fundamental building blocks for obtaining our results.
 
-The first lemma is at the core of globality for independence. It shows that if we have a derivation consisting of three rewriting steps, say $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ where $\dder{D}_0$ and $\dder{D}_1$ are independent, then if we switch $\dder{D}_2$ to the first position, 
-obtaining a derivation $\dder{D}_2 \cdot  \dder{D}_0\cdot\dder{D}_1$, the steps $\dder{D}_0$ and $\dder{D}_1$ are still independent.
+\smallskip
 
-Instead, if in $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ we have that $\dder{D}_1$ and $\dder{D}_2$ are
+\noindent
+\begin{minipage}{.8\textwidth}
+  \setlength\parindent{1.5em}
+  The first lemma is at the core of globality for independence. It shows that if we have a derivation consisting of three rewriting steps, say $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ where $\dder{D}_0$ and $\dder{D}_1$ are independent, then if we switch $\dder{D}_2$ to the first position, 
+obtaining a derivation $\dder{D}_2'' \cdot  \dder{D}_0'\cdot\dder{D}_1'$, as in the diagram on the right where vertical lines represent permutations, the steps $\dder{D}_0'$ and $\dder{D}_1'$ are still independent.
+\end{minipage}
+\begin{minipage}{.18\textwidth}
+\ \hspace{-14mm}
+\begin{tikzpicture}[node/.style={draw, minimum size=8mm}]
+  \begin{tikzcd}[row sep=2mm, column sep=1mm]
+    \dder{D}_0 \arrow[perm,d]  & \dder{D}_1 \arrow[perm,dr] & \dder{D}_2 \arrow[perm,dl]\\
+    \dder{D}_0 \arrow[perm,dr]  & \dder{D}_2' \arrow[perm,dl] & \dder{D}_1' \arrow[perm,d]\\
+    \dder{D}_2''   & \dder{D}_0' & \dder{D}_1'
+  \end{tikzcd}
+\end{tikzpicture}
+\end{minipage}
+
+\smallskip
+
+\noindent
+\begin{minipage}{.8\textwidth}
+  \setlength\parindent{1.5em}
+  Instead, if in $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ we have that $\dder{D}_1$ and $\dder{D}_2$ are
 independent, and we switch $\dder{D}_0$ to the last position, obtaining a
-derivation $\dder{D}_1\cdot \dder{D}_2\cdot  \dder{D}_0$, the steps $\dder{D}_1$ and $\dder{D}_2$ could be no
+derivation $\dder{D}_1'\cdot \dder{D}_2'\cdot  \dder{D}_0''$, as in the diagram on the right, the steps $\dder{D}_1'$ and $\dder{D}_2'$ could be no
 longer independent, unless an additional condition is
 satisfied. Intuitively, this is due to the fact that dealing with
 left-linear rewriting systems introduces disjunctive forms of
 causality. Hence, if in $\dder{D}_0\cdot \dder{D}_1\cdot \dder{D}_2$ we have that $\dder{D}_0$ and $\dder{D}_1$ are
 disjunctive causes of $\dder{D}_2$, at least one of the two is needed to
 enable the application of $\dder{D}_2$ and this explain why in
-$\dder{D}_1\cdot \dder{D}_2\cdot \dder{D}_0$ we have that $\dder{D}_1$ and $\dder{D}_2$ are no longer
+$\dder{D}_1'\cdot \dder{D}_2'\cdot \dder{D}_0''$ we have that $\dder{D}_1'$ and $\dder{D}_2'$ are no longer
 independent. This is exemplified below.
+\end{minipage}
+\begin{minipage}{.18\textwidth}
+\ \hspace{-14mm}
+\begin{tikzpicture}[node/.style={draw, minimum size=8mm}]
+     \begin{tikzcd}[row sep=2mm, column sep=1mm]
+      \dder{D}_0 \arrow[perm,dr]  & \dder{D}_1 \arrow[perm,dl] & \dder{D}_2 \arrow[perm,d]\\
+      \dder{D}_1' \arrow[perm,d]  & \dder{D}_0' \arrow[perm,dr] & \dder{D}_2 \arrow[perm,dl]\\
+      \dder{D}_1'   & \dder{D}_2' & \dder{D}_0''
+    \end{tikzcd}
+  \end{tikzpicture} 
+\end{minipage}
 
+  
 \begin{example}
   \label{ex:non-global}
   Consider the rewriting system in $\cat{Graph}$ consisting of the
@@ -3068,24 +3108,28 @@ independent. This is exemplified below.
 
 \begin{restatable}[Globality of independence]{lemma}{lemIndepGlobalLeft}
   \label{lem:indep-global-left}
-  Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X,\R)$ a well-switching rewriting system.
-  For every derivation
-  $\der{D}=\{\dder{D}_i\}_{i=0}^2$ the following hold
+  Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X,\R)$ a
+  well-switching rewriting system.  Let
+  $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ be a three-steps
+  derivation.
   \begin{enumerate}
   \item
-    \label{lem:indep-global-left:1} if $\dder{D}_0\seqind \dder{D}_1$ and there is a switching sequence
-    $\der{D}\shift{(1,2)} \der{D}'\shift{(0,1)} \der{D}''$
-    then the last two steps of $\der{D}''$ are switchable;
+    \label{lem:indep-global-left:1}
+    If $\dder{D}_0$, $\dder{D}_1$ switchable and there is a
+    switching sequence
+    $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2 \shift{(1,2)}
+    \dder{D}_0 \cdot \dder{D}_2' \cdot \dder{D}_1' \shift{(0,1)}
+    \dder{D}_2'' \cdot \dder{D}_0' \cdot \dder{D}_1'$ then
+    in the last derivation $\dder{D}_0'$ and $\dder{D}_1'$ are switchable;
     
   \item
     \label{lem:indep-global-left:2}
-    suppose that $\dder{D}_1 \seqind\dder{D}_2$ with independence pair
-    $(\alpha_0, \alpha_1)$ and that, moreover,
-    $\dder{D}_0\seqind S_{\alpha_0, \alpha_1}(\dder{D}_2)$, if there
+    Suppose that $\dder{D}_1$,  $\dder{D}_2$ switchable, hence $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2 \shift{(1,2)}
+    \dder{D}_0 \cdot \dder{D}_2' \cdot \dder{D}_1'$, and $\dder{D}_0$  $\dder{D}_2'$ switchable.  If there
     is a switching sequence
-    $\der{D}\shift{(0,1)} \der{E}'\shift{(1,2)} \der{E}''$
-    then the
-    first two steps of $\der{E}''$ are switchable.
+    $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2 \shift{(0,1)}
+    \dder{D}_1' \cdot \dder{D}_0' \cdot \dder{D}_2 \shift{(1,2)}
+    \dder{D}_1' \cdot \dder{D}_2' \cdot \dder{D}_0''$ then in the last derivation $\dder{D}_1'$ and $\dder{D}_1'$ are switchable.
   \end{enumerate}
 \end{restatable}
   %
@@ -4513,7 +4557,22 @@ for the interested reader.
 		\der{D}' \rpro}
 	\]
 \end{definition}
+
 We can now turn to the proofs of the results of \Cref{subsec:canonical}.
+
+\begin{notation}
+  Recall that by \cref{thm:switch_uni} switches are uniquely
+  determined, up to abstraction equivalence.
+  %
+  In the sequel we denote any switch of two switchable direct
+  derivations $\dder{D}_0$ and $\dder{D}_1$ along an independence pair
+  $(i_0, i_1)$ by $S_{i_0, i_1}(\dder{D}_0, \dder{D}_1)$. Moreover, we
+  use $S_{i_0,i_1}(\dder{D}_1)$ and $S_{i_0,i_1}(\dder{D}_0)$ to
+  denote its components, in such a way that
+  $S_{i_0, i_1}(\dder{D}_0, \dder{D}_1)=S_{i_0,i_1}(\dder{D}_1)\cdot
+  S_{i_0,i_1}(\dder{D}_0)$.
+\end{notation}
+
 
 \lemIndepGlobalLeft*
 \label{lemIndepGlobalLeft-proof}
@@ -4656,7 +4715,7 @@ $(i_0,i_1)$ between $\dder{D}_0$ and $\dder{D}_1$,	$(a_0,a_1)$ between $\dder{D}
 			\ar@/_.3cm/[ddr]_{b_0}\\ &P_2 \ar@{>->}[r]^{c_0} \ar@{>->}[d]_{d_0}& D_1
 			\ar@{>->}[d]^{f_1} & &P_3 \ar@{>->}[r]^{\theta_0} \ar[d]_{\theta_1}& D_0 \ar[d]^{g_0}\\ &Q_2\ar@{>->}[r]_{x_1} & G_1 & &Q_2\ar@{>->}[r]_{x_1} & G_1}\]
 		
-		We can now define $\beta_0\colon R_0\to Q_3$ as $d_1\circ \beta'_1$ and $\beta_1\colon L_1\to Q_5$ be $n_1\circ \beta'_1$, so that
+                    We can now define $\beta_0\colon R_0\to Q_3$ as $d_1\circ \beta'_1$ and $\beta_1\colon L_1\to Q_5$ be $n_1\circ \beta'_1$, so that
 		\begin{align*}
 			x_2\circ \beta_0 & =x_2\circ d_2\circ \beta'_0 = y_1\circ d_0\circ \beta'_0=y_1\circ e_0\\
 			z'_1 \circ \beta_1 & = z'_1 \circ n_1\circ \beta'_1 =y_1\circ \theta_1\circ \beta'_1=y_1\circ b_0
@@ -4664,7 +4723,12 @@ $(i_0,i_1)$ between $\dder{D}_0$ and $\dder{D}_1$,	$(a_0,a_1)$ between $\dder{D}
 		
 		Therefore, $(\beta_0, \beta_1)$ is the wanted independence pair.
 		
-		\item In addition to the three diagrams above, we have a fourth one, depicted in \Cref{fi:fourth}.
+              \item Here we assume that
+                $\dder{D}_1$ and $\dder{D}_2$ are switchable  with an
+    independence pair $(\alpha_0, \alpha_1)$ and that
+    $\dder{D}_0\seqind S_{\alpha_0, \alpha_1}(\dder{D}_2)$.
+    % 
+                Hence, in addition to the three diagrams above, we have a fourth one, depicted in \Cref{fi:fourth}.
 		\begin{figure}[h]
 			\centering
 			$\xymatrix@C=15pt@R=15pt{&&R_0 \ar@/_.8cm/[ddrr]_(.2){\alpha_0}|(.7)\hole \ar[dr]^{\hspace{-1pt}g_1\circ i_0}&& L_2\ar@/^.8cm/[ddll]^(.2){\alpha_1}  \ar[dl]_{m_2\hspace{-2pt}}\\
