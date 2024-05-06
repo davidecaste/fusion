@@ -727,25 +727,26 @@ The following proposition establishes a key property of $\mathcal{A}$-Van Kampen
 
 The previous proposition, in turn, allows us to establish the following results.
 \begin{lemma}\label{lem:varie}Let $\mathcal{A}$ be a class of arrows stable under pullbacks, pushouts and containing all isomorphisms.  Suppose that, the left square below is $\mathcal{A}$-Van Kampen, while the vertical faces in the right cube are pullbacks.
-		\[\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{g'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{g}&&B\ar[dd]^{n}&&C'  \ar[dd]_{c}\ar[rr]^(.7){f'} & & D' \ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{f} &&D&&C \ar[rr]_{f} & & D}\]
-Supppose, moreover that $m\colon A\to C$ and $d\colon D'\to D$ are mono and that $d$ belongs to $\mathcal{A}$. Then $d\leq n$ if and only if $c \leq m$.
+		\[\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{g'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{g}&&B\ar[dd]^{n}&&C'  \ar@{.>}[dr]_{h} _{}\ar[dd]_{c}\ar[rr]^(.7){f'} & & D' \ar@{.>}[dr]^{k}\ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{f} &&D&&C \ar[rr]_{f} & & D}\]
+Supppose, moreover that $m\colon A\to C$ and $d\colon D'\to D$ are mono and that $d$ belongs to $\mathcal{A}$. Then the dotted arrow  $k\colon D'\to B$ exists if and only if the other dotted arrow  $h\colon C'\to A$ exists too.
 \end{lemma}
-
+\iffalse 
 \begin{remark}
 	Recall that, given two monos $m:M\to X$ and $n:N\to X$ with the same codomain, $m\leq n$ means that there exists a, necessarily unique and necessarily mono, $k:M\to N$ fitting in the triangle below:
 	\[\xymatrix{M\ar[rr]^{k}  \ar[dr]_{m}&& N \ar[dl]^{n}\\ & X}\]
 	Notice that, if $m\leq n$ and $n\leq m$, then the arrow $k:M\to N$ is an isomorphism.  
 \end{remark}
+\fi 
 \begin{remark}
 	Notice that, since $d$ is a mono and the vertical faces are pullbacks, then $a, b$ and $c$ are monomorphisms too. Moreover, $n$ is mono by \Cref{prop:pbpo}, so that even $m'$ and $n'$ are monos.
 \end{remark}
 
 \begin{proof}
 	$(\Rightarrow)$ By hypothesis there exists $k:D'\to B$ such that $n\circ k = d$. By \Cref{prop:pbpo}, the bottom face of the cube is a pullback. Thus there exists a unique $h:C'\to A$ as in the diagram below, implying the thesis.
-		\[\xymatrix@C=40pt{C'  \ar[d]^{h}\ar[r]^{f'} \ar@/_.5cm/[dd]_{c}& D' \ar@/^.5cm/[dd]^{d}\ar[d]_{k}\\ A \ar[d]^{m} \ar[r]^{g} & B \ar[d]_{n} \\  C \ar[r]_f & D}\]
+		\[\xymatrix@C=40pt{C'  \ar@{.>}[d]^{h}\ar[r]^{f'} \ar@/_.5cm/[dd]_{c}& D' \ar@/^.5cm/[dd]^{d}\ar[d]_{k}\\ A \ar[d]^{m} \ar[r]^{g} & B \ar[d]_{n} \\  C \ar[r]_f & D}\]
 	
 	\smallskip \noindent 
-	$(\Leftarrow)$ Let $h:C\to A$ be such that $c=m\circ h$. By the $\mathcal{A}$-Van Kampen property the top face of the given cube is a pushout. Thus the dotted $k:D'\to B$ in the following diagram exists.
+	$(\Leftarrow)$ Let $h:C\to A$ be such that $c=m\circ h$. By the $\mathcal{A}$-Van Kampen property the top face of the given cube is a pushout. Thus we get  the dotted $k:D'\to B$ in the following diagram exists.
 		\[\xymatrix@C=40pt{A' \ar@/_.5cm/[dd]_{a} \ar[d]^{m'} \ar[r]^{g'} & B' \ar[d]_{n'} \ar@/^.5cm/[dd]^{b} \\  C' \ar[d]^{h} \ar[r]_{f'} & D' \ar@{.>}[d]_{k}\\ A \ar[r]_g& B }\]
 Moreover, by construction we have
 \[\begin{split}
@@ -965,74 +966,59 @@ This implies at once that $\phi_Y$ and $\phi'_Y$ are mutally inverse. \qedhere
 \end{lemma}
 \begin{proof}
 	By \Cref{prop:pbpoad}, in the diagram below the inner square is both  a pushout and a pullback, yielding the dotted isomorphism $\epsilon_k\colon f^*(Q)\to M$.
-\[\xymatrix{f^*(Q) \ar@{.>}[dr]^{\epsilon_k} \ar@{>->}@/^.2cm/[drr]^{f^*(k)} \ar@/_.2cm/[ddr]_{p}\\& M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^f \\&Q\ar@{>->}[r]_{k}&Y}\]
+\[\xymatrix{f^*(Q) \ar@{.>}[dr]^{\epsilon_k} \ar@{>->}@/^.3cm/[drr]^{f^*(k)} \ar@/_.3cm/[ddr]_{p}\\& M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^f \\&Q\ar@{>->}[r]_{k}&Y}\]
 
 To see that in this way we get a partial right adjoint, let $g\colon f^*(n)\to m $ be a morphism in $\mathcal{M}/X$, then we have the solid diagram below
-\[\xymatrix{f^*(N) \ar[dr]^{g} \ar@{>->}@/^.2cm/[drr]^{f^*(n)} \ar[ddd]_{q}\\& M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^f \\&Q\ar@{>->}[r]_{k}&Y\\N \ar@{>->}@/_.2cm/[urr]_{n} \ar@{.>}[ur]^{t}}\]
-Now, since $n$ and $f^*(n)$ are in $\mathcal{M}$we can form two other pullback squares:
+\[\xymatrix{f^*(N) \ar[dr]^{g} \ar@{>->}@/^.3cm/[drr]^{f^*(n)} \ar[ddd]_{q}\\& M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^f \\&Q\ar@{>->}[r]_{k}&Y\\N \ar@{>->}@/_.3cm/[urr]_{n} \ar@{.>}[ur]^{t}}\]
+Now, since $n$ and $f^*(n)$ are in $\mathcal{M}$ we can form two other pullback squares:
 \[\xymatrix{A \ar@{>->}[d]_{a}\ar@{>->}[r]^-{r}& f^*(N) \ar@{>->}[d]^{f^*(n)} & B \ar@{>->}[r]^{s} \ar@{>->}[d]_{b}& N \ar@{>->}[d]^{n}\\M \ar@{>->}[r]_{m}&X &Q \ar@{>->}[r]_k&Y\\}\]
 Notice that 
 \begin{align*}
 	k\circ h\circ a&=f\circ m\circ a\\&=f\circ f^*(n)\circ r\\&=n\circ q \circ r
 \end{align*}
 Thus there exists a unique $c\colon A\to B$ as in the diagram
-\[\xymatrix{A \ar@{>->}[d]_{a} \ar@{.>}[dr]^{c}\ar@{>->}[r]^{r} &f^*(N) \ar@/^.2cm/[dr]^{q} \\ M \ar@/_.2cm/[dr]_{h}&B\ar@{>->}[r]^{s}  \ar@{>->}[d]_{b}& N \ar@{>->}[d]^{n}\\ &Q \ar@{>->}[r]_{k} & Y}\]
+\[\xymatrix{A \ar@{>->}[d]_{a} \ar@{.>}[dr]^{c}\ar@{>->}[r]^-{r} &f^*(N) \ar@/^.2cm/[dr]^{q} \\ M \ar@/_.2cm/[dr]_{h}&B\ar@{>->}[r]^{s}  \ar@{>->}[d]_{b}& N \ar@{>->}[d]^{n}\\ &Q \ar@{>->}[r]_{k} & Y}\]
 We can then consider the two diagrams below, noticing that the left one is $\mathcal{M}$-Van Kampen and in the cube on the right the front, right and left faces are pullbacks.
 		\[\xymatrix@C=10pt@R=10pt{&&&&&A\ar@{>->}[dd]|\hole_(.65){a}\ar[rr]^{c} \ar@{>->}[dl]_{r} && B \ar@{>->}[dd]^{b} \ar@{>->}[dl]_{s} \\ M \ar@{>->}[dd]_{m}\ar[rr]^{h}&&Q\ar@{>->}[dd]^{k}&&f^*(N)  \ar@{>->}[dd]_{f^*(n)}\ar[rr]^(.7){q} & & N \ar@{>->}[dd]_(.3){n}\\&&&&&M\ar[rr]|\hole^(.65){h} \ar@{>->}[dl]^{m} && Q \ar@{>->}[dl]^{k} \\X\ar[rr]_{f} &&Y&&X \ar[rr]_{f} & & Y}\]
 Now, we can also notice that the back square is a pullback too. To see this it is enough to apply \Cref{lem:pb1} to the diagram
 \[\xymatrix{A  \ar@/^.4cm/[rr]^{a\circ r}\ar@{>->}[d]_{a} \ar[r]_{c}& \ar@{>->}[r]_{s}B \ar@{>->}[d]^{b}& N \ar[d]^{n}\\ M \ar@/_.4cm/[rr]_{f\circ m}\ar[r]^{h}& Q \ar@{>->}[r]^{k}& Y}\]
 
-By hypothesis we have $g\colon f^*(n)\to m$ in $\mathcal{M}/X$, thus \Cref{lem:varie} yields a unique morphism $\bar{g}\colon n\to k$ in $\mathcal{M}/Y$. By the commutativity of the diagram
-\[\xymatrix{f^*(N) \ar[r]^{f^*(\bar{g})}& f^*(Q) \ar[dr]^{\epsilon_k} \ar@{>->}@/^.2cm/[drr]^{f^*(k)} \ar@/_.2cm/[ddr]_{p}\\&& M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^f \\&N \ar@{>->}[r]^{\bar{g}} \ar@{>->}@/_.4cm/[rr]_{n} &Q\ar@{>->}[r]_{k}&Y}\]
-we can deduce that $\epsilon_k \circ $ as wanted.
+By hypothesis we have $g\colon f^*(n)\to m$ in $\mathcal{M}/X$, thus \Cref{lem:varie} yields a unique morphism $\bar{g}\colon n\to k$ in $\mathcal{M}/Y$. fitting in the diagram below.
+ \[\xymatrix{f^*(N) \ar@/_.3cm/[ddr]_{q} \ar[r]^{f^*(\bar{g})}& f^*(Q) \ar[dr]^{\epsilon_k} \ar@{>->}@/^.3cm/[drr]^{f^*(k)} \ar@/_.3cm/[ddr]_{p}\\&& M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^f \\&N \ar@{>->}[r]^{\bar{g}} \ar@{>->}@/_.4cm/[rr]_{n} &Q\ar@{>->}[r]^{k}&Y}\]
+In particular we have
+\begin{align*}k\circ h\circ \epsilon_k\circ f^*(\bar{g})&=k\circ p\circ f^*(\bar{g})\\&=k\circ \bar{g}\circ q\\&=n\circ q\\&=k\circ h\circ g
+\end{align*}
+Therefore $ h\circ \epsilon_k\circ f^*(\bar{g})=h\circ g$. On the other hand we already know that $m\circ g=m\circ \epsilon_k\circ f^*(\bar{g})$, so that we can deduce $\epsilon_k \circ f^*(\bar{g})=g$ as wanted.
 \end{proof}
 
-We can deduce a host of properties of pushout complements from \Cref{lem:part}.
+We can deduce some properties of pushout complements from \Cref{lem:part}.
 
-\begin{corollary}\label{lem:radj}
-	Let $f\colon X\to Y$ be an arrow in an $\mathcal{M}$-adhesive category $\X$ and suppose that the left square below is a pushout while the  right one is a pullback, with $ m\colon M\to X$ and $n\colon N\to Y$ in $\mathcal{M}$.
-	\[\xymatrix{M \ar@{>->}[d]_{m}\ar[r]^{h}& Q \ar@{>->}[d]^{k} & P \ar[r]^{p_1} \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\X\ar[r]_{f}&Y &X \ar[r]_f&Y\\}\]
-	Then $n\leq k$ if and only if $p_2\leq m$.
-\end{corollary}
-\begin{proof}  
-	We start pulling back $n$ along $k$ and then pulling back the resulting arrow along $h$, getting the following two pullbacks square:
-	\[\xymatrix{B \ar@{>->}[d]_{b}\ar@{>->}[r]^{s}& N \ar@{>->}[d]^{n} & A \ar[r]^{r} \ar@{>->}[d]_{a}& B \ar@{>->}[d]^{b}\\Q\ar@{>->}[r]_{k}&Y &M \ar[r]_h&Q\\}\]
-	Notice that 
-	\begin{align*}
-		f\circ m\circ a&=k\circ h\circ a\\&=k\circ b\circ r\\&=n\circ s\circ r
-	\end{align*}
-	Thus there exists a unique $t\colon A\to P$ as in the diagram
-	\[\xymatrix{A \ar@{>->}[d]_{a} \ar@{.>}[dr]^{t}\ar[r]^{r} &B \ar@{>->}@/^.2cm/[dr]^{s} \\ M \ar@{>->}@/_.2cm/[dr]_{m}&P\ar[r]^{p_1}  \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\ &X \ar[r]_{f} & Y}\]
-	We can then consider the cube below, in which the front, right and back faces are pullbacks.
-	\[\xymatrix@C=15pt@R=15pt{&A\ar@{>->}[dd]|\hole_(.65){a}\ar[rr]^{r} \ar[dl]_{t} && B \ar@{>->}[dd]^{b} \ar[dl]_{s} \\ P  \ar@{>->}[dd]_{p_2}\ar[rr]^(.7){p_1} & & N \ar@{>->}[dd]_(.3){n}\\&M\ar[rr]|\hole^(.65){h} \ar@{>->}[dl]^{m} && Q \ar@{>->}[dl]^{k} \\X \ar[rr]_{f} & & Y}\]
-	We can notice that the left square is a pullback too. To see this it is enough to apply \Cref{lem:pb1} to the diagram
-	\[\xymatrix{A  \ar@/^.4cm/[rr]^{s\circ r}\ar@{>->}[d]_{a} \ar[r]_{t}& \ar[r]_{p_1} P \ar@{>->}[d]^{p_2}& N \ar[d]^{c}\\ M \ar@/_.4cm/[rr]_{k\circ h}\ar@{>->}[r]^{m}& X \ar[r]^{f}& Y}\]
+\begin{corollary}\label{lem:radj} Let $\X$ be an $\mathcal{M}$-adhesive category and consider two composable arrows $m\colon M \mto X$  and $f\colon X\to Y$, with $m\in \mathcal{M}$. Suppose moreover that the following square is a pushout, so that $(h,k)$ is a pushout complement og $(m,f)$:
+	\[\xymatrix{M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^{f} \\Q\ar@{>->}[r]_{k}&Y}\]
 	
-	The thesis now follows immediately from \Cref{lem:varie}.
-\end{proof}
-
-
-\begin{corollary}[Uniqueness of pushouts complements]\label{lem:pocomp} 
-	contenuto...
-\end{corollary}
-
-
-\begin{corollary}\label{cor:pbc}
-Let $\X$ be a $\mathcal{M}$-adhesive category. Given $m\colon X\mto Y$ in $\mathcal{M}$ and $f\colon Y\to Z$, let $(h_1, k_1)$ and $(h_2, k_2)$ be pushout complements of $m$  and $f$ and $W_1=\cod{h_1}$, $W_2=\cod{h_2}$. Then there exists a unique isomorphism $\phi\colon W_1\to W_2$ making the following diagram commutative.
-\[\xymatrix{&X \ar@{>->}[r]^{m} \ar[d]_{h_1} \ar@/_.3cm/[ddl]_{h_2}& Y \ar[d]^{f} \\ &W_1 \ar@{.>}[dl]^{\phi} \ar@{>->}[r]_{k_1} & Z \\ W_2 \ar@{>->}@/_.3cm/[urr]_{k_2}}\]
- 
+Then the following properties hold true.
+\begin{enumerate}
+	\item  Given another arrow $n\colon N\to Y$ in $\mathcal{M}$ and the pullback square below,
+	\[\xymatrix{P \ar[r]^{p_1} \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\X \ar[r]_f&Y}\]
+	$\mathcal{M}/Y(n, k)$ is non-empty  if and only $\mathcal{M}/X(p_2, m)$ is so.
+	\item (Uniqueness of pushout complements) If $h'\colon M\to Q' $ and $k'\colon Q'\mto Y$ is a pushout complement for $(m,f)$, then there exists a unique isomorphism $\phi\colon Q\to Q'$ making the following diagram commutative.
+	\[\xymatrix{&M \ar@{>->}[r]^{m} \ar[d]_{h} \ar@/_.3cm/[ddl]_{h'}& X \ar[d]^{f} \\ &Q \ar@{.>}[dl]^{\phi} \ar@{>->}[r]_{k} & Y \\ Q' \ar@{>->}@/_.3cm/[urr]_{k'}}\]
+	\item The pair $(h,k)$ is a \emph{final $\mathcal{M}$-pullback complement} of $(m,f)$, i.e. the pushout square of $m$ along $h$ is also a pullback square for $f$ along $k$ and, moreover, given the solid part of the diagram
+	\[\xymatrix{M' \ar[r]^{g}\ar[d]_{h'} & M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^{f}  \\  Q' \ar@{.>}[r]^{t} \ar@/_.4cm/@{>->}[rr]_{k'}&Q\ar@{>->}[r]^{k}&Y}\]
+	in which the external rectangle is a pullback, then there exists a unique $t\colon Q'\to Q$ making the whole diagrams commutative.
+\end{enumerate}
 \end{corollary}
 \begin{proof}
-	Consider the two pushout squares
-		\[\xymatrix{M \ar[r]^{h_1}\ar@{>->}[d]_{m}& W_1 \ar@{>->}[d]^{k_1} & M \ar@{>->}[d]_{m} \ar[r]^{h_1}& W_2 \ar@{>->}[d]^{k_2}\\Y\ar[r]_{f}&Z &Y \ar[r]_{f}&Z}\]
-	Since $\mathcal{M}$ is in $\mathcal{M}$, \cref{prop:pbpoad} guarantees that they are both pullbacks.
-	  Since $m\leq m$, by \Cref{lem:radj} we get that now entails that $k_1\leq k_2$ and $k_2\leq k_1$. Thus there exists an isomorphism $\phi\colon W_1\to W_2$ such that $k_1=k_2\circ \phi$. To see that $h_2=\phi\circ h_1$, we can compute:
-	\begin{align*}
-		k_2\circ \phi \circ h_1 & = k_1\circ h_1\\&= n\circ m\\&= k_2\circ h_2
-	\end{align*}
-	The claim now follows since $k_2$ is a monomorphism. \qedhere 
+	\begin{enumerate}
+		\item  This follows from point $1$ of \Cref{prop:uni} and \Cref{lem:part}.
+		\item  By the second point  of \Cref{prop:uni} and \Cref{lem:part} we get an isomorphism $\phi:k\to k'$ in $\mathcal{M}/Y$. On the other hand we have
+		\begin{align*}
+			k'\circ \phi \circ  h_1&=k\circ h\\&=f\circ m\\&= k'\circ h'
+		\end{align*}
+		Since $k'$ is a monomorphism we conclude that $h'=\phi\circ h$.
+		\item  This follows from the first point since $g$ belongs to $\mathcal{M}/X(m\circ g, m)$. \qedhere 
+	\end{enumerate}
 \end{proof}
-
 
 \subsubsection{Factorization systems and $\mathcal{M}$-adhesivity} \todo{Da sistemare}
  Let us start by recalling the notion of a factorization system \cite{bousfield1977constructions,kelly1991note,rosicky2007factorization,tholen1983factorizations}.
@@ -1170,6 +1156,7 @@ The following proposition assures us that the factorization of an arrow is uniqu
 	\end{enumerate}
 \end{proof}
 
+\paragraph{$\mathcal{E}$-quotients and $\mathcal{M}$-relations}
 
 \section{DPO rewriting and derivations}
 
