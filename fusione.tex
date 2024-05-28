@@ -730,13 +730,7 @@ The previous proposition, in turn, allows us to establish the following results.
 		\[\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{g'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{g}&&B\ar[dd]^{n}&&C'  \ar@{.>}[dr]_{h} _{}\ar[dd]_{c}\ar[rr]^(.7){f'} & & D' \ar@{.>}[dr]^{k}\ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{f} &&D&&C \ar[rr]_{f} & & D}\]
 Supppose, moreover that $m\colon A\to C$ and $d\colon D'\to D$ are mono and that $d$ belongs to $\mathcal{A}$. Then the dotted arrow  $k\colon D'\to B$ exists if and only if the other dotted arrow  $h\colon C'\to A$ exists too.
 \end{lemma}
-\iffalse 
-\begin{remark}
-	Recall that, given two monos $m:M\to X$ and $n:N\to X$ with the same codomain, $m\leq n$ means that there exists a, necessarily unique and necessarily mono, $k:M\to N$ fitting in the triangle below:
-	\[\xymatrix{M\ar[rr]^{k}  \ar[dr]_{m}&& N \ar[dl]^{n}\\ & X}\]
-	Notice that, if $m\leq n$ and $n\leq m$, then the arrow $k:M\to N$ is an isomorphism.  
-\end{remark}
-\fi 
+
 \begin{remark}
 	Notice that, since $d$ is a mono and the vertical faces are pullbacks, then $a, b$ and $c$ are monomorphisms too. Moreover, $n$ is mono by \Cref{prop:pbpo}, so that even $m'$ and $n'$ are monos.
 \end{remark}
@@ -1020,86 +1014,12 @@ Then the following properties hold true.
 	\end{enumerate}
 \end{proof}
 
-\subsubsection{Factorization systems and $\mathcal{M}$-adhesivity} \todo{Da sistemare}
- Let us start by recalling the notion of a factorization system \cite{bousfield1977constructions,kelly1991note,rosicky2007factorization,tholen1983factorizations}.
+\subsubsection{Factorization systems and $\mathcal{M}$-adhesivity} 
+ 
+ 
 
-\begin{definition}\label{def:fs}\index{factorization system} \index{left lifting property} \index{factorization system!proper -} \index{factorization system!stable -}
-	Let $\X$ be a category and $\mathcal{E}$, $\mathcal{M}$ two classes of arrows, we will say that $(\mathcal{E},\mathcal{M})$ is a (orthogonal) \emph{factorization system} if:
-	\begin{enumerate}
-		\item every isomorphism is in both $\mathcal{E}$ and $\mathcal{M}$;
-		\item $\mathcal{E}$ and $\mathcal{M}$ are closed under composition;
-		
-		\item  every arrow $f\colon X\to Y$ of $\X$ admits a \emph{$(\mathcal{E}, \mathcal{M})$-factorization}, i.e.~there are arrows $e_f\in \mathcal{E}$ and $m_f\in \mathcal{M}$ with the property that $f=m_f\circ e_f$;
-		\item every $e\in \mathcal{E}$ has the \emph{left lifting property} with respect to every $m\in \mathcal{M}$: for every commutative square
-		\[\xymatrix{X \ar[r]^g \ar[d]_{e}& Z \ar[d]^{m}\\ Y \ar[r]_{f} \ar@{.>}[ur]^{k}& V}\] 	with $e\in \mathcal{E}$ and $m\in \mathcal{M}$ there exists a unique $k\colon Y\rightarrow Z$ such that 
-		\[m\circ k=f \qquad k\circ e=g\]
-	\end{enumerate}
-	
-	A factorization system is \emph{proper} if every $e\in \mathcal{E}$ is epi and every $m\in \mathcal{M}$ is mono; it's \emph{stable} if for every pullback square ast the one below,  $e\in \mathcal{E}$ implies $e'\in \mathcal{E}$.
-	\[\xymatrix{P\ar[r]^{g} \ar[d]_{e'} & X \ar[d]^{e} \\ Z \ar[r]_{f}  & Y}\]
-\end{definition}
 
-The following proposition assures us that the factorization of an arrow is unique up to isomorphism.
-
-\begin{proposition}\label{prop:iso}
-	Let $(\mathcal{E}, \mathcal{M})$ be a factorization system on a category $\X$. If $e\colon X\to Y$, $e'\colon X\to Y'$ and $m\colon Y\to Z$, $m'\colon Y'\to Z $ are arrows, respectively, in $\mathcal{E}$ and $\mathcal{M}$ such that
-	$e'\circ m'=e\circ m$,  then  there exist a unique isomorphism $\phi\colon Y \rightarrow Y$ such that the following diagram commutes
-	\[\xymatrix@C=35pt@R=20pt{X \ar[r]^{e'} \ar[d]_{e}& Y' \ar[d]^{m'}\\ Y \ar[r]_{m} \ar@{.>}[ur]^{\phi}& V}\]
-\end{proposition}
-\begin{proof}Using the left lifting property we get two commutative diagrams:
-	\[\xymatrix@C=35pt@R=20pt{
-		X\ar[r]^{e'}  \ar[d]_{e}& Y'  \ar[d]^{m'} &  X 	\ar[d]_{e'} \ar[r]^{e} &Y \ar[d]^{m}\\
-		Y \ar[r]_{m} \ar[ur]^{f} & Z & Y'  \ar[r]_{m'}\ar[ur]^{g} & Z
-	}\]
-	thus
-	\[	\begin{split}
-		m'\circ f \circ g &= m\circ g \\&= m'
-	\end{split} \qquad 
-	\begin{split}
-		f \circ g \circ e' &= f\circ e \\&= e'
-	\end{split}\qquad 
-	\begin{split}
-		m\circ g \circ f &= m'\circ f \\&= m
-	\end{split} \qquad 
-	\begin{split}
-		g \circ f \circ e &= g\circ e' \\&= e
-	\end{split}
-	\]
-	So we have two square
-	\[\xymatrix@C=35pt@R=20pt{
-		X\ar[r]^{e}  \ar[d]_{e}& Y  \ar[d]^{m} &  X 	\ar[d]_{e'} \ar[r]^{e'} &Y '\ar[d]^{m'}\\
-		Y \ar[r]_{m} \ar[ur]^{g\circ f} & Z & Y'  \ar[r]_{m'}\ar[ur]^{f\circ g} & Z
-	}\]		
-	and the thesis follows from the uniqueness half of the left lifting property.
-\end{proof}
-
-\begin{corollary}\label{cor:iso} Given a factorization system $(\mathcal{E}, \mathcal{M})$ on a category $\X$, the following hold:
-	\begin{enumerate}
-		\item an arrow $f\colon X\to Y$ is in $\mathcal{E}$ (in $\mathcal{M}$) if and only if $m_f$ ($e_f$) is an isomorphism;
-		\item $f\in \mathcal{E}$ and $f\in \mathcal{M}$ if and only if $f$ is an isomorphism;
-		\item  if $(\mathcal{E}, \mathcal{M})$ is proper, then $g\circ f$ is in $\mathcal{M}$ (in $\mathcal{E}$) implies $f\in \mathcal{M}$ ($g\in \mathcal{E}$).
-	\end{enumerate}
-\end{corollary}
-\begin{proof}
-	\begin{enumerate}
-		\item  ($\Rightarrow$) By hypothesis $f=\id{Y}\circ f$ ($f=f\circ \id{X}$) is a factorization with $\id{Y}\in \mathcal{M}$ and $f\in \mathcal{E}$ ($\id{X}\in \mathcal{E}, f\in \mathcal{M}$), so the thesis follows from \cref{prop:iso}.
-		
-		\smallskip \noindent
-		($\Leftarrow$) $f=m_f\circ e_f$, thus if $m_f$ ($e_f$) is an isomorphism then we have $f$ is the composition of two arrows in $\mathcal{E}$ ($\mathcal{M}$) and we can conclude.
-		
-		\item This follows immediately from the previous point.
-		
-		\item 
-		Factor $f$ and $g$ as $m_f\circ e_f$ and $m_g\circ e_g$, let also $h$ be $e_g\circ m_f$ and factor it as $m_h\circ e_h$ so that we get 
-		\[\xymatrix@C=45pt{& C \ar[dr]^{m_h}&\\
-			A\ar[ur]^{e_h} \ar[rr]^{h}  \ar[dr]^{m_f}& &B \ar[d]^{m_g}\\
-			X \ar[u]^{e_f} \ar[r]_f& Y \ar[r]_g \ar[ur]^{e_g} & Z}\]
-		Since $\mathcal{E}$ and $\mathcal{M}$ are closed under composition we know that $e_h\circ e_f\in \mathcal{E}$ and $m_g \circ m_h\in \mathcal{M}$, thus  these arrows gives a $(\mathcal{E}, \mathcal{M})$-factorization of $g\circ f$. On the other hand $g\circ f\in \mathcal{E}$ ($g\circ f\in \mathcal{M}$), thus point $1$ above  implies that  $e_h\circ e_f$ ($m_g\circ m_h$) is an isomorphism. In particular:
-		\[(e_h\circ e_f)^{-1}\circ e_h \circ e_f =\id{X} \qquad \text{(}m_g\circ m_h \circ (m_g\circ m_h)^{-1}=\id{Z}\text{)}  \]
-		so $e_f$ has a retraction ($m_g$ has a section). The thesis now follows since $e_f$ is epic ($m_g$ is mono). \qedhere 
-	\end{enumerate}
-\end{proof}
-
+\iffalse 
 \begin{definition} \index{source} \index{sink} \index{pushout!wide -} \index{pullback!wide -}
 	Given a set $I$, a  \emph{source}  (\emph{sink}) is a family $\{f_i\}_{i\in I}$ of arrows  $f_i\colon X\to Y_i$ ($f_i\colon Y_i\to X$) with the same (co)domain. A $\emph{wide pushout}$ (pullback) is the colimit (limit) of a source (sink). We will use $c_i$ ($p_i$) to denote the coprojection from $Y_i$ (the projection to $Y_i$) and $c_X$ to denote the one from $X$.
 \end{definition}
@@ -1120,32 +1040,7 @@ The following proposition assures us that the factorization of an arrow is uniqu
 \begin{proof}
 	\begin{enumerate}
 		\item 
-		Take a pushout square
-		\[\xymatrix{X\ar[r]^{g} \ar[d]_{e} & V \ar[d]^{n} \\ Y \ar[r]_{f}  & Z}\] 
-		with $e$ in $\mathcal{E}$. By hypothesis  $n=m_n\circ e_n$ for $m_n\colon E\to Y$ in $ \mathcal{M}$  and $e_n\colon V\to E$ in  $\mathcal{E}$.  If we show that $m_n$ is an isomorphism we are done. We can apply again the left lifting property to get $l\colon E\to X$ which makes the following diagram commute.
-		\[\xymatrix{X \ar[d]_{e}\ar[r]^{g}&  V \ar[r]^{e_n} &E\ar[d]^{m_n}\\  Z  \ar[urr]^{l} \ar[rr]_{f} && Y}\]
-		Therefore we get another diagram
-		\[\xymatrix{ X \ar[d]_{e}\ar[r]^{g}& V \ar@/^.5cm/[ddr]^{e_n} \ar[d]^{n} \\
-			Z\ar@/_.5cm/[drr]_{l} \ar[r]_{f} & Y \ar@{.>}[dr]^{k}\\
-			& &E }\]
-		and thus we can deduce the existence of the dotted $k\colon E\to V$. On the one hand, computing we get
-		\[\begin{split}
-			m_n\circ k\circ n &=m_n  \circ  e_n\\ &=n
-		\end{split}\qquad \begin{split}
-			m_n\circ k\circ f &=m_n\circ l\\ &=f \end{split}\]
-		and so $m_n\circ k= \id{Y}$.  On the other hand 
-		\[\begin{split}
-			m_n\circ k \circ m_n &= \id{Y} \circ m_n \\&= m_n
-		\end{split} \qquad 
-		\begin{split}
-			k \circ m_n \circ e_n &= k\circ n \\&= e_n
-		\end{split}
-		\]	
-		so the following diagaram commutes 
-		\[
-		\xymatrix@C=50pt{V \ar[d]_{e_n}\ar[r]^{e_n}& E \ar[d]^{m_n} \\
-			E\ar[ur]^{k\circ m_n}\ar[r]_{m_n} & Y}\]
-		and thus  $k\circ m_n=\id{E}$ by the uniqueness clause of the left lifting property. Therefore $e_n$ is an isomorphism and the thesis now follows from  point $1$ of \cref{cor:iso}.
+	
 		\item By \cref{rem:copro} and point three of \cref{cor:iso} it is enough to show that $c_X$ is in $\mathcal{E}$. Since $(\mathcal{E}, \mathcal{M})$ is a factorization system then $c_X=m\circ e$ for some $m\colon E\to C$ in $\mathcal{M}$ and $e\colon X\to E$ in $\mathcal{E}$ to get, from \cref{rem:copro}, a square
 		\[\xymatrix{X\ar[r]^{e} \ar[d]_{e_i} & V \ar[d]^{m} \\ Y_i \ar@{.>}^{k_i}[ur] \ar[r]_{c_i}  & Z}\]
 		and the left lifting property provides, for every $i\in I$, the dotted arrow $k_i\colon Y_i\to e$. Let $k$ be the the induced arrow $Z\to V$. Then
@@ -1155,8 +1050,41 @@ The following proposition assures us that the factorization of an arrow is uniqu
 		hence $m\circ k=\id{Z}$. By \cref{cor:iso} $m\in \mathcal{M}$ thus it is an isomorphism and we can conclude. \qedhere 
 	\end{enumerate}
 \end{proof}
+\fi 
 
-\paragraph{$\mathcal{E}$-quotients and $\mathcal{M}$-relations}
+
+\begin{definition}
+	contenuto...
+\end{definition}
+\begin{proposition}
+	inf
+\end{proposition}
+\begin{proof}
+\end{proof}
+Now, let us recall the following lemma, which is the application of the Adjoint Functor Theorem to the partial ordered case.
+
+\begin{lemma}\label{lem:adj}
+	contenuto...
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+\begin{corollary}
+	contenuto...
+\end{corollary}
+
+\iffalse 
+\begin{remark}
+	Recall that, given two monos $m:M\to X$ and $n:N\to X$ with the same codomain, $m\leq n$ means that there exists a, necessarily unique and necessarily mono, $k:M\to N$ fitting in the triangle below:
+	\[\xymatrix{M\ar[rr]^{k}  \ar[dr]_{m}&& N \ar[dl]^{n}\\ & X}\]
+	Notice that, if $m\leq n$ and $n\leq m$, then the arrow $k:M\to N$ is an isomorphism.  
+\end{remark}
+\fi 
+
+\todo{immagini}
+
+\todo{da adesività a immagini}
 
 \section{DPO rewriting and derivations}
 
@@ -3048,6 +2976,9 @@ Therefore $\phi\circ e'=\phi \circ e$ and we can conclude since $\phi$ is mono.
 	caratterizzazione
 \end{corollary}
 
+
+
+
 \section{Conclusions and further work}
 \todo{VERY NICE CONCLUSIONS}
 
@@ -3059,6 +2990,114 @@ Therefore $\phi\circ e'=\phi \circ e$ and we can conclude since $\phi$ is mono.
 
 
 \appendix
+
+\section{Factorization systems}\label{app:fact}
+Let us start by recalling the notion of \emph{factorization system} \cite{bousfield1977constructions,kelly1991note,rosicky2007factorization,tholen1983factorizations}.
+
+\begin{definition}\label{def:fs}\index{factorization system} \index{left lifting property} \index{factorization system!proper -} \index{factorization system!stable -}
+	Let $\X$ be a category and $\mathcal{E}$, $\mathcal{M}$ two classes of arrows, we will say that $(\mathcal{E},\mathcal{M})$ is a \emph{factorization system} if:
+	\begin{enumerate}
+		\item every isomorphism is in both $\mathcal{E}$ and $\mathcal{M}$;
+		\item $\mathcal{E}$ and $\mathcal{M}$ are closed under composition;
+		
+		\item  every arrow $f\colon X\to Y$ of $\X$ admits a \emph{$(\mathcal{E}, \mathcal{M})$-factorization}, i.e.~there are arrows $e_f\in \mathcal{E}$ and $m_f\in \mathcal{M}$ with the property that $f=m_f\circ e_f$;
+		\item every $e\in \mathcal{E}$ has the \emph{left lifting property} with respect to every $m\in \mathcal{M}$: for every commutative square as the one below, with $e\in \mathcal{E}$ and $m\in \mathcal{M}$ there exists a unique dotted $k\colon Y\rightarrow Z$ which fits in it.
+		\[\xymatrix{X \ar[r]^g \ar[d]_{e}& Z \ar[d]^{m}\\ Y \ar[r]_{f} \ar@{.>}[ur]^{k}& V}\] 
+	\end{enumerate}
+	
+	A factorization system is \emph{proper} if every $e\in \mathcal{E}$ is epi and every $m\in \mathcal{M}$ is mono; it is \emph{stable} if $\mathcal{E}$ is stable under pullbacks.
+\end{definition}
+
+\begin{remark}\label{rem:dual}It is immediate to notice that, given a factorization system $(\mathcal{E}, \mathcal{M})$ on $\X$, then $(\mathcal{M}, \mathcal{E})$ is a factorization system on $\X^{op}$ which is proper if and only if $(\mathcal{E}, \mathcal{M})$ is so.  
+\end{remark}
+
+The following lemma assures us that the factorization of an arrow is unique up to isomorphism.
+
+\begin{lemma}\label{lem:ima}
+	Let $(\mathcal{E}, \mathcal{M})$ be a factorization system on a category $\X$. Then for every $X\in \X$ the inclusion functor $I_X\colon \mathcal{M}/X\to \X/X$ has a left adjoint.
+\end{lemma}
+\begin{proof}
+	Given $f\colon Y\to X$ we know that there exist $e_f\colon Y\to E$ in $\mathcal{E}$ and $m_f\colon E\to X$ in $\mathcal{M}$ such that $f=m_f\circ e_f$. In particular, $e_f$ is a morphism $f\to m_f$ in $\X/X$.   Now, if $n\colon N\to X$ is another arrow in $\mathcal{M}$ and $g\colon f\to n$ a morphism in $\X/X$, then we have a rectangle
+	\[\xymatrix@C=40pt{Y \ar[r]^{g}  \ar[dr]^(.35){f}|\hole \ar[d]_{e_f}& N \ar[d]^{n}\\ E \ar[r]_{m_f} \ar@{.>}[ur]_(.35){h}& X}\]
+	By the left lifting property we get a unique dotted $h\colon m_f\to n$ fitting in the diagram above, giving us the thesis.
+\end{proof}
+
+\begin{corollary}\label{prop:iso}
+	Let $(\mathcal{E}, \mathcal{M})$ be a factorization system on a category $\X$. If $e\colon Y\to E$, $e'\colon Y\to E'$ and $m\colon Y\to X$, $m'\colon Y'\to X $ are arrows, respectively, in $\mathcal{E}$ and $\mathcal{M}$ such that
+	$e'\circ m'=e\circ m$,  then  there exist a unique isomorphism $\phi\colon E \rightarrow E'$ such that the diagram below commutes.
+	\[\xymatrix@C=40pt{Y \ar[r]^{e'} \ar[d]_{e}& E' \ar[d]^{m'}\\ E \ar[r]_{m} \ar@{.>}[ur]^{\phi}& X}\]
+\end{corollary}
+\begin{proof}
+	By the proof of \Cref{lem:ima} we know that there exist $L, L'\colon \X/X\to \mathcal{M}/X$ left adjoint to $I_X$ such that
+	\[L(f)=m \qquad L'(f)=m'\]
+	Moreover the units $\eta$ and $\eta'$ of the adjunctions $L\dashv R$ and $L'\dashv R$ are such that
+	\[\eta_f= e \qquad \eta'_f=e'\]
+	By the uniqueness of adjoints we get the wanted isomorphism.
+\end{proof}
+
+The previous corollary allows us to deduce other useful properties of factorization systems.
+
+\begin{proposition}\label{cor:iso} Given a factorization system $(\mathcal{E}, \mathcal{M})$ on a category $\X$, the following hold:
+	\begin{enumerate}
+		\item an arrow $f\colon X\to Y$ is in $\mathcal{M}$ if and only if $e_f$ is an isomorphism;
+		\item $f\in \mathcal{E}$ and $f\in \mathcal{M}$ if and only if $f$ is an isomorphism;
+		\item  if $(\mathcal{E}, \mathcal{M})$ is proper, then $g\circ f$ is in $\mathcal{M}$ implies $f\in \mathcal{M}$;
+		\item $\mathcal{M}$ is stable under pullback.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item  ($\Rightarrow$) By hypothesis $f=f\circ \id{X}$ is a factorization with $\id{X}\in \mathcal{E}$ and $f\in \mathcal{M}$, thus the thesis follows from \Cref{prop:iso}.
+		
+		\smallskip \noindent
+		($\Leftarrow$) This follows immediately since, if $e_f$ is an isomorphism then, $f$ is the composition of two arrows in $\mathcal{M}$.
+		
+		\item This follows immediately from the previous point.
+		
+		\item 
+		Factor $f$ and $g$ as $m_f\circ e_f$ and $m_g\circ e_g$, let also $h$ be $e_g\circ m_f$ and factor it as $m_h\circ e_h$ so that we get 
+		\[\xymatrix@C=45pt{& C \ar[dr]^{m_h}&\\
+			A\ar[ur]^{e_h} \ar[rr]^{h}  \ar[dr]^{m_f}& &B \ar[d]^{m_g}\\
+			X \ar[u]^{e_f} \ar[r]_f& Y \ar[r]_g \ar[ur]^{e_g} & Z}\]
+		Since $\mathcal{E}$ and $\mathcal{M}$ are closed under composition we know that $e_h\circ e_f\in \mathcal{E}$ and $m_g \circ m_h\in \mathcal{M}$, thus  these arrows gives a $(\mathcal{E}, \mathcal{M})$-factorization of $g\circ f$. On the other hand $g\circ f\in \mathcal{M}$, thus point $1$ above  implies that  $e_h\circ e_f$ is an isomorphism. In particular:
+		\[(e_h\circ e_f)^{-1}\circ e_h \circ e_f =\id{X} \]
+		so $e_f$ is a split monomorphism. The thesis now follows since $e_f$ is epic.
+		\item 	Suppose that the square below is a pullback, with $m\in \mathcal{M}$
+		\[\xymatrix{X\ar[r]^{g} \ar[d]_{n} & V \ar[d]^{m} \\ Y \ar[r]_{f}  & Z}\] 
+		We can factor  $n$ as $m_n\circ e_n$ for $e_n\colon X\to E$ in  $\mathcal{E}$ and $m_n\colon E\to Y$ in $ \mathcal{M}$.  By the left lifting property we get the dotted $l\colon E\to X$ in the diagram below.
+		\[\xymatrix{X \ar[d]_{e_n}\ar[rr]^{g} & &V\ar[d]^{m}\\  E  \ar@{.>}[urr]^{l} \ar[r]_{m_n}&Y\ar[r]_{f} & Z}\]
+		Therefore we get another diagram
+		\[\xymatrix{ E \ar@/^.5cm/[drr]^{l}\ar@{.>}[dr]^{k} \ar@/_.5cm/[ddr]_{m_n}\\ & X \ar[d]_{n}\ar[r]^{g}& V  \ar[d]^{m} \\ &Y \ar[r]_{f} & Z }\]
+		and thus we can deduce the existence of the dotted $k\colon E\to V$. On the one hand, computing we get
+		\[\begin{split}
+			n\circ 	k\circ e_n&=m_n  \circ  e_n\\ &=n
+		\end{split}\qquad \begin{split}
+			g\circ k\circ e_n &=l\circ e_n\\ &=g \end{split}\]
+		and so $k\circ e_n= \id{X}$.  On the other hand 
+		\[\begin{split}
+			m_n\circ k \circ m_n &= \id{Y} \circ m_n \\&= m_n
+		\end{split} \qquad 
+		\begin{split}
+			k \circ m_n \circ e_n &= k\circ n \\&= e_n
+		\end{split}
+		\]	
+		so the following diagram commutes.
+		\[
+		\xymatrix@C=50pt{V \ar[d]_{e_n}\ar[r]^{e_n}& E \ar[d]^{m_n} \\
+			E\ar[ur]^{e_n\circ k}\ar[r]_{m_n} & Y}\]
+		Hence, by the uniqueness clause of the left lifting property, $e_n\circ k=\id{E}$. Therefore $e_n$ is an isomorphism and the thesis follows from  point $1$. \qedhere 
+	\end{enumerate}
+\end{proof}
+
+With the help of \Cref{rem:dual} we can easy dualize the previous proposition.
+\begin{corollary}\label{cor:iso2}
+	Given a factorization system $(\mathcal{E}, \mathcal{M})$ on a category $\X$, the following hold:
+	\begin{enumerate}
+		\item an arrow $f\colon X\to Y$ is in $\mathcal{E}$ if and only if $m_f$ is an isomorphism;
+		\item  if $(\mathcal{E}, \mathcal{M})$ is proper, then $g\circ f$ is in $\mathcal{E}$ implies $g\in \mathcal{E}$;
+		\item $\mathcal{E}$ is stable under pushouts.
+	\end{enumerate}
+\end{corollary}
 
 
 \section{$\mathcal{M}$-adhesivity is not enough}\label{app:fill}
