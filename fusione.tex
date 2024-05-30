@@ -9,6 +9,10 @@
 \newcommand{\lab}[1]{\ensuremath{\mathsf{{#1}}}}
 \newcommand{\slab}[1]{\ensuremath{\scriptstyle{\mathsf{{#1}}}}}
 
+\newcommand{\sub}[3]{{\mathcal{#1}}\textrm{-}\mathsf{Sub}_{\textbf {\textup{#2}}}(#3)}
+
+\newcommand{\msub}[2]{\mathsf{Sub}_{\textbf {\textup{#1}}}(#2)}
+
 %frecce
 \newcommand{\mor}{\mathsf{Mor}}
 \newcommand{\mon}{\mathsf{Mono}}
@@ -337,6 +341,7 @@
 \def\D{\textbf {\textup{D}}}
 \def\X{\textbf {\textup{X}}}
 \def\Y{\textbf {\textup{Y}}}
+\def\E{\textbf {\textup{E}}}
 
 \newcommand{\ske}{\mathsf{sk}(\X)}
 \renewcommand{\P}{\textbf {\textup{P}}}
@@ -795,7 +800,7 @@ A category $\X$ is said to be \emph{strictly $\mathcal{M}$-adhesive} if $\mathca
 \end{remark}
 
 \begin{remark}\label{rem:pb}
-	Let $X$ be an object of $\X$, with $\X$ $\mathcal{M}$-adhesive. We can consider  the full subcategory $\mathcal{M}/X$ of $\X/X$ made by arrows in $\mathcal{M}$. Since $\X$ has all $\mathcal{M}$-pullbacks, for every arrow $f\colon X\to Y$ we have a functor $f^*\colon \mathcal{M}/Y\to \mathcal{M}/X $ sending $m\colon \mto X$ to a chosen pullback of it along $f$.
+	Let $X$ be an object of $\X$, with $\X$ an $\mathcal{M}$-adhesive. category We can consider  the full subcategory $\mathcal{M}/X$ of $\X/X$ made by arrows in $\mathcal{M}$. Since $\X$ has all $\mathcal{M}$-pullbacks, for every arrow $f\colon X\to Y$ we have a functor $f^*\colon \mathcal{M}/Y\to \mathcal{M}/X $ sending $m\colon M \mto X$ to a chosen pullback of it along $f$.
 	\end{remark}
 
 A first result we can prove regards closure under decomposition of $\mathcal{M}$.
@@ -1019,8 +1024,7 @@ Then the following properties hold true.
  
 
 
-\iffalse 
-\begin{definition} \index{source} \index{sink} \index{pushout!wide -} \index{pullback!wide -}
+\begin{definition} 
 	Given a set $I$, a  \emph{source}  (\emph{sink}) is a family $\{f_i\}_{i\in I}$ of arrows  $f_i\colon X\to Y_i$ ($f_i\colon Y_i\to X$) with the same (co)domain. A $\emph{wide pushout}$ (pullback) is the colimit (limit) of a source (sink). We will use $c_i$ ($p_i$) to denote the coprojection from $Y_i$ (the projection to $Y_i$) and $c_X$ to denote the one from $X$.
 \end{definition}
 
@@ -1050,17 +1054,40 @@ Then the following properties hold true.
 		hence $m\circ k=\id{Z}$. By \cref{cor:iso} $m\in \mathcal{M}$ thus it is an isomorphism and we can conclude. \qedhere 
 	\end{enumerate}
 \end{proof}
-\fi 
+
+Let $\mathcal{M}$ be a class of monos in a category $\X$, then $\mathcal{M}/X(f,g)$ has cardinality at most one for every two arrows $f$ and $g$ with codomain $X$. Thus it is a preordered class, in which $f\leq g$ if and only if  $\mathcal{M}/X(f,g)$ is non-empty. Now, it is immediate to notice that $f\leq g$ and $g\leq f$, then there exists a (unique) isomorphism fitting in the triangle below.
+\[\xymatrix{A\ar@{.>}[rr]^{\phi} \ar[dr]_{f} && B \ar[dl]^{g}\\ & X}\]
+In such a case we will write $f\equiv g$. It is immediate to see that in this way we get an equivalence relation on the class of objects of $\mathcal{M}/X$.
 
 
-\begin{definition}
-	contenuto...
+
+\begin{definition} Let $\mathcal{M}$ be a class of monos in a category $\X$. For every object $X$ a \emph{$\mathcal{M}$-subobject} is an equivalence class $[f]$ of an object $f$ in $\mathcal{M}/X$ with respect to $\equiv$. Given two \emph{$\mathcal{M}$-subobjects} $[f]$ and $[g]$, represented by $f$ and $g$, respectively, we will define $[f]\leq [g]$ if and only if $f\leq g$. It is immediate to see that this defines a partially ordered class $(\sub{M}{X}{X}, \leq)$. 
+	
+	When $\mathcal{M}$ coincides with the class of all monos we will suppress the prefix, so that a \emph{subobject} is just an equivalence class of a mono and $((\msub{X}{X}), \leq)$ will denote the ordered class of such subobjects of $X$.
 \end{definition}
+\begin{remark}\label{rem:size}
+	Every $\mathcal{M}$-adhesive cateory $\X$ admits a full and faithful functor $F:\X\to \E$ into a topos $\E$, sending arrows in $\mathcal{M}$ to monomorphisms \cite{castelnovo2023thesis}. Since every topos is \emph{well-powered}, i.e. $\msub{E}{E}$ is a set for every object $E$ \cite{maclane2012sheaves}, we can deduce  that, for every $X$ in $\X$, $\sub{M}{X}{X}$ is actually a set too.
+\end{remark}
+
+\begin{remark}
+	contenuto...
+\end{remark}
+
+Our next step is to compute infima in $(\sub{M}{X}{X}, \leq)$.
+
 \begin{proposition}
 	inf
 \end{proposition}
 \begin{proof}
 \end{proof}
+\begin{corollary}
+	contenuto...
+\end{corollary}
+
+
+
+
+
 Now, let us recall the following lemma, which is the application of the Adjoint Functor Theorem to the partial ordered case.
 
 \begin{lemma}\label{lem:adj}
@@ -1070,17 +1097,29 @@ Now, let us recall the following lemma, which is the application of the Adjoint 
 	contenuto...
 \end{proof}
 
+\begin{proposition}\label{cor:pbpres}
+	Let $\mathcal{M}$ be a class of monos in a category $\X$ stable under pullbacks.  Let $f\colon X\to Y$ be an arrow admitting a pullback along any arrow $m\colon M\to Y$. Then the pullback functor $f^*\colon \mathcal{M}/Y\to \mathcal{M}/X$ preserves all limits.
+\end{proposition}
+\begin{proof}
+Let $()$
+
+\end{proof}
+
 \begin{corollary}
 	contenuto...
 \end{corollary}
 
-\iffalse 
-\begin{remark}
-	Recall that, given two monos $m:M\to X$ and $n:N\to X$ with the same codomain, $m\leq n$ means that there exists a, necessarily unique and necessarily mono, $k:M\to N$ fitting in the triangle below:
-	\[\xymatrix{M\ar[rr]^{k}  \ar[dr]_{m}&& N \ar[dl]^{n}\\ & X}\]
-	Notice that, if $m\leq n$ and $n\leq m$, then the arrow $k:M\to N$ is an isomorphism.  
-\end{remark}
-\fi 
+\begin{corollary}
+	contenuto...
+\end{corollary}
+
+\begin{example}
+	>complete
+\end{example}
+
+\begin{example}
+	>finit
+\end{example}
 
 \todo{immagini}
 
