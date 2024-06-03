@@ -1024,98 +1024,7 @@ Then the following properties hold true.
  
 
 
-\begin{definition} 
-	Given a set $I$, a  \emph{source}  (\emph{sink}) is a family $\{f_i\}_{i\in I}$ of arrows  $f_i\colon X\to Y_i$ ($f_i\colon Y_i\to X$) with the same (co)domain. A $\emph{wide pushout}$ (pullback) is the colimit (limit) of a source (sink). We will use $c_i$ ($p_i$) to denote the coprojection from $Y_i$ (the projection to $Y_i$) and $c_X$ to denote the one from $X$.
-\end{definition}
 
-\begin{remark}\label{rem:copro}
-	Given a wide pushout $(C, \{c_i\}_{i\in I\cup \{X\}})$ on a source $\{f_i\}_{i\in I}$ with $f_i\colon X\to Y_i$, the coprojection $c_X$ is such that, for every $i\in I$, the following diagram commute
-	\[\xymatrix{&X\ar[dl]_{f_i} \ar[dr]^{c_X}\\
-		Y_i\ar[rr]_{c_{i}} && C}\]
-\end{remark}
-
-\begin{proposition} \label{prop:mp} For every proper factorization system $(\mathcal{E}, \mathcal{M})$ on a category $\X$ the following hold:
-	\begin{enumerate}
-		\item  for every pushout square as the one below,  $e\in \mathcal{E}$ implies $n\in \mathcal{E}$ 
-		\[\xymatrix{X\ar[r]^{g} \ar[d]_{e} & V \ar[d]^{n} \\ Y \ar[r]_{f}  & Z}\] 
-		\item  if $(C, \{c_i\}_{i\in I\cup \{X\}})$ is a wide pushout on a source $\{e_i\}_{i\in I}$ such that $e_i\colon X\to Y_i$ is in $\mathcal{E}$ for every $i\in I$, then every coprojection is in $\mathcal{E}$ too. 
-	\end{enumerate}
-\end{proposition}
-\begin{proof}
-	\begin{enumerate}
-		\item 
-	
-		\item By \cref{rem:copro} and point three of \cref{cor:iso} it is enough to show that $c_X$ is in $\mathcal{E}$. Since $(\mathcal{E}, \mathcal{M})$ is a factorization system then $c_X=m\circ e$ for some $m\colon E\to C$ in $\mathcal{M}$ and $e\colon X\to E$ in $\mathcal{E}$ to get, from \cref{rem:copro}, a square
-		\[\xymatrix{X\ar[r]^{e} \ar[d]_{e_i} & V \ar[d]^{m} \\ Y_i \ar@{.>}^{k_i}[ur] \ar[r]_{c_i}  & Z}\]
-		and the left lifting property provides, for every $i\in I$, the dotted arrow $k_i\colon Y_i\to e$. Let $k$ be the the induced arrow $Z\to V$. Then
-		\begin{align*}
-			m\circ k\circ c_i&=m\circ k_i\\&=c_i
-		\end{align*}
-		hence $m\circ k=\id{Z}$. By \cref{cor:iso} $m\in \mathcal{M}$ thus it is an isomorphism and we can conclude. \qedhere 
-	\end{enumerate}
-\end{proof}
-
-Let $\mathcal{M}$ be a class of monos in a category $\X$, then $\mathcal{M}/X(f,g)$ has cardinality at most one for every two arrows $f$ and $g$ with codomain $X$. Thus it is a preordered class, in which $f\leq g$ if and only if  $\mathcal{M}/X(f,g)$ is non-empty. Now, it is immediate to notice that $f\leq g$ and $g\leq f$, then there exists a (unique) isomorphism fitting in the triangle below.
-\[\xymatrix{A\ar@{.>}[rr]^{\phi} \ar[dr]_{f} && B \ar[dl]^{g}\\ & X}\]
-In such a case we will write $f\equiv g$. It is immediate to see that in this way we get an equivalence relation on the class of objects of $\mathcal{M}/X$.
-
-
-
-\begin{definition} Let $\mathcal{M}$ be a class of monos in a category $\X$. For every object $X$ a \emph{$\mathcal{M}$-subobject} is an equivalence class $[f]$ of an object $f$ in $\mathcal{M}/X$ with respect to $\equiv$. Given two \emph{$\mathcal{M}$-subobjects} $[f]$ and $[g]$, represented by $f$ and $g$, respectively, we will define $[f]\leq [g]$ if and only if $f\leq g$. It is immediate to see that this defines a partially ordered class $(\sub{M}{X}{X}, \leq)$. 
-	
-	When $\mathcal{M}$ coincides with the class of all monos we will suppress the prefix, so that a \emph{subobject} is just an equivalence class of a mono and $((\msub{X}{X}), \leq)$ will denote the ordered class of such subobjects of $X$.
-\end{definition}
-\begin{remark}\label{rem:size}
-	Every $\mathcal{M}$-adhesive cateory $\X$ admits a full and faithful functor $F:\X\to \E$ into a topos $\E$, sending arrows in $\mathcal{M}$ to monomorphisms \cite{castelnovo2023thesis}. Since every topos is \emph{well-powered}, i.e. $\msub{E}{E}$ is a set for every object $E$ \cite{maclane2012sheaves}, we can deduce  that, for every $X$ in $\X$, $\sub{M}{X}{X}$ is actually a set too.
-\end{remark}
-
-\begin{remark}
-	contenuto...
-\end{remark}
-
-Our next step is to compute infima in $(\sub{M}{X}{X}, \leq)$.
-
-\begin{proposition}
-	inf
-\end{proposition}
-\begin{proof}
-\end{proof}
-\begin{corollary}
-	contenuto...
-\end{corollary}
-
-
-
-
-
-Now, let us recall the following lemma, which is the application of the Adjoint Functor Theorem to the partial ordered case.
-
-\begin{lemma}\label{lem:adj}
-	contenuto...
-\end{lemma}
-\begin{proof}
-	contenuto...
-\end{proof}
-
-\begin{proposition}\label{cor:pbpres}
-	Let $\mathcal{M}$ be a class of monos in a category $\X$ stable under pullbacks.  Let $f\colon X\to Y$ be an arrow admitting a pullback along any arrow $m\colon M\to Y$. Then the pullback functor $f^*\colon \mathcal{M}/Y\to \mathcal{M}/X$ preserves all limits.
-\end{proposition}
-\begin{proof}
-Let $()$
-
-\end{proof}
-
-\begin{corollary}
-	contenuto...
-\end{corollary}
-
-\begin{corollary}
-	contenuto...
-\end{corollary}
-
-\begin{example}
-	>complete
-\end{example}
 
 \begin{example}
 	>finit
@@ -1130,7 +1039,7 @@ Let $()$
 $\mathcal{M}$-adhesive categories are the right context in which to perform abstract rewriting using the so-called ``douple pushout approach'' (DPO). We will recall the basic definitions and properties of this approach to abstract rewriting. 
 
 \subsection{Left-linear DPO-rewriting systems}
-We are now going to study rewriting systems in $\mathcal{M}, \mathcal{N}$-adhesive categories.
+We are now going to study rewriting systems in $\mathcal{M}$-adhesive categories.
 
 \begin{definition}[\cite{habel2012mathcal,heindel2009category}]
 	Let $\X$ be a $\mathcal{M}$-adhesive category, a  \emph{left $\mathcal{M}$-linear} rule $\rho$ is a pair $(l,r)$ of arrows with the same domain, such that $l$ belongs to $\mathcal{M}$.  The rule $\rho$ is said to be \emph{$\mathcal{M}$-linear} if $r\in \mathcal{M}$ too. A rule $\rho$ is said to be \emph{consuming} if $l$ is not an isomorphism. We will represent a rule $\rho$ as a span 
@@ -3137,6 +3046,90 @@ With the help of \Cref{rem:dual} we can easy dualize the previous proposition.
 		\item $\mathcal{E}$ is stable under pushouts.
 	\end{enumerate}
 \end{corollary}
+
+\subsubsection{$\mathcal{M}$-subobjects and factorization systems}
+
+Let $\mathcal{M}$ be a class of monos in a category $\X$, then $\mathcal{M}/X(f,g)$ has cardinality at most one for every two arrows $f$ and $g$ with codomain $X$. Thus it is a preordered class, in which $f\leq g$ if and only if  $\mathcal{M}/X(f,g)$ is non-empty. Now, it is immediate to notice that $f\leq g$ and $g\leq f$, then there exists a (unique) isomorphism fitting in the triangle below.
+\[\xymatrix{A\ar@{.>}[rr]^{\phi} \ar[dr]_{f} && B \ar[dl]^{g}\\ & X}\]
+In such a case we will write $f\equiv g$. It is immediate to see that in this way we get an equivalence relation on the class of objects of $\mathcal{M}/X$.
+
+\begin{definition} Let $\mathcal{M}$ be a class of monos in a category $\X$. For every object $X$ a \emph{$\mathcal{M}$-subobject} is an equivalence class $[f]$ of an object $f$ in $\mathcal{M}/X$ with respect to $\equiv$. Given two \emph{$\mathcal{M}$-subobjects} $[f]$ and $[g]$, represented by $f$ and $g$, respectively, we will define $[f]\leq [g]$ if and only if $f\leq g$. It is immediate to see that this defines a partially ordered class $(\sub{M}{X}{X}, \leq)$. 
+	
+	When $\mathcal{M}$ coincides with the class of all monos we will suppress the prefix, so that a \emph{subobject} is just an equivalence class of a mono and $(\msub{X}{X}, \leq)$ will denote the ordered class of such subobjects of $X$.
+\end{definition}
+
+\begin{remark}\label{rem:pbo} Let $f\colon X\to Y$ be an arrows admitting a pullback along arrows in $\mathcal{M}/Y$. The categories associated to $(\sub{M}{X}{X}, \leq)$ and $(\sub{M}{Y}{Y}, \leq)$ are equivalent to $\mathcal{M}/X$ and $\mathcal{M}/Y$, respectively, thus we get a monotone function $f^{-1}\colon \sub{M}{X}{Y}\to \sub{M}{X}{X}$ sending $[m]$ to $[f^*(m)]$.
+\end{remark}
+
+\begin{remark}\label{rem:size}
+	Every $\mathcal{M}$-adhesive cateory $\X$ admits a full and faithful functor $F:\X\to \E$ into a topos $\E$, sending arrows in $\mathcal{M}$ to monomorphisms \cite{castelnovo2023thesis}. Since every topos is \emph{well-powered}, i.e. $\msub{E}{E}$ is a set for every object $E$ \cite{maclane2012sheaves}, we can deduce  that, for every $X$ in $\X$, $\sub{M}{X}{X}$ is actually a set too.
+\end{remark}
+
+
+Our next step is to compute finite infima in $(\sub{M}{X}{X}, \leq)$.
+
+\begin{proposition}\label{prop:inf}
+	Let $\mathcal{M}$ be a class of monos  in a category $\X$.  Let  $m\colon M\to X$ be an arrow in $\mathcal{M}$, then for every family $\{m_i\}_{i\in I}$ of sobjects in $\mathcal{M}/X$ the following are equivalent:
+	\begin{enumerate}
+		\item $[m]$ is the infimum of $\{[m_i]\}_{i\in I}$;
+		\item there is a limiting cone $(m, \{k_i\}_{i\in I})$ for the diagram in $\mathcal{M}/X$ defined by the family $\{m_i\}_{i\in I}$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	$(1) \Rightarrow (2)$ Let us denote by $M_i$ the domain of $m_i$. By hypothesis $m\leq m_i$, so that there exists $k_i\colon M\to M_i$. Let $(n, \{h_i\}_{i\in I})$ be another cone in $\mathcal{M}/X$, that is we have arrows $n\colon N\to X$ in $\mathcal{M}$ and $h_i\colon N\to M_i$. In particular $[n]$ is a lower bound in $(\sub{M}{X}{X}, \leq)$ for $\{[m_i]\}_{i\in I}$, thus there exists a, necessarily unique, arrow $t\colon N\to M$ such that $m\circ t=n$. Now, for every $i\in I$ we have
+	\begin{align*}
+		m_i\circ k_i\circ t&=m\circ t \\&= n\\&=m_i\circ h_i
+	\end{align*}
+	Since $m_i$ is mono we conclude that $k_i\circ t=h_i$.
+	
+	\smallskip \noindent
+	$(2) \Rightarrow (1)$ The family $\{k_i\}_{i\in I}$ of coprojections witnesses that $[m]$ is a lower bound in $(\sub{M}{X}{X}, \leq)$ for $\{[m_i]\}_{i\in I}$. Let $[n]$ be another one, thus we have a cone $(n, \{h_i\}_{i\in I})$ in $\mathcal{M}/X$ and so a unique $t:N\to M$, where $N$ is the domain of $n$, such that $k_i\circ t=h_i$. Thus
+	\begin{align*}
+		m\circ t &= m_i\circ k_i\circ t\\&=m_i\circ h_i\\&=n
+	\end{align*}
+	We can thus conclude that $[n]\leq [m]$.
+\end{proof}
+\begin{corollary}
+Let $\mathcal{M}$ be a class of monos in a category $\X$, then the following are true:
+\begin{enumerate}
+	\item if $\mathcal{M}$ contains $\id{X}$ then $(\sub{M}{X}{X}, \leq)$ has a maximum;
+	\item if $\mathcal{M}$ is stable under pullback, closed under composition and $\X$ has pullbacks of arrows in $\mathcal{M}$ along arrows in $\mathcal{M}$ then $(\sub{M}{X}{X}, \leq)$ has binary infima.
+\end{enumerate}
+\end{corollary}
+
+Now, let us recall the following lemma, which is the application of the Adjoint Functor Theorem to the partial ordered case.
+
+\begin{lemma}\label{lem:adj}
+	contenuto...
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+\begin{proposition}\label{cor:pbpres}
+	Let $\mathcal{M}$ be a class of monos in a category $\X$ stable under pullbacks.  Let $f\colon X\to Y$ be an arrow admitting a pullback along any arrow $m\colon M\to Y$. Then the pullback functor $f^*\colon \mathcal{M}/Y\to \mathcal{M}/X$ preserves all limits.
+\end{proposition}
+\begin{proof}
+	Let $()$
+	
+\end{proof}
+
+\begin{corollary}
+	contenuto...
+\end{corollary}
+
+\begin{corollary}
+	contenuto...
+\end{corollary}
+
+\begin{example}
+	>complete
+\end{example}
+
+We end this appendix showing how to construct a factorization system given a suitable class of monos $\mathcal{M}$.
+
+
+\todo{fact system}
 
 
 \section{$\mathcal{M}$-adhesivity is not enough}\label{app:fill}
