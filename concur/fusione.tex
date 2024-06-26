@@ -1,4 +1,4 @@
-\documentclass[a4paper,UKenglish,cleveref,pdftex,thm-restate,numberwithinsect,anonymous]{lipics}
+\documentclass[a4paper,UKenglish,cleveref,pdftex,thm-restate,numberwithinsect]{lipics}
 \newif\ifreport
 \reporttrue 
 %\reportfalse 
@@ -23,7 +23,7 @@
 \nolinenumbers %uncomment to disable line numbering
 \hideLIPIcs  %uncomment to remove references to LIPIcs series (logo, DOI, ...), e.g. when preparing a pre-final version to be uploaded to arXiv or another public repository
 \else
-%\relatedversion{An extended version is available at \url{https://arxiv.org/abs/2007.04213}.} %optional, e.g. full version hosted on arXiv, HAL, or other respository/website
+\relatedversion{An extended version is available at \url{https://arxiv.org/abs/2007.04213}.} %optional, e.g. full version hosted on arXiv, HAL, or other respository/website
 %\relatedversion{A full version of the paper is available at \url{...}.}
 \fi
 
@@ -486,24 +486,25 @@ textsize=tiny]{todonotes}
 \title{Left-Linear Rewriting in Adhesive Categories}
 
 % fake author for anonymous submission
-\author{Alan Turing} 
-{Department of Mathematics, Somewhere}
-{alan@turing.com}{}{}
+%\author{Alan Turing} 
+%{Department of Mathematics, Somewhere}
+%{alan@turing.com}{}{}
 
 
-% \author{Paolo Baldan} 
-% {Department of Mathematics, University of Padova, Italy}
-% {baldan@math.unipd.it}{}{}
-% \author{Davide Castelnovo}
-% {Department of Mathematics, University of Padova, Italy}
-% {davide.castelnovo@math.unipd.it}{}{}
-% \author{Andrea Corradini}
-% {Department of Computer Science, University of Pisa, Italy}
-% {andrea.corradini@unipi.it}{}{}
+\author{Paolo Baldan} 
+{Department of Mathematics, University of Padova, Italy}
+{baldan@math.unipd.it}{}{}
 
-% \author{Fabio Gadducci}
-% {Department of Computer Science, University of Pisa, Italy}
-% {fabio.gadducci@unipi.it}{}{}
+\author{Davide Castelnovo}
+{Department of Mathematics, University of Padova, Italy}
+{davide.castelnovo@math.unipd.it}{}{}
+\author{Andrea Corradini}
+{Department of Computer Science, University of Pisa, Italy}
+ {andrea.corradini@unipi.it}{}{}
+
+\author{Fabio Gadducci}
+{Department of Computer Science, University of Pisa, Italy}
+{fabio.gadducci@unipi.it}{}{}
 
 
 \authorrunning{P.~Baldan, D.~Castelnovo, A.~Corradini, F.~Gadducci}
@@ -534,9 +535,7 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
   %, a very general setting for rewriting.  
   While a consolidated theory exists for linear rules, which
   can consume, preserve and generate entities, this paper focuses on
-  left-linear rules which may also ``merge'' parts of the state.
-  % 
-  An apparently minimal, yet technically hard enhancement, 
+  left-linear rules which may also ``merge'' parts of the state.  This is an apparently minimal, yet technically hard enhancement, 
   % 
   % We refine the established notion of sequential independence
   % between steps, and ...
@@ -708,7 +707,7 @@ Concerning formalisms based on the rewriting paradigm,
 concurrency often boils down to having a notion of 
 independence between two consecutive steps.
 %thus viewing a sequence of steps as a concurrent computation. 
-Noteworthy examples are
+Noteworthy examples are the
 interchange law~\cite{Mes92} in term rewriting and permutation 
 equivalence~\cite{JJL80} in $\lambda$-calculi. 
 
@@ -721,7 +720,7 @@ the system state. The DPO (double-pushout) approach~\cite{EhrigPS73}
 is nowadays considered a standard one for these structures, thanks to
 its locality (rule application has a local effect on a state,
 differently from more recent approaches like
-SqPO~\cite{CorradiniHHK06} or PBPO$^+$~\cite{OverbeekER23}) and 10to its
+SqPO~\cite{CorradiniHHK06} or PBPO$^+$~\cite{OverbeekER23}) and to its
 flexibility: the rules allow to specify that, in a rewriting step,
 some entities in the current state are removed, some others are needed
 for the rewriting step to occur but remain unaltered, and some new
@@ -798,7 +797,7 @@ different ways.
 %
 As we will observe, this prevents the development of a sensible theory
 of concurrency, since switches are used as a basis for equating
-sequences of rewriting steps that differ only for the order of
+sequences of rewriting steps that differ only in the order of
 independent steps.
 
 We single out a class of left-linear rewriting
@@ -871,7 +870,7 @@ a novel axiomatic notion of switchability, further showing that the
 former fails to imply the latter for left-linear rewriting systems.
 We then define a subclass of left-linear rewriting systems
 that we call well-switching rewriting systems,
-and prove that all the classical results holding for linear rewriting systems
+and we prove that all the classical results holding for linear rewriting systems
 can be recovered for such a class.
 Finally, in \S\ref{conclusions} we outline possible directions for future work.
 %
@@ -1046,8 +1045,8 @@ We write $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $
 
 \begin{example}
   \label{rem:iso}
-  Let $\mathsf{Iso(\X)}$ be the class of 
-  isomorphisms. Any category $\X$ is $\mathsf{Iso(\X)}$-adhesive.
+  Every category $\X$ is $\mathsf{I(\X)}$-adhesive, where $\mathsf{I(\X)}$ is the class of 
+  isomorphisms.
 \end{example}
 
 $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of slice and functor categories \cite{mac2013categories}, as shown by the following theorems~\cite{ehrig2006fundamentals,lack2005adhesive}.
@@ -1069,13 +1068,13 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of sl
   \label{thm:slice-functors}
   Let $\X$ be an $\mathcal{M}$-adhesive category. Given an object $X$
   the category $\X/X$ is $\mathcal{M}/X$-adhesive with
-  $\mathcal{M}/X:=\{m\in \mathcal{A}(\X/X) \mid m\in
+  $\mathcal{M}/X:=\{m\in \mor(\X/X) \mid m\in
   \mathcal{M}\}$. Similarly, $X/\X$ is $X/\mathcal{M}$-adhesive with
-  $X/\mathcal{M}:=\{m\in \mathcal{A}(X/\X) \mid m\in \mathcal{M}\}$.
+  $X/\mathcal{M}:=\{m\in \mor(X/\X) \mid m\in \mathcal{M}\}$.
   
   Moreover for every small category $\Y$, the category $\X^\Y$ of
   functors $\Y\to \X$ is $\mathcal{M}^{\Y}$-adhesive, where
-  $\mathcal{M}^{\Y}:=\{\eta \in \mathcal{A}(\X^\Y) \mid \eta_Y \in
+  $\mathcal{M}^{\Y}:=\{\eta \in \mor(\X^\Y) \mid \eta_Y \in
     \mathcal{M} \text{ for every } Y\in \Y\}$.
 \end{theorem}
 
@@ -1190,7 +1189,7 @@ A derivation can now be defined simply as a sequence of direct derivations.
   % \end{enumerate}
   Moreover, we have an \emph{empty derivation} $G : G \Mapsto G$ for each $G \in \X$.
   %
-  We denote by $\lgh(\der{D})$ the \emph{length} of derivation $\der{D}$.
+  We denote by $\lgh(\der{D})$ the \emph{length} of a derivation $\der{D}$.
  %
   \full{We will call the number $n+1$ the \emph{length} of the derivation,
   denoted by $\lgh(\der{D})$. We also say that an empty
@@ -2126,6 +2125,12 @@ existence of $i_0 : R_0 \to D_1$ means that $\rho_1$ does not delete
 items in the image of $K_0$, thus $\rho_0$ can be applied after
 $\rho_1$.
 
+\begin{remark}\label{rem:uni}
+	It is worth mentioning that if $(\X, \R)$ is a linear rewriting system then two derivations $\dder{D}_0$ and $\dder{D}_1$ can have at most one independence pair. Indeed if $(i_0,i_1)$ and $(i'_0, i'_1)$ are independence pairs, then
+	\[g_0\circ i_1 = g_0\circ i'_1 \qquad f_1\circ i_0=f_1\circ i'_0\]
+But in linear systems $g_0$ and $f_1$ are both monos, entailing $i_0=i'_0$ and $i_1=i'_1$.
+\end{remark}
+
 We next formalise what it means for a derivation being the switch of another.
 
 % We want to be able to to switch the application of two rules used by two consecutive weakly independent direct derivations.
@@ -2288,8 +2293,8 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
 As we mentioned, for linear rewriting systems
 %when viewing  derivations as concurrent computations, 
 it is canonical to identify
-derivations that are equal ``up to switching'', i.e.~that differs
-only for the order of independent steps. The same notion can be given
+derivations that are equal ``up to switching'', i.e.~that differ
+only in the order of independent steps. The same notion can be given
 for left-linear rewriting systems by relying on the notion of switch.
 
 
@@ -2304,7 +2309,7 @@ $i \neq j$ such that $\sigma(i)=j$, $\sigma(j) = i$, and
 $\sigma(k) = k$ otherwise. Such a transposition is
 % normally
 denoted as
-$\transp{i}[j]$ and we use letter $\nu$ for transpositions.
+$\transp{i}[j]$ and we use the letter $\nu$ for transpositions.
 % 
 Given a permutation $\perm$ on $\interval[0]{n}$, an \emph{inversion}
 for $\sigma$ is a pair $(i,j)$ such that $i<j$ and
@@ -2456,8 +2461,8 @@ converse implication clearly holds), as shown by the next example.
   and $b, c \sqsubseteq n$ for all $n \in \mathbb{N}$.
   %
   Let $\X$ be the  
-  category associated with such order, which by \Cref{rem:iso} is
-  $\mathsf{Iso(\X)}$-adhesive. 
+  category associated with this order, which by \Cref{rem:iso} is
+  $\mathsf{I(\X)}$-adhesive. 
   %
   Consider a rewriting
   system whose set of rules contains the following 
@@ -2556,7 +2561,7 @@ by the notion of \emph{canonical filler}
     }
   \]
 
-  Consider the pullback of $g_0$ and $f_1$, getting $p_i : P \to D_i$
+  Consider the pullback of $g_0$ and $f_1$, which yields $p_i : P \to D_i$
   for $i \in \{0,1\}$ and the mediating arrows $u_i\colon K_i\to P$ 
   for $i \in \{0,1\}$ 
   %and $u_1\colon K_1\to P$ 
@@ -2632,8 +2637,8 @@ is fundamental. We name the class of rewriting systems where this property holds
 
 We can identify a large class of adhesive categories such that all
 left-linear rewriting systems over such categories are strong
-enforcing. Such class includes $\cat{Set}$ and it is closed
-by comma and functor category constructions.  As such, it includes
+enforcing. This class includes $\cat{Set}$ and it is closed
+under comma and functor category constructions.  As such, it includes
 essentially all categories (e.g., presheaves over set) that are
 typically considered for modelling purposes. Notably, it contains the
 category $\cat{Graph}$ of directed graphs.
@@ -2645,11 +2650,11 @@ Still, there are $\mathcal{M}$-adhesive rewriting systems that are not strong en
   \label{ex:diff2}
   In light of \Cref{pr:church}, \Cref{ex:diff1} provides an example of
   an independence pair which is not strong. This gives an example of a
-  left-linear rewriting system in a $\mathcal{M}$-adhesive category
-  pathological since $\mathcal{M}=\mathsf{Iso(\X)}$, but this is expected, 
+  left-linear rewriting system in a $\mathcal{M}$-adhesive category which is quite
+  pathological since $\mathcal{M}=\mathsf{I(\X)}$. However, this is expected, 
   since all natural examples seem to belong to the well-behaved class mentioned above. 
  % .\todo{P: Scritto qualcosa, probabilmente da migliorare \\ D: per me va bene così}
-%  pathological since $\mathcal{M}=\mathsf{Iso(\X)}$, but it needs to be so, since natural examples are all in the well-behaved class mentioned above. 
+%  pathological since $\mathcal{M}=\mathsf{I(\X)}$, but it needs to be so, since natural examples are all in the well-behaved class mentioned above. 
  % .\todo{P: Scritto qualcosa, probabilmente da migliorare \\ D: per me va bene così}
   % Instead every
   % left-linear system in category $\cat{Graph}$ is strong enforcing, by
@@ -2665,7 +2670,7 @@ Still, there are $\mathcal{M}$-adhesive rewriting systems that are not strong en
 \end{remark}
 %}
 
-Back consistency with the theory of linear rewriting systems is ensured by the fact that all linear rewriting systems are strong enforcing (see \cref{prop:equi}).
+Consistency with the theory of linear rewriting systems is ensured by the fact that all linear rewriting systems are strong enforcing (see \cref{prop:equi}).
 
 % \begin{restatable}{proposition}{propEqui}
 %   \label{prop:equi}
@@ -2681,8 +2686,8 @@ Back consistency with the theory of linear rewriting systems is ensured by the f
 Even if we work in strong enforcing rewriting systems where sequential
 independence ensures switchability, when dealing with left-linear
 rules there is a further -- and possibly more serious -- issue, 
-i.e.~the fact that there can be more than one independence pair between
-the same derivations. This hinders the very idea of using
+namely the fact that there can be more than one independence pair between
+the same derivations (cfr. \Cref{rem:uni}). This hinders the very idea of using
 sequential independence as a basis of a theory of concurrency for
 rewriting systems, since exchanges performed using different
 independence pairs may lead to derivations that are not abstraction
@@ -2716,7 +2721,7 @@ definitively be taken apart, as shown in the example below.
   graph. Also observe that the graphs $G_2$ and $G_2'$ produced after
   two steps in $\der{D}$ and $\der{D'}$ are not isomorphic. From the
   technical point of view, the property of being switch equivalent is
-  not closed by prefix, and this prevents to derive a sensible
+  not closed by prefix, and this prevents deriving a sensible
   concurrent semantics: In fact
   $\der{D} = \dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ and
   $\der{D}' = \dder{D}_0'\cdot \dder{D}_1' \cdot \dder{D}_2'$ are
@@ -2995,8 +3000,7 @@ object thus making the colimit little informative.
 %
 This effect can be seen for derivations $\der{D}$ in
 Fig.~\ref{fi:derD} and $\der{D}'$ in Fig.~\ref{fi:derD1}. They are not
-abstraction equivalent but the colimit of both derivations is a single node with a self-loop, i.e.~the terminal
-object in $\cat{Graph}$, in a way that  all commutativity requirements are
+abstraction equivalent but the colimit of both derivations is a single node with two self-loops, in a way that  all commutativity requirements are
 trivially satisfied.  
 % OLD VERSION
 % This is readily seen by considering derivations $\der{D}$
@@ -3129,7 +3133,7 @@ independent. This is exemplified below.
     is a switching sequence
     $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2 \shift{(0,1)}
     \dder{D}_1' \cdot \dder{D}_0' \cdot \dder{D}_2 \shift{(1,2)}
-    \dder{D}_1' \cdot \dder{D}_2' \cdot \dder{D}_0''$ then in the last derivation $\dder{D}_1'$ and $\dder{D}_1'$ are switchable.
+    \dder{D}_1' \cdot \dder{D}_2' \cdot \dder{D}_0''$ then in the last derivation $\dder{D}_1'$ and $\dder{D}_2'$ are switchable.
   \end{enumerate}
 \end{restatable}
   %
@@ -3139,7 +3143,7 @@ independent. This is exemplified below.
 
 The second lemma captures the essence of the consistency of
 switchings. It shows that if we have a derivation consisting of three
-rewriting steps, say $\dder{D}_0\cdot \dder{D}_1\cdot  \dder{D}_2$ and we switch them leading to a
+rewriting steps, say $\dder{D}_0\cdot \dder{D}_1\cdot  \dder{D}_2$ and we invert them leading to a
 sequence reordered as $\dder{D}_2\cdot  \dder{D}_1\cdot  \dder{D}_0$, we obtain the same resulting derivation,
 independently from the order of the switchings.
 
@@ -3192,8 +3196,8 @@ While inversions can be
 performed in any order in the case of linear rewriting systems, this is no longer true for left-linear
 rewriting systems due to the fact that, as already observed, globality of independence holds in a weak form. 
 For instance, if we get back to Example~\ref{ex:non-global} and consider derivation $\der{F}$ in Fig.~\ref{fi:derF}, 
-the last two steps applying rules $\sigma_1$ and $\sigma_2$ can be switched, thus leading to a derivation, 
-call it $\der{F}''$,  applying $\lambda_0, \lambda_2, \lambda_1$. Such $\der{F}''$ is switch equivalent to $\der{F}'$ in Fig.~\ref{fi:derF1}, 
+the last two steps applying rules $\lambda_1$ and $\lambda_2$ can be switched, thus leading to a derivation, 
+call it $\der{F}''$,  applying $\lambda_0, \lambda_2, \lambda_1$. This $\der{F}''$ is switch equivalent to $\der{F}'$ in Fig.~\ref{fi:derF1}, 
 hence starting from $\der{F}''$ we can obtain $\der{F}'$ via a switching sequence, but we cannot start 
 by switching $\lambda_0$ and $\lambda_2$, despite the fact that this is an inversion.
 
@@ -3323,7 +3327,8 @@ of switching, is ensured when rewriting possibly hierarchical graphical structur
 of the roots  are not merged (e.g., one can consider rewriting systems over directed graphs where only nodes are merged, as it 
 happens in most of the approaches to the modelling of calculi and biological systems that we cited in the introduction, 
 as well as in string diagrams).
-%\todo{Giusto, refernences?}
+
+\todo{INSERIRE PARAGRAFETTO IND PARALLELA}
 
 The results in this paper open the way to the development of a
 concurrent semantics for left-linear rewriting systems over $\mathcal{M}$-adhesive
@@ -3374,7 +3379,7 @@ We start proving some general results regarding $\mathcal{A}$-Van Kampen and $\m
 
 \noindent 
 \parbox{10.5cm}{\begin{lemma}\label{lem:popb1} \label{lem:pb1} \label{lem:po1}
-Let $\X$ be a category, and consider the diagram  aside, then the following hold
+Let $\X$ be a category, and consider the diagram  on the right, then the following hold
 	\begin{enumerate}
 		\item if the right square is a pullback, then the whole rectangle is a pullback if and only if the left square is one;
 		\item if the left square is a pushout, 	then the whole rectangle is a pushout if and only if the right square is one.
@@ -3526,12 +3531,12 @@ Let us turn our attention to pushout complements.
 \noindent
 \parbox{11cm}{
 	\begin{definition}[Pushout complement]
-		Let $f\colon X\to Y$ and $g\colon Y\to Z$ be two composable arrows in a category $\X$. A \emph{pushout complement} for the pair $(f,g)$ is a pair $(h,k)$ with $h\colon X\to W$ and $k\colon W\to Z$ such that the square aside commutes and it is a pushout.
+		Let $f\colon X\to Y$ and $g\colon Y\to Z$ be two composable arrows in a category $\X$. A \emph{pushout complement} for the pair $(f,g)$ is a pair $(h,k)$ with $h\colon X\to W$ and $k\colon W\to Z$ such that the square aside is a pushout.
 	\end{definition}} \quad
 \parbox{4cm}{\vspace{.1cm}
 	$\xymatrix{X \ar[r]^{f} \ar[d]_{h}& Y \ar[d]^{g} \\ W \ar[r]_{k}& Z}$}\\
 
-Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
+Working in an $\mathcal{M}$-adhesive category we can guarantee that pushout complements are unique. 
 
 \noindent
 \parbox{8.5cm}{
@@ -3582,7 +3587,7 @@ Working in an $\mathcal{M}$-adhesive category we can amend the second defect.
 
 
 \section{$\mathcal{M}$-adhesivity is not enough}\label{app:fill}
-In \Cref{sec:ade} we introduced the notion of strong enforcing left-linear rewriting system, a class that contains all the linear rewriting systems. This result can be further refined: in \cite{baldan2011adhesivity} a class  $\mathbb{B}$ of (quasi-)adhesive category is defined for which the local Church-Rosser Theorem holds for left-linear rewriting system. In our language, this means that every left-linear rewriting system based on a category in $\mathbb{B}$ is strong enforcing. This section is devoted to repropose, and slightly generalise, the results of \cite{baldan2011adhesivity} to our context.
+In \Cref{sec:equi} we introduced the notion of strong enforcing left-linear rewriting system, a class that contains all the linear rewriting systems. This result can be further refined: in \cite{baldan2011adhesivity} a class  $\mathbb{B}$ of (quasi-)adhesive category is defined for which the local Church-Rosser Theorem holds for left-linear rewriting system. In our language, this means that every left-linear rewriting system based on a category in $\mathbb{B}$ is strong enforcing. This section is devoted to repropose, and slightly generalise, the results of \cite{baldan2011adhesivity} to our context.
 
 \noindent
 \parbox{10.4cm}{
@@ -3717,7 +3722,7 @@ Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$, and suppose
 		\item $(\X, \mathcal{M})$ is of type $\mathbb{B}$;
 	\item $\X$ is $\Y/Y$ and $\mathcal{M}=\mathcal{N}/Y$for some $(\Y, \mathcal{N})$ of type $\mathbb{B}^+$ and $Y\in \Y$;
  	\item $\X$ is $Y/\Y$ and $\mathcal{M}=Y/\mathcal{N}$for some $(\Y, \mathcal{N})$ of type $\mathbb{B}^+$ and $Y\in \Y$:
- 	\item $\X$ is $\Y^{\A}$ and $\mathcal{M}=\mathcal{N}^{\mathcal{A}}$ for some category category $\A$ and $(\Y, \mathcal{N})$ of type $\mathbb{B}^+$.
+ 	\item $\X$ is $\Y^{\A}$ and $\mathcal{M}=\mathcal{N}^{\A}$ for some category category $\A$ and $(\Y, \mathcal{N})$ of type $\mathbb{B}^+$.
 	\end{enumerate}
 \end{definition}
 \begin{example}
@@ -3735,6 +3740,7 @@ Using \Cref{thm:good1} we finally get the main result of our appendix.
   \label{cor:llr-is-strEnf}
 Let $(\X, \mathcal{M})$ be a pair of type $\mathbb{B}^+$, then every left-linear rewriting system is strong enforcing.
 \end{corollary}
+
 
 
 \section{Omitted proofs}\label{omitted}
@@ -3764,7 +3770,7 @@ In this appendix we provide the proofs of the main results of this paper.
       \ar[r]_{\phi_D} D \ar[d]^{g}& D' \ar[d]^{g'}\\ R
       \ar@/_.4cm/[rr]_{h'} \ar[r]^{h}& H \ar[r]^{\phi_H}& H'}$}
   \hfill
-  \parbox{10cm}{ \hspace{15pt}Hence, we have another
+  \parbox{10cm}{ \hspace{15pt}Hence, we have
     $\phi_H\colon H\to H'$. To see that $\phi_H$ is an isomorphism,
     consider the diagram aside. By hypothesis the whole rectangle and
     its left half are pushouts, therefore, by \Cref{lem:po1} its right
@@ -4082,9 +4088,7 @@ To prove the Local Church-Rosser Theorem, let us begin by deducing some properti
 
 \subsubsection{Proofs for \Cref{subsec:verytame}}
 
-\begin{proposition}
-	\label{pr:weak}
-	Let $(\X, \R)$ be a linear rewriting system. Then it is well-switching.
+\begin{proposition}\label{pr:weak} Every linear rewriting system is well-switching.
 \end{proposition}
 \begin{proof}
 	
@@ -4806,8 +4810,8 @@ $(i_0,i_1)$ between $\dder{D}_0$ and $\dder{D}_1$,	$(a_0,a_1)$ between $\dder{D}
 			\xi_0\circ \epsilon_0 & =\xi_0\circ \lambda_0\circ \epsilon'_0 =s_1\circ \zeta_0 \circ \epsilon'_0=s_1\circ j_1\\	t_0\circ \epsilon_1 & = t_0\circ q_0\circ \epsilon'_1 =s_1\circ q_1\circ \epsilon'_1=s_1\circ \alpha_1
 		\end{align*}
 		Allowing us to conclude that
-		$S_{i_0,i_1}(\dder{D}_1)\updownarrow S_{\alpha_0,
-			\alpha_1}(\dder{D}_2)$.  \qedhere
+		$S_{i_0,i_1}(\dder{D}_1)$ and $S_{\alpha_0,
+			\alpha_1}(\dder{D}_2)$ are switchable.  \qedhere
 	\end{enumerate}
 \end{proof}
 
