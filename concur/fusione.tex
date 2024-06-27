@@ -3328,7 +3328,22 @@ of the roots  are not merged (e.g., one can consider rewriting systems over dire
 happens in most of the approaches to the modelling of calculi and biological systems that we cited in the introduction, 
 as well as in string diagrams).
 
-It is worth noting that our framework still allows for the parallel application of sequentially independent rules \cite{ehrig2014adhesive}. To ensure this, however, one must require that the underlying category $\X$ has binary coproducts and that the class $\mathcal{M}$ is closed under them.
+In the DPO approach to rewriting, the notion of sequential
+independence, identifying consecutive rewriting steps which are
+independent and thus can be performed in reverse order is typically
+closely related to that of parallel
+independence~\cite{ehrig2014adhesive}. Parallel independence
+characterises the independence of two rewriting steps starting from
+the same object, and guarantees that the two steps can be applied in
+any order producing, up to isomorphism, the same resulting
+object. Parallel independent steps, when applied in sequence, lead to
+sequential independent steps and, conversely, from two sequential
+independent steps, as a byproduct of the switch construction, one can
+get two coinitial parallel independent steps.  Under mild additional
+conditions, one can have a notion of parallel rule in a way that
+parallel independent steps can be also applied in parallel.
+%
+Even if this is not discussed explicitly in the paper, our theory can be easily accomodated to ecompass a notion of parallel independence and parallel rule application, enjoying the properties outlined above. To ensure this, however, one must require that the underlying category $\X$ has binary coproducts and that the class $\mathcal{M}$ is closed under them.
 
 
 The results in this paper open the way to the development of a
