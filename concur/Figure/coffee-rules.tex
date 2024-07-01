@@ -1,0 +1,122 @@
+\begin{center}
+
+  %%% RULES 
+  % 
+  % RULE milk
+  % 
+  \begin{tikzpicture}[node distance=2mm, font=\small]
+    %, baseline=(current bounding box.center), font=\small]
+      \node (l) {
+      \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+      % 
+        \node at (0,0.5) {};
+        \node at (0,1.5) [node, label=left:$1$] (1) {} ;
+        \node at (0,1.0) [node, label=left:$2$] (2) {} ;
+
+        \node at (0.6,1.0) [node, label=right:$3$] (3) {}
+        edge [in=45, out=75, loop] node[above] {$\mathit{cf}$} ();
+
+        \draw[->] (1) to[out=350, in=110] node[above]{$m$} (3);
+        \draw[->] (2) to node[above, pos=0.4]{$s$} (3);
+        
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node [right=of l] (r) {
+      \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+      % 
+        \node at (0,0.5) {};
+              
+        \node at (0.6,1.0) [node, label=right:$123$] (123) {}
+        edge [in=90, out=130, loop] node[above] {$\mathit{m}$} ()
+        edge [in=155, out=185, loop] node[above] {$\mathit{s}$} ()
+        edge [in=45, out=75, loop] node[above] {$\mathit{cf}$} ();
+      %
+      \pgfBox
+      \end{tikzpicture}
+    };
+    \node[below] at (l.south) {$\rho_m$};
+    \path (l) edge[->] node[trans, above] {} (r);    
+    \end{tikzpicture}
+    % 
+    %
+    \hspace{5mm}
+    % \hfill
+    % 
+    % RULE cocoa
+    %
+    \begin{tikzpicture}[node distance=2mm, font=\small]
+    %, baseline=(current bounding box.center), font=\small]
+      \node (l) {
+      \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+      % 
+        \node at (0,0.5) {};
+        \node at (0,1.0) [node, label=left:$1$] (1) {} ;
+        \node at (0,0.5) [node, label=left:$2$] (2) {} ;
+
+        \node at (0.6,1.0) [node, label=right:$3$] (3) {}
+        edge [in=45, out=75, loop] node[above] {$\mathit{cf}$} ();
+
+        \draw[->] (1) to node[above, pos=0.4]{$s$} (3);
+        \draw[->] (2) to[out=10, in=240] node[below]{$c$} (3);
+        
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node [right=of l] (r) {
+            \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+      % 
+      \node at (0.6,1.0) [node, label=right:$123$] (123) {}
+        edge [in=210, out=240, loop] node[below] {$\mathit{c}$} ()
+        edge [in=155, out=185, loop] node[above] {$\mathit{s}$} ()
+        edge [in=45, out=75, loop] node[above] {$\mathit{cf}$} ();        
+      %
+      \pgfBox
+      \end{tikzpicture}
+    };
+    \node[below] at (l.south) {$\rho_c$};
+    \path (l) edge[->] node[trans, above] {} (r);    
+    \end{tikzpicture}
+    %
+    \hspace{5mm}
+    % RULE mix
+    % 
+    \begin{tikzpicture}[node distance=2mm, font=\small]
+    %, baseline=(current bounding box.center), font=\small]
+      \node (l) {
+      \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+      % 
+        \node at (0,0.5) {};
+
+        \node at (0.6,1.0) [node, label=right:$1$] (1) {}
+        edge [in=155, out=185, loop] node[above] {$\mathit{s}$} ()
+        edge [in=45, out=75, loop] node[above] {$\mathit{cf}$} ();
+        
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node [right=of l] (r) {
+      \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+      % 
+        \node at (0,0.5) {};
+        \node at (0.6,1.0) [node, label=right:$1$] (1) {}
+        edge [in=155, out=185, loop] node[above] {$\mathit{s}$} ()
+        edge [in=280, out=310, loop] node[right] {$\mathit{r}$} ()
+        edge [in=45, out=75, loop] node[left] {$\mathit{cf}$} ();     
+      %
+      \pgfBox
+      \end{tikzpicture}
+    };
+    \node[below] at (l.south) {$\rho_r$};
+    \path (l) edge[->] node[trans, above] {} (r);    
+    \end{tikzpicture}
+  %
+\end{center}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../fusione"
+%%% End:

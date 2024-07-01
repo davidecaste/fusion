@@ -83,7 +83,8 @@ textsize=tiny]{todonotes}
 \usepackage{tikz}
 \usepackage{tikz-cd}
 \usetikzlibrary{arrows,shapes,snakes,automata,backgrounds,petri,fit,positioning}
-\tikzstyle{node}=[circle, draw=black, minimum size=1mm, inner sep=1.5pt]
+\tikzstyle{node}=[circle, draw=black, minimum size=1mm, inner sep=1.5pt, font=\tiny]
+
 \tikzstyle{trans}=[font=\scriptsize]
 \tikzstyle{lab}=[font=\small]
 \tikzset{
@@ -779,7 +780,31 @@ non-linear rules yet restricting their applicability,
 % of rules and focussing as far as DPO in concerned on quasi-adhesivity, 
 has been presented in~\cite{behr2021concurrency,BehrHK23}.
 
-Here we perform this exploration at the level of $\mathcal{M}$-adhesive categories, 
+
+\begin{figure}
+  \input{Figure/coffee-rules.tex}
+  
+  \caption{Rewirting rules for the coffee example.}
+  \label{fi:coffee-rules}
+\end{figure}
+
+\begin{figure}
+  \input{Figure/coffee-rewriting.tex}
+  
+  \caption{A sequence of rewriting steps in .}
+  \label{fi:coffee-rewriting}
+\end{figure}
+
+Just to get some basic intuition about left-linear rewriting systems, their capabilities and the problems which can arise, assume we want to model a situation in which a coffee comes with a bag of sugar, a portion of milk and bag of cocoa. The situation is represented by the graph $G_0$ in Fig.~\ref{fi:coffee-rewriting}: the loop $\mathit{cf}$ is the coffee and the three edges $m$, $s$ and $c$  represent the milk, sugar and cocoa, respectively. Adding one of these elements, call it $x$, in the coffee is modeled as merging the corresponding node with the coffee node so that a self-loop $x$ is created.
+
+The available rules are in Fig.~\ref{fi:coffee-rules}. Rules $\rho_m$ models the addition of milk and sugar, while $\rho_c$ adds cocoa and sugar to the coffee. Once the sugar has been added, the coffee can be stirred and then it is ready to drink. This is represented by rule $\rho_r$ which check for the presence of sugar in the coffee, and stirs it.
+
+
+A possible rewriting sequence is depicted in Fig.~\ref{fi:coffee-rewriting}, applying $\rho_m$, $\rho_c$ and $\rho_r$ in sequence, thus producing a coffee with milk, sugar and cocoa, ready for drinking. A first interesting observation is that after applying rule $\rho_m$ to $G_0$, thus producing graph $G_1$, we can still apply rule $\rho_c$, with a non-injective match. Intuitively, the two rules do not interfere. Rather, $\rho_c$ applied after $\rho_m$ will have no effect on the sugar edge (intuitively, because sugar has been already added). Indeed, the rules could be also be applied in reverse order. Should they be considered independent? Moreover, since rule $\rho_r$ just require the presence of sugar, it could be anticipated, and applied after $r_m$. This might lead to think that $\rho_c$ and $\rho_m$ are independent. However, this is not completely clear, since in absence of $\rho_m$, the application of $\rho_c$ would be essential to enable $\rho_r$. ``There is great chaos under heaven, [hence] the situation is excellent!''
+
+In this paper we perform a systematic exploration of these phenomena at the
+% Here we perform this exploration at the
+level of $\mathcal{M}$-adhesive categories,
 which encompass a large family of DPO-based formalisms adopted by researchers and 
 practitioners alike. 
 
