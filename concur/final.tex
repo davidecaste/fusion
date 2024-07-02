@@ -826,24 +826,15 @@ A possible rewriting sequence is depicted in Fig.~\ref{fi:coffee-rewriting}, app
 
 --- new version (according to latest mail, rules not yet up to date) ---
 
-Just to get some basic intuition about left-linear rewriting systems, their capa
-bilities and the problems which can arise, assume we want to model a situation i
-n which a coffee comes with a bag of white sugar and a bag of brown sugar. The s
-ituation is represented by the graph $G_0$ in Fig.~\ref{fi:coffee-rewriting}: th
-e loop $\mathit{c}$ is the coffee, the two loops $b$ and $w$  represent the whit
-e and brown sugar. The corresponding nodes are connected to the coffee node by a
-n $s$-labelled edge to indicate that they can be possibly added to the coffee. T
-he available rules are in Fig.~\ref{fi:coffee-rules}. Rules $\rho_w$ and $\rho_b
-$ model the addition of white and brown sugar, respectively, to the coffee.
+Just to get some basic intuition about left-linear rewriting systems, their capabilities and the problems that can arise, assume we want to model a situation in which a coffee comes with a bag of white sugar and a bag of brown sugar. The situation is represented by the graph $G_0$ in Fig.~\ref{fi:coffee-rewriting}: the loop $\mathit{c}$ is the coffee, the two loops $b$ and $w$  represent the white and brown sugar. The corresponding nodes are connected to the coffee node by an $s$-labelled edge to indicate that they can be possibly added to the coffee. The available rules are in Fig.~\ref{fi:coffee-rules}. Rules $\rho_w$ and $\rho_b$ model the addition of white and brown sugar, respectively, to the coffee.
 %
 Note that adding one kind of sugar, say $x$, to the coffee is realised
 by deleting loop $x$ and merging the corresponding node with the
 coffee node so that a self-loop $s$ is created.
 
-Once some sugar has been added, the coffee is ready to drink. This is represented by rule $\rho_r$ which check for the presence of sugar, represented by loop $s$, in the coffee, and bring it to the $cr$ state, coffee ready to drink.
+Once some sugar has been added, the coffee is ready for drinking. This is represented by rule $\rho_r$ which check for the presence of sugar, represented by loop $s$, in the coffee, and bring it to the $r$ state, ready for drinking.
 
-
-A possible rewriting sequence is depicted in Fig.~\ref{fi:coffee-rewriting}, applying $\rho_w$, $\rho_b$ and $\rho_r$ in sequence, thus producing a coffee with both white and brown sugar, ready for drinking. A first interesting observation is that after applying rule $\rho_w$ to $G_0$, thus producing graph $G_1$, we can still apply rule $\rho_b$, with a non-injective match. Intuitively, once the coffee is ready to be drink because some sugar has been added, adding more sugar will not change its state. Indeed, the rules could be also be applied also in reverse order. Should they be considered independent? Moreover, since rule $\rho_r$ just require the presence of sugar, it could be anticipated, and applied after $r_w$. This might lead to think that $\rho_b$ and $\rho_r$ are independent. However, this is not completely clear, since in absence of $\rho_w$, the application of $\rho_b$ would be essential to enable $\rho_r$.
+A rewriting sequence is depicted in Fig.~\ref{fi:coffee-rewriting}, applying $\rho_w$, $\rho_b$, and $\rho_r$ in sequence, thus producing a coffee with both white and brown sugar, ready for drinking. A first interesting observation is that after applying rule $\rho_w$ to $G_0$, thus producing graph $G_1$, we can still apply rule $\rho_b$, with a non-injective match. Intuitively, once the coffee is ready for drinking because some sugar has been added, adding more sugar will not change its state. Indeed, the rules could also be applied also in reverse order. Should they be considered independent? Moreover, since rule $\rho_r$ just requires the presence of sugar, it could be applied immediately after $\rho_w$. This might lead to think that $\rho_b$ and $\rho_r$ are independent. However, this is not completely clear, since in absence of $\rho_w$, the application of $\rho_b$ would be essential to enable $\rho_r$.
 
 -----
 
