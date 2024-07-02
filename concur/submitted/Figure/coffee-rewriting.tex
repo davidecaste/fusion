@@ -1,0 +1,97 @@
+\begin{center}
+
+  %%% REWRITING 
+  % 
+  %
+  % 
+  \begin{tikzpicture}[node distance=4mm, font=\small]
+    % graph G0
+    \node (G0) {
+      \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+        % 
+        \node at (0,0.5) {};
+        \node at (0,1.5) [node, label=left:$1$] (1) {} ;
+        \node at (0,1.0) [node, label=left:$2$] (2) {} ;
+        \node at (0,0.5) [node, label=left:$3$] (3) {} ;
+
+        \node at (0.6,1.0) [node, label=right:$4$] (4) {}
+        edge [in=45, out=75, loop] node[above] {$\mathit{cf}$} ();
+
+        \draw[->] (1) to[out=350, in=110] node[above]{$m$} (4);
+        \draw[->] (2) to node[above, pos=0.4]{$s$} (4);
+        \draw[->] (3) to[out=10, in=240] node[below]{$c$} (4);
+        
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node[below] at (G0.south) {$G_0$};
+    % graph G1
+    \node [right=of G0] (G1) {
+      \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+      % 
+        \node at (0,0.5) {};
+        \node at (0,0.5) [node, label=left:$3$] (3) {} ;
+
+        \node at (0.6,1.0) [node, label=right:$124$] (124) {}
+        edge [in=90, out=130, loop] node[above] {$\mathit{m}$} ()
+        edge [in=155, out=185, loop] node[above] {$\mathit{s}$} ()
+
+        edge [in=45, out=75, loop] node[above] {$\mathit{cf}$} ();
+
+        \draw[->] (3) to[out=10, in=240] node[below]{$c$}  (124);
+        
+      %
+      \pgfBox
+      \end{tikzpicture}
+    };
+    \node[below] at (G1.south) {$G_1$};
+
+    % graph G2
+    \node [right=of G1] (G2) {        
+      \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+      % 
+        \node at (0,0.5) {};
+
+        \node at (0.6,1.0) [node, label=right:$1234$] (1234) {}
+        edge [in=210, out=240, loop] node[below] {$\mathit{c}$} ()
+        edge [in=90, out=130, loop] node[above] {$\mathit{m}$} ()
+        edge [in=155, out=185, loop] node[above] {$\mathit{s}$} ()
+        edge [in=45, out=75, loop] node[above] {$\mathit{cf}$} ();
+        
+      %
+      \pgfBox
+    \end{tikzpicture}
+    };
+    \node[below] at (G2.south) {$G_2$};
+
+    % graph G3
+    \node [right=of G2] (G3) {
+      \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+      % 
+        \node at (0,0.5) {};
+
+        \node at (0.6,1.0) [node, label=right:$1234$] (1234) {}
+        edge [in=210, out=240, loop] node[below] {$\mathit{c}$} ()
+        edge [in=90, out=130, loop] node[above] {$\mathit{m}$} ()
+        edge [in=155, out=185, loop] node[above] {$\mathit{s}$} ()
+        % edge [in=2500, out=295, loop] node[above]
+        edge [in=280, out=310, loop] node[right] {$\mathit{r}$} ()
+        edge [in=45, out=75, loop] node[above] {$\mathit{cf}$} ();
+        
+        % 
+        \pgfBox
+      \end{tikzpicture}
+    };
+    \node[below] at (G3.south) {$G_3$};
+   
+    \path (G0) edge[->] node[trans, above] {$\rho_m$} (G1);
+    \path (G1) edge[->] node[trans, above] {$\rho_c$} (G2);
+    \path (G2) edge[->] node[trans, above] {$\rho_r$} (G3);    
+  \end{tikzpicture}
+\end{center}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../fusione"
+%%% End:
