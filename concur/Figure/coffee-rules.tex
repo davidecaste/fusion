@@ -4,10 +4,10 @@
   % 
   % RULE add white sugar
   % 
-  \begin{tikzpicture}[node distance=2mm, font=\small]
+  \begin{tikzpicture}[node distance=3mm, font=\small]
     %, baseline=(current bounding box.center), font=\small]
       \node (l) {
-      \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
       % 
       \node at (0,1.0) [node, label=left:$1$] (1) {}
         edge [in=110, out=140, loop] node[above] {$\mathit{w}$} ();
@@ -22,8 +22,9 @@
       \end{tikzpicture} 
     };
     \node [right=of l] (r) {
-      \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
         %
+        \node at (0,1.45) {};
         \node at (0,0.5) {};
         \node at (0.6,1.0) [node, label=right:$12$] (12) {}
           edge [in=300, out=330, loop] node[below] {$\mathit{s}$} (); 
@@ -31,8 +32,9 @@
       \pgfBox
       \end{tikzpicture}
     };
-    \node[below] at (l.south) {$\rho_w$};
-    \path (l) edge[->] node[trans, above] {} (r);    
+    %\node[below] at (l.south east) {$\rho_w$};
+    \path (l) edge[->] (r);
+    \node at ($(l)!0.54!(r)$) [below=7.5mm] {$\rho_w$}; 
     \end{tikzpicture}
     % 
     %
@@ -41,10 +43,10 @@
     % 
     % RULE cocoa
     %
-    \begin{tikzpicture}[node distance=2mm, font=\small]
+    \begin{tikzpicture}[node distance=3mm, font=\small]
     %, baseline=(current bounding box.center), font=\small]
       \node (l) {
-      \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
       % 
        \node at (0,1.0) [node, label=left:$1$] (1) {}
         edge [in=220, out=250, loop] node[below] {$\mathit{b}$} ();
@@ -60,8 +62,9 @@
       \end{tikzpicture} 
     };
     \node [right=of l] (r) {
-            \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
-      % 
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
+      %
+      \node at (0,1.45) {};  
       \node at (0,0.5) {};
       \node at (0.6,1.0) [node, label=right:$12$] (12) {}
           edge [in=300, out=330, loop] node[below] {$\mathit{s}$} ();        
@@ -69,17 +72,17 @@
       \pgfBox
       \end{tikzpicture}
     };
-    \node[below] at (l.south) {$\rho_b$};
-    \path (l) edge[->] node[trans, above] {} (r);    
+    \path (l) edge[->]  (r);
+    \node at ($(l)!0.54!(r)$) [below=7.5mm] {$\rho_b$};         
     \end{tikzpicture}
     %
     \hspace{5mm}
-    % RULE mix
+    % RULE ready
     % 
-    \begin{tikzpicture}[node distance=2mm, font=\small]
+    \begin{tikzpicture}[node distance=3mm, font=\small]
     %, baseline=(current bounding box.center), font=\small]
       \node (l) {
-      \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
       % 
       \node at (0.4,0.5) {};
       \node at (0.6,1.0) [node, label=right:$1$] (1) {}
@@ -90,7 +93,7 @@
       \end{tikzpicture} 
     };
     \node [right=of l] (r) {
-      \begin{tikzpicture}[node distance=2mm, font=\scriptsize]
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
       % 
       \node at (0.4,0.5) {};
       \node at (0.6,1.0) [node, label=right:$1$] (1) {}
@@ -100,8 +103,8 @@
       \pgfBox
       \end{tikzpicture}
     };
-    \node[below] at (l.south) {$\rho_r$};
-    \path (l) edge[->] node[trans, above] {} (r);    
+    \path (l) edge[->] (r);    
+    \node at ($(l)!0.54!(r)$) [below=7.5mm] {$\rho_r$}; 
     \end{tikzpicture}
   %
 \end{center}
