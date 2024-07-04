@@ -872,8 +872,9 @@ As a sanity check, we prove that linear rewriting systems on
 $\mathcal{M}$-adhesive categories are well-switching.
 
 On the other hand, we argue that a concurrency theory of rewriting can
-be developed for well-switching rewriting systems, recovering, sometimes in
-weakened form, results that hold in the linear case.
+be developed for well-switching rewriting systems, by recovering, 
+even if sometimes in
+weakened form, most of the results that hold in the linear case.
 % Specifically, the Church-Rosser theorem is fully recovered.
 %
 The development has to face a main technical obstacle. In the
@@ -919,34 +920,34 @@ rules.
 In \S\ref{sec:ade} we recall the basic 
 definitions of DPO rewriting for $\mathcal{M}$-adhesive categories. 
 In \S\ref{sec:equi} we present the key novelties of our proposal,
-first introducing the classical notion of independence and 
-a novel axiomatic notion of switchability, further showing that the
+introducing the standard notion of independence and 
+a novel axiomatic notion of switchability, showing that the
 former fails to imply the latter for left-linear rewriting systems.
 We then define a subclass of left-linear rewriting systems
 that we call well-switching rewriting systems,
-and we prove that all the classical results holding for linear rewriting systems
-can be recovered for such a class.
-Finally, in \S\ref{conclusions} we outline possible directions for future work.
+and we prove that the classical results for linear rewriting systems
+are recovered for such a class.
+Finally, in \S\ref{conclusions} we outline directions for future work.
 %
 The appendices
 % collect additional data,
 recall basic results on adhesive categories (Appendix~\ref{app:ade}),
 present \emph{strong enforcing} rewriting systems, a class of systems
 where the local Church-Rosser Theorem holds (Appendix~\ref{app:fill}),
-and give full proofs of the results
+and give proofs of the results
 (Appendix~\ref{omitted}).
 
 \section{$\mathcal{M}$-adhesive categories and rewriting systems}\label{sec:ade}
-This first section recalls some definitions and the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}.
+This  section recalls the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}.
 %
 %Throughout the paper
 Given a category $\X$ we will not distinguish
-notationally between $\X$ and its class of objects, so that
+notationally between $\X$ and its class of objects, so
 ``$X\in \X$'' means that $X$ is an object of $\X$.
-We will use $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of
+We let $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of
 all arrows, monos and regular monos of $\X$, respectively.  Given an
 integer $n\in \mathbb{Z}$, $[0,n]$ denotes the set of natural numbers
-less than or equal to $n$; in particular, $[0,n]=\emptyset$ whenever
+less than or equal to $n$; in particular, $[0,n]=\emptyset$ if
 $n<0$.
 
 % \begin{notation}
@@ -1036,9 +1037,8 @@ In order to define it we need to introduce some terminology.
     %    
     Pushout squares that enjoy only the ``if'' half of item (2) above are called \emph{$\mathcal{A}$-stable}.
     
-    A $\mor(\X)$-Van Kampen square will be called simply \emph{Van
-      Kampen} and similarly a $\mor(\X)$-stable square will be called
-    \emph{stable}.
+    A $\mor(\X)$-Van Kampen square is called  \emph{Van
+      Kampen} and a $\mor(\X)$-stable square  \emph{stable}.
   \end{definition}
 
 % old version
@@ -2333,15 +2333,12 @@ equivalence (see Proposition~\ref{thm:switch_uni}).
     \caption{The derivation $\der{D}$.}
     \label{fi:derD}
   \end{figure}
-
-  
   \begin{figure}[b]
     \input{Figure/derE.tex}
     \caption{The derivation $\der{E}$.}
     \label{fi:derE}
   \end{figure}
 \end{example}
-
 
 As we mentioned, for linear rewriting systems
 %when viewing  derivations as concurrent computations, 
@@ -2351,22 +2348,24 @@ only in the order of independent steps. The same notion can be given
 for left-linear rewriting systems by relying on the notion of switch.
 
 
-We first recall some %concepts and
-notation regarding permutations. 
+We  recall some %concepts and
+notation on permutations. 
 % \begin{definition}
 A \emph{permutation} on
 $\interval[0]{n}$ is a bijection
-$\sigma : \interval[0]{n} \to \interval[0]{n}$. We call it a
-\emph{transposition} when there are $i, j \in \interval{n}$,
+$\sigma : \interval[0]{n} \to \interval[0]{n}$. It is a
+\emph{transposition} $\nu$ if there are $i, j \in \interval{n}$,
 $i \neq j$ such that $\sigma(i)=j$, $\sigma(j) = i$, and
-$\sigma(k) = k$ otherwise. Such a transposition is
-% normally
-denoted as
-$\transp{i}[j]$ and we use the letter $\nu$ for transpositions.
-% 
-Given a permutation $\perm$ on $\interval[0]{n}$, an \emph{inversion}
+$\sigma(k) = k$ otherwise; it is denoted as $\transp{i}[j]$.
+%Such a transposition is
+%% normally
+%denoted as
+%$\transp{i}[j]$ and we use the letter $\nu$ for transpositions.
+%% 
+Given a permutation $\perm$, % on $\interval[0]{n}$
+an \emph{inversion}
 for $\sigma$ is a pair $(i,j)$ such that $i<j$ and
-$\sigma(j)< \sigma(i)$. We write $\inv{\sigma}$ for the set of
+$\sigma(j)< \sigma(i)$; $\inv{\sigma}$ denotes the set of
 inversions of $\perm$.
 %\end{definition}
 
@@ -2425,7 +2424,9 @@ can be obtained one from another by a sequence of switches. Moreover, intermedia
     equivalent}, written $\der{D}\equiv^{sh} \der{E}$, if there is a
   switching sequence $\{\der{D}_{k}\}_{k=0}^m$ such that
   $\der{D}\equiv_a \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2}
-  \ldots \shift{\nu_m} \der{D}_m \equiv _a \der{E}$.   To point out a chosen permutation of rewriting steps, we will also write $\der{D}\equiv^{sh}_{\sigma} \der{E}$, where $\sigma$ is the composition of the transposition appearing in a chosen switching sequence. 
+  \ldots \shift{\nu_m} \der{D}_m \equiv _a \der{E}$.   
+  To point out a chosen permutation of rewriting steps, we will also write $\der{D}\equiv^{sh}_{\sigma} \der{E}$, 
+  where $\sigma$ is the composition of the transposition appearing in a chosen switching sequence. 
 \end{definition}
 
 \begin{remark}\label{rem:abst}
@@ -2738,13 +2739,13 @@ Consistency with the theory of linear rewriting systems is ensured by the fact t
 
 Even if we work in strong enforcing rewriting systems where sequential
 independence ensures switchability, when dealing with left-linear
-rules there is a further -- and possibly more serious -- issue, 
-namely the fact that there can be more than one independence pair between
+rules there is a further, possibly more serious issue, 
+namely that there can be more than one independence pair between
 the same derivations (cfr. \Cref{rem:uni}). This hinders the very idea of using
 sequential independence as a basis of a theory of concurrency for
 rewriting systems, since exchanges performed using different
 independence pairs may lead to derivations that are not abstraction
-equivalent, and thus one would equate computations that should
+equivalent, thus equating computations that should
 definitively be taken apart, as shown in the example below.
 
 \begin{example}
