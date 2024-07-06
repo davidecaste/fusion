@@ -522,8 +522,8 @@ textsize=tiny]{todonotes}
 Adhesive categories, double-pushout rewriting, left-linear rules, switch equivalence, local Church-Rosser property.
 }
 
-\funding{The research has been partially supported by the Italian MUR under the PNRR PRIN 2022P2022HXNSC ``RAP''
-and the PRIN 20228KXFN2 ``STENDHAL'' and by the University of Pisa under the PRA 2022\_99 ``FM4HD''.}
+\funding{The research has been partially supported by the EuropeanUnion - NextGenerationEU under the National Recovery and Resilience Plan (NRRP) - Call PRIN 2022 PNRR - Project P2022HXNSC ``Resource Awareness in Programming: Algebra, Rewriting, and Analysis'', by the Italian MUR - Call PRIN 2022 - Project 20228KXFN2 
+``Spatio-Temporal Enhancement of Neural nets for DeeplyHierarchical Automatised Logic'' and by the University of Pisa - Call PRA 2022 - Project 2022\_99 ``Formal Methods for the Healthcare Domain based on Spatial Information''.}
 
 \EventEditors{Rupak Majumdar and Alexandra Silva}
 \EventNoEds{2}
@@ -765,19 +765,19 @@ setting. % In fact, the framework is so general that it allowed to
 % toposes~\cite{johnstone2007quasitoposes} to string
 % diagrams~\cite{bonchi2022string}.
 
-So far, most of the theoretical results focused on what are called
+So far, most of the theoretical results focused on %what are called
 \emph{linear rules}: intuitively, a step is required only to consume,
 preserve and generate entities.  However, in some situations it is
-also necessary to ``merge'' parts of the state.  This happens already
+also necessary to ``merge'' parts of the state.  This happens
 in the context of string diagrams mentioned above, but also in
 graphical implementations of nominal calculi where, as a result of
 name passing, the received name is identified with a local one at the
 receiver~\cite{CVY:ESSPE,Gad07}, or in the visual modelling of bonding
 in biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms
-is at the core of e-graphs (equality graphs), recently used for
+is at the core of e-graphs (equality graphs), used for
 rewrite-driven compiler optimisations~\cite{WNW:egg}: rather than
-explicitly merging nodes corresponding to equal expressions, the idea
-here -- conceptually and, as we will see, also mathematically similar
+merging nodes corresponding to equal expressions, the idea 
+-- conceptually and, as we will see, also mathematically similar
 -- is to maintain an
 equivalence %\todo{P: more precisely a congruence}
 over the nodes.
@@ -835,8 +835,8 @@ A rewriting sequence is depicted in Fig.~\ref{fi:coffee-rewriting}, applying $\r
 In this paper we perform a systematic exploration of these phenomena at the
 % Here we perform this exploration at the
 level of $\mathcal{M}$-adhesive categories,
-which encompass a large family of DPO-based formalisms adopted by researchers and 
-practitioners alike. 
+which encompass a large family of DPO-based formalisms.
+% adopted by researchers and  practitioners alike. 
 
 As an initial step, % in performing this exploration, 
 we observe that for
@@ -863,21 +863,22 @@ left-linear rewriting systems.
 
 
 On the one hand, they capture most categories of
-interest for rewriting. Indeed, we identify quite general classes of
+interest for rewriting. Indeed, we identify general classes of
 left-linear rewriting systems on graph-like structures that are
 well-switching.
 % and we show that rewriting systems on graphs with
 % equivalences are so.
-As a sanity check, we prove that linear rewriting systems on
-$\mathcal{M}$-adhesive categories are well-switching.
+As a sanity check, we prove that linear rewriting systems 
+%on $\mathcal{M}$-adhesive categories 
+are well-switching.
 
 On the other hand, we argue that a concurrency theory of rewriting can
-be developed for well-switching rewriting systems, by recovering, 
-even if sometimes in
+be developed for well-switching rewriting systems, recovering, 
+sometimes in
 weakened form, most of the results that hold in the linear case.
 % Specifically, the Church-Rosser theorem is fully recovered.
 %
-The development has to face a main technical obstacle. In the
+The development faces a main technical obstacle. In the
 literature on linear rewriting systems, a central result is the
 characterisation of switch equivalence of sequences of steps based on
 what are called processes or consistent
@@ -892,6 +893,7 @@ namely
 \item \emph{globality of independence}: if two independent steps are
   moved forward or backward due to the application of switchings to a
   sequence, they remain independent;
+%\newpage
 \item \emph{consistency of switching}: when transforming
   sequences of rewriting steps into equivalent ones by switching independent steps, the
   result does not depend on the order in which switchings are applied, but
@@ -1318,8 +1320,8 @@ Often, we are interested in derivations only up to some notion of coherent isomo
 
 
 %It can be seen that 
-$\mathcal{M}$-adhesivity of $\X$ guarantees the
-uniqueness of the result of applying a rule to an object, i.e.~two
+$\mathcal{M}$-adhesivity of $\X$ ensures the
+uniqueness of the result of applying a rule to an object: two
 direct derivations using the same match are abstraction equivalent
 (see Proposition~\ref{prop:unique}).
 
@@ -2698,7 +2700,8 @@ typically considered for modelling purposes. Notably, it contains the
 category $\cat{Graph}$ of directed graphs.
 This is a natural generalisation from adhesive to $\mathcal{M}$-adhesive categories of a class studied in \cite{baldan2011adhesivity} (see \Cref{app:fill} for details).
 
-Still, there are $\mathcal{M}$-adhesive rewriting systems that are not strong enforcing, as shown by the following example.
+Still, there are $\mathcal{M}$-adhesive rewriting systems that are not strong enforcing.
+%as shown by the following example.
 
 \begin{example}[Non-strong enforcing left-linear rewriting system]
   \label{ex:diff2}
