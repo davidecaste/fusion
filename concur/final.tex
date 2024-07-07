@@ -523,7 +523,8 @@ Adhesive categories, double-pushout rewriting, left-linear rules, switch equival
 }
 
 \funding{The research has been partially supported by the EuropeanUnion - NextGenerationEU under the National Recovery and Resilience Plan (NRRP) - Call PRIN 2022 PNRR - Project P2022HXNSC ``Resource Awareness in Programming: Algebra, Rewriting, and Analysis'', by the Italian MUR - Call PRIN 2022 - Project 20228KXFN2 
-``Spatio-Temporal Enhancement of Neural nets for DeeplyHierarchical Automatised Logic'' and by the University of Pisa - Call PRA 2022 - Project 2022\_99 ``Formal Methods for the Healthcare Domain based on Spatial Information''.}
+``Spatio-Temporal Enhancement of Neural nets for Deeply
+Hierarchical Automatised Logic'' and by the University of Pisa - Call PRA 2022 - Project 2022\_99 ``Formal Methods for the Healthcare Domain based on Spatial Information''.}
 
 \EventEditors{Rupak Majumdar and Alexandra Silva}
 \EventNoEds{2}
@@ -773,7 +774,7 @@ in the context of string diagrams mentioned above, but also in
 graphical implementations of nominal calculi where, as a result of
 name passing, the received name is identified with a local one at the
 receiver~\cite{CVY:ESSPE,Gad07}, or in the visual modelling of bonding
-in biological/chemical processes~\cite{PUY:MBPE}. A similar mechanisms
+in biological/chemical processes~\cite{PUY:MBPE}. A similar mechanism
 is at the core of e-graphs (equality graphs), used for
 rewrite-driven compiler optimisations~\cite{WNW:egg}: rather than
 merging nodes corresponding to equal expressions, the idea 
@@ -789,13 +790,13 @@ fusions, i.e.~the merge of some elements in the state, requires to
 move from linear to left-linear rewriting rules. While left-linear
 rules have been considered in various instances (mainly in categories
 of graphs) and some results concerning the corresponding rewriting
-theory have been put forward, %to the best of our knowledge 
+theory have been put forward~\cite{Ehrig1976,EHP:BRfTToHLRS,baldan2011adhesivity}, %to the best of our knowledge 
 the phenomena arising when devising a theory of independence and
 concurrency for rewriting with left-linear rules in the general
 setting of adhesive and quasi-adhesive categories
 %(which capture most ``applications'') 
 have not been systematically
-explored~\cite{Ehrig1976,EHP:BRfTToHLRS,baldan2011adhesivity},
+explored,
 even if an investigation in the setting of quasi-topoi, considering
 non-linear rules yet restricting their applicability,
 % of rules and focussing as far as DPO in concerned on quasi-adhesivity, 
@@ -828,7 +829,7 @@ Note that adding one kind of sugar, say $x$, to the coffee is realised
 by deleting loop $x$ and merging the corresponding node with the
 coffee node so that a self-loop $s$ is created.
 
-Once some sugar has been added, the coffee is ready for drinking. This is represented by rule $\rho_r$, which check for the presence of sugar, represented by the loop $s$, in the coffee, and bring it to the $r$ state, ready for drinking.
+Once some sugar has been added, the coffee is ready for drinking. This is represented by rule $\rho_r$, which checks for the presence of sugar, represented by the loop $s$, in the coffee, and brings it to the $r$ state, ready for drinking.
 
 A rewriting sequence is depicted in Fig.~\ref{fi:coffee-rewriting}, applying $\rho_w$, $\rho_b$, and $\rho_r$ in sequence, thus producing a coffee with both white and brown sugar, ready for drinking. A first interesting observation is that after applying rule $\rho_w$ to $G_0$, thus producing graph $G_1$, we can still apply rule $\rho_b$, with a non-injective match. Intuitively, once the coffee is ready for drinking because some sugar has been added, adding more sugar will not change its state. Indeed, the rules could also be applied in reverse order. Should they be considered independent? Moreover, since rule $\rho_r$ just requires the presence of sugar, it could be applied immediately after $\rho_w$. This might lead to think that $\rho_b$ and $\rho_r$ are independent. However, this is not completely clear, since in absence of $\rho_w$, the application of $\rho_b$ would be essential to enable $\rho_r$.
 
