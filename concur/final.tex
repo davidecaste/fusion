@@ -2932,10 +2932,10 @@ Another interesting class of well-switching rewriting systems is given by e-grap
   $Q$ is mono, i.e.~if it reflects equivalence classes besides
   preserving them. This characterisation of regular monos and the fact that pullbacks and pushouts are computed component-wise allows us to prove quasi-adhesivity of $\cat{EGraphs}$ at once. Moreover, one can deduce that every rewriting system $(\X, \R)$ that is left-linear with respect to $\reg(\cat{EGraphs})$ is strong enforcing: this is done exploiting again the inclusion functor into $[E \rightrightarrows V \to Q, \cat{Set}]$.
   
-Left-linear (w.r.t.~$\reg(\cat{EGraphs})$) rewriting systems on $\cat{EGraphs}$ where the right half of a rule might be mono but not regular 
-are well-switching. They have been used in~\cite{BaldanGM06} for the graphical implementation of nominal calculi, where,
-differently from~\cite{Gad07}, as a result of name passing the received name is not merged with a local one at the receiver,
-but put instead in the same equivalence class, thus better tracing the causal dependencies among processes reductions.
+Left-linear rewriting systems %(with respect to~$\reg(\cat{EGraphs})$) 
+with respect to $\reg(\cat{EGraphs})$ are well-switching. They have been used in~\cite{BaldanGM06} for the graphical implementation of nominal calculi, where,
+differently from~\cite{Gad07}, as a result of name passing the received name is not merged with a local one, % at the receiver,
+but put in the same equivalence class, better tracing the causal dependencies among reductions.
 \end{example}
 
 \iffalse 
@@ -3105,12 +3105,12 @@ obtaining a derivation $\dder{D}_2'' \cdot  \dder{D}_0'\cdot\dder{D}_1'$, as in 
 
 \noindent
 \begin{minipage}{.8\textwidth}
-  \setlength\parindent{1.5em}
-  Instead, if in $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ we have that $\dder{D}_1$ and $\dder{D}_2$ are
-independent, and we switch $\dder{D}_0$ to the last position, obtaining a
+%  \setlength\parindent{1.5em}
+  If instead $\dder{D}_1$ and $\dder{D}_2$ are
+independent in $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ and we switch $\dder{D}_0$ to the last position, obtaining a
 derivation $\dder{D}_1'\cdot \dder{D}_2'\cdot  \dder{D}_0''$, as in the diagram on the right, the steps $\dder{D}_1'$ and $\dder{D}_2'$ could be no
-longer independent, unless an additional condition is
-satisfied. Intuitively, this is due to the fact that dealing with
+longer independent. %unless an additional condition is satisfied. 
+Intuitively, this is due to the fact that dealing with
 left-linear rewriting systems introduces disjunctive forms of
 causality. Hence, if in $\dder{D}_0\cdot \dder{D}_1\cdot \dder{D}_2$ we have that $\dder{D}_0$ and $\dder{D}_1$ are
 disjunctive causes of $\dder{D}_2$, at least one of the two is needed to
@@ -3148,26 +3148,26 @@ independent. This is exemplified below.
   $\lambda_0$, bringing it in the last position, obtaining a derivation
   $\der{F}'$ as depicted in Fig.~\ref{fi:derF1}, where the
   applications of $\lambda_1$ and $\lambda_2$ are no longer independent.
-   
+   %
   \begin{figure}[t]
     \input{Figure/rules-cas.tex}    
     \caption{A new rewriting system in $\cat{Graph}$.}
     \label{fi:rules-cas}
   \end{figure}
-
+%
   \begin{figure}[t]
     \input{Figure/derF.tex}    
     \caption{The derivation $\der{F}$.} 
     \label{fi:derF}
   \end{figure}
-
+%
   \begin{figure}[t]
     \input{Figure/derF1.tex}    
     \caption{The derivation $\der{F}'$.} 
     \label{fi:derF1}
   \end{figure}
 \end{example}
-
+%
 \begin{restatable}[Globality of independence]{lemma}{lemIndepGlobalLeft}
   \label{lem:indep-global-left}
   Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X,\R)$ a
@@ -3196,14 +3196,13 @@ independent. This is exemplified below.
 \end{restatable}
   %
 
-\full{[Proof~\ref{lemIndepGlobalLeft-proof}]}
-
-
+%\full{[Proof~\ref{lemIndepGlobalLeft-proof}]}
+%
 The second lemma captures the essence of the consistency of
-switchings. It shows that if we have a derivation consisting of three
-rewriting steps, say $\dder{D}_0\cdot \dder{D}_1\cdot  \dder{D}_2$ and we invert them leading to a
-sequence reordered as $\dder{D}_2\cdot  \dder{D}_1\cdot  \dder{D}_0$, we obtain the same resulting derivation,
-independently from the order of the switchings.
+switchings. If in a derivation of three
+rewriting steps, say $\dder{D}_0\cdot \dder{D}_1\cdot  \dder{D}_2$, we invert them leading to a
+sequence reordered as $\dder{D}_2\cdot  \dder{D}_1\cdot  \dder{D}_0$, we obtain the same derivation,
+independently from the order of switchings.
 
 
 \begin{restatable}[Consistency of switchings]{lemma}{lemSwitchConfluence}
@@ -3259,9 +3258,9 @@ call it $\der{F}''$,  applying $\lambda_0, \lambda_2, \lambda_1$. This $\der{F}'
 hence starting from $\der{F}''$ we can obtain $\der{F}'$ via a switching sequence, but we cannot start 
 by switching $\lambda_0$ and $\lambda_2$, even if this is an inversion.
 
+\newpage
 Still, we can identify a
 canonical form for switching derivations: at each step one can apply a switch to the inversion with largest index. 
-
 
 \begin{restatable}[Canonical form]{corollary}{coCanonical}
   \label{co:canonical}
