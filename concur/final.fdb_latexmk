@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex final"] 1720375238 "final.aux" "final.bbl" "final" 1720376391 0
+["bibtex final"] 1720375238 "final.aux" "final.bbl" "final" 1720421643 0
   "./bibliog.bib" 1720375237 56818 ba6554ccdbbf38453f6ea4a333a5a9d2 ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/base/abbrv.bst" 1292289607 20329 b5fed53e10044d0f8112183785c759b1 ""
-  "final.aux" 1720376390 41287 3425614fd5ee6972a1079e39b2a5c960 "pdflatex"
+  "final.aux" 1720421643 41287 3425614fd5ee6972a1079e39b2a5c960 "pdflatex"
   (generated)
   "final.bbl"
   "final.blg"
   (rewritten before read)
-["pdflatex"] 1720376381 "/Users/andreacorradini/Documents/paperi/2023-Baldan-Castelnuovo-Gadducci/GIT/fusion/concur/final.tex" "final.pdf" "final" 1720376391 0
-  "/Users/andreacorradini/Documents/paperi/2023-Baldan-Castelnuovo-Gadducci/GIT/fusion/concur/final.tex" 1720376381 294972 071c8efed0e8929d30415455201e86d3 ""
+["pdflatex"] 1720421634 "/Users/andreacorradini/Documents/paperi/2023-Baldan-Castelnuovo-Gadducci/GIT/fusion/concur/final.tex" "final.pdf" "final" 1720421643 0
+  "/Users/andreacorradini/Documents/paperi/2023-Baldan-Castelnuovo-Gadducci/GIT/fusion/concur/final.tex" 1720421634 294972 2dd5a152cca10cbe3acfe8dc451a3e6e ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/fontawesome5/fa5brands1.enc" 1651520503 2608 3139db8e1f9371a4f87c0715d17fa217 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free1.enc" 1622837620 3042 0e2b14b9be7d01075a4c4591d5d1781b ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
@@ -414,10 +414,10 @@
   "Figure/derF1.tex" 1714114757 6835 0b9d9f310cde994660e3e48f5e1fd5b3 ""
   "Figure/rules-cas.tex" 1719942754 3712 534bde570d9cd09678ef6f1a911073f3 ""
   "Figure/rules.tex" 1719942754 3992 d159b470dbd5cb04ffd68cac074e0edd ""
-  "final.aux" 1720376390 41287 3425614fd5ee6972a1079e39b2a5c960 "pdflatex"
+  "final.aux" 1720421643 41287 3425614fd5ee6972a1079e39b2a5c960 "pdflatex"
   "final.bbl" 1720375238 10251 4fb1be8b66250dc8e7ac6997db76ab9d "bibtex final"
-  "final.out" 1720376390 4950 555d664b821c8146a70fb0b1ae800780 "pdflatex"
-  "final.tex" 1720376381 294972 071c8efed0e8929d30415455201e86d3 ""
+  "final.out" 1720421643 4950 555d664b821c8146a70fb0b1ae800780 "pdflatex"
+  "final.tex" 1720421634 294972 2dd5a152cca10cbe3acfe8dc451a3e6e ""
   "lipics-v2021.cls" 1719942754 48381 c4e7e69c9670c8faa62e8975cfe00256 ""
   (generated)
   "final.aux"

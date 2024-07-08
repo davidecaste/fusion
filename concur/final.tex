@@ -1307,7 +1307,7 @@ Often, we are interested in derivations only up to some notion of coherent isomo
     and $\der{D'}$ with the same length and
     $r(\der{D})=r(\der{D}')$ is a family of isomorphisms
     $\{\phi_X\}_{X\in \{G_i,D_i\}}$ such that the diagram on the right commutes
-    for $i\in [0, \lgh(\der{D})]$. We say that $\der{D}$ are $\der{D}'$ are \emph{abstraction
+    for $i\in [0, \lgh(\der{D}))$. We say that $\der{D}$ are $\der{D}'$ are \emph{abstraction
       equivalent}, written $\der{D}\equiv_a \der{D}'$, if there exists an abstraction equivalence between
     them.
   \end{definition}
@@ -2352,7 +2352,7 @@ for left-linear rewriting systems by relying on the notion of switch.
 
 
 We  recall some %concepts and
-notation on permutations. 
+notations on permutations. 
 % \begin{definition}
 A \emph{permutation} on
 $\interval[0]{n}$ is a bijection
@@ -3470,8 +3470,7 @@ Let $\X$ be a category, and consider the diagram  on the right, then the followi
 The following proposition establishes a key property of $\mathcal{A}$-Van Kampen squares with a mono as a side: they are not only pushouts, but also pullbacks \cite{ehrig2004adhesive,BehrHK23,lack2005adhesive}.
 
 \noindent 
-\parbox{11.5cm}{\begin{proposition}\label{prop:pbpo} Let $\mathcal{A}$ be a class of arrows stable under pushouts and containing all the isomorphisms.  If $m\colon A\to C$ is mono and belongs to $\mathcal{A}$, then every $\mathcal{A}$-Van Kampen square
-	is also a pullback square and $n$ is a monomorphism.
+\parbox{11.5cm}{\begin{proposition}\label{prop:pbpo} Let $\mathcal{A}$ be a class of arrows stable under pushouts and containing all the isomorphisms.  If the square to the right is $\mathcal{A}$-Van Kampen and $m\colon A\to C$ is mono and belongs to $\mathcal{A}$, then the square is a pullback and $n$ is a monomorphism.
 \end{proposition}}
 \parbox{2cm}{\vspace{1.5ex}$\xymatrix{A\ar[r]^{g} \ar[d]_{m} & B \ar[d]^{n} \\ C \ar[r]_{f}  & D}$}
 
@@ -3648,7 +3647,7 @@ Working in an $\mathcal{M}$-adhesive category we can guarantee that pushout comp
 \noindent
 \parbox{10cm}{
 	\begin{corollary}[Uniqueness of pushout complements]\label{lem:pocomp}
-		Let $\X$ be a $\mathcal{M}$-adhesive category. Given $m\colon X\mto Y$ in $\mathcal{M}$ and $f\colon Y\to Z$, let $(h_1, k_1)$ and $(h_2, k_2)$ be respectively the pushout complements of $m$  and $f$ depicted aside. Then there exists a unique isomorphism $\phi\colon W_1\to W_2$ making the diagram on the right commutative.
+		Let $\X$ be a $\mathcal{M}$-adhesive category. Given $m\colon X\mto Y$ in $\mathcal{M}$ and $f\colon Y\to Z$, let $(h_1, k_1)$ and $(h_2, k_2)$ be pushout complements of $m$  and $f$ depicted aside. Then there exists a unique isomorphism $\phi\colon W_1\to W_2$ making the diagram on the right commutative.
 	\end{corollary}}
 \parbox{3cm}{\vspace{1em}$\xymatrix{&X \ar@{>->}[r]^{m} \ar[d]_{h_1} \ar@/_.3cm/[dl]_{h_2}& Y \ar[d]^{f} \\ W_2 \ar@{>->}@/_.4cm/[rr]_{k_2} &W_1 \ar@{.>}[l]_{\phi} \ar@{>->}[r]^{k_1} & Z }$}
 
