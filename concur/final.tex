@@ -1,7 +1,7 @@
 \documentclass[a4paper,UKenglish,cleveref,pdftex,thm-restate,numberwithinsect]{lipics-v2021}
 \newif\ifreport
-\reporttrue 
-%\reportfalse 
+%\reporttrue 
+\reportfalse 
    
 % full includes some additional material
 \newif\iffull
@@ -733,6 +733,7 @@ independence between two consecutive steps.
 Noteworthy examples are the
 interchange law~\cite{Mes92} in term rewriting and permutation 
 equivalence~\cite{JJL80} in $\lambda$-calculi. 
+%\newpage
 
 Among rewriting-based formalisms, those manipulating graph-like
 structures proved useful in many settings for representing the
@@ -828,8 +829,10 @@ Just to get some basic intuition about left-linear rewriting systems, their capa
 Note that adding one kind of sugar, say $x$, to the coffee is realised
 by deleting loop $x$ and merging the corresponding node with the
 coffee node so that a self-loop $s$ is created.
-
-Once some sugar has been added, the coffee is ready for drinking. This is represented by rule $\rho_r$, which checks for the presence of sugar, represented by the loop $s$, in the coffee, and brings it to the $r$ state, ready for drinking.
+%
+Once some sugar has been added, the coffee is ready for drinking. 
+This is represented by rule $\rho_r$, which checks for the presence of sugar, represented by the loop $s$, in the coffee, 
+and brings it to the $r$ state, ready for drinking.
 
 A rewriting sequence is depicted in Fig.~\ref{fi:coffee-rewriting}, applying $\rho_w$, $\rho_b$, and $\rho_r$ in sequence, thus producing a coffee with both white and brown sugar, ready for drinking. A first interesting observation is that after applying rule $\rho_w$ to $G_0$, thus producing graph $G_1$, we can still apply rule $\rho_b$, with a non-injective match. Intuitively, once the coffee is ready for drinking because some sugar has been added, adding more sugar will not change its state. Indeed, the rules could also be applied in reverse order. Should they be considered independent? Moreover, since rule $\rho_r$ just requires the presence of sugar, it could be applied immediately after $\rho_w$. This might lead to think that $\rho_b$ and $\rho_r$ are independent. However, this is not completely clear, since in absence of $\rho_w$, the application of $\rho_b$ would be essential to enable $\rho_r$.
 
@@ -926,19 +929,21 @@ In \S\ref{sec:equi} we present the key novelties of our proposal,
 introducing the standard notion of independence and 
 a novel axiomatic notion of switchability, showing that the
 former fails to imply the latter for left-linear rewriting systems.
-We then define a subclass of left-linear rewriting systems
-that we call well-switching rewriting systems,
+We then define well-switching rewriting systems,
+a subclass of left-linear rewriting systems,
 and we prove that the classical results for linear rewriting systems
 are recovered for such a class.
 Finally, in \S\ref{conclusions} we outline directions for future work.
 %
-The appendices
+%The appendices
 % collect additional data,
-recall basic results on adhesive categories (Appendix~\ref{app:ade}),
-present \emph{strong enforcing} rewriting systems, a class of systems
-where the local Church-Rosser Theorem holds (Appendix~\ref{app:fill}),
-and give proofs of the results
-(Appendix~\ref{omitted}).
+Appendix~\ref{app:ade} recalls basic results on adhesive categories and
+Appendix~\ref{app:fill}
+presents \emph{strong enforcing} rewriting systems, a class of systems
+where the local Church-Rosser Theorem holds.
+Appendix C of the
+extended version provides the proofs
+of our results.
 
 \section{$\mathcal{M}$-adhesive categories and rewriting systems}\label{sec:ade}
 This  section recalls the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}.
@@ -1001,7 +1006,7 @@ $n<0$.
 \subsection{$\mathcal{M}$-adhesivity}\label{subsec:ade}
 The key property of $\mathcal{M}$-adhesive categories is the \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. % We
 % will recall it and examine some of its consequences.
-In order to define it we need to introduce some terminology.
+%In order to define it we need to introduce some terminology.
 % and facts regarding subclasses of
 % $\mor(\X)$.
 %
@@ -1321,10 +1326,10 @@ Often, we are interested in derivations only up to some notion of coherent isomo
 
 
 %It can be seen that 
-$\mathcal{M}$-adhesivity of $\X$ ensures the
+$\mathcal{M}$-adhesivity ensures the
 uniqueness of the result of applying a rule to an object: two
 direct derivations using the same match are abstraction equivalent
-(see Proposition~\ref{prop:unique}).
+(see Proposition~C.1 of the extended version).
 
 
 \iffalse
@@ -2295,7 +2300,7 @@ We next formalise what it means for a derivation being the switch of another.
 \end{definition}
 
 It can be shown that switches along the same independence pair are unique up to abstraction
-equivalence (see Proposition~\ref{thm:switch_uni}).
+equivalence (see Proposition~C.3 of the extended version).
 
 % \begin{notation} We  denote any switch of two switchable direct derivations $\dder{D}_0$ and $\dder{D}_1$ along $(i_0, i_1)$ by $S_{i_0, i_1}(\dder{D}_0, \dder{D}_1)$. Moreover, we use $S_{i_0,i_1}(\dder{D}_1)$ and  $S_{i_0,i_1}(\dder{D}_0)$ to denote its components, in such a way that $S_{i_0, i_1}(\dder{D}_0, \dder{D}_1)=S_{i_0,i_1}(\dder{D}_1)\cdot S_{i_0,i_1}(\dder{D}_0)$.
 % \end{notation}
@@ -2441,7 +2446,7 @@ can be obtained one from another by a sequence of switches. Moreover, intermedia
 
 
 The fact that sequential independence implies switchability always
-holds for linear rules (see \Cref{prop:equi}). The result is so
+holds for linear rules (see Proposition~C.8 of the extended version). The result is so
 indispensable that typically, in the literature, it is not even
 stated, in the sense that switchability is not introduced
 axiomatically as in Definition~\ref{def:switch}, but it is based on
@@ -2622,7 +2627,7 @@ by the notion of \emph{canonical filler}
   for $i \in \{0,1\}$ and the mediating arrows $u_i\colon K_i\to P$ 
   for $i \in \{0,1\}$ 
   %and $u_1\colon K_1\to P$ 
-  into the pullback object (see \Cref{prop:tec} for details). 
+  into the pullback object (see Proposition~C.4 of the extended version for details). 
   % given by \Cref{prop:tec} .
   %
   We say that $(i_0, i_1)$ is a \emph{strong independence pair} if
@@ -2728,7 +2733,7 @@ Still, there are $\mathcal{M}$-adhesive rewriting systems that are not strong en
 \end{remark}
 %}
 
-Consistency with the theory of linear rewriting systems is ensured by the fact that all linear rewriting systems are strong enforcing (see \cref{prop:equi}).
+Consistency with the theory of linear rewriting systems is ensured by the fact that all linear rewriting systems are strong enforcing (see Proposition~C.8 of the extended version).
 
 % \begin{restatable}{proposition}{propEqui}
 %   \label{prop:equi}
@@ -2811,7 +2816,7 @@ A left-linear rewriting system $(\X, \R)$ is \emph{well-switching} if it is stro
 
 % The previous definition might sound restrictive.
 Clearly, %It is immediate to see that 
-linear rewriting systems are well-switching (see Proposition~\ref{pr:weak}).
+linear rewriting systems are well-switching (see Proposition~C.10 of the extended version).
 %
 Moreover, we next observe that various classes of rewriting systems,
 comprising all the ones used in modelling the applications to the
@@ -3047,7 +3052,7 @@ permutations or processes.
 
 When dealing with left-linear rules, such a characterisation
 fails. Leaving aside the formal details (the interested reader can
-refer to \Cref{def:permcon}), the intuition is quite simple. In the
+refer to Definition~C.12 of the extended version), the intuition is quite simple. In the
 linear case one proves that two derivations using the same rules in
 different orders are switch equivalent when the colimits of the two
 derivations, seen as diagrams, are isomorphic and the isomorphism
@@ -3258,7 +3263,6 @@ call it $\der{F}''$,  applying $\lambda_0, \lambda_2, \lambda_1$. This $\der{F}'
 hence starting from $\der{F}''$ we can obtain $\der{F}'$ via a switching sequence, but we cannot start 
 by switching $\lambda_0$ and $\lambda_2$, even if this is an inversion.
 
-\newpage
 Still, we can identify a
 canonical form for switching derivations: at each step one can apply a switch to the inversion with largest index. 
 
@@ -3614,7 +3618,7 @@ Let us turn our attention to pushout complements.
 \parbox{4cm}{\vspace{.1cm}
 	$\xymatrix{X \ar[r]^{f} \ar[d]_{h}& Y \ar[d]^{g} \\ W \ar[r]_{k}& Z}$}\\
 
-Working in an $\mathcal{M}$-adhesive category we can guarantee that pushout complements are unique. 
+Working in an $\mathcal{M}$-adhesive category guarantees that pushout complements are unique. 
 
 \noindent
 \parbox{8.5cm}{
@@ -3698,7 +3702,7 @@ The following result shows that the mixed and pushout decomposition properties g
 \begin{theorem}\label{thm:good1}Let $\X$ be an $\mathcal{M}$-adhesive category with all pushouts and satisfying the $\mathcal{M}$-mixed and the $\mathcal{M}$-pushout decomposition properties. Then every left-linear rewriting system on $\X$ is strong enforcing.
 \end{theorem}
 \begin{proof}
-	Consider the derivation $\der{D}=\{\dder{D}_i\}_{i=0}^1$, made by two sequentially independent derivations, depicted below
+	Let $\der{D}=\{\dder{D}_i\}_{i=0}^1$ be the derivation made by two sequentially independent derivations
 	\[\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0} && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} && R_1 \ar[d]^{h_1} \\G_0 && \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2 }\]
 
 	We have to show that $(i_0, i_1)$ is a strong independence pair. Now, by hypothesis $\X$ has all pushouts, thus the only thing to show is that the squares below are pushouts (the third one is the usual pullback of $f_1\colon D_1\mto G_0$ along $g_0\colon D_0\to G_1$)
@@ -3717,16 +3721,18 @@ Our next step is to identify sufficient conditions for a category $\X$ to satisf
 	\begin{enumerate}
 		\item every arrow in $\mathcal{M}$ is a coproduct coprojection;
 		\item $\X$ has all pushouts;
-		\item $\X$ has strict initial objects and, for every object $X$, the unique arrow $?_X\colon 0\to X $ belongs to $\mathcal{M}$;
+		\item $\X$ has strict initial objects and, for every $X$, the unique arrow $?_X\colon 0\to X $ belongs to $\mathcal{M}$;
 		\item all pushouts are $\mathcal{M}$-stable.
 	\end{enumerate}
 \end{definition}
 
 \begin{remark}
 	It is worth to examine more closely conditions $1$ and $3$ of the above definition.
-	\smallskip 
+
+	\vspace{-.1cm}
 	\begin{itemize}
-	\parbox{10.3cm}{\item Let $m_0\colon X_0 \rightarrowtail Y$ be an arrow in $\mathcal{M}$, the first condition means that there exists $m_1\colon X_1\to Y$ such that $(Y, \{m_i\}_{i=0}^1)$ is a coproduct. This, together with property $3$, entails that every coprojection in a coproduct is in $\mathcal{M}$. This follows since any coproduct $(X_1+X_2, \{\iota_{X_i}\}_{i=0}^1)$ fits in a pushout diagram as the one aside.}
+	\parbox{10.3cm}{\item Let $m_0\colon X_0 \rightarrowtail Y$ be in $\mathcal{M}$, the first condition means that there exists $m_1\colon X_1\to Y$ such that $(Y, \{m_i\}_{i=0}^1)$ is a coproduct. This, together with property $3$, entails that every coprojection in a coproduct is in $\mathcal{M}$. This follows since any coproduct $(X_1+X_2, \{\iota_{X_i}\}_{i=0}^1)$ fits in a pushout diagram as the one aside.
+	}
 	  \parbox{3cm}{\vspace{-0em}$\xymatrix@C=25pt{0  \ar@{>->}[r]^-{?_{X_1}} \ar@{>->}[d]^{?_{X_2}}& X_1 \ar@{>->}[d]^{\iota_{X_1}}\\ X_2 \ar@{>->}[r]_-{\iota_{X_2}} & X_1+X_2}$}
 		
 	\smallskip 	\noindent 
@@ -3735,9 +3741,12 @@ Our next step is to identify sufficient conditions for a category $\X$ to satisf
 \end{remark}
 
 \begin{example}
-The category $\Set$ of sets and functions, with its class of monos, is of type $\mathbb{B}$. Similarly, the category $\textbf{Inj}$ of sets and injective functions is quasiadhesive and, with its class of regular monos, of type $\mathbb{B}$. 
+The category $\Set$ of sets and functions
+%with its class of monos, 
+is of type $\mathbb{B}$. Similarly, the category $\textbf{Inj}$ of sets and injective functions is quasiadhesive and, with regular monos, of type $\mathbb{B}$. 
 \end{example}
 
+\newpage
 Categories of type $\mathbb{B}$ satisfy a property resembling \emph{extensivity} \cite{carboni1993introduction}.
 
 \noindent
@@ -3805,7 +3814,7 @@ Let $\X$ be an $\mathcal{M}$-adhesive category of type $\mathbb{B}$, and suppose
 \end{definition}
 \begin{example}
   \label{ex:graph-type-bb}
-	The pair $(\mathbf{Graph}, \mon(\mathbf{Graph}))$ made by the topos of graphs and its class of monos is of type $\mathbb{B}^+$  but not of type $\mathbb{B}$. Indeed, not every monomorphism of graphs is a coproduct coprojection.
+	The pair $(\mathbf{Graph}, \mon(\mathbf{Graph}))$ of graphs and their monos is of type $\mathbb{B}^+$  but not of type $\mathbb{B}$. Indeed, not every monomorphism of graphs is a coproduct coprojection.
 \end{example}
 
 From \Cref{lem:closed,lem:prop} we can now deduce at once the following.
@@ -3819,6 +3828,7 @@ Using \Cref{thm:good1} we finally get the main result of our appendix.
 Let $(\X, \mathcal{M})$ be a pair of type $\mathbb{B}^+$, then every left-linear rewriting system is strong enforcing.
 \end{corollary}
 
+\end{document}
 
 
 \section{Omitted proofs}\label{omitted}
