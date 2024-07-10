@@ -1304,7 +1304,7 @@ Derivations naturally compose: given $\der{D}: G \Mapsto H$ and $\der{E}: H \Map
 Often, we are interested in derivations only up to some notion of coherent isomorphism between them. This leads us to the following definition. 
 
 \noindent
-\parbox{8cm}{
+\parbox{7.8cm}{
   \begin{definition}[Abstraction equivalence]
     Let  $\X$ be an $\mathcal{M}$-adhesive category and 
     $(\X, \R)$ a left-linear rewriting system. 
@@ -1317,7 +1317,7 @@ Often, we are interested in derivations only up to some notion of coherent isomo
     them.
   \end{definition}
 }
-\parbox{4cm}{\vspace{-1.35em}$\xymatrix@C=40pt{G'_i&D'_i \ar[r]^{g'_i}
+\parbox{4.2cm}{\vspace{-1.35em}$\xymatrix@C=40pt{G'_i&D'_i \ar[r]^{g'_i}
     \ar@{>->}[l]_{f'_i}&G'_{i+1}\\ L_i \ar[u]^{m'_i} \ar[d]_{m_i}& K_i
     \ar[u]^{k'_i} \ar[d]_{k_i} \ar[r]^{r_i} \ar@{>->}[l]_{l_i}
     &R_i \ar[u]^{h'_i} \ar[d]_{h_i}\\G_i
@@ -3525,7 +3525,7 @@ Finally, we show that $\mathcal{A}$-stable pushouts enjoy a \emph{pullback-pusho
 \parbox{10cm}{
 \begin{proposition}\label{prop:stab}Let $\X$ be a category and $\mathcal{A}$ a class of arrows stable under pullbacks. Suppose that, in the diagram aside, the whole rectangle is an $\mathcal{A}$-stable pushout and the right square a pullback. If the arrow $k$ is in $\mathcal{A}$ and it is a monomorphism,  then both squares are pushouts.
 \end{proposition}}
-\parbox{4cm}{\vspace{-.3cm}
+\parbox{4cm}{\vspace{-.15cm}
 	$\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}$}
 
 \full{ 
@@ -3626,7 +3626,7 @@ Working in an $\mathcal{M}$-adhesive category guarantees that pushout complement
 		Let $f\colon X \to Y$ be an arrow in an $\mathcal{M}$-adhesive category $\X$ and suppose that the left square aside is a pushout while the  right one is a pullback, with $ m\colon M \rightarrowtail X$ and $n\colon N \rightarrowtail Y$ in $\mathcal{M}$.
 		Then $n\leq k$ if and only if $p_2\leq m$.
 	\end{lemma}}
-\parbox{3cm}{\vspace{-2ex}
+\parbox{3cm}{%\vspace{-2ex}
 	$\xymatrix{M \ar@{>->}[d]_{m}\ar[r]^{h}& Q \ar@{>->}[d]^{k} & P \ar[r]^{p_1} \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\X\ar[r]_{f}&Y &X \ar[r]_f&Y}$}
 
 \full{ 
@@ -3678,7 +3678,8 @@ In \Cref{sec:equi} we introduced the notion of strong enforcing left-linear rewr
 				\item the \emph{$\mathcal{M}$-mixed decomposition} property if, whenever $k$ belongs to $\mathcal{M}$ and the right half of the previous diagram is a pullback, then the left one is a pushout;
 				\item the \emph{$\mathcal{M}$-pushout decomposition} property if whenever $a, b$ and $c$ belongs to $\mathcal{M}$ and the right half of the diagram above is a pushout, then its left half is a pushout too.
 			\end{itemize}}
-	\end{definition}} \parbox{3cm}{\vspace{-2cm}$\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}$}\\
+	\end{definition}} \parbox{3cm}{\vspace{-1.8cm}
+	$\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}$}\\
 
 The class of categories of type $\mathbb{B}$ is closed under the same constructions of \Cref{thm:slice-functors}. This can be deduced at once from the fact that in such categories pullbacks and pushouts are computed component-wise.
 
@@ -3721,7 +3722,7 @@ Our next step is to identify sufficient conditions for a category $\X$ to satisf
 	\begin{enumerate}
 		\item every arrow in $\mathcal{M}$ is a coproduct coprojection;
 		\item $\X$ has all pushouts;
-		\item $\X$ has strict initial objects and, for every $X$, the unique arrow $?_X\colon 0\to X $ belongs to $\mathcal{M}$;
+		\item $\X$ has strict initial objects and for every $X$ the unique arrow $?_X\colon 0\to X $ belongs to $\mathcal{M}$;
 		\item all pushouts are $\mathcal{M}$-stable.
 	\end{enumerate}
 \end{definition}
