@@ -1339,7 +1339,7 @@ Computing further we have
  
 With these tools available, we are ready to provide a way to construct binary suprema in $\sub{M}{\X}{X}$.
  
- \begin{theorem}[\cite{garner2012axioms,castelnovo2023thesis,johnstone2007quasitoposes}]label{prop:un}Let $\X$ be a strict $\mathcal{M}$-adhesive category with pullbacks. If $\mathcal{M}$ contains all split monomorphisms  then for every onject $X$, $(\sub{M}{X}{X}, \leq)$ has binary suprema.
+ \begin{theorem}[\cite{garner2012axioms,castelnovo2023thesis,johnstone2007quasitoposes}]\label{thm:un}Let $\X$ be a strict $\mathcal{M}$-adhesive category with pullbacks and suppose that $\mathcal{M}$ contains all split monomorphisms. Then for every object $X$, $(\sub{M}{X}{X}, \leq)$ has binary suprema, which are preserved by the inclusion $(\sub{M}{X}{X}, \leq)\to (\msub{X}{X}, \leq)$.
  \end{theorem}
 \begin{proof}	Let $m\colon M\to X$  and $n\colon N\to X$ be elements of in $\mathcal{M}$. By \Cref{prop:uni2} we know that $[m]$ and $[n]$  have a supremum in $(\msub{X}{X}, \leq)$ given by $[u]$, where $u\colon U\to X$ fits in the  diagram
 	\[\xymatrix{P \ar@{>->}[r]^{p_1} \ar@{>->}[d]_{p_2} & M\ar@{>->}[d]^{u_2} \ar@{>->}@/^.3cm/[ddr]^{m} \\ N \ar@{>->}@/_.3cm/[drr]_{n}\ar@{>->}[r]_{u_1} & U \ar[dr]^{u} \\ && X}\]
@@ -1463,18 +1463,70 @@ With these tools available, we are ready to provide a way to construct binary su
 		E_u \ar[r]_{e_2}& Q_{e_u\circ u_1} \ar[r]_{\upsilon_{e_u\circ u_1}} & E_u}\]
 	is a pullback. Thus $e_u$ is an isomorphism as it is the pullback of $\id{E_u}$.
 \end{proof}
+
+\begin{example}\label{ex:sem}In \cite{johnstone2007quasitoposes} it is shown that the category $\cat{SGraph}$ of simple graphs is not quasiadhesive. Too see this, first of all recall that a morphism in $\cat{SGraph}$ is a regular monos if and only if it is injective on vertex and reflects edges. Now, take 
+	\[\mathcal{G}:=(1, \{0,1\}, \delta_0, \delta_1) \qquad \mathcal{H}:=( \emptyset, 1, ?_1, ?_1) \quad \]
+	Then we have two regular monomorphisms $ (?_1, \delta_0), (?_1, \delta_1)\colon \mathcal{H}\rightrightarrows \mathcal{G} $. Their supremum in $\msub{SGraph}{\mathcal{G}}$ is represented by inclusion of $(\emptyset, \{0,1\}, ?_0, ?_1)$ into $\mathcal{G}$ which is not a regular monomorphism, thus, by \Cref{thm:un}, $\cat{SGraph}$ is not quasiadhesive. 
+\end{example}
+
  
- \begin{corollary}
- 	\todo{reticolo distributivo}
- \end{corollary}
+ \begin{proposition}\label{prop:distlat}Let $\X$ be a strict $\mathcal{M}$-adhesive with pullbacks. If $\mathcal{M}$ contains all split monos then for every object $X$, $(\sub{M}{X}{X})$ is a distributive lattice. 
+ \end{proposition}
 \begin{proof}
-	contenuto...
+	Since $\X$ has pullbacks then $(\sub{M}{X}{X})$  has binary infima. The existence of binary suprema is guaranteed by \Cref{thm:un}. We only have to show that, given $m\colon M\mto X$, $n\colon N\mto X$ and $v\colon V\mto X$ we have
+	\[[n]\wedge ([m]\vee[v])=([n]\wedge [m]) \vee ([n]\wedge [v])\]
+	
+	Let $u\colon \mto X$ be a representative of $[m]\vee [v]$, thus by \Cref{prop:uni2} and \Cref{thm:un} we know that it fits in the diagram below, whose outer boundary is a pullback and in which the inner square is a pushout.
+		\[\xymatrix{P \ar@{>->}[r]^{p_1} \ar@{>->}[d]_{p_2} & M\ar@{>->}[d]^{u_2} \ar@{>->}@/^.3cm/[ddr]^{m} \\ V \ar@{>->}@/_.3cm/[drr]_{v}\ar@{>->}[r]_{u_1} & U \ar@{>->}[dr]^{u} \\ && X}\]
+		
+	Let also $r\colon R\mto X$,  $s\colon S\mto X$, $t\colon T\mto X$ and $q\colon Q\mto X$ be  representative for, respectively $[n]\wedge [u]$, $[n]  \wedge [m]$, $[n]\wedge [v]$ and $[s]\wedge [t]$,  then we have the four pullback squares below.
+	\[\xymatrix{R \ar@{>->}[r]^{r_1} \ar@{>->}[d]_{r_2}\ar@{>->}[dr]^{r}& N \ar@{>->}[d]^{n} & S \ar@{>->}[r]^{s_1} \ar@{>->}[d]_{s_2}\ar@{>->}[dr]^{s}& N \ar@{>->}[d]^{n}&T \ar@{>->}[r]^{t_1} \ar@{>->}[d]_{t_2}\ar@{>->}[dr]^{t}& N \ar@{>->}[d]^{n}& Q \ar@{>->}[r]^{q_1} \ar@{>->}[d]_{q_2}\ar@{>->}[dr]^{q}& T \ar@{>->}[d]^{t}\\U \ar@{>->}[r]_{u} & X&M \ar@{>->}[r]_{m} & X&V \ar@{>->}[r]_{v} & X&S \ar@{>->}[r]_{s} & X}\]
+	
+Using the universal property of the first square, we can construct the two dotted arrows $m_1\colon T\to R$ and $m_2\colon S\to R$ fitting in the following diagrams. Notice that the left halves of these rectangles are pullbacks by \Cref{lem:pb1}.
+
+\[\xymatrix{T \ar[d]_{t_2} \ar@/^.4cm/[rr]^{t_1} \ar@{.>}[r]_{m_1}& R \ar@{>->}[r]_{r_1} \ar@{>->}[d]_{r_2}& N \ar@{>->}[d]^{n} & S \ar[d]_{s_2} \ar@/^.4cm/[rr]^{s_1} \ar@{.>}[r]_{m_2}& R \ar@{>->}[r]_{r_1} \ar@{>->}[d]_{r_2}& N \ar@{>->}[d]^{n}\\ V \ar@/_.4cm/[rr]_{v} \ar@{>->}[r]^{u_1}&U \ar@{>->}[r]^{u} & X &  M \ar@/_.4cm/[rr]_{m} \ar@{>->}[r]^{u_2}&U \ar@{>->}[r]^{u} & X}\] 
+
+On the other hand, we can also build the dotted $j\colon Q\to P$ as follows.
+
+		\[\xymatrix{Q \ar[r]^{q_2} \ar[d]_{q_1} \ar@{.>}[dr]^{j}& S \ar@{>->}@/^.2cm/[dr]^{s_2}\\ T \ar@{>->}@/_.2cm/[dr]_{t_2}&P \ar@{>->}[r]^{p_1} \ar@{>->}[d]_{p_2} & M\ar@{>->}[d]^{u_2}  \\ &V \ar@{>->}[r]_{u_1} & U }\]
+	
+	Thus we have the commutative cube below, whose front and right faces are pullbacks and whose bottom face is an $\mathcal{M}$-pushout.
+		\[\xymatrix@C=15pt@R=15pt{&Q\ar[dd]|\hole_(.65){j}\ar@{>->}[rr]^{q_2} \ar@{>->}[dl]_{q_1} && S \ar@{>->}[dd]^{s_2} \ar@{>->}[dl]_{m_2}\\ T \ar@{>->}[dd]_{t_2}\ar@{>->}[rr]^(.65){m_1} & & R \ar@{>->}[dd]_(.3){r_2}\\&P\ar@{>->}[rr]|\hole^(.7){p_1} \ar@{>->}[dl]_{p_2} && M \ar@{>->}[dl]^{u_2} \\V \ar@{>->}[rr]_{u_1} & & U}\]
+		
+		To show that the top face is a pushout it is enough to show that the left and back faces are pullbacks. Suppose thus that the solid part of the following two diagrams are given.
+		\[\xymatrix{Z \ar@{.>}[dr]^{z} \ar@/^.3cm/[drr]^{z_1} \ar@/_.3cm/[ddr]_{z_2}&& &Y \ar@{.>}[dr]^{y} \ar@/^.3cm/[drr]^{y_1} \ar@/_.3cm/[ddr]_{y_2}\\&Q \ar@{>->}[r]^{q_2} \ar[d]_j & S \ar@{>->}[d]^{s_2}& &Q \ar@{>->}[r]^{q_1} \ar[d]_{j} & T \ar@{>->}[d]^{t_2}\\& P \ar@{>->}[r]_{p_1} & M && P \ar@{>->}[r]_{p_2}& V}\]
+		
+		By the universal property of pullbacks, we get the dotted arrows $z'\colon Z\to T$ and $y'\colon Y\to S$ fitting in the diagrams below.
+		\[\xymatrix{Z \ar@{.>}[dr]^{z'} \ar[r]^{z_1} \ar[d]_{z_2}& S \ar@{>->}@/^.2cm/[dr]^{s_1}& &Y \ar@{.>}[dr]^{y'} \ar[r]^{y_1} \ar[d]_{y_2} & T  \ar@{>->}@/^.2cm/[dr]^{t_1}\\P \ar@{>->}@/_.2cm/[dr]_{p_2}&T \ar@{>->}[r]^{t_1} \ar@{>->}[d]_{t_2} & N \ar@{>->}[d]^{s_2}& P\ar@{>->}@/_.2cm/[dr]_{p_1}&S \ar@{>->}[r]^{s_1} \ar@{>->}[d]_{s_2} & N \ar@{>->}[d]^{n}\\& V \ar@{>->}[r]_{v} & X && M \ar@{>->}[r]_{m}& X}\]
+		
+		In turn, these two arrows yields $\hat{z}\colon Z \to Q$ and $\hat{y}\colon Y \to Q$ as below.
+				\[\xymatrix{Z \ar@{.>}[dr]^{\hat{z}} \ar@/^.3cm/[drr]^{z_1} \ar@/_.3cm/[ddr]_{z'}&& &Y \ar@{.>}[dr]^{y} \ar@/^.3cm/[drr]^{y_1} \ar@/_.3cm/[ddr]_{y'}\\&Q \ar@{>->}[r]^{q_2} \ar@{>->}[d]_{q_1} & S \ar@{>->}[d]^{s}& &Q \ar@{>->}[r]^{q_1} \ar@{>->}[d]_{q_2} & T \ar@{>->}[d]^{t}\\& T \ar@{>->}[r]_{t} & X && S \ar@{>->}[r]_{s}& X}\]
+	
+	If we compute we get:
+	\[\begin{split}
+		p_2\circ j\circ \hat{z}&= t_2\circ q_1\circ \hat{z}\\&=t_2\circ z'\\&= p_2\circ z_2
+	\end{split}\qquad \begin{split}
+	p_1\circ j \circ \hat{y}&=s_2\circ q_2\circ \hat{y}\\&=s_2\circ y'\\&=p_1\circ y_2
+	\end{split}\]
+	
+	Since $p_1$ and $p_2$ are mono it follows that 
+	\[j\circ \hat{z}=z_2 \qquad j\circ \hat{y}=y_2\]
+		
+	Moreover, $q_2$ and $q_1$  are monos too, thus $\hat{z}$ and $\hat{y}$ are the unique arrows fitting in the two diagram with which we have begun, proving that the back and right faces of our original cubes are pullbacks.
+	
+	To end the proof it is now enough to see that 
+	\[\begin{split}
+	r\circ m_1&=u\circ r_2\circ m_1\\&=u\circ u_1\circ t_2\\&=v\circ t_2\\&=t
+	\end{split}\qquad \begin{split}
+	r\circ m_2&=u\circ r_2\circ m_2\\&=u\circ u_2\circ s_2\\&=m\circ s_2\\&=s
+	\end{split}\]
+
+Thus by \Cref{prop:uni2,thm:un} $[r]$ is the supremum of $[s]$ and $[t]$, which is exactly the thesis.	
 \end{proof}
 
 
-\begin{example}\label{ex:sem}
-	\todo{nei grafi semplici questa cosa non funziona}
-\end{example}
+
+
 
 \section{DPO rewriting and derivations}
 
