@@ -897,8 +897,113 @@ The previous result, together with \Cref{cor:fact} and \Cref{prop:finlim}, allow
 \end{corollary}
 
 
-\section{Idempotent comonads}
+\section{Coreflective subcategories}
 
+In order to identify a class of well-behaved DPO-rewriting system we need to recall some other general notion of category theory.
+
+\begin{definition}
+	Let $\X$ be a category, a subcategory $\Y$ of $\X$ is \emph{coreflective} if the inclusion functor $I_\Y\colon \Y\to \X$ has a right adjoint $R_\Y$. A \emph{coreflective pair} $(\Y, R_\Y)$ is a pair made by a coreflective subcategory $\Y$ of $\X$ and a chosen right adjoint to $I_\Y$. A morphism between two coreflective pairs $(\Y, R_\Y)$ and $(\Z, R_\Z)$ is a functor $F\colon \Y \to \Z$ making the following diagrams commutative.
+	\[\xymatrix{\Y  \ar[dr]_{I_\Y}  \ar[rr]^{F} &&\Z  \ar[dl]^{I_\Z}&&\X \ar[dr]^{R_\Z} \ar[dl]_{R_\Y} \\ & \X && \Y \ar[rr]_{F} && \Z }\]
+
+	We will denote by $\cori(\X)$ the category obtained in this way.
+\end{definition}
+
+\begin{example}\label{ex:1}
+	\todo{connessi}
+\end{example}
+
+\begin{example}\label{ex:2}
+	\todo{grafi con equivalenza}
+\end{example}
+\begin{example}
+	\todo{Ce ne sono altri? sarebbe bello usare i calcoli ma credo rientrino nel primo}
+\end{example}
+
+
+Let us recall the following well known fact.
+
+\begin{proposition}\label{prop:counit}
+Let $L\colon \X\to \Y$ and $R\colon \Y \to \X$ be a pair of functors such that $L\dashv R$. Then the following are equivalent:
+\begin{enumerate}
+	\item $L$ is full and faithful;
+	\item the unit $\eta \colon \id{\X}\to R\circ L$ is an isomorphism.
+\end{enumerate} 
+\end{proposition}
+\begin{proof}
+	We can start noticing that, for every pair of objects $X$ and $Y$ in $\X$, we have two functions:
+	\[F_{X, Y}\colon \X(X, Y)\to \Y(L(X), L(Y)) \quad 	 \Phi_{X, Y}\colon \Y(L(X), L(Y))\to \X(X, R(L(Y)))\]
+	where $F_L$ sends $f\colon X\to Y$ to $L(f)$ and $\Phi_{X, Y}$ is the bijection $\Y(L(X), L(Y))\to \X(X, R(L(Y)))$ given by $L\dashv R$. Now, notice that, for every $f\colon X\to Y$ the diagram below commutes.
+	\[\xymatrix@C=35pt{X \ar[r]^{f} \ar[d]_{\eta_X}& Y \ar[d]^{\eta_Y}\\R(L(X)) \ar[r]_-{R(L(f))} &R(L(Y)) }\]
+	
+This, in turn, entail that the composit $\Psi_{X,Y} \circ F_{X, Y}$ coincides with $\eta_Y\circ (-)$.
+	
+	\smallskip \noindent 
+	$(1\Rightarrow 2)$ Let $X$ and $Y$ be two objects of $\X$, by hypothesis $\eta_Y$ is an isomorphism and so $\eta_Y\circ (-)$ is a bijection. But then $F_{X, Y}$ must be a bijection too by what we have observed above.
+ 	
+	\smallskip \noindent 
+	$(2\Rightarrow 1)$ Let $X$ be an object of $\X$, if $L$ is full and faithful then $\eta_Y\circ (-)$ is the composition of the two bijections $\Psi_{Y,Y}\circ F_{Y,Y}$. By the Yoneda Lemma this entails that $\eta_Y$ is an isomorphism.
+\end{proof}
+
+
+\begin{corollary}\label{cor:counit}
+Let $\Y$ be a coreflective subcategory of $\X$ and let $\epsilon \colon I_\Y\circ R_\Y \to  \id{\X}$ be the counit of $I_\Y\dashv R_\Y$. Given an object $X\in \X$, the following are equivalent:
+\begin{enumerate}
+	\item $X$ is in the essential image of the inclusion $I_\Y$;
+	\item $\epsilon_X$ is an isomorphism.
+\end{enumerate} 
+\end{corollary}
+\begin{proof}
+	$(1\Rightarrow 2)$ By hypothesis there is an object $Y$ of $\Y$ and an isomorphism $\phi\colon I_\Y(Y)\to X$. This, in turn, yields the commutative square below.
+	\[\xymatrix@C=40pt{I_\Y(Y) \ar[r]^-{\phi} \ar[d]_{I_\Y(\eta_Y)}&  X\\ I_\Y(R_\Y(I_\Y(Y)))  \ar[r]_-{I_\Y(R_\Y(\phi))}& I_\Y(R_\Y(X)) \ar[u]_{\epsilon_X}}\]
+	
+	By hypotesis $\phi$ is an isomorphism and $\eta_Y$ is so by \Cref{prop:counit}, thus $I_\Y(\eta_Y)$ and 
+$I_\Y(R_\Y(\phi))$ are isomorphisms too and the thesis follows.
+
+	\smallskip \noindent
+	$(2\Rightarrow 1)$ This is a tautology.
+\end{proof}
+
+Associated to a coreflective subcategory $\Y$ of $\X$ we have a class of arrows which enjoys some desiderable properties.
+ 
+ \begin{definition}
+ 	contenuto...
+ \end{definition}
+ 
+ 
+ \begin{proposition}
+ 	contenuto...
+ \end{proposition}
+  \begin{proof}
+  	contenuto...
+  \end{proof}
+
+In general, the class $\mathcal{R}_{(\Y, R_\Y)}$ is not closed under pushout. Nonetheless such property is desirable and often enjoyed in the setting of DPO-rewriting. We are thus lead to the following definition.
+ 
+ \begin{definition}
+ 	contenuto...
+ \end{definition}
+ 
+ \begin{proposition}
+ 	contenuto...
+ \end{proposition}
+ \begin{proof}
+ 	contenuto...
+ \end{proof}
+ 
+ \begin{definition}
+ 	contenuto...
+ \end{definition}
+ 
+ 
+ \begin{proposition}\label{prop:funct}
+ 	contenuto...
+ \end{proposition}
+ \begin{proof}
+ 	contenuto...
+ \end{proof}
+ 
+ 
+ \iffalse 
 \begin{definition}
 	A \emph{comonad} $\m{C}$ on a category $\X$ is a triple $(C, \delta, \epsilon)$ given by a functor $C\colon \X\to \X$ and two natural transformations $\delta\colon C\to C\circ C $, $\epsilon\colon C\to \id{\X}$, called, respectively \emph{comultiplication} and \emph{counit} such that the following diagram commute
 	\[\xymatrix@C=30pt{C \ar[d]_{\delta}\ar[r]^-{\delta}& C\circ C  \ar[d]^{\delta*C}&  C \ar[d]_{\delta}\ar[r]^{\delta} \ar[dr]^-{\id{C}} & C\circ C \ar[d]^{\epsilon *C}\\ C\circ C \ar[r]_-{C*\delta}& C\circ C\circ C & C\circ C \ar[r]_-{C*\epsilon} & C}\]
@@ -918,25 +1023,35 @@ The previous result, together with \Cref{cor:fact} and \Cref{prop:finlim}, allow
 \end{remark}
 
 
-\begin{example}\label{ex:1}
-	\todo{connessi}
-\end{example}
+\begin{proposition}
+Let $L\colon \X \to \Y$ and $R\colon \Y \to \X$ be two functors such that $L\dashv R$. If $\eta \colon \id{\X}\to R\circ L$ and $\epsilon\colon L\circ R \to \id{Y}$ are the unit and the counit of this adjunction, then $(L\circ R, L*\eta *R ,\epsilon)$ is a comonad on $\Y$.
+\end{proposition}
+\begin{proof}
+	contenuto...
+\end{proof}
 
-\begin{example}\label{ex:2}
-	\todo{grafi con equivalenza}
-\end{example}
-\begin{example}
-	\todo{Ce ne sono altri? sarebbe bello usare i calcoli ma credo rientrino nel primo}
-\end{example}
+The next definition shows that every comonad come from an adjunction.
+
+\begin{definition}
+	contenuto...
+\end{definition}
+
+\begin{proposition}
+	contenuto...
+\end{proposition}
+\begin{proof}
+	contenuto...
+\end{proof}
+
 
 We recall the following lemma relating idempotent comonads and coreflective subcategories.
 
 \begin{lemma}\label{lem:comsub}
 	Let $L\colon \Y\to \X$ and $R\colon \X \to \Y$ be two functors such that $L\dashv R$
 \end{lemma}
-
-
-
+\begin{proof}
+	contenuto...
+\end{proof}
 
 Associated to any idempotent comonad we have a class of arrows.
 
@@ -946,7 +1061,7 @@ Associated to any idempotent comonad we have a class of arrows.
 \begin{remark}
 	contenuto...
 \end{remark}
-
+\fi 
 
 
 \subsection{A left adjoint to $\mathcal{R}_{(-)}$}
