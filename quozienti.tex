@@ -80,9 +80,10 @@
 
 \newcommand{\dpo}{\textsc{dpo}}
 
-\newcommand{\cmd}{\mathbf{IC}}
-
-\newcommand{\cori}{\mathbf{CR}}
+\newcommand{\cori}{\mathbf{CS}}
+\newcommand{\cla}{\mathbf{CL}}
+\newcommand{\pos}{\mathbf{PO}}
+\newcommand{\gori}{\mathbf{GS}}
 
 % base classes of categories for adhesive and quasi adhesive case
 \newcommand{\bAdh}{\ensuremath{\mathbb{B}}}
@@ -259,6 +260,8 @@
 % domain for an event structure or graph grammar
 \newcommand{\zdom}[0]{\ensuremath{\mathcal{D}}}
 \newcommand{\dom}[1]{\ensuremath{\zdom({#1})}}
+
+\newcommand{\dm}[1]{\mathsf{dom}({#1})}
 
 
 \newcommand{\zdomeq}[0]{\ensuremath{\mathcal{D}_{eq}}}
@@ -902,11 +905,18 @@ The previous result, together with \Cref{cor:fact} and \Cref{prop:finlim}, allow
 In order to identify a class of well-behaved DPO-rewriting system we need to recall some other general notion of category theory.
 
 \begin{definition}
-	Let $\X$ be a category, a subcategory $\Y$ of $\X$ is \emph{coreflective} if the inclusion functor $I_\Y\colon \Y\to \X$ has a right adjoint $R_\Y$. A \emph{coreflective pair} $(\Y, R_\Y)$ is a pair made by a coreflective subcategory $\Y$ of $\X$ and a chosen right adjoint to $I_\Y$. A morphism between two coreflective pairs $(\Y, R_\Y)$ and $(\Z, R_\Z)$ is a functor $F\colon \Y \to \Z$ making the following diagrams commutative.
-	\[\xymatrix{\Y  \ar[dr]_{I_\Y}  \ar[rr]^{F} &&\Z  \ar[dl]^{I_\Z}&&\X \ar[dr]^{R_\Z} \ar[dl]_{R_\Y} \\ & \X && \Y \ar[rr]_{F} && \Z }\]
-
+	Let $\X$ be a category, a full subcategory $\Y$ of $\X$ is \emph{coreflective} if the inclusion functor $I_\Y\colon \Y\to \X$ has a right adjoint $R_\Y$, called \emph{coreflector}.  A morphism between two coreflective subcategories $\Y$ and $\Z$ is a functor $F\colon \Y \to \Z$ such that $I_\Z \circ F=I_\Y$ and $F\circ R_\Y$ is isomorphic to $R_\Z$.
+	
 	We will denote by $\cori(\X)$ the category obtained in this way.
 \end{definition}
+
+\begin{remark}
+	Notice that, since adjoints are unique up to isomorphism, being a morphism $\Y\to \Z$ of $\cori(\X)$ does not depends on the choice of coreflectors for $\Y$ and $\Z$.
+\end{remark}
+
+\begin{remark}\label{rem:ff}
+	Let $F\colon \Y \to \Z$ be a morphism in $\cori(\X)$. Since $I_\Z\circ F=I_\Y$, then $\Y$ must be a full subcategory of $\Z$ and $F$ must coincide with its inclusion. In particular, $F$ is full and faithful and $\cori(\X)$ is a ordered class.
+\end{remark}
 
 \begin{example}\label{ex:1}
 	\todo{connessi}
@@ -963,45 +973,69 @@ $I_\Y(R_\Y(\phi))$ are isomorphisms too and the thesis follows.
 	$(2\Rightarrow 1)$ This is a tautology.
 \end{proof}
 
-Associated to a coreflective subcategory $\Y$ of $\X$ we have a class of arrows which enjoys some desiderable properties.
+Associated to a coreflective subcategory $\Y$ of $\X$ we have a class of arrows which enjoys some useful properties.
  
  \begin{definition}
- 	contenuto...
+ 	Let $\Y$ be a coreflective subcategory of $\X$ with coreflector $R_\Y$, we define the class $\mathcal{R}_\Y$ as the class of all arrows in $\X$ whose image through $R_\Y$ is a mono in $\Y$.
  \end{definition}
  
+ \begin{remark}
+ 	Let $I_\Y\colon \Y \to \X$ be the inclusion functor of a coreflective subcategory $\Y$. If $R_\Y$ and $R'_\Y$ are coreflectors, then we have a natural isomorphism $\phi\colon R_\Y\to R'_\Y$ and so, for every $f\colon X\to Y$ there is a square
+ 	\[\xymatrix{ \ar[d]_{\phi_X} R_\Y(X) \ar[r]^{R_\Y(f)}& R_\Y(Y) \ar[d]^{\phi_Y}\\R'_\Y(X) \ar[r]_{R_\Y(f)} & R'_\Y(Y)}\]
+ 
+ In particular, $R_\Y(f)$ is mono if and only if $R'_\Y(f)$ is so, thus the definition of $\mathcal{R}_\Y$ is independent from the choice of coreflector.
+ \end{remark}
  
  \begin{proposition}
- 	contenuto...
+Let $\Y$ be a coreflective subcategory of $\X$. Then the following hold true:
+\begin{enumerate}
+	\item $\mathcal{R}_\Y$ contains all monos;
+	\item $\mathcal{R}_\Y$ is stable under pullbacks;
+	\item given $f\colon X\to Y$ and $g\colon Y\to Z$, if $g\circ f$ is in $\mathcal{R}_\Y$ then $f$ is in $\mathcal{R}_\Y$ too;
+	\item given $f\colon X\to Y$ in $\mathcal{R}_\Y$ and $g,h\colon I_\Y(Z)\rightrightarrows X$, if $f\circ g = f\circ h$, then $g=h$.
+\end{enumerate}
  \end{proposition}
-  \begin{proof}
-  	contenuto...
+  \begin{proof}\begin{enumerate}
+  		\item This follows at once from the fact that $R_\Y$, being a right adjoint, preserves monos.
+  		\item Consider the following two diagrams, with $f\in \mathcal{R}_\Y$, in which the left one is a pullback. $R_\Y$ preserves limits, thus the right square is a pullback too.
+  		\[\xymatrix@C=30pt{P \ar[r]^{p_1} \ar[d]_{p_2}& X \ar[d]^{f} & R_\Y(P) \ar[r]^{R_\Y(p_1)} \ar[d]_{R_\Y(p_2)} & R_\Y(X) \ar[d]^{R_\Y(f)}\\Z \ar[r]_{g}& Y & R_\Y(Z) \ar[r]_{R_\Y(g)} & R_\Y(Y)}\]
+  		By definition, $R_\Y(f)$ is a mono in $\Y$, but this implies that $R_\Y(g)$ is a mono too, proving $g\in \mathcal{R}_\Y$.
+  		\item We know that $R_\Y(g\circ f)$ is mono, thus $R_\Y(f)$ is mono too.
+  		\item 	Since $f\circ g=f\circ h$ and $f$ is in $\mathcal{R}_\Y$ we can conclude that $R_\Y(g)=R_\Y(h)$. Thus we have:
+  		\begin{align*}
+  			g\circ \epsilon_{I_\Y(Z)}&=\epsilon_X\circ I_\Y(R_\Y(g))\\&=\epsilon_X\circ I_\Y(R_\Y(h))\\&=h\circ \epsilon_{I_\Y(Z)}
+  		\end{align*}
+  		By \Cref{cor:counit},  $\epsilon_{I_\Y(Z)}$ is an isomorphism and so $g=h$. \qedhere
+  	\end{enumerate}
   \end{proof}
 
-In general, the class $\mathcal{R}_{(\Y, R_\Y)}$ is not closed under pushout. Nonetheless such property is desirable and often enjoyed in the setting of DPO-rewriting. We are thus lead to the following definition.
+In general, the class $\mathcal{R}_{\Y}$ is not stable under pushout. Nonetheless such property is desirable. We are thus lead to the following definition.
  
  \begin{definition}
- 	contenuto...
+A coreflective subcategory is \emph{good} if  $\mathcal{R}_\Y$ is stable under pushout. $\gori(\X)$ will denote the subcategory of $\cori(\X)$ given by good coreflective subcategories. 
  \end{definition}
  
- \begin{proposition}
- 	contenuto...
- \end{proposition}
- \begin{proof}
- 	contenuto...
- \end{proof}
+\iffalse 
+ \begin{remark}\label{rem:good}
+Let $\Y$ be a full subcategory of $\X$ with coreflector $R_\Y$.  Let also $f\colon X\to Y$ be in $\mathcal{R}_\Y$ and consider the following two diagrams, where the left one is a pushout. Then $\Y$ is a good subcategory if and only if $R_{\Y}()$
+ \end{remark}
+ \fi 
  
- \begin{definition}
- 	contenuto...
- \end{definition}
- 
- 
+ We end this section extending the construction of $\mathcal{R}_\Y$ to a functor on $\cori(\X)$.
+
  \begin{proposition}\label{prop:funct}
- 	contenuto...
+ Let $F\colon \Y \to \Z$ be a morphism of $\cori(\X)$, then $\mathcal{R}_\Z \subseteq \mathcal{R}_{\Y}$.
  \end{proposition}
  \begin{proof}
- 	contenuto...
+ Let $f$ be an arrow in $\mathcal{R}_\Z$. Since $F$ is an arrow in $\cori(\X)$ we know that there exists a natural isomorphism $\phi\colon F\circ R_\Y\to R_\Z$, therefore $F(R_\Y(f))$ is a monomorphism. By \Cref{rem:ff} we know that $F$ is full and faithful and so reflects mono, implying that $f$ belongs to $\mathcal{R}_\Y$ too.
  \end{proof}
  
+ \begin{corollary}\label{cor:funct}
+ Let $\cla(\X)$ be the category associated to the collection of all classes of a category $\X$, ordered by the inclusion. Then there exists a functor $\mathcal{R}_{(-)}\colon \cori(\X)^{op}\to \cla(\X) $.
+ 
+ Let, moreover, $\pos(\X),$ be the subcategory of $\cla(\X)$  given by classes of arrows stable under pushouts, Then  $\mathcal{R}^G_{(-)}\colon \gori(\X)^{op}\to \pos(\X) $ fitting in the rectangle below, where the vertical arrows are inclusions.
+ \[\xymatrix{\cori(\X)^{op} \ar[r]^{\mathcal{R}_{(-)}}& \cla(\X)\\ \gori(\X)^{op} \ar[u]^{J} \ar[r]_{\mathcal{R}^{G}_{(-)}}& \pos(\X) \ar[u]_{I}}\]
+ \end{corollary}
  
  \iffalse 
 \begin{definition}
@@ -1064,8 +1098,90 @@ Associated to any idempotent comonad we have a class of arrows.
 \fi 
 
 
-\subsection{A left adjoint to $\mathcal{R}_{(-)}$}
+\subsection{Left adjoints to $\mathcal{R}_{(-)}$ and $\mathcal{R}^G_{(-)}$}
 
+In this section we will show that, under suitable hypotheses, the functors $\mathcal{R}_{(-)}$ and $\mathcal{R}^G_{(-)}$ built in the previous sections, both have left adjoints. To do so, we need some preliminary work to be done.
+
+
+\begin{definition}
+	Let $\mathcal{M}$ be a class of arrows in a category $\X$ and let $\{m_i\}_{i\in I}$ be a family of objects in $\mathcal{M}/X$. We say that $\{m_i\}_{i\in I}$ has the \emph{epic $\mathcal{M}$-sum property} if:
+	\begin{enumerate}
+		\item it has a  coproduct $m\colon M\to X$;
+		\item the family  of coprojection $\{k_i\}_{i\in I}$ is jointly epic in $\X$.
+	\end{enumerate}
+	
+	We say that $\X$ has \emph{epic $\mathcal{M}$-sums} if every family in $\sub{M}{X}{X}$ has the epic $\mathcal{M}$-sum property.
+\end{definition}
+
+\begin{remark}
+	contenuto...
+\end{remark}
+\begin{example}\todo{controesempio spazi topologici}
+\end{example}
+\begin{example}
+\todo{insiemi}
+\end{example}
+
+\begin{example}
+	\todo{adesive finitare}
+\end{example}
+\begin{example}
+	\todo{simple graph}
+\end{example}
+
+We are now ready to construct a left adjoint to $\mathcal{R}_{(-)}$.
+
+\begin{definition} 
+	Let $\X$ be a category and $\mathcal{A}$ a class of arrows of it. We define the category $\C(\mathcal{A})$ as the full subcategory of $\X$ given by the objects $Z\in \X$ such that, for every  pair of arrows $g,h\colon Z\rightrightarrows X$, if $f\circ g=f\circ h$ for some $f\colon X\to Y$ belonging to $\mathcal{A}$, then $g=h$.
+\end{definition}
+
+A first thing that we can notice about $\C(\mathcal{A})$ is that, in the presence of a factorization system, is its closure under epimorphisms, as shown by the following proposition.
+
+\begin{proposition}\label{prop:ima}
+ $\mathcal{A}$ be a class of arrows in a category $\X$ If $e\colon X\to Y$ is an epimorphism with domain in $\C(\mathcal{A})$, then $Y$ belongs to $\C(\mathcal{A})$ too.
+\end{proposition}
+\begin{proof}
+	Let $f\colon Z\to V$ be an arrow of $\mathcal{A}$ and take two other arrows $g,h\colon Y\to Z$ such that $f\circ g=f\circ h$. Then we also know that
+	\[f\circ g\circ e= f\circ h\circ e\]
+	By hypothesis $X$ is in $\C(\mathcal{A})$, so that $g\circ e=f\circ e$. The thesis now follows since $e$ is an epimorphism.
+\end{proof}
+\begin{example}
+	\todo{spazi topologici puntati - controesempio}
+\end{example}
+
+
+\begin{lemma}
+Let $\X$ be a category with a proper factorization system $(\mathcal{E}, \mathcal{M})$. Suppose, moreover, that $\X$ has the epic $\mathcal{M}$-sum property.  Then for every $\mathcal{A}\in \cla(\X)$, $\C(\mathcal{A})$ is a coreflective subcategory of $\X$.
+\end{lemma}
+
+\begin{proof}
+For every object $X$ of $\X$, let us define
+\[\mathcal{F}_X:=\{m\in \mathcal{M}/X \mid \dm{m} \text{ belongs to } \C(\mathcal{A})\}\] 
+We can then define $R(X)$ as the domain of the sum over $\mathcal{F}_X$ in $\mathcal{M}/X$. In particular, we have an arrow $\epsilon_X\colon R(X)\to X$, belonging to $\mathcal{M}$.
+
+First of all, we have to prove that $R(X)$ so defined is an object of $\C(\mathcal{A})$. Let thus $f\colon A\to Y$ be an arrow in $\mathcal{A}$ and suppose that there are $g,h\colon R(X)\to A$ such that  $f\circ h= f \circ g$. Now, for every $m\colon M\to X$ in $\mathcal{F}_X$ we have a coprojection $k_m\colon m\to \epsilon_X$. Precomposing with it we get
+\[f\circ h \circ k_m=f\circ g\circ k_m\]
+By definition $M$ is in $\C(\mathcal{A})$, so we can conclude that $h\circ k_m=g\circ k_m$. Since  this holds for every $m\in \mathcal{F}_Z$, the epic $\mathcal{M}$-sum property of $\X$ entails $f=g$ as wanted.
+
+To conclude, is it now enough to show that $\epsilon_X$ has the universal property of a counit. Let $Y$ be an object of $\C(\mathcal{A})$ with an arrow $f\colon Y\to X$. We can factor $f$ it as $m\circ e$ with $e\colon Y\to E$ and $m\colon E\to X$ in $\mathcal{M}$. By \Cref{prop:ima} we know that $E$ is in $\C(\mathcal{A})$, thus there exists a coprojection $k_m\colon m\to \epsilon_X$. 
+\end{proof}
+
+\begin{example}
+	\todo{spazi topologici puntati - controesempio 2}
+\end{example}
+
+
+\begin{proposition}
+	contenuto...
+\end{proposition}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+\begin{corollary}
+	contenuto...
+\end{corollary}
+\iffalse 
 \begin{setting}Let $\X$ be a category with a proper factorization system $(\mathcal{E}, \mathcal{M})$. Our abstract setting to deal with fusions begins with a coreflective subcategory $I\colon \Y\to \X$ with coreflector $F\colon \X\to \Y$ with the following properties:
 	\begin{enumerate}
 		\item the counit $\epsilon \colon I\circ F\to \id{\X}$ has all components in $\mathcal{M}$; 
@@ -1128,7 +1244,7 @@ Let $\X$ be an $\mathcal{M}$-adhesive category $\X$  with a proper and stable fa
 \begin{proof}
 	contenuto...
 \end{proof}
-
+\fi 
 
 \section{Rewriting with fusions}
  
