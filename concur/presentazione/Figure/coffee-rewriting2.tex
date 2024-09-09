@@ -1,0 +1,78 @@
+\begin{center}
+
+  %%% REWRITING 
+  % 
+  %
+  % 
+  \begin{tikzpicture}[node distance=8mm, font=\small]
+    % graph G0
+    \node (G0) {
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
+        % 
+        \node at (0,1.0) [node, label=left:$1$] (1) {}
+        edge [in=110, out=140, loop] node[above] {$\mathit{m}$} ()
+        edge [in=220, out=250, loop] node[below] {$\mathit{c}$} ();
+        
+        \node at (0.7,1.0) [node, label=right:$2$] (2) {}
+        edge [in=40, out=70, loop] node[above] {$\mathit{u}$} ();
+
+        \draw[->] (1) to node[above, pos=0.4]{$s$} (2);        
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node[below] at (G0.south) {$G_0$};
+    % graph G1
+    \node [right=of G0] (G1) {
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm,, font=\scriptsize]
+      % 
+      \node at (0.6,1.0) [node, label=right:$12$] (12) {}
+        edge [in=220, out=250, loop] node[below] {$\mathit{c}$} ()
+        edge [in=40, out=70, loop] node[above] {$\mathit{u}$} ()
+        edge [in=300, out=330, loop] node[below] {$\mathit{s}$} ();        
+      %
+      \pgfBox
+      \end{tikzpicture}
+    };
+    \node[below] at (G1.south) {$G_1$};
+
+    % graph G2
+    \node [right=of G1] (G2) {        
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
+        %
+        \node at (0.4,0.5) {};
+      \node at (0.6,1.0) [node, label=right:$12$] (12) {}
+%        edge [in=220, out=250, loop] node[below] {$\mathit{b}$} ()
+        edge [in=40, out=70, loop] node[above] {$\mathit{u}$} ()
+        edge [in=300, out=330, loop] node[below] {$\mathit{s}$} ();        
+      %
+      \pgfBox
+    \end{tikzpicture}
+    };
+    \node[below] at (G2.south) {$G_2$};
+
+    % graph G3
+    \node [right=of G2] (G3) {      
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
+        %
+        \node at (0.4,0.5) {};
+      \node at (0.6,1.0) [node, label=right:$12$] (12) {}
+%        edge [in=220, out=250, loop] node[below] {$\mathit{b}$} ()
+        edge [in=40, out=70, loop] node[above] {$\mathit{r}$} ()
+        edge [in=300, out=330, loop] node[below] {$\mathit{s}$} ();        
+        % 
+        \pgfBox
+      \end{tikzpicture}
+    };
+    \node[below] at (G3.south) {$G_3$};
+   
+    \path (G0) edge[->] node[trans, above] {$\rho_m$} (G1);
+    \path (G1) edge[->] node[trans, above] {$\rho_c$} (G2);
+    \path (G2) edge[->] node[trans, above] {$\rho_s$} (G3);    
+  \end{tikzpicture}
+\end{center}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../final"
+%%% End:

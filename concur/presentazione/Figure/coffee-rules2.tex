@@ -1,0 +1,115 @@
+\begin{center}
+
+  %%% RULES 
+  % 
+  % RULE add white sugar
+  % 
+  \begin{tikzpicture}[node distance=3mm, font=\small]
+    %, baseline=(current bounding box.center), font=\small]
+      \node (l) {
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
+      % 
+      \node at (0,1.0) [node, label=left:$1$] (1) {}
+        edge [in=110, out=140, loop] node[above] {$\mathit{m}$} ();
+
+        \node at (0,0.6) {};
+
+        \node at (0.7,1.0) [node, label=right:$2$] (2) {};
+
+        \draw[->] (1) to node[above, pos=0.4]{$\mathit{s}$} (2);        
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node [right=of l] (r) {
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
+        %
+        \node at (0,1.45) {};
+        \node at (0,0.5) {};
+        \node at (0.6,1.0) [node, label=right:$12$] (12) {}
+          edge [in=300, out=330, loop] node[below] {$\mathit{s}$} (); 
+      %
+      \pgfBox
+      \end{tikzpicture}
+    };
+    %\node[below] at (l.south east) {$\rho_w$};
+    \path (l) edge[->] (r);
+    \node at ($(l)!0.54!(r)$) [below=7.5mm] {$\rho_m$: add milk and sugar}; 
+    \end{tikzpicture}
+    % 
+    %
+    \hspace{5mm}
+    % \hfill
+    % 
+    % RULE cocoa
+    %
+    \begin{tikzpicture}[node distance=3mm, font=\small]
+    %, baseline=(current bounding box.center), font=\small]
+      \node (l) {
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
+      % 
+       \node at (0,1.0) [node, label=left:$1$] (1) {}
+        edge [in=220, out=250, loop] node[below] {$\mathit{c}$} ();
+
+        \node at (0,0.6) {};
+
+        \node at (0.7,1.0) [node, label=right:$2$] (2) {};
+
+        \draw[->] (1) to node[above, pos=0.4]{$\mathit{s}$} (2);
+        
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node [right=of l] (r) {
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
+      %
+      \node at (0,1.45) {};  
+      \node at (0,0.5) {};
+      \node at (0.6,1.0) [node, label=right:$12$] (12) {}
+          edge [in=300, out=330, loop] node[below] {$\mathit{s}$} ();        
+      %
+      \pgfBox
+      \end{tikzpicture}
+    };
+    \path (l) edge[->]  (r);
+    \node at ($(l)!0.54!(r)$) [below=7.5mm] {$\rho_c$: add cocoa and sugar};         
+    \end{tikzpicture}
+    %
+    \hspace{5mm}
+    % RULE ready
+    % 
+    \begin{tikzpicture}[node distance=3mm, font=\small]
+    %, baseline=(current bounding box.center), font=\small]
+      \node (l) {
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
+      % 
+      \node at (0.4,0.5) {};
+      \node at (0.6,1.0) [node, label=right:$1$] (1) {}
+        edge [in=40, out=70, loop] node[above] {$\mathit{u}$} ()
+        edge [in=300, out=330, loop] node[below] {$\mathit{s}$} ();
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node [right=of l] (r) {
+      \begin{tikzpicture}[node distance=2mm, label distance=1mm, font=\scriptsize]
+      % 
+      \node at (0.4,0.5) {};
+      \node at (0.6,1.0) [node, label=right:$1$] (1) {}
+        edge [in=40, out=70, loop] node[above] {$\mathit{r}$} ()
+        edge [in=300, out=330, loop] node[below] {$\mathit{s}$} ();
+      %
+      \pgfBox
+      \end{tikzpicture}
+    };
+    \path (l) edge[->] (r);    
+    \node at ($(l)!0.54!(r)$) [below=7.5mm] {$\rho_s$: stir and drink!}; 
+    \end{tikzpicture}
+  %
+\end{center}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../final"
+%%% End:

@@ -1,0 +1,149 @@
+  \begin{center}
+    %%% TYPE GRAPH 
+    % 
+    % \subcaptionbox*{$T$}{
+    %   \begin{tikzpicture}[node distance=2mm, baseline=(current bounding box.center)]
+    %     \node () {
+    %       \begin{tikzpicture}
+    %         \node at (0,0) [node] (1) {}
+    %         edge [in=95, out=65, loop] ();        
+    %         % 
+    %         \pgfBox
+    %       \end{tikzpicture}
+    %     };
+    %   \end{tikzpicture}
+    % }
+    % % 
+    % \hfill
+    %
+    %%% RULES 
+    % 
+%    \subcaptionbox*{}{
+    % RULE P0
+    %
+  \begin{tikzpicture}[node distance=2mm, font=\small]
+    %, baseline=(current bounding box.center), font=\small]
+      \node (l) {
+      \begin{tikzpicture}
+      %
+        \node at (0,0.53) {};
+        \node at (0,0) [node, label=below:$1$] (1) {} ;        
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node[font=\scriptsize, above] at (l.north) {$L_0$};
+    \node [right=of l] (k) {
+      \begin{tikzpicture}
+        %
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$1$] (1) {};
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node[font=\scriptsize, above] at (k.north) {$K_0$};
+    \node[below] at (k.south) {$\rho_0$};
+    \node  [right=of k] (r) {
+      \begin{tikzpicture}
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$1$] (1) {};
+        \node at (.5,0) [node, label=below:$2$] (2) {};
+        \draw[coloredge] (1) to[out=20, in=160] (2);
+        %
+        \pgfBox
+      \end{tikzpicture}
+    };
+    \node[font=\scriptsize, above] at (r.north) {$R_0$};
+    \path (k) edge[->] node[trans, above] {} (l);
+    \path (k) edge[->] node[trans, above] {} (r);    
+    \end{tikzpicture}
+%  }
+    %
+    \hspace{1cm}
+%  \hfill
+  %
+%  \subcaptionbox*{}{
+    % RULE P1
+    %
+    \begin{tikzpicture}[node distance=2mm, font=\small]
+      \node (l) {
+      \begin{tikzpicture}
+        %
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$1$] (1) {} ;
+        % 
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node[font=\scriptsize, above] at (l.north) {$L_1$};
+    \node [right=of l] (k) {
+      \begin{tikzpicture}
+        %
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$1$] (1) {};
+        % 
+        \pgfBox
+      \end{tikzpicture} 
+    };
+    \node[font=\scriptsize, above] at (k.north) {$K_1$};
+    \node[below] at (k.south) {$\rho_1$};
+    \node  [right=of k] (r) {
+      \begin{tikzpicture}
+        \node at (0,0) [node, label=below:$1$] (1) {}
+         edge [in=55, out=85, loop] ();
+        %
+        \pgfBox
+      \end{tikzpicture}
+    };
+    \node[font=\scriptsize, above] at (r.north) {$R_1$};
+    \path (k) edge[->] node[trans, above] {} (l);
+    \path (k) edge[->] node[trans, above] {} (r);
+    \end{tikzpicture}
+%  }
+  % 
+    \hspace{1cm}
+    %\hfill
+  %
+%    \subcaptionbox*{}{
+    % RULE P2
+    %
+    \begin{tikzpicture}[node distance=2mm, font=\small]
+      \node (l) {
+      \begin{tikzpicture}
+        %
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$1$] (1) {} ;
+        \node at (0.5,0) [node, label=below:$2$] (2) {} ;
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node[font=\scriptsize, above] at (l.north) {$L_2$};
+    \node [right=of l] (k) {
+      \begin{tikzpicture}
+        %
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$1$] (1) {} ;
+        \node at (0.5,0) [node, label=below:$2$] (2) {} ;
+      %
+      \pgfBox
+      \end{tikzpicture} 
+    };
+    \node[font=\scriptsize, above] at (k.north) {$K_2$};
+    \node[below] at (k.south) {$\rho_2$};
+    \node  [right=of k] (r) {
+      \begin{tikzpicture}
+        \node at (0,0.53) {}; 
+        \node at (0,0) [node, label=below:$12$] (12) {};
+        %
+        \pgfBox
+      \end{tikzpicture}
+    };
+    \node[font=\scriptsize, above] at (r.north) {$R_2$};
+    \path (k) edge[->] node[trans, above] {} (l);
+    \path (k) edge[->] node[trans, above] {} (r);
+    \end{tikzpicture}
+ % }
+  %
+\end{center}
