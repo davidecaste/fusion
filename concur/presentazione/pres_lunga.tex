@@ -288,12 +288,12 @@
 	\pause 
 	\medskip 
 	The equivalence captures when steps are causally unrelated and thus could be
-	executed in any order, and possibly in parallel.
+	executed in \emph{any} order, and possibly in \emph{parallel}.
 	
 	\pause 
 	\medskip 
 	Defining this equivalence often boils down to having a notion
-	of independence between two consecutive steps. 
+	of \emph{independence} between two consecutive steps. 
 	
 	
 \end{frame}
@@ -411,16 +411,16 @@ The categorical framework is given by \emph{$\mathcal{M}$-adhesive categories}. 
 		A \emph{DPO-rewriting system} is a pair $(\X, R)$ where $\X$ is an $\mathcal{M}$-adhesive category and $R$ is a set of rewriting rules.
 		\pause 
 		
-		A system is \emph{linear} if every rule is made by arrows in $\mathcal{M}$, \emph{left linear} if the left hand side of every rule is in $\mathcal{M}$.
+		A system is \emph{linear} if every rule is made by arrows in $\mathcal{M}$, \emph{left-linear} if the left hand side of every rule is in $\mathcal{M}$.
 	\end{definition}
 
 \pause 
 
-In left linear rewriting systems a rule can ``merge'' parts of the state.
+In left-linear rewriting systems a rule can ``merge'' parts of the state.
 
 \pause 
 \begin{alertblock}{Motivation}
-	Our long term aim is to provide a concurrent semantics for left linear DPO-rewriting systems (see \cite{baldan2017domains}). 
+	Our long term aim is to provide a concurrent semantics for left-linear DPO-rewriting systems (see \cite{baldan2017domains}). 
 \end{alertblock}
 
 \end{frame}
@@ -429,7 +429,7 @@ In left linear rewriting systems a rule can ``merge'' parts of the state.
 \begin{frame}{An example}\justifying
 	
 	We want to model a situation in which a coffee comes
-	with a bag of sugar, a portion of milk and bag of cocoa.
+	with a bag of white sugar and a bag of brown sugar.
 	
 	\pause 
 \begin{figure}
@@ -439,13 +439,13 @@ In left linear rewriting systems a rule can ``merge'' parts of the state.
 \end{frame} 
 
 \begin{frame}{An example}
-	If we want a (very sweet) coffee we can add first the milk and sugar, then cocoa. Finally we can stir it.
+	If we want a (very sweet) coffee we can add first the white sugar and then the brown one. Finally we can stir it.
 	\pause 
 \begin{figure}
 	\input{Figure/coffee-rewriting2.tex}
 \end{figure}\pause 
 
-$\rho_s$ only needs sugar, so it can be anticipated before $\rho_c$, but in order to do so the presence of $\rho_m$ at the beginning is essential.
+$\rho_r$ only needs that some sugar is added, so it can be anticipated before $\rho_b$, but in order to do so the presence of $\rho_w$ at the beginning is essential.
 \end{frame}
 
 
@@ -578,11 +578,11 @@ No rewriting step.
 
 
 \begin{definition}
-A rewriting system $(\X, R)$ is \emph{well switching} of independence pairs are unique and the Local Church-Rosser Theorem holds (sequentially independent derivation can be switched).
+A rewriting system $(\X, R)$ is \emph{well switching} if independence pairs are unique and the Local Church-Rosser Theorem holds (sequentially independent derivation can be switched).
 \end{definition}
 \pause 
 \begin{block}{Remark}
-	It is possible to identify a larce class of categories on which every left-linear rewriting system enjoys the Local-Church Rosser Theorem holds (\cite{baldan2011adhesivity}).
+	It is possible to identify a large class of categories on which every left-linear rewriting system enjoys the Local-Church Rosser Theorem holds (\cite{baldan2011adhesivity}).
 \end{block}
 \pause 
 \begin{block}{Example}In the category $\catname{Graph}$, if the rules of a left-linear rewriting system only merge nodes and their left-hand sides contain no isolated nodes, then the system is well-switching.
@@ -632,7 +632,7 @@ A rewriting system $(\X, R)$ is \emph{well switching} of independence pairs are 
 			in the last derivation $\dder{D}_0'$ and $\dder{D}_1'$ are independent; \pause 
 			
 			\item 
-			Suppose that $\dder{D}_1$ and $\dder{D}_2$ are independent, and that, in $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2 \shift{(1,2)}
+			suppose that $\dder{D}_1$ and $\dder{D}_2$ are independent, and that, in $\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2 \shift{(1,2)}
 			\dder{D}_0 \cdot \dder{D}_2' \cdot \dder{D}_1'$, $\dder{D}_0$ and $\dder{D}_2'$ are independent.  If there
 			is a switching sequence
 			$\dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2 \shift{(0,1)}
@@ -661,7 +661,7 @@ The possibility of losing independence posticipating a derivation is due to left
 
 
 
-\begin{frame}{Risultati: Canonical Form}\justifying
+\begin{frame}{Results: Canonical Form}\justifying
 	
 	\begin{theorem}[No need of useless switches]
 		Let $\der{D}$ and $\der{D}'$ be derivations If $\der{D} \shifteq[\sigma] \der{D}'$ then there is a switching sequence 
@@ -671,7 +671,7 @@ The possibility of losing independence posticipating a derivation is due to left
 		%\end{center}
 		consisting only of inversions for $\sigma$ (i.e. permutations $(i, i+1)$ such that $\sigma(i)>\sigma(i+1)$).
 	\end{theorem}
-	
+\pause 	
 \begin{theorem}[Canonical form]
 	Let $\der{D}$ and $\der{D}'$ be derivations. If
 	$\der{D} \shifteq[\sigma]\der{D}'$ then there is a switching sequence
@@ -688,7 +688,11 @@ The possibility of losing independence posticipating a derivation is due to left
 \begin{frame}{Future works}\justifying 
 	This work is only the first step in an attempt to construct a concurrent semantics for left-linear DPO rewriting systems.
 	
-	In \cite{baldan2017domains} a category of domains, called \emph{weak prime domains} has been proposed as a possible concurrent semantic for systems allowing fusions. We plan to build on the results proved in this paper to show that to every left-linear DPO rewriting system it is possible to associate one of these domains, representing ``derivation up to switches''.
+	\smallskip \pause 
+	
+	In \cite{baldan2017domains} a category of domains, called \emph{weak prime domains} has been proposed as a possible concurrent semantic for systems allowing fusions. 	
+	
+	\smallskip \pause We plan to build on the results proved in this paper to show that to every left-linear DPO rewriting system it is possible to associate one of these domains, representing ``derivation up to switches''.
 \end{frame}
 
 \begin{frame}{\hspace{1pt}}
