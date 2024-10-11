@@ -159,6 +159,13 @@ textsize=tiny]{todonotes}
 
 %%%%%%%% MATHEMATICAL NOTATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+\newcommand{\cori}{\mathbf{CS}}
+\newcommand{\cla}{\mathbf{CL}}
+\newcommand{\pos}{\mathbf{PO}}
+\newcommand{\gori}{\mathbf{GS}}
+
+
 %symbol for natural numbers
 \newcommand{\nat}{\ensuremath{\mathbb{N}}}
 
@@ -186,6 +193,21 @@ textsize=tiny]{todonotes}
 
 % difference of irreducible elements
 \newcommand{\diff}[2]{\ensuremath{\delta({#1},{#2})}}
+
+
+%arrows
+\newcommand{\rightarrowdbl}{\rightarrow\mathrel{\mkern-14mu}\rightarrow}
+
+\newcommand{\xrightarrowdbl}[2][]{%
+	\xrightarrow[#1]{#2}\mathrel{\mkern-14mu}\rightarrow
+}
+
+
+\newcommand{\mini}[0]{\scalebox{.4}{$\bullet$}}
+\newcommand{\rto}[0]{\xrightarrow{\mini}}
+\newcommand{\fto}[0]{\xrightarrowdbl{\mini}}
+\newcommand{\eto}[0]{\twoheadrightarrow}
+
 
 % immediate precedence
 
@@ -378,6 +400,7 @@ textsize=tiny]{todonotes}
 
 \newcommand{\gph}[1]{\textbf{\textup{{#1}-Graph}}}
 
+\newcommand{\mf}[1]{{#1}^\mathsf{m}}
 \newcommand{\dph}{\mathsf{dph}}
 %identitÃ 
 \newcommand{\id}[1]{\mathsf{id}_{#1}}
@@ -386,7 +409,7 @@ textsize=tiny]{todonotes}
 	%Variabili categorie
 \def\A{\textbf {\textup{A}}}
 %mono
-\newcommand{\mto}[0]{\scalebox{1}{$\rightarrowtail$}}
+\newcommand{\mto}[0]{\rightarrowtail}
 
 
 \newcommand{\sk}{\mathsf{sk}_{\X}}
@@ -399,6 +422,16 @@ textsize=tiny]{todonotes}
 \def\X{\textbf {\textup{X}}}
 \def\Y{\textbf {\textup{Y}}}
 \def\G{\textbf {\textup{G}}}
+\def\Z{\textbf {\textup{Z}}}
+
+
+\newcommand{\dm}[1]{\mathsf{dom}({#1})}
+
+
+\newcommand{\sub}[3]{{\mathcal{#1}}\textrm{-}\mathsf{Sub}_{\textbf {\textup{#2}}}(#3)}
+
+\newcommand{\msub}[2]{\mathsf{Sub}_{\textbf {\textup{#1}}}(#2)}
+
 
 \newcommand{\ske}{\mathsf{sk}(\X)}
 \renewcommand{\P}{\textbf {\textup{P}}}
@@ -473,6 +506,7 @@ textsize=tiny]{todonotes}
 %\newtheorem{lemma}[theorem]{Lemma}
 %\newtheorem{corollary}[theorem]{Corollary}
 
+\newtheorem*{setting}{Setting}
 %\theoremstyle{definition}
 %\newtheorem{definition}[theorem]{Definition}
 \newtheorem*{notation}{Notation}
@@ -631,12 +665,921 @@ obtain a weak prime domain [pag. 30-32, notes]
 \section{Background}
 \label{sec:back}
 
-\section{A class of well behaved rewriting systems}
+\subsection{Consistent permutations}
+
+\section{A class of well-behaved rewriting systems}
 \label{sec:rewr}
+
+This section is devoted to the introduction and study of a, quite general, setting in which the study of the concurrency properties of left-linear DPO-rewriting systems can be carried on.
+
+\begin{setting}Let $(\X, \R)$ be a left-linear DPO-rewriting system on an $\mathcal{M}$-adhesive category $\X$. For the remaining of this section we assume the following properties:
+	\begin{enumerate}
+		\item $\X$ has all pushouts and pullbacks;
+		\item there is a proper and stable factorization system $(\mathcal{E}, \mathcal{M})$ on $\X$;
+		\item $(\X, \R)$ is strong-enforcing;
+		\item there is a good coreflective subcategory $\Y$ of $\X$ containing that the left- hand side of every rule in $\R$;
+		\item $ I_{\Y}\circ R_{\Y}$ sends arrows who are in  $\mathcal{R}_\Y\cap \mathcal{E}$ to arrows in $\mathcal{E}$;
+		\item $\mathcal{R}_\Y $ contains the right leg of every rule in $\R$.
+	\end{enumerate}
+	
+	Given an arrow $f\colon X\to Y$ of $\X$,  we will use the following notational conventions:
+	\begin{itemize}
+		\item $f\colon X\mto Y$ if $f$ belongs to $\mathcal{M}$;
+		\item $f\colon X\eto Y$ if $f$ belongs to $\mathcal{E}$;
+		\item $f\colon X \rto Y$ if $f$ belongs to $\mathcal{R}_\Y$ ;
+		\item $f\colon X \fto Y$ if $f$ is a \emph{fusion}, i.e.~belongs to both $\mathcal{R}_\Y$ and $\mathcal{E}$. 
+		\end{itemize}
+		
+		
+		Given an object $X$, we can consider the poset $\fuse{X}$
+\end{setting}
+
+
+\begin{proposition}\label{prop:fusion}
+	The class of fusions is stable under pullbacks, pushouts and closed under composition. Moreover, the image of a fusion through $I_\Y\circ R_{\Y}$ is again a fusion.
+\end{proposition}
+\begin{proof}
+	By \Cref{prop:varie} we know that $\mathcal{R}_\Y$ is closed under composition and stable under pullbacks, while it is stable under pushout by definition. On yhe other hand, $\mathcal{E}$ is stable under pushout and closed under composition by \Cref{cor:iso2}. By hypothesis $(\mathcal{E}, \mathcal{M})$ is stable and so $\mathcal{E}$ is stable under pullbacks. Let now $e\colon X\fto Y$ be a fusion we have a diagram:
+	\[\xymatrix@C=35pt{R_\Y(I_\Y(R_{\Y}(X))) \ar[r]^-{R_\Y(\epsilon_X)} \ar[d]_{R_\Y(I_\Y(R_\Y(e)))}&R_{\Y}(X) \ar[d]^{R_\Y(e)}\\R_\Y(I_\Y(R_{\Y}(Y))) \ar[r]_-{R_\Y(\epsilon_Y)}&R_\Y(Y)}\]
+	
+	By \Cref{cor:cou} the horizontal arrows are isomorphisms and $R_\Y(e)$ is mono because $e$ is a fusion, thus $I_\Y(R_\Y(e))$ is in $\mathcal{R}_\Y$. By hypothesis $I_\Y(R_\Y(e))$ is in $\mathcal{E}$ and we can conclude.
+\end{proof}
+
+\begin{example}
+\todo{grafi}
+\end{example}
+
+\begin{remark}\label{rem:ws}
+Under the conditions of our setting, the system $(\X, \R)$ is well switching. Indeed, suppose that the diagram below is given. Since $f_1$ is in $\mathcal{M}$ we have that $j_0=i_0$, on the other hand, $L_1$ belongs to $\Y$ and $g_0$ belongs to $\mathcal{R}_\Y$, and so $j_1$ is equal to $i_1$ by the fourth point of \Cref{prop:varie}.
+	\[\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]_{r_0}^{\mini} & R_0 \ar@/^.3cm/@<-.5ex>[drrr]|(.22)\hole|(.32)\hole_(.4){i_0} \ar@<.5ex>@/^.3cm/[drrr]|(.3)\hole|(.39)\hole^(.7){j_0} \ar[dr]|(.29)\hole|(.35)\hole_{h_0} && L_1 \ar@<.5ex>@/_.3cm/[dlll]^(.4){i_1} \ar@<-.5ex>@/_.3cm/[dlll]_(.7){j_1} \ar[dl]|(.29)\hole|(.35)\hole^(.6){m_1}& K_1\ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]_{r_1}^{\mini} && R_1 \ar[d]^{h_1}\\G_0 && \ar@{>->}[ll]^{f_0} D \ar[rr]_{g_0}^{\mini}&& G_1  && \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}^{\mini}&& G_2}\]	
+\end{remark}
+
+
+\begin{lemma}Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^{n}$ be a derivation, then the following hold true:
+	\begin{enumerate}
+		\item $\iota_{\der{D}, G_0}\colon G_0\to \tpro{D}$ belongs to $\mathcal{R}$ and $\iota_{\der{D}, G_{n+1}}\colon G_{n+1}\to \tpro{D}$ belongs to $\mathcal{M}$;
+		\item for every $i\in [0, n+1]$, there are  arrows $m_i$ in $\mathcal{M}$ and $r_i$ in $\mathcal{R}$ such that the coprojection $\iota_{\der{D}, G_i}\colon G_i\to \tpro{D}$ is equal to $r_i\circ m_i$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}		
+		\item We proceed by induction on the length of $\der{D}$.
+		
+		\smallskip \noindent $\lgh(\dder{D})=0$. then $\tpro{\dder{D}}$ is simply $(G_0, \{\id{G_0}\})$ and $\id{G_0}$ belongs to $\mathcal{M}$ and $\mathcal{R}$.
+		
+		\smallskip \noindent$\lgh(\dder{D})=1$. Suppose that $\dder{D}$ has as its single component the derivation
+		\[\xymatrix{L_0 \ar[d]_{m_0}& K_0 \ar[d]^{k_0}\ar@{>->}[l]_{l_0} \ar[r]_{r_0}^{\mini} & R_0 \ar[d]^{h_0} \\G_0& \ar@{>->}[l]^{f_0} D_0 \ar[r]_{g_0}^{\mini}& G_1  \\}\]
+	Then the thesis follows since we have the following pushout square.
+		\[\xymatrix{D_0 \ar@{>->}[d]_{f_0} \ar[r]_{g_0}^{\mini} & G_1 \ar@{>->}[d]^{\iota_{\der{D}, G_1}} \\G_0 \ar[r]_-{\iota_{\der{D}, G_0}}^{\mini}& \tpro{D} }\]
+		
+		\smallskip \noindent$\lgh(\dder{D})\geq 2$. Let $\der{D}$ be $\{\dder{D}_i\}_{i=0}^n$ with $n\geq 1$. Let also $\der{D}'$ be $\{\dder{D}_i\}^{n-1}_{i=0}$ and $\rho_n=(l_n, r_n)$ be the rule applied in $\dder{D}_n$. The thesis follows from the inductive hypothesis and the diagram below.
+		\[\xymatrix@C=30pt{L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar@{>->}[l]_{l_{n}} \ar[r]_{r_{n}}^{\mini} & R_{n} \ar[d]^{h_n} \\ G_{n} \ar@{>->}[d]_{\iota_{\der{D}' , G_{n}}}& \ar@{>->}[l]^{f_n} D_n \ar[r]^{\mini}_{g_n}& G_{n+1}  \ar@{>->}[d]^{\iota_{\der{D}, G_{n+1}}}\\  \lpro \der{D}' \ar[rr]_{p}^{\mini} \rpro && \tpro{D}\\ G_0 \ar[u]^-{\iota_{\der{D}', G_{0}}}_{\mini} \ar@/_.5cm/[urr]_{\iota_{\der{D}, G_0}}^\mini}\] 		
+		
+		\item We proceed again by induction the length of $\der{D}$.
+		
+		\smallskip \noindent$\lgh(\dder{D})=0$. This follows at once from the previous point.
+		
+		\smallskip \noindent$\lgh(\dder{D})=1$. Again, this follows from the previous point.
+		
+		\smallskip \noindent$\lgh(\dder{D})\geq 2$. As above, if $\der{D}$ is $\{\dder{D}_i\}_{i=0}^n$ with $n\geq 1$, we can consider the derivation $\der{D}':=\{\dder{D}_i\}^{n-1}_{i=0}$ and consider the rule $\rho_n$ be the rule applied in $\dder{D}_n$. By the inductive hypothesis, for every $i\in [0,n]$ we have the diagram below.
+		\[\xymatrix@C=30pt{L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar@{>->}[l]_{l_{n}} \ar[r]_{r_{n}}^{\mini} & R_{n} \ar[d]^{h_n} \\ G_{n} \ar@{>->}[d]_{\iota_{\der{D}' , G_{n}}}& \ar@{>->}[l]^{f_n} D_n \ar[r]^{\mini}_{g_n}& G_{n+1}  \ar@{>->}[d]^{\iota_{\der{D}, G_{n+1}}}\\  \lpro \der{D}' \ar[rr]_{p}^{\mini} \rpro && \tpro{D}\\X \ar[u]^{r_i}_{\mini} &&  G_i \ar[ull]^-{\iota_{\der{D}', G_{i}}} \ar[u]_{\iota_{\der{D}, G_i}} \ar@{>->}[ll]^{m_i}}\] 		
+		
+		The thesis now follows since $\mathcal{R}$ is closed under composition. To conclude, it is enough to notice that  the thesis for $i=n+1$ follows immediately from point $1$. 
+		\qedhere 
+	\end{enumerate}
+\end{proof}
+\begin{corollary}
+	\todo{match}
+\end{corollary}
+
+
+Our next step is to show that, in our setting, there is a kind of ``minimum'' fusion of an object $X$ to which a rewriting rule can be applied.
+
+\begin{definition} Let $\rho$ be a rule $(l, r)$ in $\R$ with left-hand side $L$. Let $e\colon X\fto Y$ and $e'\colon X\fto Y'$ be two fusions with the same domain and $m\colon L\to Y$ and $m'\colon L\to Y'$ be two arrows, we say that the pairs $(e,m)$ and $(e', m')$ are \emph{compatible with respect to $\rho$} if the following diagram is commutative, where the outer square is a pushout.
+
+\[\xymatrix{X\ar@{>>}[rr]^\mini_{e} \ar@{>>}[dd]_{e'}^\mini & & Y \ar@{>>}[dd]_{q}^\mini\\ &L  \ar[ur]_{m} \ar[dl]^{m'}\\Y' \ar@{>>}[rr]_{q'}^{\mini} && Q}\]
+
+Given a fusion $e\colon X\fto Y$ and an arrow $m\colon L\to Y$, we will denote by $\mathcal{F}_\rho(e, m)$ the class of pairs compatible with $(e, m)$ with respect to a given rule $\rho$.  
+\end{definition}
+
+\begin{example}
+	tutti i sotto quozienti
+\end{example}
+
+
+\begin{lemma}
+	Let $e\colon X\fto Y$, $\rho\in \R$ with left-hand side $L$ and $m\colon L\to Y$ be such that $\mathcal{F}_\rho(e, m)$.  Then there exists a fusion $(\mf{e},\mf{m})\colon L\to \mf{Y}$  in $\mathcal{F}_\rho(e, m)$ and for every other $(e', m')$ in it there exists $f\colon \mf{Y}\to Y'$, where $Y'$ is the codomain of $e'$, such that:
+\[f\circ e =e' \qquad f\circ m=m'\]
+\end{lemma}
+
+\begin{proof}By hypothesis $I$ is non-empty, thus we can consider $k$ in it and $e_k\colon X\to Y_k$.  Consider the two diagrams below, where the upper square  in the inner rectangle one is the image through $I_\Y\circ R_\Y$ of a pullback square, while the outer rectangle is a pushout. Notice that, by hypothesis and \Cref{prop:fusion}, all the horizontal arrows and the coprojection $e\colon X\to Y$ are fusions and, moreover, there exists the dotted arrow $f_k\colon Y\to Y_k$.
+	\[\xymatrix@C=55pt{I_\Y(R_\Y(P)) \ar[d]_{I_\Y(R_\Y(p_2)) } \ar@{>>}[r]_-{I_\Y(R_\Y(p_1))}^{\mini} & I_\Y(R_\Y(L)) \ar@/^.4cm/[dddr]^{q} \ar[d]_{I_\Y(R_\Y(m_k)) } \\ I_\Y(R_\Y(X)) \ar[d]_{\epsilon_X} \ar@{>>}[r]_-{I_\Y(R_\Y(e_k))}^{\mini}& I_\Y(R_\Y(Y_k)) \ar[d]_{\epsilon_X}  \\ X\ar@{>>}@/_.5cm/[drr]^{\mini}_{e} \ar@{>>}[r]_{e_k}^{\mini}& Y_k \\ &&Y\ar@{.>}[ul]_{f_k}}\]
+
+	Let now $i$ be any other element of $i$.
+	
+	
+\end{proof}
+ 
+ 
+ \begin{corollary}
+\todo{quoziente minimo}
+ \end{corollary}
+ 
+ 
+
+Finally....
+
+\todo{indipendenza}
+
+\subsection{Derivations with fusions}
 
 \section{Domain and event structure semantics}
 \subsection{Domain of traces}
 \subsection{Weak prime domain and connected event structures}
+
+
+
+\bibliographystyle{plain}
+\bibliography{bibliog.bib}
+
+\appendix
+
+\section{Preliminaries on subobjects, images, pullbacks and factorization systems}\label{app:fact}
+
+
+This first section is devoted to recall some classic notions related to subobjects, pullbacks and ways to factorize an arrow. The main source for the presentation is \cite[Ch.~1]{dikranjan2013categorical}.
+\subsection{The pullback functor and right $\mathcal{M}$-images}
+
+Let us start defining the \emph{pullback functor} and show how the existence of a left adjoint to it yields a notion of image of an arrow.
+
+\begin{definition}
+	Let $\mathcal{M}$ be a class of arrows in a category $\X$ with $\mathcal{M}$-pullbacks. Suppose that $\mathcal{M}$ is stable under pullbacks, then given an arrow $f\colon X\to Y$, we define the \emph{pullback functor} $f^*\colon \mathcal{M}/Y\to \mathcal{M}/X$ sending an arrow $m:M\to Y$ in $\mathcal{M}$ to a chosen pullback of it along $f$. Given a morphism $g:m\to n$ in $\mathcal{M}/Y$, the arrow $f^*(g)$ is the unique one fitting in the diagram below.
+	\[\xymatrix{f^*(M)  \ar[dd]_{f^*(m)} \ar@{.>}[dr]_{f^*(g)}\ar[rr]^{p_m}&& M \ar[dr]^{g}\ar[dd]^(.3){m} \\&f^*(N)  \ar[rr]^(.35){p_n}|(.55)\hole \ar[dl]_{f^*(n)}&& N \ar[dl]^{n}\\ X \ar[rr]_{f}&& Y }\]
+\end{definition}
+
+\begin{notation}
+	If $m\colon M\to X$ is an arrow in $\mathcal{M}$ and $f\colon X\to Y$ is another morphism, we will denote the chosen domain of $f^*(m)$ by $f^*(M)$.
+\end{notation}
+
+\begin{proposition} Let $f\colon X\to Y$ be an arrow in a category $\X$ and $\mathcal{M}$ a class of arrows stable under pullbacks and such that $f$ has a pullback along any arrow in $\mathcal{M}$. Let also $F\colon\D\to \mathcal{M}/Y$ be a diagram with a limiting cone $(l, \{l_D\}_{D\in \D})$ and suppose that  $L$ is the domain of $l$. Denoting $F(D)$ by  $m_D\colon M_D\to Y$, if  $(L, \{l_D\}_{D\in \D}+\{l\})$ is limiting for the diagram in $\X$ determined by the family of arrows $\{m_D\}_{D\in \D}$, then for every $f\colon X\to Y$, $f^*$ preserves the limit of $F$.
+\end{proposition}
+\begin{proof}
+	Let $(a, \{a_D\}_{D\in \D})$ be a cocone in $\{\mathcal{M}/X\}$ over $f^*\circ F$. Then we have the solid part of the diagram below.
+	\[\xymatrix{A \ar@/_.8cm/[dd]_{a}\ar[d]^{a_D}  \ar@{.>}[r]_-{b} \ar@/^.5cm/@{.>}[rrr]^{c}&f^*(L)  \ar@/^.7cm/[ddl]|(.37)\hole^(.6){f^*(l)} \ar[rr]_{q} \ar[dl]^{f^*(l_D)}&&L \ar@/^.3cm/[ddl]^{l} \ar[dl]_{l_D}\\f^*(M_D)  \ar[d]^{f^*(m_D)} \ar[rr]^(.7){p_{F(D)}}&& M_D \ar[d]_{m_D} \\ X \ar[rr]_{f}&& Y }\]
+	
+	Now, notice that, for every $D\in \D$ we have
+	\begin{align*}
+		m_D\circ p_{F(D)} \circ a_D&=f\circ f^*(m_D)\circ a_D \\&=f\circ a
+	\end{align*}
+	Moreover, given an arrow $g\colon D\to D'$ in $\D$ then we have
+	\begin{align*}
+		F(g)\circ p_{F(D)}\circ a_D&=p_{F(D')}\circ f^*(F(g))\circ a_D\\&=p_{F(D')}\circ a_{D'}
+	\end{align*}
+	
+	Thus $(A, \{p_{F(D)}\circ a_D\}_{D\in \D}+ \{f\circ a\})$ is a cone over the diagram in $\X$ determined by $\{m_D\}_{D\in \D}$, so that we get the dotted arrow $b\colon A\to L$ in the diagram above. This arrow,  in turn, yields also $a\colon A\to f^*(L)$. Moreover, we also have that
+	\[
+	\begin{split}
+		p_{F(D)}\circ f^*(l_D)\circ b&= l_D\circ q \circ b\\&=l_D\circ c\\&=p_{F(D)}\circ a_D
+	\end{split}\qquad 
+	\begin{split}
+		f^*(m_D) \circ f^*(l_D)\circ b&= f^*(l)\circ b\\&=a\\&=f^*(m_D)\circ a_D
+	\end{split}
+	\]
+	So that $b$ defines an arrow $a\to f^*(l)$ in $\mathcal{M}/X$ auch that $f^*(l_D)\circ b =a_D$
+	
+	To see that $b$ is unique, let $b'\colon a\to f^*(l)$ be another arrow such that $f^*(l_D)\circ b' =a_D$, then
+	\[\begin{split}
+		l\circ q \circ b'&=f\circ f^*(l)\circ b'\\&=f\circ a\\&=l\circ c
+	\end{split} \qquad \begin{split}
+		l_D\circ q \circ b'&=p_{F(D)}\circ f^*(l_D)\circ b'\\&=p_{F(D)}\circ a_D\\&=l_D\circ c
+		3\end{split}\]
+	Thus $q\circ b'=c$, implying that $b'=b$.
+\end{proof}
+
+The previous theorem gives us at once the following result.
+
+\begin{corollary} \label{cor:finlim}
+	Let $f\colon X\to Y$ be an arrow in a category $\X$ and $\mathcal{M}$ a class of arrows stable under pullbacks and such that $f$ has a pullback along any arrow in $\mathcal{M}$. Then $f^*$ preserves binary products. If, moreover, $\id{Y}$ belongs to $\mathcal{M}$ then $f^*$ preserves finite products.
+\end{corollary}
+
+Having examined the continuity properties of the pullback functor we can now turn to the notion of \emph{right $\mathcal{M}$-images}.
+
+\begin{definition}
+	Let $\mathcal{M}$ be a class of arrows in a category $\X$. A \emph{right $\mathcal{M}$-factorization
+	} of a morphism $f\colon X\to Y$ is a pair of arrows $m\colon M\to Y$ and $e\colon X\to M$ such that:
+	\begin{enumerate}
+		\item $m$ belongs to $\mathcal{M}$ and $f=m\circ e$;
+		\item given an arrow $n\colon N\to Z$ in $\mathcal{M}$ and two morphisms $g\colon Y\to Z$, $h\colon X\to N$ makint the solid part of the diagram below commutative, then there exists a unique dotted $v\colon M\to N$ fitting in it.
+		\[\xymatrix{X \ar[r]_-{e} \ar@/^.4cm/[rr]^{f} \ar[d]_{h}& M \ar[r]_-{m} \ar@{.>}[dl]^{v} & Y \ar[d]^{g}\\N \ar[rr]_{n} && Z}\] 
+	\end{enumerate}  
+	
+	The arrow $m$ will be called the \emph{right $\mathcal{M}$-image} of $f$.
+\end{definition}
+
+\begin{remark}\label{rem:uniq}
+	Right $\mathcal{M}$-factorization are essentially unique. To see this, let $e\colon X\to M$ and $m\colon M\to Y$ be a right $\mathcal{M}$-factorization of an arrow $f\colon X\to Y$ and suppose that  $e'\colon X\to M'$ and $m'\colon M'\to Y$ is another, then we  get the existence of the dotted arrows in the following two diagrams
+	\[\xymatrix{X \ar[r]^-{e}  \ar[d]_-{e'}& M \ar[r]^-{m} \ar@{.>}[dl]^{v} & Y \ar[d]^{\id{Y}} & X \ar[r]^-{e'}  \ar[d]_{e}& M' \ar[r]_-{m'} \ar@{.>}[dl]^{w} & Y \ar[d]^{\id{Y}}\\M' \ar[rr]_{m'} && Y & M \ar[rr]_{m} && Y}\] 
+	On the other hand, from the commutativity of the diagram below we get at once that $v\circ w=\id{M'}$ and $w\circ v=\id{M}$.
+	\[\xymatrix{X \ar[rr]^-{e}  \ar[dr]_-{e'} \ar[dd]_{e}&& M \ar[r]^-{m} \ar[dl]^{v} & Y \ar[dd]^{\id{Y}} & X \ar[dr]^{e} \ar[rr]^-{e'}  \ar[dd]_{e'}&& M' \ar[r]_-{m'} \ar[dl]^{w} &Y \ar[dd]^{\id{Y}}\\ & M' \ar[dl]^{w}  \ar[drr]^{m'} &&&&M\ar[dl]^{v} \ar[drr]^{m}\\M \ar[rrr]_{m} &&& Y & M' \ar[rrr]_{m'} &&& Y}\] 
+\end{remark}
+
+
+\begin{proposition}\label{prop:im}
+	Let $\mathcal{M}$ be a class of arrows in a category $\X$ and suppose that every morphism in $\X$ has a right $\mathcal{M}$-factorization. Then for every arrow $f\colon X\to Y$, there is a functor $f_*\colon \mathcal{M}/X\to \mathcal{M}/Y$ sending $m\colon M\to X$ to a chosen right $\mathcal{M}$-image of $f\circ m$.
+\end{proposition}
+\begin{notation}
+	As in the case of the pullback functor, if $m$ is an arrow $M\to X$, then we will denote the chosen domain of $f_*(m)$ by $f_*(M)$.
+\end{notation}
+\begin{proof}
+	We only have to define $f_*$ on arrows. Let thus $g$ be a morphism in $\mathcal{M}/X$ between $m\colon M\to X$ and $n\colon N\to X$. Now, since \[f\circ m = f\circ n\circ g\] the solid part of the diagram below commutes, allowing us to define $f_*(g)$ as the dotted arrow.
+	\[\xymatrix@C=30pt{M \ar[dr]_(.35){m}|(.55)\hole\ar[r]^-{e_m} \ar[d]_{g}& f_*(M)  \ar@/_.3cm/@{.>}[ddl]^(.7){f_*(g)}\ar[r]^-{f_*(m)}& Y \ar[dd]^{\id{Y}}\\N \ar[d]_{e_n} \ar[r]|(.32)\hole^(.6){n} & X  \ar[dr]^{f}\\f_*(N) \ar[rr]_{f_*(n)}&& Y}\]
+	
+	It is clear that, with the above definition, $f_*(\id{m})=\id{f_*(m)}$. Let $h\colon n\to o$ be another morphism in $\mathcal{M}/X$, then we can build the following diagram.
+	\[\xymatrix@C=30pt{M \ar[r]^-{e_m} \ar[d]_{g}& f_*(M)  \ar[d]_{f_*(g)}\ar[r]^-{f_*(m)}& Y \ar[dd]^{\id{Y}}\\N \ar[r]^-{e_n} \ar[d]_{h} & f_*(N) \ar[d]_{f_*(h)} \ar[dr]^{f_*(n)}\\O\ar[r]_-{e_o}& f_*(O) \ar[r]_{f_*(o)}& Y}\]
+	From this it follows at once that $f_*(h)\circ f_*(g)=f_*(g\circ h)$.
+\end{proof}
+\begin{remark} If $\id{X}$ belongs to $\mathcal{M}$, then $f_*(\id{X})$ is a right $\mathcal{M}$-image of $f$.
+\end{remark}
+
+The relationship of right $\mathcal{M}$-images to the pullback functors is explained by the following two results.
+
+\begin{proposition}\label{prop:part}
+	Let $\mathcal{M}$ be a class of arrows  in a category $\X$, containing  all identities and stable under pullbacks. Suppose, moreover, that every morphism has a right $\mathcal{M}$-factorization. Then $f_*\dashv f^*$ for every arrow $f\colon X\to Y$.  
+\end{proposition}
+\begin{proof}
+	First of all we can notice that for every $m\colon M\to X$ in $\mathcal{M}/X$ the commutativity of the solid part of the following diagram yields the dotted morphism $\eta_n\colon m\to f^*(f_*(m))$.
+	\[\xymatrix@C=30pt{M \ar@{.>}[dr]^{\eta_m} \ar@/^.4cm/[drr]^{e_m} \ar@/_.4cm/[ddr]_{m}\\ & f^*(f_*(M)) \ar[d]^{f^*(f_*(m))}\ar[r]^-{p_{f_*(m)}}& f_*(M) \ar[d]^{f_*(m)}\\ & X\ar[r]_f & Y}\]
+	
+	To see that $\eta_n$ is the component of a unit $\eta\colon \id{\mathcal{M}/X}\to f^*\circ f_*$, let $g$ be a morphism $m\to f^*(n)$ for some $n\colon N\to Y$ in $\mathcal{M}/Y$. If $p_n:f^*(N)\to N$ is the canonical projection, then 
+	\begin{align*}
+		n\circ p_n\circ g&=f\circ f^*(n)\circ g\\&=f\circ m
+	\end{align*}
+	Therefore we can consider the diagram below to get $h\colon f_*(m)\to n$ in $\mathcal{M}/Y$. 
+	\[\xymatrix@C=30pt{M \ar[r]^-{e_m} \ar[d]_{g}& f_*(M) \ar[r]^-{f_*(m)}\ar@{.>}@/^.3cm/[ddl]^{h} & Y \ar[dd]^{\id{Y}}\\f^*(N) \ar[d]_{p_n}\\N \ar[rr]_{n}&& Y}\]
+	
+	Finally, the equations
+	\[\begin{split}
+		f^*(n)\circ f^*(h)\circ \eta_m&=f^*(f_*(m))\circ \eta_m\\&=m\\&=f^*(n)\circ g
+	\end{split} \qquad \begin{split}
+		p_n\circ f^*(h)\circ \eta_m&=h\circ p_m\circ \eta_m\\&=h\circ e_m\\&=p_n\circ g
+	\end{split}\]
+	entail that $f^*(h)\circ \eta_m=g$ as wanted.
+	
+	Let now $h'\colon f_*(m)\to n$ be an arrow such that $f*(h')\circ \eta_m=g$, then
+	\begin{align*}
+		h'\circ e_m&=h'\circ p_{f_*(m)}\circ \eta_m\\&=p_n\circ f^*(h')\circ \eta_m\\&=p_n\circ g
+	\end{align*}
+	Thus $h'$ fits in the diagram
+	\[\xymatrix@C=30pt{M \ar[r]^-{e_m} \ar[d]_{g}& f_*(M) \ar[r]^-{f_*(m)}\ar@/^.3cm/[ddl]^{h'} & Y \ar[dd]^{\id{Y}}\\f^*(N) \ar[d]_{p_n}\\N \ar[rr]_{n}&& Y}\]
+	showing that $h=h'$.	
+\end{proof}
+
+\begin{lemma}\label{lem:rfact}
+	Let $\mathcal{M}$ be a class of arrows  in a category $\X$, containing all identities then the following are equivalent:
+	\begin{enumerate}
+		\item $\mathcal{M}$ is stable under pullbacks, $\X$ has all $\mathcal{M}$-pullbacks and every morphism has a right $\mathcal{M}$-factorization;
+		\item $\mathcal{M}$ is stable under pullbacks, $\X$ has all $\mathcal{M}$-pullbacks and for every morphism $f\colon X\to Y$, $f^*$ has a left adjoint;
+		\item every morphism has a right $\mathcal{M}$-factorization and for every arrow $f\colon X\to Y$, $f_*$ has a right adjoint.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	$(1\Rightarrow 2)$ This follows at once from \Cref{prop:part}.
+	
+	\smallskip \noindent $(2\Rightarrow 1)$ Let $L_f\colon \mathcal{M}/X\to \mathcal{M}/Y$ be the left adjoint to $f^*$. Since $\id{X}$ belongs to $\mathcal{M}$ we can define $m\colon M\to Y$ in $\mathcal{M}$ as  $L_f(\id{X})$. Moreover, let $\eta_{\id{X}}$ be the component at $\id{X}$ of the unit of the adjunction $L_f \dashv f^*$, if $p_m$ is the projection $f^*(M)\to M$, we can also define $e$ as $p_m\circ \eta_{\id{X}}$. Notice that, by construction, $m\circ e=f$.
+	\[\xymatrix@C=30pt{X \ar@/^.4cm/[rr]^e \ar@/_.4cm/[dr]_{\id{X}} \ar[r]_-{\eta_{\id{X}}} & f^*(M) \ar[r]_-{p_m} \ar[d]^{f^*(m)}& M \ar[d]^{m}\\ & X \ar[r]_f& Y}\]
+	
+	We have to show that $e$ and $m$ so defined really give us a right $\mathcal{M}$-factorization of $f$. We thus start with the solid part of the diagram below, with $n\in \mathcal{M}$.
+	\[\xymatrix@C=35pt{f^*(M)\ar[dr]^-{p_m}\\X \ar[r]^-{e} \ar[u]^{\eta_{\id{X}}} \ar|(.36)\hole@/_.5cm/[rr]_{f} \ar[d]_{h}&   M \ar[r]^-{m} \ar@{.>}[dl]^(.6){v} & Y \ar[d]^{g}\\N \ar[rr]_{n} && Z}\] 
+	
+	We can apply the pullback property of the inner rectangle below to get the dotted arrow $w\colon M\to f^*(g^*(N))$, which, by construction, defines an arrow $m\to f^*(g^*(n))$.
+	\[\xymatrix@C=30pt{X \ar@/^.5cm/[drrr]^{h} \ar@/_1cm/[ddr]_{\id{X}} \ar@{.>}[dr]^{w}\\ &f^*(g^*(N)) \ar[d]_{f^*(g^*(n))}\ar[r]^-{p_{g^*(n)}}& g^*(N) \ar[d]_{g^*(n)} \ar[r]^{p_n} & N \ar[d]^{n} \\ &X \ar[r]_{f}& Y \ar[r]_g & Z}\]
+	
+	By construction $w$ defines a morphism $\id{X}\to f^*(g^*(n))$, thus by adjointness, this implies the existence of a unique $\hat{w}\colon m\to g^*(n)$ such that $f^*(\hat{w})\circ \eta_{\id{X}} =w$. Let $v$ be $p_n\circ \hat{w}$, then
+	\[\begin{split}
+		v\circ e &= p_n\circ \hat{w} \circ p_m\circ \eta_{\id{X}} \\&=p_n\circ p_{g^*(n)}\circ f^*(\hat{w})\circ \eta_{\id{X}}\\&=p_n\circ p_{g^*(n)}\circ w \\&=h
+	\end{split}\qquad  \begin{split}
+		n\circ v &=n\circ p_n\circ \hat{w}\\&=g\circ g^*(n)\circ \hat{w}\\&=g\circ m\\&
+	\end{split}\] 
+	
+	To see that such $v$ is unique, let $v'$ be another arrow $M\to N$ such that
+	\[v'\circ e=h \qquad n\circ v'=g\circ m\]
+	The second of these equations entail the existence of the dotted $q\colon M\to g^*(N)$.
+	\[\xymatrix{M \ar@{.>}[dr]^{q}\ar@/^.3cm/[drr]^{v'} \ar@/_.3cm/[ddr]_{m}\\ &g^*(N) \ar[d]^{g^*(n)}\ar[r]^{p_n}& N\ar[d]^{n}\\ &Y\ar[r]_{g} & Z}\]
+	Notice that, in particular, $q$ is a morphism $m\to g^*(n)$ in $\mathcal{M}/Y$. Now, we can also consider the following diagram, which entails that $f^*(q)\circ \eta_{\id{X}}=w$.
+	\[\xymatrix@C=30pt{f^*(M) \ar@/_1.2cm/[ddd]_{f^*(m)}\ar[dd]_{f^*(q)}\ar[rr]^{p_m}&&M \ar[dd]_{q}\ar@/^.9cm/[ddd]_(.4){m}|(.67)\hole \ar@/^.6cm/[ddr]^{v'}\\&X\ar@/^.8cm/[ddl]|(.33)\hole_(.2){\id{X}} \ar[drr]_(.3){h}|\hole|(.74)\hole\ar[ul]^{\eta_{\id{X}}} \ar[ur]_{e}\\ f^*(g^*(N)) \ar[d]^{f^*(g^*(n))}\ar[rr]_(.67){p_{g^*(n)}}&& g^*(N) \ar[d]_{g^*(n)} \ar[r]_(.65){p_n} & N \ar[d]^{n} \\ X \ar[rr]_{f}&& Y \ar[r]_g & Z}\]
+	Thus $q$ must coincide with $\hat{w}$ and therefore $v'=v$.
+	
+	\smallskip \noindent $(1\Rightarrow 3)$ This also follows from \Cref{prop:part}.
+	
+	\smallskip \noindent $(3\Rightarrow 1)$ Let $R_f\colon \mathcal{M}/Y\to \mathcal{M}/Y$ be the right adjoint to $f_*$. Given $n\colon N\to Y$ in $\mathcal{M}$, we can build the rectangle below, where $f(R_f(n))$ and $e$ is a (chosen) right $\mathcal{M}$-factorization of $f\circ R_f(n)$ and $\epsilon\colon f_*\circ R_f\to \id{\mathcal{M}/Y}$ is the counit of the adjunction $f_* \dashv f^*$. 
+	\[\xymatrix{R_f(N) \ar[d]_{R_f(n)} \ar[r]^-{e}& f_*(R_f(N))  \ar[r]^-{\epsilon_n} \ar[dr]_{f_*(R_f(n)) \hspace{3pt}}& N \ar[d]^{n}\\
+		X \ar[rr]_{f}&& Y}\]
+	
+	We have to show that such a rectangle is a pullback. To do so, let $h\colon Z\to N$ and $g\colon Z\to X$ be arrows such that $n\circ h=f\circ g$ and consider the right $\mathcal{M}$-factorization of $g$ given by arrows $i\colon Z\to K$ and $k\colon K\to X$, with $k\in \mathcal{M}$. Thus there exists the dotted $w\colon K\to N$ in the diagram below.
+	\[\xymatrix{Z \ar[r]_{i}\ar@/^.4cm/[rr]^{g}\ar[d]_{h}& K \ar@{.>}[dl]^{w} \ar[r]_k & X \ar[d]^{f}\\
+		N \ar[rr]_{n}&& Y}\]
+	
+	In turn, we can factor $f\circ k$ to get the following rectangle and, henceforth, the existence of the dotted $u\colon f_*(K)\to N$.
+	\[\xymatrix{K \ar[r]_-{j}\ar@/^.4cm/[rr]^-{f\circ k}\ar[d]_{w}& f_*(K) \ar@{.>}[dl]^{u} \ar[r]_{f_*(k)} & Y \ar[d]^{\id{Y}}\\
+		N \ar[rr]_{n}&& Y}\]
+	
+	By construction $u$ is a morphism $f_*(k)\to n$, we can thus consider the unique morphism $\hat{u}\colon k\to R_f(n)$ such that
+	\[\epsilon_n\circ f_*(\hat{u})=u\]
+	
+	Summing up we have constructed the diagram that follows.
+	\[\xymatrix{Z \ar@/^.4cm/[drrrr]^{h}\ar[dr]^{i} \ar@/_1cm/[ddrr]_{g}\\& K \ar[r]^-{\hat{u}} \ar@/_.2cm/[dr]_{k}& R_f(N) \ar[d]_{R_f(n)} \ar[r]^-{e}& f_*(R_f(N))  \ar[r]_-{\epsilon_n} \ar[dr]_{f_*(R_f(n)) \hspace{3pt}}& N \ar[d]^{n}\\ && 
+		X \ar[rr]_{f}&& Y}\]
+	
+	To conclude it is now enough to show that $\hat{u}\circ i$ is the unique morphism $Z\to R_f(N)$ such that 
+	\[\epsilon_n\circ e \circ \hat{u}\circ i=h\qquad R_f(n)\circ \hat{u}\circ i=g\]
+	
+	Let, therefore, $t$ be an arrow $Z\to R_f(N)$ such that
+	\[\epsilon_n\circ e \circ t=h\qquad R_f(n)\circ t=g\]
+	The second equation provides us with the commutative rectangle below, guaranteeing the existence of the dotted $s\colon k\to R_f(n)$.
+	\[\xymatrix{Z \ar[r]_-{i}\ar@/^.4cm/[rr]^-{g}\ar[d]_{t}& K \ar@{.>}[dl]^{s} \ar[r]_{k} & X \ar[d]^{\id{X}}\\
+		R_f(N) \ar[rr]_{R_f(n)}&& X}\]
+	
+	If we compute we get:
+	\[\begin{split}
+		n\circ \epsilon_n\circ e\circ s&=f_*(R_f(n))\circ e\circ s\\&=f\circ R_f(n)\circ s\\&=f\circ k
+	\end{split} \qquad \begin{split}
+		\epsilon_n\circ e\circ s\circ i&=\epsilon_n\circ e\circ t\\&=h\\&
+	\end{split} \]
+	
+	On the other hand, the definition of $f_*$ gives us the inner rectangle of the diagram below.
+	\[\xymatrix@C=30pt{K \ar@/_1.2cm/[ddd]_{w}\ar[dr]_(.35){k}|(.55)\hole\ar[r]^-{j} \ar[d]_{s}& f_*(K)  \ar@/_.3cm/[ddl]^(.75){f_*(s)}\ar[r]^-{f_*(k)}& Y \ar[dd]^{\id{Y}}\\R_f(N) \ar[d]_{e} \ar[r]|(.34)\hole_(.6){R_f(n)} & X  \ar[dr]^{f}\\f_*(R_f(N)) \ar[d]_{\epsilon_n} \ar[rr]_{f_*(R_f(n))}&& Y\\N\ar@/_.8cm/[urr]_{n}}\]
+	
+	From the commutativity of the whole diagram it follows that $\epsilon_n\circ f_*(s)=u$ and thus $s=\hat{u}$, entailing the thesis.
+\end{proof}
+
+\subsection{Factorization systems}
+
+We move now to the notion of \emph{factorization system} \cite{adamek2009abstract,bousfield1977constructions,kelly1991note,rosicky2007factorization,tholen1983factorizations}. Let us start by recalling its definition.
+
+\begin{definition}\label{def:fs}
+	Let $\X$ be a category and $\mathcal{E}$, $\mathcal{M}$ two classes of arrows, we will say that $(\mathcal{E},\mathcal{M})$ is a \emph{factorization system} if:
+	\begin{enumerate}
+		\item $\mathcal{E}$ and $\mathcal{M}$ are closed under composition with isomorphisms: if $f\colon X\to Y$ belongs to $\mathcal{E}$ (to $\mathcal{M}$) and $h\colon Y\to Z$ is an isomorphism then $h\circ f$ belongs to $\mathcal{E}$ (to $\mathcal{M}$);
+		\item  every arrow $f\colon X\to Y$ of $\X$ admits a \emph{$(\mathcal{E}, \mathcal{M})$-factorization}, i.e.~there are arrows $e\in \mathcal{E}$ and $m\in \mathcal{M}$ with the property that $f=m\circ e$;
+		\item every $e\in \mathcal{E}$ has the \emph{left lifting property} with respect to every $m\in \mathcal{M}$: for every commutative square as the one below, with $e\in \mathcal{E}$ and $m\in \mathcal{M}$ there exists a unique dotted $k\colon Y\rightarrow Z$ which fits in it.
+		\[\xymatrix{X \ar[r]^g \ar[d]_{e}& Z \ar[d]^{m}\\ Y \ar[r]_{f} \ar@{.>}[ur]^{k}& V}\] 
+	\end{enumerate}
+	
+	A factorization system is \emph{proper} if every $e\in \mathcal{E}$ is epi and every $m\in \mathcal{M}$ is mono; it is \emph{stable} if $\mathcal{E}$ is stable under pullbacks.
+\end{definition}
+
+\begin{remark}\label{rem:dual}It is immediate to notice that, given a factorization system $(\mathcal{E}, \mathcal{M})$ on $\X$, then $(\mathcal{M}, \mathcal{E})$ is a factorization system on $\X^{op}$. Such factorization system on $\X^{op}$ is proper if and only if $(\mathcal{E}, \mathcal{M})$ is so, it is stable if and only if $\mathcal{M}$ is stable under pushouts in $\X$.  
+\end{remark}
+
+We can now begin to prove some properties of factorization systems.
+
+\begin{proposition}\label{prop:el}
+	Let $(\mathcal{E}, \mathcal{M})$ be a factorization system on a category $\X$, then the following hold true:
+	\begin{enumerate}
+		\item $\mathcal{E}$ is the class of all arrows with the left lifting properties with respect to every $m\in \mathcal{M}$;
+		\item every isomorphism belongs to $\mathcal{E}$;
+		\item $\mathcal{E}$ is closed under composition.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item By definition, every arrow in $\mathcal{E}$ has the left lifting property with respect to every arrow in $\mathcal{M}$. To prove the converse, let $f\colon X\to Y$ be an arrow with such a property with respect to every element of $\mathcal{M}$.  We can factorize it as $m\circ e$ with $m\colon M\to Y$ in $\mathcal{M}$ and $e\colon X\to M$ in $\mathcal{E}$. Thus, in the diagram below, the outer square commutes and so we get the dotted $k\colon Y\to M$.
+		\[\xymatrix{X\ar[d]_f\ar[r]^e & M\ar[d]^{m}\\Y\ar[r]_{\id{Y}} \ar@{.>}[ur]^{k} & Y}\]
+		
+		On the other hand, $k\circ m$ fits in the diagram below, showing that $k$ and $m$ are mutually inverses. Thus $f=m\circ e$ belongs to $\mathcal{E}$.
+		\[\xymatrix{X\ar[rr]^{e} \ar[dd]_{e} \ar[dr]^{f}&& M\ar[dd]^{m} \ar@{<-}[dl]^{m}\\& Y\ar@{<-}[dl]^{k}\\M \ar[rr]_{m}&&Y}\]
+		\item By the previous point, it is enough to show that every isomorphism has the left lifting property. But this follows at once: indeed given a square
+		\[\xymatrix{X\ar[d]_e\ar[r]^f & M\ar[d]^{m}\\E\ar[r]_{g} \ar@{.>}[ur]^{k} & Y}\]
+		the unique $k\colon E\to M$ filling the diagonal in the diagram above is $f\circ e^{-1}$.
+		
+		\item Let $e\colon X\to Y$ and $e'\colon Y\to Z$ be two arrows in $\mathcal{E}$. Suppose that the outer rectangle below is given, with $m\in \mathcal{M}$.
+		\[\xymatrix{X  \ar[r]^f \ar[d]_{e}& M \ar[dd]^{m}\\Y \ar@{.>}[ur]^{k} \ar[d]_{e'}\\Z \ar@{.>}[uur]_{h}\ar[r]_{g}& W}\]
+		
+		Then the first dotted arrow $k\colon Y\to M$ exists since $e$ has the left lifting property with respecto to $m$. Its existence, in turn yields the existence of the other dotted arrow $h\colon Z\to M$. 
+		
+		Let $h'\colon Z\to M$ be another arrow such that 
+		\[m\circ h'=g \qquad h'\circ e'\circ e=f\]
+		Then $h'\circ e'$ must coincide with $k$ by the uniqueness clause of the left lifting property and thus, by the same clause, $h'$ must be equal to $h$. By the first point $e'\circ e$ belongs to $\mathcal{E}$. \qedhere 
+	\end{enumerate}
+\end{proof}
+
+Taking into account \Cref{rem:dual}, the previous proposition gives us the following results.
+
+\begin{corollary}\label{cor:m}Let $(\mathcal{E}, \mathcal{M})$ be a factorization system on a category $\X$, then the following hold true:
+	\begin{enumerate}
+		\item every isomorphism belongs to $\mathcal{M}$;
+		\item $\mathcal{M}$ is closed under composition.
+	\end{enumerate}
+\end{corollary}
+
+In the presence of a factorization system, we also have right $\mathcal{M}$-factorizations.
+
+\begin{proposition}\label{prop:rfact}
+	Let $(\mathcal{E}, \mathcal{M})$ be a factorization system on a category $\X$. Let $f\colon X\to Y$ be a morphism with $e\colon X\to M$ and $m\colon M\to Y$ as an $(\mathcal{E}, \mathcal{M})$-factorization of $f$, then the pair $(e, m)$ is also a right $\mathcal{M}$-factorization of $f$.
+\end{proposition}
+\begin{proof}
+	Suppose that the solid part of the rectangle below is given, with $n\colon N\to Z$ in $\mathcal{M}$. 
+	\[\xymatrix{X \ar[d]_{h} \ar@/^.4cm/[rr]^{f} \ar[r]_{e}& M \ar@{.>}[dl]^{k} \ar[r]_{m} & Y \ar[d]^{g}\\N \ar[rr]_{n}&& Z}\]
+	Bu the existence of the dotted $k\colon M\to N$ is guaranteed by the left lifting property of $e$ with respect to $n$.
+\end{proof}
+
+The previous proposition, together with \Cref{rem:uniq} gives us the following.
+
+\begin{corollary}\label{prop:iso}
+	Let $(\mathcal{E}, \mathcal{M})$ be a factorization system on a category $\X$. If $e\colon Y\to E$, $e'\colon Y\to E'$ and $m\colon Y\to X$, $m'\colon Y'\to X $ are arrows, respectively, in $\mathcal{E}$ and $\mathcal{M}$ such that
+	$e'\circ m'=e\circ m$,  then  there exist a unique isomorphism $\phi\colon E \rightarrow E'$ such that the diagram below commutes.
+	\[\xymatrix@C=40pt{Y \ar[r]^{e'} \ar[d]_{e}& E' \ar[d]^{m'}\\ E \ar[r]_{m} \ar@{.>}[ur]^{\phi}& X}\]
+\end{corollary}
+
+The previous corollary, in turn, allows us to deduce other useful properties of factorization systems.
+
+\begin{proposition}\label{cor:iso} Given a factorization system $(\mathcal{E}, \mathcal{M})$ on a category $\X$, the following hold:
+	\begin{enumerate}
+		\item an arrow $f\colon X\to Y$ with $(\mathcal{E}, \mathcal{M})$-decomposition given by $e$ in $\mathcal{E}$ and $m\in \mathcal{M}$ is in $\mathcal{M}$ if and only if $e$ is an isomorphism;
+		\item $f\in \mathcal{E}$ and $f\in \mathcal{M}$ if and only if $f$ is an isomorphism;
+		\item $\mathcal{M}$ is stable under pullback.
+		\item  if $(\mathcal{E}, \mathcal{M})$ is proper, then $g\circ f$ is in $\mathcal{M}$ implies $f\in \mathcal{M}$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item  ($\Rightarrow$) By hypothesis $f=f\circ \id{X}$ is a factorization with $\id{X}\in \mathcal{E}$ and $f\in \mathcal{M}$, thus the thesis follows from \Cref{prop:iso}.
+		
+		\smallskip \noindent
+		($\Leftarrow$) Let $f=m\circ e$ be an $(\mathcal{E}, \mathcal{M})$-factorization. The thesis  follows from \Cref{cor:m} since, if $e$ is an isomorphism, then $f$ is the composition of two arrows in $\mathcal{M}$.
+		
+		\item This follows from the previous point, \Cref{cor:m} and \Cref{prop:el}.
+		
+		\item 	Suppose that the square below is a pullback, with $m\in \mathcal{M}$
+		\[\xymatrix{X\ar[r]^{g} \ar[d]_{n} & M \ar[d]^{m} \\ Y \ar[r]_{f}  & Z}\] 
+		We can factor  $n$ as $t\circ e$ for $e\colon X\to M$ in  $\mathcal{E}$ and $t\colon T\to Y$ in $ \mathcal{M}$.  By the left lifting property we get the dotted $l\colon T\to M$ in the diagram below.
+		\[\xymatrix{X \ar[d]_{e}\ar[rr]^{g} & &V\ar[d]^{m}\\  T  \ar@{.>}[urr]^{l} \ar[r]_{t}&Y\ar[r]_{f} & Z}\]
+		Therefore we get another diagram
+		\[\xymatrix{ T \ar@/^.5cm/[drr]^{l}\ar@{.>}[dr]^{k} \ar@/_.5cm/[ddr]_{t}\\ & X \ar[d]_{n}\ar[r]^{g}& M  \ar[d]^{m} \\ &Y \ar[r]_{f} & Z }\]
+		and thus we can deduce the existence of the dotted $k\colon E\to V$. On the one hand, computing we get
+		\[\begin{split}
+			n\circ 	k\circ e&=t  \circ  e\\ &=n
+		\end{split}\qquad \begin{split}
+			g\circ k\circ e &=l\circ e\\ &=g \end{split}\]
+		and so $k\circ e= \id{X}$.  On the other hand 
+		\[\begin{split}
+			t\circ k \circ t &= \id{Y} \circ t \\&= t
+		\end{split} \qquad 
+		\begin{split}
+			k \circ t \circ e &= k\circ n \\&= e
+		\end{split}
+		\]	
+		so the following diagram commutes.
+		\[
+		\xymatrix@C=50pt{X \ar[d]_{e}\ar[r]^{e}& T \ar[d]^{t} \\
+			T\ar[ur]^{e\circ k}\ar[r]_{t} & Y}\]
+		Hence, by the uniqueness clause of the left lifting property, $e\circ k=\id{E}$. Therefore $e$ is an isomorphism and the thesis follows from  point $1$. 
+		
+		\item 
+		Factor $f$ and $g$ as $m_f\circ e_f$ and $m_g\circ e_g$, respectively. Let also $h$ be $e_g\circ m_f$ and factor it as $m_h\circ e_h$ so that we get 
+		\[\xymatrix@C=45pt{& C \ar[dr]^{m_h}&\\
+			A\ar[ur]^{e_h} \ar[rr]^{h}  \ar[dr]^{m_f}& &B \ar[d]^{m_g}\\
+			X \ar[u]^{e_f} \ar[r]_f& Y \ar[r]_g \ar[ur]^{e_g} & Z}\]
+		B \Cref{prop:el,cor:m}, $\mathcal{E}$ and $\mathcal{M}$ are closed under composition, therefore $e_h\circ e_f\in \mathcal{E}$ and $m_g \circ m_h\in \mathcal{M}$. Thus these two arrows gives a $(\mathcal{E}, \mathcal{M})$-factorization of $g\circ f$. On the other hand $g\circ f\in \mathcal{M}$, thus point $1$ above  implies that  $e_h\circ e_f$ is an isomorphism, so $e_f$ is a epic split mono which is also an epimorphism. \qedhere
+	\end{enumerate}
+\end{proof}
+
+With the help of \Cref{rem:dual} we can easy dualize the previous proposition.
+\begin{corollary}\label{cor:iso2}
+	Given a factorization system $(\mathcal{E}, \mathcal{M})$ on a category $\X$, the following hold:
+	\begin{enumerate}
+		\item an arrow $f\colon X\to Y$ is in $\mathcal{E}$ if and only if $m_f$ is an isomorphism;
+		\item $\mathcal{E}$ is stable under pushouts;
+		\item  if $(\mathcal{E}, \mathcal{M})$ is proper, then $g\circ f$ is in $\mathcal{E}$ implies $g\in \mathcal{E}$.
+	\end{enumerate}
+\end{corollary}
+
+We conclude this section with a result linking closely factorization systems with the existence of right $\mathcal{M}$-factorizations.
+
+\begin{lemma}\label{lem:fact}Let $\mathcal{M}$ be a class of arrows in a category $\X$ closed under composition with isomorphisms, then the following are equivalent:
+	\begin{enumerate}
+		\item every arrow $f\colon X\to Y$ has a right $\mathcal{M}$-factorization and $\mathcal{M}$ is closed under composition;
+		\item there exists a class $\mathcal{E}$ such that $(\mathcal{E}, \mathcal{M})$ is a factorization system on $\X$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof} $(1\Rightarrow 2)$ Let $\mathcal{E}$ be the class of arrows which have the left lifting property with respect to every element of $\mathcal{M}$. Let us show that the three properties of \Cref{def:fs} hold.
+	
+	\begin{enumerate}
+		\item $\mathcal{M}$ is closed under composition with isomorphisms by hypothesis. On the other hand, if $e\colon X\to Y$ is in $\mathcal{E}$ and $h\colon Y \to Z$ is an isomorphism, then $h\circ e$ still belongs to $\mathcal{E}$. To see this, consider the square below, with $m\in \mathcal{M}$.
+		\[\xymatrix{X\ar[r]^{f} \ar[d]_{e}& M\ar[dd]^{m}  \\Y \ar@{.>}[ur]_{k}\ar[d]_h \\Z \ar[r]_{g}& V}\]
+		
+		The dotted $k\colon Y\to M$ exists, and it is unique, because $e\in \mathcal{E}$. The thesis now follows taking $k\circ h^{-1}$ as the lifting of $g$. 
+		
+		\item Given $f\colon X\to Y$, let $e\colon X\to M$ and $m\colon M\to Y$ be a right $\mathcal{M}$-factorization of it. We have to show that $e$ belongs to $\mathcal{E}$. We can further factor $e$ as $n\circ d$, with $n\in \mathcal{M}$. Then we can build the rectangle below.
+		\[\xymatrix{X  \ar[dr]_(.3){e}\ar[d]_{d} \ar@/^.4cm/[rr]^{f}\ar[r]_{e} & M \ar@{.>}[dl]^(.3){k} \ar[r]_{m} & Y \ar[d]^{\id{Y}}\\
+			D \ar[r]_{n} & M \ar[r]_{m}& Y}\]
+		
+		By hypothesis $m\circ n$ is in $\mathcal{M}$, so we can deduce the existence of the dotted $k\colon M\to D$.   Now, from the diagram below, we can deduce that $n\circ k=\id{M}$.
+		\[\xymatrix{X \ar[rr]^{e} \ar[dr]^{d}\ar[dd]_{e}& &M \ar[r]^{m}\ar[dl]^{k}& Y \ar[dd]^{\id{Y}}\\ & D\ar[dl]^{n}\\M\ar[rrr]_{m}&&&Y}\]
+		
+		On the other hand, the previous result yields also the commutativity of the following diagram, entailing $k\circ n=\id{D}$.
+		\[\xymatrix{X \ar[rr]^{d} \ar[dr]^{e}\ar[dd]_{d}& &D \ar[r]^{n}\ar[dl]^{n}& M \ar[dd]^{\id{M}}\\ & M\ar[dl]^{k} \ar[drr]^{\id{M}}\\D\ar[rrr]_{n}&&&M}\]
+		
+		Now, suppose that the outer square in the diagram below is given, with $v\in \mathcal{M}$.
+		\[\xymatrix{X \ar[dd]_{e} \ar[dr]_{d}\ar[rr]^{t}&& V \ar[dd]^{v}\\ & D \ar[dl]^{n} \ar@{.>}[ur]_{h}\\M \ar[rr]_{s}&& Z}\]
+		
+		Then the dotted $h\colon N\to V$ exists and it is unique since $n$ is a right $\mathcal{M}$-image of  $e$. Thus $h\circ k$ is the unique lifting for $s$ along $v$, proving that $e\in \mathcal{E}$.
+		\item This holds by construction.
+	\end{enumerate}
+	
+	\smallskip \noindent $(2\Rightarrow 1)$  This follows from the second point of \Cref{cor:m} and from \Cref{prop:rfact}. \qedhere  
+\end{proof}
+
+Putting together \Cref{lem:fact,lem:rfact} we get the following result.
+
+\begin{corollary}\label{cor:fact}
+	Let $\mathcal{M}$ be a class of arrows in a category $\X$ closed under composition stable under pullbacks and containing the identities. If $\X$ has $\mathcal{M}$-pullbacks and for every arrow $f\colon X\to Y$ the pullback functor $f^*$ has a left adjoint, then there exists a, unique, class $\mathcal{E}$ such that $(\mathcal{E}, \mathcal{M})$ is a factorization system on $\X$.
+\end{corollary}
+
+\subsection{$\mathcal{M}$-subobjects and factorization systems}
+
+In this section we focus on studying the category $\mathcal{M}/X$ when $\mathcal{M}$ is a class of monomorphism.
+
+\begin{remark}
+	If  $\mathcal{M}$ is a class of monos in a category $\X$, then $\mathcal{M}/X(f,g)$ has cardinality at most one for every two arrows $f$ and $g$ with codomain $X$. Thus it is a preordered class, in which $f\leq g$ if and only if  $\mathcal{M}/X(f,g)$ is non-empty. Now, it is immediate to notice that $f\leq g$ and $g\leq f$, then there exists a (unique) isomorphism fitting in the triangle below.
+	\[\xymatrix{A\ar@{.>}[rr]^{\phi} \ar[dr]_{f} && B \ar[dl]^{g}\\ & X}\]
+	In such a case we will write $f\equiv g$. It is immediate to see that in this way we get an equivalence relation on the class of objects of $\mathcal{M}/X$.
+\end{remark}
+
+Given the previous remark, we are led to the following definition.
+
+\begin{definition} Let $\mathcal{M}$ be a class of monos in a category $\X$. For every object $X$ a \emph{$\mathcal{M}$-subobject} is an equivalence class $[f]$ of an object $f$ in $\mathcal{M}/X$ with respect to $\equiv$. Given two \emph{$\mathcal{M}$-subobjects} $[f]$ and $[g]$, represented by $f$ and $g$, respectively, we will define $[f]\leq [g]$ if and only if $f\leq g$. It is immediate to see that this defines a partially ordered class $(\sub{M}{X}{X}, \leq)$. 
+	
+	When $\mathcal{M}$ coincides with the class of all monos we will suppress the prefix, so that a \emph{subobject} is just an equivalence class of a mono and $(\msub{X}{X}, \leq)$ will denote the ordered class of such subobjects of $X$.
+\end{definition}
+
+\begin{remark}\label{rem:pbo} Let $f\colon X\to Y$ be an arrows admitting a pullback along arrows in $\mathcal{M}/Y$ and suppose that $\mathcal{M}$ is stable under pullbacks. The categories associated to $(\sub{M}{X}{X}, \leq)$ and $(\sub{M}{Y}{Y}, \leq)$ are equivalent to $\mathcal{M}/X$ and $\mathcal{M}/Y$, respectively, thus we get a monotone function $f^{-1}\colon \sub{M}{X}{Y}\to \sub{M}{X}{X}$ sending $[m]$ to $[f^*(m)]$.
+	
+	Similarly, if $f\circ m$ has a right $\mathcal{M}$-factorization for every $m\in \mathcal{M}$, then the functor $f_*$ induces a monotone function $\exists_f\colon \sub{M}{X}{X}\to \sub{M}{X}{Y}$.
+	
+	Notice that, whenever $\mathcal{M}$ is stable unr pullbacks, $\X$ has $\mathcal{M}$-pullbacks and  right $\mathcal{M}$-factorizations, then $\exists_f \dashv f^{-1}$ by \Cref{lem:rfact}.
+\end{remark}
+
+\Cref{cor:finlim} gives us immediately the following.
+
+\begin{proposition}\label{prop:finlim}
+	Let $f\colon X\to Y$ be an arrow in a category $\X$ and $\mathcal{M}$ a class of arrows stable under pullbacks and such that $f$ has a pullback along any arrow in $\mathcal{M}$. Then $f^{-1}$ preserves binary infima. If, moreover, $\id{Y}$ belongs to $\mathcal{M}$ then $f^{-1}$ preserves finite infima.
+\end{proposition}
+
+Now, let us recall the following lemma, which is the application of the Adjoint Functor Theorem to the partial ordered case.
+
+\begin{lemma}\label{lem:adj}
+	Let $f\colon (P,\leq)\to (Q, \leq)$ be a monotone function. If $f$ preserves all infima then it has a left adjoint.
+\end{lemma}
+\begin{proof}
+	For every $q\in Q$ define
+	\[P_q:=\{p\in P \mid q \leq f(p)\}\]
+	Clearly if $q'\leq q$ then $P_{q}\subseteq P_{q'}$. Let us define $g(q)$ as the infimum of $P_q$, the previous observation entails that in this way we get a monotone function $g\colon (Q, \leq)\to (P, \leq)$.
+	We can also notice that, since $f$ preserves infima:
+	\begin{align*}
+		f(g(q))&=f(\inf(P_q))\\&=\inf(f(P_q))
+	\end{align*}
+	Now, by definition, $q$ is less or equal than every element in $f(P_q)$, thus $q\leq f(g(q))$, so that $g(q)$ is actually the infimum of $P_q$. 
+	
+	So equpped, we can now prove that $g$ is the right adjoint to $f$.
+	\begin{itemize}
+		\item Suppose that $g(q)\leq p$.  Then $f(g(q))\leq p$, but we already know that $q\leq f(g(q))$, therefore we can conclude that $q\leq f(p)$.
+		\item  Suppose that $q\leq f(p)$. Thus $p$ belongs to $P_q$ and so $g(q)\leq p$. \qedhere 
+	\end{itemize}
+\end{proof}
+
+The previous result, together with \Cref{cor:fact} and \Cref{prop:finlim}, allows us to deduce the following result, which has been used in \cite{baldan2011lattice,braatz2010finitary} to show that certain $\mathcal{M}$-adhesive categories have a factorization system.
+
+\begin{corollary}\label{cor:fin}
+	Let $\mathcal{M}$ be a class of monomorphism in a category $\X$ stable under pullbacks, containing all identities and closed under composition. If $\sub{M}{X}{X}$ is finite for every object $X$ of $\X$, then there exists a factorization system $(\mathcal{E},\mathcal{M})$ on $\X$
+\end{corollary}
+
+
+\section{Coreflective subcategories}
+
+In order to identify a class of well-behaved DPO-rewriting system we need to recall some other general notion of category theory.
+
+\begin{definition}
+	Let $\X$ be a category, a full subcategory $\Y$ of $\X$ is \emph{coreflective} if the inclusion functor $I_\Y\colon \Y\to \X$ has a right adjoint $R_\Y$, called \emph{coreflector}.  A morphism between two coreflective subcategories $\Y$ and $\Z$ is a functor $F\colon \Y \to \Z$ such that $I_\Z \circ F=I_\Y$ and $F\circ R_\Y$ is isomorphic to $R_\Z$.
+	
+	We will denote by $\cori(\X)$ the category obtained in this way.
+\end{definition}
+
+\begin{remark}
+	Notice that, since adjoints are unique up to isomorphism, being a morphism $\Y\to \Z$ of $\cori(\X)$ does not depends on the choice of coreflectors for $\Y$ and $\Z$.
+\end{remark}
+
+\begin{remark}\label{rem:ff}
+	Let $F\colon \Y \to \Z$ be a morphism in $\cori(\X)$. Since $I_\Z\circ F=I_\Y$, then $\Y$ must be a full subcategory of $\Z$ and $F$ must coincide with its inclusion. In particular, $F$ is full and faithful and $\cori(\X)$ is a ordered class.
+\end{remark}
+
+\begin{example}\label{ex:1}
+	\todo{connessi}
+\end{example}
+
+\begin{example}\label{ex:2}
+	\todo{grafi con equivalenza}
+\end{example}
+\begin{example}
+	\todo{Ce ne sono altri? sarebbe bello usare i calcoli ma credo rientrino nel primo}
+\end{example}
+
+
+Let us recall the following well known fact.
+
+\begin{proposition}\label{prop:counit}
+	Let $L\colon \X\to \Y$ and $R\colon \Y \to \X$ be a pair of functors such that $L\dashv R$. Then the following are equivalent:
+	\begin{enumerate}
+		\item $L$ is full and faithful;
+		\item the unit $\eta \colon \id{\X}\to R\circ L$ is an isomorphism.
+	\end{enumerate} 
+\end{proposition}
+\begin{proof}
+	We can start noticing that, for every pair of objects $X$ and $Y$ in $\X$, we have two functions:
+	\[F_{X, Y}\colon \X(X, Y)\to \Y(L(X), L(Y)) \quad 	 \Phi_{X, Y}\colon \Y(L(X), L(Y))\to \X(X, R(L(Y)))\]
+	where $F_L$ sends $f\colon X\to Y$ to $L(f)$ and $\Phi_{X, Y}$ is the bijection $\Y(L(X), L(Y))\to \X(X, R(L(Y)))$ given by $L\dashv R$. Now, notice that, for every $f\colon X\to Y$ the diagram below commutes.
+	\[\xymatrix@C=35pt{X \ar[r]^{f} \ar[d]_{\eta_X}& Y \ar[d]^{\eta_Y}\\R(L(X)) \ar[r]_-{R(L(f))} &R(L(Y)) }\]
+	
+	This, in turn, entail that the composit $\Psi_{X,Y} \circ F_{X, Y}$ coincides with $\eta_Y\circ (-)$.
+	
+	\smallskip \noindent 
+	$(1\Rightarrow 2)$ Let $X$ and $Y$ be two objects of $\X$, by hypothesis $\eta_Y$ is an isomorphism and so $\eta_Y\circ (-)$ is a bijection. But then $F_{X, Y}$ must be a bijection too by what we have observed above.
+	
+	\smallskip \noindent 
+	$(2\Rightarrow 1)$ Let $X$ be an object of $\X$, if $L$ is full and faithful then $\eta_Y\circ (-)$ is the composition of the two bijections $\Psi_{Y,Y}\circ F_{Y,Y}$. By the Yoneda Lemma this entails that $\eta_Y$ is an isomorphism.
+\end{proof}
+
+
+\begin{corollary}\label{cor:cou}
+Let $L\colon \X\to \Y$ and $R\colon \Y \to \X$ be a pair of functors such that $L\dashv R$ and suppose that $L$ is full and faithful. Let $\epsilon\colon L\circ R\to \id{\Y}$ be the unit of the adjunction, then the following are true for every object $X$:
+\begin{enumerate}
+	\item the arrow $R(\epsilon_X)$ is an isomorphism;
+	\item $L(R(\epsilon_X))$ is equal to $\epsilon_{L(R(X))}$.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+	\begin{enumerate}
+		\item Let $\eta\colon \id{X}\circ R\circ L$ be the unit of the adjunction. By the triangular identity we know that $R(\epsilon_X)\circ \eta_{R(X)}=\id{R(X)}$. The thesis now follows from \Cref{prop:counit}.
+		\item Using again the triangular identities and the previous point we have
+		\begin{align*}
+			\id{L(R(X))}&=\epsilon_{L(R(X))}\circ L(\eta_{R(X)})\\&= \epsilon_{L(R(X))}\circ L(R(\epsilon_X))^{-1}
+		\end{align*}
+		Which yields the theis. \qedhere 
+	\end{enumerate}
+\end{proof}
+
+\begin{corollary}\label{cor:counit}
+	Let $\Y$ be a coreflective subcategory of $\X$ and let $\epsilon \colon I_\Y\circ R_\Y \to  \id{\X}$ be the counit of $I_\Y\dashv R_\Y$. Given an object $X\in \X$, the following are equivalent:
+	\begin{enumerate}
+		\item $X$ is in the essential image of the inclusion $I_\Y$;
+		\item $\epsilon_X$ is an isomorphism.
+	\end{enumerate} 
+\end{corollary}
+\begin{proof}
+	$(1\Rightarrow 2)$ By hypothesis there is an object $Y$ of $\Y$ and an isomorphism $\phi\colon I_\Y(Y)\to X$. This, in turn, yields the commutative square below.
+	\[\xymatrix@C=40pt{I_\Y(Y) \ar[r]^-{\phi} \ar[d]_{I_\Y(\eta_Y)}&  X\\ I_\Y(R_\Y(I_\Y(Y)))  \ar[r]_-{I_\Y(R_\Y(\phi))}& I_\Y(R_\Y(X)) \ar[u]_{\epsilon_X}}\]
+	
+	By hypotesis $\phi$ is an isomorphism and $\eta_Y$ is so by \Cref{prop:counit}, thus $I_\Y(\eta_Y)$ and 
+	$I_\Y(R_\Y(\phi))$ are isomorphisms too and the thesis follows.
+	
+	\smallskip \noindent
+	$(2\Rightarrow 1)$ This is a tautology.
+\end{proof}
+
+Associated to a coreflective subcategory $\Y$ of $\X$ we have a class of arrows which enjoys some useful properties.
+
+\begin{definition}
+	Let $\Y$ be a coreflective subcategory of $\X$ with coreflector $R_\Y$, we define the class $\mathcal{R}_\Y$ as the class of all arrows in $\X$ whose image through $R_\Y$ is a mono in $\Y$.
+\end{definition}
+
+\begin{remark}
+	Let $I_\Y\colon \Y \to \X$ be the inclusion functor of a coreflective subcategory $\Y$. If $R_\Y$ and $R'_\Y$ are coreflectors, then we have a natural isomorphism $\phi\colon R_\Y\to R'_\Y$ and so, for every $f\colon X\to Y$ there is a square
+	\[\xymatrix{ \ar[d]_{\phi_X} R_\Y(X) \ar[r]^{R_\Y(f)}& R_\Y(Y) \ar[d]^{\phi_Y}\\R'_\Y(X) \ar[r]_{R_\Y(f)} & R'_\Y(Y)}\]
+	
+	In particular, $R_\Y(f)$ is mono if and only if $R'_\Y(f)$ is so, thus the definition of $\mathcal{R}_\Y$ is independent from the choice of coreflector.
+\end{remark}
+
+\begin{proposition}\label{prop:varie}
+	Let $\Y$ be a coreflective subcategory of $\X$. Then the following hold true:
+	\begin{enumerate}
+		\item $\mathcal{R}_\Y$ contains all monos;
+		\item $\mathcal{R}_\Y$ is stable under pullbacks;
+		\item given $f\colon X\to Y$ and $g\colon Y\to Z$, if $g\circ f$ is in $\mathcal{R}_\Y$ then $f$ is in $\mathcal{R}_\Y$ too;
+		\item given $f\colon X\to Y$ in $\mathcal{R}_\Y$ and $g,h\colon I_\Y(Z)\rightrightarrows X$, if $f\circ g = f\circ h$, then $g=h$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}\begin{enumerate}
+		\item This follows at once from the fact that $R_\Y$, being a right adjoint, preserves monos.
+		\item Consider the following two diagrams, with $f\in \mathcal{R}_\Y$, in which the left one is a pullback. $R_\Y$ preserves limits, thus the right square is a pullback too.
+		\[\xymatrix@C=30pt{P \ar[r]^{p_1} \ar[d]_{p_2}& X \ar[d]^{f} & R_\Y(P) \ar[r]^{R_\Y(p_1)} \ar[d]_{R_\Y(p_2)} & R_\Y(X) \ar[d]^{R_\Y(f)}\\Z \ar[r]_{g}& Y & R_\Y(Z) \ar[r]_{R_\Y(g)} & R_\Y(Y)}\]
+		By definition, $R_\Y(f)$ is a mono in $\Y$, but this implies that $R_\Y(g)$ is a mono too, proving $g\in \mathcal{R}_\Y$.
+		\item We know that $R_\Y(g\circ f)$ is mono, thus $R_\Y(f)$ is mono too.
+		\item 	Since $f\circ g=f\circ h$ and $f$ is in $\mathcal{R}_\Y$ we can conclude that $R_\Y(g)=R_\Y(h)$. Thus we have:
+		\begin{align*}
+			g\circ \epsilon_{I_\Y(Z)}&=\epsilon_X\circ I_\Y(R_\Y(g))\\&=\epsilon_X\circ I_\Y(R_\Y(h))\\&=h\circ \epsilon_{I_\Y(Z)}
+		\end{align*}
+		By \Cref{cor:counit},  $\epsilon_{I_\Y(Z)}$ is an isomorphism and so $g=h$. \qedhere
+	\end{enumerate}
+\end{proof}
+
+In general, the class $\mathcal{R}_{\Y}$ is not stable under pushout. Nonetheless such property is desirable. We are thus lead to the following definition.
+
+\begin{definition}
+	A coreflective subcategory is \emph{good} if  $\mathcal{R}_\Y$ is stable under pushout. $\gori(\X)$ will denote the subcategory of $\cori(\X)$ given by good coreflective subcategories. 
+\end{definition}
+
+\iffalse 
+\begin{remark}\label{rem:good}
+	Let $\Y$ be a full subcategory of $\X$ with coreflector $R_\Y$.  Let also $f\colon X\to Y$ be in $\mathcal{R}_\Y$ and consider the following two diagrams, where the left one is a pushout. Then $\Y$ is a good subcategory if and only if $R_{\Y}()$
+\end{remark}
+\fi 
+
+We end this section extending the construction of $\mathcal{R}_\Y$ to a functor on $\cori(\X)$.
+
+\begin{proposition}\label{prop:funct}
+	Let $F\colon \Y \to \Z$ be a morphism of $\cori(\X)$, then $\mathcal{R}_\Z \subseteq \mathcal{R}_{\Y}$.
+\end{proposition}
+\begin{proof}
+	Let $f$ be an arrow in $\mathcal{R}_\Z$. Since $F$ is an arrow in $\cori(\X)$ we know that there exists a natural isomorphism $\phi\colon F\circ R_\Y\to R_\Z$, therefore $F(R_\Y(f))$ is a monomorphism. By \Cref{rem:ff} we know that $F$ is full and faithful and so reflects mono, implying that $f$ belongs to $\mathcal{R}_\Y$ too.
+\end{proof}
+
+\begin{corollary}\label{cor:funct}
+	Let $\cla(\X)$ be the category associated to the collection of all classes of a category $\X$, ordered by the inclusion. Then there exists a functor $\mathcal{R}_{(-)}\colon \cori(\X)^{op}\to \cla(\X) $.
+	
+	Let, moreover, $\pos(\X),$ be the subcategory of $\cla(\X)$  given by classes of arrows stable under pushouts, Then  $\mathcal{R}^G_{(-)}\colon \gori(\X)^{op}\to \pos(\X) $ fitting in the rectangle below, where the vertical arrows are inclusions.
+	\[\xymatrix{\cori(\X)^{op} \ar[r]^{\mathcal{R}_{(-)}}& \cla(\X)\\ \gori(\X)^{op} \ar[u]^{J} \ar[r]_{\mathcal{R}^{G}_{(-)}}& \pos(\X) \ar[u]_{I}}\]
+\end{corollary}
+
+\iffalse 
+\begin{definition}
+	A \emph{comonad} $\m{C}$ on a category $\X$ is a triple $(C, \delta, \epsilon)$ given by a functor $C\colon \X\to \X$ and two natural transformations $\delta\colon C\to C\circ C $, $\epsilon\colon C\to \id{\X}$, called, respectively \emph{comultiplication} and \emph{counit} such that the following diagram commute
+	\[\xymatrix@C=30pt{C \ar[d]_{\delta}\ar[r]^-{\delta}& C\circ C  \ar[d]^{\delta*C}&  C \ar[d]_{\delta}\ar[r]^{\delta} \ar[dr]^-{\id{C}} & C\circ C \ar[d]^{\epsilon *C}\\ C\circ C \ar[r]_-{C*\delta}& C\circ C\circ C & C\circ C \ar[r]_-{C*\epsilon} & C}\]
+	
+	A comonad $\m{C}$ is \emph{idempotent} if $\delta$ is an isomorphism.  A \emph{morphism} between two comonad $\m{C}=(C, \delta, \epsilon)$ and $\m{D}=(D, \mu, \eta)$ is a natural transformation $\chi\colon C\to D$ such that the following diagrams commute
+	\[\xymatrix@C=30pt{ C \ar[r]^-{\delta} \ar[d]_{\chi} & C\circ C \ar[d]^{\chi*\chi}& C \ar[r]^{\epsilon} \ar[d]_{\chi}& 
+		\id{\X}  \\ D \ar[r]_-{\mu} & D\circ D
+		& D \ar[ur]_{\eta} }\]	
+	
+	We will denote by $\cmd(\X)$ the (possibly not locally small) category whose objects are idempotent comonads and whose arrows are morphisms of monads.
+\end{definition}
+
+\begin{remark} Let us recall that, given two functors $F, G\colon \X\rightrightarrows \Y$ and a natural transformation $\chi$ between them, then for every $X\in \X$ we have a naturality square
+	\[\xymatrix@C=40pt{F(F(X)) \ar[r]^{F(\chi_X)} \ar[d]_{\chi_{F(X)}}& F(G(X)) \ar[d]^{\chi_{G(X)}}\\G(F(X)) \ar[r]_{G(\chi_X)} & G(G(X))}\]
+	
+	This entails that $(\chi * G)\circ (F*\chi)$ and $(G*\chi) \circ (\chi* F)$ are the same natural transformation, which we denote by $\chi*\chi$.
+\end{remark}
+
+
+\begin{proposition}
+	Let $L\colon \X \to \Y$ and $R\colon \Y \to \X$ be two functors such that $L\dashv R$. If $\eta \colon \id{\X}\to R\circ L$ and $\epsilon\colon L\circ R \to \id{Y}$ are the unit and the counit of this adjunction, then $(L\circ R, L*\eta *R ,\epsilon)$ is a comonad on $\Y$.
+\end{proposition}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+The next definition shows that every comonad come from an adjunction.
+
+\begin{definition}
+	contenuto...
+\end{definition}
+
+\begin{proposition}
+	contenuto...
+\end{proposition}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+
+We recall the following lemma relating idempotent comonads and coreflective subcategories.
+
+\begin{lemma}\label{lem:comsub}
+	Let $L\colon \Y\to \X$ and $R\colon \X \to \Y$ be two functors such that $L\dashv R$
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+Associated to any idempotent comonad we have a class of arrows.
+
+\begin{definition}
+	Let $\m{T}$ be an idempotent comonad on a category $\X$. We say that an arrow $f:X\to Y$ i
+\end{definition}
+\begin{remark}
+	contenuto...
+\end{remark}
+\fi 
+
+
+\subsection{A left adjoint to $\mathcal{R}_{(-)}$}
+
+In this section we will show that, under suitable hypotheses, the functors $\mathcal{R}_{(-)}$ and $\mathcal{R}^G_{(-)}$ built in the previous sections, both have left adjoints. To do so, we need some preliminary work to be done.
+
+
+\begin{definition}
+	Let $\mathcal{M}$ be a class of arrows in a category $\X$ and let $\{m_i\}_{i\in I}$ be a family of objects in $\mathcal{M}/X$. We say that $\{m_i\}_{i\in I}$ has the \emph{epic $\mathcal{M}$-sum property} if:
+	\begin{enumerate}
+		\item it has a  coproduct $m\colon M\to X$;
+		\item the family  of coprojection $\{k_i\}_{i\in I}$ is jointly epic in $\X$.
+	\end{enumerate}
+	
+	We say that $\X$ has \emph{epic $\mathcal{M}$-sums} if every family in $\sub{M}{X}{X}$ has the epic $\mathcal{M}$-sum property.
+\end{definition}
+
+Clearly the family $\{k_i\}_{i\in I}$ is always epic in $\mathcal{M}/X$, but from this it does not follow that it is so in $\X$, as shown from the following example.
+
+\begin{example}Let $\cat{Top}$ be the category of topological spaces and $\mathcal{C}$ the category of closed embeddings, and  consider the family $\{c_i\}_{i\in \mathbb{N}}$, where $c_i$ is the inclusion of $[\frac{1}{i+1}, +\infty)$ into $\mathbb{R}_{\geq 0}$. In $\mathcal{C}/\mathbb{R}_{\geq 0}$ their coproduct is the  identity $\id{\mathbb{R}_{\geq 0}}$. To see that the family of coprojections $\{k_i\}_{i\in \mathbb{N}}$ is not jointly epic in $\cat{Top}$, we can consider the space $X$ given by the quotient of $\mathbb{R}_{\geq 0}+\mathbb{R}_{\geq 0}$ by the equivalence relation generated from
+	\[R:=\{(x, y)\in X\times X \mid x=\iota_1(r), y=\iota_2(r) \text{ for some } r \in \mathbb{R}_{\geq 0}\smallsetminus\{0\}\}\]
+	Now, let $\pi$ be the quotient map and define $f_1, f_2\colon \mathbb{R}_{\geq 0}\rightrightarrows X$ as $\pi\circ \iota_1$ and $\pi \circ \iota_2$, respectively. Then, for every $i\in \mathbb{N}$ we have that $f_1\circ c_i=f_2\circ c_i$ because, given $r\in [\frac{1}{i+1}, +\infty)$ we have
+	\begin{align*}
+		f_1(c_i(r))&=\pi(\iota_1(c_i(r)))\\&=\pi(\iota_1(r))\\&=\pi(\iota_2(r))\\&=\pi(\iota_1(c_i(r)))\\&=f_1(c_i(r))
+	\end{align*}	
+	
+On the other hand, $f_1(0)\neq f_2(0)$, thus $\cat{Top}$ does not have epic $\mathcal{C}$-sums.
+\end{example}
+\begin{example}
+	\todo{insiemi}
+\end{example}
+
+\begin{example}
+	\todo{adesive finitare}
+\end{example}
+\begin{example}
+	\todo{simple graph}
+\end{example}
+
+We are now ready to construct a left adjoint to $\mathcal{R}_{(-)}$.
+
+\begin{definition} 
+	Let $\X$ be a category and $\mathcal{A}$ a class of arrows of it. We define the category $\C(\mathcal{A})$ as the full subcategory of $\X$ given by the objects $Z\in \X$ such that, for every  pair of arrows $g,h\colon Z\rightrightarrows X$, if $f\circ g=f\circ h$ for some $f\colon X\to Y$ belonging to $\mathcal{A}$, then $g=h$.
+\end{definition}
+
+
+
+A first thing that we can notice about $\C(\mathcal{A})$ is that, in the presence of a factorization system, is its closure under epimorphisms, as shown by the following proposition.
+
+\begin{proposition}\label{prop:ima}
+	$\mathcal{A}$ be a class of arrows in a category $\X$ If $e\colon X\to Y$ is an epimorphism with domain in $\C(\mathcal{A})$, then $Y$ belongs to $\C(\mathcal{A})$ too.
+\end{proposition}
+\begin{proof}
+	Let $f\colon Z\to V$ be an arrow of $\mathcal{A}$ and take two other arrows $g,h\colon Y\to Z$ such that $f\circ g=f\circ h$. Then we also know that
+	\[f\circ g\circ e= f\circ h\circ e\]
+	By hypothesis $X$ is in $\C(\mathcal{A})$, so that $g\circ e=f\circ e$. The thesis now follows since $e$ is an epimorphism.
+\end{proof}
+\begin{example}
+	\todo{spazi topologici puntati - controesempio}
+\end{example}
+
+
+\begin{lemma}\label{lem:cor}
+	Let $\X$ be a category with a proper factorization system $(\mathcal{E}, \mathcal{M})$. Suppose, moreover, that $\X$ has the epic $\mathcal{M}$-sum property.  Then for every $\mathcal{A}\in \cla(\X)$, $\C(\mathcal{A})$ is a coreflective subcategory of $\X$.
+\end{lemma}
+
+\begin{proof}
+	For every object $X$ of $\X$, let us define
+	\[\mathcal{F}_X:=\{m\in \mathcal{M}/X \mid \dm{m} \text{ belongs to } \C(\mathcal{A})\}\] 
+	We can then define $R(X)$ as the domain of the sum over $\mathcal{F}_X$ in $\mathcal{M}/X$. In particular, we have an arrow $\epsilon_X\colon R(X)\to X$, belonging to $\mathcal{M}$.
+	
+	First of all, we have to prove that $R(X)$ so defined is an object of $\C(\mathcal{A})$. Let thus $f\colon A\to Y$ be an arrow in $\mathcal{A}$ and suppose that there are $g,h\colon R(X)\to A$ such that  $f\circ h= f \circ g$. Now, for every $m\colon M\to X$ in $\mathcal{F}_X$ we have a coprojection $k_m\colon m\to \epsilon_X$. Precomposing with it we get
+	\[f\circ h \circ k_m=f\circ g\circ k_m\]
+	By definition $M$ is in $\C(\mathcal{A})$, so we can conclude that $h\circ k_m=g\circ k_m$. Since  this holds for every $m\in \mathcal{F}_Z$, the epic $\mathcal{M}$-sum property of $\X$ entails $f=g$ as wanted.
+	
+	To conclude, is it now enough to show that $\epsilon_X$ has the universal property of a counit. Let $Y$ be an object of $\C(\mathcal{A})$ with an arrow $f\colon Y\to X$. We can factor $f$ it as $m\circ e$ with $e\colon Y\to E$ and $m\colon E\to X$ in $\mathcal{M}$. By \Cref{prop:ima} we know that $E$ is in $\C(\mathcal{A})$, thus there exists a coprojection $k_m\colon m\to \epsilon_X$.  In particular we have
+	\begin{align*}
+		\epsilon_X\circ k_m\circ e&=m\circ e = f
+	\end{align*}
+
+On the other hand, if $g\colon Y\to R(X)$ is such that $\epsilon_X\circ g=f$, then $g$ must coincide with $k_m\circ e$ because $\epsilon_X$, being in $\mathcal{M}$ is monic.
+\end{proof}
+
+\begin{example}
+	\todo{spazi topologici puntati - controesempio 2}
+\end{example}
+
+
+\begin{proposition}Let $(\mathcal{E}, \mathcal{M})$ be a proper factorization system on a acategory $\X$ with $\mathcal{M}$-sums. Then the following hold true:
+	\begin{enumerate}
+		\item for every class $\mathcal{A}$ in $\cla(\X)$, $\mathcal{A}\subseteq \mathcal{R}_{\C(\mathcal{A})}$;
+		\item the functor $\mathcal{R}_{(-)}\colon \cori(\X )^{op}\to \cla(\X)$ has a left adjoint.
+	\end{enumerate} 
+\end{proposition}
+\begin{proof}\begin{enumerate}
+		\item Let $f\colon X\to Y$ be an arrow in $\mathcal{A}$ and suppose that $g,h\colon Z\to R(X)$ are arrows in $\C(\A)$ such that $R(f)\circ g=R(f)\circ h$. Then
+		\begin{align*}
+			f\circ \epsilon_X\circ I(g)&=\epsilon_Y\circ I(R(f))\circ I(g)\\&=
+			\epsilon_Y\circ I(R(f))\circ I(h)\\&=f\circ \epsilon_X\circ I(h)
+		\end{align*}
+		Since $f$ is in $\mathcal{A}$, we can deduce that $\epsilon_X\circ I(g)=\epsilon_X\circ I(h)$. The thesis now follows from the fact that $\epsilon_X$ is mono.
+		
+		\item Let $\Y$ be a coreflective subcategory of $\X$ such that $\mathcal{A}\subseteq \mathcal{R}_\Y$. We have to show that $\Y\subseteq \C(\mathcal{A})$. Let then $Y$ be an object of $Y$, $f\colon X\to Z$ and arrow in $\mathcal{A}$ and $g, h\colon I_\Y(Y)\rightrightarrows X$ two arrows in $\X$ such that $f\circ g=f\circ h$. Applying $R_\Y$ and since, by hypothesis, $R_\Y(f)$ is mono, we get that $R_\Y(g)=R_\Y(h)$. Now, by naturality of the counit we have
+	\begin{align*}g\circ \epsilon_{I_\Y(Z)}&=\epsilon_X\circ R_\Y(g)\\&=\epsilon_X\circ R_\Y(h)\\&=h\circ \epsilon_{I_\Y(Z)}
+	\end{align*}
+	By \Cref{cor:counit}  we know that $\epsilon_{I_\Y(Z)}$ is an isomorphism and we can conclude. \qedhere 
+	\end{enumerate}
+\end{proof}
+
+
+
 
 \end{document}
 
