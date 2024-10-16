@@ -213,7 +213,7 @@
 \def\Y{\textbf {\textup{Y}}}
 \newcommand{\fuz}[1]{\textbf{\textup{Fuz}}({\textbf {\textup{#1}}})}
 %\newcommand{\yo}{\mathcal{Y}}
-\renewcommand*{\bibfont}{\footnotesize}
+%\renewcommand*{\bibfont}{\footnotesize}
 
 \newcommand{\der}[1]{\underline{\dder{#1}}}
 
@@ -300,16 +300,23 @@
 
 
 \begin{frame}{DPO rewriting sytems}\justifying
-	
-	
-		We will focus on the \emph{double pushout} (DPO) approach  to  graph rewriting (cfr. \cite{ehrig2006fundamentals}).
-	
-	\smallskip 
 	\begin{overprint}
 		\onslide<1|handout:1>
+		
+		We will focus on the \emph{double pushout} (DPO) approach  to  graph rewriting (cfr. \cite{ehrig2006fundamentals}). 
+		\smallskip 
+		
+		\onslide<2|handout:0>
+		
+		We will focus on the \emph{double pushout} (DPO) approach  to  graph rewriting (cfr. \cite{ehrig2006fundamentals}). 
+		\smallskip 
+		
 		A \emph{rewriting rule} is a pair  of arrows $l:K\to L$ and $r:K\to R$ with the same domain. To rewrite an object $G$ according to a rule we proceed in three steps.
 		
-		\onslide<2| handout:0>
+		\onslide<3| handout:0>
+		
+		We will focus on the \emph{double pushout} (DPO) approach  to  graph rewriting (cfr. \cite{ehrig2006fundamentals}). 
+		\smallskip 
 		
 		A \emph{rewriting rule} is a pair  of arrows $l:K\to L$ and $r:K\to R$ with the same domain. To rewrite an object $G$ according to a rule we proceed in three steps.
 		
@@ -327,11 +334,14 @@
 		\end{center}
 		
 		
-		\onslide<3| handout:0>
+		\onslide<4| handout:0>
+
+We will focus on the \emph{double pushout} (DPO) approach  to  graph rewriting (cfr. \cite{ehrig2006fundamentals}). 
+\smallskip 
 
 A \emph{rewriting rule} is a pair  of arrows $l:K\to L$ and $r:K\to R$ with the same domain. To rewrite an object $G$ according to a rule we proceed in three steps.		
 		
-		Second: remove the image of $m$  building a pushout square. \vspace{-0.075cm}
+		Second: ``remove'' the image of $m$  building a pushout square. \vspace{-0.075cm}
 		\begin{center}
 			\begin{tikzpicture}
 				\node(L)at(0,0){$L$};
@@ -346,12 +356,15 @@ A \emph{rewriting rule} is a pair  of arrows $l:K\to L$ and $r:K\to R$ with the 
 				\draw[->, dotted](C)--(G)node[pos=0.5, below]{$l'$};
 			\end{tikzpicture}
 		\end{center}		
-		\onslide<4| handout:0>
+		\onslide<5| handout:0>
+
+We will focus on the \emph{double pushout} (DPO) approach  to  graph rewriting (cfr. \cite{ehrig2006fundamentals}). 
+\smallskip 
 		
-		A \emph{rewriting rule} in a category $\X$ is a pair  of arrows $l:K\to L$ and $r:K\to R$ with the same domain. To rewrite an object $G$ according to a rule we proceed in three steps.
+		A \emph{rewriting rule} is a pair  of arrows $l:K\to L$ and $r:K\to R$ with the same domain. To rewrite an object $G$ according to a rule we proceed in three steps.
 		
-		Third: fill the hole so obtained, with $R$ taking a pushout.\vspace{-0.075cm}
-		\begin{center}\hspace{0.045cm}
+		Third: glue $R$ into the ``hole'',  taking a pushout.\vspace{-0.075cm}
+		\begin{center}\hspace{0.08cm}
 			\begin{tikzpicture}
 				\node(L)at(0,0){$L$};
 				\node(K)at(2,0){$K$};
@@ -371,7 +384,7 @@ A \emph{rewriting rule} is a pair  of arrows $l:K\to L$ and $r:K\to R$ with the 
 	\end{overprint}  	
 \end{frame}
 
-\begin{frame}{DPO rewriting system}\justifying
+\begin{frame}{DPO rewriting systems}\justifying
 The categorical framework is given by \emph{$\mathcal{M}$-adhesive categories}. \pause 
 \begin{definition}[\cite{lack2005adhesive,azzi2019essence,ehrig2014adhesive}]
 	Let $\mathcal{M}$ be a class of monos in a category $\X$, containing all isomorphisms, stable under pullbacks and composition. $\X$ is \emph{$\mathcal{M}$-adhesive} if, given a cube below with the hooked arrows in $\mathcal{M}$, the bottom face a pushout and the back faces pullbacks, we have:
@@ -411,7 +424,7 @@ The categorical framework is given by \emph{$\mathcal{M}$-adhesive categories}. 
 		A \emph{DPO-rewriting system} is a pair $(\X, R)$ where $\X$ is an $\mathcal{M}$-adhesive category and $R$ is a set of rewriting rules.
 		\pause 
 		
-		A system is \emph{linear} if every rule is made by arrows in $\mathcal{M}$, \emph{left-linear} if the left hand side of every rule is in $\mathcal{M}$.
+		A system is \emph{linear} if every rule is made by arrows in $\mathcal{M}$, \emph{left-linear} if the left leg of every rule is in $\mathcal{M}$.
 	\end{definition}
 
 \pause 
@@ -420,7 +433,7 @@ In left-linear rewriting systems a rule can ``merge'' parts of the state.
 
 \pause 
 \begin{alertblock}{Motivation}
-	Our long term aim is to provide a concurrent semantics for left-linear DPO-rewriting systems (see \cite{baldan2017domains}). 
+	Our long term aim is to provide a concurrent semantics for left-linear DPO-rewriting systems (see \cite{baldan2021concurrent}). 
 \end{alertblock}
 
 \end{frame}
@@ -438,7 +451,7 @@ In left-linear rewriting systems a rule can ``merge'' parts of the state.
 \end{figure}
 \end{frame} 
 
-\begin{frame}{An example}
+\begin{frame}{An example}\justifying
 	If we want a (very sweet) coffee we can add first the white sugar and then the brown one. Finally we can stir it.
 	\pause 
 \begin{figure}
@@ -589,7 +602,7 @@ A rewriting system $(\X, R)$ is \emph{well switching} if independence pairs are 
 \end{block}
 
 \end{frame}
-
+\iffalse 
 \begin{frame}{Results: the Three Steps Lemma}\justifying
 
 \begin{lemma}  Let
@@ -615,7 +628,7 @@ A rewriting system $(\X, R)$ is \emph{well switching} if independence pairs are 
 	\end{enumerate}
 \end{lemma}
 \end{frame}
-
+\fi 
 
 \begin{frame}{Results: the Three Steps Lemma}\justifying
 	
@@ -688,11 +701,11 @@ The possibility of losing independence posticipating a derivation is due to left
 \begin{frame}{Future works}\justifying 
 	This work is only the first step in an attempt to construct a concurrent semantics for left-linear DPO rewriting systems.
 	
-	\smallskip \pause 
+	\medskip \pause 
 	
-	In \cite{baldan2017domains} a category of domains, called \emph{weak prime domains} has been proposed as a possible concurrent semantic for systems allowing fusions. 	
+	In \cite{baldan2021concurrent} a category of domains, called \emph{weak prime domains} has been proposed as a possible concurrent semantic for systems allowing fusions. 	
 	
-	\smallskip \pause We plan to build on the results proved in this paper to show that to every left-linear DPO rewriting system it is possible to associate one of these domains, representing ``derivation up to switches''.
+	\medskip \pause We plan to build on the results proved in this paper to show that to every left-linear DPO rewriting system it is possible to associate one of these domains, representing ``derivation up to switches''.
 \end{frame}
 
 \begin{frame}{\hspace{1pt}}
