@@ -689,11 +689,11 @@ This section is devoted to the introduction and study of a, quite general, setti
 		\item $f\colon X \rto Y$ if $f$ belongs to $\mathcal{R}_\Y$ ;
 		\item $f\colon X \fto Y$ if $f$ is a \emph{fusion}, i.e.~belongs to both $\mathcal{R}_\Y$ and $\mathcal{E}$. 
 		\end{itemize}
-		
-		
-		Given an object $X$, we can consider the poset $\fuse{X}$
 \end{setting}
 
+\begin{remark}\label{rem:cont}
+	Notice that, by \Cref{prop:varie}, $\mathcal{R}_\Y$ contains all monos, therefore, in particular, it contains all arrows in $\mathcal{M}$.
+\end{remark}
 
 \begin{proposition}\label{prop:fusion}
 	The class of fusions is stable under pullbacks, pushouts and closed under composition. Moreover, the image of a fusion through $I_\Y\circ R_{\Y}$ is again a fusion.
@@ -715,38 +715,25 @@ Under the conditions of our setting, the system $(\X, \R)$ is well switching. In
 \end{remark}
 
 
-\begin{lemma}Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^{n}$ be a derivation, then the following hold true:
-	\begin{enumerate}
-		\item $\iota_{\der{D}, G_0}\colon G_0\to \tpro{D}$ belongs to $\mathcal{R}$ and $\iota_{\der{D}, G_{n+1}}\colon G_{n+1}\to \tpro{D}$ belongs to $\mathcal{M}$;
-		\item for every $i\in [0, n+1]$, there are  arrows $m_i$ in $\mathcal{M}$ and $r_i$ in $\mathcal{R}$ such that the coprojection $\iota_{\der{D}, G_i}\colon G_i\to \tpro{D}$ is equal to $r_i\circ m_i$.
-	\end{enumerate}
+\begin{lemma}Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^{n}$ be a derivation, then $\iota_{\der{D}, G_{n+1}}\colon G_{n+1}\to \tpro{D}$ belongs to $\mathcal{M}$ and,  for every $i\in [0, n]$,  $\iota_{\der{D}, G_i}\colon G_i\to \tpro{D}$ is in $\mathcal{R}_\Y$.
 \end{lemma}
-\begin{proof}
-	\begin{enumerate}		
-		\item We proceed by induction on the length of $\der{D}$.
-		
-		\smallskip \noindent $\lgh(\dder{D})=0$. then $\tpro{\dder{D}}$ is simply $(G_0, \{\id{G_0}\})$ and $\id{G_0}$ belongs to $\mathcal{M}$ and $\mathcal{R}$.
+\begin{remark}\label{rem:cont2}
+	By \Cref{rem:cont}, $\mathcal{M}$ is a subclass of $\mathcal{R}_\Y$, so that the previous lemma entails that all the coprojections belong to $\mathcal{R}_\Y$.
+\end{remark}
+\begin{proof} 
+We proceed by induction on the length of $\der{D}$.
+	
+		\smallskip \noindent $\lgh(\dder{D})=0$. then $\tpro{\dder{D}}$ is simply $(G_0, \{\id{G_0}\})$ and $\id{G_0}$ belongs to $\mathcal{M}$.
 		
 		\smallskip \noindent$\lgh(\dder{D})=1$. Suppose that $\dder{D}$ has as its single component the derivation
 		\[\xymatrix{L_0 \ar[d]_{m_0}& K_0 \ar[d]^{k_0}\ar@{>->}[l]_{l_0} \ar[r]_{r_0}^{\mini} & R_0 \ar[d]^{h_0} \\G_0& \ar@{>->}[l]^{f_0} D_0 \ar[r]_{g_0}^{\mini}& G_1  \\}\]
 	Then the thesis follows since we have the following pushout square.
 		\[\xymatrix{D_0 \ar@{>->}[d]_{f_0} \ar[r]_{g_0}^{\mini} & G_1 \ar@{>->}[d]^{\iota_{\der{D}, G_1}} \\G_0 \ar[r]_-{\iota_{\der{D}, G_0}}^{\mini}& \tpro{D} }\]
 		
-		\smallskip \noindent$\lgh(\dder{D})\geq 2$. Let $\der{D}$ be $\{\dder{D}_i\}_{i=0}^n$ with $n\geq 1$. Let also $\der{D}'$ be $\{\dder{D}_i\}^{n-1}_{i=0}$ and $\rho_n=(l_n, r_n)$ be the rule applied in $\dder{D}_n$. The thesis follows from the inductive hypothesis and the diagram below.
-		\[\xymatrix@C=30pt{L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar@{>->}[l]_{l_{n}} \ar[r]_{r_{n}}^{\mini} & R_{n} \ar[d]^{h_n} \\ G_{n} \ar@{>->}[d]_{\iota_{\der{D}' , G_{n}}}& \ar@{>->}[l]^{f_n} D_n \ar[r]^{\mini}_{g_n}& G_{n+1}  \ar@{>->}[d]^{\iota_{\der{D}, G_{n+1}}}\\  \lpro \der{D}' \ar[rr]_{p}^{\mini} \rpro && \tpro{D}\\ G_0 \ar[u]^-{\iota_{\der{D}', G_{0}}}_{\mini} \ar@/_.5cm/[urr]_{\iota_{\der{D}, G_0}}^\mini}\] 		
+		\smallskip \noindent$\lgh(\dder{D})\geq 2$. Let $\der{D}$ be $\{\dder{D}_i\}_{i=0}^n$ with $n\geq 1$. Let also $\der{D}'$ be $\{\dder{D}_i\}^{n-1}_{i=0}$ and $\rho_n=(l_n, r_n)$ be the rule applied in $\dder{D}_n$. We can then build the diagram below, in which the bootm half is a pushout.
+		\[\xymatrix@C=30pt{L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar@{>->}[l]_{l_{n}} \ar[r]_{r_{n}}^{\mini} & R_{n} \ar[d]^{h_n} \\ G_{n} \ar@{>->}[d]_{\iota_{\der{D}' , G_{n}}}& \ar@{>->}[l]^{f_n} D_n \ar[r]^{\mini}_{g_n}& G_{n+1}  \ar@{>->}[d]^{\iota_{\der{D}, G_{n+1}}}\\  \lpro \der{D}' \ar[rr]_{p}^{\mini} \rpro && \tpro{D}\\ G_i \ar[u]^-{\iota_{\der{D}', G_{i}}}_{\mini} \ar@/_.5cm/[urr]_{\iota_{\der{D}, G_i}}}\] 		
 		
-		\item We proceed again by induction the length of $\der{D}$.
-		
-		\smallskip \noindent$\lgh(\dder{D})=0$. This follows at once from the previous point.
-		
-		\smallskip \noindent$\lgh(\dder{D})=1$. Again, this follows from the previous point.
-		
-		\smallskip \noindent$\lgh(\dder{D})\geq 2$. As above, if $\der{D}$ is $\{\dder{D}_i\}_{i=0}^n$ with $n\geq 1$, we can consider the derivation $\der{D}':=\{\dder{D}_i\}^{n-1}_{i=0}$ and consider the rule $\rho_n$ be the rule applied in $\dder{D}_n$. By the inductive hypothesis, for every $i\in [0,n]$ we have the diagram below.
-		\[\xymatrix@C=30pt{L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar@{>->}[l]_{l_{n}} \ar[r]_{r_{n}}^{\mini} & R_{n} \ar[d]^{h_n} \\ G_{n} \ar@{>->}[d]_{\iota_{\der{D}' , G_{n}}}& \ar@{>->}[l]^{f_n} D_n \ar[r]^{\mini}_{g_n}& G_{n+1}  \ar@{>->}[d]^{\iota_{\der{D}, G_{n+1}}}\\  \lpro \der{D}' \ar[rr]_{p}^{\mini} \rpro && \tpro{D}\\X \ar[u]^{r_i}_{\mini} &&  G_i \ar[ull]^-{\iota_{\der{D}', G_{i}}} \ar[u]_{\iota_{\der{D}, G_i}} \ar@{>->}[ll]^{m_i}}\] 		
-		
-		The thesis now follows since $\mathcal{R}$ is closed under composition. To conclude, it is enough to notice that  the thesis for $i=n+1$ follows immediately from point $1$. 
-		\qedhere 
-	\end{enumerate}
+		The thesis follows from the inductive hypothesis and the fact that, by \Cref{prop:varie}, $\mathcal{R}_\Y$ is closed under composition.
 \end{proof}
 \begin{corollary}
 	\todo{match}
@@ -755,9 +742,9 @@ Under the conditions of our setting, the system $(\X, \R)$ is well switching. In
 
 Our next step is to show that, in our setting, there is a kind of ``minimum'' fusion of an object $X$ to which a rewriting rule can be applied.
 
-\begin{definition} Let $\rho$ be a rule $(l, r)$ in $\R$ with left-hand side $L$. Let $e\colon X\fto Y$ and $e'\colon X\fto Y'$ be two fusions with the same domain and $m\colon L\to Y$ and $m'\colon L\to Y'$ be two arrows, we say that the pairs $(e,m)$ and $(e', m')$ are \emph{compatible with respect to $\rho$} if the following diagram is commutative, where the outer square is a pushout.
+\begin{definition} Let $\rho$ be a rule $(l, r)$ in $\R$ with left-hand side $L$. Let $e\colon X\fto Y$ and $e'\colon X\fto Y'$ be two fusions with the same domain and $m\colon L\to Y$ and $m'\colon L\to Y'$ be two arrows, we say that the pairs $(e,m)$ and $(e', m')$ are \emph{compatible with respect to $\rho$} if there exists $q\colon Y\fto Q$ and $q'\colon Y'\fto Q'$ making the following diagram commutative.
 
-\[\xymatrix{X\ar@{>>}[rr]^\mini_{e} \ar@{>>}[dd]_{e'}^\mini & & Y \ar@{>>}[dd]_{q}^\mini\\ &L  \ar[ur]_{m} \ar[dl]^{m'}\\Y' \ar@{>>}[rr]_{q'}^{\mini} && Q}\]
+\[\xymatrix{X\ar@{>>}[rr]^\mini_{e} \ar@{>>}[dd]_{e'}^\mini & & Y \ar@{.>>}[dd]_{q}^\mini\\ &L  \ar[ur]_{m} \ar[dl]^{m'}\\Y' \ar@{.>>}[rr]_{q'}^{\mini} && Q}\]
 
 Given a fusion $e\colon X\fto Y$ and an arrow $m\colon L\to Y$, we will denote by $\mathcal{F}_\rho(e, m)$ the class of pairs compatible with $(e, m)$ with respect to a given rule $\rho$.  
 \end{definition}
@@ -766,25 +753,77 @@ Given a fusion $e\colon X\fto Y$ and an arrow $m\colon L\to Y$, we will denote b
 	tutti i sotto quozienti
 \end{example}
 
+\begin{proposition}
+Let $\rho$ be a rule with left-hand side $L$ and $(e,m)$ a pair made by a fusion $e\colon X\fto Y$ and an arrow $m\colon L\to Y$. Then for every $(e', m')$ in $\mathcal{F}_\rho(e,m)$ \[\mathcal{F}_\rho(e,m)=\mathcal{F}_\rho(e',m')\] 
+\end{proposition}
+\begin{proof} Let $e'$ be an arrow $X\fto Y'$, by definition of compatibility, we know that there exist $q\colon Y'\to Q$ and $Q\colon Y\to Q$ fitting in the diagram below. 
+\[\xymatrix{X\ar@{>>}[rr]^\mini_{e} \ar@{>>}[dd]_{e'}^\mini & & Y \ar@{.>>}[dd]_{q}^\mini\\ &L  \ar[ur]_{m} \ar[dl]^{m'}\\Y' \ar@{.>>}[rr]_{q'}^{\mini} && Q}\]
+
+We are now going to show the two inclusions.
+	
+	\smallskip \noindent $(\subseteq)$. Let $(e'', m'')$ be another element of $\mathcal{F}_\rho(e,m)$, so that we have a square as the one below
+	
+	\[\xymatrix{X\ar@{>>}[rr]^\mini_{e} \ar@{>>}[dd]_{e''}^\mini & & Y \ar@{>>}[dd]_{\hat{q}}^\mini\\ &L  \ar[ur]_{m} \ar[dl]^{m''}\\Y'' \ar@{>>}[rr]_{q''}^{\mini} && \hat{Q}}\]
+	
+	Since $\X$ has all pushouts, and using \Cref{prop:fusion}, we can build the following diagram, where the bottom square is a pushout.
+	\[\xymatrix{&& X \ar@{>>}[d]_{e}^{\mini} \ar@/^.3cm/@{>>}[drr]_{e'}^{\mini} \ar@/_.3cm/@{>>}[dll]^{e'''}_{\mini}\\Y'' \ar@{>>}[dr]_{q''}^{\mini} && Y \ar@{>>}[dr]_{q}^{\mini} \ar@{>>}[dl]^{\hat{q}}_{\mini}  && Y'\ar@{>>}[dl]^{q'}_{\mini}  \\ & \hat{Q} \ar@{>>}[dr]_{p_1}^{\mini} && Q\ar@{>>}[dl]^{p_2}_{\mini}\\ &&Q'}\] 
+		
+	To get the thesis, it is now enough to compute:
+	\begin{align*}
+		p_1\circ q''\circ m''&=p_1\circ \hat{q}\circ m\\&=p_2\circ q\circ m\\&=p_2\circ q'\circ m
+	\end{align*}
+	
+		
+	\smallskip \noindent $(\supseteq)$ This follows immediately from the previous point since $(e,m)\in \mathcal{F}_\rho(e,m)$.
+\end{proof}
+
 
 \begin{lemma}
-	Let $e\colon X\fto Y$, $\rho\in \R$ with left-hand side $L$ and $m\colon L\to Y$ be such that $\mathcal{F}_\rho(e, m)$.  Then there exists a fusion $(\mf{e},\mf{m})\colon L\to \mf{Y}$  in $\mathcal{F}_\rho(e, m)$ and for every other $(e', m')$ in it there exists $f\colon \mf{Y}\to Y'$, where $Y'$ is the codomain of $e'$, such that:
-\[f\circ e =e' \qquad f\circ m=m'\]
+	Let $e\colon X\fto Y$ be a fusion, $\rho$ a rule with left-hand side $L$ and $m\colon L\to Y$ an arrow.  Then there exists $(\mf{e},\mf{m})$, with $\mf{e}\colon X\fto \mf{Y}$,  in $\mathcal{F}_\rho(e, m)$ with the property that for every other $(e', m')$ in $\mathcal{F}_\rho(e, m)$, there exists an arrow $f_{(e', m')}\colon \mf{Y}\to Y'$, where $Y'$ is the codomain of $e'$, such that:
+\[f_{(e', m')}\circ \mf{e} =e' \qquad f_{(e', m')}\circ \mf{m}=m'\]
 \end{lemma}
 
-\begin{proof}By hypothesis $I$ is non-empty, thus we can consider $k$ in it and $e_k\colon X\to Y_k$.  Consider the two diagrams below, where the upper square  in the inner rectangle one is the image through $I_\Y\circ R_\Y$ of a pullback square, while the outer rectangle is a pushout. Notice that, by hypothesis and \Cref{prop:fusion}, all the horizontal arrows and the coprojection $e\colon X\to Y$ are fusions and, moreover, there exists the dotted arrow $f_k\colon Y\to Y_k$.
-	\[\xymatrix@C=55pt{I_\Y(R_\Y(P)) \ar[d]_{I_\Y(R_\Y(p_2)) } \ar@{>>}[r]_-{I_\Y(R_\Y(p_1))}^{\mini} & I_\Y(R_\Y(L)) \ar@/^.4cm/[dddr]^{q} \ar[d]_{I_\Y(R_\Y(m_k)) } \\ I_\Y(R_\Y(X)) \ar[d]_{\epsilon_X} \ar@{>>}[r]_-{I_\Y(R_\Y(e_k))}^{\mini}& I_\Y(R_\Y(Y_k)) \ar[d]_{\epsilon_X}  \\ X\ar@{>>}@/_.5cm/[drr]^{\mini}_{e} \ar@{>>}[r]_{e_k}^{\mini}& Y_k \\ &&Y\ar@{.>}[ul]_{f_k}}\]
+\begin{proof} We start by taking the following pullback square. Since $e\colon X\fto Y$ is a fusion, by \Cref{prop:fusion} we know that $p_1\colon P\to L$ is a fusion too.
+	\[\xymatrix{P \ar@{>>}[r]_{p_1}^{\mini} \ar[d]_{p_2}& L \ar[d]^{m} \\ X \ar@{>>}[r]_{e}^{\mini} & Y}\]
+	
+Now, applying $I_\Y\circ R_\Y$ we get the two squares in the diagram below, while the outer boundary of it is a pushout. Notice that, by hypothesis and \Cref{prop:fusion}, all the horizontal arrows and the coprojection $\mf{e}\colon X\to \mf{Y}$ are fusions. Moreover the universal property of pushouts yields the dotted $f_{(e,m)}\colon \mf{Y}\to Y$
+	\[\xymatrix@C=55pt{I_\Y(R_\Y(P)) \ar[d]_{I_\Y(R_\Y(p_2)) } \ar@{>>}[r]_-{I_\Y(R_\Y(p_1))}^{\mini} & I_\Y(R_\Y(L)) \ar@/^.4cm/[dddr]^{n} \ar[d]_{I_\Y(R_\Y(m)) } \\ I_\Y(R_\Y(X)) \ar[d]_{\epsilon_X} \ar@{>>}[r]_-{I_\Y(R_\Y(e))}^{\mini}& I_\Y(R_\Y(Y)) \ar[d]_{\epsilon_X}  \\ X\ar@{>>}@/_.5cm/[drr]^{\mini}_{\mf{e}} \ar@{>>}[r]_{e}^{\mini}& Y \\ &&\mf{Y}\ar@{.>}[ul]_{f_{(e,m)}}}\]
 
-	Let now $i$ be any other element of $i$.
+Now, by hypothesis $L$ is in $\Y$, thus by \Cref{cor:counit} $\epsilon_L$ is an isomorphism and we can define $\mf{m}\colon L\to \mf{Y}$ as $n\circ \epsilon^{-1}_L$, so that 
+\begin{align*}
+f_{(e,m)}\circ \mf{m}&=f_{(e,m)}\circ n\circ \epsilon^{-1}_L\\&= \epsilon_X\circ I_\Y(R_\Y(m))\\&=m\circ \epsilon_L\circ \epsilon^{-1}_L\\&=m
+\end{align*}
+
+We have now to show that $(\mf{e}, \mf{m})$ belongs to $\mathcal{F}_\rho(e,m)$. But to do so it is enough to consider the pushout square below:
+\[\xymatrix{X \ar@{>>}[r]^{\mf{e}}^\mini \ar@{>>}[d]_{e}^\mini& \mf{Y} \ar[d]_{\mf{q}}^\mini\\ Y \ar@{>>}[r]_{q}^\mini & Q}\]
+
+Indeed, on one hand we have
+\begin{align*}
+	q\circ f_{(e,m)}\circ \mf{e}&=q\circ e\\&=\mf{q}\circ \mf{e}
+\end{align*}
+So that, since $\mf{e}$ is an epimorphism, we know that  $q\circ f_{(e,m)}=\mf{q}$. But then
+\begin{align*}
+	q\circ m&=q\circ f_{(e,m)}\circ \mf{m}\\&=
+	\mf{q}\circ \mf{m}
+\end{align*}
+
+	Let now $(e', m')$ be another element of $\mathcal{F}_\rho(e,m)$, thus we have a square as the one below.
+\[\xymatrix{X\ar@{>>}[rr]^\mini_{e} \ar@{>>}[dd]_{e'}^\mini & & Y \ar@{>>}[dd]_{q}^\mini\\ &L  \ar[ur]_{m} \ar[dl]^{m'}\\Y' \ar@{>>}[rr]_{q'}^{\mini} && Q}\]
+ 
+ Now, computing we have:
+ \begin{align*}
+ q'\circ	m'\circ \epsilon_L\circ I_\Y(R_\Y(p_1))&=q\circ m\circ \epsilon_L\circ I_\Y(R_\Y(p_1))\\&=q\circ m\circ p_1\circ \epsilon_P\\&=q\circ e \circ p_2\circ \epsilon_P\\&=q'\circ e' \circ \epsilon_X\circ I_\Y(R_\Y(p_2))
+ \end{align*}	
 	
-	
+Since $q'$ is a fusion, by the fourth point of \Cref{prop:varie} the outer square in the diagram below commutes.
+
+	\[\xymatrix@C=55pt{I_\Y(R_\Y(P)) \ar[d]_{I_\Y(R_\Y(p_2)) } \ar@{>>}[r]_-{I_\Y(R_\Y(p_1))}^{\mini} & I_\Y(R_\Y(L))  \ar[dd]_{n} \ar[dr]^-{\epsilon_L}\\ I_\Y(R_\Y(X)) \ar[d]_{\epsilon_X} && L \ar[dd]^{m'} \ar[dl]_{\mf{m}}   \\ X\ar@{>>}@/_.5cm/[drr]^{\mini}_{e'} \ar@{>>}[r]_{\mf{e}}^{\mini}& \mf{Y} \ar@{.>}[dr]^{f_{(e',m')}}\\ &&Y'}\]
+
+Thus  we obtain the arrow $f_{(e', m')}\colon \mf{Y}\to Y'$ by the universal property of pushouts.	
 \end{proof}
  
- 
- \begin{corollary}
-\todo{quoziente minimo}
- \end{corollary}
- 
+ \begin{definition}\todo{quoziente minimo}
+ \end{definition}
  
 
 Finally....
@@ -1311,7 +1350,7 @@ Let us recall the following well known fact.
 
 
 \begin{corollary}\label{cor:cou}
-Let $L\colon \X\to \Y$ and $R\colon \Y \to \X$ be a pair of functors such that $L\dashv R$ and suppose that $L$ is full and faithful. Let $\epsilon\colon L\circ R\to \id{\Y}$ be the unit of the adjunction, then the following are true for every object $X$:
+Let $L\colon \X\to \Y$ and $R\colon \Y \to \X$ be a pair of functors such that $L\dashv R$ and suppose that $L$ is full and faithful. Let $\epsilon\colon L\circ R\to \id{\Y}$ be the counit of the adjunction, then the following are true for every object $X$:
 \begin{enumerate}
 	\item the arrow $R(\epsilon_X)$ is an isomorphism;
 	\item $L(R(\epsilon_X))$ is equal to $\epsilon_{L(R(X))}$.
