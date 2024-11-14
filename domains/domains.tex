@@ -1618,6 +1618,152 @@ On the other hand, if $g\colon Y\to R(X)$ is such that $\epsilon_X\circ g=f$, th
 \end{proof}
 
 
+\newpage
+\begin{definition}Let $\X$ be an $\mathcal{M}$-adhesive category and consider a left-linear DPO-rewriting system $(\X, \R)$ on it.  Take two non-empty decorated derivations $(\der{D}, \alpha, \omega)$ and  $(\der{D}', \alpha', \omega')$ with the same length and with isomorphic sources and targets.
+	
+	If $\der{D}=\{\dder{D}_i\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^n$ with assciated sequence of rules $r(\der{D})=\{\rho_i\}_{i=0}^n$ and $r(\der{D}')=\{\rho'_i\}_{i=0}^n$, a \emph{semi-consistent permutation} between  $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ is a permutation $\sigma\colon [0,n]\to [0,n]$  such that, for every $i\in [0,n]$, $\rho_i=\rho'_{\sigma(i)}$ and, moreover, there exists a \emph{mediating isomorphism} $\xi_\sigma\colon \tpro{D} \to \lpro \der{D}' \rpro$ fitting in the following diagrams, where $m_i, m'_i, h_i$ and $h'_i$ are, respectively, the matches and back-matches of $\dder{D}_i$ and $\dder{D}'_i$.
+	\[\xymatrix@C=30pt{\pi(G_0)\ar[r]^{\alpha} \ar[d]_{\alpha'} & G_0 \ar[r]^{\iota_{G_0}} &\tpro{D} \ar[d]^{\xi_\sigma}\\ G'_0 \ar[rr]_{\iota'_{G'_0}} & &\lpro \der{D}' \rpro\\L_i \ar[r]^{m_i} \ar[d]_{m'_{\sigma(i)}}& G_i \ar[r]^{\iota_{G_i}} &\tpro{D} \ar[d]^{\xi_\sigma} & R_i \ar[r]^{h_i} \ar[d]_{h'_{\sigma(i)}}& G_{i+1} \ar[r]^{\iota_{G_{i+1}}} &\tpro{D} \ar[d]^{\xi_\sigma} \\G'_{\sigma(i)} \ar[rr]_{\iota'_{G'_{\sigma(i)}}}&& \lpro \der{D}' \rpro& G'_{\sigma(i)+1} \ar[rr]_{\iota'_{G'_{\sigma(i)+1}}}&& \lpro \der{D}' \rpro}\]
+\end{definition}
+
+\begin{remark}\label{rem:coproj}
+	Notice that, in particular, the previous diagram entails
+	\[\xi_\sigma \circ \iota_{L_i}=\iota'_{L_{\sigma(i)}} \quad \xi_\sigma \circ \iota_{K_i}=\iota'_{K_{\sigma(i)}} \quad \xi_\sigma \circ \iota_{R_i}=\iota'_{R_{\sigma(i)}} \]
+\end{remark}
+
+
+\begin{proposition}\label{prop:isouno} For every semi-consistent permutation $\sigma$ between  $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$, the mediating isomorphism $\xi_\sigma\colon \tpro{D}\to \lpro \der{D}'\rpro$ is unique.
+\end{proposition}
+\begin{proof} Let $\xi'_\sigma$ be another mediating isomorphism, then by \Cref{rem:coproj} we have
+	\[\begin{split}
+		\xi_\sigma \circ \iota_{L_i}&=\iota'_{L_{\sigma(i)}}\\&=\xi'_\sigma\circ \iota_{L_i}
+	\end{split} \qquad \begin{split}
+		\xi_\sigma \circ \iota_{K_i}&=\iota'_{K_{\sigma(i)}}\\&=\xi'_\sigma\circ \iota_{K_i}
+	\end{split} \qquad \begin{split}
+		\xi_\sigma \circ \iota_{R_i}&=\iota'_{R_{\sigma(i)}}\\&=\xi'_\sigma\circ \iota_{R_i}
+	\end{split}\]
+	
+	Now, notice that 
+	\begin{align*}
+		\xi_\sigma \circ \iota_{G_0}&=\iota'_{G'_0}\circ \alpha'\circ \alpha^{-1}\\&=\xi'_\sigma \circ \iota_{G_0}
+	\end{align*}
+	
+	If $\lgh(\der{D})=0$ this is enough to conclude, otherwise we are going to prove by induction that, for every $i\in [0, \lgh(\der{D})-1]$
+	\[
+	\xi_\sigma \circ \iota_{G_i}=\xi'_\sigma\circ \iota_{G_i}
+	\]	
+	
+	\smallskip \noindent $i=0$. This is simply the result obtained before.
+	
+	\smallskip \noindent $i >0$. If $i>0$, we know that there is a pushout square
+	\[\xymatrix{K_{i-1}\ar[r]^{r_{i-1}} \ar[d]_{k_{i-1}}& R_{i-1} \ar[d]^{h_{i-1}}\\ D_{i-1} \ar[r]_{g_{i-1}}& G_i}\] 
+	By \Cref{rem:coproj} and the induction hypothesis we know that
+	\[\begin{split}
+		\xi_\sigma \circ \iota_{G_i}\circ h_{i-1}&=  \xi_\sigma\circ \iota_{R_{i-1}}\\&=\iota'_{R_{\sigma(i-1)}}\\&=\xi'_{\sigma}\circ \iota_{R_{i-1}}\\&=\xi'_{\sigma} \circ \iota_{G_i}\circ h_{i-1}\\&
+	\end{split} \qquad
+	\begin{split}
+		\xi_\sigma \circ \iota_{G_i}\circ g_{i-1}&=\xi_{\sigma}\circ \iota_{D_{i-1}}\\&=\xi_{\sigma}\circ \iota_{G_{i-1}} \circ f_{i-1}\\&=\xi'_{\sigma}\circ \iota_{G_{i-1}} \circ f_{i-1}\\&=\xi'_{\sigma}\circ \iota_{D_{i-1}} \\&=\xi'_{\sigma}\circ \iota_{G_{i}} \circ g_{i-1}
+	\end{split}
+	\]
+	
+	Since $\xi_\sigma \circ \iota_{D_i}$ must be $\xi_\sigma \circ \iota_{G_i}\circ f_i$, we also have
+	\[\xi_\sigma \circ \iota_{D_i}=\xi'_\sigma \circ \iota_{D_i}\] 
+	and the thesis follows.
+\end{proof}
+
+\begin{proposition}\label{prop:abstoswitch}
+	Let $(\der{D, \alpha, \omega})$ and $(\der{D}', \alpha, \omega')$ be two derivation with an abstract equivalence among them with the identity as first component. Then $\id{n}$ is a semi-consistent permutation among them.
+\end{proposition}
+\begin{proof}
+Let $\xi\colon \tpro{D}\to \lpro \der{D}'\rpro$ be the arrow induced by 
+\[\xi \circ \iota_{G_i}:=\iota'_{G'_i}\circ \phi_{G_i}\] 
+Then we have
+	\[\xymatrix@C=30pt{\pi(G_0)\ar[r]^{\alpha} \ar[d]_{\alpha} & G_0 \ar[dl]^{\id{G_0}} \ar[r]^{\iota_{G_0}} &\tpro{D} \ar[d]^{\xi}\\ G_0 \ar[rr]_{\iota'_{G_0}} & &\lpro \der{D}' \rpro\\L_i \ar[r]^{m_i} \ar[d]_{m'_{i}}& G_i \ar[dl]^{\phi_i} \ar[r]^{\iota_{G_i}} &\tpro{D} \ar[d]^{\xi} & R_i \ar[r]^{h_i} \ar[d]_{h'_{i}}& G_{i+1} \ar[dl]_{\phi_{i+1}} \ar[r]^{\iota_{G_{i+1}}} &\tpro{D} \ar[d]^{\xi} \\G'_{\sigma(i)} \ar[rr]_{\iota'_{G'_{i}}}&& \lpro \der{D}' \rpro& G'_{i+1} \ar[rr]_{\iota'_{G'_{i+1}}}&& \lpro \der{D}' \rpro}\]
+\end{proof}
+
+
+\begin{lemma}Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X,\R)$ a well-switching rewriting system.
+	Consider a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$ and suppose that we have the following two switching sequences
+	\[\der{D} \shift{(0,1)} \der{D}' \shift{(1,2)} \der{D}'' \shift{(0,1)}\der{D}'''\\
+	\qquad \der{D}\shift{(1,2)}\der{E}'\shift{(0,1)} \der{E}'' \shift{(1,2)}\der{E}''' \]
+	Then $\der{D}'''$ and $\der{E}'''$ are abstraction equivalent. The abstraction equivalence has the identity has a first and last isomorphism.
+\end{lemma}
+\begin{proof}
+	To fix the notation, let us depict the derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$
+	\[\xymatrix@C=15pt{L_0\ar[d]^{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]_(.4){i_0}|(.29)\hole \ar[dr]|(.28)\hole_{h_0} && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.28)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[r]^{r_1} & R_1 \ar[dr]|(.28)\hole_{h_1} \ar@/^.35cm/[drrr]_(.4){j_0}|(.29)\hole  && L_2 \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.28)\hole^{m_2}& K_2 \ar[d]^{k_2}\ar@{>->}[l]_{l_2} \ar[rr]^{r_2} && R_2 \ar[d]_{h_2} \\G_0 && \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar@{>->}[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2 && \ar@{>->}[ll]^{f_2} D_2 \ar[rr]_{g_2}&& G_3 }\]
+	
+	We are going to do the two sequences of switches and compare the results.
+	
+	\smallskip \noindent First sequence of switches.
+	
+	We begin switching $\dder{D}_0$ and $\dder{D}_1$ to get the following diagram
+	\[\xymatrix@C=15pt{L_1\ar[d]^{f_0\circ i_1}&& K_1 \ar[d]_{k'_1}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){a_0}|(.29)\hole \ar[dr]|(.28)\hole_{h'_1} && L_0 \ar@/_.35cm/[dlll]^(.4){a_1} \ar[dl]|(.28)\hole^{m'_0}& K_0 \ar[d]^{k'_0}\ar@{>->}[l]_{l_0} \ar[r]^{r_0} & R_0 \ar[dr]|(.28)\hole_{g_1\circ i_0} \ar@/^.35cm/[drrr]_(.4){b_0}|(.29)\hole  && L_2 \ar@/_.35cm/[dlll]^(.4){b_1} \ar[dl]|(.28)\hole^{m_2}& K_2 \ar[d]^{k_2}\ar@{>->}[l]_{l_2} \ar[rr]^{r_2} && R_2 \ar[d]_{h_2} \\G_0 && \ar@{>->}[ll]^{f'_0} D'_0 \ar[rr]_{g'_0}&& G'_1  && \ar@{>->}[ll]^{f'_1} D'_1 \ar[rr]_{g'_1}&& G_2 && \ar@{>->}[ll]^{f_2} D_2 \ar[rr]_{g_2}&& G_3 }\]
+	
+	By \Cref{def:switch} we also know that $m_0=f'_0\circ a_1$ and $h_1=g'_1\circ a_0$. Now, let us switch $S_{i_0, i_1}(\dder{D}_0)$ and $\dder{D}_2$. In this case we obtain
+	\[\xymatrix@C=15pt{L_1\ar[d]^{f_0\circ i_1}&& K_1 \ar[d]_{k'_1}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){c_0}|(.29)\hole \ar[dr]|(.28)\hole_{h'_1} && L_2 \ar@/_.35cm/[dlll]^(.4){c_1} \ar[dl]|(.28)\hole^{f'_1\circ b_1}& K_2 \ar[d]^{k'_2}\ar@{>->}[l]_{l_2} \ar[r]^{r_2} & R_2 \ar[dr]|(.28)\hole_{h'_2} \ar@/^.35cm/[drrr]_(.4){d_0}|(.29)\hole  && L_0 \ar@/_.35cm/[dlll]^(.4){d_1} \ar[dl]|(.28)\hole^{\hat{m}_0}& K_0 \ar[d]^{\hat{k}_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]_{g_2\circ b_0} \\G_0 && \ar@{>->}[ll]^{f'_0} D'_0 \ar[rr]_{g'_0}&& G'_1  && \ar@{>->}[ll]^{\hat{f}_1} \hat{D}_1 \ar[rr]_{\hat{g}_1}&& G'_2 && \ar@{>->}[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
+	Using again the definition of switch, we know that $m'_0=\hat{f}_1\circ d_1$ and $h_2=g'_2\circ d_0$. Moreover, by hypothesis $(\X, \R)$ is well-switching and the hypothesis of the second point of \Cref{lem:indep-global-left} are satisfied by $\der{D}$. Thus we can characterise $c_0\colon R_1\to \hat{D}_1$ and $c_1\colon L_2\to D'_0$ as the unique arrows fitting in the diagrams below, where the bottom squares are pullbacks
+	\[\xymatrix@R=15pt@C=15pt{&&R_1 \ar@/_1.2cm/[dddl]_(.4){a_0}|(.63)\hole\ar[dl]^{j_0}\ar[dd]^{c'_0} \ar@{>}[dr]^{c_0}&&&&&L_2 \ar[dl]^{j_1} \ar@/_1.2cm/[dddl]_(.4){z_1}|(.63)\hole\ar[dd]^{c'_1} \ar@{>}[dr]^{c_1}\\&D_2 \ar@{>->}[dl]^(.4){f_2}&&\hat{D}_1 \ar[dr]^{\hat{g}_1}  &&&D_1 \ar@{>->}[dl]^(.4){f_1}&&D'_0 \ar[dr]^{g'_0}\\G_2 && P\ar[dr]_{p_4} \ar@{>->}[ur]_{p_3}\ar@{>->}[dl]^{p_1} \ar[ul]^{p_2}&&G'_2&G_1 && Q\ar[dr]_{q_4} \ar@{>->}[ur]_{q_3}\ar@{>->}[dl]^{q_1} \ar[ul]^{q_2}&&G'_1\\& D'_1 \ar[ul]^{g'_1}&&D'_2 \ar@{>->}[ur]_{f'_2}&&& D_0 \ar[ul]^{g_0}&&D'_1 \ar@{>->}[ur]_{f'_1}}\]
+	
+	Finally, we switch the first two direct derivations
+	\[\xymatrix@C=15pt{L_2\ar[d]^{f'_0\circ c_1}&& K_2 \ar[d]_{\hat{k}_2}\ar@{>->}[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){e_0}|(.29)\hole \ar[dr]|(.28)\hole_{\hat{h}_2} && L_1 \ar@/_.35cm/[dlll]^(.4){e_1} \ar[dl]|(.28)\hole^{\hat{m}_1}& K_1 \ar[d]^{\hat{k}_1}\ar@{>->}[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){t_0}|(.29)\hole \ar[dr]|(.28)\hole_{\hat{g}_1\circ c_0}   && L_0  \ar[dl]|(.28)\hole^{\hat{m}_0} \ar@/_.35cm/[dlll]^(.4){t_1}& K_0 \ar[d]^{\hat{k}_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[d]_{g_2\circ b_0} \\G_0 && \ar@{>->}[ll]^{\hat{f}_0} \hat{D}_0 \ar[rr]_{\hat{g}_0}&& \hat{G}_1  && \ar@{>->}[ll]^{\tilde{f}_1} \tilde{D}_1 \ar[rr]_{\tilde{g}_1}&& G'_2 && \ar@{>->}[ll]^{f'_2} D'_2 \ar[rr]_{g'_2}&& G_3 }\]
+	As before, we have identities $f_0\circ i_1=\hat{f}_0\circ e_1$ and $h'_2=\tilde{g}_1\circ e_0$. Now, the derivation $S_{i_0, i_1}(\dder{D}_1)\cdot S_{i_0, i_1}(\dder{D}_0)\cdot \dder{D}_2$ satisfies the hypothesis of the first point of \Cref{lem:indep-global-left}. Thus, since there is at most one independence pair between two direct derivations, we know that  $t_0\colon R_1\to \tilde{D}_1$ and $t_1\colon L_0\to D'_2$  fit in
+	\[\xymatrix{&R_1 \ar[dl]_{a_0} \ar@{>}[dr]^{t_0} \ar@/^.4cm/[dd]|\hole^(.6){c_0}\ar[d]_{t'_0}&&L_ 0\ar[d]_{d_1} \ar@/_.4cm/[ddrr]|(.41)\hole_(.7){a_1}\ar[drr]^{t'_1} \ar@{>}[rr]^{t_1}&&\tilde{D}_1 \ar@{>->}[r]^{\tilde{f}_1}&\hat{G}_1\\ D'_1 \ar@{>->}[d]_{f'_1}&P\ar@{>->}[d]_{p_3} \ar[r]^{p_4} \ar@{>->}[l]_{p_1}&D'_2\ar@{>->}[d]^{f'_2}&\hat{D}_1 \ar@{>->}[d]_{\hat{f}_1}&&S\ar@{>->}[r]_{s_4} \ar[u]_{s_3}\ar@{>->}[d]^{s_1} \ar[ll]_{s_2} &\hat{D}_0 \ar[u]_{\hat{g}_0} \ar@{>->}[d]^{\hat{f}_0}\\G'_1&\hat{D}_1 \ar@{>->}[l]^{\hat{f}_1}\ar[r]_{\hat{g}_1}& G'_2&G'_1 && D'_0 \ar[ll]^{g'_0}  \ar@{>->}[r]_{f'_0}& G_0 }\]
+	
+	\smallskip \noindent Second sequence of switches.
+	
+	This time we start switching $\dder{D}_1$ and $\dder{D}_2$.
+	\[\xymatrix@C=15pt{L_0\ar[d]^{m_0}&& K_0 \ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]_(.4){z_0}|(.29)\hole \ar[dr]|(.28)\hole_{h_0} && L_2 \ar@/_.35cm/[dlll]^(.4){z_1} \ar[dl]|(.28)\hole^{f_1\circ j_1}& K_2 \ar[d]^{\check{k}_2}\ar@{>->}[l]_{l_2} \ar[r]^{r_2} & R_2 \ar[dr]|(.28)\hole_{\check{h}_2} \ar@/^.35cm/[drrr]_(.4){w_0}|(.29)\hole  && L_1 \ar@/_.35cm/[dlll]^(.4){w_1} \ar[dl]|(.28)\hole^{\check{m}_1}& K_1 \ar[d]^{\check{k}_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} && R_1\ar[d]_{g_2\circ j_0} \\G_0 && \ar@{>->}[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar@{>->}[ll]^{\check{f}_1} \check{D}_1 \ar[rr]_{\check{g}_1}&& \check{G}_2 && \ar@{>->}[ll]^{\check{f}_2} \check{D}_2 \ar[rr]_{\check{g}_2}&& G_3 }\]
+	As in the previous case, we already know that $m_1=\check{f}_1\circ w_1$ and $h_2=\check{g}_2\circ w_0$.
+	
+	Next, we switch $\dder{D}_0$ and $S_{j_0, j_1}(\dder{D}_2)$ getting
+	\[\xymatrix@C=15pt{L_2\ar[d]^{f_0\circ z_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar@{>->}[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){y_0}|(.29)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_0 \ar@/_.35cm/[dlll]^(.4){y_1} \ar[dl]|(.28)\hole^{\check{m}_0}& K_0 \ar[d]^{\check{k}_0}\ar@{>->}[l]_{l_0} \ar[r]^{r_0} & R_0 \ar[dr]|(.28)\hole_{\check{g}_1\circ z_0} \ar@/^.35cm/[drrr]_(.4){x_0}|(.29)\hole  && L_1 \ar@/_.35cm/[dlll]^(.4){x_1} \ar[dl]|(.28)\hole^{\check{m}_1}& K_1 \ar[d]^{\check{k}_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} && R_1\ar[d]_{g_2\circ j_0} \\G_0 && \ar@{>->}[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar@{>->}[ll]^{\mathring{f}_1} \mathring{D}_1 \ar[rr]_{\mathring{g}_1}&& \check{G}_2 && \ar@{>->}[ll]^{\check{f}_2} \check{D}_2 \ar[rr]_{\check{g}_2}&& G_3 }\]
+	The usual identities $m_0=\check{f}_0\circ y_1$, $\check{h}_2=\mathring{g}_1\circ y_0$ hold. But the really important thing to notice is that the first match of these derivation coincide with $f'_0\circ c_1$
+	\[	f_0'\circ c_1  =f'_0\circ q_3\circ c'_1 =f_0\circ q_1\circ c'_1=f_0\circ z_1\]
+	
+	Moreover, we can characterise the pair $(x_0, x_1)$. If we apply the first point of \Cref{lem:indep-global-left} to $\dder{D}$ we get an independence pair between the last two steps of the derivation above, which, since $(\X, \R)$ is well-switching, must coincide with $(x_0, x_1)$. Thus we have two diagrams
+	
+	\[\xymatrix{&R_0 \ar[dl]_{i_0} \ar@{>}[dr]^{x_0} \ar@/^.4cm/[dd]|\hole^(.6){z_0}\ar[d]_{x'_0}&&L_ 1\ar[d]_{w_1} \ar@/_.4cm/[ddrr]|(.41)\hole_(.7){i_1}\ar[drr]^{x'_1} \ar@{>}[rr]^{x_1}&&\mathring{D}_1 \ar@{>->}[r]^{\mathring{f}_1}&\check{G}_1\\ D_1 \ar@{>->}[d]_{f_1}&P'\ar@{>->}[d]_{p'_3} \ar[r]^{p'_4} \ar@{>->}[l]_{p'_1}&\check{D}_2\ar@{>->}[d]^{\check{f}_2}&\check{D}_1 \ar@{>->}[d]_{\check{f}_1}&&S'\ar@{>->}[r]_{s'_4} \ar[u]_{s'_3}\ar@{>->}[d]^{s'_1} \ar[ll]_{s'_2} &\check{D}_0 \ar[u]_{\check{g}_0} \ar@{>->}[d]^{\check{f}_0}\\G_1&\check{D}_1 \ar@{>->}[l]^{\check{f}_1}\ar[r]_{\check{g}_1}& \check{G}_2&G_1 && D_0 \ar[ll]^{g_0}  \ar@{>->}[r]_{f_0}& G_0 }\]
+	From this diagram we can recover another identity. Notice that, if $p'_2\colon P'\to D_2$ is the last projection from $P'$, then
+	\[f_2\circ p'_2\circ x'_0=g_1\circ p'_1\circ x'_0=g_1\circ i_0=f_2\circ b_0\]
+	Implying, since $f_2$ is mono, that $p'_2\circ x'_0=b_0$. From this, we can also deduce that 
+	\[\check{g}_2\circ x_0=\check{g}_2\circ p'_4\circ x'_0=g_2\circ p'_2\circ x'_0=g_2\circ b_0 \]
+	
+	
+	Finally, switching the second and the third step we get
+	\[\xymatrix@C=15pt{L_2\ar[d]^{f_0\circ z_1}&& K_2 \ar[d]_{\mathring{k}_2}\ar@{>->}[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/^.35cm/[drrr]_(.4){v_0}|(.29)\hole \ar[dr]|(.28)\hole_{\mathring{h}_2} && L_1 \ar@/_.35cm/[dlll]^(.4){v_1} \ar[dl]|(.28)\hole^{\mathring{f}_1 \circ x_1}& K_1 \ar[d]^{\mathring{k}_1}\ar@{>->}[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){u_0}|(.29)\hole\ar[dr]_{\check{h}_1}|(.28)\hole   && L_0 \ar@/_.35cm/[dlll]^(.4){u_1} \ar[dl]^{\mathring{m}_0}|(.28)\hole& K_0 \ar[d]^{\mathring{k}_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0\ar[d]_{\check{g}_2\circ x_0} \\G_0 && \ar[ll]^{\check{f}_0} \check{D}_0 \ar[rr]_{\check{g}_0}&& \check{G}_1  && \ar@{>->}[ll]^{\bar{f}_1} \bar{D}_1 \ar[rr]_{\bar{g}_1}&& \bar{G}_2 && \ar@{>->}[ll]^{\bar{f}_2} \bar{D}_2 \ar[rr]_{\bar{g}_2}&& G_3 }\]
+	As usual, this last switch brings identities $\check{m}_0=\bar{f}_1\circ u_1$ and $g_2\circ j_0=\bar{g}_2\circ u_0$. Applying the second point of \Cref{lem:indep-global-left} to $\dder{D}_0\cdot S_{j_0, j_1}(\dder{D}_2)\cdot S_{j_0, j_1}(\dder{D}_1)$ and the fact that $(\X, \R)$ is well-switching we get the following diagrams
+	\[\xymatrix@R=15pt@C=15pt{&&R_2 \ar@/_1.2cm/[dddl]_(.4){y_0}|(.63)\hole\ar[dl]^{w_0}\ar[dd]^{v'_0} \ar@{>}[dr]^{v_0}&&&&&L_1 \ar[dl]^{w_1} \ar@/_1.2cm/[dddl]_(.4){i_1}|(.63)\hole\ar[dd]^{v'_1} \ar@{>}[dr]^{v_1}\\&\check{D}_2 \ar@{>->}[dl]^(.4){\check{f}_2}&&\bar{D}_1 \ar[dr]^{\bar{g}_1}  &&&\check{D}_1 \ar@{>->}[dl]^(.4){\check{f}_1}&&\check{D}_0 \ar[dr]^{\check{g}_0}\\\check{G}_2 && \bar{P}\ar[dr]_{\bar{p}_4} \ar@{>->}[ur]_{\bar{p}_3}\ar@{>->}[dl]^{\bar{p}_1} \ar[ul]^{\bar{p}_2}&&\bar{G}_2&G_1 && \bar{Q}\ar[dr]_{\bar{q}_4} \ar@{>->}[ur]_{\bar{q}_3}\ar@{>->}[dl]^{\bar{q}_1} \ar[ul]^{\bar{q}_2}&&\check{G}_1\\& \mathring{D}_1 \ar[ul]^{\mathring{g}_1}&&\bar{D}_2 \ar@{>->}[ur]_{\bar{f}_2}&&& D_0 \ar[ul]^{g_0}&&\mathring{D}_1 \ar@{>->}[ur]_{\mathring{f}_1}}\]
+	
+	We have to build the dotted arrows in the diagram below
+	\[\xymatrix@C=15pt@R=30pt{G_0 && \ar@{>->}[ll]_{\hat{f}_0} \hat{D}_0 \ar[rr]^{\hat{g}_0}&& \hat{G}_1  && \ar@{>->}[ll]_{\tilde{f}_1} \tilde{D}_1 \ar[rr]^{\tilde{g}_1}&& G'_2 && \ar@{>->}[ll]_{f'_2} D'_2 \ar[rr]^{g'_2}&& G_3 \\
+		L_2\ar[d]^{f_0\circ z_1} \ar[u]_{f'_0\circ c_1}&& K_2 \ar[u]^{\hat{k}_2}\ar[d]_{\mathring{k}_2}\ar@{>->}[ll]_{l_2} \ar[r]^{r_2} & R_2 \ar@/_.35cm/[urrr]^(.4){e_0}|(.29)\hole \ar[ur]|(.28)\hole^{\hat{h}_2} \ar@/^.35cm/[drrr]_(.4){v_0}|(.29)\hole \ar@/_.2cm/[dr]|(.28)\hole_{\mathring{h}_2} && L_1 \ar@/^.35cm/[ulll]_(.4){e_1} \ar[ul]|(.28)\hole_{\hat{m}_1} \ar@/_.35cm/[dlll]^(.4){v_1} \ar[dl]|(.28)\hole^{\mathring{f}_1 \circ x_1}& K_1  \ar[u]_{\hat{k}_1}\ar[d]^{\mathring{k}_1}\ar@{>->}[l]_{l_1} \ar[r]^{r_1} & R_1 \ar@/^.35cm/[drrr]_(.4){u_0}|(.29)\hole\ar@/_.2cm/[dr]_{\check{h}_1}|(.28)\hole \ar@/_.35cm/[urrr]^(.4){t_0}|(.29)\hole \ar[ur]|(.28)\hole^{\hat{g}_1\circ c_0}  && L_0\ar[ul]|(.28)\hole_{\hat{m}_0} \ar@/^.35cm/[ulll]_(.4){t_1} \ar@/_.35cm/[dlll]^(.4){u_1} \ar[dl]^{\mathring{m}_0}& K_0 \ar[d]_{\mathring{k}_0}\ar[u]^{\hat{k}_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0 \ar[u]^{g_2\circ b_0}\ar[d]_{\check{g}_2\circ x_0} \\G_0 \ar@/^.3cm/[uu]^{\id{G_0}}&& \ar@{>->}[ll]^{\check{f}_0} \check{D}_0 \ar@{.>}@/_.3cm/[uu]_(.3){\phi_{0}}|\hole  \ar[rr]_{\check{g}_0}&& \check{G}_1  \ar@{.>}@/_.0cm/[uu]^(.2){\psi_{1}}|(.43)\hole |(.57)\hole  && \ar@{>->}[ll]^{\bar{f}_1} \bar{D}_1 \ar@{.>}@/^.3cm/[uu]^(.3){\phi_{1}}|\hole \ar[rr]_{\bar{g}_1}&& \bar{G}_2 \ar@{.>}@/_.0cm/[uu]^(.2){\psi_{2}}|(.43)\hole |(.57)\hole && \ar@{>->}[ll]^{\bar{f}_2} \ar@{.>}@/_.4cm/[uu]_(.3){\phi_{2}}|\hole \bar{D}_2 \ar[rr]_{\bar{g}_2}&& G_3 \ar@{.>}@/_.3cm/[uu]_{\psi_{3}} }\]
+	
+	Now, we have already proved that $f_0\circ z_1=f'_0\circ c_1$, thus by \Cref{prop:unique} we have isomorphisms $\phi_{0}\colon \check{D}_0\to \hat{D}_0$ and $\psi_{1}\colon \check{G}_1\to \hat{G}_1$.
+	Notice that
+	\[
+	\hat{f}_0\circ \phi_{0}\circ v_1  = \check{f}_0\circ v_1 =\check{f}_0\circ \check{q}_3\circ v'_1=f_0\circ \check{q}_1\circ v'_1=f_0\circ i_1=\hat{f}_0\circ e_1\]
+	Thus, using the fact that $\hat{f}_0$ is mono, we can conclude that $\phi_0\circ v_1=e_1$. Thus we have
+	\[\psi_1\circ \mathring{f}\circ x_1=\psi_1\circ \check{g}_0\circ v_1= \hat{g}_0\circ \phi_0\circ v_1=\hat{g}_0\circ e_1=\hat{m}_1 \]
+	\Cref{prop:unique} now yields the $\phi_1\colon \bar{D}_1\to\tilde{D}_1$ and $\psi_2\colon \bar{G}_2\to G'_2$.  We can compute to get
+	\[
+	\tilde{f}_1\circ \phi_1\circ v_0=\psi_1\circ \bar{f}_1\circ v_0=\psi_1\circ \mathring{h}_2=\hat{h}_2=\tilde{f}_1\circ e_0\]
+	Hence $\phi_1\circ v_0=e_0$. On the other hand, notice that
+	\[\hat{f}_0\circ s_4\circ t'_1=f'_0\circ s_1\circ t'_1=f'_0\circ a_1=m_0=\check{f}\circ y_1=\hat{f}_0\circ \phi_0\circ y_1\]
+	Yielding $s_4\circ t'_1=\phi_0\circ y_1$. But then
+	\begin{align*}
+		&\tilde{f}_1\circ \phi_1\circ u_1=\psi_1\circ \bar{f}_1\circ u_1=\psi_1\circ \check{m}_0= \psi_1\circ \check{g}_0\circ y_1\\=&\hat{g}_0\circ \phi_0\circ y_1=\hat{g}_0\circ s_4\circ t'_1=\tilde{f}_1\circ s_3\circ t'_1=\tilde{f}_1\circ t_1 
+	\end{align*}
+	
+	In turn, the previous identity entails that
+	\[\psi_2\circ \mathring{m}_0=\psi_2\circ \bar{g}_1\circ u_1 = \tilde{g}_1\circ \phi_1\circ u_1 = \tilde{g}_1\circ t_1=\hat{m}_0\]
+	
+	We can use \Cref{prop:unique} a third time to get $\phi_2\colon \bar{D}_2\to D'_2$ and $\psi_3\colon G_3\to G_3$.  Now, as a last computation, we have
+	\[f'_2\circ t_0= \hat{g}_2\circ c_0=\psi_2\circ h_1=\psi_2\circ \bar{f}_2\circ u_0=f'_2\circ \phi_2\circ u_0\]
+	Therefore $\phi_2\circ u_0=t_0$ and this concludes the proof.
+	
+	Since 
+	
+\end{proof}
+
 
 
 \end{document}
