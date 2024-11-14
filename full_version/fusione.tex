@@ -1,0 +1,795 @@
+\documentclass[a4paper]{report}
+\usepackage{hyperref}
+\usepackage[textsize=tiny]{todonotes}
+%\usepackage{etex}
+\usepackage[all]{xy}
+\SelectTips{cm}{}
+% derivations and labels
+\usepackage{proof}
+\newcommand{\lab}[1]{\ensuremath{\mathsf{{#1}}}}
+\newcommand{\slab}[1]{\ensuremath{\scriptstyle{\mathsf{{#1}}}}}
+
+\newcommand{\sub}[3]{{\mathcal{#1}}\textrm{-}\mathsf{Sub}_{\textbf {\textup{#2}}}(#3)}
+
+\newcommand{\msub}[2]{\mathsf{Sub}_{\textbf {\textup{#1}}}(#2)}
+
+%frecce
+\newcommand{\mor}{\mathsf{Mor}}
+\newcommand{\mon}{\mathsf{Mono}}
+\newcommand{\reg}{\mathsf{Reg}}
+
+% ``boxed'' \infer command
+\newcommand{\binfer}[3][]{
+  \mbox{\infer[#1]{#2}{#3}}}
+
+% Command for labels on the left side of the rule
+%       \inferL{<name>}{<post>}{<pre>}
+% generates:
+%             <pre>
+%      <name> ------
+%             <post>
+%
+\newlength{\myheight}
+\newcommand{\inferL}[3]
+  {\settoheight{\myheight}{\mbox{${#2}$}}
+   \raisebox{\myheight}{{#1}}
+   \makebox[1mm]{}
+   \mbox{\infer{#2}{#3}}
+}
+
+\usepackage{amssymb,graphicx,epsfig,color}
+%\usepackage[scriptsize]{subfigure}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+
+% re-stating 
+%\usepackage{thm-restate}
+
+% showing labels
+%\usepackage[inline]{showlabels}
+
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows,shapes,snakes,automata,backgrounds,petri,fit,positioning}
+\tikzstyle{node}=[circle, draw=black, minimum size=1mm]
+\tikzstyle{trans}=[font=\scriptsize]
+\tikzstyle{lab}=[font=\small]
+
+
+\newcommand{\pgfBox}{
+  \begin{pgfonlayer}{background} 
+    \fill[blue!2,thick,draw=black!50,rounded corners,inner sep=3mm] ([xshift=-1.5pt,yshift=-1.5pt]current bounding box.south west) rectangle ([xshift=1.5pt,yshift=1.5pt]current bounding box.north east);
+  \end{pgfonlayer}
+}
+\usepackage{scalerel}
+\newcommand{\smallmin}{\scaleobj{0.6}{-}}
+\newcommand{\Deltamin}{\Delta^{\hspace{-1pt}\downarrow\hspace{-1pt}}}
+\newcommand{\Rrel}[1]   {\stackrel{{#1}}{\Longrightarrow}}
+\newcommand{\oa}{\overline a}
+\newcommand{\ob}{\overline b}
+\newcommand{\oc}{\overline c}
+\newcommand{\od}{\overline d}
+\newcommand{\rec}{\emph{rec}}
+\newcommand{\fn}[1]{{\mathtt{fn}}(#1)}
+%\usepackage{latexsym}
+\usepackage{stmaryrd}
+\def\encodep#1{\llfloor#1\rrfloor}
+
+\newcommand{\cat}[1]{\ensuremath{\mathbf{#1}}}
+
+\newcommand{\dpo}{\textsc{dpo}}
+
+% base classes of categories for adhesive and quasi adhesive case
+\newcommand{\bAdh}{\ensuremath{\mathbb{B}}}
+\newcommand{\bQAdh}{\ensuremath{\mathbb{QB}}}
+
+%from pawel
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{xspace}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{cite}
+\usepackage{float}
+\usepackage{fancybox}
+
+\usepackage{cleveref}
+
+
+%\spnewtheorem*{notation}{Notation}{\bfseries}{\rmfamily}
+
+%%%%%%%% MATHEMATICAL NOTATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%symbol for natural numbers
+\newcommand{\nat}{\ensuremath{\mathbb{N}}}
+
+% finite subset
+\newcommand{\sfin}{\ensuremath{\subseteq_{\mathit{fin}}}}
+
+% flattening of a multiset
+\newcommand{\flt}[1]{\ensuremath{[\![{#1}]\!]}}
+
+% compact elements
+\newcommand{\compact}[1]{\ensuremath{\mathop{\mathsf{K}({#1})}}}
+
+% principal ideal
+\newcommand{\principal}[1]{\ensuremath{\mathop{\downarrow\!{#1}}}}
+
+% ideal completion
+\newcommand{\ideal}[1]{\ensuremath{\mathsf{Idl}({#1})}}
+
+% complete prime elements
+\newcommand{\pr}[1]{\ensuremath{\mathop{\mathit{pr}({#1})}}}
+\newcommand{\wpr}[1]{\ensuremath{\mathop{\mathit{wpr}({#1})}}}
+
+% irreducible elements
+\newcommand{\ir}[1]{\ensuremath{\mathop{\mathit{ir}({#1})}}}
+
+% difference of irreducible elements
+\newcommand{\diff}[2]{\ensuremath{\delta({#1},{#2})}}
+
+% immediate precedence
+
+% abbreviation for event structure
+% \newcommand{\esabbr}{event structure}
+\newcommand{\esabbr}{\textsc{es}}
+\newcommand{\esnabbr}{\textsc{esnb}}
+\newcommand{\esnmabbr}{\textsc{esn}}
+\newcommand{\eseqabbr}{\textsc{epes}}
+
+% predecessor of an irreducible
+\newcommand{\pred}[1]{\ensuremath{\mathit{p}({#1})}}
+
+% irreducible elements in es domains
+\newcommand{\esir}[2]{\ensuremath{\langle{#1}, {#2}\rangle}}
+
+% equivalence classes [of irreducibles]
+\newcommand{\eqclass}[2][]{\ensuremath{[{#2}]_{\scriptscriptstyle {#1}}}}
+% union of the equivalence classes of the elements in a set
+\newcommand{\eqclasscup}[2]{\ensuremath{{#2}_{\scriptscriptstyle {#1}}}}
+
+\newcommand{\eqclassir}[1]{\ensuremath{\eqclass[\leftrightarrow^*]{#1}}}
+
+% quotient of set wrt a relation
+\newcommand{\quotient}[2]{\ensuremath{{#1}_{\scriptscriptstyle {#2}}}}
+
+% category of event structures 
+\newcommand{\es}{\ensuremath{\mathsf{ES}}}
+% category of stable event structures 
+\newcommand{\ses}{\ensuremath{\mathsf{sES}}}
+% category of prime event structures 
+\newcommand{\pes}{\ensuremath{\mathsf{pES}}}
+% category of prime event structures with equivalence
+\newcommand{\epes}{\ensuremath{\mathsf{epES}}}
+
+% category of connected event structures 
+\newcommand{\ces}{\ensuremath{\mathsf{cES}}}
+
+% category of weak prime algebraic domains domains 
+\newcommand{\WDom}{\ensuremath{\mathsf{wDom}}}
+% category of domains
+\newcommand{\Dom}{\ensuremath{\mathsf{Dom}}}
+% category of prime algebraic domains
+\newcommand{\PDom}{\ensuremath{\mathsf{pDom}}}
+
+
+%%%%% NON BINARY CONFLICT
+
+% category of event structures 
+\newcommand{\esn}{\ensuremath{\mathsf{ES_{nb}}}}
+% category of stable event structures 
+\newcommand{\sesn}{\ensuremath{\mathsf{sES_n}}}
+
+% category of connected event structures 
+\newcommand{\cesn}{\ensuremath{\mathsf{cES_{nb}}}}
+
+% category of prime event structures 
+\newcommand{\pesn}{\ensuremath{\mathsf{pES_n}}}
+
+% category of fusion domains 
+\newcommand{\WDomb}{\ensuremath{\mathsf{wDom_b}}}
+% category of domains
+\newcommand{\Domb}{\ensuremath{\mathsf{Dom_b}}}
+% category of prime algebraic domains
+\newcommand{\PDomb}{\ensuremath{\mathsf{pDom_b}}}
+
+%%%%% END NON BINARY CONFLICT
+
+
+% slice category
+\newcommand{\slice}[2]{\ensuremath{({#1} \downarrow {#2})}}
+
+
+% event structure for a domain
+\newcommand{\zev}[0]{\ensuremath{\mathcal{E}}}
+\newcommand{\ev}[1]{\ensuremath{\zev({#1})}}
+
+% from general to connected event structures
+\newcommand{\zconnes}[0]{\ensuremath{\mathcal{C}}}
+\newcommand{\connes}[1]{\ensuremath{\zconnes({#1})}}
+% and inclusion
+\newcommand{\zinces}[0]{\ensuremath{\mathcal{I}}}
+\newcommand{\inces}[1]{\ensuremath{\zinces({#1})}}
+
+
+% stable version
+\newcommand{\zsev}[0]{\ensuremath{\mathcal{E}_S}}
+\newcommand{\sev}[1]{\ensuremath{\zsev({#1})}}
+
+% with equivalence
+\newcommand{\zeveq}[0]{\ensuremath{\mathcal{E}_{eq}}}
+\newcommand{\eveq}[1]{\ensuremath{\zeveq({#1})}}
+
+% es with equivalence to es and vice
+\newcommand{\zfuse}[0]{\ensuremath{\mathcal{M}}}
+\newcommand{\fuse}[1]{\ensuremath{\zfuse({#1})}}
+\newcommand{\zunf}[0]{\ensuremath{\zunf}}
+\newcommand{\unf}[1]{\ensuremath{\mathcal{U}({#1})}}
+
+
+
+% Winskel/Droste version
+\newcommand{\zevwd}[0]{\ensuremath{\mathcal{E}_{wd}}}
+\newcommand{\evwd}[1]{\ensuremath{\zevwd({#1})}}
+
+
+
+
+% configurations of an event structure
+\newcommand{\conf}[1]{\ensuremath{\mathit{Conf}({#1})}}
+% finite configurations
+\newcommand{\conff}[1]{\ensuremath{\mathit{Conf_F}({#1})}}
+
+% product of the sets of minimal enablinsg
+\newcommand{\pmin}[1]{\ensuremath{U_{#1}}}
+
+% connectectedness of minimal enablinsg
+\newcommand{\conn}[1]{\ensuremath{\stackrel{#1}{\frown}}}
+
+
+% domain for an event structure or graph grammar
+\newcommand{\zdom}[0]{\ensuremath{\mathcal{D}}}
+\newcommand{\dom}[1]{\ensuremath{\zdom({#1})}}
+
+
+\newcommand{\zdomeq}[0]{\ensuremath{\mathcal{D}_{eq}}}
+\newcommand{\domeq}[1]{\ensuremath{\zdomeq({#1})}}
+
+
+% partial order for a graph grammar
+\newcommand{\poset}[1]{\ensuremath{\mathcal{P}({#1})}}
+
+% stable version
+\newcommand{\pdom}[1]{\ensuremath{\mathcal{D}_S({#1})}}
+\newcommand{\ppdom}[0]{\ensuremath{\mathcal{D}_S}}
+
+
+% powerset
+\newcommand{\Pow}[1]{\ensuremath{\mathbf{2}^{#1}}}
+
+% powerset of finite subsets
+\newcommand{\Powfin}[1]{\ensuremath{\mathbf{2}_\mathit{fin}^{#1}}}
+
+% powerset of subsets of cardinality <= 1
+\newcommand{\Powone}[1]{\ensuremath{\mathbf{2}_1^{#1}}}
+
+% integer interval
+\newcommand{\interval}[2][1]{\ensuremath{[{#1},{#2}]}}
+
+% domain interval
+\newcommand{\dint}[2]{\ensuremath{[{#1},{#2}]}}
+
+% set of intervals
+\newcommand{\IntSet}[1]{\ensuremath{\mathop{\mathit{Int}({#1})}}}
+
+% intervals to irreducibles and vice
+\newcommand{\inir}{\ensuremath{\mathop{\mathit{\zeta}}}}
+\newcommand{\irin}{\ensuremath{\mathop{\mathit{\iota}}}}
+
+% permutations
+\newcommand{\perm}{\sigma}
+
+% causes
+\newcommand{\causes}[1]{\ensuremath{\lfloor {#1})}}
+
+%%% GRAPH GRAMMARS
+
+
+\newcommand{\Abs}[1]{\ensuremath{\mathsf{Abs}({#1})}}
+\newcommand{\tr}[1]{\ensuremath{\mathsf{Tr}({#1})}}
+% fusion safe traces
+\newcommand{\trs}[1]{\ensuremath{\mathsf{Tr}_s({#1})}}
+%\newcommand{\graph}{\ensuremath{\mathsf{Graph}}}
+\newcommand{\tgraph}[1]{\ensuremath{\mathsf{Graph}_{#1}}}
+\newcommand{\can}[1]{\ensuremath{\mathsf{C}({#1})}}
+% source and target of a derivation
+\newcommand{\source}[1]{\ensuremath{\mathsf{s}({#1})}}
+\newcommand{\target}[1]{\ensuremath{\mathsf{t}({#1})}}
+\newcommand{\col}[1]{\ensuremath{\mathsf{col}({#1})}}
+
+% left decorated trace
+\newcommand{\ltrace}[1]{\ensuremath{\langle {#1}\rangle_c}}
+
+\newcommand{\bx}[1]{\phantom{\big(}#1{\phantom{\big)}}}
+\newcommand{\bxx}[1]{\,#1\,}
+\newcommand{\cycl}[1]{\ensuremath{\mbox{\textcircled{\scriptsize{$#1$}}}}}
+\renewcommand{\iff}{\ensuremath{\Leftrightarrow}}
+
+%%%%GENERAL CATEGORICAL NOTATION
+
+%identità
+\newcommand{\id}[1]{\mathsf{id}_{#1}}
+%codominio
+\newcommand{\cod}[1]{\mathsf{cod}({#1})}
+	%Variabili categorie
+\def\A{\textbf {\textup{A}}}
+%mono
+\newcommand{\mto}[0]{\scalebox{1}{$\rightarrowtail$}}
+
+
+\newcommand{\sk}{\mathsf{sk}_{\X}}
+
+
+\def\R{\mathsf{R}}
+\def\B{\textbf {\textup{B}}}
+\def\C{\textbf {\textup{C}}}
+\def\D{\textbf {\textup{D}}}
+\def\X{\textbf {\textup{X}}}
+\def\Y{\textbf {\textup{Y}}}
+\def\E{\textbf {\textup{E}}}
+
+\newcommand{\ske}{\mathsf{sk}(\X)}
+\renewcommand{\P}{\textbf {\textup{P}}}
+
+%\derivazioni
+
+\newcommand{\dder}[1]{\mathscr{#1}}
+\newcommand{\sder}[2]{S_{i_1,i_2}(\mathscr{#1}, \mathscr{#2})}
+\newcommand{\der}[1]{\underline{\dder{#1}}}
+\def\dpo{\mathsf{C}^{\X}_R}
+\def\gpo{\mathsf{G}^{\X}_R}
+\def\dpi{[\mathsf{C}]^{\X}_R}
+\def\gpi{[\mathsf{G}]^{\X}_R}
+
+\newcommand{\ider}[1]{\mathscr{I}_{#1}}
+
+%categorie
+\def\Set{\textbf {\textup{Set}}}
+
+%comma
+\newcommand{\comma}[2]{#1\hspace{1pt} {\downarrow}\hspace{1pt} #2}
+\newcommand{\cma}[2]{\mathcal{#1}\hspace{1pt} {\downarrow}\hspace{1pt} \mathcal{#2}}
+
+%derivazioni
+\newcommand{\lpro}{\langle \hspace{-1.85pt}[}
+\newcommand{\rpro}{]\hspace{-1.85pt}\rangle}
+\newcommand{\tpro}[1]{\lpro \der{#1}\rpro}
+\newcommand{\tproi}[2]{\lpro \der{#1}_{#2}\rpro}
+\newcommand{\lgh}[0]{\mathsf{lg}}
+
+%%% NEW
+
+\usepackage{xparse}
+
+% inversions
+\newcommand{\inv}[1]{\ensuremath{inv}({#1})}
+
+% direct shift
+\newcommand{\shiftdir}[1][]{\ensuremath{\mathrel{{\rightsquigarrow}^{\mathit{sh}}_{#1}}}}
+
+% shift preorder
+\newcommand{\shiftpre}[1][]{\ensuremath{\mathrel{{\sqsubseteq}^{\mathit{sh}}_{#1}}}}
+
+% shift equivalence
+\newcommand{\shifteq}[1][]{\ensuremath{\mathrel{{\equiv}^\mathit{sh}_{#1}}}}
+
+% transp{source}[target]: if target not specified source+1
+\NewDocumentCommand{\transp}{m o}{%
+  \ensuremath{({#1},%
+  \IfNoValueTF{#2}%
+    {{#1}+1}%
+    {#2}%
+    )}
+}
+
+\NewDocumentCommand{\mycommand}{o}{%
+  % <code>
+  \IfNoValueTF{#1}
+    {code when no optional argument is passed}
+    {code when the optional argument #1 is present}%
+  % <code>
+}
+% interchange
+\newcommand{\IC}[1]{\ensuremath{\mathit{IC}({#1})}}
+
+%%%%% Ambienti matematici  %%%%%%
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{notation}{Notation}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+
+\title{Switch equivalence and weak prime domains for fusions}
+\author{Paolo Baldan\and Davide Castelnovo\and  Andrea Corradini\and Fabio Gadducci}
+
+\begin{document}
+\maketitle
+
+
+
+\begin{abstract}
+\todo{	A VERY NICE ABSTRACT}
+\end{abstract}
+
+\tableofcontents
+
+\section*{Summary (with dependencies)}
+
+\subsection*{REWRITING}
+\begin{itemize}
+\item DPO Rewriting in $\mathcal{M}$-adhesive categories, with left-$\mathcal{M}$-linear rules (from now on shortened in ``linear'')\\
+  Observe that rewriting is deterministic (by uniqueness of
+  PO-complement Corollary~\ref{lem:radj})
+  
+\item Category of abstract derivation for DPO-rewriting system $(\X, \R)$
+  \begin{itemize}
+  \item \emph{DPO-derivation category} $\dpo$: objects are graphs, arrows between possibly empty, derivations.
+  \item \emph{DPO-abstract decorated derivation category} $\dpi$
+  \end{itemize}
+
+
+
+\item \emph{Consistent permutations} (Definition~\ref{def:permcon}):
+  permutation on the steps of two abstract decorated derivations and isomorphism between the colimits such
+  that arrows into the colimits ``commutes''.
+  \begin{enumerate}
+  \item It is unique for consuming rewriting systems
+    (Corollary~\ref{cor:unique})
+  \item They can be composed (Lemma~\ref{lem:sum})
+  \end{enumerate}
+\item 
+
+  
+\item Notions of independence\\
+  We have several possibile notions of independence for two direct
+  derivations $\dder{D} ; \dder{D'}$
+  \begin{enumerate}
+    
+  \item \emph{Existence of a filler}
+    There is a filler for $\dder{D} ; \dder{D'}$
+    (Definition~\ref{def:filler})
+
+  \item \emph{Switchable}
+    There is $\dder{D}_1' ; \dder{D}_1$ which is a \emph{switch}
+    of $\dder{D} ; \dder{D'}$ (Definition~\ref{de:switch}, being a
+    switch is defined axiomatically) [actually, Definition~\ref{de:good-switchable} provides a definition of switchable which looks different to me, I would avoid this, to be checked] 
+
+  \item \emph{(Weakly) Sequential independent} There is an
+    \emph{independence pair}
+    (Definition~\ref{de:sequential-independence}) They are called
+    \emph{strongly sequential independent} if the independence pair is
+    unique.
+  \end{enumerate}
+
+  We have that $(1) \Rightarrow (2)$ (Theorem~\ref{prop:fil}) and $(2) \Rightarrow (3)$ while
+  we expect that in general $(3) \not\Rightarrow (1)$ (but no
+  counterexample). This is instead known to hold for linear rules.
+
+  
+  Some terminology (Definition~\ref{de:good-switchable})
+  \begin{itemize}
+
+    
+  \item \emph{Tame rewriting systems}\\
+    An independence pairs induced by a filler is called \emph{good}
+    A rewriting system where all indepedence pairs are good is called
+    \emph{tame}
+    
+    NOTE: the categories in which condition $B$
+    from~\cite{baldan2011adhesivity} identifies a large class of
+    (quasi)adhesive categories where left-linear systems are all
+    tame. Adapted here to M-adhesivity.
+
+  \item \emph{Very Tame rewriting systems}\\
+    Tame and existing indepence pairs are unique (hence switching is unique)
+    (see later for examples)
+  \end{itemize}
+
+  
+\item \emph{Switch equivalent derivations} (concrete)\\
+  Definition~\ref{de:switchable}
+
+  THEOREM: Two switch equivalent derivations admit a consistent
+  permutation (Lemma~\ref{lem:consperm} ??).
+  
+  A consequence of this used for proving that the slice of traces is a pre-order.
+
+  The converse holds only when rules are linear [proof clear, but not written]
+
+    
+    
+\end{itemize}
+
+\subsection*{CONCURRENCY}
+
+This part is dealt with for very tame rewriting systems and depends on this assumption. Note that
+\begin{itemize}
+\item Linear rewriting systems on adhesive categories are very tame
+\item Left-linear rewritint systems on graph-like categories with generalisation of (i) no isolated nodes in $L$ and (ii) right leg injective on nodes is very tame
+\item Graphs with equivalences (Egg) with left-leg regular mono, right leg mono is very tame
+\end{itemize}
+
+We show
+\begin{itemize}
+
+  
+\item Three-steps lemma (Lemma~\ref{lem:iig1}), which is a weakened version of ``indepedence is global''.
+  \begin{itemize}
+    
+  \item If in $abc$ I have that $ab$ are independent and $c$ is anticipated, they remain independent.
+  \item  If in $abc$ I have that $bc$ are independent and $a$ is moved to the end, they remain independent only if there is an additional condition (essentially requiring that $a$ was not a cause of $c$)
+  \end{itemize}
+
+  
+  
+\item No need of useless switchs (if two derivations are switch equivalent I can obtain one from another applying only inversions)
+
+\item weak prime domain e connected es semantics
+\end{itemize}
+
+
+\section{Introduction}
+
+\todo{A VERY NICE INTRODUCTION}
+
+SOME IDEAS (BADLY WRITTEN, JUST TO START TO PUT IDEAS IN ORDER)
+
+Graph-like structures are used in uncountably many setting for representing the dynamics of software systems: the graph represents the entities in the states and their relations, while rewriting steps, modifying the graph, model computational steps which produce state changes.
+
+Rewriting over graph-like structures is elegantly captured by
+DPO-rewriting over adhesive categories and their
+variants~\cite{lack2005adhesive,ehrig2006weak}.  This has been largely
+studied for so-called linear rewriting rules. Roughly speaking, with
+linear rules a rewriting step can express the fact that some entities
+in the current state are removed, some other are needed for the
+rewriting step to occur but preserved and some new entities are
+generated.
+
+The computation described by a rewriting system can be naturally
+interpreted as a distributed computation and a notion of independence
+between rewriting steps naturally emerges. When different rules are
+applied at ``distinct'' parts of the state, possibly overlapping on
+preserved items, the rewriting steps can be naturally deemed as
+independent and their application can occur in any order and possibly
+concurrently. This phenomenon is formally captured by the so-called
+Church-Rosser theorem of DPO rewriting and shift equivalence over derivations~\cite{CMREHL:AAGT}. This represent the basis for
+viewing sequences of rewriting in the DPO approach as concurrent
+computations and derive corresponding concurrent semantics. Derivation
+traces can be quotiented by an equivalence relation which identifies
+sequences of rewritings which differs only for the order of
+independent steps, leading to so-called derivation traces. In turn,
+the dependencies this setting can be captured by a classical structure
+in concurrency theory, the so-called prime event structures~\cite{NPW:PNES} where
+dependencies are reduced to causality and conflict~\cite{Handbook,Bal:PhD,Sch:RRSG}.
+
+
+In some situations linear rules are not sufficiently expressive for capturing the dynamic of a system. This is the case when  a computational step is required not only to consume, preserve and generated, but also ``merge'' parts of the state. This happens, e.g.,
+in nominal calculi where, as a result of name passing,
+the received name is identified with a local one at the
+receiver~\cite{CVY:ESSPE,Gad07} or in the modelling of bonding in biological/chemical processes~\cite{PUY:MBPE}.
+ add EGGS, something about string diagrams?
+
+Technically, describing fusions, in the DPO jargon, requires to move from linear to left-linear rewriting rules. While left-linear rules have been considered in various instances (mainly for graph rewriting( and some results concerning the corresponding rewriting theory have been put forward, to the best of our knowledge the phenomena arising when rewriting with left-linear rules in the general setting of adhesive categories (which capture most ``applications'') have not been systematically explored.
+
+Here we perform this exploration by observing that a number of basic
+properties of rewriting which play a role in the corresponding
+rewriting and concurrency theory need a deep rethinking for
+left-linear rules and we propose solutions for the problems which
+arise.
+
+Firstly, Church-Rosser theorem does not work out of the box: the
+independence condition for adhesive categories does not extend
+smoothly to left-linear rules, i.e., existence of an independence pair
+does not ensure the possibility of switching two derivation and a
+refined notion, involving the concept of a so-called filler has to be
+introduced. The problem was identified already
+in~\cite{baldan2011adhesivity} where a suitable subclass of adhesive
+categories is identified where independence as induced by a filler
+coincide with independence as induced by an independence pair.
+
+Having a notion of independence between computation steps sits at the core of the possibility of viewing an execution trace as a concurrent computation. This is obtained by considering traces up to an equivalence that identifies traces differing only for the order of independent steps (e.g., interchange law~\cite{Mes92} in term rewriting, shift
+equivalence~\cite{CMREHL:AAGT} in graph rewriting or permutation
+equivalence~\cite{JJL80} in $\lambda$-calculus). While for linear rewriting systems this works smoothly, for left-linear ones one has to face the problem that if two rewriting steps $r_a r_b$ are independent, if we switch $r_a$ after $r_a$ and then switch it back we can obtain a computation which is not the original one, making the theory of derivation traces inconsistent. In order to solve this problem, we work in a subclass of adhesive categories where derivation steps can be switched in an ``essentially unique way''. We also identify a large class of adhesive categories, arising as presheaves, where the condition is automatically satisfied. [this solves also the previous problem, right?]
+
+
+Additionally, a central property for linear rewriting systems is the fact that independence of two rewriting steps is a global notion, independently of the context in which the rewritings take place. This is at the basis of the possibility of capturing the dependencies between rewriting steps in terms of two basic relations, causality and conflict, investigated in~~\cite{Handbook,Bal:PhD,Sch:RRSG}.
+
+This fails for left-linear rules where, as observed
+in~\cite{baldan2017domains}, for graph rewriting, the possibility of
+merging parts of the state leads to a sort of disjunctive causality,
+i.e., a rewriting step, say $r_c$ can be enabled by two different
+rewriting steps $r_a$ and $r_b$, in a way that in a derivation
+$r_a r_b r_c$ steps $r_b$ and $r_c$ are independent since the presence
+of $r_a$ in the past is sufficient for enabling $r_a$, while in
+$r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent. The
+paper shows that for left-linear rewriting systems a special form of
+globality of independence can be recovered.
+
+
+The concurrent semantics of linear graph rewriting systems over
+adhesive categories can be captured by prime event structures and
+prime algebraic domains. The idea consists in considering a partially
+ordered domain, where elements are concurrent computations
+(derivations up to shift equivalence), and the order relates two
+computations when the latter is an extension of the former.
+%
+Events are then identified with computations consisting of a rewriting
+step with all its causes. This is generalised to adhesive categories
+in~\cite{heindel2009category}. [IS THIS IN TOBIAS?]
+
+In~\cite{baldan2017domains} it is observed for graph rewriting systems that the presence of fusions, the same event can be enabled by different minimal sets of events, i.e., a central property of the domain of configuration, namely stability, fails. This prevents the identification of a proper notion of causality and makes prime event structures and prime domains inadequate to represent computations with fusions. It is argued that the right class of structures capturing the concurrent behaviour in the presence of fusion are connected event structures and weak prime algebraic domains.
+%
+An event is still a computation that cannot be decomposed
+as the join of other computations, hence, in order theoretical terms,
+it is an irreducible.
+%
+However, due to unstability, irreducibles are not necessarily primes:
+two different irreducibles can represent the same computation step
+with different minimal enablings.  In~\cite{baldan2017domains} this
+is worked out for DPO rewriting systems over graphs. However the proof
+relies on a wrong characterisation of independence which fails for non
+linear rules. Here we rework in depth the result and extend it to DPO
+rewriting over a large class of adhesive categories.
+ 
+ 
+\include{permutations.tex}
+
+\include{domains.tex}
+
+\todo{integrare sopra}
+\newpage
+QUOZIENTI VARI
+
+The setting from now on is: $\X$ $\mathcal{M}$-adhesive, $(\mathcal{E}, \mathcal{M})$ a proper (maybe also stable) factorization system. $\X$ has all pushouts.
+
+\begin{lemma}\label{lem:pushandpullpb}
+	Let $\X$ be a category and suppose that the diagram below is given.
+	\[\xymatrix{ P \ar[r]^{p_0} \ar[d]_{p_1}& A  \ar@/^.2cm/[ddr]^{k_0}\ar[d]^{f}\\  B  \ar@/_.2cm/[drr]_{k_1} \ar[r]_g & C \ar[dr]^{h}\\&& D }\]
+	Then the following hold true:
+	\begin{enumerate}
+		\item if the outer boundary is a pullback, then the inner square is a pullback too;
+		\item if the inner square is a pullback and $h$ is mono then also the outer square is a pullback.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}\begin{enumerate}
+		\item Let $e_0\colon E\to A$ and $e_1\colon E\to B$ be a pair of arrows such that 
+		\[f\circ e_0=g\circ e_1\]
+		Then we also have 
+		\begin{align*}
+		k_0\circ e_0 &= h\circ f\circ e_0\\&=h\circ g \circ e_1\\&=k_1\circ e_1
+		\end{align*}
+		Thus there exists a unique arrow $e\colon E\to P$ such that
+		\[p_0\circ e= e_0 \qquad p_1\circ e=e_1\]
+		which entails our claim.
+		\item We proceed as before considering two arrows $e_0\colon E\to A$ and $e_1\colon E\to B$, but in this case we suppose that 
+		\[k_0\circ e_0=k_1\circ e_1\]
+		In particular, we have
+		\begin{align*}
+			h\circ f \circ e_0 &= k_0\circ e_0\\&=k_1\circ e_1\\&=h\circ g\circ e_1
+		\end{align*}
+		Thus, since $h$ is mono, we can deduce that $f\circ e_0$ and $g\circ e_1$ are equal and the thesis now follows immediately.
+		\qedhere 
+	\end{enumerate}
+	\end{proof} 
+	
+	
+	\begin{lemma}\label{lem:cond} Let $f\colon A\to C$, $g\colon B\to C$ and $h\colon C\to D$ be arrows in a category $\X$, let also $l_0\colon A'\to A$, $l_1\colon B'\to B$ be two monomorphisms. Suppose moreover, that the following squares are pullbacks:
+		\[\xymatrix@C=35pt{Q \ar[r]^{q_0} \ar[d]_{q_1} & A' \ar[d]^{h\circ f\circ l_0} & P \ar[r]^{p_0} \ar[d]_{p_1} & A \ar[d]^{f} & Q  \ar[r]^{l_0\circ q_0} \ar[d]_{l_1\circ q_1}& A \ar[d]^{h\circ f}\\ B \ar[r]_{h\circ g\circ l_1} &D& B \ar[r]_{g}& C &  B \ar[r]_{h\circ g} & D}\]
+		Then there exists an arrow $\phi\colon P\to Q$ such that $(P, \{q_i\circ \phi\}_{i=0}^1)$ is a pullback for $f\circ l_0$ along $g\circ l_1$.
+	\end{lemma} 
+	\begin{proof}
+To prove the existence of $\phi\colon P\to Q$ it's enough to consider the solid part of the diagram below.
+\[\xymatrix@C=30pt{P \ar@{.>}[dr]^{\phi} \ar@/^.2cm/[drr]^{p_0} \ar@/_.2cm/[ddr]_{p_1}\\ & Q  \ar[r]^(.4){l_0\circ q_0} \ar[d]^{l_1\circ q_1}& A \ar[d]^{h\circ f} \\ &B \ar[r]_{h\circ g} & D}\]
+Notice that $\phi$ is a monomorphism. If $\phi\circ a=\phi \circ b$ for some $a,b\colon T\rightrightarrows P$ then
+\[\begin{split}
+	p_0\circ a&=l_0\circ q_0\circ \phi \circ a\\&=l_0\circ q_0\circ \phi \circ b\\&=p_0\circ b
+\end{split} \qquad \begin{split}
+p_1\circ a&=l_1\circ q_1\circ \phi \circ a\\&=l_1\circ q_1\circ \phi \circ b\\&=p_1\circ b
+\end{split} \]
+
+Moreover, we also have the following chain of equalities, showing that  $(P, \{q_i\circ \phi\}_{i=0}^1)$  is a candidate to be a pullback of $f\circ l_0$ along $g\circ l_1$.
+\begin{align*}
+f\circ l_0\circ q_0\circ \phi &=f\circ p_0\\&=g\circ p_1\\&=g\circ l_1\circ q_1\circ \phi 
+\end{align*}
+Let now $e_0\colon E\to A'$ and $e_1\colon E\to B'$ be arrows such that 
+\[f\circ l_0\circ e_0=g\circ l_1\circ e_1\]
+By hypothesis $(P, \{p_i\}_{i=0}^1)$ is a pullback of $f$ along $g$, therefore we there is a unique  arrow $e\colon E\to P$ such that
+\[p_0\circ e = l_0\circ e_0 \qquad p_1\circ e=l_1\circ e_1\]
+But then the two identities
+\[\begin{split}
+	l_0\circ q_0\circ \phi\circ e&=p_0\circ e\\& =l_0\circ e_0 \end{split} \qquad \begin{split}l_1\circ q_1\circ \phi\circ e&=p_1\circ e\\& =l_1\circ e_1
+\end{split}\]
+allow us to conclude that 
+\[q_0\circ \phi\circ e=l_0\circ e_0 \qquad q_1\circ \phi\circ e=l_1\circ e_1\]
+	
+Finally, if $e'\colon E \to P$ is another arrow such that 		
+\[q_0\circ \phi\circ e'=l_0\circ e_0 \qquad q_1\circ \phi\circ e'=l_1\circ e_1\]
+then we have 
+\[q_0\circ \phi\circ e'=q_0\circ \phi\circ e \qquad q_1\circ \phi\circ e'=q_1\circ \phi\circ e\]
+Therefore $\phi\circ e'=\phi \circ e$ and we can conclude since $\phi$ is mono.
+	\end{proof}
+
+
+\begin{lemma}
+	Da ind pair a pb
+\end{lemma}
+
+\begin{proof}
+	contenuto...
+\end{proof}
+
+\begin{lemma}
+	da pb a ind pair
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+\begin{corollary}
+	caratterizzazione
+\end{corollary}
+
+
+
+
+\section{Conclusions and further work}
+\todo{VERY NICE CONCLUSIONS}
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{bibliog.bib}
+
+
+\appendix
+
+\include{factorization.tex}
+
+
+\include{adhesivity.tex}
+
+
+
+
+
+
+
+
+\section{Rewriting systems on $\Set$.}\label{app:set}
+
+\section{On permutations}\label{app:perm}
+\todo{inserire risutati sulle permutazione che abbiamo usato}
+
+
+\begin{definition}
+	\todo{inversioni}
+\end{definition}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

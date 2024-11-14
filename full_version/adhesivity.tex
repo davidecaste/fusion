@@ -1,0 +1,943 @@
+
+
+\chapter{$\mathcal{M}$-adhesive categories}
+
+This first section is devoted to recall the definition and the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive}. 
+
+\begin{notation} 
+We stipulate here some notational conventions which will be used throughout this paper. 
+\begin{itemize}\item 
+	Given a category $\X$ we will not distinguish notationally between $\X$ and its class of objects: so that ``$X\in \X$'' means that $X$ belongs to the class of objects of $\X$.  
+	\item 
+	If $1$ is a terminal object in a category $\X$,  the unique arrow $X\to 1$ from another object $X$ will be denoted by $!_X$. Similarly, if $0$ is initial in $\X$ then $?_X$ will denote the unique arrow $0\to X$. %When $\X$ is $\Set$ and $1$ is a singleton, $\delta_x$ will denote the arrow $1\to X$ with value $x\in X$.
+	\item  $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ will denote the class of all arrows, monos and regular monos of $\X$, respectively.
+	
+	\item Given an integer $n\in \mathbb{Z}$, $[0,n]$ will denote the set
+	\[[0,n]:=\{x\in \mathbb{N}\mid x\leq n\}\] 
+	Indeed, if $n<0$, then $[0,n]=\emptyset$.
+\end{itemize}
+\end{notation}
+
+
+\section{The Van Kampen property}
+The key property that $\mathcal{M}$-adhesive categories enjoy is given by  the so-called \emph{Van Kampen condition} \cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. We will recall it and examine some of its consequences. First of all we need to recall some terminology and facts regarding subclasses of $\mor(\X)$.
+
+\begin{definition}
+	Let $\X$ be a category and $\mathcal{A}$ a  subclass of $\mor(\X)$. We say that  $\mathcal{A}$ is
+	\begin{itemize}
+		\item 
+		\emph{stable under pushouts (pullbacks)} if for every pushout (pullbacks) square 
+		\[\xymatrix{A\ar[r]^f  \ar[d]_{m}& B \ar[d]^n \\ C \ar[r]_g & D}\]
+		if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
+		\item \emph{closed under composition} if $g, f\in \mathcal{A}$ implies $g\circ f\in \mathcal{A}$ whenever $g$ and $f$ are composable;
+		\item \emph{closed under decomposition} if $g\circ f, g\in \mathcal{A}$ implies $f\in \mathcal{A}$.
+	\end{itemize}
+\end{definition}
+
+\begin{remark}In the previous definition, ``decomposition'' corresponds to ``left cancellation'', but we prefer to stick to the name commonly used in literature (see e.g.~\cite{habel2012mathcal}).
+\end{remark}
+
+
+So equipped, we can introduce the notion of \emph{$\mathcal{A}$-Van Kampen square}.
+\begin{definition}[Van Kampen property] Let $\X$ be a category  and consider the two diagrams below
+	\[\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{f}&&B\ar[dd]^{n}&&C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{g} &&D&&C \ar[rr]_{g} & & D}\]
+	
+	Given  a class of arrows $\mathcal{A}\subseteq \mor(\X)$, we say that the left square \emph{has the Van Kampen property relatively to $\mathcal{A}$}, or that it  is a \emph{$\mathcal{A}$-Van Kampen square} if:
+	\begin{enumerate}
+		\item is a pushout square;
+		\item 	whenever the right cube has pullbacks as back and left faces and the vertical arrows belong to $\mathcal{A}$, then its top face is a pushout if and only if the front and right faces are pullbacks.
+	\end{enumerate}
+	Pushout squares which enjoy the ``if'' half of the second point of the condition above are called \emph{$\mathcal{A}$-stable}. 
+	
+We will call a $\mor(\X)$-Van Kampen ($\mor(\X)$-stable) square simply a \emph{Van Kampen} (\emph{stable}) square.
+\end{definition}
+
+Before proceeding further, we recall this classical result about pullbacks.
+
+\begin{lemma}\label{lem:pb1}
+	Let $\X$ be a category, and consider the following diagram 	in which the right square is a pullback.
+	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
+	Then the whole rectangle is a pullback if and only if the left square is one.
+\end{lemma}
+
+The previous result can be dualised to get an analogous lemma for pushouts.
+
+\begin{lemma}\label{lem:po1}
+	Let $\X$ be a category, and consider the following diagram 	in which the left square is a pushout.
+	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
+	Then the whole rectangle is a pushout if and only if the right square is one.
+\end{lemma}
+
+The following proposition establishes a key property of $\mathcal{A}$-Van Kampen squares with a mono as a side: they are not only pushouts, but also pullbacks.
+\begin{proposition}\label{prop:pbpo} Let $\mathcal{A}$ be a class of arrows stable under pushouts and containing all the isomorphisms.  If $m\colon A\to C$ is mono and belongs to $\mathcal{A}$, then every $\mathcal{A}$-Van Kampen square
+	\[\xymatrix{A\ar[r]^{g} \ar[d]_{m} & B \ar[d]^{n} \\ C \ar[r]_{f}  & D}\]
+	is also a pullback square and $n$ is a monomorphism.
+\end{proposition}
+\begin{proof} We can start considering the cube below and noticing that $n$, being the pushout of $m\in \mathcal{M}$, belongs to $\mathcal{A}$ too.
+	\[\xymatrix@C=13pt@R=13pt{&A\ar[dd]|\hole_(.65){\id{A}}\ar[rr]^{g} \ar[dl]_{\id{A}} && B \ar[dd]^{\id{B}} \ar[dl]_{\id{B}} \\ A  \ar[dd]_{m}\ar[rr]^(.65){g} & & B \ar[dd]_(.3){n}\\&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{f} & & D}\]
+	By construction the top face of the cube is a pushout and the back one a pullback. The left face is a pullback because $m$ is mono. Thus the $\mathcal{A}$-Van Kampen property yields that the front and the right faces are pullbacks. 
+\end{proof}
+
+The previous proposition, in turn, allows us to establish the following results.
+\begin{lemma}\label{lem:varie}Let $\mathcal{A}$ be a class of arrows stable under pullbacks, pushouts and containing all isomorphisms.  Suppose that, the left square below is $\mathcal{A}$-Van Kampen, while the vertical faces in the right cube are pullbacks.
+		\[\xymatrix@C=10pt@R=10pt{&&&&&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{g'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ A \ar[dd]_{m}\ar[rr]^{g}&&B\ar[dd]^{n}&&C'  \ar@{.>}[dr]_{h} _{}\ar[dd]_{c}\ar[rr]^(.7){f'} & & D' \ar@{.>}[dr]^{k}\ar[dd]_(.3){d}\\&&&&&A\ar[rr]|\hole^(.65){g} \ar[dl]^{m} && B \ar[dl]^{n} \\C\ar[rr]_{f} &&D&&C \ar[rr]_{f} & & D}\]
+Supppose, moreover that $m\colon A\to C$ and $d\colon D'\to D$ are mono and that $d$ belongs to $\mathcal{A}$. Then the dotted arrow  $k\colon D'\to B$ exists if and only if the other dotted arrow  $h\colon C'\to A$ exists too.
+\end{lemma}
+
+\begin{remark}
+	Notice that, since $d$ is a mono and the vertical faces are pullbacks, then $a, b$ and $c$ are monomorphisms too. Moreover, $n$ is mono by \Cref{prop:pbpo}, so that even $m'$ and $n'$ are monos.
+\end{remark}
+
+\begin{proof}
+	$(\Rightarrow)$ By hypothesis there exists $k:D'\to B$ such that $n\circ k = d$. By \Cref{prop:pbpo}, the bottom face of the cube is a pullback. Thus there exists a unique $h:C'\to A$ as in the diagram below, implying the thesis.
+		\[\xymatrix@C=40pt{C'  \ar@{.>}[d]^{h}\ar[r]^{f'} \ar@/_.5cm/[dd]_{c}& D' \ar@/^.5cm/[dd]^{d}\ar[d]_{k}\\ A \ar[d]^{m} \ar[r]^{g} & B \ar[d]_{n} \\  C \ar[r]_f & D}\]
+	
+	\smallskip \noindent 
+	$(\Leftarrow)$ Let $h:C\to A$ be such that $c=m\circ h$. By the $\mathcal{A}$-Van Kampen property the top face of the given cube is a pushout. Thus we get  the dotted $k:D'\to B$ in the following diagram exists.
+		\[\xymatrix@C=40pt{A' \ar@/_.5cm/[dd]_{a} \ar[d]^{m'} \ar[r]^{g'} & B' \ar[d]_{n'} \ar@/^.5cm/[dd]^{b} \\  C' \ar[d]^{h} \ar[r]_{f'} & D' \ar@{.>}[d]_{k}\\ A \ar[r]_g& B }\]
+Moreover, by construction we have
+\[\begin{split}
+n\circ k \circ n' &= n\circ b\\&=d\circ n'\\&\\&
+\end{split} \qquad \begin{split}
+n\circ k \circ f' &= n\circ g\circ h\\&=f\circ m\circ h\\&=f\circ c\\&= d\circ f' \end{split}\]
+We can therefore conclude that $n\circ k =d$. \qedhere 
+\end{proof}
+
+Finally, we can show that $\mathcal{A}$-stable pushouts enjoy a kind of \emph{pullback-pushout decomposition} property.
+
+\begin{proposition}\label{prop:stab}Let $\X$ be a category and $\mathcal{A}$ a class of arrows stable under pullbacks. Suppose that, in the diagram below, the whole rectangle is an $\mathcal{A}$-stable pushout and the right square a pullback.
+	\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
+	If the arrow $k$ is in $\mathcal{A}$ and it is a monomorphism,  then both squares are pushouts.
+\end{proposition}
+
+\begin{proof} We can begin noticing that $g$, being the pullback of $k$, is mono and in $\mathcal{A}$ too. Thus we can build the cube below, in which all the vertical faces are pullbacks, entailing that all the vertical arrows are in $\mathcal{A}$.
+	\[\xymatrix@C=20pt@R=10pt{ & &X\ar[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar[ddd]_{g} \ar[rrr]^{b}&&& B\ar[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar[dl]_{f}&&& A \ar[dl]^{h}\\ & Y  \ar[dl]_{g}&&& B \ar[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
+	By hypothesis the face is an $\mathcal{A}$-stable pushout and so its top one is a pushout. Using \Cref{lem:po1} we can conclude that the right half of the rectangle with which we have started is a pushout too. \qedhere 
+\end{proof}
+
+\section{$\mathcal{M}$-adhesivity}
+
+In this section we will define the notion of $\mathcal{M}$-adhesivity \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,heindel2009category,lack2005adhesive} and explore some of the consequence of such a property. 
+
+\begin{definition}[$\mathcal{M}$-adhesive category]
+	Let $\X$ be a category and consider a subclass $\mathcal{M}$ of the class $\mon(\X)$ of monomorphisms such that:
+	\begin{enumerate}
+		\item $\mathcal{M}$ contains all isomorphisms and is closed under composition;
+		\item $\mathcal{M}$ is stable under pullbacks and pushouts.
+	\end{enumerate} 
+	We will use $m\colon X\mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$. $\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
+	\begin{enumerate}
+		\item for every $m\colon X\mto Y$ in $\mathcal{M}$ and $g\colon Z\to Y$, a pullback square
+		\[\xymatrix{P\ar[r]^p \ar@{>->}[d]_{n}& X \ar@{>->}[d]^{m}\\ Z \ar[r]_g& Y}\]
+		exists, such pullbacks will be called \emph{$\mathcal{M}$-pullbacks};
+		\item for every $m\colon X\mto Y$ in $\mathcal{M}$ and $f\colon X\to Z$, a pushout square
+		\[\xymatrix{X \ar[r]^f \ar@{>->}[d]_{m}& Z \ar[d]^{q}\\ Y\ar[r]_p &Q}\]
+		exists, such pushouts  will be called \emph{$\mathcal{M}$-pushouts}; 
+		\item  $\mathcal{M}$-pushouts are $\mathcal{M}$-Van Kampen squares.
+	\end{enumerate}
+	
+A category $\X$ is said to be \emph{strictly $\mathcal{M}$-adhesive} if $\mathcal{M}$-pushouts are Van Kampen squares.	
+\end{definition}
+
+\begin{remark}\label{rem:diff}Our notion of $\mathcal{M}$-adhesivity follows \cite{ehrig2012,ehrig2014adhesive} and is different from the one of \cite{azzi2019essence}. What is called $\mathcal{M}$-adhesivity in that paper corresponds to our strict $\mathcal{M}$-adhesivity. Moreover, in \cite{azzi2019essence} the class $\mathcal{M}$ is assumed to be only stable under pullbacks. However, if $\mathcal{M}$ contains all split monos, then stability under pushouts can be deduced from the other axioms \cite[Prop.~$5.1.21$]{castelnovo2023thesis}.
+\end{remark}
+
+
+\begin{remark}\label{rem:salva} 
+	\emph{Adhesivity} and \emph{quasiadhesivity} as defined in \cite{lack2005adhesive,garner2012axioms}  coincide with  strict $\mon(\X) $-adhesivity and strict $\reg(\X)$-adhesivity, respectively. 
+\end{remark}
+
+\begin{remark}\label{rem:pb}
+	Let $X$ be an object of $\X$, with $\X$ an $\mathcal{M}$-adhesive. category We can consider  the full subcategory $\mathcal{M}/X$ of $\X/X$ made by arrows in $\mathcal{M}$. Since $\X$ has all $\mathcal{M}$-pullbacks, for every arrow $f\colon X\to Y$ we have a functor $f^*\colon \mathcal{M}/Y\to \mathcal{M}/X $ sending $m\colon M \mto X$ to a chosen pullback of it along $f$.
+	\end{remark}
+
+A first result we can prove regards closure under decomposition of $\mathcal{M}$.
+
+\begin{proposition}\label{prop:deco}Let  $\mathcal{A}$ be a class of arrows stable under pullbacks. For every arrow $f\colon X\to Y$ and monomorphism $m\colon Y\to Z$, if $m\circ f \in\mathcal{A}$ then $f\in \mathcal{A}$.
+\end{proposition}
+\begin{proof}Take the diagram
+	\[\xymatrix{X \ar[d]_{\id{X}}\ar[r]^{f}& Y \ar[r]^{\id{Y}}  \ar[d]_{\id{Y}}& Y \ar[d]^{m}\\
+		X \ar[r]_{f}& Y \ar[r]_{m} & Z}\]
+	Since $m$ is mono the right square is a pullback, while the left square is a pullback by construction. By \Cref{lem:pb1} the whole rectangle is a pullback and the thesis follows.
+\end{proof}
+\begin{corollary}\label{cor:deco}
+	In every $\mathcal{M}$-adhesive category $\X$, the class $\mathcal{M}$ is closed under decomposition.
+\end{corollary}
+
+Another result which can be immediately established, with the aid of \Cref{prop:pbpo}, is the following one.
+\begin{proposition}\label{prop:pbpoad}
+	Let $\X$ be an $\mathcal{M}$-adhesive category. Then $\mathcal{M}$-pushouts are also pullback squares.
+\end{proposition}
+
+From \Cref{prop:pbpoad}, in turn, we can derive the following corollaries.
+\begin{corollary}\label{cor:rego}
+	In a $\mathcal{M}$-adhesive category $\X$, every $m\in\mathcal{M}$ is a regular mono.
+\end{corollary}
+\begin{proof}
+Let $m$ be an element of $\mathcal{M}$ and consider its pushout along itself.
+\[\xymatrix{X\ar@{>->}[r]^m \ar@{>->}[d]_m& Y\ar@{>->}[d]^{f}\\Y \ar@{>->}[r]_g & Z}\]
+By \Cref{prop:pbpoad} this square is a pullback, proving that $m$ is the equalizer of the arrows $f,g\colon Y\rightrightarrows Z$. \qedhere 
+\end{proof}
+
+The following result now follows at once noticing that a regular monomorphism which is also epic is automatically an isomorphism.
+
+\begin{corollary}\label{prop:bal}
+If $\X$ is an $\mathcal{M}$-adhesive categories, then every epimorphisms in $\mathcal{M}$ is an isomorphisms. In particular, every adhesive category $\X$ is \emph{balanced}: if a morphism is monic and epic, then it is an isomorphism.
+\end{corollary}
+
+
+$\mathcal{M}$-adhesivity is well-behaved with respect to  the comma construction \cite{mac2013categories}, as shown by the following theorem.
+\begin{theorem}[\cite{ehrig2006fundamentals,lack2005adhesive}]\label{lem:comma}
+	Let $\A$ and $\B$ be respectively an $\mathcal{M}$-adhesive and an $\mathcal{M}'$-adhesive category. Let also $L:\A\rightarrow \C$ be a functor that preserves $\mathcal{M}$-pushouts, and  $R:\B\rightarrow \C$ be a functor which preserves pullbacks.Then $\comma{L}{R}$ is $\cma{M}{M'}$-adhesive, where 
+	\[
+	\cma{M}{M}':=\{(h,k)\in \mathcal{A}(\comma{L}{R}) \mid h\in \mathcal{M}, k\in \mathcal{M}'\}\]
+\end{theorem}
+
+In particular, we can apply this result to slices over and under a given object.
+
+\begin{corollary}\label{cor:slice}
+	Let  $X$ be an object of an $\mathcal{M}$-adhesive category $\X$. Then  $\X/X$ and $X/\X$ are, respectively, $\mathcal{M}_X$- and $\mathcal{M}^X$-adhesive, where
+	\[\mathcal{M}_X:=\{m\in  \mathcal{A}(\X/X) \mid m\in \mathcal{M} \} \qquad \mathcal{M}^X:=\{m\in  \mathcal{A}(X/\X) \mid m\in \mathcal{M} \}\]
+\end{corollary}
+
+
+Another categorical construction which preserves $\mathcal{M}$-adhesivity property is the formation of the category of functors.
+
+\begin{theorem}[\cite{ehrig2006fundamentals,lack2005adhesive}]\label{thm:functors}
+If $\X$ is an $\mathcal{M}$-adhesive category, then for every small category $\Y$, the category $\X^\Y$  of functors $\Y\to \X$ is $\mathcal{M}^{\Y}$-adhesive, where
+\[\mathcal{M}^{\Y}:=\{\eta \in \mathcal{A}(\X^\Y) \mid \eta_Y \in \mathcal{M} \text{ for every } Y\in \Y\}\]
+\end{theorem}
+
+We can list various examples of $\mathcal{M}$-adhesive categories (see \cite{castelnovo2023thesis,CastelnovoGM22,lack2006toposes}).
+
+\begin{example}\todo{Topos, ipergrafi e grafi}
+\end{example}
+
+\begin{example}
+	\todo{grafi semplici}
+\end{example}
+
+
+\begin{example}\todo{GRAFI GERARCHICI}
+\end{example}
+
+\begin{example}\todo{term graph}
+\end{example}
+
+We end this section proving a useful property of $\mathcal{M}$-adhesive categories:  $\mathcal{M}$-pushout-pullback decomposition.
+
+
+\begin{lemma}[$\mathcal{M}$-pushout-pullback decomposition]\label{lem:popb} Let $\X$ be an $\mathcal{M}$-adhesive category  and suppose that, in the diagram below, the whole rectangle is a pushout and the right square a pullback.
+\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
+	Then the following statements hold true:
+	\begin{enumerate}
+\item if $a$ belongs to $\mathcal{M}$ and $k$ is a monomorphism,  then both squares are pushouts and pullbacks;
+\item if $f$ and $k $ are in  $\mathcal{M}$, then both squares are pushouts and pullbacks.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+	\item By \Cref{prop:stab}, it follows that both squares are pushouts, thus the thesis follows from \Cref{prop:pbpoad}.
+	\item By hypothesis, $g$ is the pullback of an arrow in $\mathcal{M}$, thus it belongs to it. But then $g\circ f\in \mathcal{M}$ too  and the whole rectangle is a $\mathcal{M}$-pushout. Therefore, by \Cref{prop:pbpoad} a pullback, so that its left half is a pullback too, by \Cref{prop:pbpo}. Moreover $k\circ h$ is in $\mathcal{M}$ as the pushout of $g\circ f$ and, by \Cref{cor:deco}, we also know that $h\in \mathcal{M}$.  
+	
+	Using \Cref{lem:po1}, it is enough to show that the left half of the original rectangle is a pushout. We can build the following cube:
+	\[\xymatrix@C=20pt@R=10pt{ & &X\ar@{>->}[dl]_{f} \ar[ddd]^(.333333){\id{X}}|(.666666)\hole\ar[rrr]^{a} &&&A \ar[ddd]^{\id{A}} \ar@{>->}[dl]^{h}\\& Y\ar[dl]_{\id{Y}} \ar[ddd]|(.333333)\hole_{\id{Y}} &&&B \ar[ddd]^{\id{B}} \ar[dl]_{\id{B}} \\Y \ar@{>->}[ddd]_{g} \ar[rrr]^{b}&&& B\ar@{>->}[ddd]^{k}\\&&X \ar[rrr]|(.34)\hole^{a}|(.67)\hole \ar@{>->}[dl]_{f}&&& A \ar@{>->}[dl]^{h}\\ & Y \ar[rrr]|(.67)\hole^{b} \ar@{>->}[dl]_{g}&&& B \ar@{>->}[dl]^{k}\\ Z\ar[rrr]_{c} &&& C}\]
+	Its vertical faces are all pullbacks and all the vertical arrows are in $\mathcal{M}$, hence the top face is a pushout and we can conclude. \qedhere 
+\end{enumerate}
+\end{proof}
+
+\subsubsection{Pushout complements}
+
+We turn now to the exam of the notion of \emph{pushout complement}. We will prove that, in an $\mathcal{M}$-adhesive category $\X$ certain pushout complements are unique and are \emph{final pullbacks complements} in the sense of \cite{dyckhoff1987exponentiable,corradini2006sesqui}.
+
+\begin{definition}[Pushout complement]
+Let $f\colon X\to Y$ and $g\colon Y\to Z$ be two composable arrows in a category $\X$. A \emph{pushout complement} for the composable pair $(f,g)$ is a pair $(h,k)$ with $h\colon X\to W$ and $k\colon W\to Z$ such that the square below commutes and it is a pushout.
+\[\xymatrix{X \ar[r]^{f} \ar[d]_{h}& Y \ar[d]^{g} \\ W \ar[r]_{k}& Z}\]
+\end{definition}
+
+\begin{example}
+	In a generic category $\X$, pushout complements may not exist: in $\Set$ the arrows $?_{2}\colon \emptyset \to 2$ and $!_2\colon 2\to 1$ do not have a pushout complement.
+	
+	Moreover, composable arrows $f\colon X\to Y$ and $g\colon Y\to Z$ may have  pushout complements which are non-isomorphic: for instance, in $\Set$ the two squares below are both pushouts.
+	
+	\[\xymatrix{2 \ar[r]^{!_2} \ar[d]_{\id{2}}& 1 \ar[d]^{\id{1}} & 2 \ar[r]^{!_2} \ar[d]_{!_2}& 1 \ar[d]^{\id{1}}\\ 2 \ar[r]_{!_2}& 1 & 1 \ar[r]_{\id{1}}& 1}\]
+\end{example}
+
+
+In an $\mathcal{M}$-adhesive category we can approach pushout complements in a more abstract way, using the pullback functor of \Cref{rem:pb}.
+
+\begin{definition}
+Let $F\colon \X \to \Y$ be a functor and $Y$ an object of $\Y$. We say that $F$ has a \emph{partial right adjoint at $Y$} if there exists an object $G(Y)$ in $\X$ and an arrow $\epsilon_Y\colon F(G(Y))\to Y$ such that, for every  $f\colon F(X)\to Y$ there exists a unique $g\colon X\to G(Y)$ making the diagram below commutative.
+\[\xymatrix@C=15pt{F(X) \ar[rr]^{F(g)} \ar[dr]_{f}&&F(G(Y)) \ar[dl]^{\epsilon_Y}\\ & Y}\]
+\end{definition} 
+
+\begin{remark}
+	It is immediate to see that $F$ is a left adjoint if and only if it has a partial right adjoint at every $Y\in \Y$.
+\end{remark}
+
+We can prove two  useful properties of partial right adjoints.
+
+\begin{proposition}\label{prop:uni}
+	Let $F\colon \X\to \Y$ be a functor and suppose that it has a partial right adjoint $(G(Y), \epsilon_Y)$ at $Y$. Then the following hold true:
+	\begin{enumerate}
+\item there is a natural isomorphism $\psi\colon \X(-, G(Y))\to \Y(F(-), Y)$;
+\item if $(G'(Y), \epsilon'_Y)$ is another partial right adjoint to $F$ at $Y$, then there exists a unique isomorphism $\phi_Y\colon G(Y)\to G'(Y)$ such that the diagram below commutes.
+\[\xymatrix@C=15pt{F(G(Y)) \ar[rr]^{F(\phi_Y)} \ar[dr]_{\epsilon_Y} & &F(G'(Y)) \ar[dl]^{\epsilon'_Y}\\ & Y}\]
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Given an object $X$ of $\X$ we can define $\phi_X$ putting
+		\begin{align*}
+			\phi_X \colon \X(X, G(Y))&\to \Y(F(X), Y)\\
+			g&\mapsto \epsilon_Y\circ F(g)
+		\end{align*}
+		By definition of partial right adjoint $\phi_X$ is a bijection. Consider now an arrow $f\colon X_1\to X_2$, then, for every $g\colon X_2\to G(Y)$ we have:
+		\begin{align*}
+			\phi_X(g)\circ F(f)&=\epsilon_Y\circ F(g)\circ F(f)\\&= \epsilon_Y\circ F(g\circ f)\\&=\phi_X(g\circ f)
+		\end{align*}
+		Naturality now follows at once.
+		
+		\item Let $\phi_Y\colon G(Y)\to G'(Y)$ and $\phi'_Y\colon G(Y)\to G'(Y)$ be the unique arrows making the diagram below commutative.
+\[\xymatrix@C=15pt{F(G(Y)) \ar[rr]^{F(\phi_Y)} \ar[dr]_{\epsilon_Y} & &F(G'(Y)) \ar[dl]^{\epsilon'_Y} && F(G'(Y)) \ar[rr]^{F(\phi_Y)} \ar[dr]_{\epsilon'_Y} & &F(G(Y)) \ar[dl]^{\epsilon_Y}\\ & Y &&&&Y}\]
+		Now, we can notice that the diagram belows commute.
+	
+	\[\xymatrix{F(G(Y)) \ar[r]^{F(\phi_Y)} \ar[dr]_{\epsilon_Y} &F(G'(Y)) \ar[r]^{F(\phi_Y)} \ar[d]_{\epsilon'_Y} & F(G(Y)) \ar[dl]^{\epsilon_Y} \\ & Y \\ F(G'(Y)) \ar[r]_{F(\phi'_Y)} \ar[ur]^{\epsilon'_Y} &F(G(Y)) \ar[r]_{F(\phi'_Y)} \ar[u]_{\epsilon_Y} & F(G'(Y)) \ar[ul]_{\epsilon'_Y}}\]	
+This implies at once that $\phi_Y$ and $\phi'_Y$ are mutally inverse. \qedhere 
+	\end{enumerate}
+	
+\end{proof}
+
+\begin{lemma}\label{lem:part}
+	Let $\X$ be an  an $\mathcal{M}$-adhesive category  and cosinder a pair $(m,f)$ with $m\colon M\mto X $ in $\mathcal{M}$ and $f:X\to Y$. If $(h, k)$ is a pushout complement for the pair $(m,f)$, then there exists an isomorphism $\epsilon_k:f^*(k)\to m$ in $\mathcal{M}/X$ such that $(k, \epsilon_k)$ is  a partial right adjoint at $m$ to the pullback functor $f^*\colon \mathcal{M}/Y\to \mathcal{M}/X$.
+\end{lemma}
+\begin{proof}
+	By \Cref{prop:pbpoad}, in the diagram below the inner square is both  a pushout and a pullback, yielding the dotted isomorphism $\epsilon_k\colon f^*(Q)\to M$.
+\[\xymatrix{f^*(Q) \ar@{.>}[dr]^{\epsilon_k} \ar@{>->}@/^.3cm/[drr]^{f^*(k)} \ar@/_.3cm/[ddr]_{p}\\& M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^f \\&Q\ar@{>->}[r]_{k}&Y}\]
+
+To see that in this way we get a partial right adjoint, let $g\colon f^*(n)\to m $ be a morphism in $\mathcal{M}/X$, then we have the solid diagram below
+\[\xymatrix{f^*(N) \ar[dr]^{g} \ar@{>->}@/^.3cm/[drr]^{f^*(n)} \ar[ddd]_{q}\\& M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^f \\&Q\ar@{>->}[r]_{k}&Y\\N \ar@{>->}@/_.3cm/[urr]_{n} \ar@{.>}[ur]^{t}}\]
+Now, since $n$ and $f^*(n)$ are in $\mathcal{M}$ we can form two other pullback squares:
+\[\xymatrix{A \ar@{>->}[d]_{a}\ar@{>->}[r]^-{r}& f^*(N) \ar@{>->}[d]^{f^*(n)} & B \ar@{>->}[r]^{s} \ar@{>->}[d]_{b}& N \ar@{>->}[d]^{n}\\M \ar@{>->}[r]_{m}&X &Q \ar@{>->}[r]_k&Y\\}\]
+Notice that 
+\begin{align*}
+	k\circ h\circ a&=f\circ m\circ a\\&=f\circ f^*(n)\circ r\\&=n\circ q \circ r
+\end{align*}
+Thus there exists a unique $c\colon A\to B$ as in the diagram
+\[\xymatrix{A \ar@{>->}[d]_{a} \ar@{.>}[dr]^{c}\ar@{>->}[r]^-{r} &f^*(N) \ar@/^.2cm/[dr]^{q} \\ M \ar@/_.2cm/[dr]_{h}&B\ar@{>->}[r]^{s}  \ar@{>->}[d]_{b}& N \ar@{>->}[d]^{n}\\ &Q \ar@{>->}[r]_{k} & Y}\]
+We can then consider the two diagrams below, noticing that the left one is $\mathcal{M}$-Van Kampen and in the cube on the right the front, right and left faces are pullbacks.
+		\[\xymatrix@C=10pt@R=10pt{&&&&&A\ar@{>->}[dd]|\hole_(.65){a}\ar[rr]^{c} \ar@{>->}[dl]_{r} && B \ar@{>->}[dd]^{b} \ar@{>->}[dl]_{s} \\ M \ar@{>->}[dd]_{m}\ar[rr]^{h}&&Q\ar@{>->}[dd]^{k}&&f^*(N)  \ar@{>->}[dd]_{f^*(n)}\ar[rr]^(.7){q} & & N \ar@{>->}[dd]_(.3){n}\\&&&&&M\ar[rr]|\hole^(.65){h} \ar@{>->}[dl]^{m} && Q \ar@{>->}[dl]^{k} \\X\ar[rr]_{f} &&Y&&X \ar[rr]_{f} & & Y}\]
+Now, we can also notice that the back square is a pullback too. To see this it is enough to apply \Cref{lem:pb1} to the diagram
+\[\xymatrix{A  \ar@/^.4cm/[rr]^{a\circ r}\ar@{>->}[d]_{a} \ar[r]_{c}& \ar@{>->}[r]_{s}B \ar@{>->}[d]^{b}& N \ar[d]^{n}\\ M \ar@/_.4cm/[rr]_{f\circ m}\ar[r]^{h}& Q \ar@{>->}[r]^{k}& Y}\]
+
+By hypothesis we have $g\colon f^*(n)\to m$ in $\mathcal{M}/X$, thus \Cref{lem:varie} yields a unique morphism $\bar{g}\colon n\to k$ in $\mathcal{M}/Y$. fitting in the diagram below.
+ \[\xymatrix{f^*(N) \ar@/_.3cm/[ddr]_{q} \ar[r]^{f^*(\bar{g})}& f^*(Q) \ar[dr]^{\epsilon_k} \ar@{>->}@/^.3cm/[drr]^{f^*(k)} \ar@/_.3cm/[ddr]_{p}\\&& M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^f \\&N \ar@{>->}[r]^{\bar{g}} \ar@{>->}@/_.4cm/[rr]_{n} &Q\ar@{>->}[r]^{k}&Y}\]
+In particular we have
+\begin{align*}k\circ h\circ \epsilon_k\circ f^*(\bar{g})&=k\circ p\circ f^*(\bar{g})\\&=k\circ \bar{g}\circ q\\&=n\circ q\\&=k\circ h\circ g
+\end{align*}
+Therefore $ h\circ \epsilon_k\circ f^*(\bar{g})=h\circ g$. On the other hand we already know that $m\circ g=m\circ \epsilon_k\circ f^*(\bar{g})$, so that we can deduce $\epsilon_k \circ f^*(\bar{g})=g$ as wanted.
+\end{proof}
+
+We can deduce some properties of pushout complements from \Cref{lem:part}.
+
+\begin{corollary}\label{lem:radj} Let $\X$ be an $\mathcal{M}$-adhesive category and consider two composable arrows $m\colon M \mto X$  and $f\colon X\to Y$, with $m\in \mathcal{M}$. Suppose moreover that the following square is a pushout, so that $(h,k)$ is a pushout complement og $(m,f)$:
+	\[\xymatrix{M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^{f} \\Q\ar@{>->}[r]_{k}&Y}\]
+	
+Then the following properties hold true.
+\begin{enumerate}
+	\item  Given another arrow $n\colon N\to Y$ in $\mathcal{M}$ and the pullback square below,
+	\[\xymatrix{P \ar[r]^{p_1} \ar@{>->}[d]_{p_2}& N \ar@{>->}[d]^{n}\\X \ar[r]_f&Y}\]
+	$\mathcal{M}/Y(n, k)$ is non-empty  if and only $\mathcal{M}/X(p_2, m)$ is so.
+	\item (Uniqueness of pushout complements) If $h'\colon M\to Q' $ and $k'\colon Q'\mto Y$ is a pushout complement for $(m,f)$, then there exists a unique isomorphism $\phi\colon Q\to Q'$ making the following diagram commutative.
+	\[\xymatrix{&M \ar@{>->}[r]^{m} \ar[d]_{h} \ar@/_.3cm/[ddl]_{h'}& X \ar[d]^{f} \\ &Q \ar@{.>}[dl]^{\phi} \ar@{>->}[r]_{k} & Y \\ Q' \ar@{>->}@/_.3cm/[urr]_{k'}}\]
+	\item The pair $(h,k)$ is a \emph{final $\mathcal{M}$-pullback complement} of $(m,f)$, i.e. the pushout square of $m$ along $h$ is also a pullback square for $f$ along $k$ and, moreover, given the solid part of the diagram
+	\[\xymatrix{M' \ar[r]^{g}\ar[d]_{h'} & M \ar@{>->}[r]^{m}\ar[d]_{h}& X \ar[d]^{f}  \\  Q' \ar@{.>}[r]^{t} \ar@/_.4cm/@{>->}[rr]_{k'}&Q\ar@{>->}[r]^{k}&Y}\]
+	in which the external rectangle is a pullback, then there exists a unique $t\colon Q'\to Q$ making the whole diagrams commutative.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+	\begin{enumerate}
+		\item  This follows from point $1$ of \Cref{prop:uni} and \Cref{lem:part}.
+		\item  By the second point  of \Cref{prop:uni} and \Cref{lem:part} we get an isomorphism $\phi:k\to k'$ in $\mathcal{M}/Y$. On the other hand we have
+		\begin{align*}
+			k'\circ \phi \circ  h_1&=k\circ h\\&=f\circ m\\&= k'\circ h'
+		\end{align*}
+		Since $k'$ is a monomorphism we conclude that $h'=\phi\circ h$.
+		\item  This follows from the first point since $g$ belongs to $\mathcal{M}/X(m\circ g, m)$. \qedhere 
+	\end{enumerate}
+\end{proof}
+
+\subsection{$\mathcal{M}$-adhesivity is not enough}\label{app:fill}
+In \Cref{prop:equi} we proved that, in the linear case, the existence of an indpendence pair between two derivation is equivalent to that of a filler between them. This result can be further refined: in a\cite{baldan2011adhesivity} a class  $\mathbb{B}$ of (quasi)adhesive category is defined for which the local Church-Rosser Theorem holds even for left-linear DPO-rewriting system. In our language, and given \Cref{prop:fil} and \Cref{rem:locCR}, this amount to prove that, for elements of $\mathbb{B}$, every independence pair induces a filler. 
+
+\begin{definition}Let $\X$ be a category, we say that $\X$ satisfies
+	\begin{itemize}
+		\item the \emph{mixed decomposition} property if for every diagram
+		\[\xymatrix{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}\]
+		whose outer boundary is a pushout and in which $k$ is a monomorphisms, 
+		\item the \emph{pushout decomposition} property
+	\end{itemize}
+\end{definition}
+
+\begin{lemma}
+	contenuto...
+\end{lemma}
+\begin{proof}
+	contenuto...\qedhere 
+\end{proof}
+
+\begin{corollary}
+	contenuto...
+\end{corollary}
+
+The following result shows that the mixed and pushout decomposition properties guarantee that every independence pair gives rise to a filler.
+
+\begin{theorem}
+	\todo{filler e classe B+}
+\end{theorem}
+\begin{proof}\qedhere 
+\end{proof}
+
+Our next step is to identify sufficient conditions for a category $\X$ to satisfy the mixed and pushout decomposition properties.
+
+\begin{definition}
+	\todo{classe B e class B+}
+\end{definition}
+
+\begin{example}
+	\todo{esempi}
+\end{example}
+
+\begin{example}
+	\todo{esempi}
+\end{example}
+
+\begin{proposition}
+	\todo{da B a B+}
+\end{proposition}
+\begin{proof}
+	contenuto... \qedhere 
+\end{proof}
+\begin{lemma}\todo{due proprietà classe B}
+\end{lemma}
+\begin{proof}
+	\qedhere 
+\end{proof}
+
+\begin{corollary}
+	\todo{due proprietà classe B+}
+\end{corollary}
+
+\begin{corollary}
+	\todo{filler e classe B+}
+\end{corollary}
+
+\section{Strict $\mathcal{M}$-adhesivity and $\mathcal{M}$-unions} 
+ 
+ In this section we will prove that in a strict $\mathcal{M}$-adhesive category $\X$, the poset of $\mathcal{M}$-subobjects (see  \Cref{app:sub}) is a distributive lattice.
+ 
+ We start by  proving the following a rather technical lemma \cite{garner2012axioms}, which will be needed afterward.
+ 
+\begin{lemma}\label{lem:pb2}
+	Let $\X$ be a category with pullbacks and $\mathcal{A}$  a class of arrows in it  stable under pullbacks. Suppose that  the following diagrams are given, with $r\colon W\to R$ and $q\colon Q'\to Q$ in $\mathcal{A}$.
+	\[
+	\xymatrix{Y\ar[r]^{f_2} \ar[d]_{f_1} & X_2 \ar[d]^{r_2} & Z_1 \ar[d]_{x_1}\ar[r]^{z_1} & W \ar[r]^{w} \ar[d]_{r} & Q'\ar[d]^{q} & Z_2 \ar[d]_{x_2} \ar[r]^{z_2}  & W  \ar[r]^{w} \ar[d]_{r}  & Q' \ar[d]^{q}\\ X_1 \ar[r]_{r_1} &R  & X_1 \ar[r]_{r_1} & R \ar[r]_{s}  & Q& X_2 \ar[r]_{r_2} & R \ar[r]_{s} & Q}\]
+	
+	If the first square is an $\mathcal{A}$-stable pushout and the whole rectangles and their left halves are pullbacks, then their common right half is a pullback too.
+\end{lemma}
+\begin{proof}Pulling back  $q$ along $s$ we get a square 
+	\[\xymatrix{U \ar[r]^{u} \ar[d]_{h}& Q' \ar[d]^{q}\\ R \ar[r]_s & S}\]
+	Notice that
+	\[
+	q\circ w\circ z_1=s\circ r_1\circ x_1 \qquad 
+	q\circ w\circ z_2=s\circ r_2\circ x_2 \]
+	Thus we get the dotted $u_1\colon Z_1\to U$ and $u_2\colon Z_2\to U$ fitting in the diagram
+	\[\xymatrix{  Z_1  \ar@/^.4cm/[rr]^{w\circ z_1}\ar@{.>}[r]_{u_1}\ar[d]_{x_1}&  U \ar[d]_h \ar[r]_{u} & Q'  \ar[d]^{q}&  Z_2 \ar@/^.4cm/[rr]^{w\circ z_2} \ar@{.>}[r]_{u_2}\ar[d]_{x_2} &  U \ar[d]_h \ar[r]_{u}& Q' \ar[d]^{q} \\  X_1 \ar[r]_{r_1} & R \ar[r]_s& Q & X_2 \ar[r]_{r_2}& R \ar[r]_s & Q}\]
+	which, by hypothesis and  \Cref{lem:pb1} have left halves which are pullbacks. Now,
+	\[s\circ r_1\circ f_1 =s\circ r_2\circ f_2\]
+	Pulling back $q$ along this arrow we get another square
+	\[\xymatrix@C=40pt{Z'_0 \ar[r]^{t} \ar[d]_{y}& Q' \ar[d]^{q}\\ R \ar[r]_{s\circ r_1\circ f_1} & S}\]
+	In particular, we obtain the dotted $b_1\colon Z'_0\to Z_1$ and $b_2\colon Z'_0\to Z_2$ in
+	\[\xymatrix@C=30pt{ Z'_0 \ar@/^.4cm/[rrr]^{t}\ar[d]_{y} \ar@{.>}[r]_{b_1} & Z_1  \ar[r]_{u_1}\ar[d]_{x_1}&  U \ar[d]_h \ar[r]_{u} & Q'  \ar[d]^{q} &Z'_0 \ar@/^.4cm/[rrr]^{t} \ar[d]_{y}\ar@{.>}[r]_{b_2}  & Z_2  \ar[r]_{u_2}\ar[d]_{x_2} &  U \ar[d]_h \ar[r]_{u}& Q' \ar[d]^{q} \\ Y \ar[r]_{f_1}& X_1 \ar[r]_{r_1} & R \ar[r]_s& Q & Y \ar[r]_{f_2} & X_2 \ar[r]_{r_2}& R \ar[r]_s & Q}\]
+	Notice that, again  by\Cref{lem:pb1}, all of the squares on the bottom rows of the two diagrams are pullbacks. 
+	
+	We are going to construct another row above the previous ones. By hypothesis we have that
+	\[q\circ w = s\circ r\]
+	Thus there exists a unique $g\colon W\to U$ such that
+	\[r=h\circ g \qquad w=u\circ g\]
+	Moreover, we also have that
+	\[\begin{split}h\circ g \circ z_1&=r \circ z_1\\&= r_1\circ x_1 \\&=h\circ u_1
+	\end{split}\qquad\begin{split}h\circ g \circ z_2&=r \circ z_2\\&= r_2\circ x_2 \\&=h\circ u_2
+	\end{split}\]
+	and 
+	\[\begin{split}u\circ g \circ z_1&=w \circ z_1\\&= u\circ u_1 
+	\end{split} \qquad \begin{split}u\circ g \circ z_1&=w \circ z_2\\&= u\circ u_2
+	\end{split}\]
+	which together show that
+	\[g\circ z_1=u_1 \qquad g\circ z_2=u_2\]
+	
+	Summing up, we can depict all the arrows we have constucted so far in the following diagrams
+	\[\xymatrix{Z'_0 \ar[r]^{b_1} \ar[d]_{\id{Z'}}& Z_1 \ar[r]^{z_1} \ar[d]_{\id{Z_1}} &  W \ar[d]_g \ar[r]^{w} & Q' \ar[d]^{\id{Q'}}&& Z'_0 \ar[r]^{b_2}  \ar[d]_{\id{Z'}}& Z_2 \ar[d]_{\id{Z_2}} \ar[r]^{z_2}&  W \ar[d]_g\ar[r]^{w}& Q' \ar[d]^{\id{Q'}}\\ Z'_0 \ar[d]_{y} \ar[r]^{b_1} & Z_1  \ar[r]^{u_1}\ar[d]_{x_1}&  U \ar[d]_h \ar[r]^{u} & Q'  \ar[d]^{q}& &Z'_0  \ar[d]_{y}\ar[r]^{b_2}  & Z_2  \ar[r]^{u_2}\ar[d]_{x_2} &  U \ar[d]_h \ar[r]^{u}& Q' \ar[d]^{q} \\ Y \ar[r]_{f_1}& X_1 \ar[r]_{r_1} & R \ar[r]_s& Q & &Y \ar[r]_{f_2} & X_2 \ar[r]_{r_2}& R \ar[r]_s & Q}\]
+	If we show that $g$ is an isomorphism we are done. Consider the cubes
+	\[\xymatrix@C=13pt@R=13pt{&Z_0'\ar[dd]|\hole_(.7){y}\ar[rr]^{b_2} \ar[dl]_{b_1} && Z_2 \ar[dd]^{x_2} \ar[dl]_{z_2}  &&Z'_0\ar[dd]|\hole_(.7){y}\ar[rr]^{b_2} \ar[dl]_{b_1} && Z_2 \ar[dd]^{x_2} \ar[dl]_{u_2}\\Z_1  \ar[dd]_{x_1}\ar[rr]^(.65){z_1} & & W \ar[dd]_(.3){r}&& Z_1  \ar[dd]_{x_1}\ar[rr]^(.65){u_1} & &U \ar[dd]_(.3){h}\\&Y\ar[rr]|\hole^(.65){f_2} \ar[dl]_{f_1} && X_2 \ar[dl]^{r_2} && Y\ar[rr]|\hole^(.65){f_2} \ar[dl]_{f_1} && X_2 \ar[dl]^{r_2}\\X_1 \ar[rr]_{r_1} & & R && X_1 \ar[rr]_{r_1} & & R}\]
+	in which the vertical faces are pullbacks. The bottom face is an $\mathcal{A}$-stable pushout and all the vertical arrows are in $\mathcal{A}$, therefore the top faces are pushouts too. Now,  the arrow $g$ fits in the following  diagram
+	\[\xymatrix{Z'_0\ar[r]^{b_2} \ar[d] _{b_1}& Z_2 \ar@/^.3cm/[ddr]^{u_2}\ar[d]^{z_2} \\ Z_1 \ar[r]_{z_1}  \ar@/_.3cm/[drr]_{u_1}& W \ar[dr]^{g} \\ &&U}\]
+	and thus it is an isomorphism.
+\end{proof} 
+
+
+Given a strict $\mathcal{M}$-adhesive category with pullbacks, the previous result allows us to compute binary suprema of elements of the lattice of subobjects $\msub{X}{X}$ if, at least, one of the subobjects involved is in $\sub{M}{X}{X}$ .
+
+\begin{proposition}\label{prop:uni2} Let $\X$ be a strict $\mathcal{M}$-adhesive category with pullbacks. Given  $m\colon M\mto X$ in $\mathcal{M}$  and another mono $n\colon N\to X$, consider the diagram 
+	\[\xymatrix{P \ar[r]^{p_1} \ar@{>->}[d]_{p_2} & M\ar@{>->}[d]^{u_2} \ar@{>->}@/^.3cm/[ddr]^{m} \\ N \ar@/_.3cm/[drr]_{n}\ar[r]_{u_1} & U \ar@{.>}[dr]^{u} \\ && X}\]
+	in which the outer boundary form a pullback and the inner square a pushout. Then the dotted arrow $u\colon U\to X$ is a monomorphism and, in $(\msub{X}{X}, \leq)$, $[u]$ is the supremum of $[m]$ and $[n]$.  
+\end{proposition}
+\begin{remark}
+	Notice that the  $p_2$ and $p_1$ are both monos, moreover, $p_2$, as the pullback of $m$, is in $\mathcal{M}$. This, moreover, guarantees the existence of the inner pushout and thus of the dotted arrow $u$.  Finally, notice that also $u_2$, being the pushout of $p_2$ is in $\mathcal{M}$.
+\end{remark}
+\begin{proof}
+	Consider the following two pullback squares
+	\[\xymatrix{Q \ar[r]^{q_1} \ar[d]_{q_2} & N\ar[d]^{n} & W \ar[r]^{w_1} \ar@{>->}[d]_{w_2}& M\ar@{>->}[d]^{m}\\
+		U \ar[r]_{u}& X & U \ar[r]_{u}& X}\]
+	By construction we have the following equalities 
+	\[\begin{split}
+		n&=u\circ u_1  \qquad \\
+		u\circ u_2 \circ p_1&=m\circ p_1\\&=n\circ p_2
+	\end{split}\qquad \begin{split}
+		m&=u\circ u_2\\ u\circ u_1\circ p_1&=n\circ p_2\\&=m\circ p_1
+	\end{split}\]
+	which give us the arrows $f_1\colon N\to Q$, $f_2\colon P\to Q$, $g_1\colon M\to W$, $g_2\colon P\to W$ making the following diagrams commute
+	\[\xymatrix@C=20pt{N\ar@/^.4cm/[rr]^{\id{N}}\ar@{.>}[r]_{f_1}  \ar[d]_{\id{N}} &Q\ar[r]_{q_1} \ar[d]_{q_2} & N \ar[d]^{n}  &P\ar@{>->}@/^.4cm/[rr]^{p_2}\ar@{.>}[r]_{f_2}  \ar[d]_{p_1} &Q\ar[r]_{q_1} \ar[d]_{q_2} & N \ar[d]^{n}
+		\\ N \ar@/_.4cm/[rr]_{n}\ar[r]^{u_1} & U \ar[r]^{u}  & X  & M\ar@{>->}@/_.4cm/[rr]_{m}\ar@{>->}[r]^{u_2}   &U\ar[r]^{u}  & X }\]
+	\[\xymatrix@C=20pt{M\ar@/^.4cm/[rr]^{\id{M}}\ar@{.>}[r]_{g_1}  \ar[d]_{\id{M}} &W\ar[r]_{w_1} \ar@{>->}[d]_{w_2} & M \ar@{>->}[d]^{m} & P\ar@/^.4cm/[rr]^{p_1}\ar@{.>}[r]_{g_2}  \ar@{>->}[d]_{p_2} &W\ar[r]_{w_1} \ar@{>->}[d]_{w_2} & M \ar@{>->}[d]^{m}
+		\\ M \ar@{>->}@/_.4cm/[rr]_{m}\ar@{>->}[r]^{u_2} & U \ar[r]^{u}  & X & N\ar@/_.4cm/[rr]_{n}\ar[r]^{u_1}  &U\ar[r]^{u} & X }\]	
+		
+	Their outer edges are pullbacks, thus in the following cubes, the vertical faces are pullbacks
+	\[\xymatrix@C=13pt@R=13pt{&P\ar[dd]|\hole_(.65){\id{P}}\ar[rr]^{\id{P}} \ar@{>->}[dl]_{p_2} && P \ar[dd]^{p_1} \ar[dl]_{f_2} & & P\ar[dd]|\hole_(.65){\id{P}}\ar[rr]^{p_1} \ar[dl]_{\id{P}} && M \ar[dd]^{\id{M}} \ar[dl]_{g_1}\\ N  \ar[dd]_{\id{N}}\ar[rr]^(.65){f_1} & & Q \ar[dd]_(.3){q_2}&& P  \ar@{>->}[dd]_{p_2}\ar[rr]^(.65){g_2} & & W \ar@{>->}[dd]_(.3){w_2}\\&P\ar[rr]|\hole^(.65){p_1} \ar@{>->}[dl]^{p_2} && M \ar@{>->}[dl]^{u_2} && P\ar[rr]|\hole^(.65){p_1} \ar@{>->}[dl]^{p_2} && M \ar@{>->}[dl]^{u_2}\\N \ar[rr]_{u_1} & & U && N \ar[rr]_{u_1} & & U}\]
+
+	We know that $p_2$ is an element of $\mathcal{M}$, thus  the top faces are pushouts and therefore $f_1$ and $g_1$ are isomorphisms with inverses given by $q_1$ and $w_1$.  But then, since
+	\[u_1=q_2\circ f_1 \qquad u_2=w_2\circ g_1\]
+	we can further deduce that the squares below  are both pullbacks.
+	\[\xymatrix{N \ar[r]^{\id{N}} \ar[d]_{u_1} & N\ar[d]^{n} & M \ar[r]^{\id{M}} \ar@{>->}[d]_{u_2}& M\ar@{>->}[d]^{m}\\
+		U \ar[r]_{u}& X & U \ar[r]_{u}& X}\]
+	
+	We have three diagrams 
+	\[\xymatrix{P\ar@{>->}[d]_{p_2} \ar[r]^{p_1} & M \ar@{>->}[d]^{m}  & N \ar[d]_{\id{N}} \ar[r]^{u_1}& U\ar[d]_{\id{U}} \ar[r]^{\id{U}}  & U \ar[d]^{u} &  M \ar[d]_{\id{M}} \ar[r]^{u_2}& U \ar[r]^{\id{U}} \ar[d]_{\id{U}}  & U \ar[d]^{u}\\N \ar[r]_{n} & X & N \ar@/_.3cm/[rr]_{n}\ar[r]^{u_1} & U  \ar[r]^u  &X & M\ar@{>->}@/_.3cm/[rr]_{m}\ar@{>->}[r]^{u_2} & U  \ar[r]^u  &X }\]
+	and we have just proved that the rectangles are pullbacks. Thus we can apply \Cref{lem:pb2} to deduce that 
+	\[\xymatrix{ U \ar[r]^{\id{U}} \ar[d]_{\id{U}}  & U \ar[d]^{u}\\ U  \ar[r]_u  &X }\]
+	is a pullback, but this means exactly that $u$ is a mono.
+	
+	For the second half: suppose that $k\colon K\to X$ is an upper bound for $m$ and $n$, thus there exists $k_1\colon M\to K$ and $k_2\colon N\to K$ such that
+	\[m=k\circ k_1 \qquad n=k\circ k_2\] 
+	But then
+	\begin{align*}
+		k\circ k_1 \circ p_1 &= m\circ p_1\\&= n\circ p_2\\&= k\circ k_2\circ p_2
+	\end{align*}
+	Since $k$ is mono, this implies that there exists a unique $h\colon U\to K$ such that 
+	\[k_2=h\circ u_1 \qquad k_1=h\circ u_1\]
+	and we have
+	\[\begin{split}
+		k\circ h \circ u_1&=k\circ k_2\\&=n \\&=u \circ u_1 
+	\end{split}\qquad 
+	\begin{split}
+		k\circ h \circ u_2&=k\circ k_1\\&=m \\&=u \circ u_2 
+	\end{split} \]
+	showing that $u=k\circ h$, i.e.~that $[u]\leq [k]$.
+\end{proof}
+ 
+Our next step is to prove that, if $m\colon M\to X$ and $n\colon N\to X$ are in $\mathcal{M}$, then their supremum $u$ in $\msub{X}{X}$ belongs to $\mathcal{M}$ too. To do this we need another technical tool.
+ 
+\begin{definition}\index{codiagonal} \index{codiagonal!$\mathcal{N}$-}
+	Let $f\colon X\to Y$ be an arrow in a category $\X$ such that the pushout square below  exists.
+	\[\xymatrix{ X \ar[r]^f \ar[d]_f& Y \ar[d]^{y_1}\\ Y \ar[r]_{y_2} & Q_f}\]
+	The \emph{codiagonal} $\upsilon_f\colon Q_f\to Y$ is the unique arrow  fitting in the following diagram.
+	\[\xymatrix{ X \ar[r]^f \ar[d]_f& Y \ar@/^.3cm/[ddr]^{\id{Y}} \ar[d]^{y_1}\\ Y \ar@/_.3cm/[drr]_{\id{Y}}\ar[r]_{y_2} & Q_f \ar@{.>}[dr]^{\upsilon_f}\\ && Y}\]
+\end{definition}
+
+\begin{remark}\label{rem:cod}
+	Notice that, in a  $\mathcal{M}$-adhesive category,  for every $m\in \mathcal{M}$ there exists a pushout square of $m$ along itself and so also its codiagonal $\upsilon_m$.
+\end{remark}
+
+Let us list some useful properties of codiagonals.
+
+\begin{lemma}\label{rem:coeq}
+	Let $f\colon X\to Y$ be a morphism in a category $\X$ and suppose that $f$ admits a codiagonal $\upsilon_f\colon Q_f\to Y$, then the following hold true:
+	\begin{enumerate}
+		\item $\upsilon_f$ is the coequalizer of the pair of coprojections $y_1, y_2\colon Y\rightrightarrows Q_f$;
+		\item suppose that the square below is a pullback $y_1$ along $y_2$
+		\[\xymatrix{P \ar[r]^{p_1} \ar[d]_{p_2} & Y \ar[d]^{y_1}\\  Y\ar[r]_{y_2} &  Q_f}\]
+		Then $p_1=p_2$ and the pair $y_1, y_2\colon Y\rightrightarrows Q_f$ has an equalizer $p_1\colon P\to Y$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}\begin{enumerate}
+		\item  Let $z\colon Q_f\to Z$ be such that
+		\[z\circ y_1=z\circ y_2\]
+		Then we also have the identities
+		\[\begin{split}
+			z\circ y_1 \circ \upsilon_f  \circ y_1 &=z\circ y_1 \circ \id{Y}\\&= z\circ y_1\\&
+		\end{split}\qquad \begin{split}z\circ y_1\circ \upsilon \circ  y_2&= z\circ y_1 \circ \id{Y}\\&=z\circ y_1\\&=z\circ y_2
+		\end{split}\]
+		Therefore, \[z\circ y_1 \circ \nu_f=z\]	
+		
+		Uniqueness follows from the fact that $\upsilon_f$ is a split epi.
+		\item  First of all we can notice that in every square, not necessarily a pullback one, as the one in the diagram below, the existence of the codiagonal implies $q_1=q_2$.
+		\[\xymatrix{Q \ar[r]^{q_1} \ar[d]_{q_2} & Y \ar[d]^{y_1} \ar@/^.3cm/[ddr]^{\id{Y}}\\  Y\ar[r]_{y_2}  \ar@/_.3cm/[drr]_{\id{Y}}&  Q_f\ar[dr]^{\upsilon_f}\\ && Y}\]
+		
+		To see that $p_1\colon P \to Y$ is an equalizer for $y_1$ and $y_2$, consider an arrow $z\colon Z\to X$ such that
+		\[y_1\circ z=y_2\circ z\]
+		
+		Then the universal property of the pullback of $y_1$ along $y_2$ yields a unique $g\colon Z\to P$ such that $z=p_1\circ g$.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+\begin{lemma}\label{lem:fact2}
+	Let $\X$ be a strict $\mathcal{M}$-adhesive category with pullbacks. Let $m\colon M\mto X$ and $n\colon N\mto X$ be two arrows in $\mathcal{M}$ and suppose that $u\colon U\to X$ is a representative for $[m]\vee[n]$ in $\msub{X}{X}$. Then:
+	\begin{enumerate}
+		\item $u$ admits pushouts  along itself (i.e.~it has a \emph{cokernel pair}); 
+		\item if $\mathcal{M}$ the class of split monos, then there exists an epi $e_u\colon M\to E_u$ and an element $m_u\colon  E_u\to X$ of $\mathcal{M}$ such that   $u=m_u\circ e_u$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item 
+		By \Cref{prop:uni2}, we can consider the following diagram	in which the outer edges form a pullback and the inner square is a pushout.
+		\[\xymatrix{P \ar@{>->}[r]^{p_1} \ar@{>->}[d]_{p_2} & M\ar@{>->}[d]^{u_2} \ar@{>->}@/^.3cm/[ddr]^{m} \\ N \ar@{>->}@/_.3cm/[drr]_{n}\ar@{>->}[r]_{u_1} & U \ar[dr]^{u} \\ && X}\]
+		
+		By \Cref{rem:cod} we know that the codiagonal $\nu_n$ exists. We can then pull back $m$ along $\upsilon_n$, we obtaining the square below.
+		\[\xymatrix{T\ar[r]^{t_1}  \ar@{>->}[d]_{t_2}& M\ar@{>->}[d]^{m}\\ Q_{n} \ar[r]_{\upsilon_n} & X}\]
+	
+		Now, we have identities
+		\[\begin{split}
+			m \circ \id{M}&=m \\&=\id{X} \circ  m \\&=\upsilon_n\circ n_1 \circ m
+		\end{split} \qquad \begin{split}
+			m \circ \id{M}&=m \\&=\id{X} \circ  m \\&=\upsilon_n\circ n_2\circ m
+		\end{split}\]
+		Thus, denoting by $n_1$ and $n_2$ the coprojections $X\rightrightarrows Q_n$, which are both in $\mathcal{M}$, there exist $l_1, l_2\colon M\rightrightarrows T$ as in the following diagram
+		
+			\[\xymatrix{ M\ar@{.>}[r]_{l_1} \ar@/^.4cm/[rr]^{\id{M}} \ar@{>->}[d]_{m}&T\ar[r]_{t_1}  \ar@{>->}[d]_{t_2}& M\ar@{>->}[d]^{m} & M\ar@{.>}[r]_{l_2} \ar@/^.4cm/[rr]^{\id{M}} \ar@{>->}[d]_{m}&T\ar[r]_{t_1}  \ar@{>->}[d]_{t_2}& M\ar@{>->}[d]^{m}\\ X  \ar@/_.4cm/[rr]_{\id{X}} \ar@{>->}[r]^{n_1}&Q_{n} \ar[r]^{\upsilon_n} & X & X \ar@/_.4cm/[rr]_{\id{X}} \ar@{>->}[r]^{n_2} &Q_{n} \ar[r]^{\upsilon_n} & X}\]
+		
+		In particular, by \Cref{lem:pb1}, the left halves of the above rectangles are pullbacks and both $l_1$ and $l_2$ belongs to $\mathcal{M}$. Now, notice that, by construction $t_1\circ l_1=t_1\circ l_2$, so that
+		\[	t_1\circ l_1\circ p_1=	t_1\circ l_2\circ p_1\]
+		
+		Moreover, we can also compute to get
+		\begin{align*}
+		t_2\circ l_1\circ p_1&=n_1\circ m \circ p_1\\&=n_1\circ n\circ p_2\\&=n_2\circ n\circ p_2\\&=n_2\circ m\circ p_1\\&= t_2\circ l_2\circ p_1
+		\end{align*} 
+		
+		Summing up, the cube below commutes and,  by the Van Kampen property, its top face is a pushout, proving that $t_1$ is a codiagonal of $p_1$.
+		\[\xymatrix@C=13pt@R=13pt{&P\ar@{>->}[dd]|\hole_(.65){p_2}\ar@{>->}[rr]^{p_1} \ar@{>->}[dl]_{p_1} && M \ar@{>->}[dd]^{m} \ar@{>->}[dl]_{l_1}\\ M  \ar@{>->}[dd]_{m}\ar@{>->}[rr]^(.65){l_2} & & T\ar@{>->}[dd]_(.3){t_2}\\&N\ar@{>->}[rr]|\hole^(.65){n} \ar@{>->}[dl]_{n} && X \ar@{>->}[dl]^{n_1} \\X \ar@{>->}[rr]_{n_2} & & Q_n}\]
+		
+		As a next step, we can take the pushout of $t_2\colon T\mto Q_n$ alon $t_1$, obtaining the square below.
+		\[\xymatrix{T \ar[r]^{t_1} \ar@{>->}[d]_{t_2}& M \ar@{>->}[d]^{q_1}\\ Q_n \ar[r]_{q_2} & Q }\]
+		
+		Now, if we compute on the one hand we have:
+		\begin{align*}
+			q_2\circ n_1\circ u \circ \circ u_1&=q_2\circ n_1\circ n\\&=q_2\circ n_2\circ n\\&=q_2\circ n_2 \circ u\circ u_1
+		\end{align*}
+		On the other hand a further computation yields
+		\begin{align*}
+		q_2\circ n_1\circ u \circ \circ u_2&=q_2\circ n_1\circ m\\&=q_2\circ t_2\circ l_1\\&=q_1\circ t_1 \circ l_1\\&=q_1\circ t_1\circ l_2\\&=q_2\circ t_2\circ l_2\\&=q_2\circ n_2\circ m\\&=q_2\circ n_2\circ u \circ \circ u_2
+		\end{align*}
+		
+		Thus $q_2\circ n_1\circ u = q_2\circ n_2\circ u$ and the square below commutes. To conclude the proof, we have to show that it is a pushout.
+		\[\xymatrix{U \ar[r]^u \ar[d]_u & X \ar[d]^{q_2\circ n_1}\\  X\ar[r]_{q_2\circ n_2} &  Q }\]
+		
+		Let now $z_1, z_2\colon X\rightrightarrows Z$ be two arrows such that 
+		\[z_1\circ u=z_2\circ u\]
+		
+		If we precompose both sides of the previous equation  with $u_1$ and $u_2$ we get the following identities.
+		\[\begin{split}
+			z_1\circ m &= z_1\circ u\circ u_2\\&=z_2\circ u \circ u_2\\&=z_2\circ m
+		\end{split} \qquad \begin{split}
+			z_1\circ n &= z_1\circ u\circ u_1\\&=z_2\circ u \circ u_1\\&=z_2\circ n
+		\end{split}\]
+			
+		The second chain of the equalities above allows us to deduce the existence of the dotted $w\colon Q_n\to Z$.
+		\[\xymatrix{N \ar@{>->}[r]^{n} \ar@{>->}[d]_{n} & X\ar@{>->}[d]^{n_1} \ar@/^.3cm/[ddr]^{z_1} \\ X \ar@/_.3cm/[drr]_{z_2}\ar@{>->}[r]_{n_2} & Q_n \ar@{.>}[dr]^{w} \\ && Z}\]
+		
+		We compute to obtain
+		\begin{align*}w\circ t_2\circ l_2&=w\circ n_2\circ m\\&=z_2\circ m\\&=z_1\circ m\\&=w\circ n_1\circ m\\&=w\circ t_2\circ l_1
+		\end{align*}
+		
+	Now, we have already noted that $t_1$ is a codiagonal for $p_1$. Thus the first point of  \Cref{rem:coeq} entails the existence of a unique $k\colon M\to Z$ such that 
+	\[k\circ t_1=w\circ t_2\]
+	
+	Thus the solid part in the diagram below commutes, yielding the existence of the dotted $z\colon Q\to Z$.
+		\[\xymatrix{T \ar[r]^{t_1} \ar@{>->}[d]_{t_2}& M \ar@/^.3cm/[ddr]^{k}\ar@{>->}[d]^{q_1}\\ Q_n \ar@/_.3cm/[drr]_{w}\ar[r]_{q_2} & Q \ar@{.>}[dr]^{z}\\ && Z }\]
+
+Computing further we have
+		\[\begin{split}
+		z\circ q_2\circ n_1&=z_1\\&=w\circ n_1
+		\end{split}\qquad 
+		\begin{split}
+			z\circ q_2\circ n_2&=z_2\\&=w\circ n_2
+		\end{split}\]
+		
+		Moreover, if $z'\colon Q\to Z$ is such that
+		\[z_1=z'\circ q_2\circ n_1 \qquad z_2=z'\circ q_2\circ n_2\]
+		then we also have 
+		\[\begin{split}
+			z'\circ q_2\circ n_1&=z_1\\
+			&=w\circ n_1 
+		\end{split}\qquad \begin{split}
+			z'\circ q_2\circ n_2&=z_2\\
+			&=w\circ n_2
+		\end{split}\]
+		which shows that $w=z'\circ q_2$. On the other hand
+		\[\begin{split}
+			z'\circ q_1\circ t_1 & = z'\circ q_2\circ t_2\\&=w\circ t_2
+		\end{split}\]
+		and so we also have that $z'\circ q_1=k$, allowing us to conclude that $z=z'$. 
+		
+		\item By the previous point, there exists a pushout square		
+		\[\xymatrix{U \ar[r]^{u} \ar[d]_{u}& X \ar[d]^{a_1} \\ X \ar[r]_{a_2}  & A}\]
+		
+		Thus $u$ also has a codiagonal $\upsilon_{u}\colon A\to U$. In particular, the two coprojections $a_1$ and $a_2$  are split monos and thus are in $\mathcal{M}$. By the second point of \Cref{rem:coeq}, they have an equalizer $m_u\colon E_u\to X$ which, since $\mathcal{M}$ are stable under pullback, is also an element of $\mathcal{M}$. Since $a_1\circ u= a_2\circ u$, there exists also an arrow $e_u\colon U\to E_u$ such that $u=m_u\circ e_u$. 
+		
+		To show that this arrow is epi, we can start with the equalities
+		\[\begin{split}
+			m&=u\circ u_2\\&=m_u\circ e_u\circ u_2
+		\end{split} \qquad \begin{split}
+			n&=u\circ u_2\\&=m_u\circ e_u\circ u_1
+		\end{split}  \]
+		By \Cref{cor:deco}  $e_u\circ u_1$ and $e_u\circ u_2$ belong to $\mathcal{M}$. In particular they are monomorphisms and
+		\[[e_u\circ u_1] \leq [e_u] \qquad [e_u\circ u_2] \leq [e_u]\]
+		
+		Now, we can also prove that,, in $(\msub{X}{E_u}, \leq)$ 
+		\[[e_u]=[e_u\circ u_1]\vee [e_u\circ u_2]\]
+		
+		To see this, let  $b\colon B\to E_u$ be another mono such that 
+		\[b\circ b_1 =e_u\circ u_1 \qquad b\circ b_2 =e_u\circ u_2\] 
+		for some $b_1\colon N\to B$ and $b_2\colon M\to B$. Then 
+		\begin{align*}
+			b \circ b_1 \circ p_2 & = e_u \circ u_1\circ p_2\\&= e_u \circ  u_2\circ p_1\\&=b\circ b_2\circ p_1
+		\end{align*}
+		which, since $b$ is a mono, entails
+		\[b_1\circ  p_2 =  b_2\circ p_1\]
+		Thus there exists $\hat{b}\colon U\to B$ such that
+		\[b_1 =\hat{b} \circ u_1 \qquad b_2=\hat{b}\circ u_2\]
+		By computing further we get
+		\[\begin{split}
+			b\circ \hat{b} \circ u_1 &=b\circ b_1 \\&=e_u\circ u_1 
+		\end{split}\qquad \begin{split}
+			b\circ \hat{b} \circ u_2 &=b\circ b_2 \\&=e_u\circ u_2 
+		\end{split}\]
+	so that $e_u=b\circ \hat{b}$ and $[e_u] \leq [b]$. 
+	
+	By the previous point and point $2$ of \Cref{rem:coeq}, there exist a diagram in which the outer edges form a pushout, the inner square is a pullback  and $c$ is the equalizer of $c_1$ and $c_2$.
+		\[\xymatrix{U  \ar@/^.5cm/[rr]^{e_u} \ar@/_.4cm/[dr]_{e_u}  \ar@{.>}[r]_{e}& C \ar[d]_{c} \ar[r]_{c} & E_u \ar[d]^{c_2} \\  & E_u \ar[r]_{c_1} & \hat{Q}}\]
+		The existence of $e\colon U\to C$ can then be inferred from the universal property of pullbacks.
+		
+		Now, if we show that $c$ is invertible, then we are done: in such a case $c_1$ and $c_2$ must be equals , proving that $e_u$ is an epimorphism.  
+		
+		Being the coprojections of the pushout of $c$ along itself,  $c_1$ and $c_2$ are split monos and thus are in $\mathcal{M}$. Thus $c\in \mathcal{M}$ too. 
+		
+		Take two arrows $z_1, z_2\colon X\rightrightarrows Z $ such that
+		\[z_1\circ m_u\circ c=z_2\circ m_u \circ c\]
+			Then we have
+		\begin{align*}
+			z_1\circ u &= z_1\circ m_u\circ e_u \\&= z_1\circ m_u\circ c \circ e \\&= z_2\circ m_u\circ c \circ e \\&= z_2\circ m_u \circ e_u\\&= z_2\circ u 
+		\end{align*}
+		and thus there exists $z\colon A\to Z$ such that 
+		\[z_1= z\circ a_1\qquad z_2=z\circ a_2\]
+		
+		Uniqueness of such a $z$ follows at once since $a_1$ and $a_2$ are the coprojections of the pushout of $u$ along itself.  We can then conclude that the square below is a pushout.
+		\[\xymatrix@C=40pt{U \ar[r]^{m_u\circ c} \ar[d]_{m_u\circ c} & X \ar[d]^{a_1}\\  X\ar[r]_{a_2} &  Q }\]
+		Now, $\mathcal{M}$ and $\mathcal{N}$ are closed under composition. Thus $m_u\circ c$ is in $\mathcal{M}$ and so, by \Cref{cor:rego} that $m_u\circ c$ is a regular mono. But regular monos are always equalizers of the coprojections into their cokernel pair. Since we already know that $m_u$ is the equalizer of $a_1, a_2\colon X \rightrightarrows A$, we conclude that $c$ is an isomorphism. 	\qedhere 
+	\end{enumerate}
+\end{proof}
+ 
+With these tools available, we are ready to provide a way to construct binary suprema in $\sub{M}{\X}{X}$.
+ 
+ \begin{theorem}[\cite{garner2012axioms,castelnovo2023thesis,johnstone2007quasitoposes}]\label{thm:un}Let $\X$ be a strict $\mathcal{M}$-adhesive category with pullbacks and suppose that $\mathcal{M}$ contains all split monomorphisms. Then for every object $X$, $(\sub{M}{X}{X}, \leq)$ has binary suprema, which are preserved by the inclusion $(\sub{M}{X}{X}, \leq)\to (\msub{X}{X}, \leq)$.
+ \end{theorem}
+\begin{proof}	Let $m\colon M\to X$  and $n\colon N\to X$ be elements of in $\mathcal{M}$. By \Cref{prop:uni2} we know that $[m]$ and $[n]$  have a supremum in $(\msub{X}{X}, \leq)$ given by $[u]$, where $u\colon U\to X$ fits in the  diagram
+	\[\xymatrix{P \ar@{>->}[r]^{p_1} \ar@{>->}[d]_{p_2} & M\ar@{>->}[d]^{u_2} \ar@{>->}@/^.3cm/[ddr]^{m} \\ N \ar@{>->}@/_.3cm/[drr]_{n}\ar@{>->}[r]_{u_1} & U \ar[dr]^{u} \\ && X}\]
+	in which the outer edges form a pullback and the inner square is a pushout.  
+	
+	 By the second point of \Cref{lem:fact2}, we also know that $u=m_u\circ e_u$ for some epi $e_u\colon Y\to E_u$ and $m_u\colon E_u\to X$ in $\mathcal{M}$. Our strategy to prove the theorem consists in showing that $e_u$ is an isomorphism.
+	 
+
+	First of all notice that $e_u$ is a mono because $u=m_u\circ e_u$ and \Cref{prop:uni2}. Thus in the following diagram every square is a pullback and, applying \Cref{lem:pb1}, we can deduce that the composite square is a pullback too.
+	\[\xymatrix{P \ar@{>->}[r]^{p_1} \ar@{>->}[d]_{p_2}& M \ar[r]^{\id{M}} \ar@{>->}[d]_{u_2} & M \ar[d]^{u_2} \\ N \ar@{>->}[r]_{u_1}  \ar[d]_{\id{U}}& U \ar[r]_{\id{U}} \ar[d]_{\id{U}} & U \ar[d]^{e_u} \\ N  \ar[r]_{u_1}& U \ar[r]_{e_u} & E_u}\].
+	
+	 As we have noticed before, \Cref{cor:deco} entails that both $e_u\circ u_1$ and $e_u\circ u_2$ belongs to $\mathcal{M}$. We can then build the following two pushout squares, which, by \Cref{prop:pbpoad}, are also pullbacks.
+	\[\xymatrix@C=40pt{N \ar@{>->}[r]^-{e_u\circ u_1} \ar@{>->}[d]_{e_u\circ u_1} & E_u \ar@{>->}[d]^{e_1} & N \ar@{>->}[r]^-{e_u\circ u_1} \ar@{>->}[d]_{ u_1} & E_u \ar@{>->}[d]^{a_1} \\ E_u   \ar@{>->}[r]_-{e_2} & Q_{e_u\circ u_1} & U \ar@{>->}[r]_{a_2}& A}\]
+	
+	By construction the upper rectangle in the following diagram is commutative. Thus the dotted arrow $a$ exists and, by \Cref{lem:po1}, the bottom rectangle is a pushout.
+	\[\xymatrix{N \ar@{>->}[r]^{u_1} \ar@{>->}[d]_{u_1} & U \ar[r]^{e_u} & E_u \ar@{>->}[d]_{a_1} \ar@{>->}@/^.5cm/[dd]^{e_1} \\
+		U \ar[d]_{e_u} \ar@{>->}[rr]^{a_2}&& A \ar@{.>}[d]_{a} \\ E_u \ar@{>->}[rr]_{e_2}&&Q_{e_u\circ u_1}}\]
+
+	
+	The arrow $e_2$ is the pushout of $e_u\circ u_1$ along itself, thus it is in $\mathcal{M}$, and so it is a mono. Together with \Cref{lem:pb1}, this entails that the following rectangle is a pullback.
+	\[\xymatrix{U \ar[r]^{e_u}  \ar[d]_{\id{U}}& E_u \ar[r]^-{\id{E_u}} \ar[d]_{\id{E_u}} & E_u \ar@{>->}[d]^{e_2}\\ U \ar[r]_{e_u} & E_u \ar@{>->}[r]_-{e_2} & Q_{e_u\circ u_1}}\]
+	
+	Similarly, the arrow $a_2$ is in $\mathcal{M}$ as it is the pushout of $e_u\circ u_1$ along $u_1$. Thus we can apply \Cref{lem:pb2} to the diagrams
+	\[\xymatrix{ N \ar@{>->}[rr]^-{e_u\circ u_1} \ar@{>->}[d]_{ u_1} && E_u \ar@{>->}[d]^{a_1} & N \ar@{>->}[d]_{e_u\circ u_1} \ar@{>->}[r]^{u_1} & U \ar@{>->}[d]_{a_2}\ar[r]^-{e_u} & E_u  \ar@{>->}[d]^{e_2}\\ U \ar@{>->}[rr]_{a_2}&& A & E_u \ar@{>->}@/_.4cm/[rr]_{e_1} \ar@{>->}[r]^{a_1} &  A \ar[r]^-{a} & Q_{e_u\circ u_1} }\]
+	\[\xymatrix{U  \ar[r]^{\id{U}} \ar[d]_{\id{U}}& U \ar@{>->}[d]_{a_2} \ar[r]^-{e_u} & E_u \ar@{>->}[d]^{e_2} \\U \ar@{>->}[r]^{a_2} \ar@{>->}@/_.4cm/[rr]_{e_2\circ e_u} & A \ar[r]^-{a} & Q_{e_u\circ u_1}}\]
+	to get that also the following square is a pullback.
+	\[\xymatrix{
+		U \ar[d]_{e_u} \ar@{>->}[r]^-{a_2}& A \ar[d]^{a} \\ E_u \ar@{>->}[r]_-{e_2}&Q_{e_u\circ u_1}}\]
+	
+	On the other hand,  $p_1$ is in $\mathcal{M}$, thus we can push it out along itself.
+	\[\xymatrix{P \ar@{>->}[r]^{p_1} \ar@{>->}[d]_{p_1}& M \ar@{>->}[d]^{m_1} \\ M \ar@{>->}[r]_{m_2} & Q_{p_1}}\]
+	We can then construct the solid part of the rightmost rectangle in the diagram below, inducing the dotted $b\colon Q_{p_1}\to A$. Notice that the first rectangle is a pushout by \Cref{lem:po1} so that  the right half of the second diagram also is a pushout, again because of \Cref{lem:po1}, proving that $b$ belongs to $\mathcal{M}$ too.
+	\[\xymatrix{P \ar@{>->}[r]^{p_2} \ar@{>->}[d]_{p_1}& N \ar@{>->}[d]_{u_1} \ar@{>->}[r]^{u_1}& U \ar[r]^{e_u} & E_u \ar@{>->}[d]^{a_1} & P \ar@{>->}@/^.4cm/[rrr]^{e_u\circ u_1\circ p_2}\ar@{>->}[r]_{p_1} \ar@{>->}[d]_{p_1}& M \ar@{>->}[d]_{m_1} \ar@{>->}[r]_{u_2}& U \ar[r]_{e_u}& E_u \ar@{>->}[d]^{a_1}\\ M \ar@{>->}[r]_{u_2}& U \ar@{>->}[rr]_{a_2}&& A& M \ar@{>->}@/_.4cm/[rrr]_{a_2\circ u_2}\ar@{>->}[r]^{m_2} & Q_{p_1} \ar@{>.>}[rr]^{b} && A}\]
+	
+	We can compose with the codiagonal $\upsilon_{p_1}\colon Q_{p_1}\to M$ to obtain the solid part of the diagram below.
+	\[\xymatrix{M \ar@/_.4cm/[dd]_{\id{M}}\ar@{>->}[r]^{u_2} \ar@{>->}[d]^{m_1} & U \ar[r]^-{e_u} & E_u \ar@{>->}[d]_{a_1} \ar@/^.4cm/[dd]^{\id{E_u}} \\
+		Q_{p_1} \ar[d]^{\upsilon_{p_1}} \ar@{>->}[rr]^{b}&& A \ar@{.>}[d]_{r} \\ M\ar@{>->}[r]_{u_2} & U\ar[r]_-{e_u}&E_u}\]	
+	Since the upper half of the square above is a pushout, the dotted $r\colon A\to Q_{e_u\circ u_1}$ exists. Moreover, since the outer boundary is a pushout square, the lower half is a pushout too, by \Cref{lem:po1}. By \Cref{prop:pbpoad} the bottom rectangle of the previous diagram is also a pullback.
+	
+	As a next step, since $e_1\circ u_1$ is in $\mathcal{M}$, then we can form the following pushout. 
+	\[\xymatrix@C=40pt{N \ar@{>->}[r]^{e_u\circ u_1} \ar@{>->}[d]_{e_u\circ u_1}& E_u\ar@{>->}[d]^{e_1}\\
+		E_u \ar@{>->}[r]_{e_2}& Q_{e_u\circ u_1} }\]
+		
+		Moreover, we can notice that
+		\[\begin{split}
+		a\circ b \circ m_1&=a\circ a_1\circ e_u\circ u_2\\&=e_1\circ e_u\circ u_2
+		\end{split}\qquad \begin{split}
+		a\circ b \circ m_2&=a\circ a_2\circ u_2\\&=e_2\circ e_u\circ u_2
+		\end{split}\]
+	
+	Thus the following cube commutes, has an $\mathcal{M}$-pushout as a bottom and top face and the back and left faces are pullbacks. Hence the front and right faces are pullbacks too. 
+	
+	\[\xymatrix@C=15pt@R=15pt{&P\ar@{>->}[dd]|\hole_(.65){p_2}\ar@{>->}[rr]^{p_1} \ar@{>->}[dl]_{p_1} && M \ar@{>->}[dd]^{e_u\circ u_2} \ar@{>->}[dl]_{m_2}\\ M  \ar@{>->}[dd]_{e_u\circ u_2}\ar@{>->}[rr]^(.65){m_1} & & Q_{p_1}\ar[dd]_(.3){a\circ b}\\&N\ar@{>->}[rr]|\hole^(.7){e_u\circ u_1} \ar@{>->}[dl]^{e_u\circ u_1} && X \ar@{>->}[dl]^{e_2} \\X \ar@{>->}[rr]_{e_1} & & Q_{e_u\circ u_1}}\]
+	
+	Now, we can notice that for every $z_1\colon  Z\to M$ and $z_2\colon Z\to E_u$ such that 
+	\[m\circ z_1=m_u\circ z_2\]
+	we have the following chain of equalities
+	\begin{align*}
+		m_u\circ e_u\circ u_2\circ z_1&=u\circ u_2\circ z_1\\&=m\circ z_1\\&=m_u\circ z_2 
+	\end{align*}
+	which, since $m_u$ is mono, entails
+	\[z_2=e_u\circ u_2\circ z_1\]
+	But this means that the square below is a pullback. 
+	\[\xymatrix{M \ar[r]^{\id{M}} \ar@{>->}[d]_{e_u\circ u_2}& M \ar@{>->}[d]^{m}\\ E_u \ar@{>->}[r]_{m_u} & X}\] 
+	
+	We can therefore apply \Cref{lem:pb2} to the pushout of $e_u\circ u_1$ along itself and to the following two diagrams, where $\upsilon_{e_u\circ u_1}$ is the codiagonal of $e_u\circ u_1$.
+	\[
+	\xymatrix@C=30pt@R=30pt{ M \ar@/^.4cm/[rrr]^{\id{M}} \ar@{>->}[d]_{e_u\circ u_2}\ar@{>->}[r]_{m_2} & Q_{p_1} \ar[rr]_{\upsilon_{p_1}} \ar[d]_{a\circ b} && M\ar@{>->}[d]^{m} \\ E_u \ar@{>->}@/_.4cm/[rrr]_{m_u}\ar@{>->}[r]^-{e_2} & Q_{e_u\circ u_1} \ar[r]^-{\upsilon_{e_u\circ u_1}} &E_u \ar@{>->}[r]^{m_u} &X\\ 
+	M\ar@/^.4cm/[rrr]^{\id{M}} \ar@{>->}[d]_{e_u\circ u_2} \ar@{>->}[r]_{m_1}  & Q_{p_1} \ar[rr]_{\upsilon_{p_1}} \ar[d]_{a\circ b}  && M \ar@{>->}[d]^{m}\\ E_u \ar@{>->}@/_.4cm/[rrr]_{m_u}\ar@{>->}[r]^-{e_1}& Q_{e_u\circ u_1} \ar[r]^-{\upsilon_{e_u\circ u_1}} & E_u \ar@{>->}[r]^{m_u} &X }\]
+	
+	Hence the outer rectangle in the diagram below is a pullback, so that, in particular, $a\circ b\in \mathcal{M}$. We can also apply \Cref{lem:pb1} to deduce that the left half of the rectangle  is a pullback, too. 
+	\[\xymatrix@C=40pt{Q_{p_1} \ar[r]^{\upsilon_{p_1}} \ar@{>->}[d]_{a\circ b} &M \ar[r]^{\id{M}} \ar@{>->}[d]_{e_u\circ u_2}& M \ar@{>->}[d]^{m}\\ Q_{e_u\circ u_1} \ar[r]_-{\upsilon_{e_u\circ u_1}} & E_u \ar@{>->}[r]_{m_u}& X}\]
+	
+	We can compute to obtain two other identities:
+	\[\begin{split}
+		\upsilon_{e_u\circ u_1}\circ a\circ b & = e_u\circ u_2\circ \upsilon_{p_1}\\&= r\circ b\\&
+	\end{split}\qquad \begin{split}
+		\upsilon_{e_u\circ u_1}\circ a\circ a_1 &= \upsilon_{e_u\circ u_1}\circ e_1\\&= \id{E_u}\\&=r\circ a_1
+	\end{split}\]
+	
+	Therefore $r= \upsilon_{e_u\circ u_1}\circ a$. Applying again \Cref{lem:pb1} to the following rectangle, we get that its left half is a pullback.
+	\[ \xymatrix@C=30pt{Q_{p_1} \ar@{>->}[d]_b \ar[r]^{\id{Q_{p_1}}} & Q_{p_1}  \ar@{>->}[d]_{a\circ b}\ar[r]^{\upsilon_{p_1}}& M \ar@{>->}[d]^{e_u\circ u_2}\\ A \ar@/_.4cm/[rr]_{r}\ar[r]^-a&Q_{e_u\circ u_1} \ar[r]^-{\upsilon_{e_u\circ u_1}}& E_u }\]
+	
+	We want now to show that the inner rectangle of the diagram below is a pushout.  Let thus $z_1\colon Q_{e_u\circ u_1}\to Z$ and $z_2\colon M\ to Z$ be arrows such that $z_1\circ a\circ b=z_2\circ \upsilon_{p_1}$. Since $\upsilon_{e_u\circ u_1}$ is an epimorphism it is enougH to construct the dotted $z\colon E_u \to Z$. 
+	\[\xymatrix{Q_{p_1} \ar@{>->}[r]^{b} \ar[d]_{\upsilon_{p_1}}& A \ar[r]^-{a}& Q_{e_u\circ u_1} \ar[d]_{\upsilon_{e_u\circ u_1}} \ar@/^.3cm/[ddr]^{z_1} \\M \ar@/_.3cm/[drrr]_{z_2}\ar@{>->}[r]^-{u_2}&U \ar[r]_{e_u}& E_u \ar@{.>}[dr]^{z}\\ & & & Z}\]
+	
+	First of all we can notice that
+	\[z_1\circ e_1\circ e_u\circ u_1 = z_1\circ e_2\circ e_u\circ u_1\]
+	while we also have
+	\begin{align*}
+		z_1\circ e_1\circ e_u\circ u_2 &= z_1\circ a\circ a_1\circ e_u\circ u_2\\&=z_1\circ a \circ b\circ m_1\\&=z_2\circ \upsilon_{p_1} \circ m_1
+		\\&=z_2\circ \upsilon_{p_1} \circ m_2
+		\\&=z_1\circ a \circ b\circ m_2 
+		\\&=z_1\circ a\circ a_2\circ u_2
+		\\&=z_1\circ e_2\circ e_u \circ u_2
+	\end{align*}
+	which implies that
+	\[z_1\circ e_1\circ e_u  = z_1\circ e_2\circ e_u\]
+	which, since $e_u$ is an epimorphism, allows us to conclude that $z_1\circ e_1$ and $z_1\circ e_2$ are eual. So equipped, we can now compute:
+	\[\begin{split}
+		z_1\circ e_1\circ \upsilon_{e_u\circ u_1}\circ e_1&=z_1\circ e_1\circ \id{E_u}\\&=z_1\circ e_1\\&
+	\end{split} \qquad \begin{split}
+		z_1\circ e_1\circ \upsilon_{e_u\circ u_1}\circ e_2&=z_1\circ e_1\circ \id{E_u}\\&=z_1\circ e_1\\&=z_1\circ e_2
+	\end{split}\]
+	showing 
+	\[z_1=z_1\circ e_1 \circ  \upsilon_{e_u\circ u_1}\]
+	
+	Moreover, computing again we obtain
+	\begin{align*}
+		z_2\circ \upsilon_{p_1}&=z_1\circ a \circ b \\&=z_1\circ \id{E_u} \circ a \circ b\\&=z_1\circ e_1 \circ \upsilon_{e_u\circ u_1} \circ a\circ b\\&=z_1\circ e_1\circ e_u\circ u_2 \circ \upsilon_{p_1} 
+	\end{align*}
+	and $\upsilon_{p_1}$ is an epimorphism, thus
+	\[z_2=z_1\circ e_1\circ e_u \circ u_2\]
+	Summing up, $z_1\circ e_1$ fills our original diagram, thus its inner rectangle is indeed a pushout.
+	
+	We are now ready to collect all our arrows in the following cube
+	\[\xymatrix@C=20pt@R=10pt{ & &Q_{p_1}\ar@{>->}[ddll]_{b} \ar[ddd]^(.4){\id{Q_{p_1}}}|(.666666)\hole\ar[rrr]^{\upsilon_{p_1}} &&&M \ar[ddd]^{\id{M}} \ar@{>->}[dl]^{u_2}\\&  &&&U \ar[ddd]^{\id{U}} \ar[dl]^{e_u} \\A \ar[ddd]_{a} \ar[rrr]^{r}&&& E_u\ar[ddd]^{\id{E_u}}\\&&Q_{p_1} \ar[rrr]|(.34)\hole^{\upsilon_{p_1}}|(.67)\hole \ar@{>->}[dl]_{b}&&& M \ar@{>->}[dl]^{u_2}\\ & A  \ar[dl]_(.4){a}&&& U \ar[dl]^{e_u} \\ Q_{e_u\circ u_1}\ar[rrr]_{\upsilon_{e_u\circ u_1}} &&& E_u}\]
+	
+	The top and bottom faces of this cube are $\mathcal{M}$-pushouts and all faces beside the frontal one are pullbacks, hence, by strict $\mathcal{M}$-adhesivity it follows that also this last face is a pullback. By \Cref{lem:pb1} the rectangle
+	\[\xymatrix@C=40pt{U\ar[r]^{a_2} \ar[d]_{e_u} & A \ar[r]^{r} \ar[d]_{a}& E_u \ar[d]^{\id{E_u}}\\
+		E_u \ar[r]_{e_2}& Q_{e_u\circ u_1} \ar[r]_{\upsilon_{e_u\circ u_1}} & E_u}\]
+	is a pullback. Thus $e_u$ is an isomorphism as it is the pullback of $\id{E_u}$.
+\end{proof}
+
+\begin{example}\label{ex:sem}In \cite{johnstone2007quasitoposes} it is shown that the category $\cat{SGraph}$ of simple graphs is not quasiadhesive. Too see this, first of all recall that a morphism in $\cat{SGraph}$ is a regular monos if and only if it is injective on vertex and reflects edges. Now, take 
+	\[\mathcal{G}:=(1, \{0,1\}, \delta_0, \delta_1) \qquad \mathcal{H}:=( \emptyset, 1, ?_1, ?_1) \quad \]
+	Then we have two regular monomorphisms $ (?_1, \delta_0), (?_1, \delta_1)\colon \mathcal{H}\rightrightarrows \mathcal{G} $. Their supremum in $\msub{SGraph}{\mathcal{G}}$ is represented by inclusion of $(\emptyset, \{0,1\}, ?_0, ?_1)$ into $\mathcal{G}$ which is not a regular monomorphism, thus, by \Cref{thm:un}, $\cat{SGraph}$ is not quasiadhesive. 
+\end{example}
+
+ 
+ \begin{proposition}\label{prop:distlat}Let $\X$ be a strict $\mathcal{M}$-adhesive with pullbacks. If $\mathcal{M}$ contains all split monos then for every object $X$, $(\sub{M}{X}{X})$ is a distributive lattice. 
+ \end{proposition}
+\begin{proof}
+	Since $\X$ has pullbacks then $(\sub{M}{X}{X})$  has binary infima. The existence of binary suprema is guaranteed by \Cref{thm:un}. We only have to show that, given $m\colon M\mto X$, $n\colon N\mto X$ and $v\colon V\mto X$ we have
+	\[[n]\wedge ([m]\vee[v])=([n]\wedge [m]) \vee ([n]\wedge [v])\]
+	
+	Let $u\colon \mto X$ be a representative of $[m]\vee [v]$, thus by \Cref{prop:uni2} and \Cref{thm:un} we know that it fits in the diagram below, whose outer boundary is a pullback and in which the inner square is a pushout.
+		\[\xymatrix{P \ar@{>->}[r]^{p_1} \ar@{>->}[d]_{p_2} & M\ar@{>->}[d]^{u_2} \ar@{>->}@/^.3cm/[ddr]^{m} \\ V \ar@{>->}@/_.3cm/[drr]_{v}\ar@{>->}[r]_{u_1} & U \ar@{>->}[dr]^{u} \\ && X}\]
+		
+	Let also $r\colon R\mto X$,  $s\colon S\mto X$, $t\colon T\mto X$ and $q\colon Q\mto X$ be  representative for, respectively $[n]\wedge [u]$, $[n]  \wedge [m]$, $[n]\wedge [v]$ and $[s]\wedge [t]$,  then we have the four pullback squares below.
+	\[\xymatrix{R \ar@{>->}[r]^{r_1} \ar@{>->}[d]_{r_2}\ar@{>->}[dr]^{r}& N \ar@{>->}[d]^{n} & S \ar@{>->}[r]^{s_1} \ar@{>->}[d]_{s_2}\ar@{>->}[dr]^{s}& N \ar@{>->}[d]^{n}&T \ar@{>->}[r]^{t_1} \ar@{>->}[d]_{t_2}\ar@{>->}[dr]^{t}& N \ar@{>->}[d]^{n}& Q \ar@{>->}[r]^{q_1} \ar@{>->}[d]_{q_2}\ar@{>->}[dr]^{q}& T \ar@{>->}[d]^{t}\\U \ar@{>->}[r]_{u} & X&M \ar@{>->}[r]_{m} & X&V \ar@{>->}[r]_{v} & X&S \ar@{>->}[r]_{s} & X}\]
+	
+Using the universal property of the first square, we can construct the two dotted arrows $m_1\colon T\to R$ and $m_2\colon S\to R$ fitting in the following diagrams. Notice that the left halves of these rectangles are pullbacks by \Cref{lem:pb1}.
+
+\[\xymatrix{T \ar[d]_{t_2} \ar@/^.4cm/[rr]^{t_1} \ar@{.>}[r]_{m_1}& R \ar@{>->}[r]_{r_1} \ar@{>->}[d]_{r_2}& N \ar@{>->}[d]^{n} & S \ar[d]_{s_2} \ar@/^.4cm/[rr]^{s_1} \ar@{.>}[r]_{m_2}& R \ar@{>->}[r]_{r_1} \ar@{>->}[d]_{r_2}& N \ar@{>->}[d]^{n}\\ V \ar@/_.4cm/[rr]_{v} \ar@{>->}[r]^{u_1}&U \ar@{>->}[r]^{u} & X &  M \ar@/_.4cm/[rr]_{m} \ar@{>->}[r]^{u_2}&U \ar@{>->}[r]^{u} & X}\] 
+
+On the other hand, we can also build the dotted $j\colon Q\to P$ as follows.
+
+		\[\xymatrix{Q \ar[r]^{q_2} \ar[d]_{q_1} \ar@{.>}[dr]^{j}& S \ar@{>->}@/^.2cm/[dr]^{s_2}\\ T \ar@{>->}@/_.2cm/[dr]_{t_2}&P \ar@{>->}[r]^{p_1} \ar@{>->}[d]_{p_2} & M\ar@{>->}[d]^{u_2}  \\ &V \ar@{>->}[r]_{u_1} & U }\]
+	
+	Thus we have the commutative cube below, whose front and right faces are pullbacks and whose bottom face is an $\mathcal{M}$-pushout.
+		\[\xymatrix@C=15pt@R=15pt{&Q\ar[dd]|\hole_(.65){j}\ar@{>->}[rr]^{q_2} \ar@{>->}[dl]_{q_1} && S \ar@{>->}[dd]^{s_2} \ar@{>->}[dl]_{m_2}\\ T \ar@{>->}[dd]_{t_2}\ar@{>->}[rr]^(.65){m_1} & & R \ar@{>->}[dd]_(.3){r_2}\\&P\ar@{>->}[rr]|\hole^(.7){p_1} \ar@{>->}[dl]_{p_2} && M \ar@{>->}[dl]^{u_2} \\V \ar@{>->}[rr]_{u_1} & & U}\]
+		
+		To show that the top face is a pushout it is enough to show that the left and back faces are pullbacks. Suppose thus that the solid part of the following two diagrams are given.
+		\[\xymatrix{Z \ar@{.>}[dr]^{z} \ar@/^.3cm/[drr]^{z_1} \ar@/_.3cm/[ddr]_{z_2}&& &Y \ar@{.>}[dr]^{y} \ar@/^.3cm/[drr]^{y_1} \ar@/_.3cm/[ddr]_{y_2}\\&Q \ar@{>->}[r]^{q_2} \ar[d]_j & S \ar@{>->}[d]^{s_2}& &Q \ar@{>->}[r]^{q_1} \ar[d]_{j} & T \ar@{>->}[d]^{t_2}\\& P \ar@{>->}[r]_{p_1} & M && P \ar@{>->}[r]_{p_2}& V}\]
+		
+		By the universal property of pullbacks, we get the dotted arrows $z'\colon Z\to T$ and $y'\colon Y\to S$ fitting in the diagrams below.
+		\[\xymatrix{Z \ar@{.>}[dr]^{z'} \ar[r]^{z_1} \ar[d]_{z_2}& S \ar@{>->}@/^.2cm/[dr]^{s_1}& &Y \ar@{.>}[dr]^{y'} \ar[r]^{y_1} \ar[d]_{y_2} & T  \ar@{>->}@/^.2cm/[dr]^{t_1}\\P \ar@{>->}@/_.2cm/[dr]_{p_2}&T \ar@{>->}[r]^{t_1} \ar@{>->}[d]_{t_2} & N \ar@{>->}[d]^{s_2}& P\ar@{>->}@/_.2cm/[dr]_{p_1}&S \ar@{>->}[r]^{s_1} \ar@{>->}[d]_{s_2} & N \ar@{>->}[d]^{n}\\& V \ar@{>->}[r]_{v} & X && M \ar@{>->}[r]_{m}& X}\]
+		
+		In turn, these two arrows yields $\hat{z}\colon Z \to Q$ and $\hat{y}\colon Y \to Q$ as below.
+				\[\xymatrix{Z \ar@{.>}[dr]^{\hat{z}} \ar@/^.3cm/[drr]^{z_1} \ar@/_.3cm/[ddr]_{z'}&& &Y \ar@{.>}[dr]^{y} \ar@/^.3cm/[drr]^{y_1} \ar@/_.3cm/[ddr]_{y'}\\&Q \ar@{>->}[r]^{q_2} \ar@{>->}[d]_{q_1} & S \ar@{>->}[d]^{s}& &Q \ar@{>->}[r]^{q_1} \ar@{>->}[d]_{q_2} & T \ar@{>->}[d]^{t}\\& T \ar@{>->}[r]_{t} & X && S \ar@{>->}[r]_{s}& X}\]
+	
+	If we compute we get:
+	\[\begin{split}
+		p_2\circ j\circ \hat{z}&= t_2\circ q_1\circ \hat{z}\\&=t_2\circ z'\\&= p_2\circ z_2
+	\end{split}\qquad \begin{split}
+	p_1\circ j \circ \hat{y}&=s_2\circ q_2\circ \hat{y}\\&=s_2\circ y'\\&=p_1\circ y_2
+	\end{split}\]
+	
+	Since $p_1$ and $p_2$ are mono it follows that 
+	\[j\circ \hat{z}=z_2 \qquad j\circ \hat{y}=y_2\]
+		
+	Moreover, $q_2$ and $q_1$  are monos too, thus $\hat{z}$ and $\hat{y}$ are the unique arrows fitting in the two diagram with which we have begun, proving that the back and right faces of our original cubes are pullbacks.
+	
+	To end the proof it is now enough to see that 
+	\[\begin{split}
+	r\circ m_1&=u\circ r_2\circ m_1\\&=u\circ u_1\circ t_2\\&=v\circ t_2\\&=t
+	\end{split}\qquad \begin{split}
+	r\circ m_2&=u\circ r_2\circ m_2\\&=u\circ u_2\circ s_2\\&=m\circ s_2\\&=s
+	\end{split}\]
+
+Thus by \Cref{prop:uni2,thm:un} $[r]$ is the supremum of $[s]$ and $[t]$, which is exactly the thesis.	
+\end{proof}
+
+
+
+
+
