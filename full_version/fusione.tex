@@ -1,4 +1,5 @@
-\documentclass[a4paper]{report}
+\documentclass[a4paper,twoside]{report}
+\usepackage{geometry}
 \usepackage{hyperref}
 \usepackage[textsize=tiny]{todonotes}
 %\usepackage{etex}
@@ -423,241 +424,37 @@
 \title{Switch equivalence and weak prime domains for fusions}
 \author{Paolo Baldan\and Davide Castelnovo\and  Andrea Corradini\and Fabio Gadducci}
 
+
+
+\includeonly{leftlinear.tex,permutations.tex}
+
 \begin{document}
 \maketitle
 
 
 
-\begin{abstract}
-\todo{	A VERY NICE ABSTRACT}
-\end{abstract}
 
 \tableofcontents
 
-\section*{Summary (with dependencies)}
-
-\subsection*{REWRITING}
-\begin{itemize}
-\item DPO Rewriting in $\mathcal{M}$-adhesive categories, with left-$\mathcal{M}$-linear rules (from now on shortened in ``linear'')\\
-  Observe that rewriting is deterministic (by uniqueness of
-  PO-complement Corollary~\ref{lem:radj})
-  
-\item Category of abstract derivation for DPO-rewriting system $(\X, \R)$
-  \begin{itemize}
-  \item \emph{DPO-derivation category} $\dpo$: objects are graphs, arrows between possibly empty, derivations.
-  \item \emph{DPO-abstract decorated derivation category} $\dpi$
-  \end{itemize}
 
 
 
-\item \emph{Consistent permutations} (Definition~\ref{def:permcon}):
-  permutation on the steps of two abstract decorated derivations and isomorphism between the colimits such
-  that arrows into the colimits ``commutes''.
-  \begin{enumerate}
-  \item It is unique for consuming rewriting systems
-    (Corollary~\ref{cor:unique})
-  \item They can be composed (Lemma~\ref{lem:sum})
-  \end{enumerate}
-\item 
 
-  
-\item Notions of independence\\
-  We have several possibile notions of independence for two direct
-  derivations $\dder{D} ; \dder{D'}$
-  \begin{enumerate}
-    
-  \item \emph{Existence of a filler}
-    There is a filler for $\dder{D} ; \dder{D'}$
-    (Definition~\ref{def:filler})
+\include{introduzione.tex}
 
-  \item \emph{Switchable}
-    There is $\dder{D}_1' ; \dder{D}_1$ which is a \emph{switch}
-    of $\dder{D} ; \dder{D'}$ (Definition~\ref{de:switch}, being a
-    switch is defined axiomatically) [actually, Definition~\ref{de:good-switchable} provides a definition of switchable which looks different to me, I would avoid this, to be checked] 
+\part{DPO rewriting and derivations}
 
-  \item \emph{(Weakly) Sequential independent} There is an
-    \emph{independence pair}
-    (Definition~\ref{de:sequential-independence}) They are called
-    \emph{strongly sequential independent} if the independence pair is
-    unique.
-  \end{enumerate}
-
-  We have that $(1) \Rightarrow (2)$ (Theorem~\ref{prop:fil}) and $(2) \Rightarrow (3)$ while
-  we expect that in general $(3) \not\Rightarrow (1)$ (but no
-  counterexample). This is instead known to hold for linear rules.
-
-  
-  Some terminology (Definition~\ref{de:good-switchable})
-  \begin{itemize}
-
-    
-  \item \emph{Tame rewriting systems}\\
-    An independence pairs induced by a filler is called \emph{good}
-    A rewriting system where all indepedence pairs are good is called
-    \emph{tame}
-    
-    NOTE: the categories in which condition $B$
-    from~\cite{baldan2011adhesivity} identifies a large class of
-    (quasi)adhesive categories where left-linear systems are all
-    tame. Adapted here to M-adhesivity.
-
-  \item \emph{Very Tame rewriting systems}\\
-    Tame and existing indepence pairs are unique (hence switching is unique)
-    (see later for examples)
-  \end{itemize}
-
-  
-\item \emph{Switch equivalent derivations} (concrete)\\
-  Definition~\ref{de:switchable}
-
-  THEOREM: Two switch equivalent derivations admit a consistent
-  permutation (Lemma~\ref{lem:consperm} ??).
-  
-  A consequence of this used for proving that the slice of traces is a pre-order.
-
-  The converse holds only when rules are linear [proof clear, but not written]
-
-    
-    
-\end{itemize}
-
-\subsection*{CONCURRENCY}
-
-This part is dealt with for very tame rewriting systems and depends on this assumption. Note that
-\begin{itemize}
-\item Linear rewriting systems on adhesive categories are very tame
-\item Left-linear rewritint systems on graph-like categories with generalisation of (i) no isolated nodes in $L$ and (ii) right leg injective on nodes is very tame
-\item Graphs with equivalences (Egg) with left-leg regular mono, right leg mono is very tame
-\end{itemize}
-
-We show
-\begin{itemize}
-
-  
-\item Three-steps lemma (Lemma~\ref{lem:iig1}), which is a weakened version of ``indepedence is global''.
-  \begin{itemize}
-    
-  \item If in $abc$ I have that $ab$ are independent and $c$ is anticipated, they remain independent.
-  \item  If in $abc$ I have that $bc$ are independent and $a$ is moved to the end, they remain independent only if there is an additional condition (essentially requiring that $a$ was not a cause of $c$)
-  \end{itemize}
-
-  
-  
-\item No need of useless switchs (if two derivations are switch equivalent I can obtain one from another applying only inversions)
-
-\item weak prime domain e connected es semantics
-\end{itemize}
-
-
-\section{Introduction}
-
-\todo{A VERY NICE INTRODUCTION}
-
-SOME IDEAS (BADLY WRITTEN, JUST TO START TO PUT IDEAS IN ORDER)
-
-Graph-like structures are used in uncountably many setting for representing the dynamics of software systems: the graph represents the entities in the states and their relations, while rewriting steps, modifying the graph, model computational steps which produce state changes.
-
-Rewriting over graph-like structures is elegantly captured by
-DPO-rewriting over adhesive categories and their
-variants~\cite{lack2005adhesive,ehrig2006weak}.  This has been largely
-studied for so-called linear rewriting rules. Roughly speaking, with
-linear rules a rewriting step can express the fact that some entities
-in the current state are removed, some other are needed for the
-rewriting step to occur but preserved and some new entities are
-generated.
-
-The computation described by a rewriting system can be naturally
-interpreted as a distributed computation and a notion of independence
-between rewriting steps naturally emerges. When different rules are
-applied at ``distinct'' parts of the state, possibly overlapping on
-preserved items, the rewriting steps can be naturally deemed as
-independent and their application can occur in any order and possibly
-concurrently. This phenomenon is formally captured by the so-called
-Church-Rosser theorem of DPO rewriting and shift equivalence over derivations~\cite{CMREHL:AAGT}. This represent the basis for
-viewing sequences of rewriting in the DPO approach as concurrent
-computations and derive corresponding concurrent semantics. Derivation
-traces can be quotiented by an equivalence relation which identifies
-sequences of rewritings which differs only for the order of
-independent steps, leading to so-called derivation traces. In turn,
-the dependencies this setting can be captured by a classical structure
-in concurrency theory, the so-called prime event structures~\cite{NPW:PNES} where
-dependencies are reduced to causality and conflict~\cite{Handbook,Bal:PhD,Sch:RRSG}.
-
-
-In some situations linear rules are not sufficiently expressive for capturing the dynamic of a system. This is the case when  a computational step is required not only to consume, preserve and generated, but also ``merge'' parts of the state. This happens, e.g.,
-in nominal calculi where, as a result of name passing,
-the received name is identified with a local one at the
-receiver~\cite{CVY:ESSPE,Gad07} or in the modelling of bonding in biological/chemical processes~\cite{PUY:MBPE}.
- add EGGS, something about string diagrams?
-
-Technically, describing fusions, in the DPO jargon, requires to move from linear to left-linear rewriting rules. While left-linear rules have been considered in various instances (mainly for graph rewriting( and some results concerning the corresponding rewriting theory have been put forward, to the best of our knowledge the phenomena arising when rewriting with left-linear rules in the general setting of adhesive categories (which capture most ``applications'') have not been systematically explored.
-
-Here we perform this exploration by observing that a number of basic
-properties of rewriting which play a role in the corresponding
-rewriting and concurrency theory need a deep rethinking for
-left-linear rules and we propose solutions for the problems which
-arise.
-
-Firstly, Church-Rosser theorem does not work out of the box: the
-independence condition for adhesive categories does not extend
-smoothly to left-linear rules, i.e., existence of an independence pair
-does not ensure the possibility of switching two derivation and a
-refined notion, involving the concept of a so-called filler has to be
-introduced. The problem was identified already
-in~\cite{baldan2011adhesivity} where a suitable subclass of adhesive
-categories is identified where independence as induced by a filler
-coincide with independence as induced by an independence pair.
-
-Having a notion of independence between computation steps sits at the core of the possibility of viewing an execution trace as a concurrent computation. This is obtained by considering traces up to an equivalence that identifies traces differing only for the order of independent steps (e.g., interchange law~\cite{Mes92} in term rewriting, shift
-equivalence~\cite{CMREHL:AAGT} in graph rewriting or permutation
-equivalence~\cite{JJL80} in $\lambda$-calculus). While for linear rewriting systems this works smoothly, for left-linear ones one has to face the problem that if two rewriting steps $r_a r_b$ are independent, if we switch $r_a$ after $r_a$ and then switch it back we can obtain a computation which is not the original one, making the theory of derivation traces inconsistent. In order to solve this problem, we work in a subclass of adhesive categories where derivation steps can be switched in an ``essentially unique way''. We also identify a large class of adhesive categories, arising as presheaves, where the condition is automatically satisfied. [this solves also the previous problem, right?]
-
-
-Additionally, a central property for linear rewriting systems is the fact that independence of two rewriting steps is a global notion, independently of the context in which the rewritings take place. This is at the basis of the possibility of capturing the dependencies between rewriting steps in terms of two basic relations, causality and conflict, investigated in~~\cite{Handbook,Bal:PhD,Sch:RRSG}.
-
-This fails for left-linear rules where, as observed
-in~\cite{baldan2017domains}, for graph rewriting, the possibility of
-merging parts of the state leads to a sort of disjunctive causality,
-i.e., a rewriting step, say $r_c$ can be enabled by two different
-rewriting steps $r_a$ and $r_b$, in a way that in a derivation
-$r_a r_b r_c$ steps $r_b$ and $r_c$ are independent since the presence
-of $r_a$ in the past is sufficient for enabling $r_a$, while in
-$r_b r_c r_a$ , the steps $r_b$ and $r_c$ are not independent. The
-paper shows that for left-linear rewriting systems a special form of
-globality of independence can be recovered.
-
-
-The concurrent semantics of linear graph rewriting systems over
-adhesive categories can be captured by prime event structures and
-prime algebraic domains. The idea consists in considering a partially
-ordered domain, where elements are concurrent computations
-(derivations up to shift equivalence), and the order relates two
-computations when the latter is an extension of the former.
-%
-Events are then identified with computations consisting of a rewriting
-step with all its causes. This is generalised to adhesive categories
-in~\cite{heindel2009category}. [IS THIS IN TOBIAS?]
-
-In~\cite{baldan2017domains} it is observed for graph rewriting systems that the presence of fusions, the same event can be enabled by different minimal sets of events, i.e., a central property of the domain of configuration, namely stability, fails. This prevents the identification of a proper notion of causality and makes prime event structures and prime domains inadequate to represent computations with fusions. It is argued that the right class of structures capturing the concurrent behaviour in the presence of fusion are connected event structures and weak prime algebraic domains.
-%
-An event is still a computation that cannot be decomposed
-as the join of other computations, hence, in order theoretical terms,
-it is an irreducible.
-%
-However, due to unstability, irreducibles are not necessarily primes:
-two different irreducibles can represent the same computation step
-with different minimal enablings.  In~\cite{baldan2017domains} this
-is worked out for DPO rewriting systems over graphs. However the proof
-relies on a wrong characterisation of independence which fails for non
-linear rules. Here we rework in depth the result and extend it to DPO
-rewriting over a large class of adhesive categories.
- 
- 
+ \include{leftlinear.tex}
 \include{permutations.tex}
+
+\part{Domains for DPO rewriting}
 
 \include{domains.tex}
 
-\todo{integrare sopra}
+\include{conclusion.tex}
+
+
+\iffalse 
 \newpage
 QUOZIENTI VARI
 
@@ -749,14 +546,7 @@ Therefore $\phi\circ e'=\phi \circ e$ and we can conclude since $\phi$ is mono.
 \begin{corollary}
 	caratterizzazione
 \end{corollary}
-
-
-
-
-\section{Conclusions and further work}
-\todo{VERY NICE CONCLUSIONS}
-
-
+\fi 
 
 
 \bibliographystyle{plain}
@@ -774,14 +564,13 @@ Therefore $\phi\circ e'=\phi \circ e$ and we can conclude since $\phi$ is mono.
 
 
 
-
-
+\iffalse 
 
 \section{Rewriting systems on $\Set$.}\label{app:set}
 
 \section{On permutations}\label{app:perm}
 \todo{inserire risutati sulle permutazione che abbiamo usato}
-
+\fi 
 
 \begin{definition}
 	\todo{inversioni}
