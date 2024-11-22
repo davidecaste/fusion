@@ -1,800 +1,774 @@
 % !TeX root = ./fusione.tex
 
-\chapter{Left-linear DPO-rewriting systems}
+\chapter{Independence in rewriting}
 
-$\mathcal{M}$-adhesive categories are the right context in which to perform abstract rewriting using the so-called ``douple pushout approach'' (DPO). We will recall the basic definitions and properties of this approach to abstract rewriting. 
-\section{First definitions and properties}
-We are now going to study rewriting systems in $\mathcal{M}$-adhesive categories.
+In this chapter we discuss the notion of independence between two
+consecutive rewriting steps, a fundamental ingredient of the rewriting
+theory, which comes into play when viewing a sequence of steps as a
+concurrent computation. We observe that moving from linear to
+left-linear rules leads to the failure of various basic properties of
+the classical notion of independence used in the linear setting and we
+single out a framework in which these can be re-established, possibly
+in a weakened form.
 
-\begin{definition}[\cite{habel2012mathcal,heindel2009category}]
-	Let $\X$ be an $\mathcal{M}$-adhesive category, a  \emph{left $\mathcal{M}$-linear} rule $\rho$ is a pair $(l,r)$ of arrows with the same domain, such that $l$ belongs to $\mathcal{M}$.  The rule $\rho$ is said to be \emph{$\mathcal{M}$-linear} if $r\in \mathcal{M}$ too. A rule $\rho$ is said to be \emph{consuming} if $l$ is not an isomorphism. We will represent a rule $\rho$ as a span 
-	\[\xymatrix{L & K\ar[l]_{l} \ar[r]^{r} & R}\]
-$L$ is the \emph{left-hand side}, $R$ is the \emph{right-hand side} and $K$ the \emph{glueing object}. 
+\section{Sequentially independent and switchable derivations }\label{subsec:switch}
 
-
-A \emph{left-linear DPO-rewriting system} is a pair $(\X, \R)$ where $\X$ is a $\mathcal{M}$-adhesive category and $R$ is a set of left $\mathcal{M}$-linear rules. $(\X, \R)$ will be called \emph{linear} if every rule in $R$ is $\mathcal{M}$-linear. Similarly, a \emph{consuming} left-linear DPO-rewriting system is one in which every rule is consuming.
-
-Given  two objects $G$ and $H$ and a rule $\rho=(l,r)$ in $\R$, a \emph{direct derivation $\mathscr{D}$ from $G$ to $H$ applying the rule $\rho$}, is a diagram as the one below, in which both squares are pushouts. 
-	\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar[l]^{f} D \ar[r]_{g}& H}\]
-	The arrow $n$ is called the \emph{match} of the derivation, while $h$ is its \emph{back-match}.
-	We will denote a direct derivation $\dder{D}$ between $G$ and $H$ as $\dder{D}\colon G\Mapsto H$. 
-\end{definition}
-
-\begin{example}\todo{
-esempi di	derivazione}
-\end{example}
-
-\begin{remark}\label{exa:conc} Let  $\dder{D}\colon G\Mapsto H$ be the direct derivation 
-		\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar[l]^{f} D \ar[r]_{g}& H}\]
-	If $\phi\colon G'\to G$ and $\psi\colon H\to H'$ are two isomorphisms, 	we can consider the direct derivation	$\phi * \dder{D}*\psi \colon G'\Mapsto H'$ given by the following diagram.
-	\[\xymatrix{L \ar[d]_{\phi^{-1} \circ n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{\psi \circ h}\\G' & \ar[l]^{\phi^{-1} \circ f} D \ar[r]_{\psi \circ g}& H'}\]
-	
-	In particular, we will use $\phi*\dder{D}$ and $\dder{D}*\psi$  to denote $\phi*\dder{D}*\id{H}$ and $\id{G}*\dder{D}*\psi$.
-\end{remark}
-
-$\mathcal{M}$-adhesivity of $\X$ guarantes the essential uniqueness of the result obtained rewriting an object, as shown by the next proposition.
-
-\begin{proposition}\label{prop:unique} Let $\X$  be a $\mathcal{M}$-adhesive category. Suppose that the two direct derivations $\mathscr{D}$ and $\mathscr{D'}$ below, with the same match and applying the same left $\mathcal{M}$-linear rule $\rho$ are given.
-	\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L \ar[d]_{m}& K \ar[d]^{k'}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h'}\\G & \ar@{>->}[l]^{f} D \ar[r]_{g}& H & G & \ar@{>->}[l]^{f'} D' \ar[r]_{g'}& H'}\]
-Then there exist isomorphisms $t\colon D\to D'$ and $s\colon H\to H'$ as in the following diagram.
-\[\xymatrix@C=40pt{&&D' \ar[r]^{g'} \ar@{>->}@/_.45cm/[dll]_{f'}&H'\\G & L \ar[l]_{m} & K \ar[u]_{k'} \ar[d]^{k}\ar[r]^{r} \ar@{>->}[l]_{l} &R\ar[u]^{h'} \ar[d]_{h}\\&&D\ar@{>->}@/^.45cm/[ull]^{f}\ar@/^.4cm/@{.>}[uu]^(.4){t}|\hole \ar[r]_{g}&H\ar@/_.4cm/@{.>}[uu]_{s}}\]
-\end{proposition}
-\begin{proof}
-	By construction, the pairs $(k, f)$ and $(k', f')$ are pushout complements of $l$ and $n$. Thus, the existence of the isomorphism $t\colon D\to D'$ follows from \Cref{lem:pocomp}. Now, computing we have
-	\begin{align*}
-		g'\circ t \circ k &= g' \circ k'\\&=h'\circ r
-	\end{align*}
-	Hence, we have the wanted $s\colon H\to H'$. To see that $s$ is an isomorphism, consider the diagram 
-	\[\xymatrix{K  \ar@/^.4cm/[rr]^{k'}\ar[d]_{r} \ar[r]_{k}& \ar[r]_{t} D \ar[d]^{g}& D' \ar[d]^{g'}\\ R \ar@/_.4cm/[rr]_{h'} \ar[r]^{h}& H \ar[r]^{s}& H'}\]
-	By hypothesis the whole rectangle and its left half are pushouts, therefore, by \Cref{lem:po1} its right square is a pushout too. The claim now follows from the fact that the pushout of an isomorphism is an isomorphism.
-\end{proof}
-
-If we look to direct derivations as transitions, it is natural to consider them as edges in a direct graph. Taking objects as vertices objects led us to the following definition \cite{heindel2009category}.
-
-\begin{definition}
-	Let $(\X, \R)$ be a left-linear DPO-rewrityng system, with $\X$ $\mathcal{M}$-adhesive. The \emph{DPO-derivation graph} of $(\X, \R)$ is the (large)  directed graph $\gpo$ having as vertices the objects of $\X$ and in which an edge between $G$ and $H$ is a direct derivation $\dder{D}\colon G\Mapsto H$.	A \emph{derivation} $\der{D}$ between two objects $G$ and $H$ is a path between them in $\gpo$. The \emph{source} and \emph{target} of $\der{D}$ are, respectively, $G$ and $H$.
-\end{definition}
-
-\begin{remark}
-We can spell out more explicitly what  a derivation $\dder{D}$ is.  An \emph{empty derivation} starting and ending in $G$ is just $G$ itself.  A \emph{non-empty derivation} $\dder{D}$ is a sequence $\{\dder{D}_i\}_{i=0}^n$ of direct derivations such that:
-\begin{enumerate}
-	\item for every index $i$, $\dder{D}_i$ is a direct derivation $G_i \Mapsto G_{i+1}$;
-	\item $G_0=G$ and $G_{n+1}=H$.
-\end{enumerate}
-
-We will call the number $n+1$ the \emph{length} of the derivation, denoted by $\lgh(\der{D})$. We will also say that an empty derivation has length $0$. 
-
-Moreover,  if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then we can define an associated sequence of rules as $r(\der{D})$ as $\{\rho_i\}_{i=0}^n$.
-\end{remark}
-
-\begin{remark}\label{rem:func}
-	Consider a derivation $\der{D}$ in a left-linear DPO-rewriting system $(\X, \R)$. We can take the subcategory $\Delta(\der{D})$ of $\X$ given by the arrows appearing in $\der{D}$. This subcategory comes equipped with an inclusion functor $I(\der{D})\colon \Delta(\der{D})\to \X$. Moreover, we can further define $\Deltamin(\der{D})$ as the subcategory of $\Delta(\der{D})$ containing only the bottom row of the derivation.
-\end{remark}
-	
-\begin{notation}Let $\der{D}=\{\dder{D}_i\}_{i=0}^n$ be a derivation. We will depict the $i^\text{th}$ element $\dder{D}_i$ of $\der{D}$ as in the following diagram.  
-	\[\xymatrix{L_i \ar[d]_{m_i}& K_i \ar[d]^{k_i}\ar[l]_{l_i} \ar[r]^{r_i} & R_i \ar[d]^{h_i} \\G_{i} & \ar[l]^{f_{i}} D_{i} \ar[r]_{g_{i}}& G_{i+1} }\]
-	Notice that, in particular, if $\der{D}\colon G\to H$, then $G_0=G$ and $G_{n+1}=H$. When $\der{D}$ has length $1$ we will suppress the indexes. In such case, we will also identify $\der{D}$ with its only element. 
-\end{notation} 
-
-\begin{example}\todo{esempi di derivazione}
-\end{example}
-
-\begin{definition}
-	The \emph{DPO-derivation category} $\dpo$ of a left-linear DPO-rewriting system $(\X, \R)$ is the category in which arrows between $G$ and $H$ are given by, possibly empty, derivations. Composition is concatenation of paths in $\gpo$ and identities are given by empty derivations.
-\end{definition} 	
-\begin{remark}
-	More explicitly, given $\der{D}=\{\dder{D}\}_{i=0}^n$ between $G$ and $H$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^m$, their concatenation $\der{D}\cdot\der{D}'$ is the derivation $\{\dder{E}_i\}_{i=0}^{m+n+1}$ in which
-	\[\dder{E}_i:=\begin{cases}
-		\dder{D}_i & i \leq n\\
-		\dder{D}'_{i-(n+1)} & n< i 
-	\end{cases}\]	
-
-Notice, moreover that, $\der{D}\cdot \der{D'}$ is equal to $\der{D}'$ if $\der{D}$ is empty, while it coincides with $\der{D}$ if $\der{D}'$ has length zero.
-\end{remark}
-
- \Cref{exa:conc} allows us to compose derivations with isomorphisms.
-
-\begin{definition} Let $(\X, \R)$ be a a left-linear DPO-rewriting system. Given a derivation $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ between $G$ and $H$ and isomorphisms $\phi\colon G\to G'$, $\psi\colon H\to H'$, the derivations  $\phi*\der{D}$ and $\der{D}*\psi$ are defined as
-	\[\phi *\der{D} := \begin{cases}
-		G' & \lgh(\der{D})=0\\ 
-		\{\phi* \dder{D}_0\}\cdot \{\dder{D}_i\}_{i=1}^{n}  & \lgh(\der{D})\neq 0
-	\end{cases} \qquad \der{D}*\psi := \begin{cases}
-	H' & \lgh(\der{D})=0\\ 
-	\{\dder{D}_i\}_{i=0}^{n-1} \cdot \{\dder{D}_n*\psi\} & \lgh(\der{D})\neq 0
-	\end{cases}\] 
-
-	Moreover, if $\lgh(\der{D})>0$,  we define the derivation $\phi *\der{D} * \psi$ as
-	\[\phi *\der{D} * \psi = \{\phi* \dder{D}_0\}\cdot \{\dder{D}_i\}_{i=1}^{n-1} \cdot \{\dder{D}_n*\psi\}\] 
-\end{definition}
-
-\begin{remark}
-When $\der{D}$ consists only in the direct derivation $\dder{D}$, then $\phi*\der{D}*\psi$ is the derivation of length one whose unique element is $\phi*\dder{D}*\psi$.
-\end{remark}
-
-\subsection{Decorations and abstraction equivalence}
-We are often interested in an object of $\X$ only up to isomorphism. It is therefore useful to consider a version of $\gpo$ in which vertices are classes of isomorphism of object of $\X$. In order to do so, some preliminary work is needed.
-
-\begin{definition}\cite{mac2013categories}
-Let $\X$ be a category, we say that  $\X$ is \emph{skeletal} if, for every two objects $X$ and $Y$, the existence of an isomorphism $\phi\colon X\to Y$ entails $X=Y$. A \emph{skeleton} for a category $\X$ is a full subcategory $\ske$ which is skeletal and such that the inclusion functor $\ske\to \X$ is an equivalence. 
-\end{definition}
-
-\begin{remark}
-By definition the inclusion $\ske \to \X$ is an equivalence. In particular, this mean that, for every objects $X$ of $\X$ there exists $\pi(X)$ in $\ske$ and an isomorphism $\phi_X\colon \pi(X) \to X$.
-\end{remark}
-
-\begin{proposition}\label{prop:ske}
-	Every category $\X$ has a skeleton. 
-\end{proposition}
-\begin{proof}
-	For every object $X\in \X$, pick a single representative $\pi(X)$ of its isomorphism class. Let $\ske$ be the full subcategory given by these objects. By definition $\ske$ is skeletal and the inclusion functor is full, faithful and essentially surjective.\qedhere 
-\end{proof}
-\begin{remark}
-	The proof of \Cref{prop:ske} relies on the axiom of choice for classes.
-	\end{remark}
-\begin{remark}
-	It is possible to proof that every two skeleta of a given category $\X$ are isomorphic (not only equivalent). For the remaining of this paper we assume that a skeleton $\ske$ of $\X$ and a functor $\pi\colon \X\to \ske$ are chosen once and for all.
-\end{remark}
-
-\begin{definition}
-	Let $(\X, \R)$ be a left-linear DPO-rewriting system, a \emph{decorated derivation} between two objects $G$ and $H$ is a triple $(\der{D}, \alpha, \omega)$, where $\der{D}$ is a derivation between $G$ and $H$, and $\alpha\colon \pi(G)\to G$ and $\omega\colon \pi(H)\to H$ are isomorphisms.
-\end{definition}
-
-\begin{notation}
-	We will extend the use of the words length, source and target to decorated derivations in the obvious way, forgetting the decorations $\alpha$ and $\omega$.
-\end{notation}
-
-\begin{example}A decorated derivation $(\der{D}, \alpha, \omega)$ with $\der{D}$ empty is just a span
-	\[\xymatrix{G & \pi(G) \ar[r]^-{\omega} \ar[l]_-{\alpha} & G}\]
-	in which both $\omega$ and $\alpha$ are isomorphisms.
-\end{example}
-
-As we are interested in objects only up to isomorphism, so we are interested in (decorated) derivations only up to some notion of coherent isomorphism between them. This is done with the help of \Cref{rem:func}.
-
-\begin{definition}Let $(\X, \R)$ be a left-linear DPO-rewriting system,  an \emph{abstraction equivalence} between two derivations $\der{D}$ and $\der{D'}$ with the same length and such that $r(\der{D})=r(\der{D}')$, is a family of isomorphisms $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ such that, for every $i\in [0, \lgh(\der{D})]$ the following diagram commutes
-	\[\xymatrix@C=40pt{G'_i&D'_i \ar[r]^{g'_i} \ar[l]_{f'_i}&G'_{i+1}\\  L_i \ar[u]^{n'_i} \ar[d]_{n_i}& K_i \ar[u]^{k'_i} \ar[d]_{k_i} \ar[r]^{r_i} \ar[l]_{l_i} &R\ar[u]^{h'_i} \ar[d]_{h_i}\\G_i \ar@/_.45cm/[uu]_(.35){\phi_{G_i}}|\hole&D_i\ar[l]^{f_i}\ar@/_.45cm/[uu]_(.35){\phi_{D_i}}|\hole \ar[r]_{g_i}&G_{i+1}\ar@/_.45cm/[uu]_{\phi_{H_i}}}\]
-
-Given two decorated derivations $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$, we say that they are \emph{abstraction equivalent}, if $\lgh(\der{D})=\lgh(\der{D}')$, $r(\der{D})=r(\der{D'})$, and there exists an of abstraction equivalence between $\der{D}$ and  $\der{D}$ such that the triangles below commute.
-\[\xymatrix@C=15pt{&\pi(G_0) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G_{n+1}) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G_0 \ar[rr]_{\phi_{G_0}} && G'_0 &G_{n+1} \ar[rr]_{\phi_{G_{n+1}}} && G'_{n+1} } \]
-We will use $\equiv^a$ to denote the resulting relation.
-\end{definition}
-
-\begin{remark}\label{rem:equi}
-	It is immediate to see that $\equiv^a$ is an equivalence relation. Indeed $(\der{D}, \alpha, \omega)$ is abstract equivalent to itself via the abstract equivalence with the identities as components. Furthermore, if  $\{\phi_X\}_{X\in \Deltamin(\der{D})}$  witnesses $(\der{D}, \alpha, \omega)\equiv_a (\der{D}', \alpha', \omega')$, then considering $\{\phi^{-1}_X\}_{X\in \Deltamin(\der{D})}$ shows $(\der{D}', \alpha', \omega)\equiv_a (\der{D}, \alpha, \omega)$. Finally, transitivity is assured composing abstract equivalences. 
-	
-	We will denote by $[\der{D}, \alpha, \omega]_a$ is just the equivalence class of  $(\der{D}, \alpha, \omega)$.
-	 Such equivalence classes will be called  \emph{abstract decorated derivation}.  
-\end{remark}
-
-\begin{example}\label{rem:empty}
-Let $(\der{D},\alpha, \omega)$ be an empty derivation from an object $G$ and  $(\der{D}',\alpha', \omega')$ a another empty one from $G'$.  If $(\der{D},\alpha, \omega)\equiv_a(\der{D}',\alpha', \omega')$ then an abstraction equivalence between $\der{D}$ and $\der{D}'$ is just an isomorphism $\phi\colon G\to G'$, so that $\pi(G)=\pi(G')$. Moreover, such isomorphism must fit in the diagrams below.
-\[\xymatrix@C=15pt{&\pi(G) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G\ar[rr]_{\phi} && G' &G \ar[rr]_{\phi} && G' } \]
-In particular, these two triangles imply that
-\begin{align*}
-	\alpha'\circ \alpha^{-1}&=\phi \\&=\omega'\circ \omega^{-1}
-\end{align*}
-\end{example}
-
-\begin{remark}\label{rem:res} \Cref{prop:unique} can be restated as saying that, given two direct derivations $\dder{D}$ and $\dder{D'}$ with the same match, there exists an abstract equivalence between them whose first component is an identity.
-\end{remark}
-
-\begin{remark}\label{rem:absequi}
-	Let $\der{D}$ be a derivation with source $G$ and target $H$. Let also $\phi\colon G'\to G$ and $\psi\colon H\to H'$ be two isomorphisms. Then for every $X\in \Deltamin(\der{D})$ we can define 
-	\[\varphi_X:=\begin{cases}
-		\phi^{-1} & X=G\\
-		\id{X} & \text{otherwise}
-	\end{cases} \qquad \varphi'_X:=\begin{cases}
-	\psi & X=H\\
-	\id{X} & \text{otherwise}
-	\end{cases}\]
-It is immediate to see that the family $\{\varphi_X\}_{X\in \Deltamin(\der{D})}$ is an abstraction equivalence between $\der{D}$ and $\phi *\der{D}$, while $\{\varphi'_X\}_{X\in \Deltamin(\der{D})}$ is one between $\der{D}$ and $\der{D}*\psi$.
-\end{remark}
-
-\begin{definition}\label{def:conc}
-Let $(\der{D}, \alpha, \omega)$ be a decorated derivation between $G$ and $H$ and $(\der{D}', \alpha', \omega')$ one between $H'$ and $K$. If $H$ and $H'$ are isomorphic, so that $\pi(H)=\pi(H')$, we define the  \emph{composite decorated derivation} putting
-\[(\der{D}, \alpha, \omega)\cdot (\der{D}', \alpha', \omega'):=\begin{cases}
-(\der{D}', \alpha'\circ \omega^{-1}\circ \alpha, \omega')	&\lgh(\der{D})=0 \\
-	(\der{D}, \alpha, \omega \circ (\alpha')^{-1}\circ \omega')&\lgh(\der{D}')=0 \text{ and } \lgh(\der{D})\neq 0\\
-(\der{D}*\omega^{-1}\cdot \alpha'*\der{D'}, \alpha, \omega')	&\text{otherwise}
-\end{cases}\]
-\end{definition}
-
-
-\begin{remark}\label{rem:lgt}
-	Let $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ two composable decorated derivations   such that $\lgh(\der{D})=n$ and $\lgh(\der{D}')=m$.	 Then $(\der{D}*\omega^{-1}\cdot \alpha'*\der{D'}, \alpha, \omega')$ has length $n+m$.
-\end{remark}
-
-The next proposition justifies the use of decorations, guaranteeing that concatenation of abstract decorated derivations is well-defined.
-\begin{lemma}\label{lem:conc}
-	Given a decorated derivation $(\der{D}, \alpha, \omega)$  between $G$ and $H$ and  another one $(\der{E}, \beta, \xi)$ between $E$ and $K$ with $\pi(H)=\pi(E)$. If  $(\der{D}', \alpha', \omega')$ and $(\der{E}', \beta', \xi')$ are two other decorated derivations such that
-	\[[\der{D}, \alpha, \omega]_a = [\der{D}', \alpha', \omega']_a \qquad [\der{D}, \beta, \xi]_a=[\der{E}', \beta', \xi']_a\]
-	Then
-	\[[(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)]_a=[(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')]_a\]
-\end{lemma}
-
-\begin{proof} Take two abstraction equivalences $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ and $\{\varphi_X\}_{X\in \Deltamin(\der{D})}$ between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ and between $(\der{E}, \beta, \xi)$ and $(\der{E}', \beta', \xi')$, respectively. To fix the notation, suppose that goes from $G'$ to $H'$ and $(\der{E}', \beta', \xi')$ from $E'$ to $K'$. We have three cases.
-	
-\begin{itemize}
-	\item $\lgh(\der{D})=0$. Then, $\lgh(\der{D}')$ is $0$ too. By \Cref{def:conc} we have
-	\begin{align*}
-	(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)&=(\der{E}, \beta\circ \omega^{-1}\circ \alpha, \xi)\\
-		(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')&=(\der{E}', \beta'\circ (\omega')^{-1}\circ \alpha', \xi')
-	\end{align*}
- Now, notice that $G$ and $H$ must coincide. Moreover, by \Cref{rem:empty} we also know that $\pi(G)=\pi(G')$ too. The same \Cref{rem:empty} entails that the inner squares of the following diagram are commutative, so that the whole rectangle commutes too.
- \[\xymatrix@C=35pt{\pi(G) \ar[r]^{\alpha} \ar[d]_{\id{\pi(G)}}& G  \ar[d]_{\phi_G}\ar[r]^-{\omega^{-1}} & \pi(G) \ar[d]_{\id{\pi(G)}} \ar[r]^{\beta}& E \ar[d]^{\varphi_E}\\\pi(G') \ar[r]_{\alpha'}& G' \ar[r]_-{(\omega')^{-1}} & \pi(G') \ar[r]_{\beta'} & E'}\]
- 
- We can  then conclude that $\{\varphi_X\}_{X\in \Deltamin(\der{D})}$ witnesses the fact that $(\der{E}, \beta\circ \omega^{-1}\circ \alpha, \xi)$ is abstraction equivalent to $(\der{E}', \beta'\circ (\omega')^{-1}\circ \alpha', \xi')$.
-
-\item $\lgh(\der{D})\neq 0$ and $\lgh(\der{E})= 0$. As in the point above, we get that also $\der{E}'$  is an empty derivation, thus we have
-\begin{align*}
-	(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)&=(\der{D},  \alpha, \omega \circ \beta^{-1}\circ \xi)\\
-	(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')&=(\der{D}',  \alpha', \omega' \circ (\beta')^{-1}\circ \xi')
-\end{align*}
-In this case we have that $E=K$ and that $\pi(E)=\pi(E')$. From \Cref{rem:empty} we deduce that the diagram below commutes.
-\[\xymatrix@C=35pt{\pi(E) \ar[r]^{\xi} \ar[d]_{\id{\pi(E)}}& E  \ar[d]_{\varphi_E}\ar[r]^-{\beta^{-1}} & \pi(E) \ar[d]_{\id{\pi(E)}} \ar[r]^{\omega}& H \ar[d]^{\phi_H}\\\pi(E') \ar[r]_{\xi'}& E' \ar[r]_-{(\beta')^{-1}} & \pi(E') \ar[r]_{\omega'} & H'}\]
-The thesis now follows at once.
-	\item $\lgh(\der{D})\neq 0$ and $\lgh(\der{E})\neq 0$. In this case we have
-	\begin{align*}
-		(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)&=(\der{D}*\omega^{-1}\cdot \beta*\der{E}, \alpha, \xi)\\
-		(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')&=(\der{D}'*(\omega')^{-1}\cdot \beta'*\der{E'}, \alpha', \xi')
-	\end{align*}
- To fix the notation, suppose that $\der{D}$, $\der{D}'$, $\der{E}$ and $\der{E}'$ are given by
-	\[\der{D}=\{\dder{D}_i\}_{i=0}^n \quad \der{D}'=\{\dder{D}'_i\}_{i=0}^n \quad \der{E}=\{\dder{E}_i\}_{i=0}^t \quad \der{E}'=\{\dder{E}'_i\}_{i=0}^t\]
-	Moreover, noticing that the rule applied by $\dder{D}_i$ and the one applied in $\mathcal{E}_i$  must coincide with, respectively, the one applied in $\dder{D}'_i$ and the one applied $\dder{E}'_i$. We will also assume that $\dder{D}_i$, $\dder{D}'_i$, $\dder{E}_i$ and $\dder{E}'_i$ are given, respectively, by the following four diagrams. 
-	\[\xymatrix{L_{\der{D},i} \ar[d]_{m_{\der{D}, i}}& K_{\der{D},i} \ar[d]_{k_{\der{D}, i}} \ar[r]^{r_{\der{D},i}} \ar[l]_{l_{\der{D},i}} & R_{\der{D},i}\ar[d]^{h_{\der{D}, i}} &L_{\der{E},i} \ar[d]_{m_{\der{E}, i}}& K_{\der{E},i} \ar[d]_{k_{\der{E}, i}} \ar[r]^{r_{\der{E},i}} \ar[l]_{l_{\der{E},i}} & R_{\der{E},i}\ar[d]^{h_{\der{E}, i}} \\G_i & D_i \ar[r]_{g_{\der{D},i}} \ar[l]^{f_{\der{D},i}} & G_{i+1} & E_i & F_i\ar[r]_{g_{\der{E},i}} \ar[l]^{f_{\der{E},i}}  & E_{i+1}}\]
-	\[\xymatrix{L_{\der{D},i} \ar[d]_{m_{\der{D}', i}}& K_{\der{D},i} \ar[d]_{k_{\der{D}', i}} \ar[r]^{r_{\der{D},i}} \ar[l]_{l_{\der{D},i}} & R_{\der{D},i}\ar[d]^{h_{\der{D}', i}} &L_{\der{E},i} \ar[d]_{m_{\der{E}', i}}& K_{\der{E},i} \ar[d]_{k_{\der{E}', i}} \ar[r]^{r_{\der{E},i}} \ar[l]_{l_{\der{E},i}} & R_{\der{E},i}\ar[d]^{h_{\der{E}', i}} \\G'_i & D'_i \ar[r]_{g_{\der{D}',i}} \ar[l]^{f_{\der{D}',i}} & G'_{i+1} & E'_i & F'_i\ar[r]_{g_{\der{E}',i}} \ar[l]^{f_{\der{E}',i}}  & E'_{i+1}}\]
-	
-Now, for every $X\in \Deltamin(\der{D}*\omega^{-1}\cdot \beta*\der{E})$ we can define
-\[\psi_X:=\begin{cases}
-	\phi_X & X\in  \Deltamin(\der{D})\text{ and } X\neq H\\\varphi_X & X\in  \Deltamin(\der{E}) \text{ and } X\neq E\\\id{\pi(H)}& X=\pi(H)\end{cases}\]
-Notice that, since $\psi_G=\phi_G$ and $\psi_K=\varphi_K$ we have at once  the commutativity of the triangles
-\[\xymatrix@C=15pt{&\pi(G) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(K) \ar[dr]^{\xi'} \ar[dl]_{\xi}\\ G\ar[rr]_{\psi_G} && G' &K \ar[rr]_{\psi_K} && K' } \]
-
-
-To show that $\{\psi_X\}_{\Deltamin(\der{D}*\omega^{-1}\cdot \beta*\der{E})}$ is an abstraction equivalence, it is now enough to prove the commutativity of the diagrams
-	\[\xymatrix@C=45pt@R=15pt{G'_n&D'_n \ar[r]^-{(\omega')^{-1}\circ g_{\der{D}',n}} \ar@/_.2cm/[dr]_(.6){g_{\der{D}',n}} \ar[l]_{f_{\der{D}',n}}&\pi(H') \\&&H' \ar[u]^{(\omega')^{-1}}\\  L_{\der{D}, n} \ar[uu]^{m_{\der{D}',n}} \ar[dd]_{m_{\der{D},n}}& K_{\der{D}, n} \ar[uu]^{k_{\der{D}',n}} \ar[dd]_{k_{\der{D},n}} \ar[r]^{r_{\der{D},n}} \ar[l]_{l_{\der{D},n}} &R_{\der{D}, n}\ar[u]^{h_{\der{D}',n}} \ar[d]_{h_{\der{D},n}}\\&&H \ar[d]_{\omega^{-1}}\\G_n \ar@/_.7cm/[uuuu]_(.35){\phi_{G_n}}|\hole&D_n\ar[l]^{f_{\der{D},n}}\ar@/_.7cm/[uuuu]_(.35){\phi_{D_n}}|\hole \ar@/^.2cm/[ur]^(.6){g_{\der{D},n}}\ar[r]_{\omega^{-1}\circ g_{\der{D},n}}&\pi(H)\ar@/_.7cm/[uuuu]_{\id{\pi(H)}}\\ \pi(E')&F'_0 \ar[l]_-{(\beta')^{-1}\circ f_{\der{E}',0}} \ar@/^.2cm/[dl]^(.6){f_{\der{E}',0}} \ar[r]^{g_{\der{E}',0}}&E'_1 \\E' \ar[u]_{(\beta')^{-1}}&& \\  L_{\der{E}, 0} \ar[u]_{m_{\der{E}', 0}} \ar[d]^{m_{\der{E}, 0}}& K_{\der{E}, 0} \ar[uu]_{k_{\der{E}', 0}} \ar[dd]^{k_{\der{E}, i}} \ar[r]^{r_{\der{E},0}} \ar[l]_{l_{\der{E},0}} &R_{\der{E}, 0}\ar[uu]_{h_{\der{E}',0}} \ar[dd]^{h_{\der{E},0}}\\E \ar[d]^{\beta^{-1}}&& \\\pi(E) \ar@/^.7cm/[uuuu]^{\id{\pi(E)}}&F_0\ar[l]^{\beta^{-1}\circ f_{\der{E},0}}\ar@/^.7cm/[uuuu]^(.35){\varphi_{F_0}}|\hole \ar@/_.2cm/[ul]_(.6){f_{\der{E},0}}\ar[r]_{g_{\der{E},0}}&E_1\ar@/^.7cm/[uuuu]^(.35){\varphi_{E_1}}|\hole}\]
-		
-To see this, in turn, it is enough to show that	the squares
-\[\xymatrix{R_{\der{D}, n} \ar[d]_{h_{\der{D}, n}}\ar[r]^{h_{\der{D}', n}} & H' \ar[d]_{(\omega')^{-1}} &L_{\der{E}, 0} \ar[d]^{m_{\der{E}, 0}}\ar[r]^{m_{\der{E}', 0}}& E' \ar[d]^{(\beta')^{-1}}\\H\ar[r]_{\omega^{-1}} &\pi(H)&E \ar[r]_{\beta^{-1}} & \pi(E)}\]
-\[\xymatrix{D_n \ar[rr]^{\phi_{D_n}} \ar[d]_{g_{\der{D}, n}}&&D'_n \ar[d]_{g_{\der{D}', n}}&F_0 \ar[d]^{f_{\der{E}, 0}} \ar[rr]^{\varphi_{F_0}} && F_0' \ar[d]^{f_{\der{E}', 0}}\\H \ar[r]_-{\omega^{-1}} &\pi(H)&H' \ar[l]^-{(\omega')^{-1}}  &E \ar[r]_-{\beta^{-1}} & \pi(E) & E' \ar[l]^-{(\beta')^{-1}}}\]
-are commutative. For the first ones, we have
-\[
-\begin{split} 
-	\omega^{-1} \circ h_{\der{D}, n}&=\id{\pi(H)}\circ \omega^{-1} \circ h_{\der{D}, n} \\&=(\omega')^{-1}\circ \phi_H \circ \omega \circ \omega^{-1} \circ h_{\der{D}, n}\\&=(\omega')^{-1}\circ \phi_H  \circ h_{\der{D}, n}\\&=(\omega')^{-1}  \circ h_{\der{D}', n}
-\end{split} \qquad  	\begin{split} 
-\beta^{-1} \circ m_{\der{E}, 0}&=\id{\pi(E)}\circ \beta^{-1} \circ m_{\der{E}, 0}\\&=(\beta')^{-1}\circ \varphi_{E} \circ \beta \circ \beta^{-1} \circ m_{\der{E}, 0}\\&=(\beta')^{-1}\circ \varphi_{E}  \circ m_{\der{E}, 0}\\&=(\beta')^{-1}  \circ m_{\der{E}', 0}
-\end{split}  \]
-
-Similarly, the commutativity of the second row of diagrams can be deduced from
-\[\begin{split}
-\omega^{-1} \circ g_{\der{D}, n}&=\id{\pi(H)}\circ \omega^{-1} \circ g_{\der{D}, n}\\&=(\omega')^{-1}\circ \phi_H \circ \omega\circ \omega^{-1} \circ g_{\der{D}, n}\\&=(\omega')^{-1}\circ \phi_H  \circ g_{\der{D}, n}\\&= (\omega')^{-1} \circ g_{\der{D}', n}\circ \phi_{D_n}
-\end{split}\qquad \begin{split}\beta^{-1} \circ f_{\der{E}, 0}&=\id{\pi(E)}\circ \beta^{-1} \circ f_{\der{E}, 0}\\&=(\beta')^{-1}\circ \varphi_E \circ \beta\circ \beta^{-1} \circ f_{\der{E}, 0}\\&=(\beta')^{-1}\circ \varphi_E  \circ f_{\der{E}, 0}\\&= (\beta')^{-1} \circ f_{\der{E}', n}\circ \varphi_{F_0}
-\end{split}\]
-
- The thesis now follows.	\qedhere 
-\end{itemize}	
-\end{proof}
-
-\begin{definition}
-	Let $(\X, \R)$ be a left-linear DPO-rewrityng system, with $\X$ an $\mathcal{M}$-adhesive category. The  category $\dpi$ is defined as follows:
-	\begin{itemize}
-		\item objects are isomorphism classes of objects of $\X$;
-		\item an arrow $[G]\to [H]$ is an equivalence class $[\der{D}, \alpha, \omega]_a$ of a decorated derivation between $G'$ and $H'$ for some $G'$ and $H'$ such that $\pi(G')=G$ and $\pi(H')=H$;
-		\item composition is concatenation of abstract decorated derivations;
-		\item the identity on $[G]$ is $[G, \alpha, \alpha]_a$, where $\alpha$ is any isomorphism $\pi(G)\to G$.	\end{itemize}
-\end{definition}
-
-
-
-
-\section{Independence in rewriting}
-\todo{A VERY NICE INTRO}
-
-
-\subsection{Sequentially independent and switchable derivations }
-\todo{this is an attempt to rewrite in a better way the following section. Hopefully this will spare us the use of fillers}
-\todo{A VERY NICE INTRO}
+Sequential independence is the canonical notion of independence in the DPO approach.
 
 \begin{definition}[Sequential independence]
-  \label{de:sequential-independence}
-  Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Let also $\dder{D}\colon G\Mapsto H$ and $\dder{D'}\colon H\Mapsto T$ be the two direct derivations depicted below.
-	
-	\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L' \ar[d]_{m'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[r]^{r'} & R' \ar[d]^{h'}\\G & \ar[l]^{f} D \ar[r]_{g}& H & H & \ar[l]^{f'} D' \ar[r]_{g'}& T}\]
-	
-	An \emph{independence pair} between $\dder{D}$ and $\dder{D'}$, is a pair of  arrows $i_1\colon R\to D'$ and $i_2\colon L'\to D$ such that the following diagram commutes.
-	
-	\[\xymatrix@C=15pt{L \ar[d]_{m}&& K \ar[d]_{k}\ar[ll]_{l} \ar[r]^{r} & R \ar@/^.35cm/@{.>}[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h} && L' \ar@/_.35cm/@{.>}[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[rr]^{r'} && R' \ar[d]^{h'}\\G && \ar[ll]^{f} D \ar[rr]_{g}&& H  && \ar[ll]^{f'} D' \ar[rr]_{g'}&& T}\]
-	We will say that $\dder{D}$ and $\dder{D'}$ are \emph{weakly sequentially independent} if an independence pair exists. If such independence pair is unique we will say that $\dder{D}$ and $\dder{D'}$ are \emph{sequentially independent}.
+	\label{de:sequential-independence}
+	Let $\X$ be an $\mathcal{M}$-adhesive category 
+	and $(\X, \R)$ a left-linear rewriting system. 
+	Let also
+	$\der{D}=\{\dder{D}_i\}_{i=0}^1$ be a derivation of length $2$, with
+	$\dder{D}_i$ using rule $\rho_i = (l_i,r_i)$.  We say that $\dder{D}_0$ and
+	$\dder{D}_1$ are
+	\emph{sequentially independent}
+	if there is a pair of arrows
+	$i_0\colon R_0\to D_1$ and $i_1\colon L_1\to D_0$ such that the
+	following diagram commutes. In this case $(i_0,i_1)$ is called an  \emph{independence
+		pair}.
+	\[\xymatrix@R=20pt@C=20pt{L_0 \ar[d]_{m_0}&& K_0
+		\ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0
+		\ar@{.>}@/^.25cm/[drrr]|(.32)\hole_(.4){i_0}
+		\ar[dr]|(.33)\hole_{h_0} && L_1 \ar@{.>}@/_.25cm/[dlll]^(.4){i_1}
+		\ar[dl]|(.33)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1}
+		\ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar@{>->}[ll]^{f_0}
+		D_0 \ar[rr]_{g_0}&& G_1 && \ar@{>->}[ll]^{f_1} D_1
+		\ar[rr]_{g_1}&& G_2}
+	\]
 \end{definition}
 
-\begin{example}
-	\todo{sequential independence}
-\end{example}
-\begin{example}
-	\todo{sequential independence che serva anche per es successivo}
-\end{example}
-
-
- Let $(i_0, i_1)$ and $(i'_0, i'_1)$ be independence pairs for the direct derivations $\dder{D}$ and $\dder{D'}$. Notice that, by definition, we have
-	\begin{align*}f'\circ i_0&=h\\&=f'\circ i'_0
-	\end{align*}
-	On the other hand, 
-	$f'\colon D'\to H$ is  the pushout of $l'\colon K'\to L'$ and so it is in $\mathcal{M}$, implying $i_0=i'_0$. If, moreover, we suppose that the rule $\rho$ applied in $\dder{D}$ is linear, then $g\colon D\to H$ is in $\mathcal{M}$ too, hence, from the equation
-	\begin{align*}
-		g\circ i_1&=h \\&= g\circ i'_1
-	\end{align*}
-	we can deduce that $i'_0=i'_1$, too. Summing up, we have just proved the following.
-	
-	\begin{proposition}\label{rem:weak}
-	Let $(\X, \R)$ be a linear DPO-rewriting system, then two direct derivations $\dder{D}$ and $\dder{D}'$ are weakly sequential independet if and only if they are sequential independent. 
-\end{proposition}
-
-
-We want to be able to exchange to switch the application of two rules used by two consecutive weakly independent direct derivations. This leads us to the following definition.
-
-\begin{definition}[Switch]
-  \label{de:switch}
- Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category and suppose that $\der{D}=\{\dder{D}_i\}_{i=0}^1$  is a derivation of length $2$ made by the following two weakly sequentially independent derivations $\dder{D}_0$, $\der{D}_1$, with independence pair $(i_0, i_1)$:
- 	\[\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0 \ar[d]_{k_0}\ar[ll]_{l_0} \ar[r]^{r_0} & R_0 \ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0} && L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar[l]_{l_1} \ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar[ll]^{f_0} D_0 \ar[rr]_{g_0}&& G_1  && \ar[ll]^{f_1} D_1 \ar[rr]_{g_1}&& G_2}\]
- 	
- 	Take another derivation $\der{E}=\{\dder{E}_i\}_{i=0}^1$ with source $G_0$ and target $G_2$ and in which $\der{E}_0$, $\der{E}_1$ are
-\[\xymatrix{L_{\der{E},0} \ar[d]_{m_{\der{E},0}}& K_{\der{E},0} \ar[d]^{k_{\der{E},0}}\ar[l]_{l_{\der{E},0}} \ar[r]^{r_{\der{E},0}} & R_{\der{E},0} \ar[d]^{h_{\der{E},0}} & L_{\der{E},1} \ar[d]_{m_{\der{E},1}}& K_{\der{E},1} \ar[d]^{k_{\der{E},1}}\ar[l]_{l_{\der{E},1}} \ar[r]^{r_{\der{E},1}} & R_{\der{E},1} \ar[d]^{h_{\der{E},1}}\\G_{0} & \ar[l]^{f_{\der{E},0}} D_{\der{E},0} \ar[r]_{g_{\der{E},0}}& G_{\der{E},1} & G_{\der{E},1} & \ar[l]^{f_{\der{E},1}} D_{\der{E},1} \ar[r]_{g_{\der{E},1}}& G_{2}}\]
- 	We say that $\der{E}$ is a
- 	 	 \emph{switch} of $\der{D}$ along $(i_1, i_2)$ if
- 	\begin{enumerate}
- 		\item $\dder{E}_0$ applies the rule used by $\dder{D}_1$ and $\dder{E}_1$ the one used by $\dder{D}_0$, so that
- 		\[(l_{\der{E},0}, r_{\der{E},0})=(l_1,r_1)  \qquad (l_{\der{E},1}, r_{\der{E},1})=(l_0,r_0)\]
- 		\item there exists an independence pair $(j_0, j_1)$ between $\dder{E}_0$ and $\dder{E}_1$ such that
- 		\[ m_0=f_{\der{E},0} \circ j_1 \qquad h_1=g_{\der{E},1} \circ j_0\]
- 		\item $m_{\der{E},0}= f_0\circ i_1$ and $h_{\der{E},1}= g_{1}\circ i_0$.
- 	\end{enumerate}
-\end{definition}
-
-\begin{remark}\label{rem:fact}
-	Notice that, since $f_{\der{E}, 0}$ is in $\mathcal{M}$, there is at most one $j_1\colon L_0\to D_{\der{E},0}$ such that $m_0=f_{\der{E}, 0} \circ j_1$. Moreover, we already know that there is at most one $j_0\colon R_1\to D_{\der{E},1}$ such that $m_{\der{E},1}=f_{\der{E},1}\circ j_0$, therefore, the independence pair $(j_0,j_1)$ between the component of a switch is uniquely determined.
+\begin{remark}\label{rem:seqabs}
+Let $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ be an abstraction equivalence between $\der{D}=\{\dder{D}_i\}_{i=0}^1$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^1$. If there is an independence pair between $(i_0, i_1)$ between $\dder{D}_0$ and $\dder{D}_1$, then $(\phi_{D_0}\circ i_1, \phi_{D_1}\circ i_0)$ is an independence pair between $\dder{D}'_0$ and $\dder{D}'_1$. Indeed we have
+\[\begin{split}
+g'_0\circ \phi_{D_0}\circ i_1&=\phi_{G_1}\circ g_0\circ i_1\\&=\phi_{G_1}\circ m_1\\&= m'_1
+\end{split}\qquad \begin{split}
+f'_1\circ \phi_{D_1}\circ i_0&=\phi_{G_1}\circ f_1\circ i_0\\&=\phi_{G_1}\circ h_0\\&= h'_1
+\end{split}\]
 \end{remark}
 
-Our first result about switches is their uniqueness up to abstraction equivalence.
+\begin{remark}\label{rem:uni}
+	It is worth mentioning that if $(\X, \R)$ is a linear rewriting system then two derivations $\dder{D}_0$ and $\dder{D}_1$ can have at most one independence pair. Indeed if $(i_0,i_1)$ and $(i'_0, i'_1)$ are independence pairs, then
+	\[g_0\circ i_1 = g_0\circ i'_1 \qquad f_1\circ i_0=f_1\circ i'_0\]
+	But in linear systems $g_0$ and $f_1$ are both monos, entailing $i_0=i'_0$ and $i_1=i'_1$.
+\end{remark}
 
-\begin{theorem}[Uniqueness of switches]\label{thm:switch_uni} Let $\der{D}=\{\dder{D}_i\}_{i=0}^1$  
+Intuitively, the existence of the independence pair
+captures the possibility of switching the application of the two rules:
+$f_0 \circ i_1$ is a match for $\rho_1$ in $G_0$ and the
+existence of $i_0 : R_0 \to D_1$ means that $\rho_1$ does not delete
+items in the image of $K_0$, thus $\rho_0$ can be applied after
+$\rho_1$. The following definition formalise what it means for a derivation to be the switch of another.
+
+\begin{definition}[Switch] \label{def:switch}
+	Let $\X$ be an $\mathcal{M}$-adhesive category 
+	and $(\X, \R)$ a left-linear rewriting system. 
+	Let also
+	$\der{D}=\{\dder{D}_i\}_{i=0}^1$ be a derivation made
+	of two sequentially independent derivations $\dder{D}_0$,
+	$\dder{D}_1$ with independence pair $(i_0, i_1)$, as in the diagram
+	on the left below. A \emph{switch} of $\der{D}$ along $(i_0,i_1)$ is
+	a derivation $\der{E}=\{\dder{E}_i\}_{i=0}^1$, between the same objects and using the same rules
+	in reverse order, as in the diagram on the right below
+	\[
+	\def\objectstyle{\scriptstyle}\def\labelstyle{\scriptstyle}
+	\xymatrix@C=1.1mm@R=8mm{
+		{L_0} \ar[d]_{m_0}
+		& & {K_0} \ar@{>->}[ll]_{l_0} \ar[rr]^{r_0} \ar[d]_{k_0}
+		& & {R_0} \ar[drr]|(.35)\hole_(.6){h_0}  \ar@/^.22cm/[drrrrrr]|(.3)\hole^(.75){i_0}
+		& & & & 
+		% 
+		{L_1}\ar[dll]|(.35)\hole^(.6){m_1} \ar@/_.22cm/_(.75){i_1}[dllllll]
+		& & {K_1} \ar@{>->}[ll]_{l_1} \ar[rr]^{r_1} \ar[d]^{k_1}
+		& & {R_1} \ar[d]^{h_1} \\
+		% 
+		% 
+		{G_0}
+		& & {D_0} \ar@{>->}[ll]^{f_0} \ar[rrrr]_{g_0}
+		& & & & {G_1} & &
+		& &  {D_1} \ar@{>->}[llll]^{f_1} \ar[rr]_{g_1}
+		& & {G_2}
+	}
+	% 
+	\xymatrix@C=1.1mm@R=8mm{
+		{L_1} \ar[d]_{m_0'}
+		& & {K_1} \ar@{>->}[ll]_{l_1} \ar[rr]^{r_1} \ar[d]_{k_0'}
+		& & {R_1} \ar[drr]|(.35)\hole_(.6){h_0'}  \ar@/^.22cm/@{.>}^(.75){i_0'}|(.3)\hole[drrrrrr]
+		& & & & 
+		% 
+		{L_0}\ar[dll]|(.35)\hole^(.6){m_1'} \ar@/_.22cm/@{.>}_(.75){i_1'}[dllllll] 
+		& & {K_0} \ar@{>->}[ll]_{l_0} \ar[rr]^{r_0} \ar[d]^{k_1'}
+		& & {R_0} \ar[d]^{h_1'} \\
+		% 
+		% 
+		{G_0}
+		& & {D_0'} \ar@{>->}[ll]^{f_0'} \ar[rrrr]_{g_0'}
+		& & & & {G'_1} & &
+		& &  {D_1'} \ar@{>->}[llll]^{f_1'} \ar[rr]_{g_1'}
+		& & {G_2}  }
+	%
+	\]
+	such that there is an independence pair $(i_0', i_1')$ between
+	$\dder{E}_0$ and $\dder{E}_1$ and 
+	\begin{center}   
+		$m_0=f_0' \circ i_1'$
+		\qquad $h_1=g_1' \circ i_0'$
+		\qquad $m_0'= f_0 \circ i_1$
+		\qquad $h_1'= g_{1}\circ i_0$.
+	\end{center}
 	
-\end{theorem}
+	If a switch of $\dder{D}_0$ and $\dder{D}_1$ exists we say that
+	they are \emph{switchable}.
+\end{definition}
 
-\begin{lemma}\label{lem:cose} Let $(\der{D}, \alpha, \omega)$ be a decorated derivation with $\der{D}=\{\dder{D}_i\}_{i=0}^1$,  and suppose that $(i_0, i_1)$ is an independence pair between $\dder{D}_0$  and $\der{D}_1$. If $\der{E}=\{\dder{E}_i\}_{i=0}^1$ is a switch of $\der{D}$ along $(i_0, i_1)$, then the following hold true:
-	\begin{enumerate}
-			\item the pullback square below is an $\mathcal{M}$-pushout;
-			\[\xymatrix{P \ar[r]^{p_1} \ar@{>->}[d]_{p_0}& D_1 \ar@{>->}[d]^{f_1}\\ D_0 \ar[r]_{g_1}& G_1}\]
-			\item there exist $q_0\colon P\to D_{\der{E},0}$, $q_1\colon P\to D_{\der{E},1}$ making the squares 
-			\[\xymatrix{}\]
-			commutative, moreover, they are all pushouts;
-			\[\xymatrix{}\]
- 		\item there exists an arrow $j_0\colon R_1\to D_{\der{E},1}$ such that 
- 		\[h_{\der{E},0}=f_{\der{E},1}\circ j_0 \qquad h_1=g_{\der{E},1} \circ j_0\]
-	\end{enumerate}
+\begin{example}	\label{ex:seq-ind}
+	Consider the rewriting system  $(\cat{Graph}, \R)$ and the derivarion $\der{D}$ introduced in \Cref{ex:1}.	Steps $\dder{D}_1$ and $\dder{D}_2$ are clearly sequential
+	independent via the arrows $R_1 \to D_2$, $L_2 \to D_1$
+	mapping nodes according to their numbering.
+	%
+	A switch of $\der{D}$ along such independence pair is the derivation
+	$\der{E}$ depicted below. Instead,  the first two
+	steps $\dder{D}_0$ and $\dder{D}_1$ are not sequential independent. Intuitively, this happens because $\rho_1$ uses the node generated by $\rho_0$ to produce a self-loop.
+	
+
+\begin{center}
+	\begin{tikzpicture}[node distance=2mm, font=\small,  baseline=(current bounding box.center)]      
+		\node (L1) at (0,2) {
+			\begin{tikzpicture}
+				% 
+				\node at (0,0.53) {};
+				\node at (0,0) [node, label=below:$1$] (1) {} ;
+				% 
+				\pgfBox
+			\end{tikzpicture} 
+		};
+		\node [right=of L1] (K1) {
+			\begin{tikzpicture}
+				% 
+				\node at (0,0.53) {}; 
+				\node at (0,0) [node, label=below:$1$] (1) {};
+				% 
+				\pgfBox
+			\end{tikzpicture} 
+		};
+		%     \node [above=of K1] {$\rho_0$};
+		\node [above] at (K1.north) {$\rho_0$};
+		\node [right=of K1](R1) {
+			\begin{tikzpicture}
+				\node at (0,0.53) {}; 
+				\node at (0,0) [node, label=below:$1$] (1) {};
+				\node at (.5,0) [node, label=below:$2$] (2) {}; 
+				\draw[coloredge] (1) to[out=20, in=160] (2);
+				% 
+				\pgfBox
+			\end{tikzpicture}
+		};
+		\path (K1) edge[->] node[trans, above] {} (L1);
+		\path (K1) edge[->] node[trans, above] {} (R1);
+		
+		
+		\node at (4,2) (L3) {
+			\begin{tikzpicture}
+				% 
+				\node at (0,0.53) {}; 
+				\node at (0,0) [node, label=below:$1$] (1) {} ;
+				\node at (0.5,0) [node, label=below:$2$] (2) {} ;
+				% 
+				\pgfBox
+			\end{tikzpicture} 
+		};
+		\node [right=of L3] (K3) {
+			\begin{tikzpicture}
+				% 
+				\node at (0,0.53) {}; 
+				\node at (0,0) [node, label=below:$1$] (1) {} ;
+				\node at (0.5,0) [node, label=below:$2$] (2) {} ;
+				% 
+				\pgfBox
+			\end{tikzpicture} 
+		};
+		%     \node [above=of K3] {$\rho_2$};
+		\node [above] at (K3.north) {$\rho_2$};
+		\node [right=of K3] (R3) {
+			\begin{tikzpicture}
+				\node at (0,0.53) {}; 
+				\node at (0,0) [node, label=below:$12$] (12) {};
+				% 
+				\pgfBox
+			\end{tikzpicture}
+		};
+		\path (K3) edge[->] node[trans, above] {} (L3);
+		\path (K3) edge[->] node[trans, above] {} (R3);
+		
+		\node at (8,2) (L2) {
+			\begin{tikzpicture}
+				% 
+				\node at (0,0.53) {}; 
+				\node at (0,0) [node, label=below:$2$] (1) {} ;
+				% 
+				\pgfBox
+			\end{tikzpicture} 
+		};
+		\node [right=of L2] (K2) {
+			\begin{tikzpicture}
+				% 
+				\node at (0,0.53) {}; 
+				\node at (0,0) [node, label=below:$2$] (1) {};
+				% 
+				\pgfBox
+			\end{tikzpicture} 
+		};
+		%     \node [above=of K2] {$\rho_1$};
+		\node [above] at (K2.north) {$\rho_1$};
+		
+		\node [right=of K2] (R2) {
+			\begin{tikzpicture}
+				\node at (0,0) [node, label=below:$2$] (1) {}
+				edge [in=55, out=85, loop] ();
+				% 
+				\pgfBox
+			\end{tikzpicture}
+		};
+		\path (K2) edge[->] node[trans, above] {} (L2);
+		\path (K2) edge[->] node[trans, above] {} (R2);
+		
+		
+		%%%%%% second row
+		\node at (0,0) (G1) {
+			\begin{tikzpicture}
+				% 
+				\node at (0,0.53) {};
+				\node at (0,0) [node, label=below:$1$] (1) {} ;
+				% 
+				\pgfBox
+			\end{tikzpicture} 
+		};
+		\node [right=of G1] (D1) {
+			\begin{tikzpicture}
+				% 
+				\node at (0,0.53) {}; 
+				\node at (0,0) [node, label=below:$1$] (1) {};
+				% 
+				\pgfBox
+			\end{tikzpicture} 
+		};
+		\node at (3,0) (G2) {
+			\begin{tikzpicture}
+				% 
+				\node at (0,0.53) {}; 
+				\node at (0,0) [node, label=below:$1$] (1) {} ;
+				\node at (0.5,0) [node, label=below:$2$] (2) {} ;
+				\draw[coloredge] (1) to[out=20, in=160] (2);
+				% 
+				\pgfBox
+			\end{tikzpicture} 
+		};
+		\path (D1) edge[->] node[trans, above] {} (G1);
+		\path (D1) edge[->] node[trans, above] {} (G2);
+		\path (L1) edge[->] node[trans, above] {} (G1);
+		\path (K1) edge[->] node[trans, above] {} (D1);
+		\path (R1) edge[->] node[trans, above] {} (G2);
+		
+		\node at (5.5,0) (D2) {
+			\begin{tikzpicture}
+				% 
+				\node at (0,0.53) {};
+				\node at (0,0) [node, label=below:$1$] (1) {} ;
+				\node at (0.5,0) [node, label=below:$2$] (2) {} ;
+				\draw[coloredge] (1) to[out=20, in=160] (2);
+				% 
+				\pgfBox
+			\end{tikzpicture} 
+		};
+		\node at (7.4,0) (G3) {
+			\begin{tikzpicture}
+				% 
+				\node at (0,0.53) {}; 
+				\node at (0,0) [node, label=below:$12$] (12) {}
+				edge [in=125, out=155, colorloop] ();
+				% 
+				\pgfBox
+			\end{tikzpicture} 
+		};
+		
+		\path (D2) edge[->] node[trans, above] {} (G2);
+		\path (D2) edge[->] node[trans, above] {} (G3);
+		\path (L3) edge[->] node[trans, above] {} (G2);
+		\path (K3) edge[->] node[trans, above] {} (D2);
+		\path (R3) edge[->] node[trans, above] {} (G3);
+		
+		\node at (9.1,0) (D3) {
+			\begin{tikzpicture}
+				% 
+				\node at (0,0.53) {}; 
+				\node at (0,0) [node, label=below:$12$] (12) {}
+				edge [in=125, out=155, colorloop] ();
+				% 
+				\pgfBox
+			\end{tikzpicture} 
+		};
+		\node [right=of D3] (G4) {
+			\begin{tikzpicture}
+				% 
+				\node at (0,0) [node, label=below:$12$] (12) {}
+				edge [in=55, out=85, loop] ()
+				edge [in=125, out=155, colorloop] ();
+				% 
+				\pgfBox
+			\end{tikzpicture} 
+		};
+		
+		\node[font=\scriptsize, below] at (G1.south) {$G_0$};
+		\node[font=\scriptsize, below] at (D1.south) {$D_0$};      
+		\node[font=\scriptsize, below] at (G2.south) {$G_1$};
+		\node[font=\scriptsize, below] at (D2.south) {$D_1'$};      
+		\node[font=\scriptsize, below] at (G3.south) {$G_2'$};
+		\node[font=\scriptsize, below] at (D3.south) {$D_2'$};      
+		\node[font=\scriptsize, below] at (G4.south) {$G_3$};      
+		
+		\path (D3) edge[->] node[trans, above] {} (G3);
+		\path (D3) edge[->] node[trans, above] {} (G4);
+		\path (L2) edge[->] node[trans, above] {} (G3);
+		\path (K2) edge[->] node[trans, above] {} (D3);
+		\path (R2) edge[->] node[trans, above] {} (G4);
+	\end{tikzpicture}
+	%
+\end{center}
+	
+
+\end{example}
+
+
+We can now prove some properties relating switching and abstraction equivalence. As a first step we can show that switches along the same independence paire are unique up to abstraction equivalence.
+
+\begin{lemma}[Uniqueness of switches]
+	\label{thm:switch_uni}
+	Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^1$ be a derivation and suppose
+	that both $\der{E}=\{\dder{E}_i\}_{i=0}^1$ and
+	$\der{F}=\{\dder{F}_i\}_{i=0}^1$ are switches of $\dder{D}_0$ and
+	$\dder{D}_1$. Then there is an abstraction equivalence between $\der{E}$ and $\der{F}$, whose first component is $\id{G_0}$.
 \end{lemma}
+
 \begin{proof}
-	Before starting with the proof of our claims, it is worth noticing that the definition of switchin gives us the following diagram:
-			\[\xymatrix@R=28pt{&&R_0 \ar@/_1.15cm/[ddrr]_(.8){i_0}|(.68)\hole \ar[dr]^{h_0}&& L_1\ar@/^1.15cm/[ddll]^(.8){i_1}  \ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar[dl]_{l_0} \ar[ur]^{r_0}&& G_1 && K_1 \ar[dl]_{k_1}\ar[lu]_{l_1} \ar[dr]^{r_1}\\L_0 \ar@/_.94cm/[ddrr]_(.8){j_1}|(.31)\hole \ar[dr]^(.35){m_0}|(.6)\hole && D_0 \ar[dl]^{f_0}\ar[ur]|(.5)\hole^(.7){g_0}&&D_1 \ar[dr]_{g_1} \ar[ul]|(.5)\hole_(.65){f_1}&&R_1\ar[dl]^(.35){h_1}|(.6)\hole\\&G_0 &&&&G_2\\L_1 \ar@/^.94cm/[uurr]^(.8){i_1} \ar[ur]_(.35){m_{\der{E},0}}|(.61)\hole&&D_{\der{E},0} \ar[ul]_{f_{\der{E},0}}\ar[dr]^{g_{\der{E},0}} &&D_{\der{E},1}\ar[ur]^{g_{\der{E},1}} \ar[dl]|(.5)\hole^(.7){f_{\der{E},1}} && R_0  \ar@/_.94cm/[uull]_(.8){j_1} \ar[ul]^{h_{\der{E},1}}\\&K_1 \ar[ur]_{k_{\der{E},0}} \ar[dr]_{r_1} \ar[ul]^{l_1}&&G_{\der{E},1}&& K_0 \ar[ur]_{r_0} \ar[ul]^{k_{\der{E},1}} \ar[dl]^{l_0} \\&& R_1 \ar[ur]_{h_{\der{E},0}}&& L_0 \ar[ul]^{m_{\der{E},1}} \ar@/_1.15cm/[uull]_(.6){j_1} }\]
-			
-			Let us turn to our statements.
-	\begin{enumerate}
-		\item We start noticing that 
-		\begin{align*}
-			g_0\circ i_1\circ l_1&=m_1\circ l_1\\&=k_1\circ f_1
-		\end{align*}
-		Thus there exists the dotted $u\colon K_1\to P$ in the diagram
-		\[\]
-		The thesis now follows applyin \Cref{lem:popb} to
-		
-		
-
-		\item 
-		\item  We already have an arrow $j_1\colon L_0\to D_{\der{E},0}$ such that
-		\[m_{\der{E},1}=g_{\der{E},0}\circ j_1\]
-		Therefore the thesis follows at once from the previous point.
-
+	By definition of switch $\der{E}_0$ and $\der{F}_0$ have the same match $f_0\circ i_1$ and that $\der{E}_1$ and $\der{F}_1$ have the same comatch $g_1\circ i_0$. Thus we get the solid part of the diagram below
+	\[\xymatrix@C=22pt{G_{0} && \ar@{>->}[ll]_{f_{\der{F},0}} D_{\der{F},0} \ar[rr]^{g_{\der{F},0}}&& G_{\der{F},1} && \ar@{>->}[ll]_{f_{\der{F},1}} D_{\der{F},1} \ar[rr]^{g_{\der{F},1}}&& G_{2}\\L_1 \ar[d]^{f_0\circ i_1} \ar[u]_{f_0\circ i_1}&& K_{1} \ar[d]^{k_{\der{E},0}} \ar[u]_{k_{\der{F},0}}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_{1} \ar@/^.35cm/[drrr]|(.315)\hole_(.4){j_0} \ar[dr]|(.3)\hole_{h_{\der{E},0}} \ar@/_.35cm/[urrr]|(.315)\hole^(.4){a_0} \ar[ur]|(.3)\hole^{h_{\der{F},0}}& &L_{0} \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.3)\hole^{m_{\der{E},1}} \ar@/^.35cm/[ulll]_(.4){a_1} \ar[ul]|(.3)\hole_{m_{\der{F},1}}& K_{0} \ar[d]_{k_{\der{E},1}} \ar[u]^{k_{\der{F},1}}\ar@{>->}[l]_{l_{0}} \ar[rr]^{r_0} && R_{0} \ar[d]_{g_1\circ i_0} \ar[u]^{g_1\circ i_0}\\ \ar@/^.5cm/[uu]^{\id{G_0}} G_{0} && \ar[ll]^{f_{\der{E},0}} D_{\der{E},0} \ar@{.>}@/^.5cm/[uu]^(.33){\phi_{0}}|\hole \ar[rr]_{g_{\der{E},0}}&& G_{\der{E},1} \ar@{.>}[uu]^(.76){\psi_1}|(.45)\hole |(.55)\hole&& \ar@{>->}[ll]^{f_{\der{E},1}} D_{\der{E},1} \ar@{.>}@/_.5cm/[uu]_(.33){\phi_{1}}|\hole\ar[rr]_{g_{\der{E},1}}&& G_{2}\ar@{.>}@/_.5cm/[uu]_{\psi_2}}\]
 	
+Now, by \Cref{prop:unique} we get $\phi_0\colon D_{\der{E},0}\to D_{\der{F},0}$ and $\psi_1 \colon G_{\der{E},1}\to G_{\der{F},1}$ such that the diagram below commutes.
+\[\xymatrix{G_{0} & \ar@{>->}[l]_{f_{\der{F},0}} D_{\der{F},0} \ar[r]^{g_{\der{F},0}}& G_{\der{F},1} \\L_1 \ar[d]^{f_0\circ i_1} \ar[u]_{f_0\circ i_1}& K_{1} \ar[d]^{k_{\der{E},0}} \ar[u]_{k_{\der{F},0}}\ar[l]_{l_1} \ar[r]^{r_1} & R_{1}  \ar[d]_{h_{\der{E},0}}  \ar[u]^{h_{\der{F},0}}\\ \ar@/^.5cm/[uu]^{\id{G_0}} G_{0} & \ar@{>->}[l]^{f_{\der{E},0}} D_{\der{E},0} \ar@/^.5cm/[uu]^(.33){\phi_{0}}|\hole \ar[r]_{g_{\der{E},0}}& G_{\der{E},1} \ar@/_.5cm/[uu]_{\psi_1}}\]
+
+ But then we have
+ \begin{align*}
+ 	f_{\der{F},0}\circ \phi_0\circ j_1&=f_{\der{E},0} \circ j_1\\&=m_0\\&=f_{\der{F},0}\circ a_1 \end{align*}
+	which, since $f_{\der{D},0}$ is mono, entails $a_1= \phi_0\circ j_1$.	This equality, in turn, gives us that
+	\begin{align*}
+	\psi_1\circ m_{\der{E},1}&=\psi_1 \circ g_{\der{E},0}\circ j_1\\&=g_{\der{F},0}\circ \phi_0\circ j_1\\&=g_{\der{F},0}\circ a_1\\&=m_{\der{F},1}
+	\end{align*}
 	
-	\item 
-		
-		\item \qedhere 
-	\end{enumerate}
+	Since $\psi_1$ is an isomorphism, the square below is a pushout. 
+		\[\xymatrix{K_0 \ar[d]_{k_{\der{E,1}}} \ar@{>->}[r]^{l_0}& L_0 \ar[d]^{\psi_1\circ m_{\der{E},1}}\\D_{\der{E},1} \ar@{>->}[r]_{\psi_1\circ f_{\der{E},1}}& G_{\der{F}, 1}}\]
+	
+	 Moreover, we have already shown that $\psi_1\circ m_{\der{E},1}=m_{\der{F},1}$. Thus, by \Cref{prop:unique} there are the dotted $\phi_1\colon D_{\der{E},1}\to D_{\der{F},1}$ and $\psi_2\colon G_2\to G_2$ as below.
+	\[\xymatrix{G_{\der{F},1} & \ar@{>->}[l]_{f_{\der{F},1}} D_{\der{F},1} \ar[r]^{g_{\der{F},1}}& G_2 \\L_0 \ar[d]^{m_{\der{E},1}} \ar[u]_{m_{\der{F},1}}& K_{0} \ar[d]^{k_{\der{E},1}} \ar[u]_{k_{\der{F},1}}\ar@{>->}[l]_{l_1} \ar[r]^{r_1} & R_{0}  \ar[d]_{g_1\circ i_0}  \ar[u]^{g_1\circ i_0}\\ \ar@/^.5cm/[uu]^{\psi_1} G_{\der{E},1} & \ar@{>->}[l]^{f_{\der{E},1}} D_{\der{E},1} \ar@{.>}@/^.5cm/[uu]^(.33){\phi_{1}}|\hole \ar[r]_{g_{\der{E},1}}& G_2 \ar@{.>}@/_.5cm/[uu]_{\psi_2}}\]
+	
+	To conclude, it is now enough to notice that
+	\begin{align*}
+f_{\der{F},1} \circ \phi_1\circ j_0&=\psi_1\circ f_{\der{E},1}\circ j_0\\&=\psi_1\circ h_{\der{E,0}}\\&=h_{\der{F},0}\\&=f_{\der{F},1}\circ a_0
+	\end{align*}
+	allowing us to deduce $ \phi_1\circ j_0=a_0$.
 \end{proof}
 
-\todo{ $\dder{E}_0$ and $\dder{E}_1$ are weak sequentially independent;
-
-if $\der{E}'=\{\dder{E}'_i\}_{i=0}^1$ is another switching of $\der{D}$ along $(i_0, i_1)$, then there exist arrows.... such that the following diagram commutes:
-}
-In particular [...]
-\begin{definition}\todo{switch}
-	contenuto...
-\end{definition}
-\begin{remark}
-Canonico
-\end{remark}
-\begin{corollary}\todo{inversione}
+\begin{corollary}\label{cor:switch}
+	\todo{switches}
 \end{corollary}
-\begin{proof}
-	contenuto...
-\end{proof}
 
-\begin{lemma}
-	\todo{permutazione}
-\end{lemma}
-\begin{proof}
-	contenuto...
-\end{proof}
+\begin{corollary}\label{cor:cons}
+	\todo{consistency of switch}
+\end{corollary}
 
 
-\begin{lemma}\label{lem:swfill}
-\todo{equi}
-\end{lemma}
-\begin{remark}
-	\todo{tobias}
-\end{remark}
-\begin{remark}
-	contenuto...
-\end{remark}
-\begin{proof}
-	contenuto...
-\end{proof}
+Another useful property of switches is that they can be performed back and forth, giving back the original derivation. This is the content of the following two results. 
 
+\todo{switch di switch}
 
-
-
-When working with linear rewriting systems, (weakly) sequential independent direct derivations can be switched, producing two new (weakly) sequential independent direct derivations between the same objects \cite[Thm.~$7.7$]{lack2005adhesive} . This is no more the case if the rules are only left-linear, as shown by the next example.
-
-\begin{example}\label{ex:difficile}
-	\todo{pensare ad un esempio in cui l'indipendenza non basta }
-\end{example}
-
-
-
-\subsection{Sequentially independent and switchable derivations}
-\todo{A VERY NICE INTRO}
-
-
-\begin{definition}  Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Let also $\dder{D}\colon G\Mapsto H$ and $\dder{D'}\colon H\Mapsto T$ be the two direct derivations depicted below.
-	
-	\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L' \ar[d]_{n'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[r]^{r'} & R' \ar[d]^{h'}\\G & \ar[l]^{f} D \ar[r]_{g}& H & H & \ar[l]^{f'} D' \ar[r]_{g'}& T}\]
-	
-	An \emph{independence pair} between $\dder{D}$ and $\dder{D'}$, is a pair of  arrows $i_1\colon R\to D'$ and $i_2\colon L'\to D$ such that the following diagram commutes.
-	
-	\[\xymatrix@C=15pt{L \ar[d]_{n}&& K \ar[d]_{k}\ar[ll]_{l} \ar[r]^{r} & R \ar@/^.35cm/@{.>}[drrr]|(.3)\hole_(.4){i_1} \ar[dr]|(.3)\hole_{h} && L' \ar@/_.35cm/@{.>}[dlll]^(.4){i_2} \ar[dl]|(.3)\hole^{n'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[rr]^{r'} && R' \ar[d]^{h'}\\G && \ar[ll]^{f} D \ar[rr]_{g}&& H  && \ar[ll]^{f'} D' \ar[rr]_{g'}&& T}\]
-	We will say that $\dder{D}$ and $\dder{D'}$ are \emph{weakly sequentially independent} if an independence pair exists. If such independence pair is unique we will say that $\dder{D}$ and $\dder{D'}$ are \emph{sequentially independent}.
-\end{definition}
-
-\begin{example}
-	\todo{sequential independence}
-\end{example}
-\begin{example}
-	\todo{sequential independence che serva anche per es successivo}
-\end{example}
-
-\begin{remark}\label{rem:weak} Let $(i_1, i_2)$ and $(j_1, j_2)$ be independence pairs for the direct derivations $\dder{D}$ and $\dder{D'}$. Notice that, by definition, we have
-	\begin{align*}f'\circ i_1&=h\\&=f'\circ j_1
-	\end{align*}
-	On the other hand, 
-	$f'\colon D'\to H$ is  the pushout of $l'\colon K'\to L'$ and so it is in $\mathcal{M}$, implying $j_1=i_1$. If, moreover, we suppose that the rule $\rho$ applied in $\dder{D}$ is linear, then $g\colon D\to H$ is in $\mathcal{M}$ too, hence, from the equation
-	\begin{align*}
-		g\circ i_2&=h \\&= g\circ j_2
-	\end{align*}
-	we can deduce that $i_2=j_2$, too.
-	
-	Summing up, if $(\X, \R)$ is a linear DPO-rewriting system, then sequential independence and weak sequential independence coincide. 
-\end{remark}
-
-
-We want to be able to exchange to switch the application of two rules used by two consecutive weakly independent direct derivations
-\begin{definition}
-	contenuto...
-\end{definition}
 
 \begin{proposition}
-	\todo{equi}
-\end{proposition}
-\begin{remark}
 	contenuto...
-\end{remark}
+\end{proposition}
 \begin{proof}
 	contenuto...
 \end{proof}
 
+\begin{corollary}
+	contenuto...
+\end{corollary}
 
 
+As we mentioned, for linear rewriting systems
+it is canonical to identify
+derivations that are equal ``up to switching'', i.e.~that differ
+only in the order of independent steps. The same notion can be given
+for left-linear rewriting systems by relying on the notion of switch.
 
-When working with linear rewriting systems, (weakly) sequential independent direct derivations can be switched, producing two new (weakly) sequential independent direct derivations between the same objects \cite[Thm.~$7.7$]{lack2005adhesive} . This is no more the case if the rules are only left-linear, as shown by the next example.
+We  recall some notations on permutations.  A \emph{permutation} on
+$\interval[0]{n}$ is a bijection
+$\sigma : \interval[0]{n} \to \interval[0]{n}$. It is a
+\emph{transposition} $\nu$ if there are $i, j \in \interval{n}$,
+$i \neq j$ such that $\sigma(i)=j$, $\sigma(j) = i$, and
+$\sigma(k) = k$ otherwise; it is denoted as $\transp{i}[j]$. Given a permutation $\perm$, 
+an \emph{inversion} for $\sigma$ is a pair $(i,j)$ such that $i<j$ and
+$\sigma(j)< \sigma(i)$; $\inv{\sigma}$ denotes the set of
+inversions of $\perm$.
 
-\begin{example}\label{ex:difficile}
-	\todo{pensare ad un esempio in cui l'indipendenza non basta }
-\end{example}
+Switch equivalence is now defined as the equivalence relating derivations that 
+can be obtained one from another by a sequence of switches. Moreover, intermediate graphs can be taken up to isomorphism according to abstraction equivalence.
 
-To fix this problem, we adapt the notion of \emph{canonical filler} from \cite{heindel2009category}.
-
-
-
-
-
-
-\begin{definition}\label{def:filler}
-Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ $\mathcal{M}$-adhesive. Let also $\dder{D}\colon G\Mapsto H$ and $\dder{D}'\colon H\Mapsto T$ be the two derivations depicted below.
-\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L' \ar[d]_{n'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[r]^{r'} & R' \ar[d]^{h'}\\G & \ar[l]^{f} D \ar[r]_{g}& H & H & \ar[l]^{f'} D' \ar[r]_{g'}& T}\]
-Since $f'$ is in $\mathcal{M}$, we can moreover consider a pullback square
-\[\xymatrix{P \ar[r]^{p} \ar[d]_{p'}& D\ar[d]^{g} \\ D' \ar[r]_{f'} & H}\]
-
-A \emph{filler} between $\dder{D}$ and $\dder{D}'$ is  given by a pair of arrows $u\colon K\to P$ and $u'\colon K'\to P$ satisfying the following conditions
-\begin{enumerate}
-	\item $p\circ u = k$, $p'\circ u' = k'$ and there exists a pushout square
-\[\xymatrix{K' \ar[r]^{r'} \ar[d]_{u'}& R'\ar@{.>}[d]^{j'} \\ P \ar@{.>}[r]_{q'} & Q'}\]
-	\item  there exist arrows $i_1\colon R\to D'$, $i_2\colon L'\to D$ satisfying $f'\circ i_1=h$, $g\circ i_2=n'$ and such that the following squares are pushouts
-\[\xymatrix{K \ar[r]^{r} \ar[d]_{u}& R \ar@{.>}[d]^{i_1} &K' \ar[r]^{l'} \ar[d]_{u'}& L'\ar@{.>}[d]^{i_2} \\P \ar[r]_{p'}& D' & P \ar[r]_{p} & D}\]
-\end{enumerate}
+\begin{definition}[Switching sequence]
+	\label{de:switch-equivalence}
+	Let $(\X, \R)$ be a left-linear rewriting system.  Let also
+	$\der{D}, \der{E} : G \Mapsto H$ be derivations with the same
+	length, $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and
+	$\der{E}=\{\dder{E}_{i}\}_{i=0}^n$. If
+	$\dder{D}_i \cdot \dder{D}_{i+1}$ is a switch of
+	$\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ and  $\dder{D}_j = \dder{E}_j$ for each $j \not \in \{i,i+1\}$ then we write
+	$\der{D} \shift{\transp{i}} \der{E}$. 
+	A \emph{switching sequence} is a sequence $\{\der{D}_{k}\}_{k=0}^m$
+	of derivations such that
+	$\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
+	\shift{\nu_m} \der{D}_m$  with $\nu_{k} = \transp{i_k}$.
+	
+	Let us denote by $\nu_{k,h}$ the composition
+	$\nu_h \circ \nu_{h-1} \circ \ldots \nu_k$. We say that the
+	switching sequence \emph{consists of inversions} if for all
+	$k \in \interval[0]{m}$ the transposition $\nu_k$ is an inversion
+	for $\nu_{1,m}$.
+	
+	Two derivations $\der{D}, \der{E}:G\Mapsto H$ are \emph{switch
+		equivalent}, written $\der{D}\equiv^{sh} \der{E}$, if there is a
+	switching sequence $\{\der{D}_{k}\}_{k=0}^m$ such that
+	$\der{D}\equiv_a \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2}
+	\ldots \shift{\nu_m} \der{D}_m \equiv _a \der{E}$.   
+	To point out a chosen permutation of rewriting steps, we will also write $\der{D}\equiv^{sh}_{\sigma} \der{E}$, 
+	where $\sigma$ is the composition of the transposition appearing in a chosen switching sequence. 
 \end{definition}
 
-\begin{remark}\label{rem:deco} Let $\dder{D}$ and $\dder{D'}$ be two switchable direct derivations. Then the existence of a filler allows us to build the solid part of the diagram below.
-	\[\xymatrix{&&R \ar@/_1cm/[ddrr]_(.35){i_1}|(.7)\hole  \ar[dr]^{h}&& L'\ar@/^1cm/[ddll]^(.35){i_2}  \ar[dl]_{n'}\\&K\ar[dr]^{k}\ar[dl]_{l} \ar@/_.8cm/[ddrr]^(.65){u}\ar[ur]^{r}&& H && K' \ar@/^.8cm/[ddll]_(.65){u'}\ar[dl]_{k'}\ar[lu]_{l'} \ar[dr]^{r'}\\L \ar[dr]_{n} \ar@{.>}@/_.8cm/[ddrr]_{j}&& D \ar[dl]|(.42)\hole_(.64){f}\ar[ur]|(.48)\hole^(.7){g}&&D' \ar[dr]|(.42)\hole^(.65){g'} \ar[ul]|(.48)\hole_(.7){f'}&&R'\ar@/^.8cm/[ddll]^{j'}\ar[dl]^{h'}\\&G &&P\ar[dr]^{q'} \ar@{.>}[dl]_{q}\ar[ur]^(.4){p'}\ar[ul]_(.4){p}&&T\\&&Q \ar@{.>}[ul]_{s} &&Q'\ar@{.>}[ur]^{t}}\]
-	
-	Let us complete this diagram defining the dotted arrows. We can start noticing that, since $l\in \mathcal{M}$, there exists a pushout square 
-	\[\xymatrix{K \ar[r]^{l} \ar[d]_{u}& L\ar[d]^{j} \\ P \ar[r]_{q} & Q}\]
-	Moreover, the existence of the wanted $s\colon Q\to G$ and $t\colon Q'\to T$ follows from the following equalities
-	\[\begin{split}
-		f\circ p \circ u &= f\circ k \\&= n\circ l
-	\end{split} \qquad \begin{split}
-		g'\circ p'\circ u' &= g'\circ k'\\&=h'\circ r'
-	\end{split}\]
-	
-	We can prove some other properties of the arrows appearing in the diagram above. The three rectangles below are pushouts and their left halves are pushouts too. Therefore, by \Cref{lem:po1}, also their right halves are pushouts.
-	\[\xymatrix{K \ar@/^.4cm/[rr]^{u}\ar[d]_{r}\ar[r]_{u} &P\ar[d]^{p'} \ar[r]_{p} & D \ar[d]^{g}&K' \ar@/^.4cm/[rr]^{k'}\ar[d]_{l'}\ar[r]_{u'} &P\ar[d]^{p} \ar[r]_{p'} & D' \ar[d]^{f'}\\  R \ar@/_.4cm/[rr]_{h} \ar[r]^{i_1}&D' \ar[r]^{f'} & H&L' \ar@/_.4cm/[rr]_{n'} \ar[r]^{i_2}&D \ar[r]^{g} & H}\]
-	\[ \xymatrix{K \ar@/^.4cm/[rr]^{k}\ar[d]_{l}\ar[r]_{u} &P\ar[d]^{q} \ar[r]_{p} & D \ar[d]^{f}&K' \ar@/^.4cm/[rr]^{k'}\ar[d]_{r'}\ar[r]_{u'} &P\ar[d]^{q'} \ar[r]_{p'} & D' \ar[d]^{g'}\\ L \ar@/_.4cm/[rr]_{n} \ar[r]^{j}&Q \ar[r]^{s} & G&R' \ar@/_.4cm/[rr]_{h'} \ar[r]^{j'}&Q' \ar[r]^{t} & T}\]
-	
-	Notice, moreover, that $p, q$ are the pushouts of $l'$ and $l$, respectively, thus they  are elements of $\mathcal{M}$. By \Cref{prop:pbpoad} the squares
-	\[\xymatrix{P\ar[r]^{p} \ar[d]_{p'} & D \ar[d]^{g}& P \ar[r]^{p} \ar[d]_{q} &D\ar[d]^{f}\\ D' \ar[r]_{f'} & H & Q \ar[r]_{s}& G}\]
-	are pullbacks too.
-\end{remark}
 
 
-Notice that if there is a filler between  $\dder{D}$ and $\dder{D}'$ are switchable, then they are weakly sequentially independent: indeed, if a filler between them exists, then $(i_1, i_2)$ is an independence pair. On the other hand, \Cref{ex:difficile} shows that not every independence pair arises in this way.
+\subsection{The local Church-Rosser Theorem}\label{subsec:CR}
 
-\begin{definition}
-  \label{de:good-switchable}
-  Let $\dder{D}\colon H\Mapsto H$, $\dder{D}'\colon H\Mapsto T$ be two
-  direct derivations in a left-linear DPO-rewriting system $(\X,
-  \R)$. An independence pair $(i_1, i_2)$ between $\dder{D}$ and
-  $\dder{D}'$ is \emph{good} if there exists a filler $(u,u')$ between
-  them such that the squares below are
-  pushouts.\[\xymatrix{K \ar[r]^{r} \ar[d]_{u}& R \ar[d]^{i_1} &K'
-      \ar[r]^{l'} \ar[d]_{u'}& L'\ar[d]^{i_2} \\P \ar[r]_{p'}& D' & P
-      \ar[r]_{p} & D}\]
-	
-We will say that $\dder{D}$ and $\dder{D}'$ are \emph{switchable} if a good independence pair between them exists. If such a pair is unique, we will say that $\dder{D}$ and $\dder{D}'$ are \emph{uniquely switchable}. We will use the notation $\dder{D}\updownarrow \dder{D'}$ to mean that $\dder{D}$ and $\dder{D}'$ are switchable, while $\dder{D}\updownarrow_! \dder{D'}$ will denote that they are uniquely so.
+The fact that sequential independence implies switchability always
+holds for linear rules (see \Cref{prop:equi}). The result is so
+indispensable that typically, in the literature, it is not even
+stated, in the sense that switchability is not introduced
+axiomatically as in Definition~\ref{def:switch}, but it is based on
+the explicit construction of a switch.
 
+For left-linear rewriting systems
+sequential independence does not imply switchability (while the
+converse implication clearly holds), as shown by the next example.
 
-If every independence pair is good we will say that $(\X, \R)$ is \emph{tame}.
-\end{definition}
-
-\begin{remark}\label{rem:unic} Given a good independence pair $(i_1, i_2)$ between $\dder{D}$ and $\dder{D}'$, there is a unique filler  such that $(u,u')$ such that 
-	\[\xymatrix{K \ar[r]^{r} \ar[d]_{u}& R \ar[d]^{i_1} &K' \ar[r]^{l'} \ar[d]_{u'}& L'\ar[d]^{i_2} \\P \ar[r]_{p'}& D' & P \ar[r]_{p} & D}\]
-	are pushouts. Indeed, for every other filler $(v,v')$, it must be that
-	\[\begin{split}
-		p\circ u &=k \\&= p\circ v
-	\end{split}\qquad \begin{split}
-	p\circ u' &= i_2\circ l' \\&= p\circ v'
-	\end{split}\]
-	Since the arrow $p\colon P\to D$, which is the pullback of $f'$, is in $\mathcal{M}$ we conclude that $(u,u')=(v,v')$.
-\end{remark}
-
-\begin{remark}
-  Clearly in a tame left-linear DPO-rewriting system two direct derivations are sequentially independent if and only if they are unquely switchable.
-\end{remark}
-
-A source of tame left-linear DPO-rewriting systems is given by the linear ones, as shown by the following proposition.
-
-\begin{proposition}\label{prop:equi}Every linear DPO-rewriting system $(\X, \R)$ is tame.
- \end{proposition}
-\begin{proof} Suppose that $\X$ is $\mathcal{M}$-adhesive and let $(i_1, i_2)$ be an independence pair between $\dder{D}\colon G\Mapsto H$ and $\dder{D}'\colon H\Mapsto T$. We have a diagram
-	\[\xymatrix@C=15pt{L \ar[d]_{n}&& K \ar[d]_{k}\ar[ll]_{l} \ar[r]^{r} & R \ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_1} \ar[dr]|(.3)\hole_{h} && L' \ar@/_.35cm/[dlll]^(.4){i_2} \ar[dl]|(.3)\hole^{n'}& K' \ar[d]^{k'}\ar[l]_{l'} \ar[rr]^{r'} && R' \ar[d]^{h'}\\G && \ar[ll]^{f} D \ar[rr]_{g}&& H  && \ar[ll]^{f'} D' \ar[rr]_{g'}&& T}\]
-Pulling back $g$ along $f'$, we get another diagram 
-	\[\xymatrix{&&R \ar@/_1cm/[ddrr]_(.35){i_1}|(.7)\hole \ar[dr]^{h}&& L'\ar@/^1cm/[ddll]^(.35){i_2}  \ar[dl]_{n'}\\&K\ar[dr]^{k}\ar[dl]_{l} \ar@{.>}@/_.8cm/[ddrr]^(.65){u}\ar[ur]^{r}&& H && K' \ar@{.>}@/^.8cm/[ddll]_(.65){u'}\ar[dl]_{k'}\ar[lu]_{l'} \ar[dr]^{r'}\\L \ar[dr]_{n} && D \ar[dl]|(.42)\hole_(.64){f}\ar[ur]|(.48)\hole^(.7){g}&&D' \ar[dr]|(.42)\hole^(.65){g'} \ar[ul]|(.48)\hole_(.7){f'}&&R'\ar[dl]^{h'}\\&G &&P\ar[ur]^(.4){p'}\ar[ul]_(.4){p}&&T}\] 
-Now, if we compute we get
-\[\begin{split}
-	f'\circ i_1\circ r &= h\circ r \\&= g\circ k
-\end{split}\qquad \begin{split}
-g\circ i_2\circ l' &= n'\circ l'\\&=f'\circ k'
-\end{split}\]
-Therefore the two dotted arrows $u\colon K\to P$ and $u'\colon K'\to P$ exist. We have to show that they satisfy the two conditions in the definition of a filler. 
-\begin{enumerate}
-	\item  By construction $p\circ u = k$ and $p'\circ u'=k'$. Since $(\X, \R)$ is linear, then $r'\colon K'\to R'$ belongs to $\mathcal{M}$, thus it admits a pushout along $u'\colon K'\to P$, as wanted.
-	\item Take the following two rectangles
-\[\xymatrix{K \ar@/^.4cm/[rr]^{u}\ar[d]_{r}\ar[r]_{u} &P\ar[d]^{p'} \ar[r]_{p} & D \ar[d]^{f}&K' \ar@/^.4cm/[rr]^{k'}\ar[d]_{l'}\ar[r]_{u'} &P\ar[d]^{p} \ar[r]_{p'} & D' \ar[d]^{f'}\\  R \ar@/_.4cm/[rr]_{h} \ar[r]^{i_1}&D' \ar[r]^{f'} & H&L' \ar@/_.4cm/[rr]_{n'} \ar[r]^{i_2}&D \ar[r]^{g} & H}\]
-	By hypothesis $r$ and $l'$ are in $\mathcal{M}$, thus $f'$ and $g$ belong to it too. The first point of \Cref{lem:popb}  yields the thesis. \qedhere 
-\end{enumerate}
-\end{proof}
-
-\begin{remark} \cite{baldan2011adhesivity} identifies a large class of (quasi)adhesive categories with the property that every left linear DPO-rewriting system on them is tame. We adapt these results to our context in \Cref{app:fill}. 
-\end{remark}
-\begin{definition}[Very tameneness]
-	\todo{very tame}
-\end{definition}
-
-\begin{remark}
-	\todo{tutto coincide con tutto}
-\end{remark}
-
-
-We are now going to justify the choice of the name for the relation $\updownarrow$, showing that two switchable direct derivations $\dder{D}$ and $\dder{D'}$ can be actually switched. 
-
-Let $(i_1, i_2)$ be a good independence pair and consider the following diagram: the solid part exists by the definition of a filler, while the two new dotted arrows $v\colon Q\to J$ and $v'\colon Q'\to J$ are obtained  as the pushout of $q\colon P\to Q$, which is in $\mathcal{M}$ by \Cref{rem:deco}, along $q'\colon P\to Q'$.
-	\[\xymatrix{&&R \ar@/_1cm/[ddrr]_(.35){i_1}|(.7)\hole \ar[dr]^{h}&& L'\ar@/^1cm/[ddll]^(.35){i_2}  \ar[dl]_{n'}\\&K\ar[dr]^{k}\ar[dl]_{l} \ar@/_.8cm/[ddrr]^(.65){u}\ar[ur]^{r}&& H && K' \ar@/^.8cm/[ddll]_(.65){u'}\ar[dl]_{k'}\ar[lu]_{l'} \ar[dr]^{r'}\\L \ar[dr]_{n} \ar@/_.8cm/[ddrr]_{j}&& D \ar[dl]|(.42)\hole_(.64){f}\ar[ur]|(.48)\hole^(.7){g}&&D' \ar[dr]|(.42)\hole^(.65){g'} \ar[ul]|(.48)\hole_(.7){f'}&&R'\ar@/^.8cm/[ddll]^{j'}\ar[dl]^{h'}\\&G &&P\ar[dr]^{q'} \ar[dl]_{q}\ar[ur]^(.4){p'}\ar[ul]_(.4){p}&&T\\&&Q \ar[ul]_{s}\ar@{.>}[dr]_{v} &&Q'\ar[ur]^{t} \ar@{.>}[dl]^{v'}\\&&&J}\]
-	
-	Since, by \Cref{rem:deco}, all the curved rectangles are pushouts, as well as the bottom square, we can state the following definition.
-\begin{definition}\label{def:switch}
-	Let $(\X,R)$ be a left-linear DPO-rewriting system and suppose that $\X$ is $\mathcal{M}$-adhesive. Given a good independence pair $(i_1, i_2)$ between $\dder{D}\colon G\Mapsto H$ and $\dder{D}'\colon H\Mapsto T$, if $(u,u')$ is the associate filler, we define other two direct derivations $S_{i_1,i_2}(\dder{D}')\colon G\Mapsto J$ and $S_{i_1,i_2}(\dder{D})\colon J\Mapsto T$ as follows:
-		\[\xymatrix{L' \ar[d]_{f\circ i_2}& \ar[l]_{l'}K'\ar[d]_{q\circ u'} \ar[r]^{r'} & R' \ar[d]_{v'\circ j'} & L \ar[d]_{v\circ j} & \ar[l]_{l}K \ar[d]^{q'\circ u}\ar[r]^{r}& R \ar[d]^{g'\circ i_1}\\
-		G &\ar[l]^{s} Q \ar[r]_{v}& J&J & \ar[l]^{v'}Q' \ar[r]_{t} & T}\]
-	The \emph{switching} $\sder{D}{D'}$ of $\dder{D}$ and $\dder{D'}$ is the derivation $S_{i_1,i_2}(\dder{D}')\cdot S_{i_1,i_2}(\dder{D})$.
-\end{definition}
-
-\begin{remark}\label{rem:indip}Notice that $(j', j)$ is an independence pair for $S_{i_1,i_2}(\dder{D}')$ and $S_{i_1,i_2}(\dder{D})$. This is witnessed by the following diagram, commutative by construction.
-	\[\xymatrix@C=15pt{L' \ar[d]_{f\circ i_2}&& K' \ar[d]_{q\circ u'}\ar[ll]_{l'} \ar[r]^{r'} & R' \ar@/^.35cm/[drrr]_(.4){j'}|(.285)\hole \ar[dr]|(.28)\hole_{v'\circ j'} && L \ar@/_.35cm/[dlll]^(.4){j} \ar[dl]|(.28)\hole^{v\circ j}& K \ar[d]^{q'\circ u}\ar[l]_{l} \ar[rr]^{r} && R \ar[d]^{g'\circ i_1}\\G && \ar[ll]^{s} Q \ar[rr]_{v}&& J  && \ar[ll]^{v'} Q' \ar[rr]_{t}&& T}\]
-\end{remark} 
- 
-\begin{theorem}[Local Church-Rosser Theorem]\label{prop:fil}Let $(\X, \R)$ be a left-linear DPO-rewriting system with $\X$ an $\mathcal{M}$-adhesive category. Then every filler between two direct derivations $\dder{D}\colon G\Mapsto H$ and $\dder{D}'\colon H\Mapsto T$ is a filler also for $S_{u,u'}(\dder{D'})\colon G\Mapsto J$ and $S_{u,u'}(\dder{D})\colon J\Mapsto H$. In particular, if $\dder{D}\updownarrow \dder{D}'$, then $S_{u,u'}(\dder{D}')\updownarrow S_{u,u'}(\dder{D})$.
-\end{theorem}
-\begin{proof}By definition of filler, we have two pushout square
-		\[\xymatrix{K \ar[r]^{l} \ar[d]_{u}& L \ar[d]^{j} & K' \ar[r]^{r'} \ar[d]_{u'} & R' \ar[d]^{j'}\\ P \ar[r]_q & Q & P \ar[r]_{q'} & Q'}\]
-		In particular, $q$ is an arrow of $\mathcal{M}$, therefore, by \Cref{prop:pbpoad}, the square below is a pullback.
-		\[\xymatrix{P \ar[r]^{q} \ar[d]_{q'}& Q\ar[d]^{v}\\ Q' \ar[r]_{v'} & J}\]
-		To prove our claim, it is now enough to show that $(u',u)$ is a filler between $S_{u,u'}(\dder{D}')$ and $S_{u, u'}(\dder{D})$.
-		\begin{enumerate}
-			\item As for the first  point of \Cref{def:filler}, the only non obvious part is the existence of a pushout of $u$ along $r$. But, since $(u,u')$ is a filler between $\dder{D}$ and $\dder{D'}$, we know that such a pushout exists: it is enough to take the square
-			\[\xymatrix{K \ar[r]^{r} \ar[d]_{u}& R \ar[d]^{i_1} \\P \ar[r]_{p'}& D'}\]
-			\item For the second point, notice that the arrows $j$ and $j'$ fit in the squares
-	\[\xymatrix{K' \ar[r]^{r'} \ar[d]_{u'}& R' \ar[d]^{j'} &K \ar[r]^{l} \ar[d]_{u}& L\ar[d]^{j} \\P \ar[r]_{q}& Q& P \ar[r]_{q'} & Q'}\] 
-		\end{enumerate}
-		
-By \Cref{rem:indip} we know that $(j,j')$ is an independence pair. The results above now implies that $(j,j')$ is good.
-\end{proof}
-
-The previous remark allow us to further switch the direct derivation $S_{i_1,i_2}(\dder{D})$ and $S_{i_2,i_2}(\dder{D}')$. The following lemma guarantees us that, in this way, we get back a derivation which is abstraction equivalent to $\dder{D}\cdot \dder{D}'$.
-
-\todo{introdurre decorazione}
-
-\begin{lemma}\label{lem:rev}
-	Let $\dder{D}\colon G\Mapsto H$ and $\dder{D}'\colon H\Mapsto T$ be two direct derivations in a left-linear DPO-rewriting system $(\X, \R)$ and let $(i_1,i_2)$ be a good independence pair between them. Then $S_{j',j}(S_{i_1,i_2}(\dder{D}, \dder{D'}))$ is abstraction equivalent to $\dder{D}\cdot \dder{D}'$. 
-\end{lemma}
-\begin{proof}Let $(u,u')$ be the filler associated to $(i_1, i_2)$. By \Cref{prop:fil}, $(u', u)$ is a filler between $S_{i_1,i_2}(\dder{D}')$ and $S_{i_1,i_2}(\dder{D})$. Thus we have a diagram as the one below.
-		\[\xymatrix{&&R' \ar@/_1cm/[ddrr]_(.35){j'}|(.7)\hole \ar[dr]^{v'\circ j'}&& L \ar@/^1cm/[ddll]^(.35){j}  \ar[dl]_{v\circ j}\\&K'\ar[dr]^{q\circ u'}\ar[dl]_{l'} \ar@/_.8cm/[ddrr]^(.65){u'}\ar[ur]^{r'}&& J && K \ar@/^.8cm/[ddll]_(.65){u}\ar[dl]_{q'\circ u}\ar[lu]_{l} \ar[dr]^{r}\\L' \ar[dr]^{f\circ i_2} \ar@/_.8cm/[ddrr]_{c_2}&& Q \ar[dl]|(.42)\hole_(.64){s}\ar[ur]|(.48)\hole^(.7){v}&&Q' \ar[dr]|(.42)\hole_(.65){t} \ar[ul]|(.48)\hole_(.7){v'}&&R\ar@/^.8cm/[ddll]^{c_1}\ar[dl]_{g'\circ i_1}\\&G &&P\ar[dr]^{e} \ar[dl]_{e'}\ar[ur]^(.4){q'}\ar[ul]_(.4){q}&&T\\&&E' \ar[ul]_{a}\ar[dr]_{w'} &&E\ar[ur]^{b} \ar[dl]^{w}\\&&&F}\]
-	
-	Now, to ease the notation, let $S_{j',j}(S_{i_1,i_2}(\dder{D}, \dder{D'}))$ be $\dder{E}_0\cdot \dder{E}_1$, then $\dder{E}_0$ and $\dder{E}_1$ are the direct derivations given by the diagrams
-	\[\xymatrix{L \ar[d]_{s\circ j}& K\ar[l]_{l} \ar[r]^{r} \ar[d]_{e'\circ u} & R \ar[d]_{w\circ c_1} & L' \ar[d]^{w'\circ c_2}& K' \ar[d]^{e\circ u'} \ar[r]^{r'} \ar[l]_{l'}& R' \ar[d]^{t\circ j'}\\G & E' \ar[l]^{a}  \ar[r]_{w'}& F & F & E \ar[l]^{w} \ar[r]_{b} & R}\]
-	
-	Notice, moreover, that, since the squares
-	\[\xymatrix{K' \ar[d]_{u'} \ar[r]^{l'}& L' \ar[d]^{c_2} & K \ar[r]^{r}\ar[d]_{u} & R \ar[d]^{c_1}\\ P \ar[r]_{e'} & E' & P\ar[r]_e & E}\]
-	are pushouts, we have isomorphisms  $\phi'\colon D\to E'$, $\phi\colon D'\to E$ making the following diagrams commutative.
-	\[\xymatrix{K' \ar[d]_{u'} \ar[r]^{l'}& L'\ar[d]^{i_2}  \ar@/^.2cm/[dr]^{c_2} & &K \ar[r]^{r}\ar[d]_{u} & R \ar[d]^{i_1} \ar@/^.2cm/[dr]^{c_1}\\ P \ar@/_.4cm/[rr]_{e'}\ar[r]^{p} & D\ar@{.>}[r]^{\phi'} &E'& P\ar@/_.4cm/[rr]_{e}\ar[r]^{p'} & D'\ar@{.>}[r]^{\phi}& E}\]
-	In particular, we have
-	\[\begin{split}
-		a\circ \phi' \circ i_2&=a \circ c_2\\&=f\circ i_2\\&
-	\end{split}\quad \begin{split}
-	a\circ \phi' \circ p'&=a \circ e'\\&=s\circ q\\&=f\circ p
-	\end{split}\quad \begin{split}
-	b\circ \phi \circ i_1&=b \circ c_1\\&=g'\circ i_1\\&
-	\end{split}\quad \begin{split}
-	b\circ \phi \circ p&=b \circ e\\&=t\circ q'\\&=g'\circ p'
-	\end{split} \]
-	and this shows that 
-	\[a\circ \phi'=f \qquad b\circ \phi = g'\]
-	Now, since $\phi'$ is an isomorphism and by \Cref{prop:pbpoad}, the two halves of the rectangle
-	\[\xymatrix{K\ar[r]^{\id{K}} \ar[d]_{(\phi')^{-1} \circ e' \circ u}&K\ar[d]_{e'\circ u} \ar[r]^{l} & L \ar[d]^{s\circ j} \\D\ar[r]_{\phi'} & E' \ar[r]_{a}&G}\]
-	are pullbacks. Thus the whole diagram is a pullback. But, by construction $s\circ j =n$ and we have already proved that $a\circ \phi'=f$. We then conclude that ther exists an isomorphism $\zeta\colon K\to K$ which makes the diagram below commutative
-	\[\xymatrix{K \ar@{.>}[r]_{\zeta}\ar@/^.4cm/[rr]^{l}  \ar@/_.5cm/[dr]_{(\phi')^{-1} \circ e' \circ u}& K \ar[r]_{l} \ar[d]_{n} & L \ar[d]^{n} \\ & D \ar[r]_{f} & G}\]
-	The commutativity of the upper triangle entails $l\circ \zeta=l$. Since $l$ is an element of $\mathcal{M}$  we can deduce that. $\zeta=\id{K}$. From this, we conclude that
-	\[e'\circ u = \phi' \circ k\]
-	
-	As a next step, notice the existence of $\phi$ and $\phi'$, together with \Cref{rem:deco}, entails  the existence of a third isomorphism $\psi\colon H\to F$ fitting in the diagram below.
-	\[\xymatrix{P  \ar[d]^{p'}\ar@/_.4cm/[dd]_{e}\ar@/^.4cm/[rr]^{e'} \ar[r]_{p} & D \ar[d]^{g} \ar[r]_{\phi'} & E'\ar[d]^{w'}\\D' \ar[d]^{\phi} \ar[r]_{f'} & H\ar@{.>}[r]^{\psi} & F \\E \ar@/_.4cm/[urr]_{w}}\]
-Now, if we compute, we get
-\begin{align*}
-	\psi^{-1}\circ w\circ c_1&=f'\circ \phi^{-1}\circ c_1\\&=f'\circ i_1\\&=h
-\end{align*}
-	Summing up, we have just build the diagram below.	
-	\[\xymatrix@C=40pt@R=10pt{ &&&R\ar[dddr]^{w\circ c_1} \ar[dddl]_{h}|(.67)\hole\\&&K \ar[dl]_{l} \ar[ur]^{r}\ar[dddr]^{e'\circ u} \ar[dddl]_{k}|(.67)\hole\\&L\ar[dddr]^(.4){s\circ j} \ar[dddl]_(.4){n}\\&&H \ar[rr]^{\psi} && F\\ & D \ar[ur]_(.7){g} \ar[rr]^{\phi'} \ar[dl]_{f}&& E' \ar[ur]_{w'}\ar[dl]^{a}\\ G \ar[rr]_{\id{G}} && G}\]
-
-Next, we already know that
-\[t\circ j'= h' \quad w\circ \phi = \psi \circ f' \quad b\circ \phi = g'\]
-If we compute further, we also get
-\[\begin{split}
-	\psi^{-1}\circ w'\circ c_2 &= g\circ (\phi')^{-1}\circ c_2\\&=g\circ i_2\\&=n'
-\end{split}\qquad \begin{split}
-\phi^{-1}\circ e \circ u'&=p'\circ u'\\&= k'\\&
-\end{split}\]
-These equations allow us to conclude that the following diagram commutes.
-	\[\xymatrix@C=40pt@R=10pt{ &&&R'\ar[dddr]^{t\circ j'} \ar[dddl]_{h'}|(.67)\hole\\&&K' \ar[dl]_{l'} \ar[ur]^{r}\ar[dddr]^{e\circ u'} \ar[dddl]_{k}|(.67)\hole\\&L'\ar[dddr]^(.4){w'\circ c_2} \ar[dddl]_(.4){n'}\\&&T \ar[rr]^{\id{T}} && T\\ & D' \ar[ur]_(.7){g'} \ar[rr]^{\phi} \ar[dl]_{f'}&& E \ar[ur]_{b}\ar[dl]^{w}\\ H \ar[rr]_{\psi} && F}\]
-
-Putting together the two diagrams above we get the thesis. \qedhere 
-\end{proof}
-
-
-Our next step is to relate derivations which are equal ``up to switching''.
-
-\begin{definition}
-  \label{de:switchable}
-  Let $(\X, \R)$ be a left-linear DPO-rewriting system. Given two
-  direct derivations $\dder{D}\colon G\Mapsto H$ and
-  $\dder{D}'\colon H\Mapsto T$, we say that $\dder{D}$ and $\dder{D}'$
-  are \emph{properly switchable} if $\dder{D}\updownarrow_! \dder{D'}$
-  and $S_{i_1,i_2}(\dder{D}')\updownarrow_!S_{i_1,i_2}(\dder{D})$,
-  where $(i_2,i_2)$ is a good independence pair betwwen $\dder{D}$ and
-  $\dder{D}'$. In such a case, we will write
-  $\dder{D}\Updownarrow\dder{D}'$.
-	
-Take two derivations $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and $\der{D}'=\{\dder{D}'_{i}\}_{i=0}^n$ with the same length and between the same $G_0$ and $G_n$. We say that $\der{D}'$ is \emph{obtained by a proper switch from $\der{D}$} if there exists an index $j < n$ such that
-	\begin{enumerate}
-\item for every $i\notin \{j, j+1\} $, $\dder{D}_i=\dder{D}'_i$;
-\item $\dder{D}_j \Updownarrow \dder{D}_{j+1}$;		
-\item $\dder{D}'_j\cdot \dder{D}'_{j+1} = S_{i_1,i_2}(\dder{D}, \dder{D}')$.
-	\end{enumerate}
-	In such a case, we will write $\der{D}\rightsquigarrow_j \der{D}'$ to denote that $\der{D}'$ is obtained by a proper switch between $\dder{D}_j$ and $\dder{D}_{j+1}$. 
-	
-	We will say that $\der{D}$ is \emph{switch equivalent} to $\der{D}'$, if there exists a sequence, $\{\der{D}_i\}_{i=0}^n$ of derivations such that
-	\begin{enumerate}
-		\item $\der{D}_0=\der{D}$ and $\der{D}_n=\der{D}'$;
-		\item for every $i< n$, $\der{D}_{i+1}$ is obtained by a proper switch from $\der{D}_i$.
-	\end{enumerate}
-	
-	We will write $\der{D} \equiv^s \der{D}'$ to denote that $\der{D}$ is switch equivalent to $\der{D}'$.
-\end{definition}
+\begin{figure}
+	\begin{subfigure}{0.2\textwidth}
+		{\small
+			\xymatrix@C=16pt@R=1pt{
+				& 0 \ar@{-}[dd] \ar@{-}[ddddddl] \ar@{-}[ddddddr] &  \\
+				&  & \\
+				& 1 \ar@{-}[dd] \ar@{-}[ddddl]  \ar@{-}[ddddr]   &  \\
+				&  & \\
+				& 2 \ar@{.}[d] \ar@{-}[ddl]   \ar@{-}[ddr]     &  \\
+				&  \ar@{.}[dl]   \ar@{.}[dr] & \\
+				b \ar@{-}[dr] & & c \ar@{-}[dl]\\
+				& a 
+			}
+		}
+		\caption{Poset $(P, \sqsubseteq)$}
+		\label{fig:diff1:P}
+	\end{subfigure}
+	\begin{subfigure}{0.58\textwidth}
+		\xymatrix@C=20pt{
+			a \ar[d]_{\sqsubseteq} & a \ar[d]_{\sqsubseteq} \ar@{>->}[l]_{\id{a}} \ar[r]^{\sqsubseteq} & 
+			0 \ar@{>->}@/^.35cm/[drrr]|(.3)\hole^(.75){\id{0}}
+			\ar@{>->}[dr]|(.3)\hole_{\id{0}} &  &
+			a \ar@/_.35cm/[dlll]_(.75){\sqsubseteq}
+			\ar[dl]|(.3)\hole^{\sqsubseteq} & 
+			a \ar[d]^{\sqsubseteq}\ar@{>->}[l]_{\id{a}} \ar[r]^{\sqsubseteq} &
+			b \ar[d]_{\sqsubseteq}\\
+			c &
+			\ar@{>->}[l]^{\id{c}} c \ar[rr]_{\sqsubseteq}& &  0 &&
+			\ar@{>->}[ll]^{\id{0}} 0 \ar@{>->}[r]_{\id{0}}& 0
+		}
+		\caption{Two rewriting steps}
+		\label{fig:diff1:rew}
+	\end{subfigure}
+	\begin{subfigure}{0.20\textwidth}
+		\xymatrix@C=20pt{a \ar[d]^{\sqsubseteq}& a
+			\ar[d]^{\sqsubseteq}\ar@{>->}[l]_{\id{a}} \ar[r]^{\sqsubseteq} & b \\c & c
+			\ar@{>->}[l]^{\id{c}}
+		}
+		\caption{No rewriting step}
+		\label{ex:diff1:no-step}
+	\end{subfigure}
+	\caption{Sequential independence does not imply switchability}
+	\label{fig:diff1} 
+\end{figure}
 
 
 \begin{example}
-	\todo{il punto due sopra è necessario}
+	\label{ex:diff1}
+	Consider the poset $(P, \sqsubseteq)$ in Fig.~\ref{fig:diff1:P} where
+	$P = \mathbb{N} \cup \{a,b,c\}$ and $\sqsubseteq$ is defined by
+	$m \sqsubseteq n$ if $m \geq n$, $a \sqsubseteq x$ for all $x \in P$
+	and $b, c \sqsubseteq n$ for all $n \in \mathbb{N}$.
+	%
+	Let $\X$ be the  
+	category associated with this order, which by \Cref{rem:iso} is
+	$\mathsf{I(\X)}$-adhesive. 
+	%
+	Consider a rewriting
+	system whose set of rules contains the following 
+	\[\xymatrix{a & a \ar[r]^{\sqsubseteq} \ar@{>->}[l]_{\id{a}} & 0 & a & a
+		\ar[r]^{\sqsubseteq} \ar@{>->}[l]_{\id{a}} & b }\]
+	We can then consider the  derivation
+	$\der{D}=\{\dder{D}_i\}_{i=0}^1$ in Fig.~\ref{fig:diff1:rew}.
+	% \[
+	%   \xymatrix@C=30pt{a \ar[d]_{m_0}&& a \ar[d]_{k_0}\ar[ll]_{\id{a}}
+		%     \ar[r]^{(a,0)} & 0 \ar@/^.35cm/[drrr]|(.315)\hole_(.45){\id{0}}
+		%     \ar[dr]|(.3)\hole_{\id{0}} && a \ar@/_.35cm/[dlll]^(.45){(a,c)}
+		%     \ar[dl]|(.3)\hole^{(a,0)}& a \ar[d]^{(a,0)}\ar@{>->}[l]_{\id{a}}
+		%     \ar[rr]^{(a,b)} && b \ar[d]^{(b,0)}\\c &&
+		%     \ar@{>->}[ll]^{\id{c}} c \ar[rr]_{(c,0)}&& 0 &&
+		%     \ar@{>->}[ll]^{\id{0}} 0 \ar[rr]_{\id{0}}&& 0}\]
+	%
+	Note that the two direct derivations are sequential
+	independent. However there is no switch since the rule applied by
+	$\dder{D}_1$ cannot be applied to $c$. In fact, there is a unique morphism
+	$a\to c$, yielding the diagram in Fig.~\ref{ex:diff1:no-step}. But $b$ and $c$
+	do not have a supremum in the poset underlying $\X$, thus the arrows
+	$a\to b$ and $a\to c$ do not have a
+	pushout. Hence we do not get a direct derivation from $c$.
 \end{example}
 
-We can now prove some properties of switch equivalence.
-\begin{lemma}\todo{Def. 3 della bozza di Andrea }Let $(\X, \R)$ be a left-linear DPO-rewriting system. Then the following hold true: 
-	\begin{enumerate}
-		\item 
-		\item 
-		\item 
-		\item 
-	\end{enumerate}
-\end{lemma}
-\begin{proof}\begin{enumerate}
-		\item 
-		\item 
-		\item 
-		\item \qedhere 
-	\end{enumerate}
-\end{proof}
+The conditions guaranteeing switchability are inspired
+by the notion of \emph{canonical filler}
+\cite{heindel2009category}.
 
+\begin{definition}[Strong independence pair]
+	\label{def:filler}
+	Let $\X$ be an $\mathcal{M}$-adhesive category 
+	and $(\X, \R)$ a left-linear rewriting system. 
+	Let also $(i_0, i_1)$ be an independence pair between two direct
+	derivations $\dder{D}_0$, $\dder{D}_1$
+	as in the solid part of the diagram below
+	\[
+	\xymatrix@C=18pt@R=17pt{L_0 \ar[d]_{m_0}&& K_0
+		\ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} \ar@{.>}@/^.20cm/[ddrr]|(.32)\hole|(.57)\hole_(.7){u_0} & R_0
+		\ar@/^.35cm/[drrr]|(.3)\hole^(.2){i_0} \ar[dr]|(.3)\hole_{h_0}
+		&& L_1 \ar@/_.35cm/[dlll]_(.2){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1
+		\ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar[rr]^{r_1} \ar@{.>}@/_.20cm/[ddll]|(.32)\hole|(.57)\hole^(.7){u_1} && R_1 \ar[d]^{h_1} \\
+		%
+		G_0 &&
+		\ar@{>->}[ll]^{f_0} D_0 \ar[rr]_(.3){g_0}&& G_1 &&
+		\ar@{>->}[ll]^(.3){f_1} D_1 \ar[rr]_{g_1}&& G_2\\
+		%
+		& & & & P \ar@/^.3cm/@{>.>}[ull]^{p_0} \ar@/_.3cm/@{.>}[urr]_{p_1}
+	}
+	\]
+	
+	Consider the pullback of $g_0$ and $f_1$, which yields $p_i : P \to D_i$
+	for $i \in \{0,1\}$ and the mediating arrows $u_i\colon K_i\to P$ 
+	for $i \in \{0,1\}$ 
+	into the pullback object (see \Cref{prop:tec} for details). 
+	We say that $(i_0, i_1)$ is a \emph{strong independence pair} if
+	the first two squares depicted  
+	below are pushouts and if the pushout of $r_1 : K_1 \to R_1$ and $u_1 : K_1 \to P$ exists
+	\[
+	\xymatrix@R=16pt{
+		K_0 \ar[r]^{r_0} \ar[d]_{u_0}& R_0 \ar[d]^{i_0} & K_1
+		\ar@{>->}[r]^{l_1} \ar[d]_{u_1}& L_1 \ar[d]^{i_1}
+		&K_1 \ar[r]^{r_1} \ar[d]_{u_1}& R_1\ar@{.>}[d]^{j_0}
+		\\
+		P \ar[r]_{p_1} & D_1 &P \ar[r]_{p_0} & D_0
+		& P \ar@{.>}[r]_{q_1} & Q_1
+	}
+	\]
+\end{definition}
 
-\begin{example}\todo{esempio sul perché weakly independence non è invertibile}
+We can now prove a Local Church-Rosser Theorem for strong independence pairs.
+
+\begin{proposition}	\label{pr:church}
+	Let $(i_0, i_1)$ be a strong independence pair
+	between $\dder{D}_0$ and $\dder{D}_1$. Then $\dder{D}_0$ and
+	$\dder{D}_1$ are switchable.
+\end{proposition}
+
+The correspondence between sequential independence and switchability
+is fundamental. We name the class of rewriting systems where this property holds.
+
+\begin{definition}[Strong enforcing rewriting systems]
+	A left-linear rewriting system is \emph{strong enforcing} if
+	every independence pair between two direct derivations is strong.
+\end{definition}
+
+We can identify a large class of adhesive categories such that all
+left-linear rewriting systems over such categories are strong
+enforcing. This class includes $\cat{Set}$ and it is closed
+under comma and functor category constructions.  As such, it includes
+essentially all categories (e.g., presheaves over set) that are
+typically considered for modelling purposes. Notably, it contains the
+category $\cat{Graph}$ of directed graphs.
+This is a natural generalisation from adhesive to $\mathcal{M}$-adhesive categories of a class studied in \cite{baldan2011adhesivity} (see \Cref{app:fill} for details).
+
+Still, there are $\mathcal{M}$-adhesive rewriting systems that are not strong enforcing.
+
+\begin{example}[Non-strong enforcing left-linear rewriting system]
+	\label{ex:diff2}
+	In light of \Cref{pr:church}, \Cref{ex:diff1} provides an example of
+	an independence pair that is not strong. This gives an example of a
+	left-linear rewriting system in a $\mathcal{M}$-adhesive category that is quite
+	pathological since $\mathcal{M}=\mathsf{I(\X)}$. However, this is expected, 
+	since all natural examples seem to belong to the well-behaved class mentioned above. 
 \end{example}
 
+\begin{remark}
+	By \Cref{pr:church} the existence of a strong independence pair
+	entails switchability, which in turn entails sequential
+	independence by construction. Strong enforcing rewriting systems are exactly
+	those rewriting systems in which these three notions coincide.
+\end{remark}
+
+Consistency with the theory of linear rewriting systems is ensured by the fact that all linear rewriting systems are strong enforcing (see \cref{prop:equi}).
+
+\subsection{Well-switching rewriting systems}
+\label{subsec:verytame}
+
+Even if we work in strong enforcing rewriting systems where sequential
+independence ensures switchability, when dealing with left-linear
+rules there is a further, possibly more serious issue, 
+namely that there can be more than one independence pair between
+the same derivations (cfr. \Cref{rem:uni}). This hinders the very idea of using
+sequential independence as a basis of a theory of concurrency for
+rewriting systems, since exchanges performed using different
+independence pairs may lead to derivations that are not abstraction
+equivalent, thus equating computations that should
+definitively be taken apart, as shown in the example below.
+
+\begin{example}
+	Consider the derivation $\der{E}$ from Example~\ref{ex:seq-ind} (see Fig.~\ref{fi:derE}).
+	The last two steps are sequential independent, but one easily sees
+	that there are two distinct independence pairs, as the left-hand side
+	of $\rho_1$ can be mapped either to node $1$ or to node
+	$2$ in $D_1'$. Correspondingly, there
+	are two switches of $\der{E}$: one is the derivation $\der{D}$ in
+	Fig.~\ref{fi:derD} we started from, the other is the derivation
+	$\der{D}'$ in Fig.~\ref{fi:derD1}.
+	
+	\begin{figure}
+%		\input{Figure/derD1.tex}
+		\caption{The derivation $\der{D}'$.}
+		\label{fi:derD1}
+	\end{figure}
+	
+	As a consequence, $\der{D}$ and $\der{D}'$ would be switch
+	equivalent, but this is not acceptable when viewing equivalence
+	classes of derivations as concurrent computations: in $\der{D}$ the
+	first two steps are not sequential independent, while in $\der{D}'$
+	they are, intuitively because in $\der{D}$ rule $\rho_1$ uses the
+	node generated by $\rho_0$ (adding a self-loop to it), while in
+	$\der{D}'$ rule $\rho_1$ uses the node that was in the initial
+	graph. Also observe that the graphs $G_2$ and $G_2'$ produced after
+	two steps in $\der{D}$ and $\der{D'}$ are not isomorphic. From the
+	technical point of view, the property of being switch equivalent is
+	not closed by prefix, and this prevents deriving a sensible
+	concurrent semantics: In fact
+	$\der{D} = \dder{D}_0\cdot \dder{D}_1 \cdot \dder{D}_2$ and
+	$\der{D}' = \dder{D}_0'\cdot \dder{D}_1' \cdot \dder{D}_2'$ are
+	switch equivalent, while if we consider the first two steps,
+	derivations $\dder{D}_0 \cdot \dder{D}_1$ and
+	$\dder{D}_0' \cdot \dder{D}_1'$ are not switch equivalent.
+\end{example} 
+
+Moreover, limiting sequential independence to the case in which the independence
+	pair is unique (as suggested in~\cite{baldan2017domains}) brings to the same problems.
+
+For these reasons we believe a theory of rewriting for
+left-linear rules in adhesive categories should be developed for
+systems where the uniqueness of the independence pair is ensured.
+
+\begin{definition}[Well-switching rewriting systems]
+	A left-linear rewriting system $(\X, \R)$ is \emph{well-switching} if it is strong enforcing and, for every derivation $\der{D}:=\{\dder{D}_{i}\}_{i=0}^1$, there is at most one independence pair between $\dder{D}_0$ and $\dder{D}_1$.
+\end{definition}
 
 
-\begin{lemma}\label{lem:consperm} Let $(\X, \R)$ be a left-linear DPO-rewriting system $(\X, \R)$. Then the following hold true
+Clearly, linear rewriting systems are well-switching (see Proposition~\ref{pr:weak}).
+Moreover, we next observe that various classes of rewriting systems,
+comprising all the ones used in modelling the applications to the
+encoding of process calculi or of bio and chemical systems mentioned
+in the introduction, are actually well-switching.
+
+\subsubsection{Some examples of well-switching rewriting systems}
+
+A first class consists of those rewriting systems over
+possibly hierarchical graphical structures obtained as algebras of
+suitable signatures where rules are constrained not to merge elements
+of top level sorts in the hierarchy (for graphs, nodes can be
+merged while edges cannot). The idea here is to consider graph
+structures as presheaves on categories in which there are objects that play 
+the role of \emph{roots}, i.e.~objects that are not the codomain of 
+any arrow besides the identity. 
+
+\begin{definition}[Root-preserving graphical rewriting systems]
+	Let $\X$ be a category, an object $X\in \X$ is a \emph{root} if the only arrow with codomain $X$ is $\id{X}$.
+	The category $\gph{X}$ of \emph{$\X$-graphs} is the category
+	$\Set^{\X}$. A
+	\emph{root-preserving graphical rewriting system} is a left-linear
+	rewriting system $(\gph{X}, \R)$ such that for each rule
+	$(l\colon K\to L, r\colon K\to R)$ in $\R$ it holds
 	\begin{enumerate}
-		\item If $\dder{D}$ and $\dder{D'}$ are two direct derivations such that $\dder{D}\updownarrow \dder{D'}$, then for every filler $(u,u')$ between them, the function
-		\[\tau\colon 2\to2 \qquad x \mapsto \begin{cases}
-			1 & x=0\\
-			0 & x=1
-		\end{cases}\]
-		defines a consistent permutation between $\dder{D}\cdot \dder{D}'$ and $\sder{D}{D'}$;
-		\item if $\der{D}$ and $\der{D}'$ are two switch equivalent derivation, then there exists a consistent permutation between them.
+		\item for every $X\in \X$ and $x\in L(X)$, there exists a root $Y$
+		and an arrow $f\colon Y\to X$ such that $x$ belongs to the image of
+		$L(f)\colon L(Y)\to L(X)$;
+		\item $r\colon K\to R$ is mono on the roots, i.e.~for every root $X\in \X$ the component $r_X:K(X)\to R(X)$ is injective.
 	\end{enumerate}
+\end{definition}
+
+For instance, the category $\cat{Graph}$ can be obtained
+by taking as $\X$ the category generated by $E \rightrightarrows V$. In this case $E$ is the only root, hence, condition $1$ asks that in the left-hand side of each rule
+there are no isolated nodes, while condition $2$ asks that the
+morphism $r: K \to R$ is injective on edges, i.e.~it can only merge nodes.
+
+\begin{lemma}{lemma}{lemVTame}
+	\label{bono}
+	All root-preserving graphical rewriting systems are well-switching.
 \end{lemma}
-\begin{proof}
-	\begin{enumerate}
-		\item 
-		\item \qedhere 
-	\end{enumerate}
-\end{proof}
- This, together with ???
-\begin{corollary}
-	\todo{unicità}
-\end{corollary}
 
-\begin{example}\label{ex:contro}\todo{permutazione consistente non implica scambiabilità}
+Another interesting class of well-switching rewriting systems is given by e-graphs.
+
+\begin{example}[E-graphs]
+	Consider the category $\cat{EGraphs}$, where objects are (directed)
+	graphs endowed with an equivalence over nodes, and arrows are graph
+	morphisms that preserve the equivalence, as considered
+	in~\cite{BaldanGM06}, closely related to e-graphs~\cite{WNW:egg}. 
+	Formally, $\cat{EGraphs}$ can be seen as the
+	subcategory of the presheaf
+	$[E \rightrightarrows V \to Q, \cat{Set}]$ where objects are
+	constrained to have the component $V \to Q$ surjective. 
+	
+	Explicitly, an
+	e-graph $G$ is a triple $\langle s_G, t_G, q_G \rangle$ where
+	$s_G, t_G: E_G \rightrightarrows V_G$ provides the graphical
+	structure, while the surjective function $q_G : V_G \to Q_G$ maps
+	each node to the corresponding equivalence class. 
+	Notice that the inclusion functor into  $[E \rightrightarrows V \to Q, \cat{Set}]$ 
+	creates pullbacks and pushouts \cite{mac2013categories}, so that they are computed component-wise.
+	
+	A morphism in $\cat{EGraph}$ is mono if the components over $E$
+	and $V$ are mono, i.e.~if it is mono as a morphism in
+	$\cat{Graph}$. It is regular mono if also the component on
+	$Q$ is mono, i.e.~if it reflects equivalence classes besides
+	preserving them. This characterisation of regular monos and the fact that pullbacks and pushouts are computed component-wise allows us to prove quasi-adhesivity of $\cat{EGraphs}$ at once. Moreover, one can deduce that every rewriting system $(\X, \R)$ that is left-linear with respect to $\reg(\cat{EGraphs})$ is strong enforcing: this is done exploiting again the inclusion functor into $[E \rightrightarrows V \to Q, \cat{Set}]$.
+	
+	Left-linear rewriting systems with respect to $\reg(\cat{EGraphs})$ are well-switching. They have been used in~\cite{BaldanGM06} for the graphical implementation of nominal calculi, where,
+	differently from~\cite{Gad07}, as a result of name passing the received name is not merged with a local one, but put in the same equivalence class, better tracing the causal dependencies among reductions.
 \end{example}
 
 
@@ -803,7 +777,7 @@ We can now prove some properties of switch equivalence.
 
 
 \todo{ci sono un sacco di sistemi very tame}
-\subsection{Switch equivalence}
+\subsection{Canonical switching sequences}
 \todo{intro}
 
 \subsubsection{The $3$-steps lemmas} 
@@ -1068,11 +1042,10 @@ USO IL PRIMO LEMMA DEI TRE PASSI:
 
 
 
+\subsection{Switch equivalence and consistent permutations}
 
+\section{Concatenable traces}
 
-
-
-\subsection{Concatenable traces}
 \begin{lemma}
 	\todo{abstract equivalence and switch }
 \end{lemma}
