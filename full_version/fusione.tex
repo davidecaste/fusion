@@ -52,11 +52,34 @@
 \usepackage{pgf}
 \usepackage{tikz}
 \usepackage{tikz-cd}
-\usetikzlibrary{arrows,shapes,snakes,automata,backgrounds,petri,fit,positioning}
-\tikzstyle{node}=[circle, draw=black, minimum size=1mm]
+\usetikzlibrary{arrows,shapes,snakes,automata,backgrounds,petri,fit,positioning,calc}
+\tikzstyle{node}=[circle, draw=black, minimum size=1mm, inner sep=1.5pt, font=\tiny]
+
 \tikzstyle{trans}=[font=\scriptsize]
 \tikzstyle{lab}=[font=\small]
+\tikzset{
+	coloredge/.style={
+		->,
+		color=red
+		%densely dotted
+	}
+}
 
+\tikzset{
+	colorloop/.style={
+		loop,
+		color=red
+		%densely dotted
+	}
+}
+
+\tikzcdset{
+	perm/.style={
+		shorten >=-1mm, shorten <=-1mm,
+		-,
+		% dotted
+	}
+}
 
 \newcommand{\pgfBox}{
   \begin{pgfonlayer}{background} 
@@ -232,6 +255,7 @@
 \newcommand{\zunf}[0]{\ensuremath{\zunf}}
 \newcommand{\unf}[1]{\ensuremath{\mathcal{U}({#1})}}
 
+\newcommand{\gph}[1]{\textbf{\textup{{#1}-Graph}}}
 
 
 % Winskel/Droste version
@@ -421,7 +445,11 @@
 \newtheorem{example}[theorem]{Example}
 
 
-\title{Switch equivalence and weak prime domains for fusions}
+% direct shift
+\newcommand{\shift}[1]{\ensuremath{\mathrel{{\leftrightsquigarrow}_{#1}}}}
+
+
+\title{Switch equivalence and weak prime domains for left-linear DPO rewriting systems}
 \author{Paolo Baldan\and Davide Castelnovo\and  Andrea Corradini\and Fabio Gadducci}
 
 
@@ -430,22 +458,16 @@
 
 \begin{document}
 \maketitle
-
-
-
-
 \tableofcontents
-
-
-
 
 
 \include{introduzione.tex}
 
 \part{DPO rewriting and derivations}
 
- \include{leftlinear.tex}
+
 \include{permutations.tex}
+ \include{leftlinear.tex}
 
 \part{Domains for DPO rewriting}
 
