@@ -27,6 +27,52 @@ We are now going to study rewriting systems in $\mathcal{M}$-adhesive categories
 	In particular, we will use $\phi*\dder{D}$ and $\dder{D}*\psi$  to denote $\phi*\dder{D}*\id{H}$ and $\id{G}*\dder{D}*\psi$.
 \end{remark}
 
+
+
+$\mathcal{M}$-adhesivity of $\X$ guarantes the essential uniqueness of the result obtained rewriting an object, as shown by the next proposition.
+
+\begin{proposition}\label{prop:unique} Let $\X$  be a $\mathcal{M}$-adhesive category. Suppose that the two direct derivations $\mathscr{D}$ and $\mathscr{D'}$ below, with the same match and applying the same left $\mathcal{M}$-linear rule $\rho$ are given.
+	\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L \ar[d]_{m}& K \ar[d]^{k'}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h'}\\G & \ar@{>->}[l]^{f} D \ar[r]_{g}& H & G & \ar@{>->}[l]^{f'} D' \ar[r]_{g'}& H'}\]
+	Then there exist isomorphisms $t\colon D\to D'$ and $s\colon H\to H'$ as in the following diagram.
+	\[\xymatrix@C=40pt{&&D' \ar[r]^{g'} \ar@{>->}@/_.45cm/[dll]_{f'}&H'\\G & L \ar[l]_{m} & K \ar[u]_{k'} \ar[d]^{k}\ar[r]^{r} \ar@{>->}[l]_{l} &R\ar[u]^{h'} \ar[d]_{h}\\&&D\ar@{>->}@/^.45cm/[ull]^{f}\ar@/^.4cm/@{.>}[uu]^(.4){t}|\hole \ar[r]_{g}&H\ar@/_.4cm/@{.>}[uu]_{s}}\]
+\end{proposition}
+\begin{proof}
+	By construction, the pairs $(k, f)$ and $(k', f')$ are pushout complements of $l$ and $n$. Thus, the existence of the isomorphism $t\colon D\to D'$ follows from the second point of \Cref{lem:radj}. Now, computing we have
+	\begin{align*}
+		g'\circ t \circ k &= g' \circ k'\\&=h'\circ r
+	\end{align*}
+	Hence, we have the wanted $s\colon H\to H'$. To see that $s$ is an isomorphism, consider the diagram 
+	\[\xymatrix{K  \ar@/^.4cm/[rr]^{k'}\ar[d]_{r} \ar[r]_{k}& \ar[r]_{t} D \ar[d]^{g}& D' \ar[d]^{g'}\\ R \ar@/_.4cm/[rr]_{h'} \ar[r]^{h}& H \ar[r]^{s}& H'}\]
+	By hypothesis the whole rectangle and its left half are pushouts, therefore, by \Cref{lem:po1} its right square is a pushout too. The claim now follows from the fact that the pushout of an isomorphism is an isomorphism.
+\end{proof}
+
+If we look to direct derivations as transitions, it is natural to consider them as edges in a direct graph. Taking objects as vertices objects led us to the following definition \cite{heindel2009category}.
+
+\begin{definition}
+	Let $(\X, \R)$ be a left-linear DPO-rewrityng system, with $\X$ $\mathcal{M}$-adhesive. The \emph{DPO-derivation graph} of $(\X, \R)$ is the (large)  directed graph $\gpo$ having as vertices the objects of $\X$ and in which an edge between $G$ and $H$ is a direct derivation $\dder{D}\colon G\Mapsto H$.	A \emph{derivation} $\der{D}$ between two objects $G$ and $H$ is a path between them in $\gpo$. The \emph{source} and \emph{target} of $\der{D}$ are, respectively, $G$ and $H$.
+\end{definition}
+
+\begin{remark}
+	We can spell out more explicitly what  a derivation $\dder{D}$ is.  An \emph{empty derivation} starting and ending in $G$ is just $G$ itself.  A \emph{non-empty derivation} $\dder{D}$ is a sequence $\{\dder{D}_i\}_{i=0}^n$ of direct derivations such that:
+	\begin{enumerate}
+		\item for every index $i$, $\dder{D}_i$ is a direct derivation $G_i \Mapsto G_{i+1}$;
+		\item $G_0=G$ and $G_{n+1}=H$.
+	\end{enumerate}
+	
+	We will call the number $n+1$ the \emph{length} of the derivation, denoted by $\lgh(\der{D})$. We will also say that an empty derivation has length $0$. 
+	
+	Moreover,  if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then we can define an associated sequence of rules as $r(\der{D})$ as $\{\rho_i\}_{i=0}^n$.
+\end{remark}
+
+\begin{remark}\label{rem:func}
+	Consider a derivation $\der{D}$ in a left-linear DPO-rewriting system $(\X, \R)$. We can take the subcategory $\Delta(\der{D})$ of $\X$ given by the arrows appearing in $\der{D}$. This subcategory comes equipped with an inclusion functor $I(\der{D})\colon \Delta(\der{D})\to \X$. Moreover, we can further define $\Deltamin(\der{D})$ as the subcategory of $\Delta(\der{D})$ containing only the bottom row of the derivation.
+\end{remark}
+
+\begin{notation}Let $\der{D}=\{\dder{D}_i\}_{i=0}^n$ be a derivation. We will depict the $i^\text{th}$ element $\dder{D}_i$ of $\der{D}$ as in the following diagram.  
+	\[\xymatrix{L_i \ar[d]_{m_i}& K_i \ar[d]^{k_i}\ar@{>->}[l]_{l_i} \ar[r]^{r_i} & R_i \ar[d]^{h_i} \\G_{i} & \ar@{>->}[l]^{f_{i}} D_{i} \ar[r]_{g_{i}}& G_{i+1} }\]
+	Notice that, in particular, if $\der{D}\colon G\to H$, then $G_0=G$ and $G_{n+1}=H$. When $\der{D}$ has length $1$ we will suppress the indexes. In such case, we will also identify $\der{D}$ with its only element. 
+\end{notation} 
+
 \begin{example}\label{ex:1}
 	Let us consider the category of $\cat{Graph}$ of all graphs and graph morphisms, which is adhesive (see, for instance \cite{lack2005adhesive,lack2006toposes}).   We can endow $\cat{Graph}$ with a set of left-linear rules, for instance taking the following ones.  Here numbers are used to represent the
 	morphisms from the interface to the left- and right-hand
@@ -365,53 +411,6 @@ We are now going to study rewriting systems in $\mathcal{M}$-adhesive categories
 	
 \end{example}
 
-$\mathcal{M}$-adhesivity of $\X$ guarantes the essential uniqueness of the result obtained rewriting an object, as shown by the next proposition.
-
-\begin{proposition}\label{prop:unique} Let $\X$  be a $\mathcal{M}$-adhesive category. Suppose that the two direct derivations $\mathscr{D}$ and $\mathscr{D'}$ below, with the same match and applying the same left $\mathcal{M}$-linear rule $\rho$ are given.
-	\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L \ar[d]_{m}& K \ar[d]^{k'}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h'}\\G & \ar@{>->}[l]^{f} D \ar[r]_{g}& H & G & \ar@{>->}[l]^{f'} D' \ar[r]_{g'}& H'}\]
-	Then there exist isomorphisms $t\colon D\to D'$ and $s\colon H\to H'$ as in the following diagram.
-	\[\xymatrix@C=40pt{&&D' \ar[r]^{g'} \ar@{>->}@/_.45cm/[dll]_{f'}&H'\\G & L \ar[l]_{m} & K \ar[u]_{k'} \ar[d]^{k}\ar[r]^{r} \ar@{>->}[l]_{l} &R\ar[u]^{h'} \ar[d]_{h}\\&&D\ar@{>->}@/^.45cm/[ull]^{f}\ar@/^.4cm/@{.>}[uu]^(.4){t}|\hole \ar[r]_{g}&H\ar@/_.4cm/@{.>}[uu]_{s}}\]
-\end{proposition}
-\begin{proof}
-	By construction, the pairs $(k, f)$ and $(k', f')$ are pushout complements of $l$ and $n$. Thus, the existence of the isomorphism $t\colon D\to D'$ follows from the second point of \Cref{lem:radj}. Now, computing we have
-	\begin{align*}
-		g'\circ t \circ k &= g' \circ k'\\&=h'\circ r
-	\end{align*}
-	Hence, we have the wanted $s\colon H\to H'$. To see that $s$ is an isomorphism, consider the diagram 
-	\[\xymatrix{K  \ar@/^.4cm/[rr]^{k'}\ar[d]_{r} \ar[r]_{k}& \ar[r]_{t} D \ar[d]^{g}& D' \ar[d]^{g'}\\ R \ar@/_.4cm/[rr]_{h'} \ar[r]^{h}& H \ar[r]^{s}& H'}\]
-	By hypothesis the whole rectangle and its left half are pushouts, therefore, by \Cref{lem:po1} its right square is a pushout too. The claim now follows from the fact that the pushout of an isomorphism is an isomorphism.
-\end{proof}
-
-If we look to direct derivations as transitions, it is natural to consider them as edges in a direct graph. Taking objects as vertices objects led us to the following definition \cite{heindel2009category}.
-
-\begin{definition}
-	Let $(\X, \R)$ be a left-linear DPO-rewrityng system, with $\X$ $\mathcal{M}$-adhesive. The \emph{DPO-derivation graph} of $(\X, \R)$ is the (large)  directed graph $\gpo$ having as vertices the objects of $\X$ and in which an edge between $G$ and $H$ is a direct derivation $\dder{D}\colon G\Mapsto H$.	A \emph{derivation} $\der{D}$ between two objects $G$ and $H$ is a path between them in $\gpo$. The \emph{source} and \emph{target} of $\der{D}$ are, respectively, $G$ and $H$.
-\end{definition}
-
-\begin{remark}
-	We can spell out more explicitly what  a derivation $\dder{D}$ is.  An \emph{empty derivation} starting and ending in $G$ is just $G$ itself.  A \emph{non-empty derivation} $\dder{D}$ is a sequence $\{\dder{D}_i\}_{i=0}^n$ of direct derivations such that:
-	\begin{enumerate}
-		\item for every index $i$, $\dder{D}_i$ is a direct derivation $G_i \Mapsto G_{i+1}$;
-		\item $G_0=G$ and $G_{n+1}=H$.
-	\end{enumerate}
-	
-	We will call the number $n+1$ the \emph{length} of the derivation, denoted by $\lgh(\der{D})$. We will also say that an empty derivation has length $0$. 
-	
-	Moreover,  if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then we can define an associated sequence of rules as $r(\der{D})$ as $\{\rho_i\}_{i=0}^n$.
-\end{remark}
-
-\begin{remark}\label{rem:func}
-	Consider a derivation $\der{D}$ in a left-linear DPO-rewriting system $(\X, \R)$. We can take the subcategory $\Delta(\der{D})$ of $\X$ given by the arrows appearing in $\der{D}$. This subcategory comes equipped with an inclusion functor $I(\der{D})\colon \Delta(\der{D})\to \X$. Moreover, we can further define $\Deltamin(\der{D})$ as the subcategory of $\Delta(\der{D})$ containing only the bottom row of the derivation.
-\end{remark}
-
-\begin{notation}Let $\der{D}=\{\dder{D}_i\}_{i=0}^n$ be a derivation. We will depict the $i^\text{th}$ element $\dder{D}_i$ of $\der{D}$ as in the following diagram.  
-	\[\xymatrix{L_i \ar[d]_{m_i}& K_i \ar[d]^{k_i}\ar@{>->}[l]_{l_i} \ar[r]^{r_i} & R_i \ar[d]^{h_i} \\G_{i} & \ar@{>->}[l]^{f_{i}} D_{i} \ar[r]_{g_{i}}& G_{i+1} }\]
-	Notice that, in particular, if $\der{D}\colon G\to H$, then $G_0=G$ and $G_{n+1}=H$. When $\der{D}$ has length $1$ we will suppress the indexes. In such case, we will also identify $\der{D}$ with its only element. 
-\end{notation} 
-
-\begin{example}\todo{esempi di derivazione}
-\end{example}
-
 \begin{definition}
 	The \emph{DPO-derivation category} $\dpo$ of a left-linear DPO-rewriting system $(\X, \R)$ is the category in which arrows between $G$ and $H$ are given by, possibly empty, derivations. Composition is concatenation of paths in $\gpo$ and identities are given by empty derivations.
 \end{definition} 	
@@ -630,7 +629,7 @@ The next proposition justifies the use of decorations, guaranteeing that concate
 
 
 
-\subsection{Colimits of derivations}
+\subsection{Colimits of derivations}\label{subsec:col}
 Given a DPO-rewriting system $(\X, \R)$,  we have already noted in \Cref{rem:func} that a derivation $\der{D}$  determines a diagram $\Delta(\der{D})$ in $\X$. We can then wonder if such a diagram has a colimit. Clearly if $\der{D}$ is the empty derivation $G$ then a colimit for $\Delta(\der{D})$ is simply the object $G$. More generally, we have the following result.
 
 \begin{lemma}\label{lem:colim}
@@ -734,6 +733,66 @@ Applying \Cref{lem:po1} twice we get that the whole square is an $\mathcal{M}$-p
 			Thanks to \Cref{cor:colim} we know that the bottom right rectangle in the diagram above is a pullback and the thesis follows at once.
 \end{proof}	
 
+We want now to relate the colimit of a composite decorated derivation with the colimits of its components. The following two lemmas will be pivotal to develop the subsequent sections.
+
+\begin{lemma}\label{rem:dett}
+	Let $(\der{D}, \alpha, \omega)$ be the composite $(\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)$ of two derivation of length $l_1$ and $l_2$. Suppose that:
+	\[r(\der{D}_1)=\{\rho_{1,i}\}_{i=0}^{l_1-1} \quad r(\der{D}_2)=\{\rho_{2,i}\}_{i=0}^{l_2-1} \quad  r(\der{D})=\{\rho_{i}\}_{i=0}^{l_1+l_2-1}\]
+	and let  $G_{1,0}, G_{2,0}$ and $G_{0}$ be the sources of $\der{D}_1$, $\der{D}_2$,  and $\der{D}$. Similary, denote, by $G_{1,i+1}, G_{2,i+1}$ and $G_{i+1}$ the results of the application of, respectively, $\rho_{1,i}, \rho_{2,i}, \rho_i$ to $G_{1,i}, G_{2,i}$ and $G_{i}$  in the corresponding derivation. Then there are arrows $q_1\colon \lpro \der{D}_1\rpro \to \tpro{D}$, $q_2\colon \lpro \der{D}_2\rpro \to \tpro{D}$ such that
+	\[ q_1\circ \iota_{G_{1,0}}\circ \alpha_1 = \iota_{G_{0}}\circ \alpha \quad  q_2\circ \iota_{G_{2,l_2}}\circ \omega_2 = \iota_{G_{l_1+l_2}}\circ \omega \quad 	q_2\circ \iota_{2, G_{2,0}} \circ \alpha_2=q_1\circ \iota_{1, G_{1, l_1}}\circ \omega_1\]
+	and, for every $i\in [0, l_1-1]$, $j\in [l_1+1, l_1+l_2]$
+	\[q_1\circ \iota_{1, G_{1,i}}=\iota_{G_{i}}\qquad q_2\circ \iota_{2, G_{2,j}}=\iota_{G_{j+l_1}} \]
+\end{lemma}
+\begin{proof}According to \Cref{def:conc}, we have three cases.
+	\begin{itemize}
+		\item $\lgh(\der{D}_1)=0$. Then  $(\der{D}, \alpha, \omega)$ is $(\der{D}_2, \alpha_2\circ \omega_1^{-1}\circ \alpha_1, \omega_2)$ thus we can take as $q_2$ the identity on $\lpro \der{D}_2\rpro$. Moreover, in this case $\iota_{1,G_{1,0}}$ is an isomorphism, so that we can take as $q_1$ the composition $\iota_{G_0}\circ \alpha_2\circ \omega^{-1}_1 \circ \iota^{-1}_{1,G_{1,0}}$.
+		\item $\lgh(\der{D}_1)\neq 0$ and $\lgh(\der{D}_2)=0$ . Hence  $(\der{D}, \alpha, \omega)$ is $(\der{D}_1, \alpha_1, \omega_1 \circ \alpha^{-1}_2\circ \omega_2)$. We can then define $q_1$ as $\id{\lpro \der{D}_1\rpro}$.  Since $\iota_{2,G_{2,0}}$ is an isomorphism, $q_2$ can be taken as  $\iota_{G_{l_1}}\circ  \omega_1  \circ \alpha^{-1}_2 \circ \iota^{-1}_{2,G_{2,0}}$.
+		\item  $\lgh(\der{D}_1)\neq 0$ and $\lgh(\der{D}_2)\neq 0$. In this case we have that $(\der{D}, \alpha, \omega)$  is $(\der{D}_1*\omega_1^{-1}\cdot \alpha_2*\der{D}_2, \alpha_1, \omega_2)$. By second point of \Cref{lem:colim} and by \Cref{rem:abscons2} we can build the following diagram.
+		\[\xymatrix@C=40pt{&&G_{2,0}  \ar@/_.3cm/[dl]_{\alpha^{-1}_2} \ar@/^.3cm/[dr]^{\iota_{2, G_{2,0}}}\\&\pi(G_{2,0}) \ar[dr]^{\iota_{G_{l_1}}}\ar[r]^-{\iota'_{2, \pi(G_{2,0})}} \ar@{>->}[d]_-{\iota'_{1, \pi(G_{1,l_1})}} & \lpro \alpha_2*\der{D}_2 \rpro \ar@{>->}[d]^{p_2} &\tproi{D}{2} \ar[l]_-{\Gamma^{\alpha_2}} \ar@{>.>}@/^.2cm/[dl]^{q_2}\\ G_{1,l_1}  \ar@/^.3cm/[ur]^{\omega^{-1}_1}  \ar@{>->}@/_.3cm/[dr]_{\iota_{1, G_{1, l_1}}}& \lpro \der{D}_1*\omega_1^{-1} \rpro  \ar[r]_{p_1}& \tpro{D} \\ &\tproi{D}{1} \ar[u]^{\Gamma_{\omega^{-1}_1}}  \ar@{.>}@/_.2cm/[ur]_{q_1}}\]
+		
+		Let us define $q_1$ as $p_1\circ \Gamma_{\omega^{-1}_1}$ and $q_2$ as $p_2\circ \Gamma^{\alpha_2}$. Then, for every $i\in [0,l_1-1]$ and $j\in [l_1+1, l_1+l_2]$
+		\[\begin{split}
+			q_1\circ \iota_{1, G_{1,i}}&=p_1\circ \Gamma_{\omega^{-1}_1}\circ \iota_{1, G_{1,i}}\\&=p_1\circ \iota'_{1, G_{1,i}} \\&=\iota_{G_{i}}
+		\end{split} \qquad \begin{split}
+			q_2\circ \iota_{2, G_{2,j}}&=p_2\circ \Gamma^{\alpha_2}\circ \iota_{2, G_{2,j}}\\&=p_2\circ \iota'_{2, G_{2,j}} \\&=\iota_{G_{j+l_1}}
+		\end{split}\]
+		Moreover, we also have:
+		\[
+		\begin{split}
+			q_1\circ \iota_{G_{1,0}}\circ \alpha_1&= p_1\circ \Gamma_{\omega^{-1}_1}\circ \iota_{G_{1,0}}\circ \alpha_1 \\&=p_1\circ \iota'_{1, G_{1,0}} \circ \alpha_1 \\&= \iota_{G_{0}}\circ \alpha
+		\end{split}\qquad 
+		\begin{split}
+			q_2\circ \iota_{G_{2,l_2}}\circ \omega_2&= p_2\circ \Gamma^{\alpha_2}\circ \iota_{G_{2,l_2}}\circ \omega_2 \\&=p_2\circ \iota'_{1, G_{2,l_2}} \circ \omega_2 \\&= \iota_{G_{l_1+l_2}}\circ \omega
+		\end{split} \] 
+		
+		This concludes the proof. \qedhere
+	\end{itemize}	
+\end{proof}
+
+
+\begin{remark}\label{rem:dett2}
+	It is worth noticing that, for every $i\in [0,l_1-1]$ and $j\in [l_1+1, l_1+l_2]$ the previous equalities also entail that,
+	\[\begin{split}q_1\circ \iota_{1, L_{1,i}}&=\iota_{L_{i}}\\q_2\circ \iota_{2, L_{2,j}}&=\iota_{L_{j+l_1}} 	
+	\end{split} \quad 
+	\begin{split}    	q_1\circ \iota_{1, K_{1,i}}&=\iota_{K_{i}} \\q_2\circ \iota_{2, K_{2,j}}&=\iota_{K_{j+l_1}}\\ \end{split}\quad 
+	\begin{split}    	q_1\circ \iota_{1, R_{1,i-1}}&=\iota_{R_{i-1}} \\q_2\circ \iota_{2, R_{2,j-1}}&=\iota_{R_{j+l_1-1}}\end{split}\quad 
+	\begin{split}    	q_1\circ \iota_{1, D_{1,i}}&=\iota_{D_{i}} \\q_2\circ \iota_{2, D_{2,j}}&=\iota_{D_{j+l_1}}\end{split}\]
+	
+	Moreover, if $l_2\neq 0$, we also have that
+	\begin{align*} 
+		q_2\circ \iota_{2, D_{2, 0}}&=q_2\circ \iota_{2, G_{2, 1}}\circ g_{2, 0}\\&=\iota_{G_{l_1+1}}\circ g_{2,0}\\&=\iota_{G_{l_1+1}}\circ g_{l_1}\\&=\iota_{D_{l_1}}
+	\end{align*}
+	which, in turn, also entails that
+	\begin{align*}
+		q_2\circ \iota_{2, K_{2, 0}}&=q_2\circ \iota_{D_{2, 0}}\circ k_{2, 0}\\&=\iota_{D_{l_1}}\circ k_{l_1}\\&=\iota_{K_{l_1}}
+	\end{align*}
+	
+	Finally, whenever $l_1$ and $l_2$ are different from $0$ we have other two equalities.
+	\[q_1\circ \iota_{1, G_{1, l_1}}=\iota_{ G_{l_1}}\circ \omega^{-1}_1 \qquad q_2\circ \iota_{2, G_{2, 0}}=\iota_{ G_{l_1}}\circ \alpha^{-1}_2\]
+	
+\end{remark}
+
+
 \section{Semi-consistent and consistent permutations}
 	
 Equipped with the theory developed so far, we can introduce the notions of \emph{semi-consistent} and \emph{consistent} permutation.
@@ -758,6 +817,7 @@ Equipped with the theory developed so far, we can introduce the notions of \emph
 	\[\xymatrix@C=15pt{&\pi(G) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G\ar[rr]_{\phi} && G' &G \ar[rr]_{\phi} && G' } \]
 	That is, by \Cref{rem:empty} if and only if they are abstract equivalent decorated derivations.
 \end{example}
+
 
 \begin{remark} \label{rem:coproj} Notice that if $\sigma$ is a semi-consistent permutation between two derivations  $\der{D}$ and $\der{D}'$ of length $l$, then for every  $i\in [0,l-1]$ the diagram below commutes.
 	\[\xymatrix@C=40pt{G_i\ar@/^1cm/[rrr]^{\iota_{G_{i}}}&D_i\ar@/^.4cm/[rr]^(.35){\iota_{D_i}} \ar[r]_{g_i} \ar@{>->}[l]^{f_i}&G_{i+1} \ar[r]_{\iota_{G_{i+1}}}&\tpro{D} \ar[dd]^{\xi_\sigma}\\  L_i \ar[u]^{n_i} \ar[d]_{n'_{\sigma(i)}}& K_i \ar[d]^{k'_{\sigma(i)}} \ar[u]_{k_i} \ar[r]^{r_i} \ar@{>->}[l]_{l_i} &R\ar[u]^{h_i} \ar[d]_{h'_{\sigma(i)}}\\G'_{\sigma(i)}\ar@/_1cm/[rrr]_{\iota'_{G'_{\sigma(i)}}} &D'_{\sigma(i)}\ar@{>->}[l]_{f'_{\sigma(i)}} \ar[r]^{g'_i} \ar@/_.4cm/[rr]_(.35){\iota'_{D'_{\sigma(i)}}}&G'_{\sigma(i)+1} \ar[r]^{\iota'_{G'_{\sigma(i)+1}}}& \lpro\der{D}' \rpro }\]
@@ -888,89 +948,42 @@ We can also observe that (semi-)consistent permutations can be composed, as show
 	Again this proves that $\xi_\tau \circ \xi_\sigma$ witnesses the constistency of $\tau\circ \sigma$.
 \end{proof}
 	
+We have already proved in \Cref{rem:abscons} that the identity defines a consistent permutation between any two representatives of an equivalence class $[\der{D}, \alpha, \omega]_a$. This, together with \Cref{rem:comp}, allow us to immediately derive the following fact.
 
-\subsection{Permutation equivalence}
+\begin{corollary}\label{prop:abs}
+Let $(\der{D}_1, \alpha_1, \omega_1)$ and $(\der{D}_2, \alpha_2, \omega_2)$ be two decorated derivations and suppose that $\sigma$ is a consistent permutation between them. If  $(\der{D}'_1, \alpha'_1, \omega'_1)$ and $(\der{D}'_2, \alpha'_2, \omega'_2)$ are such that
+\[ (\der{D}_1, \alpha_1, \omega_1)\equiv^a (\der{D}'_1, \alpha'_1, \omega'_1) \qquad (\der{D}_2, \alpha_2, \omega_2)\equiv^a (\der{D}'_2, \alpha'_2, \omega'_2) \] 
+then $\sigma$ is a consistent permutation between $(\der{D}'_1, \alpha'_1, \omega'_1)$ and $(\der{D}'_2, \alpha'_2, \omega'_2)$ too.
+\end{corollary}
 
-\begin{definition}
-	contenuto...
+\begin{proof} Let $l_1$ and $l_2$ be the lengths of $\der{D}_1$ and $\der{D}_2$. By \Cref{rem:abscons} we know that  $\id{[0, l_1-1]}$ is a consistent permutation between  $(\der{D}_1, \alpha_1, \omega_1)$ and $(\der{D}'_1, \alpha'_1, \omega'_1)$  and $\id{[0, l_2-1]}$ one between   $(\der{D}_2, \alpha_2, \omega_2)$  and $(\der{D}'_2, \alpha'_2, \omega'_2)$. Using \Cref{rem:comp} we get the thesis at once.
+\end{proof}
+
+The previous result suggests that the existence of a consistent permutations induces an equivalence relation on the arrows of $\dpi$. This is formalized by the next definition.
+
+\begin{definition}Let $(\X, \R)$ be a left-linear DPO rewriting system. We say that two arrows
+	$[\der{D}, \alpha, \omega]_a, [\der{D}', \alpha', \omega']_a\colon [G]\rightrightarrows [H]$ in $\dpi$ are \emph{permutation equivalent} if there exists a consistent permutation between $(\der{D}, \alpha, \omega)$  and $(\der{D}', \alpha', \omega')$. 
+	
+	We will use the notation $[\der{D}, \alpha, \omega]_a, \equiv^p [\der{D}', \alpha', \omega']_a$  to denote permutation equivalence, while we will use $[\der{D}, \alpha, \omega]_a, \equiv_\sigma^p [\der{D}', \alpha', \omega']_a$ to point out a witness $\sigma$ to this relation.
 \end{definition}
 
-\begin{theorem}[Characterization of $\equiv_p$]
-	contenuto...
-\end{theorem}
-\begin{proof}
-	contenuto...
-\end{proof}
-
-
-\section{Composing and restricting consistent permutations}
-Now that we have established some initial facts about consistent permutations, we are going to embark in a, quite long, voyage to explore how to restrict them to suitable subderivations. 
-
-
-\begin{lemma}\label{rem:dett}
-	Let $(\der{D}, \alpha, \omega)$ be the composite $(\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)$ of two derivation of length $l_1$ and $l_2$. Suppose that:
-\[r(\der{D}_1)=\{\rho_{1,i}\}_{i=0}^{l_1-1} \quad r(\der{D}_2)=\{\rho_{2,i}\}_{i=0}^{l_2-1} \quad  r(\der{D})=\{\rho_{i}\}_{i=0}^{l_1+l_2-1}\]
-and let  $G_{1,0}, G_{2,0}$ and $G_{0}$ be the sources of $\der{D}_1$, $\der{D}_2$,  and $\der{D}$. Similary, denote, by $G_{1,i+1}, G_{2,i+1}$ and $G_{i+1}$ the results of the application of, respectively, $\rho_{1,i}, \rho_{2,i}, \rho_i$ to $G_{1,i}, G_{2,i}$ and $G_{i}$  in the corresponding derivation. Then there are arrows $q_1\colon \lpro \der{D}_1\rpro \to \tpro{D}$, $q_2\colon \lpro \der{D}_2\rpro \to \tpro{D}$ such that
-\[ q_1\circ \iota_{G_{1,0}}\circ \alpha_1 = \iota_{G_{0}}\circ \alpha \quad  q_2\circ \iota_{G_{2,l_2}}\circ \omega_2 = \iota_{G_{l_1+l_2}}\circ \omega \quad 	q_2\circ \iota_{2, G_{2,0}} \circ \alpha_2=q_1\circ \iota_{1, G_{1, l_1}}\circ \omega_1\]
-and, for every $i\in [0, l_1-1]$, $j\in [l_1+1, l_1+l_2]$
-	\[q_1\circ \iota_{1, G_{1,i}}=\iota_{G_{i}}\qquad q_2\circ \iota_{2, G_{2,j}}=\iota_{G_{j+l_1}} \]
-\end{lemma}
-\begin{proof}According to \Cref{def:conc}, we have three cases.
-\begin{itemize}
-	\item $\lgh(\der{D}_1)=0$. Then  $(\der{D}, \alpha, \omega)$ is $(\der{D}_2, \alpha_2\circ \omega_1^{-1}\circ \alpha_1, \omega_2)$ thus we can take as $q_2$ the identity on $\lpro \der{D}_2\rpro$. Moreover, in this case $\iota_{1,G_{1,0}}$ is an isomorphism, so that we can take as $q_1$ the composition $\iota_{G_0}\circ \alpha_2\circ \omega^{-1}_1 \circ \iota^{-1}_{1,G_{1,0}}$.
-	\item $\lgh(\der{D}_1)\neq 0$ and $\lgh(\der{D}_2)=0$ . Hence  $(\der{D}, \alpha, \omega)$ is $(\der{D}_1, \alpha_1, \omega_1 \circ \alpha^{-1}_2\circ \omega_2)$. We can then define $q_1$ as $\id{\lpro \der{D}_1\rpro}$.  Since $\iota_{2,G_{2,0}}$ is an isomorphism, $q_2$ can be taken as  $\iota_{G_{l_1}}\circ  \omega_1  \circ \alpha^{-1}_2 \circ \iota^{-1}_{2,G_{2,0}}$.
-	\item  $\lgh(\der{D}_1)\neq 0$ and $\lgh(\der{D}_2)\neq 0$. In this case we have that $(\der{D}, \alpha, \omega)$  is $(\der{D}_1*\omega_1^{-1}\cdot \alpha_2*\der{D}_2, \alpha_1, \omega_2)$. By second point of \Cref{lem:colim} and by \Cref{rem:abscons2} we can build the following diagram.
-	\[\xymatrix@C=40pt{&&G_{2,0}  \ar@/_.3cm/[dl]_{\alpha^{-1}_2} \ar@/^.3cm/[dr]^{\iota_{2, G_{2,0}}}\\&\pi(G_{2,0}) \ar[dr]^{\iota_{G_{l_1}}}\ar[r]^-{\iota'_{2, \pi(G_{2,0})}} \ar@{>->}[d]_-{\iota'_{1, \pi(G_{1,l_1})}} & \lpro \alpha_2*\der{D}_2 \rpro \ar@{>->}[d]^{p_2} &\tproi{D}{2} \ar[l]_-{\Gamma^{\alpha_2}} \ar@{>.>}@/^.2cm/[dl]^{q_2}\\ G_{1,l_1}  \ar@/^.3cm/[ur]^{\omega^{-1}_1}  \ar@{>->}@/_.3cm/[dr]_{\iota_{1, G_{1, l_1}}}& \lpro \der{D}_1*\omega_1^{-1} \rpro  \ar[r]_{p_1}& \tpro{D} \\ &\tproi{D}{1} \ar[u]^{\Gamma_{\omega^{-1}_1}}  \ar@{.>}@/_.2cm/[ur]_{q_1}}\]
-
-	Let us define $q_1$ as $p_1\circ \Gamma_{\omega^{-1}_1}$ and $q_2$ as $p_2\circ \Gamma^{\alpha_2}$. Then, for every $i\in [0,l_1-1]$ and $j\in [l_1+1, l_1+l_2]$
-	\[\begin{split}
-		q_1\circ \iota_{1, G_{1,i}}&=p_1\circ \Gamma_{\omega^{-1}_1}\circ \iota_{1, G_{1,i}}\\&=p_1\circ \iota'_{1, G_{1,i}} \\&=\iota_{G_{i}}
-	\end{split} \qquad \begin{split}
-		q_2\circ \iota_{2, G_{2,j}}&=p_2\circ \Gamma^{\alpha_2}\circ \iota_{2, G_{2,j}}\\&=p_2\circ \iota'_{2, G_{2,j}} \\&=\iota_{G_{j+l_1}}
-	\end{split}\]
-	Moreover, we also have:
-	\[
-	\begin{split}
-		q_1\circ \iota_{G_{1,0}}\circ \alpha_1&= p_1\circ \Gamma_{\omega^{-1}_1}\circ \iota_{G_{1,0}}\circ \alpha_1 \\&=p_1\circ \iota'_{1, G_{1,0}} \circ \alpha_1 \\&= \iota_{G_{0}}\circ \alpha
-	\end{split}\qquad 
-	\begin{split}
-	q_2\circ \iota_{G_{2,l_2}}\circ \omega_2&= p_2\circ \Gamma^{\alpha_2}\circ \iota_{G_{2,l_2}}\circ \omega_2 \\&=p_2\circ \iota'_{1, G_{2,l_2}} \circ \omega_2 \\&= \iota_{G_{l_1+l_2}}\circ \omega
-	\end{split} \] 
-	
-	This concludes the proof. \qedhere
-\end{itemize}	
-\end{proof}
- 
-	
-\begin{remark}\label{rem:dett2}
-It is worth noticing that, for every $i\in [0,l_1-1]$ and $j\in [l_1+1, l_1+l_2]$ the previous equalities also entail that,
-\[\begin{split}q_1\circ \iota_{1, L_{1,i}}&=\iota_{L_{i}}\\q_2\circ \iota_{2, L_{2,j}}&=\iota_{L_{j+l_1}} 	
-\end{split} \quad 
-\begin{split}    	q_1\circ \iota_{1, K_{1,i}}&=\iota_{K_{i}} \\q_2\circ \iota_{2, K_{2,j}}&=\iota_{K_{j+l_1}}\\ \end{split}\quad 
-\begin{split}    	q_1\circ \iota_{1, R_{1,i-1}}&=\iota_{R_{i-1}} \\q_2\circ \iota_{2, R_{2,j-1}}&=\iota_{R_{j+l_1-1}}\end{split}\quad 
-\begin{split}    	q_1\circ \iota_{1, D_{1,i}}&=\iota_{D_{i}} \\q_2\circ \iota_{2, D_{2,j}}&=\iota_{D_{j+l_1}}\end{split}\]
-
-Moreover, if $l_2\neq 0$, we also have that
-\begin{align*} 
-q_2\circ \iota_{2, D_{2, 0}}&=q_2\circ \iota_{2, G_{2, 1}}\circ g_{2, 0}\\&=\iota_{G_{l_1+1}}\circ g_{2,0}\\&=\iota_{G_{l_1+1}}\circ g_{l_1}\\&=\iota_{D_{l_1}}
-\end{align*}
-which, in turn, also entails that
-\begin{align*}
-	q_2\circ \iota_{2, K_{2, 0}}&=q_2\circ \iota_{D_{2, 0}}\circ k_{2, 0}\\&=\iota_{D_{l_1}}\circ k_{l_1}\\&=\iota_{K_{l_1}}
-\end{align*}
-
-Finally, whenever $l_1$ and $l_2$ are different from $0$ we have other two equalities.
-\[q_1\circ \iota_{1, G_{1, l_1}}=\iota_{ G_{l_1}}\circ \omega^{-1}_1 \qquad q_2\circ \iota_{2, G_{2, 0}}=\iota_{ G_{l_1}}\circ \alpha^{-1}_2\]
-
+\begin{remark}
+	The relation $\equiv^p$ is an equivalence: \Cref{prop:abs} guarantees that it is well-defined, \Cref{rem:abscons} guarantees reflexivity, while symmetry and transitivity follow from, respectively \Cref{rem:inversa} and \Cref{rem:comp}.
 \end{remark}
 
-We can now turn our attention to the case in which a consistent permutation between two composite derivations is given. As a first step we need to prove some technicalities.
+\begin{notation}
+	We will denote by $[\der{D}, \alpha, \omega]_p$ the equivalence class of $[\der{D}, \alpha, \omega]_a$ with respect to the permutation equivalence.
+\end{notation}
+
+\section{Composing and restricting consistent permutations}
+
+We want now to exploit the results proved at the end of \Cref{subsec:col} to study the behaviour of permutation equivalence with respect to composition of decorated derivations. As a first step we need to establish some technical points.
 
 \begin{lemma}\label{prop:uniqu}
-	Let $\sigma\colon [0,n]\to [0,n]$ be a consistent permutations between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ and suppose that 
+	Let $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ be two decorated derivations such that $[\der{D}, \alpha, \omega]_a\equiv^p_\sigma [\der{D}', \alpha', \omega']_a $. Suppose that 
 	\[(\der{D}, \alpha, \omega)=(\der{D}_1, \alpha_1, \omega_1) \cdot (\der{D}_2, \alpha_2, \omega_2) \qquad (\der{D}', \alpha', \omega')=(\der{D}'_1, \alpha'_1, \omega'_1) \cdot (\der{D}'_2, \alpha'_2, \omega'_2) \]
 	
-	 Let $l_1$ be the length of $\der{D}_1$, and suppose that there exists a consistent permutation $\tau:[0,l_1-1]\to [0, l_1-1]$.  If $q_1\colon \lpro \der{D}_1\rpro \to \lpro \der{D}\rpro$  and $q'_1\colon \lpro \der{D}'_1\rpro \to \lpro \der{D}'\rpro$ are the canonical arrows defined in \Cref{rem:dett}, then the following hold true:
+	 Let $l_1$ and $l_2$ be the lengths of, respectively, $\der{D}_1$ and $\der{D}_2$ and suppose that  $[\der{D}_1, \alpha_1, \omega_1]_a\equiv^p_\tau [\der{D}'_1, \alpha'_1, \omega'_1]_a$ for some consistent permutation $\tau\colon [0, l_1-1]\to [0,l_1-1]$.  If $q_1\colon \lpro \der{D}_1\rpro \to \lpro \der{D}\rpro$  and $q'_1\colon \lpro \der{D}'_1\rpro \to \lpro \der{D}'\rpro$ are the canonical arrows defined in \Cref{rem:dett}, then the following hold true:
 	\begin{enumerate}
 	\item  if $l_1=0$, then the following diagram commutes:
 		\[\xymatrix{\lpro \der{D}_1\rpro \ar[r]^{\xi_\tau} \ar[d]_{q_1}& \lpro \der{D}'_1 \ar[d]^{q'_1}\rpro\\ \lpro \der{D}\rpro \ar[r]_{\xi_\sigma} & \lpro \der{D}'\rpro } \]
@@ -1073,10 +1086,183 @@ We can now turn our attention to the case in which a consistent permutation betw
 	\end{enumerate}
 \end{proof}
 
-We are now ready to prove the central result of this section: the uniqueness of a consistency permutation between two decorated derivations in a consuming rewriting system.
+
+We want now to show that permutation equivalence is a congruence with respect to composition in $\dpi$. This, in turn, will allow us to build  a category in which arrows are are exactly the equivalence classes of permutation equivalent abstract decorated decorations.
+
+
+\begin{remark}\label{rem:sum}
+	Let $n$ and $m$ be two natural numbers and $\sigma\colon [0, n-1]\to [0,n-1]$ and $\tau\colon [0, m-1]\to [0,m-1]$ be two permutations. Then they induce a permutation $[0, n+m-1]\to [0, n+m-1]$. To see this, it is enough to define
+		\[\sigma+\tau\colon[0, n+m-1]\to[0, n+m-1] \quad i \mapsto \begin{cases}
+		\sigma(i) & i < n\\
+		\tau(i-n) + n &  n\leq i 
+	\end{cases}\]
+\end{remark}
+
+
+
+\begin{lemma}[Composition lemma]\label{lem:sum} Let $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ be two abstract decorated derivations such that:
+	\[(\der{D}, \alpha, \omega)=(\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2) \qquad (\der{D}', \alpha', \omega')=(\der{D}'_1, \alpha'_1, \omega'_1)\cdot (\der{D}'_2, \alpha'_2, \omega'_2)\]
+	
+Suppose that $[\der{D}_1, \alpha_1, \omega_1]_a \equiv^p_\sigma [\der{D}'_1, \alpha'_1, \omega'_1]_a$ and $[\der{D}_2, \alpha_2, \omega_2]_a \equiv^p_\tau [\der{D}'_2, \alpha'_2, \omega'_2]_a$, then:
+\[[\der{D}, \alpha, \omega]_a\equiv^p_{\sigma+\tau} [\der{D}', \alpha', \omega']_a\]
+\end{lemma}
+\begin{proof}
+By \Cref{prop:abs}	it is enough to show that $\sigma+\tau$	is a consistent permutation between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$.
+
+We need to fix some notation.	Given $X_1\in \Delta(\der{D}_1)$, $X_2\in \Delta(\der{D}_2)$, $X'_1\in \Delta(\der{D}'_1)$, $X'_2\in \Delta(\der{D}'_2)$, we will denote their coprojections into, respectively, $\lpro \der{D}_1\rpro$, $\lpro \der{D}'_2\rpro$, $\lpro \der{D}'_1\rpro$, $\lpro \der{D}'_2\rpro$ by
+	$\iota_{1, X_1}\colon X_1\to \lpro\der{D}_1\rpro$, $\iota_{1, X_2}\colon X_2\to \lpro\der{D}_1\rpro$, $\iota'_{1, X'_1}\colon X'_1\to \lpro\der{D}'_1\rpro$ and $\iota'_{2, X'_2}\colon X'_2\to \lpro\der{D}_1\rpro$. Similarly, given $X\in \Delta(\der{D})$ and $X'\in \Delta(\der{D}')$ we will use $\iota_X\colon X\to \tpro{D}$ and $\iota'_{X'}\colon X'\to \lpro \der{D}' \rpro$ for the coprojections. 
+	
+	We split the proof in three cases, according to \Cref{def:conc}.
+	\begin{itemize}
+		\item $\lgh(\der{D}_1)=0$. Thus $\lgh(\der{D}'_1)=0$ too  and we have
+		\[
+		(\der{D}, \alpha, \omega)=(\der{D}_2, \alpha_2\circ \omega_1^{-1}\circ \alpha_1, \omega_2) \qquad  (\der{D}', \alpha', \omega')=(\der{D}'_2, \alpha'_2\circ (\omega'_1)^{-1}\circ \alpha'_1, \omega'_2)\]
+		
+		Moreover, in this case $\sigma$ must be $\id{\emptyset}$ and $\sigma+\tau$ must be equal to $\tau$. The thesis now follows from the commutativity of the following diagram.
+		\[\xymatrix@C=35pt{& G_{1,0}\ar[dd]^{\xi_{\id{\emptyset}}} \ar[dr]^{\omega^{-1}_1}&&G_{2,0}\ar[r]^-{\iota_{2, G_{2,0}}} & \lpro \der{D}_2\rpro \ar[dd]^{\xi_{\tau}}\\\pi(G_{1,0})  \ar[ur]^{\alpha_1} \ar[dr]_{\alpha'_1}&& \pi(G_{2,0}) \ar[ur]^{\alpha_2} \ar[dr]_{\alpha'_2}\\& G'_{1,0} \ar[ur]_{(\omega'_1)^{-1}}&&G'_{2,0} \ar[r]_-{\iota'_{2, G_{2,0}}}& \lpro \der{D}'_2\rpro}\]
+		
+		\item $\lgh(\der{D}_2)=0$.  As before this implies that also $\lgh(\der{D}'_2)$ is $0$.  Applying \Cref{def:conc} we get 
+		\[
+		(\der{D}, \alpha, \omega)=(\der{D}_1, \alpha_1, \omega_1 \circ (\alpha_2)^{-1}\circ \omega_2) \qquad (\der{D}', \alpha', \omega')=(\der{D}'_1, \alpha'_1, \omega'_1 \circ (\alpha'_2)^{-1}\circ \omega'_2)\]
+		
+		Since $\der{D}_2$ is empty, then $\tau=\id{\emptyset}$ and $\sigma+\tau=\sigma$. Let $n$ be $\lgh(\der{D}_1)$, as before the thesis follows from the diagram below.
+		\[\xymatrix@C=35pt{& G_{2,0}\ar[dd]^{\xi_{\id{\emptyset}}} \ar[dr]^{\alpha^{-1}_2}&&G_{1,n}\ar@{>->}[r]^-{\iota_{1, G_{1,n}}} & \lpro \der{D}_2\rpro \ar[dd]^{\xi_{\sigma}}\\\pi(G_{2,0})  \ar[ur]^{\omega_2} \ar[dr]_{\omega'_2}&& \pi(G_{1,n}) \ar[ur]^{\omega_1} \ar[dr]_{\omega'_1}\\& G'_{2,0} \ar[ur]_{(\alpha'_1)^{-1}}&&G'_{1,n} \ar@{>->}[r]_-{\iota'_{1, G_{1,n}}}& \lpro \der{D}'_2\rpro}\]
+		
+		\item  $\lgh(\der{D}_1)\neq0$ and $\lgh(\der{D}_2)\neq 0$. Thus $\der{D}'_1$ and $\der{D}'_2$ are non-empty too. In this case we have
+		\[	(\der{D}, \alpha, \omega)=(\der{D}_1*\omega_1^{-1}\cdot \alpha_2*\der{D}_2, \alpha_1, \omega_2)\qquad
+		(\der{D}', \alpha', \omega')=(\der{D}'_1*(\omega'_1)^{-1}\cdot \alpha'_2*\der{D}'_2, \alpha'_1, \omega'_2)\]
+		
+		Let us assume that $\der{D}_1$, $\der{D}'_1$, $\der{D}_2$ and $\der{D}'_2$ are given by
+		\[\der{D}_1=\{\dder{D}_{1,i}\}_{i=0}^n \quad \der{D}'_1=\{\dder{D}'_{1,i}\}_{i=0}^n \quad \der{D}_2=\{\dder{D}_{2,i}\}_{i=0}^t \quad \der{D}_2'=\{\dder{D}'_{2,i}\}_{i=0}^t\]
+		By definition of consistent permutation, the rule applied by $\dder{D}_{1,i}$ and the one applied in $\dder{D}_{2,i}$  must coincide with, respectively, the one applied in $\dder{D}'_{1,i}$ and the one applied $\dder{D}'_{2,1}$. Let $\dder{D}_{1,i}$, $\dder{D}'_{1,i}$, $\dder{D}_{2,i}$ and $\dder{D}'_{2,i}$ be given, by the following four diagrams. 
+		\[\xymatrix{L_{1,i} \ar[d]_{m_{1, i}}& K_{1,i} \ar[d]_{k_{1, i}} \ar[r]^{r_{1,i}} \ar@{>->}[l]_{l_{1,i}} & R_{1,i}\ar[d]^{h_{1, i}} &L_{1,i} \ar[d]_{m'_{1, i}}& K_{1,i} \ar[d]_{k'_{1, i}} \ar[r]^{r_{1,i}} \ar@{>->}[l]_{l_{1,i}} & R_{1,i}\ar[d]^{h'_{1, i}} \\G_{1,i} & D_{1,i} \ar[r]_{g_{1,i}} \ar@{>->}[l]^{f_{1,i}} & G_{1,i+1} & G'_{1,i} & D'_{1,i}\ar[r]_{g'_{1,i}} \ar@{>->}[l]^{f'_{1,i}}  & G'_{1,i+1}}\]		
+		\[\xymatrix{L_{2,i} \ar[d]_{m_{2, i}}& K_{2,i} \ar[d]_{k_{2, i}} \ar[r]^{r_{2,i}} \ar@{>->}[l]_{l_{2,i}} & R_{2,i}\ar[d]^{h_{2, i}} &L_{2,i} \ar[d]_{m'_{2, i}}& K_{2,i} \ar[d]_{k'_{2, i}} \ar[r]^{r_{2,i}} \ar@{>->}[l]_{l_{2,i}} & R_{2,i}\ar[d]^{h'_{2, i}} \\G_{2,i} & D_{2,i} \ar[r]_{g_{2,i}} \ar@{>->}[l]^{f_{2,i}} & G_{2,i+1} & G'_{2,i} & D'_{2,i}\ar[r]_{g'_{2,i}} \ar@{>->}[l]^{f'_{2,i}}  & G'_{2,i+1}}\] 
+		
+		%Let $(\lpro \der{D}_1*(\omega_1)^{-1}\rpro, \{j_X\}_{X\in \Delta( \der{D}_1*(\omega_1)^{-1})})$, $(\lpro \der{D}'_1*(\omega'_1)^{-1}\rpro, \{j'_X\}_{X\in \Delta( \der{D}'_1*(\omega'_1)^{-1})})$, $(\lpro \der{D}_1*(\omega_1)^{-1}\rpro, \{j_X\}_{X\in \Delta( \der{D}_1*(\omega_1)^{-1})})$ and $(\lpro \der{D}'_1*(\omega'_1)^{-1}\rpro, \{j'_X\}_{X\in \Delta( \der{D}'_1*(\omega'_1)^{-1})})$ be colimiting cocones. 
+		By \Cref{rem:dett} we get the following diagram, in which the two solid squares are pushouts:
+		\[\xymatrix@C=45pt{\pi(G_{2,0}) \ar@/^.4cm/[rrr]^{\id{\pi(G_{2,0})}}\ar@{>->}[d]_{\iota_{1, G_{1,n+1}} \circ \omega_1}\ar[r]_{\iota_{2, G_{2,0}} \circ \alpha_2}& \lpro \der{D}_2 \rpro \ar@{>->}[d]^{q_2}\ar[r]_{\xi_\tau} & \lpro \der{D}'_2 \rpro \ar@{>->}[d]_{q'_2} &\pi(G'_{2,0}) \ar@{>->}[d]^{\iota'_{1, G'_{1,n+1}} \circ \omega'_1} \ar[l]^{\iota'_{2, G'_{2,0}} \circ \alpha'_2}\\ \lpro \der{D}_1 \rpro \ar@/_.4cm/[rrr]_{\xi_\sigma} \ar[r]^{q_1} & \tpro{D} \ar@{.>}[r]^{\xi_{\sigma+\tau}} & \lpro \der{D}'\rpro & \lpro \der{D}'_1\rpro  \ar[l]_{q'_1}}\]
+		
+		Moreover, we can point out that, for every index $i\in [0,n+t+2]$ we have
+		
+		\[\iota_{G_i}=\begin{cases}q_1\circ \iota_{1, G_{1,i}} & i \leq n\\
+			q_1\circ \iota_{1, G_{1, i}}\circ \omega_1& i=n+1\\
+			q_2\circ \iota_{2, G_{2,i-(n+1)}} & i > n+1 
+		\end{cases} \qquad \iota'_{G'_i}=\begin{cases}q'_1\circ \iota'_{1, G'_{1,i}} & i \leq n\\
+			q'_1\circ \iota'_{1, G'_{1, i}}\circ \omega'_1& i=n+1\\
+			q'_2\circ \iota'_{2, G'_{2,i-(n+1)}} & i > n+1 
+		\end{cases}\]
+		
+		Now, on the one hand, the existence of the dotted arrow $\xi_{\sigma+\tau}\colon \tpro{D}\to \lpro \der{D}'\rpro$ in the diagram above follows from the following computation:
+		\begin{align*}
+			q'_1\circ \xi_\sigma \circ \iota_{1, G_{1,n+1}} \circ \omega_1&=q'_1\circ \iota'_{1,G'_{1, n+1}} \circ \omega'_1\\&= q'_2 \circ \iota'_{2, G'_{2,0}} \circ \alpha'_2\\&=q'_2\circ \xi_\tau \circ \iota_{2, G_{2,0}} \circ \alpha_2
+		\end{align*} 
+		On the other hand, we can repeat the same computation for $\xi^{-1}_\sigma$ and $\xi^{-1}_\tau$ to get
+		\begin{align*}
+			q_1\circ \xi^{-1}_\sigma \circ \iota'_{1, G'_{1,n+1}} \circ \omega'_1&=q_1\circ \iota_{1,G_{1, n+1}} \circ \omega_1\\&= q_2 \circ \iota_{2, G_{2,0}} \circ \alpha_2\\&=q_2\circ \xi^{-1}_\tau \circ \iota'_{2, G'_{2,0}} \circ \alpha'_2
+		\end{align*} 
+		Hence there exists a $\psi\colon \lpro \der{D}'\rpro \to \tpro{D}$ such that:
+		\[\psi \circ q'_1=q_1\circ \xi^{-1}_\sigma \qquad \psi \circ q'_2=q_2\circ \xi^{-1}_\tau\]
+		
+		Furthermore, the computations below show that $\psi$ is the inverse of $\xi_{\sigma+\tau}$.
+		\[\begin{split}
+			\psi \circ \xi_{\sigma+\tau}\circ  q_1&=\psi \circ q'_1\circ \xi_\sigma \\&=q_1\circ \xi^{-1}_{\sigma}\circ \xi_\sigma\\&=q_1\\\\
+			\xi_{\sigma+\tau}\circ \psi \circ q'_1&=\xi_{\sigma+\tau}\circ q_1\circ \xi^{-1}_\sigma \\&=q'_1\circ \xi_{\sigma}\circ \xi^{-1}_\sigma\\&=q'_1
+		\end{split}\qquad \begin{split}
+			\psi \circ \xi_{\sigma+\tau}\circ  q_2&=\psi \circ q'_2\circ \xi_\tau \\&=q_2\circ \xi^{-1}_{\tau}\circ \xi_\tau\\&=q_2\\ \\ 	\xi_{\sigma+\tau}\circ \psi \circ q'_2&=\xi_{\sigma+\tau}\circ q_2\circ \xi^{-1}_\tau \\&=q'_2\circ \xi_{\tau}\circ \xi^{-1}_\tau\\&=q'_2
+		\end{split}\]
+		To conclude we have to show that $\xi_{\sigma+\tau}$ fits in the diagrams of \Cref{def:permcon}.  For the ones involving the decorations we have:
+		\[\begin{split}
+			\xi_{\sigma+\tau} \circ \iota_{G_{0}}\circ \alpha&=\xi_{\sigma+\tau} \circ q_1 \circ \iota_{1,G_{1,0}}\circ \alpha_1\\&=q_1'\circ \xi_\sigma \circ  \iota_{1,G_{1,0}} \alpha_1\\&=q'_1\circ \iota'_{1, G'_{1,0}}\circ \alpha'_1\\&=\iota'_{G'_0}\circ \alpha'
+		\end{split}  \qquad 
+		\begin{split}
+			\xi_{\sigma+\tau} \circ \iota_{G_{n+t+2}}\circ \omega&=\xi_{\sigma+\tau} \circ q_2 \circ \iota_{2,G_{2,t+1}}\circ \omega_2\\&=q'_2\circ \xi_\tau \circ  \iota_{2,G_{2,t+1}} \omega_2\\&=q'_2\circ \iota'_{2, G'_{2,t+1}}\circ \omega'_2\\&=\iota'_{G'_{n+t+2}}\circ \omega'
+		\end{split}  \]
+		
+		Let now $i$ be an index in $[0, n+t+1]$, we proceed splitting the cases.
+		\begin{itemize}
+			\item $i$ is in $[0,n]$. Then we have
+			\begin{align*}
+				\xi_{\sigma+\tau}\circ \iota_{G_i} \circ m_i &= \xi_{\sigma+\tau} \circ q_1\circ \iota_{1, G_{1,i}}\circ m_{1,i}\\&=q'_1 \circ \xi_\sigma \circ \iota_{1, G_{1,i}}\circ m_{1,i}\\&= q'_1\circ \iota'_{1, G'_{1,\sigma(i)}}\circ m'_{1,\sigma(i)}\\&=\iota'_{G'_{\sigma(i)}}\circ m'_{\sigma(i)}
+			\end{align*}
+			Now, suppose that $i\neq n$, then 
+			\begin{align*}
+				\xi_{\sigma+\tau}\circ \iota_{G_{i+1}} \circ h_i &= \xi_{\sigma+\tau} \circ q_1\circ \iota_{1, G_{1,{i+1}}}\circ h_{1,i}\\&=q'_1\circ \xi_\sigma \circ \iota_{1, G_{1,{i+1}}}\circ h_{1,i}\\&= q'_1\circ \iota'_{1, G'_{1,\sigma(i)+1}}\circ h'_{1,\sigma(i)}
+			\end{align*}
+			and we have two subcases. If $\sigma(i)\neq n$, then \[h'_{1, \sigma(i)}=h'_{\sigma(i)} \qquad q'_1\circ \iota'_{1, G'_{1,\sigma(i)+1}}=
+			\iota'_{G'_{\sigma(i)+1}}\] 
+			and we can conclude. Otherwise, we have
+			\begin{align*}q'_1\circ \iota'_{1, G'_{1,n+1}}\circ h'_{1,n}&=q'_1 \circ \iota'_{1,G'_{1,n+1}} \circ \omega'_1\circ (\omega')^{-1}_1 \circ h'_{1,n}\\&=\iota'_{G'_{n+1}}\circ h'_n
+			\end{align*}
+			yielding again the wanted equality
+			\[\xi_{\sigma+\tau}\circ \iota_{G_{i+1}} \circ h_i=\iota'_{G'_{\sigma(i)+1}}\circ h'_{\sigma(i)}\]
+			Finally, if $i=n$ we get
+			\begin{align*}
+				\xi_{\sigma+\tau}\circ \iota_{G_{n+1}} \circ h_n &= \xi_{\sigma+\tau} \circ \iota_{\pi(G_{1,n+1})} \circ \omega^{-1}_1\circ h_{1,n}\\&= \xi_{\sigma+\tau} \circ q_1\circ \iota_{1, G_{1,n+1}} \circ \omega_1 \circ \omega^{-1}_1 \circ h_{1,n}\\&=q'_1 \circ \xi_\sigma \circ \iota_{1, G_{1,n+1}} \circ h_{1,n}\\&=q'_1\circ \iota'_{1, G_{1,\sigma(n)+1}} \circ h'_{1,\sigma(n)}
+			\end{align*}
+			We have again two cases. If $\sigma(n)\neq n$ then we can conclude at once since 
+			\[h'_{1, \sigma(n)}=h'_{\sigma(n)} \qquad q'_1\circ \iota'_{1, G'_{1,\sigma(n)+1}}=
+			\iota'_{G'_{\sigma(n)+1}}\] 
+			While, if $\sigma(n)=n$, then we can use the identities
+			\[(\omega'_1)^{-1}\circ h'_{1, n}=h'_{n} \qquad q'_1\circ \iota'_{1, G'_{1, n+1}}=
+			\iota'_{G'_{n+1}}\circ (\omega'_1)^{-1}\] 
+			to get
+			\begin{align*}
+				\xi_{\sigma+\tau}\circ \iota_{G_{n+1}} \circ h_n &= q'_1\circ \iota'_{1, G_{1,n+1}} \circ h'_{1,n}\\&=\iota'_{G'_{n+1}}\circ (\omega'_1)^{-1}\circ h'_{1,n}\\&=\iota'_{G'_{n+1}} h'_{n}
+			\end{align*}
+			\item $i$ is in $[n+1, n+t+1]$- We proceed  similarly to the point above. First of all we have
+			\begin{align*}
+				\xi_{\sigma+\tau}\circ \iota_{G_{i+1}} \circ h_i &= \xi_{\sigma+\tau} \circ q_2\circ \iota_{1, G_{2,i-n}}\circ h_{2,i-(n+1)}\\&=q'_2 \circ \xi_\tau \circ \iota_{2, G_{2,i-n}}\circ h_{2,i-(n+1)}\\&= q'_2\circ \iota'_{2, G'_{2,\tau(i-n)}}\circ h'_{2,\tau(i-(n+1))}\\&=\iota'_{G'_{\tau(i-n)}}\circ h'_{n+1+\tau(i-(n+1))}
+			\end{align*}
+			Next, supposing that $i\neq n+1$:	
+			\begin{align*}
+				\xi_{\sigma+\tau}\circ \iota_{G_{i}} \circ m_i &= \xi_{\sigma+\tau} \circ q_2\circ \iota_{2, G_{2,i-(n+1)}}\circ m_{2,i-(n+1)}\\&=q'_2\circ \xi_\tau \circ \iota_{2, G_{2,{i-(n+1)}}}\circ m_{2,i-(n+1)}\\&= q'_2\circ \iota'_{2, G'_{2,\tau(i-(n+1))}}\circ m'_{2,\tau(i-(n+1))}
+			\end{align*}
+			and we have again two possibilities. If $\tau(i-(n+1))\neq 0$, then the thesis follows from the equalities \[m'_{2, \tau(i-(n+1))}=m'_{(\sigma+\tau)(i)} \qquad q'_2\circ \iota'_{2, G'_{2,\tau(i-(n+1))}}=
+			\iota'_{G'_{(\sigma+\tau)(i)}}\] 
+			Suppose, instead, that $\tau(i-(n+1))= 0$, then we have
+			\begin{align*} q'_2\circ \iota'_{2, G'_{2,0}}\circ m'_{2,0}&=q'_2 \circ \iota'_{2,G'_{2,0}} \circ \alpha'_2 \circ \alpha'^{-1}_2 \circ m'_{2,0}\\&=q'_1\circ \iota'_{1, G'_{1, n+1}}\circ \omega'_1\circ \alpha'^{-1}_2 \circ m'_{2,0}\\&=\iota'_{G'_{n+1}}\circ m'_{n+1}
+			\end{align*}
+			allowing us to conclude again.	
+			
+			We are left with the case $i=n+1$. Let us compute
+			\begin{align*}
+				\xi_{\sigma+\tau}\circ \iota_{G_{n+1}} \circ m_{n+1} &= \xi_{\sigma+\tau} \circ \iota_{\pi(G_{2,0})} \circ (\alpha'_2)^{-1}\circ m_{2,0}\\&=\xi_{\sigma+\tau} \circ q_1\circ \iota_{1, G_{1,n+1}} \circ \omega_1 \circ (\alpha'_2)^{-1}\circ m_{2,0}\\&=\xi_{\sigma+\tau} \circ q'_2 \circ \iota'_{2,G'_{2,0}} \circ \alpha'_2 \circ (\alpha'_2)^{-1}\circ m_{2,0} \\&=q'_2 \circ \xi_\tau \circ \iota_{2, G_{2,0}} \circ m_{2,0}\\&=q'_2\circ \iota'_{2, G_{2,\tau(0)}} \circ m'_{2,\tau(0)}
+			\end{align*}
+			We have again two cases. If $\tau(0)\neq 0$ then $(\sigma+\tau)(i)\neq n+1$ and we can conclude at once since 
+			\[m'_{2, \tau(0)}=m'_{(\sigma+\tau)(n+1)} \qquad q'_2\circ \iota'_{2, G'_{2,\tau(0)}}=
+			\iota'_{G'_{(\sigma+\tau)(0)}}\] 
+			If $\tau(0)=0$, so that  $(\sigma+\tau)(0)= n+1$ we appeal to the equalities
+			\[(\alpha')^{-1}_2\circ m'_{2, 0}=m'_{n+1} \qquad q'_2\circ \iota'_{2, G'_{2, 0}}=
+			\iota'_{G'_{n+1}}\circ (\alpha'_2)^{-1}\] 
+			to get
+			\begin{align*}
+				\xi_{\sigma+\tau}\circ \iota_{G_{n+1}} \circ m_{n+1} &= q'_2\circ \iota'_{2, G_{2,\tau(0)}} \circ m'_{2,\tau(0)}\\&=	\iota'_{G'_{n+1}}\circ (\alpha'_2)^{-1}\circ m'_{2,0}\\&=\iota'_{G'_{n+1}}\circ  m'_{n+1}
+			\end{align*}
+		\end{itemize}
+		The thesis now follows at once.	 \qedhere 
+\end{itemize} \end{proof}
+
+\begin{definition}
+Let $(\X, \R)$ be a left-linear DPO rewriting system. The category $\ppi$ is defined as follows: 
+	\begin{itemize}
+	\item objects are isomorphism classes of objects of $\X$;
+	\item an arrow $[G]\to [H]$ is an equivalence class $[\der{D}, \alpha, \omega]_p$ of abstract decorated derivations between $[G]$ and $[H]$;
+	\item given their composition is defined as
+	\[[\der{D}_2, \alpha_2, \omega_2]_p \circ [\der{D}_1, \alpha_1, \omega_1]_p:=[(\der{D}_1, \alpha_1, \omega_1) \cdot (\der{D}_2, \alpha_2, \omega_2)]_p\] 
+	\item the identity on $[G]$ is $[G, \alpha, \alpha]_p$, where $\alpha$ is any isomorphism $\pi(G)\to G$.	\end{itemize}
+\end{definition}
+\begin{remark}By \Cref{rem:empty2}
+\end{remark}
+
+We are now going to proceed towards the central result of this section: the uniqueness of a consistency permutation between two decorated derivations in a consuming rewriting system.
  
 \begin{lemma}\label{lem:impo}
-	Let $(\X,R)$ be a left-linear DPO-rewriting system and let also $(\der{D}_1, \alpha_1, \omega_1)$, $(\der{D}_2, \alpha_2, \omega_2)$ be two composable decorated derivations of length, respectively, $l_1$ and $l_2$. Suppose that $\sigma:[0, l_1+l_2-1]\to [0, l_1+l_2-1]$ is a consistent permutation between $(\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)$ and $(\der{D}'_1, \alpha'_1, \omega'_1)\cdot (\der{D}'_2, \alpha'_2, \omega'_2)$ for some other two composable decorated derivations $(\der{D}_1, \alpha_1, \omega_1)$ and $(\der{D}_2, \alpha_2, \omega_2)$.  Let, moreover, $\tau:[0,l_1-1]\to [0, l_1-1]$ be a consistent permutation between $(\der{D}_1, \alpha_1, \omega_1)$ and $(\der{D}'_1, \alpha'_1, \omega'_1)$. Suppose, finally, that  the set 
+Let  $(\der{D}_1, \alpha_1, \omega_1)$, $(\der{D}_2, \alpha_2, \omega_2)$ be two composable decorated derivations of length, respectively, $l_1$ and $l_2$  in a left-linear DPO-rewriting system $(\X,R)$. Let also  $(\der{D}'_1, \alpha'_1, \omega'_1)$ and $(\der{D}'_2, \alpha'_2, \omega'_2)$ be other two composable decorated derivations such that:
+	\begin{align*}(\der{D}_1, \alpha_1, \omega_1)&\equiv^p_\tau(\der{D}'_1, \alpha'_1, \omega'_1)\\
+	(\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)&\equiv^p_\sigma (\der{D}'_1, \alpha'_1, \omega'_1)\cdot (\der{D}'_2, \alpha'_2, \omega'_2)
+	\end{align*}
+	
+Suppose, moreover, that the set
 	\[D_{\sigma, \tau}:=\{i\in [0, l_1-1]\mid \sigma(i)\neq \tau(i)\}\]
 	is non-empty and let $j$ be its minimum. If $r(\der{D}_1)$ is $\{\rho_i\}_{i=0}^{l_1-1}$ then the following hold true:
 	\begin{enumerate}
@@ -1301,199 +1487,49 @@ We are now going to use the properties of $q_1$ and $q_2$ proven in the previous
 
 On the one hand, computing we get:
 		\begin{align*}
-	q'_2\circ \psi \circ \iota_{2, G_{2,0}}\circ \alpha_2&=q \alpha_2\\&=\xi_\sigma \circ \iota_{G_{l_1+l_1}} \circ \omega_2\\&=\iota'_{G'_{l_1+l_2}}\circ \omega'_2\\&=q_2\circ \iota'_{2, G'_{2, l_2}}\circ \omega'_{2}
+\psi \circ \iota_{2, G_{2,0}}\circ \alpha_2&=  \zeta_0\circ \alpha_2\\&=  \iota'_{2, G'_{2,0}}\circ \alpha'_2\circ \alpha^{-1}_2\circ \alpha_2\\&=\iota'_{2, G'_{2,0}}\circ \alpha'_2
 \end{align*}
-
-		\begin{align*}
-			q_2\circ \psi \circ \iota_{2, G_{2,l_2}}\circ \omega_2&=\xi_\sigma\circ q_2\circ \iota_{2, G_{2,l_2}}\circ \omega_2\\&=\xi_\sigma \circ \iota_{G_{l_1+l_1}} \circ \omega_2\\&=\iota'_{G'_{l_1+l_2}}\circ \omega'_2\\&=q_2\circ \iota'_{2, G'_{2, l_2}}\circ \omega'_{2}
-		\end{align*}
-	But $q_2$ is mono and then  $\psi \circ \iota_{2, G_{2,l_2}}\circ \omega_2=\iota'_{2, G'_{\varrho(i)}}\circ \omega'_{2}$ as wanted. 
-	
 	On the other hand, by we have
-
-	
+		\begin{align*}
+			q'_2\circ \psi \circ \iota_{2, G_{2,l_2}}\circ \omega_2&=\xi_\sigma\circ q_2\circ \iota_{2, G_{2,l_2}}\circ \omega_2\\&=\xi_\sigma \circ \iota_{G_{l_1+l_1}} \circ \omega_2\\&=\iota'_{G'_{l_1+l_2}}\circ \omega'_2\\&=q'_2\circ \iota'_{2, G'_{2, l_2}}\circ \omega'_{2}
+		\end{align*}
+	But $q'_2$ is mono and then  $\psi \circ \iota_{2, G_{2,l_2}}\circ \omega_2=\iota'_{2, G'_{l_2}}\circ \omega'_{2}$ as wanted. 
+		
 	We proceed similarly for the back-matches:
 	\begin{align*}
-		q_2\circ \psi \circ \iota_{2, G_{2,i+1}}\circ h_{2,i}&=\xi_\sigma\circ q_2\circ \iota_{2, G_{2,i+1}}\circ h_{2,i}\\&=\xi_\sigma \circ \iota_{G_{i+l_1+1}} \circ h_{i+l_1}\\&=\iota'_{G'_{\sigma(i+l_1)+1}}\circ h'_{\sigma(i+l_1)}\\&=q_2\circ \iota'_{2, G'_{\varrho(i)+1}}\circ h'_{2, \varrho(i)}	
+		q'_2\circ \psi \circ \iota_{2, G_{2,i+1}}\circ h_{2,i}&=\xi_\sigma\circ q_2\circ \iota_{2, G_{2,i+1}}\circ h_{2,i}\\&=\xi_\sigma \circ \iota_{G_{i+l_1+1}} \circ h_{i+l_1}\\&=\iota'_{G'_{\sigma(i+l_1)+1}}\circ h'_{\sigma(i+l_1)}\\&=q'_2\circ \iota'_{2, G'_{\varrho(i)+1}}\circ h'_{2, \varrho(i)}	
 	\end{align*}
+	Again we conclude since $q'_2$ is a monomorphism.
 	
-		
-	For every 	
-		
-		Let now $i$ be an index different from $0$ and $\sigma^{-1}(l_1+1)$, then, using \Cref{rem:dett} and the previous point of this lemma we have:
-		\begin{align*}	q_2\circ \psi \circ \iota_{2, G_{2,i}}\circ m_{2,i}&=\xi_\sigma\circ q_2\circ \iota_{2, G_{2,i}}\circ m_{2,i}\\&=\xi_\sigma \circ \iota_{G_{i+l_1}} \circ m_{i+l_1}\\&=\iota'_{G'_{\sigma(i+l_1)}}\circ m'_{\sigma(i+l_1)}\\&=q_2\circ \iota'_{2, G'_{\varrho(i)}}\circ m'_{2, \varrho(i)}
+	We turn now to consistency of $\varrho$ with respect to the matches. If $i$ is an index different from $0$ then we have:
+		\begin{align*}	q_2\circ \psi \circ \iota_{2, G_{2,i}}\circ m_{2,i}&=\xi_\sigma\circ q_2\circ \iota_{2, G_{2,i}}\circ m_{2,i}\\&=\xi_\sigma \circ \iota_{G_{i+l_1}} \circ m_{i+l_1}\\&=\iota'_{G'_{\sigma(i+l_1)}}\circ m'_{\sigma(i+l_1)} \\&= 
+			\begin{cases}
+			\iota'_{G'_{l_1}}\circ (\alpha'_2)^{-1} \circ m'_{2, 0}  &\sigma(i+l_1) = l_1\\
+				\iota'_{G'_{\sigma(i+l_1)}}\circ m'_{2,\varrho(i)} & \sigma(i+l_1)\neq l_1
+			\end{cases}
+			\\&=\begin{cases}
+			q'_2\circ \iota_{2, G'_{2,0}} \circ \alpha'_2\circ  (\alpha'_1)^{-1} \circ m'_{2, 0}& \varrho(i)=0\\
+			q'_2\circ \iota'_{G'_{2, \varrho(i)}} \circ m'_{2,\varrho(i)} & \varrho(i)\neq 0
+			\end{cases}\\&=q_2\circ \iota'_{2, G'_{\varrho(i)}}\circ m'_{2, \varrho(i)}
 		\end{align*}
+		and the thesis follows since $q'_2$ belongs to $\mathcal{M}$.
 	 
-	Using the fact that $q_2$ belongs to $\mathcal{M}$ we conclude that 
-	\[\psi \circ \iota_{2, G_{2,i+1}}\circ h_{2,i}=\iota'_{2, G'_{\varrho(i)+1}}\circ h'_{2, \varrho(i)}\]
-	
-		We are left with two cases. First of all, we can notice thatIn this case we have:
-		\[G_{i}=\pi(G_{2,0}) \quad G'_{i}=\pi(G'_{2,0}) \quad m_{l_1}= \alpha^{-1}_2 \circ m_{2,0} \quad m'_{l_1}= (\alpha^{-1}_2)^{-1} \circ m'_{2,0} \]
-		
-		Let's compute:
-		\[q_2\circ \psi \circ \iota_{2}\]
-		
-		
-		Consistency now follows at once. \qedhere 
+	 We are thus left with the case $i=0$. The argument is more or less the same as before:
+	 \begin{align*}
+	 	q_2\circ \psi \circ \iota_{2, G_{2,0}}\circ m_{2,0}&=\xi_\sigma \circ q_2\circ \iota_{2, G_{2,0}}\circ m_{2,0}\\&=\xi_\sigma \circ \iota_{G_{l_1}}\circ \alpha^{-1}_2\circ m_{2,0}\\&=\xi_\sigma \circ \iota_{ G_{l_1}}\circ m_{l_1}\\&=\iota'_{G_{\sigma(l_1)}}\circ m'_{\sigma(l_1)}\\&=\begin{cases}
+	 		\iota'_{G'_{l_1}}\circ (\alpha'_2)^{-1} \circ m'_{2, 0}  &\sigma(l_1) = l_1\\
+	 		\iota'_{G'_{\sigma(l_1)}}\circ m'_{2,\varrho(0)} & \sigma(l_1)\neq l_1
+	 	\end{cases}
+	 	\\&=\begin{cases}
+	 		q'_2\circ \iota_{2, G'_{2,0}} \circ \alpha'_2\circ  (\alpha'_1)^{-1} \circ m'_{2, 0}& \varrho(i)=0\\
+	 		q'_2\circ \iota'_{G'_{2, \varrho(i)}} \circ m'_{2,\varrho(i)} & \varrho(i)\neq 0
+	 	\end{cases}\\&=q_2\circ \iota'_{2, G'_{\varrho(i)}}\circ m'_{2, \varrho(i)}
+	 \end{align*}
+	 But $q_2$ is a mono and so we can conclude.	  \qedhere 
 	\end{enumerate}
 \end{proof}
 
-
-Finally, we  end this section showing that consistent permutations between composable abstract derivations yield a consistent permutation between the composites.
-
-\begin{lemma}[Composition lemma]\label{lem:sum} Let $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ be two abstract decorated derivations such that:
-	\[(\der{D}, \alpha, \omega)=(\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2) \qquad (\der{D}', \alpha', \omega')=(\der{D}'_1, \alpha'_1, \omega'_1)\cdot (\der{D}'_2, \alpha'_2, \omega'_2)\]
-	
-	Given a consistent permutation $\sigma\colon [0, \lgh(\der{D}_1)-1]\to [0, \lgh(\der{D}_1)-1]$ between  $(\der{D}_1, \alpha_1, \omega_1)$ and $(\der{D}'_1, \alpha'_1, \omega'_1)$ and another $\tau\colon [0, \lgh(\der{D}_2)-1]\to [0, \lgh(\der{D}_2)-1]$ between $(\der{D}_2, \alpha_2, \omega_2)$ and $(\der{D}'_2, \alpha'_2, \omega'_2)$, then:
-	\[\sigma+\tau\colon[0, \lgh(\der{D})-1]\to[0, \lgh(\der{D})-1] \quad i \mapsto \begin{cases}
-		\sigma(i) & i < \lgh(\der{D}_1)\\
-		\lgh(\der{D}_1)+\tau(i-\lgh(\der{D}_1)) &   i\geq \lgh(\der{D}_1) 
-	\end{cases}\]
-	is a consistent permutation between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$.
-\end{lemma}
-
-
-
-\begin{proof}
-	
-Given $X_1\in \Delta(\der{D}_1)$, $X_2\in \Delta(\der{D}_2)$, $X'_1\in \Delta(\der{D}'_1)$, $X'_2\in \Delta(\der{D}'_2)$, we will denote their coprojections into, respectively, $\lpro \der{D}_1\rpro$, $\lpro \der{D}'_2\rpro$, $\lpro \der{D}'_1\rpro$, $\lpro \der{D}'_2\rpro$ by
-$\iota_{1, X_1}\colon X_1\to \lpro\der{D}_1\rpro$, $\iota_{1, X_2}\colon X_2\to \lpro\der{D}_1\rpro$, $\iota'_{1, X'_1}\colon X'_1\to \lpro\der{D}'_1\rpro$ and $\iota'_{2, X'_2}\colon X'_2\to \lpro\der{D}_1\rpro$. Similarly, given $X\in \Delta(\der{D})$ and $X'\in \Delta(\der{D}')$ we will use $\iota_X\colon X\to \tpro{D}$ and $\iota'_{X'}\colon X'\to \lpro \der{D}' \rpro$ for the coprojections. 
-
-We split the proof in three cases, according to \Cref{def:conc}.
-	\begin{itemize}
-	\item $\lgh(\der{D}_1)=0$. Thus $\lgh(\der{D}'_1)=0$ too  and we have
-	\[
-	(\der{D}, \alpha, \omega)=(\der{D}_2, \alpha_2\circ \omega_1^{-1}\circ \alpha_1, \omega_2) \qquad  (\der{D}', \alpha', \omega')=(\der{D}'_2, \alpha'_2\circ (\omega'_1)^{-1}\circ \alpha'_1, \omega'_2)\]
-
-	Moreover, in this case $\sigma$ must be $\id{\emptyset}$ and $\sigma+\tau$ must be equal to $\tau$. The thesis now follows from the commutativity of the following diagram.
-	\[\xymatrix@C=35pt{& G_{1,0}\ar[dd]^{\xi_{\id{\emptyset}}} \ar[dr]^{\omega^{-1}_1}&&G_{2,0}\ar[r]^-{\iota_{2, G_{2,0}}} & \lpro \der{D}_2\rpro \ar[dd]^{\xi_{\tau}}\\\pi(G_{1,0})  \ar[ur]^{\alpha_1} \ar[dr]_{\alpha'_1}&& \pi(G_{2,0}) \ar[ur]^{\alpha_2} \ar[dr]_{\alpha'_2}\\& G'_{1,0} \ar[ur]_{(\omega'_1)^{-1}}&&G'_{2,0} \ar[r]_-{\iota'_{2, G_{2,0}}}& \lpro \der{D}'_2\rpro}\]
-	
-\item $\lgh(\der{D}_2)=0$.  As before this implies that also $\lgh(\der{D}'_2)$ is $0$.  Applying \Cref{def:conc} we get 
-\[
-(\der{D}, \alpha, \omega)=(\der{D}_1, \alpha_1, \omega_1 \circ (\alpha_2)^{-1}\circ \omega_2) \qquad (\der{D}', \alpha', \omega')=(\der{D}'_1, \alpha'_1, \omega'_1 \circ (\alpha'_2)^{-1}\circ \omega'_2)\]
-	
-	Since $\der{D}_2$ is empty, then $\tau=\id{\emptyset}$ and $\sigma+\tau=\sigma$. Let $n$ be $\lgh(\der{D}_1)$, as before the thesis follows from the diagram below.
-	\[\xymatrix@C=35pt{& G_{2,0}\ar[dd]^{\xi_{\id{\emptyset}}} \ar[dr]^{\alpha^{-1}_2}&&G_{1,n}\ar@{>->}[r]^-{\iota_{1, G_{1,n}}} & \lpro \der{D}_2\rpro \ar[dd]^{\xi_{\sigma}}\\\pi(G_{2,0})  \ar[ur]^{\omega_2} \ar[dr]_{\omega'_2}&& \pi(G_{1,n}) \ar[ur]^{\omega_1} \ar[dr]_{\omega'_1}\\& G'_{2,0} \ar[ur]_{(\alpha'_1)^{-1}}&&G'_{1,n} \ar@{>->}[r]_-{\iota'_{1, G_{1,n}}}& \lpro \der{D}'_2\rpro}\]
-	
-\item  $\lgh(\der{D}_1)\neq0$ and $\lgh(\der{D}_2)\neq 0$. Thus $\der{D}'_1$ and $\der{D}'_2$ are non-empty too. In this case we have
-\[	(\der{D}, \alpha, \omega)=(\der{D}_1*\omega_1^{-1}\cdot \alpha_2*\der{D}_2, \alpha_1, \omega_2)\qquad
-(\der{D}', \alpha', \omega')=(\der{D}'_1*(\omega'_1)^{-1}\cdot \alpha'_2*\der{D}'_2, \alpha'_1, \omega'_2)\]
-
-Let us assume that $\der{D}_1$, $\der{D}'_1$, $\der{D}_2$ and $\der{D}'_2$ are given by
-\[\der{D}_1=\{\dder{D}_{1,i}\}_{i=0}^n \quad \der{D}'_1=\{\dder{D}'_{1,i}\}_{i=0}^n \quad \der{D}_2=\{\dder{D}_{2,i}\}_{i=0}^t \quad \der{D}_2'=\{\dder{D}'_{2,i}\}_{i=0}^t\]
-By definition of consistent permutation, the rule applied by $\dder{D}_{1,i}$ and the one applied in $\dder{D}_{2,i}$  must coincide with, respectively, the one applied in $\dder{D}'_{1,i}$ and the one applied $\dder{D}'_{2,1}$. Let $\dder{D}_{1,i}$, $\dder{D}'_{1,i}$, $\dder{D}_{2,i}$ and $\dder{D}'_{2,i}$ be given, by the following four diagrams. 
-\[\xymatrix{L_{1,i} \ar[d]_{m_{1, i}}& K_{1,i} \ar[d]_{k_{1, i}} \ar[r]^{r_{1,i}} \ar@{>->}[l]_{l_{1,i}} & R_{1,i}\ar[d]^{h_{1, i}} &L_{1,i} \ar[d]_{m'_{1, i}}& K_{1,i} \ar[d]_{k'_{1, i}} \ar[r]^{r_{1,i}} \ar@{>->}[l]_{l_{1,i}} & R_{1,i}\ar[d]^{h'_{1, i}} \\G_{1,i} & D_{1,i} \ar[r]_{g_{1,i}} \ar@{>->}[l]^{f_{1,i}} & G_{1,i+1} & G'_{1,i} & D'_{1,i}\ar[r]_{g'_{1,i}} \ar@{>->}[l]^{f'_{1,i}}  & G'_{1,i+1}}\]		
-\[\xymatrix{L_{2,i} \ar[d]_{m_{2, i}}& K_{2,i} \ar[d]_{k_{2, i}} \ar[r]^{r_{2,i}} \ar@{>->}[l]_{l_{2,i}} & R_{2,i}\ar[d]^{h_{2, i}} &L_{2,i} \ar[d]_{m'_{2, i}}& K_{2,i} \ar[d]_{k'_{2, i}} \ar[r]^{r_{2,i}} \ar@{>->}[l]_{l_{2,i}} & R_{2,i}\ar[d]^{h'_{2, i}} \\G_{2,i} & D_{2,i} \ar[r]_{g_{2,i}} \ar@{>->}[l]^{f_{2,i}} & G_{2,i+1} & G'_{2,i} & D'_{2,i}\ar[r]_{g'_{2,i}} \ar@{>->}[l]^{f'_{2,i}}  & G'_{2,i+1}}\] 
-
-%Let $(\lpro \der{D}_1*(\omega_1)^{-1}\rpro, \{j_X\}_{X\in \Delta( \der{D}_1*(\omega_1)^{-1})})$, $(\lpro \der{D}'_1*(\omega'_1)^{-1}\rpro, \{j'_X\}_{X\in \Delta( \der{D}'_1*(\omega'_1)^{-1})})$, $(\lpro \der{D}_1*(\omega_1)^{-1}\rpro, \{j_X\}_{X\in \Delta( \der{D}_1*(\omega_1)^{-1})})$ and $(\lpro \der{D}'_1*(\omega'_1)^{-1}\rpro, \{j'_X\}_{X\in \Delta( \der{D}'_1*(\omega'_1)^{-1})})$ be colimiting cocones. 
-By \Cref{rem:dett} we get the following diagram, in which the two solid squares are pushouts:
-\[\xymatrix@C=45pt{\pi(G_{2,0}) \ar@/^.4cm/[rrr]^{\id{\pi(G_{2,0})}}\ar@{>->}[d]_{\iota_{1, G_{1,n+1}} \circ \omega_1}\ar[r]_{\iota_{2, G_{2,0}} \circ \alpha_2}& \lpro \der{D}_2 \rpro \ar@{>->}[d]^{q_2}\ar[r]_{\xi_\tau} & \lpro \der{D}'_2 \rpro \ar@{>->}[d]_{q'_2} &\pi(G'_{2,0}) \ar@{>->}[d]^{\iota'_{1, G'_{1,n+1}} \circ \omega'_1} \ar[l]^{\iota'_{2, G'_{2,0}} \circ \alpha'_2}\\ \lpro \der{D}_1 \rpro \ar@/_.4cm/[rrr]_{\xi_\sigma} \ar[r]^{q_1} & \tpro{D} \ar@{.>}[r]^{\xi_{\sigma+\tau}} & \lpro \der{D}'\rpro & \lpro \der{D}'_1\rpro  \ar[l]_{q'_1}}\]
-
-Moreover, we can point out that, for every index $i\in [0,n+t+2]$ we have
-
-\[\iota_{G_i}=\begin{cases}q_1\circ \iota_{1, G_{1,i}} & i \leq n\\
-	q_1\circ \iota_{1, G_{1, i}}\circ \omega_1& i=n+1\\
-	q_2\circ \iota_{2, G_{2,i-(n+1)}} & i > n+1 
-\end{cases} \qquad \iota'_{G'_i}=\begin{cases}q'_1\circ \iota'_{1, G'_{1,i}} & i \leq n\\
-	q'_1\circ \iota'_{1, G'_{1, i}}\circ \omega'_1& i=n+1\\
-	q'_2\circ \iota'_{2, G'_{2,i-(n+1)}} & i > n+1 
-\end{cases}\]
-
-Now, on the one hand, the existence of the dotted arrow $\xi_{\sigma+\tau}\colon \tpro{D}\to \lpro \der{D}'\rpro$ in the diagram above follows from the following computation:
-\begin{align*}
-	q'_1\circ \xi_\sigma \circ \iota_{1, G_{1,n+1}} \circ \omega_1&=q'_1\circ \iota'_{1,G'_{1, n+1}} \circ \omega'_1\\&= q'_2 \circ \iota'_{2, G'_{2,0}} \circ \alpha'_2\\&=q'_2\circ \xi_\tau \circ \iota_{2, G_{2,0}} \circ \alpha_2
-\end{align*} 
-On the other hand, we can repeat the same computation for $\xi^{-1}_\sigma$ and $\xi^{-1}_\tau$ to get
-\begin{align*}
-	q_1\circ \xi^{-1}_\sigma \circ \iota'_{1, G'_{1,n+1}} \circ \omega'_1&=q_1\circ \iota_{1,G_{1, n+1}} \circ \omega_1\\&= q_2 \circ \iota_{2, G_{2,0}} \circ \alpha_2\\&=q_2\circ \xi^{-1}_\tau \circ \iota'_{2, G'_{2,0}} \circ \alpha'_2
-\end{align*} 
-Hence there exists a $\psi\colon \lpro \der{D}'\rpro \to \tpro{D}$ such that:
-\[\psi \circ q'_1=q_1\circ \xi^{-1}_\sigma \qquad \psi \circ q'_2=q_2\circ \xi^{-1}_\tau\]
-
-Furthermore, the computations below show that $\psi$ is the inverse of $\xi_{\sigma+\tau}$.
-\[\begin{split}
-	\psi \circ \xi_{\sigma+\tau}\circ  q_1&=\psi \circ q'_1\circ \xi_\sigma \\&=q_1\circ \xi^{-1}_{\sigma}\circ \xi_\sigma\\&=q_1\\\\
-	\xi_{\sigma+\tau}\circ \psi \circ q'_1&=\xi_{\sigma+\tau}\circ q_1\circ \xi^{-1}_\sigma \\&=q'_1\circ \xi_{\sigma}\circ \xi^{-1}_\sigma\\&=q'_1
-\end{split}\qquad \begin{split}
-	\psi \circ \xi_{\sigma+\tau}\circ  q_2&=\psi \circ q'_2\circ \xi_\tau \\&=q_2\circ \xi^{-1}_{\tau}\circ \xi_\tau\\&=q_2\\ \\ 	\xi_{\sigma+\tau}\circ \psi \circ q'_2&=\xi_{\sigma+\tau}\circ q_2\circ \xi^{-1}_\tau \\&=q'_2\circ \xi_{\tau}\circ \xi^{-1}_\tau\\&=q'_2
-\end{split}\]
-To conclude we have to show that $\xi_{\sigma+\tau}$ fits in the diagrams of \Cref{def:permcon}.  For the ones involving the decorations we have:
-\[\begin{split}
-	\xi_{\sigma+\tau} \circ \iota_{G_{0}}\circ \alpha&=\xi_{\sigma+\tau} \circ q_1 \circ \iota_{1,G_{1,0}}\circ \alpha_1\\&=q_1'\circ \xi_\sigma \circ  \iota_{1,G_{1,0}} \alpha_1\\&=q'_1\circ \iota'_{1, G'_{1,0}}\circ \alpha'_1\\&=\iota'_{G'_0}\circ \alpha'
-\end{split}  \qquad 
-\begin{split}
-\xi_{\sigma+\tau} \circ \iota_{G_{n+t+2}}\circ \omega&=\xi_{\sigma+\tau} \circ q_2 \circ \iota_{2,G_{2,t+1}}\circ \omega_2\\&=q'_2\circ \xi_\tau \circ  \iota_{2,G_{2,t+1}} \omega_2\\&=q'_2\circ \iota'_{2, G'_{2,t+1}}\circ \omega'_2\\&=\iota'_{G'_{n+t+2}}\circ \omega'
-\end{split}  \]
-
-Let now $i$ be an index in $[0, n+t+1]$, we proceed splitting the cases.
-\begin{itemize}
-	\item $i$ is in $[0,n]$. Then we have
-	\begin{align*}
-		\xi_{\sigma+\tau}\circ \iota_{G_i} \circ m_i &= \xi_{\sigma+\tau} \circ q_1\circ \iota_{1, G_{1,i}}\circ m_{1,i}\\&=q'_1 \circ \xi_\sigma \circ \iota_{1, G_{1,i}}\circ m_{1,i}\\&= q'_1\circ \iota'_{1, G'_{1,\sigma(i)}}\circ m'_{1,\sigma(i)}\\&=\iota'_{G'_{\sigma(i)}}\circ m'_{\sigma(i)}
-	\end{align*}
-	Now, suppose that $i\neq n$, then 
-	\begin{align*}
-		\xi_{\sigma+\tau}\circ \iota_{G_{i+1}} \circ h_i &= \xi_{\sigma+\tau} \circ q_1\circ \iota_{1, G_{1,{i+1}}}\circ h_{1,i}\\&=q'_1\circ \xi_\sigma \circ \iota_{1, G_{1,{i+1}}}\circ h_{1,i}\\&= q'_1\circ \iota'_{1, G'_{1,\sigma(i)+1}}\circ h'_{1,\sigma(i)}
-	\end{align*}
-	and we have two subcases. If $\sigma(i)\neq n$, then \[h'_{1, \sigma(i)}=h'_{\sigma(i)} \qquad q'_1\circ \iota'_{1, G'_{1,\sigma(i)+1}}=
-	\iota'_{G'_{\sigma(i)+1}}\] 
-	and we can conclude. Otherwise, we have
-	\begin{align*}q'_1\circ \iota'_{1, G'_{1,n+1}}\circ h'_{1,n}&=q'_1 \circ \iota'_{1,G'_{1,n+1}} \circ \omega'_1\circ (\omega')^{-1}_1 \circ h'_{1,n}\\&=\iota'_{G'_{n+1}}\circ h'_n
-	\end{align*}
-	yielding again the wanted equality
-	\[\xi_{\sigma+\tau}\circ \iota_{G_{i+1}} \circ h_i=\iota'_{G'_{\sigma(i)+1}}\circ h'_{\sigma(i)}\]
-	Finally, if $i=n$ we get
-	\begin{align*}
-		\xi_{\sigma+\tau}\circ \iota_{G_{n+1}} \circ h_n &= \xi_{\sigma+\tau} \circ \iota_{\pi(G_{1,n+1})} \circ \omega^{-1}_1\circ h_{1,n}\\&= \xi_{\sigma+\tau} \circ q_1\circ \iota_{1, G_{1,n+1}} \circ \omega_1 \circ \omega^{-1}_1 \circ h_{1,n}\\&=q'_1 \circ \xi_\sigma \circ \iota_{1, G_{1,n+1}} \circ h_{1,n}\\&=q'_1\circ \iota'_{1, G_{1,\sigma(n)+1}} \circ h'_{1,\sigma(n)}
-	\end{align*}
-	We have again two cases. If $\sigma(n)\neq n$ then we can conclude at once since 
-	\[h'_{1, \sigma(n)}=h'_{\sigma(n)} \qquad q'_1\circ \iota'_{1, G'_{1,\sigma(n)+1}}=
-	\iota'_{G'_{\sigma(n)+1}}\] 
-	While, if $\sigma(n)=n$, then we can use the identities
-	\[(\omega'_1)^{-1}\circ h'_{1, n}=h'_{n} \qquad q'_1\circ \iota'_{1, G'_{1, n+1}}=
-	\iota'_{G'_{n+1}}\circ (\omega'_1)^{-1}\] 
-	to get
-	\begin{align*}
-		\xi_{\sigma+\tau}\circ \iota_{G_{n+1}} \circ h_n &= q'_1\circ \iota'_{1, G_{1,n+1}} \circ h'_{1,n}\\&=\iota'_{G'_{n+1}}\circ (\omega'_1)^{-1}\circ h'_{1,n}\\&=\iota'_{G'_{n+1}} h'_{n}
-	\end{align*}
-	\item $i$ is in $[n+1, n+t+1]$- We proceed  similarly to the point above. First of all we have
-	\begin{align*}
-		\xi_{\sigma+\tau}\circ \iota_{G_{i+1}} \circ h_i &= \xi_{\sigma+\tau} \circ q_2\circ \iota_{1, G_{2,i-n}}\circ h_{2,i-(n+1)}\\&=q'_2 \circ \xi_\tau \circ \iota_{2, G_{2,i-n}}\circ h_{2,i-(n+1)}\\&= q'_2\circ \iota'_{2, G'_{2,\tau(i-n)}}\circ h'_{2,\tau(i-(n+1))}\\&=\iota'_{G'_{\tau(i-n)}}\circ h'_{n+1+\tau(i-(n+1))}
-	\end{align*}
-	Next, supposing that $i\neq n+1$:	
-	\begin{align*}
-		\xi_{\sigma+\tau}\circ \iota_{G_{i}} \circ m_i &= \xi_{\sigma+\tau} \circ q_2\circ \iota_{2, G_{2,i-(n+1)}}\circ m_{2,i-(n+1)}\\&=q'_2\circ \xi_\tau \circ \iota_{2, G_{2,{i-(n+1)}}}\circ m_{2,i-(n+1)}\\&= q'_2\circ \iota'_{2, G'_{2,\tau(i-(n+1))}}\circ m'_{2,\tau(i-(n+1))}
-	\end{align*}
-	and we have again two possibilities. If $\tau(i-(n+1))\neq 0$, then the thesis follows from the equalities \[m'_{2, \tau(i-(n+1))}=m'_{(\sigma+\tau)(i)} \qquad q'_2\circ \iota'_{2, G'_{2,\tau(i-(n+1))}}=
-	\iota'_{G'_{(\sigma+\tau)(i)}}\] 
-	Suppose, instead, that $\tau(i-(n+1))= 0$, then we have
-	\begin{align*} q'_2\circ \iota'_{2, G'_{2,0}}\circ m'_{2,0}&=q'_2 \circ \iota'_{2,G'_{2,0}} \circ \alpha'_2 \circ \alpha'^{-1}_2 \circ m'_{2,0}\\&=q'_1\circ \iota'_{1, G'_{1, n+1}}\circ \omega'_1\circ \alpha'^{-1}_2 \circ m'_{2,0}\\&=\iota'_{G'_{n+1}}\circ m'_{n+1}
-	\end{align*}
-	allowing us to conclude again.	
-	
-	We are left with the case $i=n+1$. Let us compute
-	\begin{align*}
-		\xi_{\sigma+\tau}\circ \iota_{G_{n+1}} \circ m_{n+1} &= \xi_{\sigma+\tau} \circ \iota_{\pi(G_{2,0})} \circ (\alpha'_2)^{-1}\circ m_{2,0}\\&=\xi_{\sigma+\tau} \circ q_1\circ \iota_{1, G_{1,n+1}} \circ \omega_1 \circ (\alpha'_2)^{-1}\circ m_{2,0}\\&=\xi_{\sigma+\tau} \circ q'_2 \circ \iota'_{2,G'_{2,0}} \circ \alpha'_2 \circ (\alpha'_2)^{-1}\circ m_{2,0} \\&=q'_2 \circ \xi_\tau \circ \iota_{2, G_{2,0}} \circ m_{2,0}\\&=q'_2\circ \iota'_{2, G_{2,\tau(0)}} \circ m'_{2,\tau(0)}
-	\end{align*}
-	We have again two cases. If $\tau(0)\neq 0$ then $(\sigma+\tau)(i)\neq n+1$ and we can conclude at once since 
-	\[m'_{2, \tau(0)}=m'_{(\sigma+\tau)(n+1)} \qquad q'_2\circ \iota'_{2, G'_{2,\tau(0)}}=
-	\iota'_{G'_{(\sigma+\tau)(0)}}\] 
-	If $\tau(0)=0$, so that  $(\sigma+\tau)(0)= n+1$ we appeal to the equalities
-	\[(\alpha')^{-1}_2\circ m'_{2, 0}=m'_{n+1} \qquad q'_2\circ \iota'_{2, G'_{2, 0}}=
-	\iota'_{G'_{n+1}}\circ (\alpha'_2)^{-1}\] 
-	to get
-	\begin{align*}
-		\xi_{\sigma+\tau}\circ \iota_{G_{n+1}} \circ m_{n+1} &= q'_2\circ \iota'_{2, G_{2,\tau(0)}} \circ m'_{2,\tau(0)}\\&=	\iota'_{G'_{n+1}}\circ (\alpha'_2)^{-1}\circ m'_{2,0}\\&=\iota'_{G'_{n+1}}\circ  m'_{n+1}
-	\end{align*}
-\end{itemize}
-The thesis now follows at once.	 \qedhere 
-\end{itemize} \end{proof}
-
-We can sum up the results of this section recasting them in the language of permutation equivalence.
-
-\begin{lemma}
+\begin{corollary}\label{cor:epi}
 	contenuto...
-\end{lemma} 
-\begin{proof}
-	contenuto...
-\end{proof}
+\end{corollary}
+
