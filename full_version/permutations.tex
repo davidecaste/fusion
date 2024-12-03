@@ -627,8 +627,6 @@ The next proposition justifies the use of decorations, guaranteeing that concate
 \end{definition}
 
 
-
-
 \subsection{Colimits of derivations}\label{subsec:col}
 Given a DPO-rewriting system $(\X, \R)$,  we have already noted in \Cref{rem:func} that a derivation $\der{D}$  determines a diagram $\Delta(\der{D})$ in $\X$. We can then wonder if such a diagram has a colimit. Clearly if $\der{D}$ is the empty derivation $G$ then a colimit for $\Delta(\der{D})$ is simply the object $G$. More generally, we have the following result.
 
@@ -975,6 +973,10 @@ The previous result suggests that the existence of a consistent permutations ind
 	We will denote by $[\der{D}, \alpha, \omega]_p$ the equivalence class of $[\der{D}, \alpha, \omega]_a$ with respect to the permutation equivalence.
 \end{notation}
 
+\begin{remark}\label{rem:ugu}
+	It is worth noticing that, by \Cref{rem:empty2}, the permutation equivalence relation reduces to abstract equivalence in the case of empty derivations. This means that, given an object $G$, we have ~$[\{G\}, \alpha, \omega]_a=[\{G\}, \alpha, \omega]_p$.
+\end{remark}
+
 \section{Composing and restricting consistent permutations}
 
 We want now to exploit the results proved at the end of \Cref{subsec:col} to study the behaviour of permutation equivalence with respect to composition of decorated derivations. As a first step we need to establish some technical points.
@@ -1247,14 +1249,22 @@ Let $(\X, \R)$ be a left-linear DPO rewriting system. The category $\ppi$ is def
 	\begin{itemize}
 	\item objects are isomorphism classes of objects of $\X$;
 	\item an arrow $[G]\to [H]$ is an equivalence class $[\der{D}, \alpha, \omega]_p$ of abstract decorated derivations between $[G]$ and $[H]$;
-	\item given their composition is defined as
+	\item given two arrows $[\der{D}_1, \alpha_1, \omega_1] _p\colon [G]\to [H]$ and $[\der{D}_2, \alpha_2, \omega_2] _p\colon [H]\to [K]$, their composition is defined as
 	\[[\der{D}_2, \alpha_2, \omega_2]_p \circ [\der{D}_1, \alpha_1, \omega_1]_p:=[(\der{D}_1, \alpha_1, \omega_1) \cdot (\der{D}_2, \alpha_2, \omega_2)]_p\] 
-	\item the identity on $[G]$ is $[G, \alpha, \alpha]_p$, where $\alpha$ is any isomorphism $\pi(G)\to G$.	\end{itemize}
+	\item the identity on $[G]$ is $[\{G\}, \alpha, \alpha]_p$, where $\alpha$ is any isomorphism $\pi(G)\to G$.	\end{itemize}
 \end{definition}
-\begin{remark}By \Cref{rem:empty2}
+\begin{remark} We can point out two facts;
+	\begin{itemize}
+		\item the composition 	$[\der{D}_2, \alpha_2, \omega_2]_p \circ [\der{D}_1, \alpha_1, \omega_1]_p$ coincides with the permuation equivalence class of $	[\der{D}_2, \alpha_2, \omega_2]_a \circ [\der{D}_1, \alpha_1, \omega_1]_a$;
+		\item by \Cref{rem:ugu}, $[\{G, \alpha, \alpha\}]_p=[\{G, \alpha, \alpha\}]_a$, guaranteeing that it is the neutral element with respect of the composition we have defined above.
+	\end{itemize}
+	
+	In particular, there is a quotient functor $\Pi\colon \dpi\to \ppi$ which is the identity on objects and sends an abstraction equivalence class to its permutation equivalence one.
 \end{remark}
 
-We are now going to proceed towards the central result of this section: the uniqueness of a consistency permutation between two decorated derivations in a consuming rewriting system.
+\subsection{Uniqueness of consistent permutations}
+
+We are now going to proceed towards the central result of this section: the uniqueness of a consistent permutation between two decorated derivations in a consuming DPO rewriting system.
  
 \begin{lemma}\label{lem:impo}
 Let  $(\der{D}_1, \alpha_1, \omega_1)$, $(\der{D}_2, \alpha_2, \omega_2)$ be two composable decorated derivations of length, respectively, $l_1$ and $l_2$  in a left-linear DPO-rewriting system $(\X,R)$. Let also  $(\der{D}'_1, \alpha'_1, \omega'_1)$ and $(\der{D}'_2, \alpha'_2, \omega'_2)$ be other two composable decorated derivations such that:
@@ -1298,9 +1308,12 @@ Let $\sigma, \tau: [0, \lgh(\der{D})-1]\rightrightarrows [0, \lgh(\der{D})-1]$ b
 where $\der{D}_2$ and $\der{D}'_2$ are the empty derivation on $H$ and $H'$. Since $(\X, \R)$ is consuming, then \Cref{lem:impo} entails $D_{\sigma, \tau}=\emptyset$, from which the thesis follows.
 \end{proof}
 
+The previous results, in turn, allows us to deduce a property which is in some sense the converse of the Composition \Cref{lem:sum}.
 
+\begin{lemma}[Restriction Lemma]\label{lem:presuffix} Let $(\X, \R)$ be a consuming left-linear DPO-rewriting system.  Let also $(\der{D}_1, \alpha_1, \omega_1)$, $(\der{D}_2, \alpha_2, \omega_2)$ be two composable decorated derivations of length, respectively, $l_1$ and $l_2$ such that there are  other two composable decorated derivations $(\der{D}_1, \alpha_1, \omega_1)$ and $(\der{D}_2, \alpha_2, \omega_2)$ with the property that
+	\[[(\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)]_a\equiv^p_\sigma[(\der{D}'_1, \alpha'_1, \omega'_1)\cdot (\der{D}'_2, \alpha'_2, \omega'_2)]_a\] 
 
-\begin{lemma}[Restriction Lemma]\label{lem:presuffix} Let $(\X, \R)$ be a consuming left-linear DPO-rewriting system.  Let also $(\der{D}_1, \alpha_1, \omega_1)$, $(\der{D}_2, \alpha_2, \omega_2)$ be two composable decorated derivations of length, respectively, $l_1$ and $l_2$. Suppose that $\sigma\colon [0, l_1+l_2-1]\to [0, l_1+l_2-1]$ is a consistent permutation between $(\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)$ and $(\der{D}'_1, \alpha'_1, \omega'_1)\cdot (\der{D}'_2, \alpha'_2, \omega'_2)$ for some other two composable decorated derivations $(\der{D}_1, \alpha_1, \omega_1)$ and $(\der{D}_2, \alpha_2, \omega_2)$.  If $\tau\colon [0,l_1-1]\to [0, l_1-1]$ is a consistent permutation between $(\der{D_1}, \alpha_1, \omega_1)$ and $(\der{D}'_1, \alpha'_1, \omega'_1)$. Then the following hold true:
+Suppose, finally, that $[\der{D_1}, \alpha_1, \omega_1]_a \equiv^p_\tau [\der{D}'_1, \alpha'_1, \omega'_1]_a$ for some $\tau$. Then the following hold true:
 	\begin{enumerate}
 		\item for every $i\in [0, l_2]$ there exist a unique $\zeta_i\colon G_{2,i}\to \lpro \der{D}'_2\rpro $ and a unique $\varsigma_{i}\colon G'_{2,i}\to \lpro \der{D}_2\rpro$ fitting in the diagrams below;
 		\[\xymatrix@C=30pt{G_{2,i} \ar[r]^-{\iota_{2,G_{2,i}}} \ar@{.>}[d]_{\zeta_i}&\lpro \der{D}_2 \rpro \ar@{>->}[r]^{q_2}& \tpro{D} \ar[d]^{\xi_{\sigma}} &G'_{2,i} \ar[r]^-{\iota'_{2,G'_{2,i}}} \ar@{.>}[d]_{\varsigma_i}&\lpro \der{D}'_2 \rpro \ar@{>->}[r]^{q'_2}& \lpro D'\rpro \ar[d]^{\xi^{-1}_{\sigma}}\\
@@ -1315,16 +1328,17 @@ where $\der{D}_2$ and $\der{D}'_2$ are the empty derivation on $H$ and $H'$. Sin
 		is a consistent one.
 	\end{enumerate}
 \end{lemma}
+
 \begin{proof}
 	To fix the notation, we will use $\der{D}=\{\dder{D}_i\}_{i=0}^{l_1+l_2-1}$ and $\der{D}'=\{\dder{D}_i\}_{i=0}^{l_1+l_2-1}$ to denote the composite derivations. The direct derivations $\dder{D}_i$ and $\dder{D}_i$ are given by the two diagrams below.
 	\[\xymatrix{L_i \ar[d]_{m_i}& K_i \ar[r]^{r_i} \ar@{>->}[l]_{l_i} \ar[d]_{k_i}& R_i \ar[d]^{h_i}& L'_i \ar[d]_{m'_i} & K'_i \ar[d]_{k'_i} \ar[r]^{r'_i} \ar@{>->}[l]_{l'_i} & R'_i \ar[d]^{h'_i}\\ G_i & D_i \ar[r]_{g_i} \ar@{>->}[l]^{f_i} & G_{i+1} & G'_i & D'_i \ar[r]_{g'_i} \ar@{>->}[l]^{f'_i} & G'_{i+1}}\]
 	
-	We can also notice that,  by \Cref{lem:impo}, $\sigma(i)=\tau(i)$ for every $i\in  [0, l_1-1]$. In particular, this implies that the image  $[l_1, l_1+l_2-1]$ through $\sigma$ is again the interval $[l_1, l_1+l_2-1]$ and that $\varrho$ is well-defined.  Moreover, if $l_1\neq 0$, then $l_1-1$ is the maximum of $E_{\sigma,\tau}$. 
+	We can also notice that,  by \Cref{lem:impo}, $\sigma(i)=\tau(i)$ for every $i\in  [0, l_1-1]$. In particular, this implies that the image  $[l_1, l_1+l_2-1]$ through $\sigma$ is again the interval $[l_1, l_1+l_2-1]$, that $\varrho$ is well-defined and $\sigma=\tau +\varrho$.  Moreover, if $l_1\neq 0$, then $l_1-1$ is the maximum of $E_{\sigma,\tau}$. 
 	
 	\begin{enumerate}
 		\item 		To prove the existence of $\zeta_i$ we proceed by induction on $i\in [0, l_2]$.
 		
-		\smallskip \noindent $i=0$. We know that $G_{2,0}$ and $G'_{2,0}$ are isomorphic to, respectively, $G_{1, l_1}$ and $G'_{1, l_1}$. By hypothesis $\tau$ is a consistent permutation between $(\der{D}_1, \alpha_1, \omega_1)$ and $(\der{D}'_1, \alpha'_1, \omega'_1)$, so that $G_{1,l_1}$ and $G'_{1, l_1}$ are isomorphic too. We can therefore consider as $\zeta_0$ the arrow $\iota'_{2, G'_{2,0}}\circ (\alpha'_2)\circ \alpha^{-1}_2$. Now, by \Cref{rem:dett,prop:uniqu}, all subdiagrams of the following diagram commute, so that the whole diagram is commutative and the thesis follows.
+		\smallskip \noindent $i=0$. We know that $G_{2,0}$ and $G'_{2,0}$ are isomorphic to, respectively, $G_{1, l_1}$ and $G'_{1, l_1}$. By \Cref{prop:abs}, $\tau$ is a consistent permutation between $(\der{D}_1, \alpha_1, \omega_1)$ and $(\der{D}'_1, \alpha'_1, \omega'_1)$, so that $G_{1,l_1}$ and $G'_{1, l_1}$ are isomorphic too. We can therefore consider as $\zeta_0$ the arrow $\iota'_{2, G'_{2,0}}\circ (\alpha'_2)\circ \alpha^{-1}_2$. Now, by \Cref{rem:dett,prop:uniqu}, all subdiagrams of the following diagram commute, so that the whole diagram is commutative and the thesis follows.
 		\[\xymatrix@R=10pt@C=35pt{G_{2,0}\ar[r]^{\iota_{2, G_{2,0}}} \ar[dd]_{\alpha^{-1}_2}&\lpro \der{D}_2\rpro \ar[rr]^{q_2}&&\tpro{D}\ar[dddd]^{\xi_{\sigma}}\\& G_{1,l_1} \ar[r]^{\iota_{1, G_{1, l_1}}}& \lpro \der{D}_1\ar[dd]^{\xi_\tau} \ar[ur]_{q_1} \rpro \\\pi(G_{2,0}) \ar[ur]^{\omega_1}\ar[dr]_{\omega'_1} \\ & G'_{1,l_1} \ar[r]_{\iota'_{1, G'_{1, l_1}}}& \lpro \der{D}'_1 \rpro \ar[dr]^{q_1}\\G'_{2,0} \ar@{<-}[uu]^{\alpha'_2}\ar[r]_{\iota'_{2, G'_{2,0}}}&\lpro \der{D}'_2\rpro \ar[rr]_{q'_2}&& \lpro \der{D}'\rpro }\]
 		
 		\smallskip \noindent $i>0$.  Let $j$ be $\sigma(i-1+l_1)-l_1$. We have already observed that $\sigma(i-1+l_1)$ belongs to $[l_1, l_1+l_2-1]$, so that $j$ is an element of $[0, l_2-1]$.  By consistency of $\sigma$ we get that, if $\der{D}_1=\{\dder{D}_{2,s}\}_{s=0}^{l_2-1}$ and $\der{D}'_2=\{\dder{D}'_{1,s}\}_{s=0}^{l_2-1}$, then $\dder{D}_{2, i-1}$ and $\dder{D}'_{2, j}$ are given by the following two direct derivations.
@@ -1530,6 +1544,12 @@ On the one hand, computing we get:
 \end{proof}
 
 \begin{corollary}\label{cor:epi}
-	contenuto...
+	Let $(\X, \R)$ be a consuming left-linear DPO rewriting, then in $\ppi$ every arrow is epi.
 \end{corollary}
+\begin{proof}
+Let $[\der{D}, \alpha, \omega]_p$ be an arrow in $\ppi$ between $[G]\to [H]$ and suppose that two arrows $[\der{D}_1, \alpha_1, \omega_1]_p, [\der{D}_2, \alpha_2, \omega_2]_p\colon [H]\to [K]$  are given such that 
+\[[\der{D}_1, \alpha_1, \omega_1]_p\circ [\der{D}, \alpha, \omega]_p=[\der{D}_2, \alpha_2, \omega_2]_p\circ [\der{D}, \alpha, \omega]_p\]
+
+By construction and \Cref{prop:abs}, the previous equation entails the existence of a consistent permutation $\sigma$ between $(\der{D}, \alpha, \omega)\cdot (\der{D}_1, \alpha_1, \omega_1)$ and $(\der{D}, \alpha, \omega)\cdot (\der{D}_2, \alpha_2, \omega_2)$. Since the identity is a consistent permutation between $(\der{D}, \alpha, \omega)$ and itself, the thesis follows immediately from \Cref{lem:presuffix}.
+\end{proof}
 
