@@ -61,53 +61,41 @@ existence of $i_0 : R_0 \to D_1$ means that $\rho_1$ does not delete
 items in the image of $K_0$, thus $\rho_0$ can be applied after
 $\rho_1$. The following definition formalise what it means for a derivation to be the switch of another.
 
-\begin{definition}[Switch] \label{def:switch}
+\begin{definition}[Concrete  and decorated switch] \label{def:switch}
 	Let $\X$ be an $\mathcal{M}$-adhesive category 
 	and $(\X, \R)$ a left-linear rewriting system. 
 	Let also
 	$\der{D}=\{\dder{D}_i\}_{i=0}^1$ be a derivation made
 	of two sequentially independent derivations $\dder{D}_0$,
-	$\dder{D}_1$ with independence pair $(i_0, i_1)$, as in the diagram
-	on the left below. A \emph{switch} of $\der{D}$ along $(i_0,i_1)$ is
+	$\dder{D}_1$ with independence pair $(i_0, i_1)$, as in the following diagram. 
+		\[\xymatrix@R=20pt@C=20pt{L_0 \ar[d]_{m_0}&& K_0
+		\ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0
+		\ar@{.>}@/^.25cm/[drrr]|(.32)\hole_(.4){i_0}
+		\ar[dr]|(.33)\hole_{h_0} && L_1 \ar@{.>}@/_.25cm/[dlll]^(.4){i_1}
+		\ar[dl]|(.33)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1}
+		\ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar@{>->}[ll]^{f_0}
+		D_0 \ar[rr]_{g_0}&& G_1 && \ar@{>->}[ll]^{f_1} D_1
+		\ar[rr]_{g_1}&& G_2}
+	\]
+	
+	
+	A \emph{concrete switch} of $\der{D}$ along $(i_0,i_1)$ is
 	a derivation $\der{E}=\{\dder{E}_i\}_{i=0}^1$, between the same objects and using the same rules
 	in reverse order, as in the diagram on the right below
 	\[
-	\def\objectstyle{\scriptstyle}\def\labelstyle{\scriptstyle}
-	\xymatrix@C=1.1mm@R=8mm{
-		{L_0} \ar[d]_{m_0}
-		& & {K_0} \ar@{>->}[ll]_{l_0} \ar[rr]^{r_0} \ar[d]_{k_0}
-		& & {R_0} \ar[drr]|(.35)\hole_(.6){h_0}  \ar@/^.22cm/[drrrrrr]|(.3)\hole^(.75){i_0}
-		& & & & 
-		% 
-		{L_1}\ar[dll]|(.35)\hole^(.6){m_1} \ar@/_.22cm/_(.75){i_1}[dllllll]
-		& & {K_1} \ar@{>->}[ll]_{l_1} \ar[rr]^{r_1} \ar[d]^{k_1}
-		& & {R_1} \ar[d]^{h_1} \\
-		% 
-		% 
-		{G_0}
-		& & {D_0} \ar@{>->}[ll]^{f_0} \ar[rrrr]_{g_0}
-		& & & & {G_1} & &
-		& &  {D_1} \ar@{>->}[llll]^{f_1} \ar[rr]_{g_1}
-		& & {G_2}
-	}
-	% 
-	\xymatrix@C=1.1mm@R=8mm{
+	\xymatrix@R=20pt@C=20pt{
 		{L_1} \ar[d]_{m_0'}
-		& & {K_1} \ar@{>->}[ll]_{l_1} \ar[rr]^{r_1} \ar[d]_{k_0'}
-		& & {R_1} \ar[drr]|(.35)\hole_(.6){h_0'}  \ar@/^.22cm/@{.>}^(.75){i_0'}|(.3)\hole[drrrrrr]
-		& & & & 
-		% 
-		{L_0}\ar[dll]|(.35)\hole^(.6){m_1'} \ar@/_.22cm/@{.>}_(.75){i_1'}[dllllll] 
-		& & {K_0} \ar@{>->}[ll]_{l_0} \ar[rr]^{r_0} \ar[d]^{k_1'}
-		& & {R_0} \ar[d]^{h_1'} \\
-		% 
-		% 
+		&&  {K_1} \ar@{>->}[ll]_{l_1} \ar[r]^{r_1} \ar[d]_{k_0'}
+		&  {R_1} \ar[dr]|(.33)\hole_{h_0'}  \ar@/^.25cm/@{.>}_(.4){i_0'}|(.32)\hole[drrr]
+		& & 
+		{L_0}\ar[dl]|(.33)\hole^{m_1'} \ar@/_.25cm/@{.>}^(.4){i_1'}[dlll] 
+		&  {K_0} \ar@{>->}[l]_{l_0} \ar[rr]^{r_0} \ar[d]^{k_1'}
+		& & {R_0} \ar[d]^{h_1'} \\		
 		{G_0}
-		& & {D_0'} \ar@{>->}[ll]^{f_0'} \ar[rrrr]_{g_0'}
-		& & & & {G'_1} & &
-		& &  {D_1'} \ar@{>->}[llll]^{f_1'} \ar[rr]_{g_1'}
+		& & {D_0'} \ar@{>->}[ll]^{f_0'} \ar[rr]_{g_0'}
+		& &  {G'_1} 
+		& &  {D_1'} \ar@{>->}[ll]^{f_1'} \ar[rr]_{g_1'}
 		& & {G_2}  }
-	%
 	\]
 	such that there is an independence pair $(i_0', i_1')$ between
 	$\dder{E}_0$ and $\dder{E}_1$ and 
@@ -118,8 +106,10 @@ $\rho_1$. The following definition formalise what it means for a derivation to b
 		\qquad $h_1'= g_{1}\circ i_0$.
 	\end{center}
 	
-	If a switch of $\dder{D}_0$ and $\dder{D}_1$ exists we say that
-	they are \emph{switchable}.
+	If a concrete switch of $\dder{D}_0$ and $\dder{D}_1$ exists we say that they are \emph{switchable}.
+	
+	
+	Let $(\der{D}, \alpha, \omega)$ be a decorated derivation of length $2$, and $(i_0, i_1)$ an independence pair between $\dder{D}_0$ and $\dder{D}_1$. A \emph{decorated switch} of $(\der{D}, \alpha, \omega)$ along $(i_0, i_1)$ is $(\der{E}, \alpha, \omega)$, where $\der{E}$ is a switch for $\der{D}$ along $(i_0, i_1)$.
 \end{definition}
 
 \begin{example}	\label{ex:seq-ind}
@@ -335,14 +325,53 @@ $\rho_1$. The following definition formalise what it means for a derivation to b
 	\end{tikzpicture}
 	%
 \end{center}
-	
+	\end{example}
 
-\end{example}
+\begin{remark}\label{rem:switch}
+
+Let $\der{E}=\{\dder{E}_i\}_{i=0}^1$ be a concrete switch for $\dder{D}_0$
+and $\dder{D}_1$ along an independence pair $(i_0, i_1)$, then by definition we have an independence pair $(i'_0, i'_1)$ between $\dder{E}_0$ and $\dder{E}_1$ such that
+\[
+m_0=f_0' \circ i_1'
+\quad h_1=g_1' \circ i_0'
+\quad m_0'= f_0 \circ i_1
+\quad h_1'= g_{1}\circ i_0\]
+
+Moreover, $\der{D}$ uses the same rule of $\der{E}$ in reverse order, thus it is a concrete switch for $\der{E}$ along $(i_0', i_1')$.
+
+Similarly, if $(\der{E}, \alpha, \omega)$ is a decorated switch for $(\der{D}, \alpha, \omega)$ along $(i_0, i_1)$, then the latter is a decorated switch for the former along $(i'_0, i'_1)$.
+\end{remark}
 
 
+We can now turn to prove the fundamental property that we need to rely upon:  any decorated switch induces a consistent permutation.
+
+\begin{lemma}\label{lem:switchtoperm}
+	Let $(\der{D}, \alpha, \omega)$ be a decorated derivations of length $2$ and suppose that $(\der{E}, \alpha, \omega)$ is a decorated switch for it along the independence pair $(i_0, i_1)$. Then the following are true:
+	\begin{enumerate}
+		\item there exists an arrow $\kappa\colon G_1\to \tpro{E}$ such that 
+		\[\kappa \circ g_0 = \iota_{\der{E}, G_0}\circ f_0 \qquad \kappa\circ h_0= \iota_{\der{E}, R_0}\]
+\item there exists an isomorphism $\phi\colon \tpro{D}\to \tpro{E}$ such that
+\[\phi \circ \iota_{\der{D}, G_0}=\iota_{\der{E}, G_0} \qquad \phi \circ \iota_{\der{D}, G_1}=\kappa \qquad \phi \circ \iota_{\der{D}, G_2}=\iota_{\der{E}, G_2}\]
+		\item $2$-cycle $\tau_{0,1}$ is a consistent permutation between $(\der{D}, \alpha, \omega)$ and $(\der{D}, \alpha, \omega)$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}\begin{enumerate}
+		\item 
+		\item \qedhere 
+	\end{enumerate}
+\end{proof}
+
+
+
+\subsection{Strong-enforcing and well-switching rewriting systems}
+
+
+
+
+\subsection{Abstract switches}
 We can now prove some properties relating switching and abstraction equivalence. As a first step we can show that switches along the same independence paire are unique up to abstraction equivalence.
 
-\begin{lemma}[Uniqueness of switches]
+\begin{lemma}[Uniqueness of concrete switches]
 	\label{thm:switch_uni}
 	Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^1$ be a derivation and suppose
 	that both $\der{E}=\{\dder{E}_i\}_{i=0}^1$ and
@@ -378,13 +407,15 @@ f_{\der{F},1} \circ \phi_1\circ j_0&=\psi_1\circ f_{\der{E},1}\circ j_0\\&=\psi_
 	allowing us to deduce $ \phi_1\circ j_0=a_0$.
 \end{proof}
 
-\begin{corollary}\label{cor:switch}
+\begin{definition}
+	contenuto...
+\end{definition}
+
+
+\begin{corollary}[Uniqueness of switches]\label{cor:switch}
 	\todo{switches}
 \end{corollary}
 
-\begin{corollary}\label{cor:cons}
-	\todo{consistency of switch}
-\end{corollary}
 
 
 Another useful property of switches is that they can be performed back and forth, giving back the original derivation. This is the content of the following two results. 
@@ -404,58 +435,8 @@ Another useful property of switches is that they can be performed back and forth
 \end{corollary}
 
 
-As we mentioned, for linear rewriting systems
-it is canonical to identify
-derivations that are equal ``up to switching'', i.e.~that differ
-only in the order of independent steps. The same notion can be given
-for left-linear rewriting systems by relying on the notion of switch.
-
-We  recall some notations on permutations.  A \emph{permutation} on
-$\interval[0]{n}$ is a bijection
-$\sigma : \interval[0]{n} \to \interval[0]{n}$. It is a
-\emph{transposition} $\nu$ if there are $i, j \in \interval{n}$,
-$i \neq j$ such that $\sigma(i)=j$, $\sigma(j) = i$, and
-$\sigma(k) = k$ otherwise; it is denoted as $\transp{i}[j]$. Given a permutation $\perm$, 
-an \emph{inversion} for $\sigma$ is a pair $(i,j)$ such that $i<j$ and
-$\sigma(j)< \sigma(i)$; $\inv{\sigma}$ denotes the set of
-inversions of $\perm$.
-
-Switch equivalence is now defined as the equivalence relating derivations that 
-can be obtained one from another by a sequence of switches. Moreover, intermediate graphs can be taken up to isomorphism according to abstraction equivalence.
-
-\begin{definition}[Switching sequence]
-	\label{de:switch-equivalence}
-	Let $(\X, \R)$ be a left-linear rewriting system.  Let also
-	$\der{D}, \der{E} : G \Mapsto H$ be derivations with the same
-	length, $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and
-	$\der{E}=\{\dder{E}_{i}\}_{i=0}^n$. If
-	$\dder{D}_i \cdot \dder{D}_{i+1}$ is a switch of
-	$\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ and  $\dder{D}_j = \dder{E}_j$ for each $j \not \in \{i,i+1\}$ then we write
-	$\der{D} \shift{\transp{i}} \der{E}$. 
-	A \emph{switching sequence} is a sequence $\{\der{D}_{k}\}_{k=0}^m$
-	of derivations such that
-	$\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
-	\shift{\nu_m} \der{D}_m$  with $\nu_{k} = \transp{i_k}$.
-	
-	Let us denote by $\nu_{k,h}$ the composition
-	$\nu_h \circ \nu_{h-1} \circ \ldots \nu_k$. We say that the
-	switching sequence \emph{consists of inversions} if for all
-	$k \in \interval[0]{m}$ the transposition $\nu_k$ is an inversion
-	for $\nu_{1,m}$.
-	
-	Two derivations $\der{D}, \der{E}:G\Mapsto H$ are \emph{switch
-		equivalent}, written $\der{D}\equiv^{sh} \der{E}$, if there is a
-	switching sequence $\{\der{D}_{k}\}_{k=0}^m$ such that
-	$\der{D}\equiv_a \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2}
-	\ldots \shift{\nu_m} \der{D}_m \equiv _a \der{E}$.   
-	To point out a chosen permutation of rewriting steps, we will also write $\der{D}\equiv^{sh}_{\sigma} \der{E}$, 
-	where $\sigma$ is the composition of the transposition appearing in a chosen switching sequence. 
-\end{definition}
 
 
-
-
-\subsection{Well-switching rewriting systems}
 
 The fact that sequential independence implies switchability always
 holds for linear rules (see \Cref{prop:equi}). The result is so
@@ -640,6 +621,7 @@ Still, there are $\mathcal{M}$-adhesive rewriting systems that are not strong en
 Consistency with the theory of linear rewriting systems is ensured by the fact that all linear rewriting systems are strong enforcing (see \cref{prop:equi}).
 
 
+
 Even if we work in strong enforcing rewriting systems where sequential
 independence ensures switchability, when dealing with left-linear
 rules there is a further, possibly more serious issue, 
@@ -771,20 +753,66 @@ Another interesting class of well-switching rewriting systems is given by e-grap
 \end{example}
 
 
-
-\subsubsection{Graphical rewriting systems}\label{subsubsec:graphical}
-
-
-\todo{ci sono un sacco di sistemi very tame}
-\subsection{Canonical switching sequences}
+\section{Switch equivalence and concatenable traces}
 \todo{intro}
 
-\subsubsection{The $3$-steps lemmas} 
+
+As we mentioned, for linear rewriting systems
+it is canonical to identify
+derivations that are equal ``up to switching'', i.e.~that differ
+only in the order of independent steps. The same notion can be given
+for left-linear rewriting systems by relying on the notion of switch.
+
+We  recall some notations on permutations.  A \emph{permutation} on
+$\interval[0]{n}$ is a bijection
+$\sigma : \interval[0]{n} \to \interval[0]{n}$. It is a
+\emph{transposition} $\nu$ if there are $i, j \in \interval{n}$,
+$i \neq j$ such that $\sigma(i)=j$, $\sigma(j) = i$, and
+$\sigma(k) = k$ otherwise; it is denoted as $\transp{i}[j]$. Given a permutation $\perm$, 
+an \emph{inversion} for $\sigma$ is a pair $(i,j)$ such that $i<j$ and
+$\sigma(j)< \sigma(i)$; $\inv{\sigma}$ denotes the set of
+inversions of $\perm$.
+
+Switch equivalence is now defined as the equivalence relating derivations that 
+can be obtained one from another by a sequence of switches. Moreover, intermediate graphs can be taken up to isomorphism according to abstraction equivalence.
+
+\begin{definition}[Switching sequence]
+	\label{de:switch-equivalence}
+	Let $(\X, \R)$ be a left-linear rewriting system.  Let also
+	$\der{D}, \der{E} : G \Mapsto H$ be derivations with the same
+	length, $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and
+	$\der{E}=\{\dder{E}_{i}\}_{i=0}^n$. If
+	$\dder{D}_i \cdot \dder{D}_{i+1}$ is a switch of
+	$\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ and  $\dder{D}_j = \dder{E}_j$ for each $j \not \in \{i,i+1\}$ then we write
+	$\der{D} \shift{\transp{i}} \der{E}$. 
+	A \emph{switching sequence} is a sequence $\{\der{D}_{k}\}_{k=0}^m$
+	of derivations such that
+	$\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
+	\shift{\nu_m} \der{D}_m$  with $\nu_{k} = \transp{i_k}$.
+	
+	Let us denote by $\nu_{k,h}$ the composition
+	$\nu_h \circ \nu_{h-1} \circ \ldots \nu_k$. We say that the
+	switching sequence \emph{consists of inversions} if for all
+	$k \in \interval[0]{m}$ the transposition $\nu_k$ is an inversion
+	for $\nu_{1,m}$.
+	
+	Two derivations $\der{D}, \der{E}:G\Mapsto H$ are \emph{switch
+		equivalent}, written $\der{D}\equiv^{sh} \der{E}$, if there is a
+	switching sequence $\{\der{D}_{k}\}_{k=0}^m$ such that
+	$\der{D}\equiv_a \der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2}
+	\ldots \shift{\nu_m} \der{D}_m \equiv _a \der{E}$.   
+	To point out a chosen permutation of rewriting steps, we will also write $\der{D}\equiv^{sh}_{\sigma} \der{E}$, 
+	where $\sigma$ is the composition of the transposition appearing in a chosen switching sequence. 
+\end{definition}
+
+\todo{Consistent permutations from switchings}
+
+\subsection{A canonical form for switching sequences} 
 
 As a beginning step in our analysis of switch equivalence, we will establish three lemmas  dealing with derivations of length $3$. 
 
 
-\begin{lemma}[First $3$-steps Lemma]\label{lem:primo}
+\begin{lemma}[Forward $3$-steps Lemma]\label{lem:primo}
 Let $(\X,\R)$ be a left-linear DPO-rewriting system. Consider a derivation $\der{D}=\{\dder{D}_i\}_{i=0}^2$ and suppose that $(i_0,i_1)$ is a good independence pair between $\dder{D}_0$ and $\dder{D}_1$, $(a_0,a_1)$ one between $\dder{D}_1$ and $\dder{D}_2$ and $(e_0, e_1)$ one between $\dder{D}_0$ and $S_{a_0,a_1}(\dder{D}_2)$.
 \end{lemma}
 \begin{proof}
@@ -792,7 +820,7 @@ Let $(\X,\R)$ be a left-linear DPO-rewriting system. Consider a derivation $\der
 \end{proof}
 
 
-\begin{lemma}[Second $3$-steps Lemma]\label{lem:secondo}
+\begin{lemma}[Backward $3$-steps Lemma]\label{lem:secondo}
 	contenuto...
 \end{lemma}
 \begin{proof}
