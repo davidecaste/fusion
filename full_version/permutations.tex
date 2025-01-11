@@ -482,31 +482,72 @@ We are often interested in an object of $\X$ only up to isomorphism. It is there
 
 As we are interested in objects only up to isomorphism, so we are interested in (decorated) derivations only up to some notion of coherent isomorphism between them. This is done with the help of \Cref{rem:func}.
 
-\begin{definition}Let $(\X, \R)$ be a left-linear DPO-rewriting system,  an \emph{abstraction equivalence} between two derivations $\der{D}$ and $\der{D'}$ with the same length and such that $r(\der{D})=r(\der{D}')$, is a family of isomorphisms $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ such that, for every $i\in [0, \lgh(\der{D})]$ the following diagram commutes
-	\[\xymatrix@C=40pt{G'_i&D'_i \ar[r]^{g'_i} \ar@{>->}[l]_{f'_i}&G'_{i+1}\\  L_i \ar[u]^{n'_i} \ar[d]_{n_i}& K_i \ar[u]^{k'_i} \ar[d]_{k_i} \ar[r]^{r_i} \ar@{>->}[l]_{l_i} &R\ar[u]^{h'_i} \ar[d]_{h_i}\\G_i \ar@/_.45cm/[uu]_(.35){\phi_{G_i}}|\hole&D_i\ar@{>->}[l]^{f_i}\ar@/_.45cm/[uu]_(.35){\phi_{D_i}}|\hole \ar[r]_{g_i}&G_{i+1}\ar@/_.45cm/[uu]_{\phi_{H_i}}}\]
+\begin{definition}Let $(\X, \R)$ be a left-linear DPO-rewriting system,  an \emph{abstraction equivalence} between two derivations $\der{D}$ and $\der{D'}$ with the same length and such that $r(\der{D})=r(\der{D}')$, is a family of isomorphisms $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ such that, for every $i\in [0, \lgh(\der{D})-1]$ the following diagram commutes
+	\[\xymatrix@C=40pt{G'_i&D'_i \ar[r]^{g'_i} \ar@{>->}[l]_{f'_i}&G'_{i+1}\\  L_i \ar[u]^{m'_i} \ar[d]_{m_i}& K_i \ar[u]^{k'_i} \ar[d]_{k_i} \ar[r]^{r_i} \ar@{>->}[l]_{l_i} &R_i\ar[u]^{h'_i} \ar[d]_{h_i}\\G_i \ar@/_.45cm/[uu]_(.35){\phi_{G_i}}|\hole&D_i\ar@{>->}[l]^{f_i}\ar@/_.45cm/[uu]_(.35){\phi_{D_i}}|\hole \ar[r]_{g_i}&G_{i+1}\ar@/_.45cm/[uu]_{\phi_{H_i}}}\]
 	
-	Given two decorated derivations $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$, we say that they are \emph{abstraction equivalent}, if $\lgh(\der{D})=\lgh(\der{D}')$, $r(\der{D})=r(\der{D'})$, and there exists an of abstraction equivalence between $\der{D}$ and  $\der{D}$ such that the triangles below commute.
-	\[\xymatrix@C=15pt{&\pi(G_0) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G_{n+1}) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G_0 \ar[rr]_{\phi_{G_0}} && G'_0 &G_{n+1} \ar[rr]_{\phi_{G_{n+1}}} && G'_{n+1} } \]
-	We will use $\equiv^a$ to denote the resulting relation.
+	If such an abstraction equivalence exists we will say that $\der{D}$ and $\der{D}'$ are \emph{abstraction equivalent} and we will use $\equiv^{abs}$ to denote the resulting relation-
+	
+Given two decorated derivations $(\der{D}, \alpha, \omega)$  and $(\der{D}', \alpha', \omega')$, with the same length $n$ and using the same rules, an abstraction equivalence $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ is \emph{left consistent} if the left diagram below commutes, while it is \emph{right consistent} if the right one does so. A \emph{consistent} abstraction equivalence  is one which is both left and right consistent.
+\[\xymatrix@C=15pt{&\pi(G_0) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G_{n}) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G_0 \ar[rr]_{\phi_{G_0}} && G'_0 &G_{n} \ar[rr]_{\phi_{G_{n}}} && G'_{n} } \]
+	
+We will say that $(\der{D}, \alpha, \omega)$  and $(\der{D}', \alpha', \omega')$ are \emph{left consistently}, respectively \emph{right consistently} or \emph{consistently}, abstraction equivalent, if there is a left consistent, respectively a right consistent or a consistent, abstraction equivalence between them. We will use $\equiv^{l}$, $\equiv^{r}$ and $\equiv^{a}$ to denote the resulting relations.
 \end{definition}
 
-\begin{remark}\label{rem:equi}
-	It is immediate to see that $\equiv^a$ is an equivalence relation. Indeed $(\der{D}, \alpha, \omega)$ is abstract equivalent to itself via the abstract equivalence with the identities as components. Furthermore, if  $\{\phi_X\}_{X\in \Deltamin(\der{D})}$  witnesses $(\der{D}, \alpha, \omega)\equiv^a (\der{D}', \alpha', \omega')$, then considering $\{\phi^{-1}_X\}_{X\in \Deltamin(\der{D})}$ shows $(\der{D}', \alpha', \omega)\equiv^a (\der{D}, \alpha, \omega)$. Finally, transitivity is assured composing abstract equivalences. 
+\begin{proposition}\label{prop:equi}
+The relations $\equiv^{abs}, \equiv^l, \equiv^r$ and $\equiv^a$ are equivalences.
+\end{proposition}
+\begin{proof}
+	 
+	 Let $\der{D}$ be a derivation, then $\{\id{X}\}_{X\in \Deltamin(\der{D})}$ is an abstraction equivalence between $\der{D}$ and itself. Moreover, starting with a decorated derivation $(\der{D}, \alpha, \omega)$, the same $\{\id{X}\}_{X\in \Deltamin(\der{D})}$  is also consistent, so that all the four relations are reflexive.
+	 
+	 For simmetry, let us suppose that $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ is an abstraction equivalence between $\der{D}$ and $\der{D}'$, then $\{\phi^{-1}_X\}$ defines an abstraction equivalence  between $\der{D}'$ and $\der{D}$. Indeed, for every $i\in [0, \lgh(\der{D})-1]$ we have
+	 \[\begin{split}
+	 	m_i&=\id{G_i}\circ m_i\\&=\phi^{-1}_{G_i}\circ \phi_{G_i}\circ m_i\\&=\phi^{-1}_{G_i}\circ m'_i
+	 \end{split} \qquad \begin{split}
+ 	k_i&=\id{D_i}\circ k_i\\&=\phi^{-1}_{D_i}\circ \phi_{D_i}\circ k_i\\&=\phi^{-1}_{D_i}\circ k'_i
+	 \end{split}\qquad \begin{split}
+ 	h_i&=\id{G_{i+1}}\circ h_i\\&=\phi^{-1}_{G_{i+1}}\circ \phi_{G_{i+1}}\circ h_i\\&=\phi^{-1}_{G_{i+1}}\circ h'_i
+	 \end{split} \]
 	
-	We will denote by $[\der{D}, \alpha, \omega]_a$ is just the equivalence class of  $(\der{D}, \alpha, \omega)$.
-	Such equivalence classes will be called  \emph{abstract decorated derivation}.  
-\end{remark}
+	Starting with two decorated derivations $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$, if $\{\phi_X\}_{X\in \Deltamin(\der{D})}$  is left, respectively right, consistent  then, putting $n$ as the length of $\der{D}$, we have:
+	\[\begin{split}
+		\alpha&=\id{G_0}\circ \alpha\\&=\phi^{-1}_{G_0}\circ \phi_{G_0}\circ \alpha\\&=\phi^{-1}_{G_0}\circ \alpha'
+	\end{split}\qquad \begin{split}
+		\omega&=\id{G_n}\circ \omega\\&=\phi^{-1}_{G_n}\circ \phi_{G_n}\circ \omega\\&=\phi^{-1}_{G_n}\circ \omega'
+	\end{split}\]
+	
+	Finally, let $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ and $\{\psi_X\}_{X\in \Deltamin(\der{D}')}$ be abstraction equivalence witnessing $\der{D} \equiv^{abs}\der{D}'$ and $\der{D}'\equiv^{abs}\der{D}''$. Then we can consider the family $\{\psi_X\circ \phi_X\}_{X\in \Deltamin(\der{D})}$  and check that, for every $i\in [0,\lgh(\der{D})]$ we have
+	 \[\begin{split}
+	\psi_{G_i}\circ \phi_{G_i}\circ m_i&= \psi_{G_i}\circ m'_i\\&=m''_i 
+\end{split} \qquad \begin{split}
+	\psi_{D_i}\circ \phi_{D_i}\circ k_i&= \psi_{D_i}\circ k'_i\\&=k''_i
+\end{split}\qquad \begin{split}
+\psi_{G_{i+1}}\circ \phi_{G_{i+1}}\circ h_i&= \psi_{G_{i+1}}\circ h'_i\\&=h''_i
+\end{split} \]
+	
+	For decorations, if $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ and $\{\psi_X\}_{X\in \Deltamin(\der{D}')}$ are left or right consistent we have
+	 \[\begin{split}
+		\psi_{G_0}\circ \phi_{G_0}\circ \alpha&= \psi_{G_0}\circ \alpha'\\&=\alpha'' 
+	\end{split} \qquad \begin{split}
+		\psi_{G_{\lgh(\der{D})}}\circ \phi_{G_{\lgh(\der{D})}}\circ \omega&= \psi_{G_{\lgh(\der{D})}}\circ \omega'\\&=\omega''
+	\end{split}\]
+	And we can conclude.
+\end{proof}
+
+\begin{notation}
+	Since we are mainly interested into consistent abstraction equivalence, we will use  $[\der{D}, \alpha, \omega]_a$ to denote the equivalence class of  $(\der{D}, \alpha, \omega)$ with respect to $\equiv^a$.
+	Such equivalence classes will be called  \emph{abstract decorated derivations}.  
+\end{notation}
 
 \begin{example}\label{rem:empty}
-	Let $(\der{D},\alpha, \omega)$ be an empty derivation from an object $G$ and  $(\der{D}',\alpha', \omega')$ a another empty one from $G'$.  If $(\der{D},\alpha, \omega)\equiv^a(\der{D}',\alpha', \omega')$ then an abstraction equivalence between $\der{D}$ and $\der{D}'$ is just an isomorphism $\phi\colon G\to G'$, so that $\pi(G)=\pi(G')$. Moreover, such isomorphism must fit in the diagrams below.
+	Let $\{G\}$ and  $\{G'\}'$ be two empty derivations  An abstraction equivalence between $\{G\}$ and $\{G\}'$ is just an isomorphism $\phi\colon G\to G'$, so that $\pi(G)=\pi(G')$. If we are dealing with decorated derivations $(\{G\}, \alpha, \omega)$ and $(\{G'\}, \alpha, \omega)$,  left and right consistency of $\phi $ correspond to the commutativity of the diagrams below.
 	\[\xymatrix@C=15pt{&\pi(G) \ar[dr]^{\alpha'} \ar[dl]_{\alpha}&&& \pi(G) \ar[dr]^{\omega'} \ar[dl]_{\omega}\\ G\ar[rr]_{\phi} && G' &G \ar[rr]_{\phi} && G' } \]
-	In particular, these two triangles imply that
-	\begin{align*}
-		\alpha'\circ \alpha^{-1}&=\phi \\&=\omega'\circ \omega^{-1}
-	\end{align*}
+	
+	In particular, this prove that two empty decorated derivations $(\{G\},\alpha, \omega) $ and $(\{G'\}',\alpha', \omega')$ are consistently abstraction equivalent if and only if
+	\[	\alpha'\circ \alpha^{-1}=\omega'\circ \omega^{-1}\]
 \end{example}
 
-\begin{remark}\label{rem:res} \Cref{prop:unique} can be restated as saying that, given two direct derivations $\dder{D}$ and $\dder{D'}$ with the same match, there exists an abstract equivalence between them whose first component is an identity.
+\begin{remark}\label{rem:res} \Cref{prop:unique} can be restated as saying that, given two direct derivations $\dder{D}$ and $\dder{D'}$ with the same match, there exists an abstract equivalence between them whose first component is the identity. 
 \end{remark}
 
 \begin{remark}\label{rem:absequi}
@@ -523,9 +564,13 @@ As we are interested in objects only up to isomorphism, so we are interested in 
 	Taking in account the decorations, we also have that $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ and  $\{\phi'_X\}_{X\in \Deltamin(\der{D})}$ witness, respectively, that 
 	\[(\der{D}, \alpha, \omega) \equiv^a (\phi * \der{D}, \phi^{-1}\circ \alpha,   \varphi^{-1}_{H} \circ \omega) \qquad (\der{D}, \alpha, \omega) \equiv^a ( \der{D}*\psi, \varphi'_{G} \circ \alpha, \psi \circ \omega )\]
 
-Notice, moreover, that if $\der{D}$ is not empty, then the previous equations become
+if $\der{D}$ is not empty, then the previous equations become
 \[(\der{D}, \alpha, \omega) \equiv^a (\phi * \der{D}, \phi^{-1}\circ \alpha,   \omega) \qquad (\der{D}, \alpha, \omega) \equiv^a ( \der{D}*\psi, \alpha, \psi \circ \omega )\]
+
+In particular, given an empty decorated derivation $(\{G\}, \alpha, \omega)$, we can apply what we have noticed to $\alpha \colon \pi(G)\to G$ and to $\omega^{-1}\colon G\to \pi(G) $ to get that 
+\[(\{G\}, \alpha, \omega)\equiv^a (\{\pi(G)\}, \id{\pi(G)}, \alpha^{-1}\circ \omega) \qquad (\{G\}, \alpha, \omega)\equiv^a (\{\pi(G)\}, 	\omega^{-1}\circ \alpha, \id{\pi(G)})\]
 \end{remark}
+
 
 \begin{definition}\label{def:conc}
 	Let $(\der{D}, \alpha, \omega)$ be a decorated derivation between $G$ and $H$ and $(\der{D}', \alpha', \omega')$ one between $H'$ and $K$. If $H$ and $H'$ are isomorphic, so that $\pi(H)=\pi(H')$, we define the  \emph{composite decorated derivation} putting
@@ -536,10 +581,77 @@ Notice, moreover, that if $\der{D}$ is not empty, then the previous equations be
 	\end{cases}\]
 \end{definition}
 
-
 \begin{remark}\label{rem:lgt}
-	Let $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ two composable decorated derivations   such that $\lgh(\der{D})=n$ and $\lgh(\der{D}')=m$.	 Then $(\der{D}*\omega^{-1}\cdot \alpha'*\der{D'}, \alpha, \omega')$ has length $n+m$.
+	Let $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ two composable decorated derivations   such that $\lgh(\der{D})=n$ and $\lgh(\der{D}')=m$.	 Then $(\der{D}, \alpha, \omega)\cdot (\der{D}', \alpha', \omega')$ has length $n+m$.
 \end{remark}
+
+\begin{remark}\label{rem:id}
+	Let us consider  $(\{G\}, \alpha, \alpha)$ be a decoration of length $0$ with the same isomorphism as initial and final decoration. Then for every other derivations $(\der{D}, \beta, \omega)$ with source isomorphic to $G$, we have
+	\[(\{G\}, \alpha, \alpha)\cdot (\der{D}, \beta, \omega) = (\der{D}, \beta, \omega)\]
+	
+	On the other hand, if  $(\der{E}, \gamma, \zeta)$  has a target isomorphic to $G$, we have
+	\[(\der{E}, \gamma, \zeta)\cdot (\{G\}, \alpha, \alpha) = \begin{cases}
+		(\{G\}, \alpha \circ \zeta^{-1}\circ \gamma, \alpha)	&\lgh(\der{E})=0 \\
+		(\der{E}, \gamma, \zeta )& \lgh(\der{E})= 0
+	\end{cases}\]
+	
+Now,  in the first case, we have that
+\[\alpha \circ \zeta^{-1} \circ \gamma \circ \gamma ^{-1} = \alpha \circ \zeta^{-1}\]
+therefore, by \Cref{rem:empty}, $(\der{E}, \gamma, \zeta)\cdot (\{G\}, \alpha, \alpha)\equiv^a  (\der{E}, \gamma, \zeta)$.
+\end{remark}
+
+\begin{remark}\label{ex:zero}
+Let $(\{G\}, \alpha, \omega)$ and $(\{G'\}, \alpha', \omega')$ be two decorated derivations of length zero with $G$ and $G'$ isomorphic. Then we can always compose with another empty decorated derivations to get one from the other. In particular, using \Cref{rem:absequi} we have:
+\begin{align*}
+(\{G\}, \alpha, \omega)&\equiv^{a} (\pi(G), \id{\pi(G)}, \alpha^{-1}\circ \omega)\\&=(\{\pi(G)\}, (\alpha')^{-1}\circ \omega'\circ \omega'^{-1} \circ \alpha', \alpha^{-1}\circ \omega)\\&=(\{G'\}, \alpha', \omega')\cdot (\{\pi(G)\}, (\alpha')^{-1}\circ \omega', \alpha^{-1}\circ \omega)
+\\(\{G\}, \alpha, \omega)&\equiv^{a} (\{\pi(G)\}, 	\omega^{-1}\circ \alpha, \id{\pi(G)})\\&=(\{\pi(G)\}, \omega^{-1}\circ \alpha, (\omega')^{-1}\circ\alpha'\circ (\alpha')^{-1} \circ \omega')\\&= (\{\pi(G)\}, \omega^{-1}\circ \alpha, (\omega')^{-1}\circ\alpha') \cdot (\{G'\}, \alpha', \omega')
+\end{align*}
+\end{remark}
+
+We can generalize the previous remark to the following elementary, but useful, result about abstraction equivalence of composite decorated derivations. 
+\begin{lemma}\label{rem:obv}
+	Let  $(\der{D}_1, \alpha_1, \omega_1)$, $(\der{D}_2, \alpha_2, \omega_2)$, $(\der{D}'_1, \alpha'_1, \omega'_1)$ and $(\der{D}'_2, \alpha'_2, \omega'_2)$ be two pairs of composable derivations and define $(\der{E}, \xi, \theta)$ and $(\der{E}', \xi', \theta')$ as 
+	\[(\der{E}, \xi, \theta):=(\der{D}_1, \alpha_1, \omega_1) \cdot (\der{D}_2, \alpha_2, \omega_2) \qquad (\der{E}', \xi', \theta'):=(\der{D}'_1, \alpha'_1, \omega'_1) \cdot (\der{D}'_2, \alpha'_2, \omega'_2)\]
+	 If $\lgh(\der{D}_1)=\lgh(\der{D}'_1)$, $\lgh(\der{D}_2)=\lgh(\der{D}'_2)$ and $\der{E}\equiv^a \der{E}'$  then there exist empty derivations $(\{A\}, \gamma_1, \delta_1)$ and $(\{B\}, \gamma_2, \delta_2)$ such that
+	 \[(\der{D}_1, \alpha_1, \omega_1) \equiv^a (\der{D}'_1, \alpha'_1, \omega'_1) \cdot  (\{A\}, \gamma_1, \delta_1) \qquad (\der{D}_2, \alpha_2, \omega_2) \equiv^a (\{B\}, \gamma_2, \delta_2)\cdot (\der{D}'_2, \alpha'_2, \omega'_2)  \]
+\end{lemma}
+\begin{proof} Let $\{\phi_X\}_{X\in \Deltamin(\der{E})}$ be an abstraction equivalent witnessing that $(\der{E}, \zeta, \theta)\equiv^{a}(\der{E}', \zeta', \theta')$.	We split the cases following \Cref{def:conc}.
+	
+	\smallskip \noindent $\lgh(\der{D}_1)=0$. In this case we have that
+	\[(\der{E}, \zeta, \theta)=(\der{D}_2, \alpha_2\circ \omega^{-1}_1 \circ \alpha_1, \omega_2) \qquad (\der{E}', \zeta', \theta')=(\der{D}'_2, \alpha'_2\circ (\omega'_1)^{-1} \circ \alpha'_1, \omega'_2)\]
+	By hypothesis $\der{D}_1$ and $\der{D}'_1$ are given by $\{G_{1,0}\}$ and $\{G'_{1,0}\}$. Moreover we know that $G_{1,0}$ is isomorphic to $G_{2,0}$ and  $G'_{1,0}$ to $G'_{2,0}$. Since $\phi_{G_{2,0}}$ is an isomorphism we conclude that $G_{1,0}$ and $G_{2,0}$ are isomorphic and we deduce the first half of the thesis from \Cref{ex:zero}. 
+	
+	For the second half, let us consider define $B$ as $\pi(G_{2,0})$ and
+	\[\gamma_2:=\alpha^{-1}_1\circ \omega_1\qquad  \delta_2:=(\alpha'_1)^{-1}\circ \omega'_1  \]
+	
+	Hence we have
+\[
+(\{\pi(G_{2,0})\}, \alpha^{-1}_1\circ \omega_1,  (\alpha'_1)^{-1}\circ \omega'_1 )\cdot(\der{D}'_2, \alpha'_2, \omega'_2)  =(\der{D}_2, \alpha'_2\circ (\omega'_1)^{-1} \circ \alpha'_1\circ \alpha_1^{-1}\circ \omega_1, \omega'_2)\]
+Now, by consistency of $\{\phi_{X}\}_{X\in \Deltamin(\der{D}_2)}$ we know that
+\[\phi_{G_{2,0}}\circ \alpha_2\circ \omega^{-1}_1\circ \alpha_1=\alpha'_2\circ (\omega'_1)^{-1} \circ \alpha'_1\]
+	therefore we also have the equality
+	\[\phi_{G_{2,0}}\circ \alpha_2=\alpha'_2\circ (\omega'_1)^{-1} \circ \alpha'_1 \circ \alpha^{-1}_1\circ \omega_1 \]
+	We conclude that $\{\phi_X\}_{X\in \der{D}_2}$ wintesses the thesis.
+	
+	\smallskip \noindent $\lgh(\der{D}_2)=0$ and $\lgh(\der{D}_1)\neq 0$. By definition we know that
+	\[(\der{E}, \zeta, \theta)=(\der{D}_1, \alpha_1, \omega_1\circ \alpha_2^{-1}\circ \omega_2) \qquad (\der{E}', \zeta', \theta')=(\der{D}'_1, \alpha'_1, \omega'_1\circ (\alpha'_2)^{-1}\circ \omega'_2)\]
+	
+	Let $l$ be the length of $\der{D}_1$, and consider $(\{\pi(G'_{1, l})\}, (\omega'_2)^{-1}\circ \alpha'_2, \omega^{-1}_2\circ \alpha_2)$, so that
+	\[ (\der{D}'_1, \alpha'_1, \omega'_1) \cdot  (\{\pi(G_{1, l})\}, (\omega'_2)^{-1}\circ \alpha'_2, \omega^{-1}_2\circ \alpha_2)= (\der{D}'_1, \alpha'_1, \omega'_1\circ (\alpha'_2)^{-1}\circ \omega'_2 \circ \omega^{-1}_2\circ \alpha_2)\]
+	Now, let us consider the abstraction equivalence between  the decorated derivations $(\der{D}_1, \alpha_1, \omega_1)$ and  $(\der{D}'_1, \alpha'_1, \omega'_1) \cdot  (\{\pi(G_{1, l})\}, (\omega'_2)^{-1}\circ \alpha'_2, \omega^{-1}_2\circ \alpha_2)$ given by $\{\phi_X\}_{X\in \Deltamin(\der{D}_1)}$. On the one hand it is, by construction, left consistent.  On the other hand we know that 
+	 
+	\[\phi_{G_{1,l}}\circ \omega_1\circ \alpha_2^{-1}\circ \omega_2=\omega'_1\circ (\alpha'_2)^{-1}\circ \omega'_2 \]
+	 
+	 Composing on both sides with $\omega^{-1}_1\circ \alpha_2$ yields now the thesis.
+	 
+The second half of the thesis follows immediately from \Cref{ex:zero}.	
+	
+	\smallskip \noindent  $\lgh(\der{D}_1)$ and $\lgh(\der{D}_2)$ are both different from $0$. By \Cref{def:conc} in this case we have
+	\[(\der{E}, \zeta, \theta)=(\der{D}_1*\omega^{-1}_1 \cdot \alpha_2*\der{D}_2, \alpha_1,\omega_2 ) \qquad (\der{E}', \zeta', \theta')=(\der{D}'_1*(\omega'_1)^{-1} \cdot \alpha'_2*\der{D}'_2, \alpha'_1,\omega'_2 )\]
+	
+	
+	
+\end{proof}
 
 The next proposition justifies the use of decorations, guaranteeing that concatenation of abstract decorated derivations is well-defined.
 \begin{lemma}\label{lem:conc}
@@ -550,9 +662,8 @@ The next proposition justifies the use of decorations, guaranteeing that concate
 \end{lemma}
 
 \begin{proof} Take two abstraction equivalences $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ and $\{\varphi_X\}_{X\in \Deltamin(\der{D})}$ between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ and between $(\der{E}, \beta, \xi)$ and $(\der{E}', \beta', \xi')$, respectively. To fix the notation, suppose that goes from $G'$ to $H'$ and $(\der{E}', \beta', \xi')$ from $E'$ to $K'$. We have three cases.
-	
-	\begin{itemize}
-		\item $\lgh(\der{D})=0$. Then, $\lgh(\der{D}')$ is $0$ too. By \Cref{def:conc} we have
+
+	\smallskip \noindent  $\lgh(\der{D})=0$. Then, $\lgh(\der{D}')$ is $0$ too. By \Cref{def:conc} we have
 		\begin{align*}
 			(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)&=(\der{E}, \beta\circ \omega^{-1}\circ \alpha, \xi)\\
 			(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')&=(\der{E}', \beta'\circ (\omega')^{-1}\circ \alpha', \xi')
@@ -562,7 +673,7 @@ The next proposition justifies the use of decorations, guaranteeing that concate
 		
 		We can  then conclude that $\{\varphi_X\}_{X\in \Deltamin(\der{D})}$ witnesses the fact that $(\der{E}, \beta\circ \omega^{-1}\circ \alpha, \xi)$ is abstraction equivalent to $(\der{E}', \beta'\circ (\omega')^{-1}\circ \alpha', \xi')$.
 		
-		\item $\lgh(\der{D})\neq 0$ and $\lgh(\der{E})= 0$. As in the point above, we get that also $\der{E}'$  is an empty derivation, thus we have
+\smallskip \noindent  $\lgh(\der{D})\neq 0$ and $\lgh(\der{E})= 0$. As in the point above, we get that also $\der{E}'$  is an empty derivation, thus we have
 		\begin{align*}
 			(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)&=(\der{D},  \alpha, \omega \circ \beta^{-1}\circ \xi)\\
 			(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')&=(\der{D}',  \alpha', \omega' \circ (\beta')^{-1}\circ \xi')
@@ -570,7 +681,8 @@ The next proposition justifies the use of decorations, guaranteeing that concate
 		In this case we have that $E=K$ and that $\pi(E)=\pi(E')$. From \Cref{rem:empty} we deduce that the diagram below commutes.
 		\[\xymatrix@C=35pt{\pi(E) \ar[r]^{\xi} \ar[d]_{\id{\pi(E)}}& E  \ar[d]_{\varphi_E}\ar[r]^-{\beta^{-1}} & \pi(E) \ar[d]_{\id{\pi(E)}} \ar[r]^{\omega}& H \ar[d]^{\phi_H}\\\pi(E') \ar[r]_{\xi'}& E' \ar[r]_-{(\beta')^{-1}} & \pi(E') \ar[r]_{\omega'} & H'}\]
 		The thesis now follows at once.
-		\item $\lgh(\der{D})\neq 0$ and $\lgh(\der{E})\neq 0$. In this case we have
+		
+		\smallskip \noindent $\lgh(\der{D})\neq 0$ and $\lgh(\der{E})\neq 0$. In this case we have
 		\begin{align*}
 			(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)&=(\der{D}*\omega^{-1}\cdot \beta*\der{E}, \alpha, \xi)\\
 			(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')&=(\der{D}'*(\omega')^{-1}\cdot \beta'*\der{E'}, \alpha', \xi')
@@ -613,9 +725,69 @@ The next proposition justifies the use of decorations, guaranteeing that concate
 		\end{split}\qquad \begin{split}\beta^{-1} \circ f_{\der{E}, 0}&=\id{\pi(E)}\circ \beta^{-1} \circ f_{\der{E}, 0}\\&=(\beta')^{-1}\circ \varphi_E \circ \beta\circ \beta^{-1} \circ f_{\der{E}, 0}\\&=(\beta')^{-1}\circ \varphi_E  \circ f_{\der{E}, 0}\\&= (\beta')^{-1} \circ f_{\der{E}', n}\circ \varphi_{F_0}
 		\end{split}\]
 		
-		The thesis now follows.	\qedhere 
-	\end{itemize}	
+		The thesis now follows.	
 \end{proof}
+
+We are now ready to prove that the operatione defined by \Cref{def:conc} is associative up to decorated abstraction equivalence.
+
+\begin{lemma}[Associativity Lemma]\label{lem:ass}  
+Let $(\der{D}_1, \alpha_1, \omega_1)$ be a decorated derivation between $G$ and $H$, $(\der{D}_2, \alpha_2, \omega_2)$, one between $H$ and $K$ and $(\der{D}_3, \alpha_3, \omega_3)$ one between $K$ and $T$ in a left-linear DPO rewriting system. Then
+\[((\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)) \cdot (\der{D}_3, \alpha_3, \omega_3) \equiv^a (\der{D}_1, \alpha_1, \omega_1)\cdot ( (\der{D}_2, \alpha_2, \omega_2)\cdot (\der{D}_3, \alpha_3, \omega_3))\]
+\end{lemma}
+\begin{proof} We have seven cases.
+	
+\smallskip \noindent  $\der{D}_1$, $\der{D}_2$ are both empty.
+In this case computing we get:
+\begin{align*}
+	((\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)) \cdot (\der{D}_3, \alpha_3, \omega_3)&=(\der{D}_2, \alpha_2\circ \omega^{-1}_1 \circ \alpha_1, \omega_2)\cdot (\der{D}_3, \alpha_3,\omega_3)\\&=(\der{D}_3,\alpha_3\circ\omega^{-1}_2\circ \alpha_2\circ \omega^{-1}_1\circ \alpha_1 ,\omega_3)\\&=(\der{D}_1, \alpha_1, \omega_1) \cdot (\der{D}_3, \alpha_3\circ \omega^{-1}_2 \circ \alpha_2,\omega_3)\\&=(\der{D}_1, \alpha_1, \omega_1) \cdot ((\der{D}_2, \alpha_2, \omega_2)\cdot (\der{D}_3, \alpha_3, \omega_3))
+\end{align*}
+
+
+\smallskip \noindent $\der{D}_1$ and $\der{D}_3$ are empty while $\der{D}_2$ is not. Apply \Cref{def:conc} we get
+\begin{align*}
+((\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)) \cdot (\der{D}_3, \alpha_3, \omega_3)&=(\der{D}_2, \alpha_2\circ \omega^{-1}_1 \circ \alpha_1, \omega_2)\cdot (\der{D}_3, \alpha_3,\omega_3)\\&=(\der{D}_2, \alpha_2\circ \omega^{-1}_1 \circ \alpha_1, \omega_2\circ \alpha^{-1}_3 \circ \omega_3)\\&=(\der{D}_1, \alpha_1, \omega_1 )\cdot  (\der{D}_2, \alpha_2,\omega_2\circ \alpha^{-1}_3 \circ  \omega_3)\\&= (\der{D}_1, \alpha_1, \omega_1 )\cdot((\der{D}_2, \alpha_2, \omega_2)\cdot (\der{D}_3, \alpha_3, \omega_3) )
+\end{align*}
+
+
+\smallskip \noindent  $\der{D}_1$ is empty, $\der{D}_2$ and $\der{D}_3$ are not. As above we can compute to get
+\begin{align*}
+((\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)) \cdot (\der{D}_3, \alpha_3, \omega_3)&=(\der{D}_2, \alpha_2\circ \omega^{-1}_1 \circ \alpha_1, \omega_2)\cdot (\der{D}_3, \alpha_3, \omega_3)\\&=(\der{D}_2*\omega^{-1}_2\cdot \alpha_3*\der{D}_3, \alpha_2\circ \omega^{-1}_1 \circ \alpha_1, \omega_3 )\\&=(\der{D}_1, \alpha_1, \omega_1) \cdot (\der{D}_2*\omega^{-1}_2\cdot \alpha_3*\der{D}_3, \alpha_2, \omega_3 )\\&=(\der{D}_1, \alpha_1, \omega_1) \cdot ((\der{D}_2, \alpha_2, \omega_2) \cdot (\der{D}_3, \alpha_3, \omega_3)  )
+\end{align*}
+
+\smallskip \noindent $\der{D}_1$ is non-empty while $\der{D}_2$ and $\der{D}_3$ have length $0$. Therefore:
+\begin{align*}
+	((\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)) \cdot (\der{D}_3, \alpha_3, \omega_3)&=(\der{D}_1, \alpha_1, \omega_1\circ \alpha^{-1}_2\circ \omega_2)\cdot (\der{D}_3, \alpha_3, \omega_3)\\&=(\der{D}_1, \alpha_1, \omega_1\circ \alpha^{-1}_2\circ \omega_2\circ \alpha^{-1}_3 \circ \omega_3 )\\&=(\der{D}_1, \alpha_1, \omega_1) \cdot (\der{D}_3, \alpha_3\circ \omega^{-1}_2\circ \alpha_2, \omega_3)\\&=(\der{D}_1, \alpha_1, \omega_1) \cdot ((\der{D}_2, \alpha_2, \omega_2) \cdot (\der{D}_3, \alpha_3, \omega_3)  )
+\end{align*}
+
+
+\smallskip \noindent $\der{D}_1$ and $\der{D}_3$ are non-empty while $\der{D}_2$ is. As above we have 
+
+\begin{align*}
+	((\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)) \cdot (\der{D}_3, \alpha_3, \omega_3)&=(\der{D}_1, \alpha_1, \omega_1\circ \alpha^{-1}_2\circ \omega_2)\cdot (\der{D}_3, \alpha_3, \omega_3)\\&=(\der{D}_1*(\omega^{-1}_2\circ \alpha_2\circ \omega^{-1}_1)\cdot \alpha_3*\der{D}_3, \alpha_1, \omega_3 )\\(\der{D}_1, \alpha_1, \omega_1) \cdot ((\der{D}_2, \alpha_2, \omega_2) \cdot (\der{D}_3, \alpha_3, \omega_3)  )&=(\der{D}_1, \alpha_1, \omega_1) \cdot (\der{D}_3, \alpha_3\circ \omega^{-1}_2\circ \alpha_2, \omega_3)\\&=(\der{D}_1*\omega^{-1}_1\cdot (\alpha_3\circ \omega^{-1}_2 \circ \alpha_2)*\der{D}_3, \alpha_1, \omega_3)
+\end{align*}
+
+Let $n$ be the length of $\der{D}_1$, so that $\pi(G_{1,n})=\pi(G_{3,0})$. We can notice that the following two diagrams commute.
+	\[\xymatrix@C=55pt{G_{1, n-1}&D_{1,n-1} \ar[r]^{g_{1,n}} \ar@{>->}[l]_{f_{1,n}}&G_{1,n}  \ar[r]^{\omega^{-1}_1}& \pi(G_{1,n})\\  L_{1,n-1} \ar[u]_{m_{1,n-1}} \ar[d]^{m_{1, n-1}}& K_{1, n-1} \ar[u]^{k_{1,n-1}} \ar[d]_{k_{1,n-1}} \ar[rr]^{r_{1, n-1}} \ar@{>->}[l]_{l_{1,n-1}} &&R_{1, n-1}\ar[u]^{\omega^{-1}_1\circ h_{1,n-1}} \ar[d]_{\omega^{-1}_2\circ \alpha_2\circ \omega^{-1}_1\circ h_{1, n-1}}\\G_{1, n-1} \ar@/^.80cm/[uu]^{\id{G_{1, n-1}}}&D_{1, n-1}\ar@{>->}[l]^{f_{1, n-1}}\ar@/_.80cm/[uu]_(.35){\id{D_{1, n-1}}}|\hole \ar[r]_{g_{1, n-1}}&G_{1, n}\ar[r]_-{\omega^{-1}_2\circ \alpha_2\circ \omega^{-1}_1}& \pi(G_{1, n})\ar@/_.80cm/[uu]_{\alpha^{-1}_2\circ \omega_2}}\]
+		\[\xymatrix@C=55pt{\pi(G_{3, 0}) & G_{3,0}  \ar[l]_-{\alpha_3\circ \omega^{-1}_2\circ \alpha_2}&D_{3,0} \ar[r]^{g_{3,0}} \ar@{>->}[l]_{f_{3,0}}&G_{3,1}  \\  L_{3,0} \ar[u]_{\alpha_3\circ \omega^{-1}_2\circ \alpha_2\circ m_{3,0}} \ar[d]^{\alpha_3\circ  m_{3, 0}}& & K_{3, 0} \ar[u]^{k_{3,0}} \ar[d]_{k_{3,0}} \ar[r]^{r_{3, 0}} \ar@{>->}[ll]_{l_{3,0}} &R_{3, 0}\ar[u]^{ h_{3,0}} \ar[d]_{ h_{3, 0}}\\\pi(G_{3, 0})  \ar@/^.80cm/[uu]^{\alpha^{-1}_2\circ \omega_2}&G_{3,0} \ar[l]^{\alpha_3}&D_{3, 0}\ar@{>->}[l]^{f_{3, 0}}\ar@/_.80cm/[uu]_(.35){\id{D_{3, 0}}}|\hole \ar[r]_{g_{3, 0}}&G_{3, 1}\ar@/_.80cm/[uu]_{\id{G_{3,1}}}}\]
+	
+Thus the family $\{\phi_{X}\}_{X\in \Deltamin(\der{D}_1*(\omega^{-1}_2\circ \alpha_2\circ \omega^{-1}_1)\cdot \alpha_3*\der{D}_3)}$ defined as
+\[\phi_X:=\begin{cases}
+	\id{X} & X\neq \pi(G_{1,n})\\
+	\alpha^{-1}_2 \circ \omega_2 & X= \pi(G_{1,n})
+\end{cases}\]
+is a consistent abstraction equivalence witnessing our thesis.
+
+
+
+\smallskip \noindent  $\der{D}_1$, $\der{D}_2$ and $\der{D}_3$ are all non-empty. For this case we rely to the fact that concatenation of derivations, being simply concatenation of paths in a graph, is associative. Indeed we have
+\begin{align*}
+	((\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)) \cdot (\der{D}_3, \alpha_3, \omega_3)&=(\der{D}_1*\omega^{-1}_1\cdot \alpha_2*\der{D}_2, \alpha_1, \omega_2)\cdot (\der{D}_3, \alpha_3, \omega_3)\\&=((\der{D}_1*\omega^{-1}_1\cdot \alpha_2*\der{D}_2)*\omega^{-1}_2\cdot \alpha_3*\der{D}_3, \alpha_1, \omega_3 )\\&=(\der{D}_1*\omega^{-1}_1\cdot (\alpha_2*\der{D}_2*\omega^{-1}_2)\cdot \alpha_3*\der{D}_3, \alpha_1, \omega_3 )\\&=(\der{D}_1*\omega^{-1}_1\cdot \alpha_2*(\der{D}_2*\omega^{-1}_2 \cdot \alpha_3*\der{D}_3), \alpha_1, \omega_3)\\&=(\der{D}_1, \alpha_1, \omega_1) \cdot (\der{D}_2*\omega^{-1}_2 \cdot \alpha_3*\der{D}_3, \alpha_2, \omega_3)\\&=
+	(\der{D}_1, \alpha_1, \omega_1) \cdot ((\der{D}_2, \alpha_2, \omega_2) \cdot (\der{D}_3, \alpha_3, \omega_3))
+\end{align*}
+And the thesis now follows.
+\end{proof}
+
+Given \Cref{rem:id}  and \Cref{lem:ass}, we are now ready to give the following definition.
 
 \begin{definition}
 	Let $(\X, \R)$ be a left-linear DPO-rewrityng system, with $\X$ an $\mathcal{M}$-adhesive category. The  category $\dpi$ is defined as follows:
@@ -623,9 +795,24 @@ The next proposition justifies the use of decorations, guaranteeing that concate
 		\item objects are isomorphism classes of objects of $\X$;
 		\item an arrow $[G]\to [H]$ is an equivalence class $[\der{D}, \alpha, \omega]_a$ of a decorated derivation between $G'$ and $H'$ for some $G'$ and $H'$ such that $\pi(G')=G$ and $\pi(H')=H$;
 		\item composition is concatenation of abstract decorated derivations;
-		\item the identity on $[G]$ is $[G, \alpha, \alpha]_a$, where $\alpha$ is any isomorphism $\pi(G)\to G$.	\end{itemize}
+		\item the identity on $[G]$ is $[\{G\}, \alpha, \alpha]_a$, where $\alpha$ is any isomorphism $\pi(G)\to G$.	\end{itemize}
 \end{definition}
 
+
+In the next proposition we fully characterize the isomorphism in $\dpi$.
+
+\begin{proposition} Let $(\X, \R)$ be a left-linear DPO rewriting system, then the isomorphisms in $\dpi$ are exactly the classes of empty decorated derivations.
+\end{proposition}
+\begin{proof}
+	Let $[\der{D}, \alpha, \omega]_a$ be an isomorphism, thus there exists $(\der{E}, \beta, \gamma)$ such that $(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \gamma)\equiv^a(\{G_{\der{D}, 0}\}, \alpha, \alpha)$. Since the latter has length $0$, \Cref{rem:lgt} entails that $\der{D}$ is empty too.
+	
+	Vice versa, if $(\{G\}, \alpha, \omega)$ be a derivation of length $0$, then 
+	\begin{align*}
+	(\{G\}, \alpha, \omega) \cdot (\{G\}, \omega, \alpha)&=(\{G\}, \omega\circ \omega^{-1} \circ \alpha, \alpha )\\&=(\{G\}, \alpha, \alpha)\\
+	(\{G\}, \omega, \alpha) \cdot (\{G\}, \alpha, \omega)&=(\{G\}, \alpha\circ \alpha^{-1} \circ \omega, \omega )\\&=(\{G\}, \omega, \omega)
+	\end{align*}
+	showing that  $[\{G\}, \alpha, \omega]_a$ is an isomorphism.
+\end{proof}
 
 \subsection{Colimits of derivations}\label{subsec:col}
 Given a DPO-rewriting system $(\X, \R)$,  we have already noted in \Cref{rem:func} that a derivation $\der{D}$  determines a diagram $\Delta(\der{D})$ in $\X$. We can then wonder if such a diagram has a colimit. Clearly if $\der{D}$ is the empty derivation $G$ then a colimit for $\Delta(\der{D})$ is simply the object $G$. More generally, we have the following result.
@@ -1552,4 +1739,7 @@ Let $[\der{D}, \alpha, \omega]_p$ be an arrow in $\ppi$ between $[G]\to [H]$ and
 
 By construction and \Cref{prop:abs}, the previous equation entails the existence of a consistent permutation $\sigma$ between $(\der{D}, \alpha, \omega)\cdot (\der{D}_1, \alpha_1, \omega_1)$ and $(\der{D}, \alpha, \omega)\cdot (\der{D}_2, \alpha_2, \omega_2)$. Since the identity is a consistent permutation between $(\der{D}, \alpha, \omega)$ and itself, the thesis follows immediately from \Cref{lem:presuffix}.
 \end{proof}
+
+
+
 
