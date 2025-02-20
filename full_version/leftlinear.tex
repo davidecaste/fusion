@@ -345,11 +345,12 @@ A first property of switches is that they are unique up to abstraction equivalen
 	Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^1$ be a derivation and suppose
 	that both $\der{E}=\{\dder{E}_i\}_{i=0}^1$ and
 	$\der{F}=\{\dder{F}_i\}_{i=0}^1$ are switches of $\dder{D}_0$ and
-	$\dder{D}_1$. Then there is an abstraction equivalence between $\der{E}$ and $\der{F}$, whose first component is $\id{G_0}$.
+	$\dder{D}_1$. Then there is an abstraction equivalence $\{\phi_X\}_{X\in \Deltamin(\der{E})}$ between $\der{E}$ and $\der{F}$, whose first component is $\id{G_0}$. Moreover, 
+	\[\phi_{D_{\der{E}, 0}}\circ j_1=a_1 \qquad \phi_{\der{E}, 1}\circ j_0=a_0\]
 \end{lemma}
 
 \begin{proof}
-	By definition of switch $\der{E}_0$ and $\der{F}_0$ have the same match $f_0\circ i_1$ and that $\der{E}_1$ and $\der{F}_1$ have the same comatch $g_1\circ i_0$. Thus we get the solid part of the diagram below
+	By definition of switch $\der{E}_0$ and $\der{F}_0$ have the same match $f_0\circ i_1$ and that $\der{E}_1$ and $\der{F}_1$ have the same comatch $g_1\circ i_0$. Thus we get the solid part of the diagram below. If we are able to construct the dotted arrow and prove that they are isomorphism we are done.
 	\[\xymatrix@C=22pt{G_{0} && \ar@{>->}[ll]_{f_{\der{F},0}} D_{\der{F},0} \ar[rr]^{g_{\der{F},0}}&& G_{\der{F},1} && \ar@{>->}[ll]_{f_{\der{F},1}} D_{\der{F},1} \ar[rr]^{g_{\der{F},1}}&& G_{2}\\L_1 \ar[d]^{f_0\circ i_1} \ar[u]_{f_0\circ i_1}&& K_{1} \ar[d]^{k_{\der{E},0}} \ar[u]_{k_{\der{F},0}}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_{1} \ar@/^.35cm/[drrr]|(.315)\hole_(.4){j_0} \ar[dr]|(.3)\hole_{h_{\der{E},0}} \ar@/_.35cm/[urrr]|(.315)\hole^(.4){a_0} \ar[ur]|(.3)\hole^{h_{\der{F},0}}& &L_{0} \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.3)\hole^{m_{\der{E},1}} \ar@/^.35cm/[ulll]_(.4){a_1} \ar[ul]|(.3)\hole_{m_{\der{F},1}}& K_{0} \ar[d]_{k_{\der{E},1}} \ar[u]^{k_{\der{F},1}}\ar@{>->}[l]_{l_{0}} \ar[rr]^{r_0} && R_{0} \ar[d]_{g_1\circ i_0} \ar[u]^{g_1\circ i_0}\\ \ar@/^.5cm/[uu]^{\id{G_0}} G_{0} && \ar[ll]^{f_{\der{E},0}} D_{\der{E},0} \ar@{.>}@/^.5cm/[uu]^(.33){\phi_{0}}|\hole \ar[rr]_{g_{\der{E},0}}&& G_{\der{E},1} \ar@{.>}[uu]^(.76){\psi_1}|(.45)\hole |(.55)\hole&& \ar@{>->}[ll]^{f_{\der{E},1}} D_{\der{E},1} \ar@{.>}@/_.5cm/[uu]_(.33){\phi_{1}}|\hole\ar[rr]_{g_{\der{E},1}}&& G_{2}\ar@{.>}@/_.5cm/[uu]_{\psi_2}}\]
 	
 	Now, by \Cref{prop:unique} we get $\phi_0\colon D_{\der{E},0}\to D_{\der{F},0}$ and $\psi_1 \colon G_{\der{E},1}\to G_{\der{F},1}$ such that the diagram below commutes.
@@ -364,7 +365,7 @@ A first property of switches is that they are unique up to abstraction equivalen
 	\end{align*}
 	
 	Since $\psi_1$ is an isomorphism, the square below is a pushout. 
-	\[\xymatrix{K_0 \ar[d]_{k_{\der{E,1}}} \ar@{>->}[r]^{l_0}& L_0 \ar[d]^{\psi_1\circ m_{\der{E},1}}\\D_{\der{E},1} \ar@{>->}[r]_{\psi_1\circ f_{\der{E},1}}& G_{\der{F}, 1}}\]
+	\[\xymatrix@C=35pt{K_0 \ar[d]_{k_{\der{E},1}} \ar@{>->}[r]^{l_0}& L_0 \ar[d]^{\psi_1\circ m_{\der{E},1}}\\D_{\der{E},1} \ar@{>->}[r]_{\psi_1\circ f_{\der{E},1}}& G_{\der{F}, 1}}\]
 	
 	Moreover, we have already shown that $\psi_1\circ m_{\der{E},1}=m_{\der{F},1}$. Thus, by \Cref{prop:unique} there are the dotted $\phi_1\colon D_{\der{E},1}\to D_{\der{F},1}$ and $\psi_2\colon G_2\to G_2$ as below.
 	\[\xymatrix{G_{\der{F},1} & \ar@{>->}[l]_{f_{\der{F},1}} D_{\der{F},1} \ar[r]^{g_{\der{F},1}}& G_2 \\L_0 \ar[d]^{m_{\der{E},1}} \ar[u]_{m_{\der{F},1}}& K_{0} \ar[d]^{k_{\der{E},1}} \ar[u]_{k_{\der{F},1}}\ar@{>->}[l]_{l_1} \ar[r]^{r_1} & R_{0}  \ar[d]_{g_1\circ i_0}  \ar[u]^{g_1\circ i_0}\\ \ar@/^.5cm/[uu]^{\psi_1} G_{\der{E},1} & \ar@{>->}[l]^{f_{\der{E},1}} D_{\der{E},1} \ar@{.>}@/^.5cm/[uu]^(.33){\phi_{1}}|\hole \ar[r]_{g_{\der{E},1}}& G_2 \ar@{.>}@/_.5cm/[uu]_{\psi_2}}\]
@@ -442,7 +443,7 @@ Given two sequentially independent direct derivations, it is not necessarily tru
 	$u_1\colon K_1\to P$ and $u_0\colon K_0\to P$ fitting in the
 	central and right square. Moreover, the right one is always
 	a pullback.
-	\[\xymatrix@R=15pt{P \ar@{>->}[r]^{p_0} \ar[d]_{p_1} & D_0
+	\[\xymatrix{P \ar@{>->}[r]^{p_0} \ar[d]_{p_1} & D_0
 		\ar[d]^{g_0}& K_0 \ar[r]^{r_0} \ar@{.>}[d]_{u_0}& R_0
 		\ar[d]^{i_0} & K_1 \ar@{>->}[r]^{l_1} \ar@{.>}[d]_{u_1}&
 		L_1 \ar[d]^{i_1}\\ D_1 \ar@{>->}[r]_{f_1} &G_1 &P
@@ -460,7 +461,7 @@ Given two sequentially independent direct derivations, it is not necessarily tru
 	\]
 	Thus there exists the dotted $u_0\colon K_0\to P$,
 	$u_1\colon K_1\to P$ in the diagram
-	\[\xymatrix@R=15pt{K_0 \ar[d]_{r_0}
+	\[\xymatrix{K_0 \ar[d]_{r_0}
 		\ar@{.>}[r]_{u_0}\ar@/^.4cm/[rr]^{k_0} &P
 		\ar@{>->}[r]_{p_0} \ar[d]_{p_1}& D_0 \ar[d]^{g_0}&K_1
 		\ar@{>->}[d]_{l_1}
@@ -489,7 +490,7 @@ Given two sequentially independent direct derivations, it is not necessarily tru
 \begin{proof}
 	Consider the arrow $u_1\colon K_1\to P$ obtained using
 	\Cref{prop:tec}. It fits in the big square on the left
-	\[		\xymatrix@R=15pt{K_1 \ar[r]^{u_1} \ar@{>->}[d]_{l_1}&P
+	\[		\xymatrix{K_1 \ar[r]^{u_1} \ar@{>->}[d]_{l_1}&P
 		\ar[r]^{\id{P}}\ar@{>->}[d]_{p_0}& P\ar@{>->}[d]^{p_0}\\L_1
 		\ar[d]_{\id{L_1}}\ar[r]^{i_1}&D_0 \ar[r]^{\id{D_0}}
 		\ar[d]_{\id{D_0}}& D_{0} \ar@{>->}[d]^{f_0}&K_1 \ar@{>->}[d]_{l_1}\ar[r]^{k_{\der{E},0}}&
@@ -530,7 +531,7 @@ We are now ready to introduce the fundamental concept of this section.
 	the first two squares depicted  
 	below are pushouts and if the pushout of $r_1 : K_1 \to R_1$ along $u_1 : K_1 \to P$ exists.
 	\[
-	\xymatrix@R=16pt{
+	\xymatrix{
 		K_0 \ar[r]^{r_0} \ar[d]_{u_0}& R_0 \ar[d]^{i_0} & K_1
 		\ar@{>->}[r]^{l_1} \ar[d]_{u_1}& L_1 \ar[d]^{i_1}
 		&K_1 \ar[r]^{r_1} \ar[d]_{u_1}& R_1\ar@{.>}[d]^{j_0}
@@ -550,8 +551,8 @@ We are now ready to introduce the fundamental concept of this section.
 	\[\xymatrix@C=15pt@R=15pt{&&R_0 \ar@/_.8cm/[ddrr]_(.2){i_0}|(.7)\hole
 		\ar[dr]^{h_0}&& L_1\ar@/^.8cm/[ddll]^(.2){i_1}
 		\ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar@{>->}[dl]_{l_0}
-		\ar@/_.6cm/[ddrr]^(.65){u_0}\ar[ur]^{r_0}&& G_1 && K_1
-		\ar@/^.6cm/[ddll]_(.65){u_1}\ar[dl]_{k_1}\ar@{>->}[lu]_{l_1}
+		\ar@/_.6cm/[ddrr]_(.65){u_0}\ar[ur]^{r_0}&& G_1 && K_1
+		\ar@/^.6cm/[ddll]^(.65){u_1}\ar[dl]_{k_1}\ar@{>->}[lu]_{l_1}
 		\ar[dr]^{r_1}\\L_0 \ar[dr]^{m_0}
 		\ar@{.>}@/_.6cm/[ddrr]_{j_1}&& D_0
 		\ar@{>->}[dl]|(.42)\hole_(.64){f_0}\ar[ur]|(.48)\hole^(.7){g_1}&&D_1
@@ -581,7 +582,7 @@ We are now ready to introduce the fundamental concept of this section.
 		pushouts.  Moreover, $q_0$ and $a_0$ are pushouts of
 		respectively $l_0$ and $p_0$, thus they are elements of
 		$\mathcal{M}$. By \Cref{prop:pbpoad} the left halves of the
-		first and third rectangles are pullbacks too.
+		second and third rectangles are pullbacks too.
 		
 		\[\xymatrix{K_0 \ar@/^.4cm/[rr]^{k_0}\ar[d]_{r_0}\ar[r]_{u_0}
 			&P\ar[d]^{p_1} \ar@{>->}[r]_{p_0} & D_0 \ar[d]^{g_0}&K_1
@@ -613,8 +614,8 @@ So equipped we can now prove a version of the Local Church-Rosser Theorem for st
 		\ar@/_.8cm/[ddrr]_(.2){i_0}|(.7)\hole \ar[dr]^{h_0}&&
 		L_1\ar@/^.8cm/[ddll]^(.2){i_1}
 		\ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar@{>->}[dl]_{l_0}
-		\ar@/_.6cm/[ddrr]^(.65){u_0}\ar[ur]^{r_0}&& G_1 && K_1
-		\ar@/^.6cm/[ddll]_(.65){u_1}\ar[dl]_{k_1}\ar@{>->}[lu]_{l_1}
+		\ar@/_.6cm/[ddrr]_(.65){u_0}\ar[ur]^{r_0}&& G_1 && K_1
+		\ar@/^.6cm/[ddll]^(.65){u_1}\ar[dl]_{k_1}\ar@{>->}[lu]_{l_1}
 		\ar[dr]^{r_1}\\L_0 \ar[dr]^{m_0} \ar@{>}@/_.6cm/[ddrr]_{j_1}&& D_0
 		\ar@{>->}[dl]|(.42)\hole_(.64){f_0}\ar[ur]|(.48)\hole^(.7){g_1}&&D_1
 		\ar[dr]|(.42)\hole^(.65){g_1}
@@ -622,7 +623,9 @@ So equipped we can now prove a version of the Local Church-Rosser Theorem for st
 		&&P\ar[dr]^{q_1}
 		\ar@{>->}[dl]_{q_0}\ar[ur]^(.4){p_1}\ar@{>->}[ul]_(.4){p_0}&&G_2\\&&Q_0
 		\ar@{>->}@{>->}[ul]_{a_0} \ar@{.>}[dr]_{b_0} &&Q_1\ar[ur]^{b_1}
-		\ar@{>.>}[dl]^{a_1} \\ &&&H_1 }\] Since $q_0\colon P\to Q_0$ is in
+		\ar@{>.>}[dl]^{a_1} \\ &&&H_1 }\] 
+		
+		Since $q_0\colon P\to Q_0$ is in
 	$\mathcal{M}$, we can take its pushout along $q_1$ to get the dotted
 	arrows $a_1\colon Q_1\mto H_1$ and $q_0\colon Q_0\to H_1$. But then,
 	since the composite of two pushout squares is a pushout, the diagram
@@ -631,16 +634,16 @@ So equipped we can now prove a version of the Local Church-Rosser Theorem for st
 		\ar[d]_{q_0\circ u_1}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_1
 		\ar@/^.35cm/[drrr]|(.31)\hole_(.4){j_0} \ar[dr]|(.3)\hole_{a_1\circ
 			j_0} && L_0 \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.3)\hole^{b_0\circ
-			j_1}& K_1 \ar[d]^{q_1\circ u_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0
+			j_1}& K_0 \ar[d]^{q_1\circ u_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0
 		\ar[d]^{g_1\circ i_0} \\G_0 && \ar@{>->}[ll]^{a_0} Q_0 \ar[rr]_{b_0}&&
-		H_1 && \ar@{>->}[ll]^{a_1} Q_1 \ar[rr]_{b_1}&& G_2}\] It is immediate
-	now to see that it is a switch of $\dder{D}_0$ and $\dder{D}_1$ along
-	$(i_0, i_1)$.
+		H_1 && \ar@{>->}[ll]^{a_1} Q_1 \ar[rr]_{b_1}&& G_2}\] 
+		
+		The thesis now follows at once since, by construction, the derivation above is a switch of $\dder{D}_0$ and $\dder{D}_1$ along	$(i_0, i_1)$.
 \end{proof}
 
 The previous theorem not only assures about the existence of a switch along a strong independence pair, but it provides us with an explicit description of it. In turn this, using \Cref{thm:switch_uni}, allows us to deduce some property common to all switches along strong independence pairs.  
 
-\begin{corollary}\label{cor:strongip}
+\begin{lemma}\label{cor:strongip}
 	Let $(\X, \R)$ be a left-linear DPO rewriting system and consider the following derivation $\der{D}={\dder{D}_{i}}_{i=0}^i$ and suppose that $(i_0, i_1)$ is a strong independence pair.
 	\[\xymatrix@R=20pt@C=20pt{L_0 \ar[d]_{m_0}&& K_0
 		\ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0
@@ -668,116 +671,35 @@ The previous theorem not only assures about the existence of a switch along a st
 		& &  {D_1'} \ar@{>->}[ll]^{f_1'} \ar[rr]_{g_1'}
 		& & {G_2}  }
 	\]
+and define $T$, with the arrows $t_0\colon T\mto D'_0$ and $t_1\colon T\to D'_1$ as the pullback of $f'_1$ along $g'_0$.
+
+
+Finally, consider the derivation $\der{F}$ below, constructed in the proof of \Cref{prChurch}. 
+\[\xymatrix{L_1 \ar[d]_{f_0 \circ i_1}&& K_1
+	\ar[d]_{q_0\circ u_1}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_1
+	\ar@/^.35cm/[drrr]|(.31)\hole_(.4){j_0} \ar[dr]|(.3)\hole_{a_1\circ
+		j_0} && L_0 \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.3)\hole^{b_0\circ
+		j_1}& K_0\ar[d]^{q_1\circ u_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0
+	\ar[d]^{g_1\circ i_0} \\G_0 && \ar@{>->}[ll]^{a_0} Q_0 \ar[rr]_{b_0}&&
+	H_1 && \ar@{>->}[ll]^{a_1} Q_1 \ar[rr]_{b_1}&& G_2}\]
+and let $\{\phi_{X}\}_{X\in \Deltamin(\der{F})}$ be the abstraction equivalence built in \Cref{thm:switch_uni}.
 
 	Then the following hold true:
 	\begin{enumerate}
+		\item consider the following two squares, the first of which is a pullback and the second an $\mathcal{M}$-pushout,
+		\[\xymatrix{P \ar[r]^{p_1} \ar@{>->}[d]_{p_0} & D_1 \ar@{>->}[d]^{f_1}& P \ar[r]^{q_1} \ar@{>->}[d]_{q_0} & Q_1 \ar@{>->}[d]^{a_1}\\ D_0 \ar[r]_{g_0} & G_1&Q_0 \ar[r]_{b_0} & H_1}\]
+		then there exists an isomorphism $v\colon P\to T$ fitting in the diagram below:
+		\[\xymatrix{ P \ar@{.>}[dr]^{v} \ar[rrr]^{q_1} \ar@{>->}[ddd]_{q_0}&&& Q_1 \ar@{>->}[ddd]^{a_1} \ar[dl]_{\phi_{Q_1}}\\&T \ar@{>->}[d]_{t_0}\ar[r]^{t_1}& D'_1 \ar@{>->}[d]^{f'_1} \\ & D'_0\ar[r]_{g'_0} & G'_1\\Q_0 \ar[rrr]_{b_0} \ar[ur]_{\phi_{Q_0}}&&& H_1 \ar[ul]^{\phi_{H_1}}}\]
+		
 		\item consider the diagram below, in which the inner square is a pullback and the dotted arrows are constructed as in \Cref{rem:deco}:
 		\[\xymatrix{K_1 \ar[r]^{r_1} \ar@/_.3cm/[ddr]_{k'_0} \ar@{.>}[dr]^{e_0}& R_1  \ar[dr]^{i'_0}  && K_0 \ar@{>->}[r]^{l_0} \ar@/_.3cm/[ddr]_{k'_1} \ar@{.>}[dr]^{e_1}& L_1  \ar[dr]^{i'_1} \\& T\ar@{>->}[d]_{t_0} \ar[r]^{t_1}& D'_1  \ar@{>->}[d]^{f'_1} && T \ar@{>->}[r]^{t_0} \ar[d]_{t_1}& D'_0 \ar[d]^{g'_0}\\&D'_0 \ar[r]_{g'_0} & G'_1 && D'_1\ar@{>->}[r]_{f'_1} & G'_1}\]
-		then the squares below are pushouts.
-		\[\xymatrix{K_1 \ar[d]_{e_0} \ar[r]^{{r_1}}& R_1 \ar[d]^{i'_0} & K_1 \ar@{>->}[r]^{l_1} \ar[d]_{e_1}& L_1 \ar[d]^{i'_1} \\
-			T\ar[r]_{t_1} & D'_1 &T \ar@{>->}[r]_{t_0}&D'_0}\]
-		
-		\item $(i'_0, i'_1)$ is a strong independence pair.
-	\end{enumerate}
-\end{corollary}
-\begin{proof}
-	\begin{enumerate}
-		\item Let us consider the derivation below, constructed in the proof of \Cref{prChurch}. 
-		\[\xymatrix{L_1 \ar[d]_{f_0 \circ i_1}&& K_1
-			\ar[d]_{q_0\circ u_1}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_1
-			\ar@/^.35cm/[drrr]|(.31)\hole_(.4){j_0} \ar[dr]|(.3)\hole_{a_1\circ
-				j_0} && L_0 \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.3)\hole^{b_0\circ
-				j_1}& K_1 \ar[d]^{q_1\circ u_0}\ar@{>->}[l]_{l_0} \ar[rr]^{r_0} && R_0
-			\ar[d]^{g_1\circ i_0} \\G_0 && \ar@{>->}[ll]^{a_0} Q_0 \ar[rr]_{b_0}&&
-			H_1 && \ar@{>->}[ll]^{a_1} Q_1 \ar[rr]_{b_1}&& G_2}\] 
-			
-		By \Cref{thm:switch_uni} we know that there exists three isomorphisms $\phi_{Q_0}\colon Q_0\to D'_0$, $\phi_{Q_1}\colon Q_1\to D'_1$ and $\phi_{H_1}\colon H_1\to G'_1$ fitting in the diagrams below.
-		\[\xymatrix{ P \ar@{.>}[dr]^{v} \ar[rrr]^{q_1} \ar@{>->}[ddd]_{q_0}&&& Q_1 \ar@{>->}[ddd]^{a_1} \ar[dl]_{\phi_{Q_1}}& T\ar@{.>}[dr]^{w}  \ar[rrr]^{t_1} \ar@{>->}[ddd]_{t_0}&&& D'_1 \ar[dl]_{\phi^{-1}_{Q_1}} \ar@{>->}[ddd]^{f'_1}\\&T \ar@{>->}[d]_{t_0}\ar[r]^{t_1}& D'_1 \ar@{>->}[d]^{f'_1} &&& P \ar@{>->}[d]_{q_0}\ar[r]^{q_1}& Q_1\ar@{>->}[d]^{a_1}\\ & D'_0\ar[r]_{g'_0} & G'_1 &&& Q_0 \ar[r]_{b_0}& H_1 \\Q_0 \ar[rrr]_{b_0} \ar[ur]_{\phi_{Q_0}}&&& H_1 \ar[ul]^{\phi_{H_1}} & D'_0 \ar[rrr]_{g'_0} \ar[ur]_{\phi^{-1}_{Q_0}}&&&G'_1 \ar[ul]^{\phi^{-1}_{H_1}}}\]
-		
-		In particular, we have
-		\[\begin{split}
-		g'_0\circ \phi_{Q_0}\circ q_0&=\phi_{H_1}\circ b_0\circ q_0\\&=\phi_{H_1}\circ a_1\circ q_1\\&= f'_1\circ \phi_{Q_1}\circ q_1
-		\end{split} \qquad  \begin{split}b_0\circ \phi^{-1}_{Q_0} \circ t_0&=\phi^{-1}_{H_1} \circ g'_0\circ t_0\\&=\phi^{-1}_{H_1} \circ f'_1\circ t_1\\&= a_1\circ \phi^{-1}_{Q_1}\circ t_1
-		\end{split}\]
-		therefore, by the universal property of pullbacks we get the dotted arrows $v\colon P\to T$ and $w\colon T\to P$. To see that they are one the inverse of the other it is then enough to compute.
-		\[\begin{split}
-		t_0\circ v\circ w &=\phi_{Q_0}\circ q_0\circ w\\&=\phi_{Q_0}\circ \phi^{-1}_{Q_0} \circ t_0\\&=t_0\\q_0\circ w\circ v&=\phi^{-1}_{Q_0}	\circ t_0\circ v\\&=\phi^{-1}_{Q_0} \circ \phi_{Q_0}\circ q_0\\&=q_0 	\end{split}\qquad \begin{split}
-		t_1\circ v\circ w &=\phi_{Q_1}\circ q_1\circ w\\&=\phi_{Q_1}\circ \phi^{-1}_{Q_1} \circ t_1\\&=t_1\\q_1\circ w\circ v&=\phi^{-1}_{Q_1}	\circ t_1\circ v\\&=\phi^{-1}_{Q_1} \circ \phi_{Q_1}\circ q_1\\&=q_1
-		\end{split}\]
-		
-		Moreover, notice that
-		\begin{align*}
-	f'_1\circ \circ  \phi_{Q_1}\circ j_0&=\phi_{H_1}\circ a_1\circ j_0\\&= h'_0\\&=f'_1\circ i'_0
-		\end{align*}
-		thus, since $f'_1$ is mono, we have $\phi_{Q_1}\circ j_0=i'_0$.  The thesis now follows immediately from the diagram below, since the left square is a pushout by construction.		
-		\[\xymatrix{K_1  \ar@/^.4cm/[rr]^{e_0}\ar[r]_{u_1} \ar[d]_{r_1}& P \ar[r]_{v} \ar[d]_{q_1} & T \ar[d]^{t} \\ R_1 \ar@/_.4cm/[rr]_{i'_0} \ar[r]^{j_0}& Q_1 \ar[r]^{\phi_{Q_1}} & D'_1}\]
-		
-		\item aaa
-	\end{enumerate}
-\end{proof}
-
-\begin{remark}
-	\label{rem:church}
-	It is worth to point out that, by
-	\Cref{prop:switch,thm:switch_uni}, the derivation we obtain from
-	\Cref{pr:church} %\todo{missing} 
-	is made by two switchable derivations that will
-	give back the starting derivation (up to abstraction equivalence),
-	if switched again.
+		then $v\circ u_1=e_0$, $v\circ u_0=e_1$ and the two squares below are pushouts;
+		\[\xymatrix{K_1  \ar[d]_{e_0} \ar[r]^{r_1} & R_1 \ar[d]^{i'_0} & K_0 \ar@{>->}[r]^{l_0} \ar[d]_{e_1}& L_0 \ar[d]^{i'_1}\\ T \ar[r]_{t_1}  & D'_1 & T \ar@{>->}[r]_{t_0} & D'_0 }\]
+				
+	\item $(i'_0, i'_1)$ is a strong independence pair;
 	
-	Moreover, by \Cref{prop:pbpoad}, the first square below is a
-	pullback, therefore, by \cref{rem:deco} the last three squares
-	witness that $(j_0, j_1)$ is a strong independence pair too.
-	\[
-	\xymatrix@R=15pt{P\ar[r]^{q_1} \ar@{>->}[d]_{q_0}&Q_1
-		\ar@{>->}[d]^{a_1}&K_1 \ar[r]^{r_1} \ar[d]_{u_1}& R_1
-		\ar[d]^{j_0} & K_0 \ar@{>->}[r]^{l_0} \ar[d]_{u_0}& L_0
-		\ar[d]^{j_1}&K_0 \ar[r]^{r_0} \ar[d]_{u_0}& R_0\ar[d]^{i_0} \\
-		Q_ 0\ar[r]_{b_0}&H_1&P \ar[r]_{q_1} & Q_1 &P \ar[r]_{q_0} &
-		Q_0&P \ar[r]_{p_1} & D_1}
-	\]
-\end{remark}
-
-\begin{definition}
-	contenuto...
-\end{definition}
-
-\begin{proposition}
-	\label{prop:equi}
-	Every linear rewriting system $(\X, \R)$ is strong enforcing.
-\end{proposition}
-
-
-\begin{proof}
-	Suppose that $\X$ is $\mathcal{M}$-adhesive and let $(i_0, i_1)$ be
-	an independence pair as below
-	\[
-	\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0
-		\ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar@{>->}[r]^{r_0} & R_0
-		\ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0}
-		&& L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1
-		\ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar@{>->}[rr]^{r_1} && R_1
-		\ar[d]^{h_1} \\G_0 && \ar@{>->}[ll]^{f_0} D_0
-		\ar@{>->}[rr]_{g_0}&& G_1 && \ar@{>->}[ll]^{f_1} D_1
-		\ar@{>->}[rr]_{g_1}&& G_2}\]
+	\item there exists a commutative diagram the one below.
 	
-	Since $(\X, \R)$ is linear, then $r_1\colon K_1\to R_1$ belongs to
-	$\mathcal{M}$, thus it admits a pushout along $u_1\colon K_1\to P$,
-	as desired. Moreover, let us consider the two rectangles below
-	\[
-	\xymatrix{K_0 \ar@/^.4cm/[rr]^{k_0}\ar@{>->}[d]_{r_0}\ar[r]_{u_0}
-		&P\ar@{>->}[d]^{p_1} \ar@{>->}[r]_{p_0} & D_0
-		\ar@{>->}[d]^{f_0}& K_1
-		\ar@/^.4cm/[rr]^{k_1}\ar@{>->}[d]_{l_1}\ar[r]_{u_1}
-		&P\ar@{>->}[d]^{p_0} \ar@{>->}[r]_{p_1} & D_1
-		\ar@{>->}[d]^{f_1}\\ R_0 \ar@/_.4cm/[rr]_{h_0} \ar[r]^{i_0}&D_1
-		\ar@{>->}[r]^{f_1} & G_1& L_1 \ar@/_.4cm/[rr]_{m_1}
-		\ar[r]^{i_1}&D_0 \ar@{>->}[r]^{g_0} & G_1} \] By hypothesis
-	$r_0$ and $l_1$ are in $\mathcal{M}$, thus $f_1$ and $g_0$ belong to
-	it too. The first point of \Cref{lem:popb} yields the thesis.
-\end{proof}
-
-\begin{remark}\label{rem:fill} Let $\der{D}=\{\dder{D}_i\}_{i=0}^n$ be a derivation and $(i_0, i_1)$ a strong independence pair between $\dder{D}_0$ and $\dder{D}_1$. Let also $\{\der{E}_{i}\}_{i=0}^1$ be a switch for them along $(i_0, i_1)$. Since, by \Cref{thm:switch_uni}, all switches are abstraction equivalent, we get the diagram below
 	\[\xymatrix@C=15pt@R=15pt{&&R_0 \ar@/_.8cm/[ddrr]_(.2){i_0}|(.7)\hole
 		\ar[dr]^{h_0}&& L_1\ar@/^.8cm/[ddll]^(.2){i_1}
 		\ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar@{>->}[dl]_{l_0}
@@ -785,27 +707,104 @@ The previous theorem not only assures about the existence of a switch along a st
 		K_1
 		\ar@/^.6cm/[ddll]|(.36)\hole_(.65){u_1}\ar[dl]_{k_1}\ar@{>->}[lu]_{l_1}
 		\ar[dr]^{r_1}\\L_0
-		\ar@/_.6cm/[ddrr]_(.2){i'_0}|(.31)\hole|(.81)\hole
+		\ar@/_.6cm/[ddrr]_(.2){i'_1}|(.31)\hole|(.81)\hole
 		\ar[dr]^(.4){m_0}|(.61)\hole && D_0
 		\ar@{>->}[dl]|(.4)\hole_(.65){f_0}\ar[ur]|(.5)\hole^(.7){g_0}&&D_1
 		\ar[dr]|(.4)\hole^(.65){g_1}
-		\ar@{>->}[ul]|(.5)\hole_(.65){f_1}&&R_1\ar@/^.6cm/[ddll]^(.2){i'_1}|(.31)\hole|(.81)\hole\ar[dl]_{h_1}|(.6)\hole\\&G_0
-		&&P_1\ar[dr]_{q_1}	\ar@{>->}[dl]^{q_0}\ar[ur]^(.4){p_1}\ar@{>->}[ul]_(.4){p_0}&&G_2\\L_1	\ar@/^.6cm/[uurr]^(.2){i_1} \ar[ur]_(.35){m'_0}|(.61)\hole && D'_0	\ar@{>->}[ul]|(.4)\hole_(.65){f'_0}\ar[dr]|(.5)\hole^(.65){g'_0}	&&D'_1\ar[ur]|(.4)\hole^(.65){g'_1} \ar@{>->}[dl]|(.5)\hole_(.65){f'_1}	&& R_0 \ar[ul]^(.35){h'_1}|(.61)\hole\ar@/_.6cm/[uull]_(.2){i_0}\\ &K_1	\ar[ur]_{k'_0} \ar[dr]_{r_1}	\ar@{>->}[ul]^{l_1}\ar@/^.6cm/[uurr]_(.65){u_1}&&G'_1&& K_0\ar[ur]_{r_0} \ar[ul]^{k'_1} \ar@{>->}[dl]^{l_0} \ar@/_.6cm/[uull]^(.65){u_0}\\&& R_1	\ar[ur]_{h'_0}\ar@/^.8cm/[uurr]^(.2){i'_1}&& L_0 \ar[ul]^{m'_1} \ar@/_.8cm/[uull]_(.2){i'_0} |(.69)\hole }\] 
+		\ar@{>->}[ul]|(.5)\hole_(.65){f_1}&&R_1\ar@/^.6cm/[ddll]^(.2){i'_0}|(.31)\hole|(.81)\hole\ar[dl]_{h_1}|(.6)\hole\\&G_0
+		&&P\ar@{.>}[dr]_{z_1}	\ar@{>.>}[dl]^{z_0}\ar[ur]^(.4){p_1}\ar@{>->}[ul]_(.4){p_0}&&G_2\\L_1	\ar@/^.6cm/[uurr]^(.2){i_1} \ar[ur]_(.35){m'_0}|(.61)\hole && D'_0	\ar@{>->}[ul]|(.4)\hole_(.65){f'_0}\ar[dr]|(.5)\hole_(.65){g'_0}	&&D'_1\ar[ur]|(.4)\hole^(.65){g'_1} \ar@{>->}[dl]|(.5)\hole^(.65){f'_1}	&& R_0 \ar[ul]^(.35){h'_1}|(.61)\hole\ar@/_.6cm/[uull]_(.2){i_0}\\ &K_1	\ar[ur]_{k'_0} \ar[dr]_{r_1}	\ar@{>->}[ul]^{l_1}\ar@/^.6cm/[uurr]_(.65){u_1}&&G'_1&& K_0\ar[ur]_{r_0} \ar[ul]^{k'_1} \ar@{>->}[dl]^{l_0} \ar@/_.6cm/[uull]^(.65){u_0}\\&& R_1	\ar[ur]_{h'_0}\ar@/^.8cm/[uurr]^(.2){i'_0}&& L_0 \ar[ul]^{m'_1} \ar@/_.8cm/[uull]_(.2){i'_1} |(.69)\hole }\] 
+	in which the following four squares are all pushouts, while the first three are also pullbacks.
+	\[\xymatrix{P \ar@{>->}[r]^{p_0} \ar@{>->}[d]_{p_1}& D_0 \ar@{>->}[d]^{g_0}  & P \ar@{>->}[r]^{z_0} \ar@{>->}[d]_{p_0}& D'_0 \ar@{>->}[d]^{f'_0} &  P \ar@{>->}[d]_{z_0} \ar[r]^{z_1} & D'_1 \ar@{>->}[d]^{f'_1} & P\ar[r]^{z_1} \ar[d]_{p_1}&D'_1 \ar[d]^{g'_1}\\ D_1 \ar@{>->}[r]_{f_1} & G_1  & D_0 \ar@{>->}[r]_{f_0} & G_0 & D'_0 \ar[r]_{g'_0}& G'_1 & D_1 \ar[r]_{g_1}& G_2}\]	
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}
+		\item  By \Cref{prop:pbpoad}, the square below is also a pullback.
+			\[\xymatrix{P \ar[r]^{q_1} \ar@{>->}[d]_{q_0} & Q_1 \ar@{>->}[d]^{a_1}\\ Q_0 \ar[r]_{b_0} & H_1}\]
+			Thus by the universal property of pullbacks  we get the dotted arrows $v\colon P\to T$ and $w\colon T\to P$ in the following diagrams.
+		\[\xymatrix{ P \ar@{.>}[dr]^{v} \ar[rrr]^{q_1} \ar@{>->}[ddd]_{q_0}&&& Q_1 \ar@{>->}[ddd]^{a_1} \ar[dl]_{\phi_{Q_1}}& T\ar@{.>}[dr]^{w}  \ar[rrr]^{t_1} \ar@{>->}[ddd]_{t_0}&&& D'_1 \ar[dl]_{\phi^{-1}_{Q_1}} \ar@{>->}[ddd]^{f'_1}\\&T \ar@{>->}[d]_{t_0}\ar[r]^{t_1}& D'_1 \ar@{>->}[d]^{f'_1} &&& P \ar@{>->}[d]_{q_0}\ar[r]^{q_1}& Q_1\ar@{>->}[d]^{a_1}\\ & D'_0\ar[r]_{g'_0} & G'_1 &&& Q_0 \ar[r]_{b_0}& H_1 \\Q_0 \ar[rrr]_{b_0} \ar[ur]_{\phi_{Q_0}}&&& H_1 \ar[ul]^{\phi_{H_1}} & D'_0 \ar[rrr]_{g'_0} \ar[ur]_{\phi^{-1}_{Q_0}}&&&G'_1 \ar[ul]^{\phi^{-1}_{H_1}}}\]
+
+To see that they are one the inverse of the other it is then enough to compute.
+		\[\begin{split}
+		t_0\circ v\circ w &=\phi_{Q_0}\circ q_0\circ w\\&=\phi_{Q_0}\circ \phi^{-1}_{Q_0} \circ t_0\\&=t_0\\q_0\circ w\circ v&=\phi^{-1}_{Q_0}	\circ t_0\circ v\\&=\phi^{-1}_{Q_0} \circ \phi_{Q_0}\circ q_0\\&=q_0 	\end{split}\qquad \begin{split}
+		t_1\circ v\circ w &=\phi_{Q_1}\circ q_1\circ w\\&=\phi_{Q_1}\circ \phi^{-1}_{Q_1} \circ t_1\\&=t_1\\q_1\circ w\circ v&=\phi^{-1}_{Q_1}	\circ t_1\circ v\\&=\phi^{-1}_{Q_1} \circ \phi_{Q_1}\circ q_1\\&=q_1
+		\end{split}\]
+		
+	\item By \Cref{thm:switch_uni}, we know that $\phi_{G_0}=\id{G_0}$, so that $a_0=f'_0\circ \phi_{Q_0}$, moreover, by the same theorem we have 
+	\[\phi_{Q_1}\circ j_0=i'_0 \qquad  \phi_{Q_0}\circ j_1=i'_1\] 
+		
+		We can now use the previous equalities to get
+		\[\begin{split}
+			t_0\circ v\circ u_0&=\phi_{Q_0} \circ q_0\circ u_0\\&=\phi_{Q_0}\circ j_1\circ l_0\\&=i'_1\circ l_0\\&=t_0\circ e_1\\	t_0\circ v\circ u_1&=\phi_{Q_0} \circ q_0\circ u_1\\&=k'_0\\&= t_0\circ e_0
+		\end{split} \qquad \begin{split}
+			t_1\circ v\circ u_1&=\phi_{Q_1} \circ q_1\circ u_1\\&=\phi_{Q_1}\circ j_0\circ r_1\\&=i'_0\circ r_1\\&= t_1\circ e_0 \\ t_1\circ v\circ u_0&=\phi_{Q_1} \circ q_1\circ u_0\\&=k'_1\\&=t_1\circ e_1
+		\end{split}\]
+		
+	So that $v\circ u_1=e_0$ and $v\circ u_0=e_1$. The thesis now follows from the two diagrams below, since their left halves are pushouts by construction.		
+		\[\xymatrix{K_1  \ar@/^.4cm/[rr]^{e_0}\ar[r]_{u_1} \ar[d]_{r_1}& P \ar[r]_{v} \ar[d]_{q_1} & T \ar[d]^{t_1} & K_0 \ar@/^.4cm/[rr]^{e_1} \ar@{>->}[d]_{l_0}\ar[r]_{u_0} & P \ar[r]_{v}  \ar@{>->}[d]_{q_0}& T \ar@{>->}[d]^{t_0}\\ R_1 \ar@/_.4cm/[rr]_{i'_0} \ar[r]^{j_0}& Q_1 \ar[r]^{\phi_{Q_1}} & D'_1 & L_0 \ar@/_.4cm/[rr]_{i'_1} \ar[r]^{j_0} & Q_0 \ar[r]^{\phi_{Q_0}} & D'_0 }\]
+		
 	
-\end{remark}
+		\item Given the results of the previous point, it is now enough to show that the pushout of $r_0\colon K_0\to R_0$ along $e_1\colon K_0\to T$ exists. We can consider the diagram below
+		\[\xymatrix{K_0 \ar@/^.4cm/[rr]^{u_0} \ar[d]_{r_0} \ar[r]_{e_1}& T  \ar[d]_{p_1\circ w}\ar[r]_{w} & P \ar[d]^{p_1}\\ R_0 \ar[r]_{i_0}& D_1 \ar[r]_{\id{D_1}}& D_1}\]
+		But the outer diagram is a pushout since $(i_0, i_1)$ is strong and we can conclude. 
+		
+		
+		
+		\item Let $z_0\colon P\mto D'_0$ and $z_1\colon P\to D_1$ be, respectively, $t_0\circ v$ and $t_1\circ v$. Then we have
+		
+		\[\begin{split}
+		g'_0\circ z_0&=g'_0\circ t_0\circ v\\&=f'_1\circ t_1\circ v\\&=f'_1\circ z_1
+		\end{split}\quad \begin{split}
+		z_0\circ u_1&=t_0\circ v\circ u_1\\&=\phi_{Q_0}\circ q_0\circ u_1\\&=k'_0
+		\end{split} \quad \begin{split}
+		z_1\circ u_0&=t_1\circ v\circ u_0\\&=\phi_{Q_1}\circ q_1\circ u_0\\&=k'_1
+		\end{split}\]
+		
+		Moreover
+		\[\begin{split}
+			f'_0\circ z_0&=f'_0\circ t_0\circ v\\&=f'_0\circ \phi_{Q_0}\circ q_0\\&=a_0\circ q_0\\&=f_0\circ p_0
+		\end{split} \qquad \begin{split}
+		g'_1\circ z_1=g'_1\circ t_1\circ v\\&=g'_1\circ \phi_{Q_1}\circ q_1\\&=\phi_{G_2}\circ b_1 \circ q_1\\&=\phi_{G_2}\circ g_1\circ p_1\\&=f_0\circ p_0
+		\end{split} \]
+		
+		
+		Therefore the $z_0$ and $z_1$ fit in the diagram above.
+		
+		To conclude, notice that the the four rectangles below and their halves, by construction and by point $3$, are pushouts, thus by \Cref{lem:po1} also their right halves are
+		pushouts. 
+		
+		\[\xymatrix{K_0 \ar@/^.4cm/[rr]^{k_0}\ar[d]_{r_0}\ar[r]_{u_0}
+			&P\ar[d]^{p_1} \ar@{>->}[r]_{p_0} & D_0 \ar[d]^{g_0}&K_0
+			\ar@/^.4cm/[rr]^{k'_1}\ar@{>->}[d]_{l_0}\ar[r]_{u_0}
+			&P\ar@{>->}[d]^{z_0} \ar[r]_{z_1} & D'_1 \ar@{>->}[d]^{f'_1}\\
+			R_0 \ar@/_.4cm/[rr]_{h_0} \ar[r]^{i'_1}&D_1 \ar@{>->}[r]^{f_1}
+			& G_1&L_1 \ar@/_.4cm/[rr]_{m'_1} \ar[r]^{i_1}&D'_0\ar[r]^{g'_0} &
+			G'_1}\]
+		\[\xymatrix{K_0
+			\ar@/^.4cm/[rr]^{k_0}\ar@{>->}[d]_{l_0}\ar[r]_{u_0}
+			&P\ar@{>->}[d]^{z_0} \ar@{>->}[r]_{p_0} & D_0
+			\ar@{>->}[d]^{f_0}&K_1
+			\ar@/^.4cm/[rr]^{k_1}\ar[d]_{r_1}\ar[r]_{u_1}
+			&P\ar[d]^{z_1} \ar[r]_{p_1} & D_1 \ar[d]^{g_1}\\
+			L_0 \ar@/_.4cm/[rr]_{m_0} \ar[r]^{i'_1}&D'_0 \ar@{>->}[r]^{f'_0}
+			& G_0&R_1 \ar@/_.4cm/[rr]_{h_1} \ar[r]^{i'_0}&D'_1 \ar[r]^{b_1}
+			& G_2}\]
+			
+			We conclude by \Cref{prop:pbpoad}. \qedhere 
+	\end{enumerate}
+\end{proof}
 
 
-
-
-We can now turn to prove the fundamental property that we need to rely upon:  any decorated switch induces a consistent permutation.
+We can now turn to prove the fundamental property that we need to rely upon:  any decorated switch along a strong independence pair induces a consistent permutation.
 
 \begin{lemma}\label{lem:switchtoperm}
-	Let $(\der{D}, \alpha, \omega)$ be a decorated derivations of length $2$ and suppose that $(\der{E}, \alpha, \omega)$ is a decorated switch for it along the independence pair $(i_0, i_1)$. Then the following are true:
-	\begin{enumerate}
-		\item there exists an arrow $\kappa\colon G_1\to \tpro{E}$ such that 
+	Let $(\der{D}, \alpha, \omega)$ be a decorated derivations of length $2$ and suppose that $(\der{E}, \alpha, \omega)$ is a decorated switch for it along the independence pair $(i_0, i_1)$. Then there exists an arrow $\kappa\colon G_1\to \tpro{E}$ such that 
 		\[\kappa \circ g_{0} = \iota_{\der{E}, G_0}\circ f_{0} \qquad \kappa\circ h_{0}= \iota_{\der{E}, R_0}\]
-\item there exists an arrow $\phi\colon \tpro{D}\to \tpro{E}$ such that
-\[\phi \circ \iota_{\der{D}, G_0}=\iota_{\der{E}, G_0} \qquad \phi \circ \iota_{\der{D}, G_1}=\kappa \qquad \phi \circ \iota_{\der{D}, G_2}=\iota_{\der{E}, G_2}\]
+		
+		Moreover, if $(i_0, i_1)$ is strong, also the following facts are true:
+		\begin{enumerate}
+		\item there exists an arrow $\phi\colon \tpro{D}\to \tpro{E}$ such that
+		\[\phi \circ \iota_{\der{D}, G_0}=\iota_{\der{E}, G_0} \qquad \phi \circ \iota_{\der{D}, G_1}=\kappa \qquad \phi \circ \iota_{\der{D}, G_2}=\iota_{\der{E}, G_2}\]
 		\item the $2$-cycle $\tau_{0,1}\colon [0,1]\to [0,1]$ is a consistent permutation between $(\der{D}, \alpha, \omega)$ and $(\der{E}, \alpha, \omega)$.
 	\end{enumerate}
 \end{lemma}
@@ -836,18 +835,115 @@ We can now turn to prove the fundamental property that we need to rely upon:  an
 		& & {G_2}  }
 	\]
 	
+ $G_1$ is obtained as the pushout of $k_0$ along $r_0$m thus get the wanted arrow $\kappa\colon G_1\to \tpro{E}$ it is now enough to compute:
+	\begin{align*}
+		\iota_{\der{E}, G_0}\circ f_{0}\circ  k_{0}&= \iota_{\der{E}, G_0}\circ m_{0} \circ l_{ 0}\\&=\iota_{\der{E}, G_0}\circ  f'_{0} \circ i'_1 \circ l_0\\&=\iota_{\der{E}, D'_0}\circ i'_1 \circ l_0\\&=\iota_{\der{E}, G'_1} \circ g'_0\circ m'_1 \circ l_0\\&=\iota_{\der{E}, G'_1}\circ m'_1\circ l_0	\\&=\iota_{\der{E}, G'_1} \circ f'_1\circ k'_1\\&=\iota_{\der{E}, D'_1}\circ k'_1\\&=\iota_{\der{E}, K'_0}\\&= \iota_{\der{E}, R_0} \circ r_0
+	\end{align*}
+	
+	Let us now suppose that $(i_0,i_1)$ is a strong independence pair. We can then consider the following two squares, the first of which is a pullback and the second one, by strongness, a  pushout.
+	
+			\[\xymatrix{P \ar[r]^{p_1}  \ar@{>->}[d]_{p_0} & D_1 \ar@{>->}[d]^{f_1} & K_0 \ar[r]^{r_0}  \ar[d]_{u_0} & R_0 \ar[d]^{i_0}\\ D_0\ar[r]_{g_0} & G_1 & P\ar[r]_{p_1} & D_1}\]
+
 	\begin{enumerate}
-		\item  We can start computing to get:
+		\item   Consider the arrow $\kappa\colon G_1\to \tpro{E}$ built in the previous point, then we have
 		\begin{align*}
-			\iota_{\der{E}, G_0}\circ f_{0}\circ  k_{0}&= \iota_{\der{E}, G_0}\circ m_{0} \circ l_{ 0}\\&=\iota_{\der{E}, G_0}\circ  f'_{0} \circ i'_1 \circ l_0\\&=\iota_{\der{E}, D'_0}\circ i'_1 \circ l_0\\&=\iota_{\der{E}, G'_1} \circ g'_0\circ m'_1 \circ l_0\\&=\iota_{\der{E}, G'_1}\circ m'_1\circ l_0	\\&=\iota_{\der{E}, G'_1} \circ f'_1\circ k'_1\\&=\iota_{\der{E}, D'_1}\circ k'_1\\&=\iota_{\der{E}, K'_0}\\&= \iota_{\der{E}, R_0} \circ r_0
+			\kappa \circ f_1\circ i_0&=\kappa\circ h_0\\&=\iota_{\der{E},R_0}\\&=\iota_{\der{E}{G_2}}\circ h'_1\\&=\iota_{\der{E}{G_2}}\circ g_1\circ i_0
 		\end{align*}
-		Thus we get the wanted arrow $\kappa\colon G_1\to \tpro{E}$.
 		
-		\item 
+		\begin{align*}
+			\kappa\circ f_1\circ p_1&=\kappa \circ g_0\circ p_0\\&=\iota_{\der{E},G_0}\circ f_0\circ p_0
+		\end{align*}
 		\item 
 		\qedhere 
 	\end{enumerate}
 \end{proof}
+
+\Cref{prChurch} and \Cref{lem:switchtoperm} guarantees some basic but fundamental properties of switches whithout which developing a theory of concurrency seems hopeless, we are thus lead to the following definition.
+
+\begin{definition}
+A left-linear DPO rewriting system $(\X, \R)$ is \emph{strong enforcing} if every independence pair is strong.
+\end{definition}
+
+The notion of strong enforcing DPO rewriting system encompasses that of linear one.
+
+
+\begin{proposition}\label{prop:linstrong}
+	Every linear rewriting system $(\X, \R)$ is strong enforcing.
+\end{proposition}
+\begin{proof}
+	Suppose that $\X$ is $\mathcal{M}$-adhesive and let $(i_0, i_1)$ be
+	an independence pair as below
+	\[
+	\xymatrix@C=15pt{L_0 \ar[d]_{m_0}&& K_0
+		\ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar@{>->}[r]^{r_0} & R_0
+		\ar@/^.35cm/[drrr]|(.3)\hole_(.4){i_0} \ar[dr]|(.3)\hole_{h_0}
+		&& L_1 \ar@/_.35cm/[dlll]^(.4){i_1} \ar[dl]|(.3)\hole^{m_1}& K_1
+		\ar[d]^{k_1}\ar@{>->}[l]_{l_1} \ar@{>->}[rr]^{r_1} && R_1
+		\ar[d]^{h_1} \\G_0 && \ar@{>->}[ll]^{f_0} D_0
+		\ar@{>->}[rr]_{g_0}&& G_1 && \ar@{>->}[ll]^{f_1} D_1
+		\ar@{>->}[rr]_{g_1}&& G_2}\]
+	
+	Since $(\X, \R)$ is linear, then $r_1\colon K_1\to R_1$ belongs to
+	$\mathcal{M}$, thus it admits a pushout along $u_1\colon K_1\to P$,
+	as desired. Moreover, let us consider the two rectangles below
+	\[
+	\xymatrix{K_0 \ar@/^.4cm/[rr]^{k_0}\ar@{>->}[d]_{r_0}\ar[r]_{u_0}
+		&P\ar@{>->}[d]^{p_1} \ar@{>->}[r]_{p_0} & D_0
+		\ar@{>->}[d]^{f_0}& K_1
+		\ar@/^.4cm/[rr]^{k_1}\ar@{>->}[d]_{l_1}\ar[r]_{u_1}
+		&P\ar@{>->}[d]^{p_0} \ar@{>->}[r]_{p_1} & D_1
+		\ar@{>->}[d]^{f_1}\\ R_0 \ar@/_.4cm/[rr]_{h_0} \ar[r]^{i_0}&D_1
+		\ar@{>->}[r]^{f_1} & G_1& L_1 \ar@/_.4cm/[rr]_{m_1}
+		\ar[r]^{i_1}&D_0 \ar@{>->}[r]^{g_0} & G_1} \] By hypothesis
+	$r_0$ and $l_1$ are in $\mathcal{M}$, thus $f_1$ and $g_0$ belong to
+	it too. The first point of \Cref{lem:popb} yields the thesis.
+\end{proof}
+
+We can easily 
+
+\begin{lemma}
+Let $(P, \{p_0, p_1\})$ be the pullback of $f_1$ along $g_1$, then there exists $z_0\colon P\mto D'_0$ and $z_1\colon P\to D'_1$ making the following diagram commutative
+\[\xymatrix@C=15pt@R=15pt{&&R_0 \ar@/_.8cm/[ddrr]_(.2){i_0}|(.7)\hole
+	\ar[dr]^{h_0}&& L_1\ar@/^.8cm/[ddll]^(.2){i_1}
+	\ar[dl]_{m_1}\\&K_0\ar[dr]^{k_0}\ar@{>->}[dl]_{l_0}
+	\ar@/_.6cm/[ddrr]|(.36)\hole^(.65){u_0}\ar[ur]^{r_0}&& G_1 &&
+	K_1
+	\ar@/^.6cm/[ddll]|(.36)\hole_(.65){u_1}\ar[dl]_{k_1}\ar@{>->}[lu]_{l_1}
+	\ar[dr]^{r_1}\\L_0
+	\ar@/_.6cm/[ddrr]_(.2){i'_1}|(.31)\hole|(.81)\hole
+	\ar[dr]^(.4){m_0}|(.61)\hole && D_0
+	\ar@{>->}[dl]|(.4)\hole_(.65){f_0}\ar[ur]|(.5)\hole^(.7){g_0}&&D_1
+	\ar[dr]|(.4)\hole^(.65){g_1}
+	\ar@{>->}[ul]|(.5)\hole_(.65){f_1}&&R_1\ar@/^.6cm/[ddll]^(.2){i'_0}|(.31)\hole|(.81)\hole\ar[dl]_{h_1}|(.6)\hole\\&G_0
+	&&P\ar@{.>}[dr]_{z_1}	\ar@{>.>}[dl]^{z_0}\ar[ur]^(.4){p_1}\ar@{>->}[ul]_(.4){p_0}&&G_2\\L_1	\ar@/^.6cm/[uurr]^(.2){i_1} \ar[ur]_(.35){m'_0}|(.61)\hole && D'_0	\ar@{>->}[ul]|(.4)\hole_(.65){f'_0}\ar[dr]|(.5)\hole_(.65){g'_0}	&&D'_1\ar[ur]|(.4)\hole^(.65){g'_1} \ar@{>->}[dl]|(.5)\hole^(.65){f'_1}	&& R_0 \ar[ul]^(.35){h'_1}|(.61)\hole\ar@/_.6cm/[uull]_(.2){i_0}\\ &K_1	\ar[ur]_{k'_0} \ar[dr]_{r_1}	\ar@{>->}[ul]^{l_1}\ar@/^.6cm/[uurr]_(.65){u_1}&&G'_1&& K_0\ar[ur]_{r_0} \ar[ul]^{k'_1} \ar@{>->}[dl]^{l_0} \ar@/_.6cm/[uull]^(.65){u_0}\\&& R_1	\ar[ur]_{h'_0}\ar@/^.8cm/[uurr]^(.2){i'_0}&& L_0 \ar[ul]^{m'_1} \ar@/_.8cm/[uull]_(.2){i'_1} |(.69)\hole }\] 
+moreover, the following squares are all pushouts, moreover the first two are also pullbacks.
+\[\xymatrix{P \ar@{>->}[r]^{z_0} \ar@{>->}[d]_{p_0}& D'_0 \ar@{>->}[d]^{f'_0} &  P \ar@{>->}[d]_{z_0} \ar[r]^{z_1} & D'_1 \ar@{>->}[d]^{f'_1} & P\ar[r]^{z_1} \ar[d]_{p_1}&D'_1 \ar[d]^{g'_1}\\ D_0 \ar@{>->}[r]_{f_0} & G_0 & D'_0 \ar[r]_{g'_0}& G'_1 & D_1 \ar[r]_{g_1}& G_2}\]
+\end{lemma}
+\begin{proof}
+	Define $z_0$ and $z_1$ to be, respectively, $t_0\circ v$ and $t_1\circ v$. To prove the commutativity of the diagram in the thesis, first of all we can notice that
+	\begin{align*}
+		g'_0\circ z_0\\&= g'_0\circ t_0\circ v\\&=f'_1\circ t_1\circ v\\&=f'_1\circ z_1
+	\end{align*}
+	To prove the other identities, it is enough to compute and use the identities obtained in the previous point. On the one hand we have
+	\[	\begin{split}f'_0\circ z_0&=f'_0\circ t_0\circ v\\&=f'_0\circ \phi_{Q_0}\circ q_0\\&=a_0\circ q_0\\&=f_0\circ p_0 
+	\end{split} \qquad \begin{split}
+		g'_1\circ z_1&=g'_1\circ t_1\circ v\\&=g'_1\circ \phi_{Q_1}\circ q_1\\&=\phi_{G_2}\circ b_1\circ q_1\\\phi_{G_2}\circ g_1\circ p_1\\&=
+	\end{split}\]
+	
+	\[\begin{split}
+		z_0\circ u_0&= t_0\circ v \circ u_0\\&=t_0\circ e_1\\&=i'_1\circ l_0\\ 	f'_0\circ z_0&=f'_0\circ t_0\circ v\\&=f'_0\circ \phi_{Q_0}\circ q_0\\&=a_0\circ q_0\\&=f_0\circ p_0
+	\end{split}\quad \begin{split}
+		z_1\circ u_1&=t_1\circ v\circ u_1\\&=t_1\circ e_1\\&=i'_0\circ r_1
+	\end{split} \quad \begin{split}
+	aaa	
+	\end{split}\]
+	
+\end{proof}
+
+
+
+
+
 
 \subsection{Well-switching rewriting systems}
 
@@ -1088,6 +1184,8 @@ encoding of process calculi or of bio and chemical systems mentioned
 in the introduction, are actually well-switching.
 
 \subsubsection{Some examples of well-switching rewriting systems}
+
+\todo{Questa sezione è da riscrivere bene}
 
 A first class consists of those rewriting systems over
 possibly hierarchical graphical structures obtained as algebras of
