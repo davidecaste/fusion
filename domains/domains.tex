@@ -1673,10 +1673,12 @@ On the other hand, if $g\colon Y\to R(X)$ is such that $\epsilon_X\circ g=f$, th
 	Let $(\der{D, \alpha, \omega})$ and $(\der{D}', \alpha, \omega')$ be two derivation with an abstract equivalence among them with the identity as first component. Then $\id{n}$ is a semi-consistent permutation among them.
 \end{proposition}
 \begin{proof}
-Let $\xi\colon \tpro{D}\to \lpro \der{D}'\rpro$ be the arrow induced by 
+Let $\xi\colon \tpro{D}\to \lpro \der{D}'\rpro$ be the unique arrow $\tpro{D}\to \lpro \der{D}'\rpro$ satisfying 
 \[\xi \circ \iota_{G_i}:=\iota'_{G'_i}\circ \phi_{G_i}\] 
-Then we have
+
+Then the square below commute.
 	\[\xymatrix@C=30pt{\pi(G_0)\ar[r]^{\alpha} \ar[d]_{\alpha} & G_0 \ar[dl]^{\id{G_0}} \ar[r]^{\iota_{G_0}} &\tpro{D} \ar[d]^{\xi}\\ G_0 \ar[rr]_{\iota'_{G_0}} & &\lpro \der{D}' \rpro\\L_i \ar[r]^{m_i} \ar[d]_{m'_{i}}& G_i \ar[dl]^{\phi_i} \ar[r]^{\iota_{G_i}} &\tpro{D} \ar[d]^{\xi} & R_i \ar[r]^{h_i} \ar[d]_{h'_{i}}& G_{i+1} \ar[dl]_{\phi_{i+1}} \ar[r]^{\iota_{G_{i+1}}} &\tpro{D} \ar[d]^{\xi} \\G'_{\sigma(i)} \ar[rr]_{\iota'_{G'_{i}}}&& \lpro \der{D}' \rpro& G'_{i+1} \ar[rr]_{\iota'_{G'_{i+1}}}&& \lpro \der{D}' \rpro}\]
+	But this is exactly the thesis.
 \end{proof}
 
 
@@ -1759,7 +1761,7 @@ Then we have
 	\[f'_2\circ t_0= \hat{g}_2\circ c_0=\psi_2\circ h_1=\psi_2\circ \bar{f}_2\circ u_0=f'_2\circ \phi_2\circ u_0\]
 	Therefore $\phi_2\circ u_0=t_0$ and this concludes the proof.
 	
-	Since 
+Now, the sequence of switches between $\lpro \der{D}''\rpro$ and  $\lpro \der{E}'' \rpro$  witnesses that $\id{2}$ is a consistent permutation and so there is a mediating isomorphism $\xi_{\id{2}}$. On the other hand, by 
 	
 \end{proof}
 
