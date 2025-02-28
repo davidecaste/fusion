@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{forloop}
+\usepackage{tikz}
+
+\newcounter{pdfpage}
+\begin{document}
+
+
+
+\hypertarget{start}{}
+
+\section*{Some ideas for the second part of the paper}
+
+\begin{itemize}
+
+  \thispagestyle{empty}
+
+\item Irreducibles and axioms:
+  \begin{itemize}
+  \item Characterisation of the irreducibles \hyperlink{pdfpage.1}{page 1}
+  \item Interchangebility axioms in this context \hyperlink{pdfpage.3}{page 3}
+  \end{itemize}    
+  
+\item \textbf{Idea}: work with rewriting systems with stronger
+  properties ensuring both interchangeability and good properties
+  w.r.t. fusions (\hyperlink{pdfpage.4}{page 4}, done also in the paper)
+
+  \emph{Paradigmantic example}: left-linear rules on graphs where lhs
+  has no isolated nodes and right-leg is inective on edges.
+
+  The context ensures that 
+  \begin{itemize}
+  \item the rewriting system is well swiitching
+  
+  \item morphisms into the colimit are in the class of morphisms used for lhs
+   
+  \item existence of a minimal quotient to which a rule applies
+  \end{itemize}
+
+  Additionally, in this setting:
+  \begin{itemize}
+  \item a rewriting step can be lifted up and down along quotients (see property 1 page \hyperlink{pdfpage.9}{page 9}, property 2 page \hyperlink{pdfpage.10}{page 10})
+
+  \item independence (up to fusion) can be checked in the colimit
+    [\hyperlink{pdfpage.13}{page 13}, some considerations here might be uselessly
+    complex as they might be done before taking the assumptions on
+    rules]
+
+  \item 
+   we can work with derivations up to fusion: each step can be preceded by a quotient which is (the minimal one - unclear whether it is convenient to require minimality) sufficient to allow the application of the rule [some reflections starting from page \hyperlink{pdfpage.17}{page 17}, including a notion of switch and further considerations on independence in the colimit)
+
+ \item characterise transitively interchangeable irreducibles via
+   derivations up to fusions [\hyperlink{pdfpage.23}{page 23}]
+
+   
+ \item prove the interchangeability axioms [page
+   \hyperlink{pdfpage.24}{page 24}]
+
+ \end{itemize}
+\end{itemize}
+
+\setcounter{page}{0}
+ 
+\forloop{pdfpage}{1}{\value{pdfpage} < 27}{
+  \includepdf[pages=\thepdfpage,pagecommand={
+    \vspace*{-9cm}
+    \hypertarget{pdfpage.\thepdfpage}{}
+        \begin{tikzpicture}[remember picture, overlay]
+            % Position text at the top-right corner
+            \node[anchor=north east, xshift=-10pt, yshift=-10pt] at (current page.north east) {
+                \textbf{\large \hyperlink{start}{Start}}
+            };
+        \end{tikzpicture}
+        }]{2025-notes-file.pdf}
+}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
