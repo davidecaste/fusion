@@ -113,7 +113,7 @@ $\rho_1$. The following definition formalise what it means for a derivation to b
 \end{definition}
 
 \begin{example}	\label{ex:seq-ind}
-	Consider the rewriting system  $(\cat{Graph}, \R)$ and the derivarion $\der{D}$ introduced in \Cref{ex:1}.	Steps $\dder{D}_1$ and $\dder{D}_2$ are clearly sequential
+	Consider the rewriting system  $(\cat{Graph}, \R)$ and the derivation $\der{D}$ introduced in \Cref{ex:1}.	Steps $\dder{D}_1$ and $\dder{D}_2$ are clearly sequential
 	independent via the arrows $R_1 \to D_2$, $L_2 \to D_1$
 	mapping nodes according to their numbering.
 	
@@ -428,7 +428,7 @@ Given two sequentially independent direct derivations, it is not necessarily tru
 
 \subsection{Strong-enforcing and well-switching rewriting systems}
 
-\Cref{ex:diff1} show that sequential independence it does not suffice, in general, to guarantee the existence of a switch.  Inspired by the notion of of \emph{canonical filler}
+\Cref{ex:diff1} show that sequential independence does not suffice, in general, to guarantee the existence of a switch.  Inspired by the notion of of \emph{canonical filler}
 \cite{heindel2009category}, we are now going to give some conditions guaranteeing the existence of a switch. We start proving some technical properties of independence pairs.
 
 
@@ -724,7 +724,7 @@ and let $\{\phi_{X}\}_{X\in \Deltamin(\der{F})}$ be the abstraction equivalence 
 			Thus by the universal property of pullbacks  we get the dotted arrows $v\colon P\to T$ and $w\colon T\to P$ in the following diagrams.
 		\[\xymatrix{ P \ar@{.>}[dr]^{v} \ar[rrr]^{q_1} \ar@{>->}[ddd]_{q_0}&&& Q_1 \ar@{>->}[ddd]^{a_1} \ar[dl]_{\phi_{Q_1}}& T\ar@{.>}[dr]^{w}  \ar[rrr]^{t_1} \ar@{>->}[ddd]_{t_0}&&& D'_1 \ar[dl]_{\phi^{-1}_{Q_1}} \ar@{>->}[ddd]^{f'_1}\\&T \ar@{>->}[d]_{t_0}\ar[r]^{t_1}& D'_1 \ar@{>->}[d]^{f'_1} &&& P \ar@{>->}[d]_{q_0}\ar[r]^{q_1}& Q_1\ar@{>->}[d]^{a_1}\\ & D'_0\ar[r]_{g'_0} & G'_1 &&& Q_0 \ar[r]_{b_0}& H_1 \\Q_0 \ar[rrr]_{b_0} \ar[ur]_{\phi_{Q_0}}&&& H_1 \ar[ul]^{\phi_{H_1}} & D'_0 \ar[rrr]_{g'_0} \ar[ur]_{\phi^{-1}_{Q_0}}&&&G'_1 \ar[ul]^{\phi^{-1}_{H_1}}}\]
 
-To see that they are one the inverse of the other it is then enough to compute.
+To see that they are one the inverse of the other is then enough to compute.
 		\[\begin{split}
 		t_0\circ v\circ w &=\phi_{Q_0}\circ q_0\circ w\\&=\phi_{Q_0}\circ \phi^{-1}_{Q_0} \circ t_0\\&=t_0\\q_0\circ w\circ v&=\phi^{-1}_{Q_0}	\circ t_0\circ v\\&=\phi^{-1}_{Q_0} \circ \phi_{Q_0}\circ q_0\\&=q_0 	\end{split}\qquad \begin{split}
 		t_1\circ v\circ w &=\phi_{Q_1}\circ q_1\circ w\\&=\phi_{Q_1}\circ \phi^{-1}_{Q_1} \circ t_1\\&=t_1\\q_1\circ w\circ v&=\phi^{-1}_{Q_1}	\circ t_1\circ v\\&=\phi^{-1}_{Q_1} \circ \phi_{Q_1}\circ q_1\\&=q_1
@@ -835,7 +835,7 @@ We can now turn to prove the fundamental property that we need to rely upon:  an
 		& & {G_2}  }
 	\]
 	
- $G_1$ is obtained as the pushout of $k_0$ along $r_0$m thus get the wanted arrow $\kappa\colon G_1\to \tpro{E}$ it is now enough to compute:
+ $G_1$ is obtained as the pushout of $k_0$ along $r_0$, thus to get the wanted arrow $\kappa\colon G_1\to \tpro{E}$ is now enough to compute:
 	\begin{align*}
 		\iota_{\der{E}, G_0}\circ f_{0}\circ  k_{0}&= \iota_{\der{E}, G_0}\circ m_{0} \circ l_{ 0}\\&=\iota_{\der{E}, G_0}\circ  f'_{0} \circ i'_1 \circ l_0\\&=\iota_{\der{E}, D'_0}\circ i'_1 \circ l_0\\&=\iota_{\der{E}, G'_1} \circ g'_0\circ m'_1 \circ l_0\\&=\iota_{\der{E}, G'_1}\circ m'_1\circ l_0	\\&=\iota_{\der{E}, G'_1} \circ f'_1\circ k'_1\\&=\iota_{\der{E}, D'_1}\circ k'_1\\&=\iota_{\der{E}, K'_0}\\&= \iota_{\der{E}, R_0} \circ r_0
 	\end{align*}
@@ -916,7 +916,7 @@ Let $(P, \{p_0, p_1\})$ be the pullback of $f_1$ along $g_1$, then there exists 
 	\ar[dr]|(.4)\hole^(.65){g_1}
 	\ar@{>->}[ul]|(.5)\hole_(.65){f_1}&&R_1\ar@/^.6cm/[ddll]^(.2){i'_0}|(.31)\hole|(.81)\hole\ar[dl]_{h_1}|(.6)\hole\\&G_0
 	&&P\ar@{.>}[dr]_{z_1}	\ar@{>.>}[dl]^{z_0}\ar[ur]^(.4){p_1}\ar@{>->}[ul]_(.4){p_0}&&G_2\\L_1	\ar@/^.6cm/[uurr]^(.2){i_1} \ar[ur]_(.35){m'_0}|(.61)\hole && D'_0	\ar@{>->}[ul]|(.4)\hole_(.65){f'_0}\ar[dr]|(.5)\hole_(.65){g'_0}	&&D'_1\ar[ur]|(.4)\hole^(.65){g'_1} \ar@{>->}[dl]|(.5)\hole^(.65){f'_1}	&& R_0 \ar[ul]^(.35){h'_1}|(.61)\hole\ar@/_.6cm/[uull]_(.2){i_0}\\ &K_1	\ar[ur]_{k'_0} \ar[dr]_{r_1}	\ar@{>->}[ul]^{l_1}\ar@/^.6cm/[uurr]_(.65){u_1}&&G'_1&& K_0\ar[ur]_{r_0} \ar[ul]^{k'_1} \ar@{>->}[dl]^{l_0} \ar@/_.6cm/[uull]^(.65){u_0}\\&& R_1	\ar[ur]_{h'_0}\ar@/^.8cm/[uurr]^(.2){i'_0}&& L_0 \ar[ul]^{m'_1} \ar@/_.8cm/[uull]_(.2){i'_1} |(.69)\hole }\] 
-moreover, the following squares are all pushouts, moreover the first two are also pullbacks.
+moreover, the following squares are all pushouts, and the first two are also pullbacks.
 \[\xymatrix{P \ar@{>->}[r]^{z_0} \ar@{>->}[d]_{p_0}& D'_0 \ar@{>->}[d]^{f'_0} &  P \ar@{>->}[d]_{z_0} \ar[r]^{z_1} & D'_1 \ar@{>->}[d]^{f'_1} & P\ar[r]^{z_1} \ar[d]_{p_1}&D'_1 \ar[d]^{g'_1}\\ D_0 \ar@{>->}[r]_{f_0} & G_0 & D'_0 \ar[r]_{g'_0}& G'_1 & D_1 \ar[r]_{g_1}& G_2}\]
 \end{lemma}
 \begin{proof}
@@ -1216,7 +1216,7 @@ by taking as $\X$ the category generated by $E \rightrightarrows V$. In this cas
 there are no isolated nodes, while condition $2$ asks that the
 morphism $r: K \to R$ is injective on edges, i.e.~it can only merge nodes.
 
-\begin{lemma}{lemma}{lemVTame}
+\begin{lemma}%{lemma}{lemVTame}
 	\label{bono}
 	All root-preserving graphical rewriting systems are well-switching.
 \end{lemma}
