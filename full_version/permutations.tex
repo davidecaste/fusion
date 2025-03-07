@@ -10,9 +10,11 @@ We are now going to study rewriting systems in $\mathcal{M}$-adhesive categories
 	$L$ is the \emph{left-hand side}, $R$ is the \emph{right-hand side} and $K$ the \emph{glueing object}. 
 	
 	
-	A \emph{left-linear DPO-rewriting system} is a pair $(\X, \R)$ where $\X$ is a $\mathcal{M}$-adhesive category and $R$ is a set of left $\mathcal{M}$-linear rules. $(\X, \R)$ will be called \emph{linear} if every rule in $R$ is $\mathcal{M}$-linear. Similarly, a \emph{consuming} left-linear DPO-rewriting system is one in which every rule is consuming.
+	A \emph{left-linear DPO-rewriting system} is a pair $(\X, \R)$ where $\X$ is a $\mathcal{M}$-adhesive category and $R$ is a set of left $\mathcal{M}$-linear rules. $(\X, \R)$ is called \emph{linear} if every rule in $R$ is $\mathcal{M}$-linear. Similarly, a \emph{consuming} left-linear DPO-rewriting system is one in which every rule is consuming.
 	
-	Given  two objects $G$ and $H$ and a rule $\rho=(l,r)$ in $\R$, a \emph{direct derivation $\mathscr{D}$ from $G$ to $H$ applying the rule $\rho$}, is a diagram as the one below, in which both squares are pushouts. 
+	Given  two objects $G$ and $H$ and a rule $\rho=(l,r)$ in $\R$, a \emph{direct derivation $\mathscr{D}$ from $G$ to $H$ applying the rule $\rho$} is a diagram as the one below, in which both squares are pushouts
+	(adhesivity ensures that $f$ belongs to $\mathcal{M}$)
+	  
 	\[\xymatrix{L \ar[d]_{n}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h}\\G & \ar@{>->}[l]^{f} D \ar[r]_{g}& H}\]
 	The arrow $n$ is called the \emph{match} of the derivation, while $h$ is its \emph{back-match}.
 	We will denote a direct derivation $\dder{D}$ between $G$ and $H$ as $\dder{D}\colon G\Mapsto H$. 
@@ -49,7 +51,7 @@ $\mathcal{M}$-adhesivity of $\X$ guarantes the essential uniqueness of the resul
 If we look to direct derivations as transitions, it is natural to consider them as edges in a direct graph. Taking objects as vertices objects led us to the following definition \cite{heindel2009category}.
 
 \begin{definition}
-	Let $(\X, \R)$ be a left-linear DPO-rewrityng system, with $\X$ $\mathcal{M}$-adhesive. The \emph{DPO-derivation graph} of $(\X, \R)$ is the (large)  directed graph $\gpo$ having as vertices the objects of $\X$ and in which an edge between $G$ and $H$ is a direct derivation $\dder{D}\colon G\Mapsto H$.	A \emph{derivation} $\der{D}$ between two objects $G$ and $H$ is a path between them in $\gpo$. The \emph{source} and \emph{target} of $\der{D}$ are, respectively, $G$ and $H$.
+	Let $(\X, \R)$ be a left-linear DPO-rewriting system, with $\X$ $\mathcal{M}$-adhesive. The \emph{DPO-derivation graph} of $(\X, \R)$ is the (large)  directed graph $\gpo$ having as vertices the objects of $\X$ and in which an edge between $G$ and $H$ is a direct derivation $\dder{D}\colon G\Mapsto H$.	A \emph{derivation} $\der{D}$ between two objects $G$ and $H$ is a path between them in $\gpo$. The \emph{source} and \emph{target} of $\der{D}$ are, respectively, $G$ and $H$.
 \end{definition}
 
 \begin{remark}
@@ -61,7 +63,7 @@ If we look to direct derivations as transitions, it is natural to consider them 
 	
 	We will call the number $n+1$ the \emph{length} of the derivation, denoted by $\lgh(\der{D})$. We will also say that an empty derivation has length $0$. 
 	
-	Moreover,  if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then we can define an associated sequence of rules as $r(\der{D})$ as $\{\rho_i\}_{i=0}^n$.
+	Moreover,  if every $\dder{D}_i$ applies the rule $\rho_i\in R$, then we can define an associated sequence of rules $r(\der{D})$ as $\{\rho_i\}_{i=0}^n$.
 \end{remark}
 
 \begin{remark}\label{rem:func}
@@ -74,7 +76,7 @@ If we look to direct derivations as transitions, it is natural to consider them 
 \end{notation} 
 
 \begin{example}\label{ex:1}
-	Let us consider the category of $\cat{Graph}$ of all graphs and graph morphisms, which is adhesive (see, for instance \cite{lack2005adhesive,lack2006toposes}).   We can endow $\cat{Graph}$ with a set of left-linear rules, for instance taking the following ones.  Here numbers are used to represent the
+	Let us consider the category of $\cat{Graph}$ of graphs and graph morphisms, which is adhesive (see, for instance \cite{lack2005adhesive,lack2006toposes}).   We can endow $\cat{Graph}$ with a set of left-linear rules, for instance taking the following ones.  Here numbers are used to represent the
 	morphisms from the interface to the left- and right-hand
 	sides. Rules $\rho_0$ and $\rho_1$ are linear: $\rho_0$ generates a
 	new node and a new edge, while $\rho_1$ creates a self-loop edge. Instead,
@@ -464,7 +466,7 @@ We are often interested in an object of $\X$ only up to isomorphism. It is there
 	The proof of \Cref{prop:ske} relies on the axiom of choice for classes.
 \end{remark}
 \begin{remark}
-	It is possible to proof that every two skeleta of a given category $\X$ are isomorphic (not only equivalent). For the remaining of this paper we assume that a skeleton $\ske$ of $\X$ and a functor $\pi\colon \X\to \ske$ are chosen once and for all.
+	It is possible to prove that every two skeleta of a given category $\X$ are isomorphic (not only equivalent). For the remaining of this paper we assume that a skeleton $\ske$ of $\X$ and a functor $\pi\colon \X\to \ske$ are chosen once and for all.
 \end{remark}
 
 \begin{definition}
@@ -482,7 +484,7 @@ We are often interested in an object of $\X$ only up to isomorphism. It is there
 
 As we are interested in objects only up to isomorphism, so we are interested in (decorated) derivations only up to some notion of coherent isomorphism between them. This is done with the help of \Cref{rem:func}.
 
-\begin{definition}Let $(\X, \R)$ be a left-linear DPO-rewriting system,  an \emph{abstraction equivalence} between two derivations $\der{D}$ and $\der{D'}$ with the same length and such that $r(\der{D})=r(\der{D}')$, is a family of isomorphisms $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ such that, for every $i\in [0, \lgh(\der{D})-1]$ the following diagram commutes
+\begin{definition}Let $(\X, \R)$ be a left-linear DPO-rewriting system. An \emph{abstraction equivalence} between two derivations $\der{D}$ and $\der{D'}$ with the same length and such that $r(\der{D})=r(\der{D}')$ is a family of isomorphisms $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ such that, for every $i\in [0, \lgh(\der{D})-1]$ the following diagram commutes
 	\[\xymatrix@C=40pt{G'_i&D'_i \ar[r]^{g'_i} \ar@{>->}[l]_{f'_i}&G'_{i+1}\\  L_i \ar[u]^{m'_i} \ar[d]_{m_i}& K_i \ar[u]^{k'_i} \ar[d]_{k_i} \ar[r]^{r_i} \ar@{>->}[l]_{l_i} &R_i\ar[u]^{h'_i} \ar[d]_{h_i}\\G_i \ar@/_.45cm/[uu]_(.35){\phi_{G_i}}|\hole&D_i\ar@{>->}[l]^{f_i}\ar@/_.45cm/[uu]_(.35){\phi_{D_i}}|\hole \ar[r]_{g_i}&G_{i+1}\ar@/_.45cm/[uu]_{\phi_{H_i}}}\]
 	
 	If such an abstraction equivalence exists we will say that $\der{D}$ and $\der{D}'$ are \emph{abstraction equivalent} and we will use $\equiv^{abs}$ to denote the resulting relation-
@@ -586,7 +588,7 @@ In particular, given an empty decorated derivation $(\{G\}, \alpha, \omega)$, we
 \end{remark}
 
 \begin{remark}\label{rem:id}
-	Let us consider  $(\{G\}, \alpha, \alpha)$ be a decoration of length $0$ with the same isomorphism as initial and final decoration. Then for every other derivations $(\der{D}, \beta, \omega)$ with source isomorphic to $G$, we have
+	Let  $(\{G\}, \alpha, \alpha)$ be a decoration of length $0$ with the same isomorphism as initial and final decoration. Then for every other derivations $(\der{D}, \beta, \omega)$ with source isomorphic to $G$, we have
 	\[(\{G\}, \alpha, \alpha)\cdot (\der{D}, \beta, \omega) = (\der{D}, \beta, \omega)\]
 	
 	On the other hand, if  $(\der{E}, \gamma, \zeta)$  has a target isomorphic to $G$, we have
@@ -631,7 +633,7 @@ Now, by consistency of $\{\phi_{X}\}_{X\in \Deltamin(\der{D}_2)}$ we know that
 \[\phi_{G_{2,0}}\circ \alpha_2\circ \omega^{-1}_1\circ \alpha_1=\alpha'_2\circ (\omega'_1)^{-1} \circ \alpha'_1\]
 	therefore we also have the equality
 	\[\phi_{G_{2,0}}\circ \alpha_2=\alpha'_2\circ (\omega'_1)^{-1} \circ \alpha'_1 \circ \alpha^{-1}_1\circ \omega_1 \]
-	We conclude that $\{\phi_X\}_{X\in \der{D}_2}$ wintesses the thesis.
+	We conclude that $\{\phi_X\}_{X\in \der{D}_2}$ witnesses the thesis.
 	
 	\smallskip \noindent $\lgh(\der{D}_2)=0$ and $\lgh(\der{D}_1)\neq 0$. By definition we know that
 	\[(\der{E}, \zeta, \theta)=(\der{D}_1, \alpha_1, \omega_1\circ \alpha_2^{-1}\circ \omega_2) \qquad (\der{E}', \zeta', \theta')=(\der{D}'_1, \alpha'_1, \omega'_1\circ (\alpha'_2)^{-1}\circ \omega'_2)\]
@@ -661,7 +663,7 @@ The next proposition justifies the use of decorations, guaranteeing that concate
 	\[[(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \xi)]_a=[(\der{D}', \alpha', \omega')\cdot (\der{E}', \beta', \xi')]_a\]
 \end{lemma}
 
-\begin{proof} Take two abstraction equivalences $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ and $\{\varphi_X\}_{X\in \Deltamin(\der{D})}$ between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ and between $(\der{E}, \beta, \xi)$ and $(\der{E}', \beta', \xi')$, respectively. To fix the notation, suppose that goes from $G'$ to $H'$ and $(\der{E}', \beta', \xi')$ from $E'$ to $K'$. We have three cases.
+\begin{proof} Take two abstraction equivalences $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ and $\{\varphi_X\}_{X\in \Deltamin(\der{D})}$ between $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ and between $(\der{E}, \beta, \xi)$ and $(\der{E}', \beta', \xi')$, respectively. To fix the notation, suppose that $(\der{D}', \alpha', \omega')$ goes from $G'$ to $H'$ and $(\der{E}', \beta', \xi')$ from $E'$ to $K'$. We have three cases.
 
 	\smallskip \noindent  $\lgh(\der{D})=0$. Then, $\lgh(\der{D}')$ is $0$ too. By \Cref{def:conc} we have
 		\begin{align*}
@@ -806,7 +808,7 @@ In the next proposition we fully characterize the isomorphism in $\dpi$.
 \begin{proof}
 	Let $[\der{D}, \alpha, \omega]_a$ be an isomorphism, thus there exists $(\der{E}, \beta, \gamma)$ such that $(\der{D}, \alpha, \omega)\cdot (\der{E}, \beta, \gamma)\equiv^a(\{G_{\der{D}, 0}\}, \alpha, \alpha)$. Since the latter has length $0$, \Cref{rem:lgt} entails that $\der{D}$ is empty too.
 	
-	Vice versa, if $(\{G\}, \alpha, \omega)$ be a derivation of length $0$, then 
+	Vice versa, if $(\{G\}, \alpha, \omega)$ is a derivation of length $0$, then 
 	\begin{align*}
 	(\{G\}, \alpha, \omega) \cdot (\{G\}, \omega, \alpha)&=(\{G\}, \omega\circ \omega^{-1} \circ \alpha, \alpha )\\&=(\{G\}, \alpha, \alpha)\\
 	(\{G\}, \omega, \alpha) \cdot (\{G\}, \alpha, \omega)&=(\{G\}, \alpha\circ \alpha^{-1} \circ \omega, \omega )\\&=(\{G\}, \omega, \omega)
@@ -820,8 +822,8 @@ Given a DPO-rewriting system $(\X, \R)$,  we have already noted in \Cref{rem:fun
 \begin{lemma}\label{lem:colim}
 	Let $\X$ be an $\mathcal{M}$-adhesive category and $(\X, \R)$ a left-linear DPO-rewriting system over it. The following properties hold true:
 	\begin{enumerate}
-		\item  for eevery derivation $\der{D}$ is a derivation from $G$ to $H$, then the diagram $\Delta(\der{D})$ has a colimit $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ such that $\iota_H$ belongs to $\mathcal{M}$.
-		\item Let $\der{D}$ be the concatenation $\der{D}_1\cdot \der{D}_2$ of two derivations $\der{D}_1=\{\dder{D}_{1,i}\}_{i=0}^{n_1}$ between $G$ and $H$ and $\der{D}_2=\{\dder{D}_{2,j}\}_{j=0}^{n_2}$ between $H$ and $T$,  then the colimiting cocone $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ exists too and there is a pushout square
+		\item  if $\der{D}$ is a derivation from $G$ to $H$, then the diagram $\Delta(\der{D})$ has a colimit $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ such that $\iota_H$ belongs to $\mathcal{M}$.
+		\item if $\der{D}$ is the concatenation $\der{D}_1\cdot \der{D}_2$ of two derivations $\der{D}_1=\{\dder{D}_{1,i}\}_{i=0}^{n_1}$ between $G$ and $H$ and $\der{D}_2=\{\dder{D}_{2,j}\}_{j=0}^{n_2}$ between $H$ and $T$,  then the colimiting cocone $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$ exists too and there is a pushout square
 		\[\xymatrix{H\ar[r]^-{\iota_{2, H}} \ar@{>->}[d]_-{\iota_{1, H}} & \tproi{D}{2} \ar[d]^{p_2}\\  \tproi{D}{1} \ar[r]_{p_1}& \tpro{D}}\]
 		where $(\tproi{D}{1}, \{\iota_{1, X}\}_{X\in \Delta(\der{D}_1)})$ and $(\tproi{D}{2}, \{\iota_{2, X}\}_{X\in \Delta(\der{D}_2)})$ are the colimiting cocone for $\Delta(\der{D}_1)$ and $\Delta(\der{D}_2)$, respectively.
 	\end{enumerate}
@@ -830,7 +832,7 @@ Given a DPO-rewriting system $(\X, \R)$,  we have already noted in \Cref{rem:fun
 Let $I:\Deltamin(\dder{D})\to \Delta(\dder{D})$ be the inclusion functor. It is immediate to see that such functor is \emph{final} \cite{mac2013categories}. This means that for every functor $F\colon \Delta(\dder{D})\to \Y$ we have:
 \begin{enumerate}
 	\item if  $(C, \{c_X\}_{X\in \Deltamin(\dder{D})})$ is colimiting for $F\circ I$, then there exists a colimiting cocone $(D, \{d_X\}_{X\in \Delta(\dder{D})})$ for $F$;
-	\item $(C, \{c_X\}_{X\in \Deltamin(\dder{D})})$ and $(D, \{d_X\}_{X\in \Delta(\dder{D})})$ are colimiting for, repsectively, $F\circ I$ and $F$, then the canonical arrow $\phi\colon C\to D$ induced by $(D, \{d_X\}_{X\in \Deltamin(\dder{D})})$ is an isomorphism.
+	\item $(C, \{c_X\}_{X\in \Deltamin(\dder{D})})$ and $(D, \{d_X\}_{X\in \Delta(\dder{D})})$ are colimiting for, respectively, $F\circ I$ and $F$, then the canonical arrow $\phi\colon C\to D$ induced by $(D, \{d_X\}_{X\in \Deltamin(\dder{D})})$ is an isomorphism.
 \end{enumerate}
 \end{remark}
 
@@ -850,7 +852,7 @@ Let $I:\Deltamin(\dder{D})\to \Delta(\dder{D})$ be the inclusion functor. It is 
 			\[\xymatrix{L_n \ar[d]_{m_{n}}& K_{n} \ar[d]^{k_{n}}\ar@{>->}[l]_{l_{n}} \ar[r]^{r_{n}} & R_{n} \ar[d]^{h_n} \\G_{n} \ar@{>->}[d]_{\iota'_{G_{n}}}& \ar@{>->}[l]^{f_n} D_n \ar[r]_{g_n}& H  \ar@{>->}[d]^{q}\\ \lpro \der{D}' \ar[rr]_{p}\rpro && P}\] 
 			Notice that, as in the point above, the arrow $q\colon H\to P$ is the pushout of an element in $\mathcal{M}$, therefore it is enough to show that the diagram so constructed provides a colimiting cocone for $\Delta(\der{D})$.
 			
-			Let $(C, \{c_X\}_{X\in \Delta(\der{D})})$ be a cocone, since $\Delta(\der{D}')$ is a subdiagram of $\Delta(\der{D})$, we get another cocone $(C, \{c_X\}_{X\in \Delta(\der{D}')})$ which induces an arrow $c'\colon \lpro \der{D}' \rpro \to C$ such that
+			Let $(C, \{c_X\}_{X\in \Delta(\der{D})})$ be a cocone. Since $\Delta(\der{D}')$ is a subdiagram of $\Delta(\der{D})$, we get another cocone $(C, \{c_X\}_{X\in \Delta(\der{D}')})$ which induces an arrow $c'\colon \lpro \der{D}' \rpro \to C$ such that
 			\begin{align*}
 				c'\circ \iota_{G_n} \circ f_n &=c_{G_n} \circ f_n\\&= c_{D_n}\\&= c_{H}\circ g_n
 			\end{align*}
@@ -921,7 +923,7 @@ Applying \Cref{lem:po1} twice we get that the whole square is an $\mathcal{M}$-p
 We want now to relate the colimit of a composite decorated derivation with the colimits of its components. The following two lemmas will be pivotal to develop the subsequent sections.
 
 \begin{lemma}\label{rem:dett}
-	Let $(\der{D}, \alpha, \omega)$ be the composite $(\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)$ of two derivation of length $l_1$ and $l_2$. Suppose that:
+	Let $(\der{D}, \alpha, \omega)$ be the composite $(\der{D}_1, \alpha_1, \omega_1)\cdot (\der{D}_2, \alpha_2, \omega_2)$ of two derivations of length $l_1$ and $l_2$. Suppose that:
 	\[r(\der{D}_1)=\{\rho_{1,i}\}_{i=0}^{l_1-1} \quad r(\der{D}_2)=\{\rho_{2,i}\}_{i=0}^{l_2-1} \quad  r(\der{D})=\{\rho_{i}\}_{i=0}^{l_1+l_2-1}\]
 	and let  $G_{1,0}, G_{2,0}$ and $G_{0}$ be the sources of $\der{D}_1$, $\der{D}_2$,  and $\der{D}$. Similary, denote, by $G_{1,i+1}, G_{2,i+1}$ and $G_{i+1}$ the results of the application of, respectively, $\rho_{1,i}, \rho_{2,i}, \rho_i$ to $G_{1,i}, G_{2,i}$ and $G_{i}$  in the corresponding derivation. Then there are arrows $q_1\colon \lpro \der{D}_1\rpro \to \tpro{D}$, $q_2\colon \lpro \der{D}_2\rpro \to \tpro{D}$ such that
 	\[ q_1\circ \iota_{G_{1,0}}\circ \alpha_1 = \iota_{G_{0}}\circ \alpha \quad  q_2\circ \iota_{G_{2,l_2}}\circ \omega_2 = \iota_{G_{l_1+l_2}}\circ \omega \quad 	q_2\circ \iota_{2, G_{2,0}} \circ \alpha_2=q_1\circ \iota_{1, G_{1, l_1}}\circ \omega_1\]
@@ -994,7 +996,7 @@ Equipped with the theory developed so far, we can introduce the notions of \emph
 \end{definition}
 
 \begin{remark}\label{rem:inversa}
-	Let  $(\der{D},\alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ be two decorated derivations and $\sigma\colon [0,n]\to [0,n]$ be a consistent permutation between them.  Then its inverse $\sigma^{-1}$ is a consistent permutation between $(\der{D}', \alpha', \omega')$ and $(\der{D},\alpha, \omega)$. Indeed, it is enough to consider, as mediating isomorphism, the inverse $\xi^{-1}_\sigma$ of $\xi_\sigma$.
+	Let  $(\der{D},\alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ be two decorated derivations and $\sigma\colon [0,n]\to [0,n]$ a consistent permutation between them.  Then its inverse $\sigma^{-1}$ is a consistent permutation between $(\der{D}', \alpha', \omega')$ and $(\der{D},\alpha, \omega)$. Indeed, it is enough to consider, as mediating isomorphism, the inverse $\xi^{-1}_\sigma$ of $\xi_\sigma$.
 \end{remark}
 
 \begin{example}\label{rem:empty2}
@@ -1058,7 +1060,7 @@ The previous remark allows us to prove the following.
 As a next step, we will show that the existence of abstraction equivalences satisfying certain coherence conditions is enough to guarantee the (semi-)consistency of the identical permutation.
 
 \begin{proposition}\label{rem:abscons}
-	Let $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ be two decorated derivations in an left-linear rewriting system $(\X, \R)$ of length $l$. Let also $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ be an abstraction equivalence between $\der{D}$ and $\der{D}'$. If $\alpha'\circ \phi_{G_0}=\alpha$ then the the identity $\id{[0,l-1]}$ is a semi-consistent permutation. If, moreover, $\omega'\circ \phi_{G_{l}}=\omega$, then $\id{[0,l-1]}$ is a consistent one.
+	Let $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ be two decorated derivations in a left-linear rewriting system $(\X, \R)$ of length $l$. Let also $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ be an abstraction equivalence between $\der{D}$ and $\der{D}'$. If $\alpha'\circ \phi_{G_0}=\alpha$ then the the identity $\id{[0,l-1]}$ is a semi-consistent permutation. If, moreover, $\omega'\circ \phi_{G_{l}}=\omega$, then $\id{[0,l-1]}$ is a consistent one.
 \end{proposition}
 \begin{proof}
 	For every $X\in \Deltamin(\der{D}) $, let $X'$ the codomain of $\phi_X$. Then we can define $\xi_{\id{[0,l-1]}}\colon \tpro{D}\to \lpro \der{D}'\rpro$ as the unique morphism such that, for every $X\in \Deltamin(\der{D})$, 
@@ -1102,7 +1104,7 @@ The previous proposition, in turn, gives us a technical but quite useful result.
 	In particular, given a decorated derivation $(\der{D}, \alpha, \omega)$ with source $G$ and target $H$ and two isomorphisms $\phi\colon G'\to G$, $\psi\colon H\to H'$, we know, by \Cref{rem:absequi}, that 
 	\[(\der{D}, \alpha, \omega) \equiv^a (\phi * \der{D}, \phi^{-1}\circ \alpha,   \varphi^{-1}_{H} \circ \omega) \qquad (\der{D}, \alpha, \omega) \equiv^a ( \der{D}*\psi, \varphi'_{G} \circ \alpha, \psi \circ \omega )\]
 	
-	Now, denoting by $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$, $(\lpro \phi *\der{D} \rpro, \{\iota'_X\}_{X\in \Delta(\phi *\der{D})})$ and $(\lpro \der{D}*\psi \rpro, \{\hat{\iota}_X\}_{X\in \Delta(\der{D}*\psi)})$ the colimiting cocones, in this case we have that the, unique, mediating isomorphisms witnessing the consistency of $\id{[0, \lgh(\der{D})-1]}$ are given by the arrows $\Gamma^{\phi} \colon \tpro{D}\to \lpro \phi*\der{D} \rpro$ and $\Gamma_\psi\colon \tpro{D}\to \lpro \der{D}*\psi \rpro$  such that, for every $X\in \Deltamin(\der{D})$:
+	Now, denoting by $(\tpro{D}, \{\iota_X\}_{X\in \Delta(\der{D})})$, $(\lpro \phi *\der{D} \rpro, \{\iota'_X\}_{X\in \Delta(\phi *\der{D})})$ and $(\lpro \der{D}*\psi \rpro, \{\hat{\iota}_X\}_{X\in \Delta(\der{D}*\psi)})$ the colimiting cocones, in this case we have that the (unique) mediating isomorphisms witnessing the consistency of $\id{[0, \lgh(\der{D})-1]}$ are given by the arrows $\Gamma^{\phi} \colon \tpro{D}\to \lpro \phi*\der{D} \rpro$ and $\Gamma_\psi\colon \tpro{D}\to \lpro \der{D}*\psi \rpro$  such that, for every $X\in \Deltamin(\der{D})$:
 	\[\Gamma^\phi \circ \iota_X:=\begin{cases}
 		\iota'_{G'}\circ \phi^{-1}  & X=G\\
 		\iota'_X & \text{otherwise}
@@ -1120,7 +1122,7 @@ The previous proposition, in turn, gives us a technical but quite useful result.
 
 We can also observe that (semi-)consistent permutations can be composed, as shown by the next proposition.
 
-\begin{proposition}\label{rem:comp}  Let $(\der{D}, \alpha, \omega)$, $(\der{D}', \alpha', \omega')$ and $(\der{\hat{D}}, \hat{\alpha}, \hat{\omega})$ be three decorated derivations of length $l$. Let $\sigma$ be a consistent permutation between the first two and $\tau$ one between the second and the third, then $\tau \circ \sigma$ is a semi-consistent permutations between the first and the third. If, moreover, $\sigma$ and $\tau$ are consistent, then $\tau \circ \sigma$ is consistent too.
+\begin{proposition}\label{rem:comp}  Let $(\der{D}, \alpha, \omega)$, $(\der{D}', \alpha', \omega')$ and $(\der{\hat{D}}, \hat{\alpha}, \hat{\omega})$ be three decorated derivations of length $l$. If $\sigma$ is a semi-consistent permutation between the first two and $\tau$ one between the second and the third, then $\tau \circ \sigma$ is a semi-consistent permutation between the first and the third. If, moreover, $\sigma$ and $\tau$ are consistent, then $\tau \circ \sigma$ is consistent too.
 \end{proposition} 	
 
 \begin{proof} Let $l$ be the length of the three given derivations.  By hypothesis each subdiagram of the following ones commutes, thus the whole diagrams commute too, proving that $\tau\circ \sigma$ is a semi-consistent permutation with mediating isomorphism given by $\xi_{\tau} \circ \xi_\sigma$.
@@ -1153,7 +1155,8 @@ The previous result suggests that the existence of a consistent permutations ind
 \end{definition}
 
 \begin{remark}
-	The relation $\equiv^p$ is an equivalence: \Cref{prop:abs} guarantees that it is well-defined, \Cref{rem:abscons} guarantees reflexivity, while symmetry and transitivity follow from, respectively \Cref{rem:inversa} and \Cref{rem:comp}.
+	The relation $\equiv^p$ is an equivalence: \Cref{prop:abs} guarantees that it is well-defined, \Cref{rem:abscons} guarantees reflexivity, while symmetry and transitivity follow from, respectively, 
+	\Cref{rem:inversa} and \Cref{rem:comp}.
 \end{remark}
 
 \begin{notation}
@@ -1276,7 +1279,7 @@ We want now to exploit the results proved at the end of \Cref{subsec:col} to stu
 \end{proof}
 
 
-We want now to show that permutation equivalence is a congruence with respect to composition in $\dpi$. This, in turn, will allow us to build  a category in which arrows are are exactly the equivalence classes of permutation equivalent abstract decorated decorations.
+We want now to show that permutation equivalence is a congruence with respect to composition in $\dpi$. This, in turn, will allow us to build  a category in which arrows are exactly the equivalence classes of permutation equivalent abstract decorated decorations.
 
 
 \begin{remark}\label{rem:sum}
@@ -1442,7 +1445,7 @@ Let $(\X, \R)$ be a left-linear DPO rewriting system. The category $\ppi$ is def
 \end{definition}
 \begin{remark} We can point out two facts;
 	\begin{itemize}
-		\item the composition 	$[\der{D}_2, \alpha_2, \omega_2]_p \circ [\der{D}_1, \alpha_1, \omega_1]_p$ coincides with the permuation equivalence class of $	[\der{D}_2, \alpha_2, \omega_2]_a \circ [\der{D}_1, \alpha_1, \omega_1]_a$;
+		\item the composition 	$[\der{D}_2, \alpha_2, \omega_2]_p \circ [\der{D}_1, \alpha_1, \omega_1]_p$ coincides with the permutation equivalence class of $	[\der{D}_2, \alpha_2, \omega_2]_a \circ [\der{D}_1, \alpha_1, \omega_1]_a$;
 		\item by \Cref{rem:ugu}, $[\{G, \alpha, \alpha\}]_p=[\{G, \alpha, \alpha\}]_a$, guaranteeing that it is the neutral element with respect of the composition we have defined above.
 	\end{itemize}
 	
@@ -1481,7 +1484,7 @@ Suppose, moreover, that the set
 		Let $a$ be $\min(j-1, k)$, by \Cref{cor:ele},  there exists $c\colon L_{j-1}\to D_a$ such that $f_a\circ c=m_a$. As before this yields the solid part of the following diagram, in which the square is an $\mathcal{M}$-pushout.
 		\[\xymatrix{L_{j-1} \ar@/^.3cm/[drr]^{\id{L_{j-1}}} \ar@{.>}[dr]_{t} \ar@/_.3cm/[ddr]_{c}\\ & K_{j-1} \ar[d]_{k_a}\ar@{>->}[r]^{l_{j-1}}& L_{j-1} \ar[d]^{m_a} \\& D_a \ar@{>->}[r]_{f_a} & G_a} \]
 
-	\Cref{prop:pbpoad} we can now deduce the existence of the dotted $t\colon L_{j-1}\to K_{j-1}$, from which the thesis  follows. \qedhere
+	From \Cref{prop:pbpoad} we can now deduce the existence of the dotted $t\colon L_{j-1}\to K_{j-1}$, from which the thesis  follows. \qedhere
 	\end{enumerate}
 \end{proof}
 
