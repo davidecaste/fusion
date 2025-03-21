@@ -35,15 +35,15 @@ $\mathcal{M}$-adhesivity of $\X$ guarantes the essential uniqueness of the resul
 
 \begin{proposition}\label{prop:unique} Let $\X$  be a $\mathcal{M}$-adhesive category. Suppose that the two direct derivations $\mathscr{D}$ and $\mathscr{D'}$ below, with the same match and applying the same left $\mathcal{M}$-linear rule $\rho$ are given.
 	\[\xymatrix{L \ar[d]_{m}& K \ar[d]^{k}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h} & L \ar[d]_{m}& K \ar[d]^{k'}\ar@{>->}[l]_{l} \ar[r]^{r} & R \ar[d]^{h'}\\G & \ar@{>->}[l]^{f} D \ar[r]_{g}& H & G & \ar@{>->}[l]^{f'} D' \ar[r]_{g'}& H'}\]
-	Then there exist isomorphisms $t\colon D\to D'$ and $s\colon H\to H'$ as in the following diagram.
+	Then there exist two unique isomorphisms $t\colon D\to D'$, $s\colon H\to H'$ as in the diagram below.
 	\[\xymatrix@C=40pt{&&D' \ar[r]^{g'} \ar@{>->}@/_.45cm/[dll]_{f'}&H'\\G & L \ar[l]_{m} & K \ar[u]_{k'} \ar[d]^{k}\ar[r]^{r} \ar@{>->}[l]_{l} &R\ar[u]^{h'} \ar[d]_{h}\\&&D\ar@{>->}@/^.45cm/[ull]^{f}\ar@/^.4cm/@{.>}[uu]^(.4){t}|\hole \ar[r]_{g}&H\ar@/_.4cm/@{.>}[uu]_{s}}\]
 \end{proposition}
 \begin{proof}
-	By construction, the pairs $(k, f)$ and $(k', f')$ are pushout complements of $l$ and $n$. Thus, the existence of the isomorphism $t\colon D\to D'$ follows from the second point of \Cref{lem:radj}. Now, computing we have
+	By construction, the pairs $(k, f)$ and $(k', f')$ are pushout complements of $l$ and $n$. Thus, existence and uniqueness of the isomorphism $t\colon D\to D'$ follows from the second point of \Cref{lem:radj}. Now, computing we have
 	\begin{align*}
 		g'\circ t \circ k &= g' \circ k'\\&=h'\circ r
 	\end{align*}
-	Hence, we have the wanted $s\colon H\to H'$. To see that $s$ is an isomorphism, consider the diagram 
+	Hence, we have a unique arrow $s\colon H\to H'$. To see that $s$ is an isomorphism, consider the diagram 
 	\[\xymatrix{K  \ar@/^.4cm/[rr]^{k'}\ar[d]_{r} \ar[r]_{k}& \ar[r]_{t} D \ar[d]^{g}& D' \ar[d]^{g'}\\ R \ar@/_.4cm/[rr]_{h'} \ar[r]^{h}& H \ar[r]^{s}& H'}\]
 	By hypothesis the whole rectangle and its left half are pushouts, therefore, by \Cref{lem:po1} its right square is a pushout too. The claim now follows from the fact that the pushout of an isomorphism is an isomorphism.
 \end{proof}
