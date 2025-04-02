@@ -40,7 +40,7 @@ Sequential independence is the canonical notion of independence in the DPO appro
 \end{definition}
 
 \begin{remark}\label{rem:seqabs}
-Let $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ be an abstraction equivalence between $\der{D}=\{\dder{D}_i\}_{i=0}^1$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^1$. If there is an independence pair between $(i_0, i_1)$ between $\dder{D}_0$ and $\dder{D}_1$, then $(\phi_{D_0}\circ i_1, \phi_{D_1}\circ i_0)$ is an independence pair between $\dder{D}'_0$ and $\dder{D}'_1$. Indeed we have
+Let $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ be an abstraction equivalence between $\der{D}=\{\dder{D}_i\}_{i=0}^1$ and $\der{D}'=\{\dder{D}'_i\}_{i=0}^1$. If there is an independence pair between $(i_0, i_1)$ between $\dder{D}_0$ and $\dder{D}_1$, then $(\phi_{D_1}\circ i_0, \phi_{D_0}\circ i_1)$ is an independence pair between $\dder{D}'_0$ and $\dder{D}'_1$. Indeed we have
 \[\begin{split}
 g'_0\circ \phi_{D_0}\circ i_1&=\phi_{G_1}\circ g_0\circ i_1\\&=\phi_{G_1}\circ m_1\\&= m'_1
 \end{split}\qquad \begin{split}
@@ -99,12 +99,11 @@ $\rho_1$. The following definition formalise what it means for a derivation to b
 	\]
 	such that there is an independence pair $(i_0', i_1')$ between
 	$\dder{E}_0$ and $\dder{E}_1$ and 
-	\begin{center}   
-		$m_0=f_0' \circ i_1'$
-		\qquad $h_1=g_1' \circ i_0'$
-		\qquad $m_0'= f_0 \circ i_1$
-		\qquad $h_1'= g_{1}\circ i_0$.
-	\end{center}
+\[
+	m_0=f_0' \circ i_1' \qquad 
+	h_1=g_1' \circ i_0' 
+		\qquad m_0'= f_0 \circ i_1
+		\qquad h_1'= g_{1}\circ i_0\]
 	
 
 \end{definition}
@@ -335,7 +334,7 @@ m_0=f_0' \circ i_1'
  The derivation $\der{D}$ uses the same rule of $\der{E}$ in reverse order, thus it is a switch for $\der{E}$ along $(i_0', i_1')$.   Moreover, the same argument shows that if $(\der{E}, \alpha, \omega)$ is a decorated switch for $(\der{D}, \alpha, \omega)$ along $(i_0, i_1)$, then the latter is a decorated switch for the former along $(i'_0, i'_1)$.
 \end{remark}
 
-A first property of pre-switches is that they are unique up to abstraction equivalence.
+We start by examining how pre-switches interact with abstraction equivalence. A first property that we can establish in that direction is uniqueness of pre-switches up to abstraction equivalence.
 
 \begin{lemma}[Uniqueness of pre-switches]
 	\label{thm:switch_uni}
@@ -430,6 +429,62 @@ On the other hand, there is an isomorphism $t\colon 4\mto 4$ be the isomorphism 
 	\[\xymatrix@C=30pt@R=25pt{3 && \ar@{>->}[ll]_{\id{3}} 3 \ar@{>->}[rr]^{i_3}&& 4 && \ar@{>->}[ll]_{\id{4}} 4 \ar@{>->}[rr]^{\id{4}}&& 4\\1 \ar@{>->}[d]^{\delta^3_0} \ar@{>->}[u]_{\delta^3_0}&& 1 \ar@{>->}[d]^{\delta^3_0} \ar@{>->}[u]_{\delta^3_0}\ar@{>->}[ll]_{\id{1}} \ar@{>->}[r]^{\delta^2_0} & 2 \ar@{>->}@/^.35cm/[drrr]|(.315)\hole_(.4){i_2} \ar@{>->}[dr]|(.3)\hole_{i_2} \ar@{>->}@/_.35cm/[urrr]|(.315)\hole^(.4){i_2} \ar@{>->}[ur]|(.3)\hole^{i_2}& &1 \ar@{>->}@/_.35cm/[dlll]^(.4){\delta^3_0} \ar@{>->}[dl]|(.3)\hole^{\delta^4_0} \ar@{>->}@/^.35cm/[ulll]_(.4){\delta^3_0} \ar@{>->}[ul]|(.3)\hole_{\delta^4_0}& 1 \ar@{>->}[d]_{\delta^4_0} \ar@{>->}[u]^{\delta^4_0}\ar@{>->}[l]_{\id{1}} \ar@{>->}[rr]^{\id{1}} && 1 \ar@{>->}[d]_{\delta^4_0} \ar@{>->}[u]^{\delta^4_0}\\ \ar@/^.5cm/[uu]^{\id{3}} 3 && \ar[ll]^{\id{3}} 3 \ar@{>}@/^.5cm/[uu]^(.33){\phi_0}|\hole \ar[rr]_{i_3}&& 4 \ar@{>}[uu]_(.76){\psi_1}|(.45)\hole |(.55)\hole&& \ar@{>->}[ll]^{\id{4}} 4 \ar@{>}@/_.5cm/[uu]_(.33){\phi_1}|\hole\ar[rr]_{t}&& 4\ar@{>}@/_.5cm/[uu]_{\psi_2}}\]
 	But then there is only one component of this abstraction equivalence different from the identity, namely the last one, which must coincide with $t$.
 \end{example}
+
+
+Another useful facts that we can establish is that being a pre-switch is invariant under abstraction equivalence, as made precise by the following lemma.
+
+\begin{lemma}\label{lem:abs}
+	Let $\der{D}=\{\dder{D}_i\}_{i=0}^1$ be the following derivation:
+	
+	\[\xymatrix@R=20pt@C=20pt{L_0 \ar[d]_{m_0}&& K_0
+		\ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0
+		\ar@{>}@/^.25cm/[drrr]|(.32)\hole_(.4){i_0}
+		\ar[dr]|(.33)\hole_{h_0} && L_1 \ar@{>}@/_.25cm/[dlll]^(.4){i_1}
+		\ar[dl]|(.33)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1}
+		\ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar@{>->}[ll]^{f_0}
+		D_0 \ar[rr]_{g_0}&& G_1 && \ar@{>->}[ll]^{f_1} D_1
+		\ar[rr]_{g_1}&& G_2}
+	\]
+	and suppose that the derivation $\der{E}$ below is a pre-switch for $\der{D}$ along $(i_0,i_1)$.
+	\[
+	\xymatrix@R=20pt@C=20pt{
+		{L_1} \ar[d]_{m_0'}
+		&&  {K_1} \ar@{>->}[ll]_{l_1} \ar[r]^{r_1} \ar[d]_{k_0'}
+		&  {R_1} \ar[dr]|(.33)\hole_{h_0'}  \ar@/^.25cm/@{>}_(.4){i_0'}|(.32)\hole[drrr]
+		& & 
+		{L_0}\ar[dl]|(.33)\hole^{m_1'} \ar@/_.25cm/@{>}^(.4){i_1'}[dlll] 
+		&  {K_0} \ar@{>->}[l]_{l_0} \ar[rr]^{r_0} \ar[d]^{k_1'}
+		& & {R_0} \ar[d]^{h_1'} \\		
+		{G_0}
+		& & {D_0'} \ar@{>->}[ll]^{f_0'} \ar[rr]_{g_0'}
+		& &  {G'_1} 
+		& &  {D_1'} \ar@{>->}[ll]^{f_1'} \ar[rr]_{g_1'}
+		& & {G_2}  }
+	\]
+	
+	Then the following hold true:
+	\begin{enumerate}
+		\item if $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ is an abstraction equivalence between $\der{D}$ and another derivation $\der{F}=\{\dder{F}_i\}_{i=0}^1$, then $\phi^{-1}_{G_0}*\der{E}*\phi_{G_2}$ is a pre-switch for $\der{F}$ along $(\phi_{D_1}\circ i_0, \phi_{D_0}\circ i_1 )$;
+		\item if $\{\psi_X\}_{X\in \Deltamin(\der{E})}$ is an abstraction equivalence between $\der{E}$ and $\der{G}=\{\dder{G}_{i}\}_{i=0}^1$, then $\psi_{G_0}*\der{G}*\psi^{-1}_{G_2}$ is a pre-switch for $\der{D}$ along $(i_0, i_1)$.
+	\end{enumerate}
+	\begin{remark}Recall that, by \Cref{rem:seqabs}, $(\phi_{D_1}\circ i_0, \phi_{D_0}\circ i_1 )$ is an independence pair between $\dder{F}_0$ and $\dder{F}_1$.
+	\end{remark}
+\end{lemma}
+\begin{proof}\begin{enumerate}
+		\item To prove this, it is enough to compute:
+		\[\begin{split}
+			m_{\der{F},0}=&\phi_{G_0}\circ m_0\\=&\phi_{G_0}\circ f'_0\circ i'_1\\\phi_{G_0}\circ	m'_0=&\phi_{G_0}\circ f_0\circ i_1\\=&f_{\der{F},0}\circ \phi_{D_{0}}\circ i_1
+		\end{split} \quad \begin{split}
+	h_{\der{F},1}=&\phi_{G_2}\circ h_1\\=&\phi_{G_2}\circ g_1' \circ i_0' \\	\phi_{G_2}\circ h'_1=&\phi_{G_2}\circ g_1\circ i_0\\=&g_{\der{F}, 1}\circ \phi_{D_1}\circ i_0\end{split} 
+	\]
+		
+		
+		\item
+		
+		And we can conclude. \qedhere 
+	\end{enumerate}
+\end{proof}
+
 
 Given two sequentially independent direct derivations, it is not necessarily true that a pre-switch for them exists, as shown by the following example. 
 
@@ -579,7 +634,7 @@ The definition of pre-switch raises some issues. First of all we do not have suf
 	Let also $\der{D}=\{\dder{D}_i\}_{i=0}^1$ be a derivation made
 	of two sequentially independent derivations $\dder{D}_0$,
 	$\dder{D}_1$ with independence pair $(i_0, i_1)$, as in the diagram below, where the cone with vertex $P$ is a pullback and $u_0\colon K_0\to P$ and $u_1\colon K_1\to P$ are the arrows built in \Cref{prop:tec}.
-	\[\xymatrix@R=15pt@C=20pt{L_0 \ar[d]_{m_0}&& K_0 \ar @/^.35cm/[ddrr]_(.2){u_0}
+	\[\xymatrix@R=20pt@C=20pt{L_0 \ar[d]_{m_0}&& K_0 \ar @/^.35cm/[ddrr]_(.2){u_0}
 		\ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0
 		\ar@{>}@/^.25cm/[drrr]|(.32)\hole_(.4){i_0}|(.68)\hole
 		\ar[dr]|(.33)\hole_{h_0} && L_1 \ar@{>}@/_.25cm/[dlll]^(.4){i_1}|(.68)\hole 
@@ -591,7 +646,7 @@ The definition of pre-switch raises some issues. First of all we do not have suf
 	
 	Let $\der{E}=\{\dder{E}_i\}_{i=0}^1$, depicted below, be a pre-switch for $\der{D}$ along $(i_0,i_1)$.
 	\[
-	\xymatrix@R=18pt@C=20pt{
+	\xymatrix@R=20pt@C=20pt{
 		{L_1} \ar[d]_{m_0'}
 		&&  {K_1} \ar@{>->}[ll]_{l_1} \ar[r]^{r_1} \ar[d]_{k_0'}
 		&  {R_1} \ar[dr]|(.33)\hole_{h_0'}  \ar@/^.25cm/@{>}_(.4){i_0'}|(.32)\hole[drrr]
@@ -657,8 +712,14 @@ We end this section showing that, if a switch exists, then any pre-switch can be
 	$\dder{D}_1$ along the same independence pair $(i_0, i_1)$. Let $\{\phi_X\}_{X\in \Deltamin(\der{E})}$ be the abstraction equivalence built in \Cref{thm:switch_uni}. If $\der{F}$ is a switch then also $\der{E}*\phi_{G_2}$ is one.
 \end{proposition}
 \begin{proof}
-	contenuto...
-\end{proof}
+Suppose that $\der{D}$ is given by the following derivation.
+	
+	By \Cref{thm:switch_uni} we have a diagram as the one below.
+	\[\xymatrix@C=22pt{G_{0} && \ar@{>->}[ll]_{f_{\der{F},0}} D_{\der{F},0} \ar[rr]^{g_{\der{F},0}}&& G_{\der{F},1} && \ar@{>->}[ll]_{f_{\der{F},1}} D_{\der{F},1} \ar[rr]^{g_{\der{F},1}}&& G_{2}\\L_1 \ar[d]^{f_0\circ i_1} \ar[u]_{f_0\circ i_1}&& K_{1} \ar[d]^{k_{\der{E},0}} \ar[u]_{k_{\der{F},0}}\ar@{>->}[ll]_{l_1} \ar[r]^{r_1} & R_{1} \ar@/^.35cm/[drrr]|(.315)\hole_(.4){j_0} \ar[dr]|(.3)\hole_{h_{\der{E},0}} \ar@/_.35cm/[urrr]|(.315)\hole^(.4){a_0} \ar[ur]|(.3)\hole^{h_{\der{F},0}}& &L_{0} \ar@/_.35cm/[dlll]^(.4){j_1} \ar[dl]|(.3)\hole^{m_{\der{E},1}} \ar@/^.35cm/[ulll]_(.4){a_1} \ar@/_.3cm/[ul]|(.252)\hole_(.4){m_{\der{F},1}}& K_{0} \ar[d]_{k_{\der{E},1}} \ar[u]^{k_{\der{F},1}}\ar@{>->}[l]_{l_{0}} \ar[rr]^{r_0} && R_{0} \ar[d]_{g_1\circ i_0} \ar[u]^{g_1\circ i_0}\\ \ar@/^.5cm/[uu]^{\id{G_0}} G_{0} && \ar[ll]^{f_{\der{E},0}} D_{\der{E},0} \ar@{>}@/^.5cm/[uu]^(.33){\phi_{D_{\der{E},0}}}|\hole \ar[rr]_{g_{\der{E},0}}&& G_{\der{E},1} \ar@{>}[uu]_(.76){\phi_{G_{\der{E}, 1}}}|(.45)\hole |(.55)\hole&& \ar@{>->}[ll]^{f_{\der{E},1}} D_{\der{E},1} \ar@{>}@/_.5cm/[uu]_(.33){\phi_{D_{\der{E},1}}}|\hole\ar[rr]_{g_{\der{E},1}}&& G_{2}\ar@{>}@/_.5cm/[uu]_{\phi_{G_2}}}\]
+	
+	Moreover, by definition $\der{E}*\phi_{G_2}$
+	
+	\end{proof}
 
 
 \subsection{Strong-enforcing and well-switching rewriting systems}
@@ -925,7 +986,7 @@ To see that they are one the inverse of the other it is then enough to compute.
 		\[\begin{split}
 			f'_0\circ z_0&=f'_0\circ t_0\circ v\\&=f'_0\circ \phi_{Q_0}\circ q_0\\&=a_0\circ q_0\\&=f_0\circ p_0
 		\end{split} \qquad \begin{split}
-		g'_1\circ z_1=g'_1\circ t_1\circ v\\&=g'_1\circ \phi_{Q_1}\circ q_1\\&=\phi_{G_2}\circ b_1 \circ q_1\\&=\phi_{G_2}\circ g_1\circ p_1\\&=f_0\circ p_0
+		g'_1\circ z_1&=g'_1\circ t_1\circ v\\&=g'_1\circ \phi_{Q_1}\circ q_1\\&=\phi_{G_2}\circ b_1 \circ q_1\\&=\phi_{G_2}\circ g_1\circ p_1\\&=f_0\circ p_0
 		\end{split} \]
 		
 		
