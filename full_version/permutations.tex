@@ -651,8 +651,7 @@ The second half of the thesis follows immediately from \Cref{ex:zero}.
 	\smallskip \noindent  $\lgh(\der{D}_1)$ and $\lgh(\der{D}_2)$ are both different from $0$. By \Cref{def:conc} in this case we have
 	\[(\der{E}, \zeta, \theta)=(\der{D}_1*\omega^{-1}_1 \cdot \alpha_2*\der{D}_2, \alpha_1,\omega_2 ) \qquad (\der{E}', \zeta', \theta')=(\der{D}'_1*(\omega'_1)^{-1} \cdot \alpha'_2*\der{D}'_2, \alpha'_1,\omega'_2 )\]
 	
-	
-	
+	Thus we conclude.
 \end{proof}
 
 The next proposition justifies the use of decorations, guaranteeing that concatenation of abstract decorated derivations is well-defined.
@@ -831,7 +830,7 @@ Given a DPO-rewriting system $(\X, \R)$,  we have already noted in \Cref{rem:fun
 \begin{remark}\label{rem:cof}
 Let $I:\Deltamin(\dder{D})\to \Delta(\dder{D})$ be the inclusion functor. It is immediate to see that such functor is \emph{final} \cite{mac2013categories}. This means that for every functor $F\colon \Delta(\dder{D})\to \Y$ we have:
 \begin{enumerate}
-	\item if  $(C, \{c_X\}_{X\in \Deltamin(\dder{D})})$ is colimiting for $F\circ I$, then there exists a colimiting cocone $(D, \{d_X\}_{X\in \Delta(\dder{D})})$ for $F$;
+	\item if  $(C, \{c_X\}_{X\in \Deltamin(\dder{D})})$ is a colimiting cocone for $F\circ I$, then there also exists a colimiting cocone $(D, \{d_X\}_{X\in \Delta(\dder{D})})$ for $F$;
 	\item $(C, \{c_X\}_{X\in \Deltamin(\dder{D})})$ and $(D, \{d_X\}_{X\in \Delta(\dder{D})})$ are colimiting for, respectively, $F\circ I$ and $F$, then the canonical arrow $\phi\colon C\to D$ induced by $(D, \{d_X\}_{X\in \Deltamin(\dder{D})})$ is an isomorphism.
 \end{enumerate}
 \end{remark}
@@ -918,7 +917,21 @@ Applying \Cref{lem:po1} twice we get that the whole square is an $\mathcal{M}$-p
 \begin{proof} Consider the diagram
 			\[\xymatrix@C=34pt{T  \ar@/_.6cm/[dd]_{a}\ar@{.>}[d]^{c}\ar[rr]^{b}&& G_k \ar[d]_{\iota_{3, G_k}} \ar@/^.6cm/[ddd]^{\iota_{G_k}}\\D_{j} \ar[r]^{g_j} \ar[ddrr]^{\iota_{D_j}}\ar@{>->}[d]^{f_j}& G_{j+1} \ar[r]^-{\iota_{3,G_{j+1}}} \ar[ddr]^{\iota_{G_{j+1}}} & \lpro \der{D}^j_3\rpro \ar[dd]_(.6){p_2} \\ G_j \ar@{>->}[d]_{\iota_{1,G_j}} \ar[drr]_{\iota_{G_j}}\\ \lpro \der{D}^j_1 \rpro \ar[rr]_{p_1}  &&\tpro{D} }\] 
 			Thanks to \Cref{cor:colim} we know that the bottom right rectangle in the diagram above is a pullback and the thesis follows at once.
-\end{proof}	
+\end{proof}
+
+\begin{remark}\label{rem:abscol}
+Another useful property is that the abstractly equivalent derivations yield isomorphic colimits. Indeed, let $\{\phi_X\}$ be an abstraction equivalence between $\der{D}$ and $\der{E}$ and for every $X\in \Deltamin(\der{D})$ denote by $X'$ the codomain of $\phi_X$. We can define $\Phi \colon \tpro{D}\to \lpro \der{E}\rpro$ and $\Theta \colon \lpro\der{E}\rpro \to \tpro{D}$ as the unique morphisms such that, for every $X\in \Deltamin(\der{D})$:
+\[\Phi \circ \iota_{\der{D},X}= \iota_{\der{E}, X'}\circ \phi_X \qquad \Theta \circ \iota_{\der{E}, X'}= \iota_{\der{D}, X}\circ \phi^{-1}_X \]
+
+If we compute we get:.
+\[\begin{split}
+	\Theta \circ \Phi \circ \iota_{\der{D}, X}&=\Theta \circ\iota_{\der{E}, X'}\circ \phi_X\\&=\iota_{\der{D}, X}\circ \phi^{-1}_X\circ \phi_X\\&=\iota_{\der{D}, X} 
+\end{split}\qquad \begin{split}
+	\Phi \circ \Theta \circ \iota_{\der{E}, X'}&=\Phi \circ \iota_{\der{D}, X}\circ \phi^{-1}_{X}\\&=\iota_{, \der{E}, X'}\circ \phi_X\circ \phi^{-1}_{X}\\&=\iota_{\der{E},X'}
+\end{split}\]
+
+Therefore, $\Phi$ is an isomorphism with inverse $\Theta$.
+\end{remark}
 
 We want now to relate the colimit of a composite decorated derivation with the colimits of its components. The following two lemmas will be pivotal to develop the subsequent sections.
 
@@ -978,6 +991,8 @@ We want now to relate the colimit of a composite decorated derivation with the c
 	\[q_1\circ \iota_{1, G_{1, l_1}}=\iota_{ G_{l_1}}\circ \omega^{-1}_1 \qquad q_2\circ \iota_{2, G_{2, 0}}=\iota_{ G_{l_1}}\circ \alpha^{-1}_2\]
 	
 \end{remark}
+
+
 
 
 \section{Semi-consistent and consistent permutations}
@@ -1063,20 +1078,7 @@ As a next step, we will show that the existence of abstraction equivalences sati
 	Let $(\der{D}, \alpha, \omega)$ and $(\der{D}', \alpha', \omega')$ be two decorated derivations in a left-linear rewriting system $(\X, \R)$ of length $l$. Let also $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ be an abstraction equivalence between $\der{D}$ and $\der{D}'$. If $\alpha'\circ \phi_{G_0}=\alpha$ then the the identity $\id{[0,l-1]}$ is a semi-consistent permutation. If, moreover, $\omega'\circ \phi_{G_{l}}=\omega$, then $\id{[0,l-1]}$ is a consistent one.
 \end{proposition}
 \begin{proof}
-	For every $X\in \Deltamin(\der{D}) $, let $X'$ the codomain of $\phi_X$. Then we can define $\xi_{\id{[0,l-1]}}\colon \tpro{D}\to \lpro \der{D}'\rpro$ as the unique morphism such that, for every $X\in \Deltamin(\der{D})$, 
-	\[\xi_{\id{[0,l-1]}} \circ \iota_{X}= \iota'_{X'}\circ \phi_X\]
-
-As a first step we can notice that $\xi_{\id{[0,l-1]}}$ is an isomorphism: indeed we can define $\Theta\colon \lpro\der{D}'\rpro \to \tpro{D}$ as the unique arrow satisfying, for every $X'\in \Deltamin(\der{D}')$
-\[\Theta \circ \iota'_{X'}= \iota_{X}\circ \phi^{-1}_X\]
-
-From the following two computations we can derive that $\Theta$ is the inverse of $\xi_{\id{[0,l-1]}}$.
-\[\begin{split}
-	\Theta \circ \xi_{\id{[0,l-1]}}\circ \iota_{X}&=\Theta \circ\iota'_{X'}\circ \phi_X\\&=\iota_{X}\circ \phi^{-1}_X\circ \phi_X\\&=\iota_X 
-\end{split}\qquad \begin{split}
-\xi_{\id{[0,l-1]}}\circ \Theta \circ \iota'_{X'}&=\xi_{\id{[0,l-1]}}\circ \iota_X\circ \phi^{-1}_{X}\\&=\iota'_{X'}\circ \phi_X\circ \phi^{-1}_{X}\\&=\iota'_{X'}
-\end{split}\]
-
-To conclude, let us observe that all the internal subdiagrams of the following diagrams commutes, guaranteeing the commutativity of the full ones.
+By \Cref{rem:abscol} we know that there is an isomorphism  $\xi_{\id{[0, l-1]}}\colon \tpro{D}\to \lpro \der{D}'\rpro$.  We can notice that all the internal subdiagrams of the following diagrams commutes, guaranteeing the commutativity of the full ones.
 \[\xymatrix@C=30pt{\pi(G_0)\ar[r]^{\alpha} \ar[d]_{\alpha'} & G_0 \ar[dl]^{\phi_{G_0}} \ar[r]^{\iota_{G_0}} &\tpro{D} \ar[d]^{\xi_{\id{[0, l-1]}}}\\ G'_0 \ar[rr]_{\iota'_{G'_0}} & &\lpro \der{D}' \rpro}\]
 \[\xymatrix@C=30pt{L_i \ar[r]^{m_i} \ar[d]_{m'_{\sigma(i)}}& G_i \ar[dl]^{\phi_{G_i}} \ar[r]^{\iota_{G_i}} &\tpro{D} \ar[d]^{\xi_{\id{[0, l-1]}}} & R_i \ar[r]^{h_i} \ar[d]_{h'_{i}}& G_{i+1} \ar[dl]^{\phi_{G_{i+1}}}\ar[r]^{\iota_{G_{i+1}}} &\tpro{D} \ar[d]^{\xi_{\id{[0, l-1]}}} \\G'_{i} \ar[rr]_{\iota'_{G'_{i}}}&& \lpro \der{D}' \rpro& G'_{i+1} \ar[rr]_{\iota'_{G'_{i+1}}}&& \lpro \der{D}' \rpro}\]
 
