@@ -463,7 +463,7 @@ Another useful facts that we can establish is that being a pre-switch is invaria
 	
 	Then the following hold true:
 	\begin{enumerate}
-		\item if $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ is an abstraction equivalence between $\der{D}$ and another derivation $\der{F}=\{\dder{F}_i\}_{i=0}^1$, then $\phi^{-1}_{G_0}*\der{E}*\phi_{G_2}$ is a pre-switch for $\der{F}$ along $(\phi_{D_1}\circ i_0, \phi_{D_0}\circ i_1 )$;
+		\item if $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ is an abstraction equivalence between $\der{D}$ and $\der{F}=\{\dder{F}_i\}_{i=0}^1$, then $\phi^{-1}_{G_0}*\der{E}*\phi_{G_2}$ is a pre-switch for $\der{F}$ along $(\phi_{D_1}\circ i_0, \phi_{D_0}\circ i_1 )$;
 		\item if $\{\psi_X\}_{X\in \Deltamin(\der{E})}$ is an abstraction equivalence between $\der{E}$ and $\der{G}=\{\dder{G}_{i}\}_{i=0}^1$, then $\psi_{G_0}*\der{G}*\psi^{-1}_{G_2}$ is a pre-switch for $\der{D}$ along $(i_0, i_1)$.
 	\end{enumerate}
 	\begin{remark}Recall that, by \Cref{rem:seqabs}, $(\phi_{D_1}\circ i_0, \phi_{D_0}\circ i_1 )$ is an independence pair between $\dder{F}_0$ and $\dder{F}_1$.
@@ -591,9 +591,9 @@ The outer diagram given by the second rectangle is an $\mathcal{M}$-pushout, thu
 	$\der{D}=\{\dder{D}_i\}_{i=0}^1$ be a derivation and suppose
 	that $(i_0, i_1)$ is an independence pair between $\dder{D}_0$
 	and $\der{D}_1$.  If $\der{E}=\{\dder{E}_i\}_{i=0}^1$ is a
-	pre-switch of $\der{D}$ along $(i_0, i_1)$, then there is an arrow
-	$z_0\colon P\to D_{\der{E},0}$ in $\mathcal{M}$ fitting in the square below.
-	\[\xymatrix{P \ar@{.>}[r]^-{z_0}  \ar@{>->}[d]_{p_0}& D_{\der{E}, 0} \ar@{>->}[d]^{f_{\der{E},0}} \\ D_0 \ar@{>->}[r]_{f_0} & G_0 }\]
+	pre-switch of $\der{D}$ along $(i_0, i_1)$, then there is a unique arrow
+	$z_0\colon P\to D_{\der{E},0}$ fitting in the square below. Moreover, such arrow is in $\mathcal{M}$.
+	\[\xymatrix{P \ar@{>.>}[r]^-{z_0}  \ar@{>->}[d]_{p_0}& D_{\der{E}, 0} \ar@{>->}[d]^{f_{\der{E},0}} \\ D_0 \ar@{>->}[r]_{f_0} & G_0 }\]
 \end{corollary}
 \begin{proof}
 	Consider the arrow $u_1\colon K_1\to P$ obtained using
@@ -610,12 +610,12 @@ The outer diagram given by the second rectangle is an $\mathcal{M}$-pushout, thu
 		\ar[r]_{m_{\der{E},0}}&G_0}\]
 	
 	Since $f_0$ is a monomorphism, all the inner squares of the left diagram are pullbacks, thus the whole big square is a pullback too.
-	Now the thesis follows applying \Cref{lem:radj} to the pair of squares on the right.
+	Now the thesis follows applying \Cref{lem:radj} to the pair of squares on the right. Since $f_0$ and $p_0$ are element of $\mathcal{M}$, then $f_{\der{E},0}\circ z_0$ is in $\mathcal{M}$ too and so $z_0$ is in $\mathcal{M}$ by \Cref{prop:deco}.	
 	\end{proof}
 	
 
 \begin{example}\label{ex:abs2}
-Let $\der{D}$ be the derivation of \Cref{ex:abs} and consider the pre-switch $\der{F}$. Then we can build the diagram belo
+Let $\der{D}$ be the derivation of \Cref{ex:abs} and consider the pre-switch $\der{F}$. Then we can build the diagram below
 	\[\xymatrix@C=20pt@R=20pt{&&1 \ar@{>->}@/_.9cm/[ddrr]_(.2){\delta^3_0}|(.72)\hole
 	\ar@{>->}[dr]^{\delta^3_0}&& 1\ar@{>->}@/^.9cm/[ddll]^(.2){\delta^3_0}
 	\ar@{>->}[dl]_{\delta^3_0}\\
@@ -645,7 +645,7 @@ The definition of pre-switch raises some issues. First of all we do not have suf
 	Let also $\der{D}=\{\dder{D}_i\}_{i=0}^1$ be a derivation made
 	of two sequentially independent derivations $\dder{D}_0$,
 	$\dder{D}_1$ with independence pair $(i_0, i_1)$, as in the diagram below, where the cone with vertex $P$ is a pullback and $u_0\colon K_0\to P$ and $u_1\colon K_1\to P$ are the arrows built in \Cref{prop:tec}.
-	\[\xymatrix@R=15pt@C=20pt{L_0 \ar[d]_{m_0}&& K_0 \ar @/^.35cm/[ddrr]_(.2){u_0}
+	\[\xymatrix@R=20pt@C=20pt{L_0 \ar[d]_{m_0}&& K_0 \ar @/^.35cm/[ddrr]_(.2){u_0}
 		\ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0
 		\ar@{>}@/^.25cm/[drrr]|(.32)\hole_(.4){i_0}|(.68)\hole
 		\ar[dr]|(.33)\hole_{h_0} && L_1 \ar@{>}@/_.25cm/[dlll]^(.4){i_1}|(.68)\hole 
@@ -657,7 +657,7 @@ The definition of pre-switch raises some issues. First of all we do not have suf
 	
 	Let $\der{E}=\{\dder{E}_i\}_{i=0}^1$, depicted below, be a pre-switch for $\der{D}$ along $(i_0,i_1)$.
 	\[
-	\xymatrix@R=15pt@C=20pt{
+	\xymatrix@R=20pt@C=20pt{
 		{L_1} \ar[d]_{m_0'}
 		&&  {K_1} \ar@{>->}[ll]_{l_1} \ar[r]^{r_1} \ar[d]_{k_0'}
 		&  {R_1} \ar[dr]|(.33)\hole_{h_0'}  \ar@/^.25cm/@{>}_(.4){i_0'}|(.32)\hole[drrr]
@@ -673,7 +673,7 @@ The definition of pre-switch raises some issues. First of all we do not have suf
 	\]
 	
 	We say that $\der{E}$ is a \emph{switch} for $\der{D}$ along $(i_0, i_1)$ if there is an arrow $z_1\colon P\to D'_1$ fitting in the diagram below, where $z_0\colon P\to D'_0$ is the arrow constructed in \Cref{lem:cose}.
-	\[\xymatrix@R=18pt{D'_0  \ar[d]_{g'_0}& P \ar[r]^{p_1} \ar[l]_{z_0} \ar@{.>}[d]^{z_1} & D_1 \ar[d]^{g_1}\\ G'_1 & D'_1 \ar[r]_{g'_1} \ar@{>->}[l]^{f'_1} & G_2}\]
+	\[\xymatrix@R=18pt{D'_0  \ar[d]_{g'_0}& P \ar[r]^{p_1} \ar@{>->}[l]_{z_0} \ar@{.>}[d]^{z_1} & D_1 \ar[d]^{g_1}\\ G'_1 & D'_1 \ar[r]_{g'_1} \ar@{>->}[l]^{f'_1} & G_2}\]
 	
 	If a switch of $\dder{D}_0$ and $\dder{D}_1$ exists we say that they are \emph{switchable}. If $(\der{D}, \alpha, \omega)$ is a decorated derivation of length $2$, and $(i_0, i_1)$ an independence pair between $\dder{D}_0$ and $\dder{D}_1$, a \emph{decorated switch} of $(\der{D}, \alpha, \omega)$ along $(i_0, i_1)$ is $(\der{E}, \alpha, \omega)$, where $\der{E}$ is a switch for $\der{D}$ along $(i_0, i_1)$.
 \end{definition}
@@ -692,11 +692,11 @@ Let $\der{D}$ be a derivation made by two sequentially independence direct deriv
 		\ar@{>->}[dl]|(.4)\hole_(.65){f_0}\ar[ur]|(.5)\hole^(.7){g_0}&&D_1
 		\ar[dr]|(.4)\hole^(.65){g_1}
 		\ar@{>->}[ul]|(.5)\hole_(.65){f_1}&&R_1\ar@/^.6cm/[ddll]^(.2){i'_0}|(.31)\hole|(.81)\hole\ar[dl]_{h_1}|(.6)\hole\\&G_0
-		&&P\ar@{.>}[dr]_{z_1}	\ar@{>}[dl]^{z_0}\ar[ur]^(.4){p_1}\ar@{>->}[ul]_(.4){p_0}&&G_2\\L_1	\ar@/^.6cm/[uurr]^(.2){i_1} \ar[ur]_(.35){m'_0}|(.61)\hole && D'_0	\ar@{>->}[ul]|(.4)\hole_(.65){f'_0}\ar[dr]|(.5)\hole_(.65){g'_0}	&&D'_1\ar[ur]|(.4)\hole^(.65){g'_1} \ar@{>->}[dl]|(.5)\hole^(.65){f'_1}	&& R_0 \ar[ul]^(.35){h'_1}|(.61)\hole\ar@/_.6cm/[uull]_(.2){i_0}\\ &K_1	\ar[ur]_{k'_0} \ar[dr]_{r_1}	\ar@{>->}[ul]^{l_1}\ar@/^.6cm/[uurr]_(.65){u_1}&&G'_1&& K_0\ar[ur]_{r_0} \ar[ul]^{k'_1} \ar@{>->}[dl]^{l_0} \ar@/_.6cm/[uull]^(.65){u_0}\\&& R_1	\ar[ur]_{h'_0}\ar@/^.8cm/[uurr]^(.2){i'_0}&& L_0 \ar[ul]^{m'_1} \ar@/_.8cm/[uull]_(.2){i'_1} |(.69)\hole }\] 
+		&&P\ar@{.>}[dr]_{z_1}	\ar@{>->}[dl]^{z_0}\ar[ur]^(.4){p_1}\ar@{>->}[ul]_(.4){p_0}&&G_2\\L_1	\ar@/^.6cm/[uurr]^(.2){i_1} \ar[ur]_(.35){m'_0}|(.61)\hole && D'_0	\ar@{>->}[ul]|(.4)\hole_(.65){f'_0}\ar[dr]|(.5)\hole_(.65){g'_0}	&&D'_1\ar[ur]|(.4)\hole^(.65){g'_1} \ar@{>->}[dl]|(.5)\hole^(.65){f'_1}	&& R_0 \ar[ul]^(.35){h'_1}|(.61)\hole\ar@/_.6cm/[uull]_(.2){i_0}\\ &K_1	\ar[ur]_{k'_0} \ar[dr]_{r_1}	\ar@{>->}[ul]^{l_1}\ar@/^.6cm/[uurr]_(.65){u_1}&&G'_1&& K_0\ar[ur]_{r_0} \ar[ul]^{k'_1} \ar@{>->}[dl]^{l_0} \ar@/_.6cm/[uull]^(.65){u_0}\\&& R_1	\ar[ur]_{h'_0}\ar@/^.8cm/[uurr]^(.2){i'_0}&& L_0 \ar[ul]^{m'_1} \ar@/_.8cm/[uull]_(.2){i'_1} |(.69)\hole }\] 
 \end{remark} 
 
 \begin{remark}\label{rem:un}
-	Notice that, since $f'_1$ belongs to $\mathcal{M}$, there is at most one arrow $z_1\colon P\to D'_1$ such that $f'{1}\circ z_1=g'_0\circ z_0$.
+	Notice that, since $f'_1$ belongs to $\mathcal{M}$, there is at most one arrow $z_1\colon P\to D'_1$ such that $f'_{1}\circ z_1=g'_0\circ z_0$.
 \end{remark}
 
 
@@ -715,46 +715,140 @@ Let $\der{D}=\{\dder{D}_{i}\}_{i=0}^1$ be a derivation of length $2$ and $(i_0, 
 	\end{align*}
 	
 	\smallskip \noindent $(2\Rightarrow 1)$. By hypothesis the solid part of the diagram below commutes.
-	\[\xymatrix@C=30pt{P \ar[r]^{z_0} \ar@{.>}[dr]^{z_1}\ar[d]_{p_1} & D'_0 \ar[r]^{g'_0} & G'_1 \ar@{>->}[dr]^{\iota'_{1, G'_1}}\\ D_1 \ar[dr]_{g'_1}& D'_1 \ar[d]^{g'_1}\ar@{>->}[r]^{f'_1} &G'_1 \ar@{>->}[r]^{\iota'_{1, G'_1}} &\lpro \dder{E}_0 \rpro 	\ar@{>->}[d]^{p_1} \\ & G'_1 	\ar[rr]_{\iota_{\der{E}, G_2}}&& \tpro{E} }\]
+	\[\xymatrix@C=30pt{P \ar@{>->}[r]^{z_0} \ar@{.>}[dr]^{z_1}\ar[d]_{p_1} & D'_0 \ar[r]^{g'_0} & G'_1 \ar@{>->}[dr]^{\iota'_{1, G'_1}}\\ D_1 \ar[dr]_{g'_1}& D'_1 \ar[d]^{g'_1}\ar@{>->}[r]^{f'_1} &G'_1 \ar@{>->}[r]^{\iota'_{1, G'_1}} &\lpro \dder{E}_0 \rpro 	\ar@{>->}[d]^{p_1} \\ & G'_1 	\ar[rr]_{\iota_{\der{E}, G_2}}&& \tpro{E} }\]
 	
 	By \Cref{rem:zero1} the inner square is a pullback, proving that the dotted arrow $z_1\colon P\to D'_1$ exists.  Since, by \Cref{lem:colim} $\iota'_{1, G'_1}$ is in $\mathcal{M}$, we conclude that $f'\circ z_1=g'\circ z_0$ as wanted.
 \end{proof}
-\iffalse 
-We turn now to simmetry of the switchability relation. Surely one desires an analog of \Cref{rem:switch} even for switches: this is assured by the following proposition.
 
-\begin{proposition}\label{prop:pb}
-	Let $\der{D}:=\{\dder{D}_{i}\}_{i=0}^1$ be the derivation below, with $(i_0, i_1)$ an independence pair between $\dder{D}_0$  and $\dder{D}_1$.
-	\[\xymatrix@R=20pt@C=20pt{L_0 \ar[d]_{m_0}&& K_0
-		\ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0
-		\ar@{>}@/^.25cm/[drrr]|(.32)\hole_(.4){i_0}
-		\ar[dr]|(.33)\hole_{h_0} && L_1 \ar@{>}@/_.25cm/[dlll]^(.4){i_1}
-		\ar[dl]|(.33)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1}
-		\ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar@{>->}[ll]^{f_0}
-		D_0 \ar[rr]_{g_0}&& G_1 && \ar@{>->}[ll]^{f_1} D_1
-		\ar[rr]_{g_1}&& G_2}
-	\]
-	
-	If $\der{E}:=\{\dder{E}_{i}\}_{i=0}^1$ is a switch for $\dder{D}$ along $(i_0, i_1)$, then the square below is a pullback.
-	\[\xymatrix{P  \ar[r]^-{z_1} \ar[d]_{z_0}& D_{\der{E}, 1} \ar@{>->}[d]^{f_{\der{E},1}} \\ D_{\der{E},0} \ar[r]_{g_{\der{E},0}}& G_{\der{E},1}}\]
-	
-	In particular, the arrow $z_0\colon P\to D_{\der{E},0}$ belongs to $\mathcal{M}$.
+By \Cref{thm:switch_uni} and \Cref{ex:abs2} we know that being a switch is not a property invariant under  abstraction equivalence. Nonetheless we  can still prove an analog to \Cref{lem:abs}.
+
+\begin{proposition}\label{prop:switchabs}
+	Let $\der{D}=\{\dder{D}_i\}_{i=0}^1$ be the following derivation:
+\[\xymatrix@R=20pt@C=20pt{L_0 \ar[d]_{m_0}&& K_0
+	\ar[d]_{k_0}\ar@{>->}[ll]_{l_0} \ar[r]^{r_0} & R_0
+	\ar@{>}@/^.25cm/[drrr]|(.32)\hole_(.4){i_0}
+	\ar[dr]|(.33)\hole_{h_0} && L_1 \ar@{>}@/_.25cm/[dlll]^(.4){i_1}
+	\ar[dl]|(.33)\hole^{m_1}& K_1 \ar[d]^{k_1}\ar@{>->}[l]_{l_1}
+	\ar[rr]^{r_1} && R_1 \ar[d]^{h_1}\\G_0 && \ar@{>->}[ll]^{f_0}
+	D_0 \ar[rr]_{g_0}&& G_1 && \ar@{>->}[ll]^{f_1} D_1
+	\ar[rr]_{g_1}&& G_2}
+\]
+and suppose that the derivation $\der{E}$ below is a switch for $\der{D}$ along $(i_0,i_1)$.
+\[
+\xymatrix@R=20pt@C=20pt{
+	{L_1} \ar[d]_{m_0'}
+	&&  {K_1} \ar@{>->}[ll]_{l_1} \ar[r]^{r_1} \ar[d]_{k_0'}
+	&  {R_1} \ar[dr]|(.33)\hole_{h_0'}  \ar@/^.25cm/@{>}_(.4){i_0'}|(.32)\hole[drrr]
+	& & 
+	{L_0}\ar[dl]|(.33)\hole^{m_1'} \ar@/_.25cm/@{>}^(.4){i_1'}[dlll] 
+	&  {K_0} \ar@{>->}[l]_{l_0} \ar[rr]^{r_0} \ar[d]^{k_1'}
+	& & {R_0} \ar[d]^{h_1'} \\		
+	{G_0}
+	& & {D_0'} \ar@{>->}[ll]^{f_0'} \ar[rr]_{g_0'}
+	& &  {G'_1} 
+	& &  {D_1'} \ar@{>->}[ll]^{f_1'} \ar[rr]_{g_1'}
+	& & {G_2}  }
+\]
+
+Then the following hold true:
+\begin{enumerate}
+	\item if $\{\phi_X\}_{X\in \Deltamin(\der{D})}$ is an abstraction equivalence between $\der{D}$ and $\der{F}=\{\dder{F}_i\}_{i=0}^1$ such that
+	\[\phi_{G_0}=\id{G_0} \qquad \phi_{G_2}=\id{H_2}\] 
+	then $\der{E}$ is a switch for $\der{F}$ along $(\phi_{D_1}\circ i_0, \phi_{D_0}\circ i_1 )$;
+	\item if $\{\psi_X\}_{X\in \Deltamin(\der{E})}$ is an abstraction equivalence between $\der{E}$ and $\der{G}=\{\dder{G}_{i}\}_{i=0}^1$ such that 
+	\[\phi_{G_0}=\id{G_0} \qquad \phi_{G_2}=\id{H_2}\] 
+	 then $\der{G}$ is a switch for $\der{D}$ along $(i_0, i_1)$.
+	\end{enumerate}
 \end{proposition}
 \begin{proof}
-	Take two arrows $t_0\colon T\to D_{\der{E}_1}$ and $t_1\colon T\to D_{\der{E},0}$ such that \[f_{\der{E},1}\circ t_1=g_{\der{E},0}\circ t_0\] 
-	
-	Thus we have
-	\begin{align*}
-		\iota_{\der{E}, G_0}\circ f_{\der{E},0}\circ t_0=&\iota_{\der{E}, D_{\der{E},0}}\circ t_0\\=&\iota_{\der{E}, G_1}\circ g_{\der{E},0}\circ t_0\\=&\iota_{\der{E}, G_1}\circ f_{\der{E},1}\circ t_1\\&= \iota_{\der{E}, D_{\der{E},1}}\circ t_1\\&=\iota_{\der{E}, G_2}\circ g_{\der{E},1} \circ t_1
-	\end{align*}
-	
-	By \Cref{cor:ele} we know that there exists a unique $t\colon T\to D_{}$
-\end{proof}
+		\begin{enumerate} 
+	\item 		Let $\der{F}$ be the derivation given by the diagram below.
+\[
+\xymatrix@R=20pt@C=20pt{
+	{L_0} \ar[d]_{m_{\der{F}, 0}}
+	&&  {K_0} \ar@{>->}[ll]_{l_0} \ar[r]^{r_0} \ar[d]_{k_{\der{F}, 0}}
+	&  {R_0} \ar[dr]|(.33)\hole_{h_{\der{F}, 0}}  \ar@/^.25cm/@{>}^(.2){\phi_{D_1} \circ i_0}|(.32)\hole[drrr]
+	& & 
+	{L_1}\ar[dl]|(.33)\hole^{m_{\der{F}, 1}} \ar@/_.25cm/[dlll]_(.2){\phi_{D_0} \circ i_1} 
+	&  {K_1} \ar@{>->}[l]_{l_1} \ar[rr]^{r_1} \ar[d]^{k_{\der{F}, 1}}
+	& & {R_0} \ar[d]^{h_{\der{F}, 1}} \\		
+	{G_0}
+	& & {D_{\der{F},0}} \ar@{>->}[ll]^{f_{\der{F}, 0}} \ar[rr]_{g_{\der{F}, 0}}
+	& &  {G_{\der{F}, 1}} 
+	& &  {D_{\der{F}, 1}} \ar@{>->}[ll]^{f_{\der{F}, 1}} \ar[rr]_{g_{\der{F}, 1}}
+	& & {G_2}  }
+\]
 
-\begin{corollary}
+By \Cref{lem:abs} and our hypotheses, we know that $\der{E}$ is a pre-switch, thus by \Cref{lem:cose} we can consider the two diagrams below, whose right halves are pullbacks.
+\[\xymatrix{D'_0 \ar@{>->}[d]_{f'_0}& P_{\der{F}} \ar@{>->}[d]^{p_{\der{F},0}} \ar[r]^{p_{\der{F},1}}\ar@{>->}[l]_{z_{\der{F},0}} & D_{\der{F},1} \ar@{>->}[d]^{f_{\der{F},1}}& D'_0 \ar@{>->}[d]_{f'_0} & P \ar[r]^{p_1} \ar@{>->}[d]^{p_0} \ar@{>->}[l]_{z_0}& D_1 \ar@{>->}[d]^{f_1}\\ G_0 & D_{\der{F}, 0} \ar[r]_{g_{\der{F},0}} \ar@{>->}[l]^{f_{\der{F},0}} & G_{\der{F},1} & G_0 & D_0 \ar[r]_{g_{0}} \ar@{>->}[l]^{f_{0}} & D_1}\]
+
+We can build the following other two diagrams.
+	
+\[\xymatrix{P \ar[rr]^{p_1} \ar@{>->}[dd]_{p_0} \ar@{.>}[dr]^{\alpha}&& D_1 \ar[d]_{\phi_{D_1}} \ar@/^.8cm/[ddd]^{f_1}& P_{\der{F}} \ar@{.>}[dr]^{\beta}\ar[rr]^{p_{\der{F},1}} \ar@{>->}[dd]_{p_{\der{F},0}} &&D_{\der{F},1} \ar[d]_{\phi^{-1}_{D_1}} \ar@/^.8cm/[ddd]^{f_{\der{F},1}}\\& P_{\der{F}} \ar@{>->}[d]_{p_{\der{F},0}} \ar[r]^{p_{\der{F},1}} & D_{\der{F},1} \ar@{>->}[d]_{f_{\der{F},1}}&  & P \ar[r]^{p_1} \ar@{>->}[d]_{p_0} & D_1 \ar@{>->}[d]_{f_1}\\ D_0  \ar@/_.4cm/[drr]_{g_0}\ar[r]^-{\phi_{D_0}} & D_{\der{F}, 0} \ar[r]_{g_{\der{F},0}}  & G_{\der{F},1} & D_{\der{F},0} \ar@/_.4cm/[drr]_{g_{\der{F},0}} \ar[r]^{\phi^{-1}_{D_0}}& D_0 \ar[r]_{g_{0}}  & D_1 \\ && G_1 \ar[u]^{\phi_{G_1}}&&&G_{\der{F},1} \ar[u]^{\phi^{-1}_{G_1}}}\]	
+	
+If we compute we get
+\[\begin{split}
+	p_{\der{F},1}\circ \alpha \circ \beta &= \phi_{D_1}\circ p_1\circ \beta \\&=\phi_{D_1}\circ \phi^{-1}_{D_1}\circ p_{\der{F},1}\\&=p_{\der{F},1}
+\end{split} \qquad \begin{split}
+p_{1}\circ \beta \circ \alpha &= \phi^{-1}_{D_1}\circ p_{\der{F},1}\circ \alpha \\&=\phi^{-1}_{D_1}\circ \phi_{D_1}\circ p_{1}\\&=p_{1}
+\end{split}\]
+\[\begin{split}
+	p_{\der{F},0}\circ \alpha \circ \beta &= \phi_{D_0}\circ p_0\circ \beta \\&=\phi_{D_0}\circ \phi^{-1}_{D_0}\circ p_{\der{F},0}\\&=p_{\der{F},0}
+\end{split} \qquad \begin{split}p_{0}\circ \beta \circ \alpha &= \phi^{-1}_{D_0}\circ p_{\der{F},0}\circ \alpha \\&=\phi^{-1}_{D_0}\circ \phi_{D_0}\circ p_{0}\\&=p_{0}
+\end{split}\]
+	and so $\alpha$ and $\beta$ are one the inverse of the other. Moreover, by hypothesis we know that $f_{\der{F},0}\circ \phi_{D_0}=f_{0}$, so that:
+	\begin{align*}
+		f'_0\circ z_{\der{F},0}\circ \alpha &= f_{\der{F},0}\circ p_{\der{F},0}\circ \alpha \\&=f_{\der{F},0}\circ \phi_{D_0}\circ p_0\\&=f_0\circ p_0\\&=f'_{0}\circ z_0
+	\end{align*}
+	therefore $z_{\der{F},0}\circ \alpha=z_0$ and $z_0\circ \beta=z_{\der{F},0}$.
+	
+	Since $\phi_{G_2}$ is the identity, then $g_{\der{F},1}\circ \phi_{D_1}=g_1$, hence:
+	\begin{align*}
+		\iota_{\der{E}, G_2} \circ g_{\der{F}, 1}\circ p_{\der{F}, 1}&=\iota_{\der{E}, G_2} \circ g_{\der{F}, 1}\circ \phi_{D_1}\circ p_1 \circ \beta\\&=\iota_{\der{E}, G_2} \circ g_{1}\circ p_1\circ \beta\\&=\iota_{\der{E}, G'_1}\circ g'_0\circ z_0 \circ \beta \\&=\iota_{\der{E}, G'_1}\circ g'_0\circ z_{\der{F},0}
+	\end{align*}
+	We can conclude by \Cref{lem:equi}.
+	
+	\item By the second point of \Cref{lem:abs} we know that $\der{G}$ is a pre-switch along $(i_0, i_1)$. Suppose that $\der{G}$ is given by the derivation below.
+	\[
+	\xymatrix@R=20pt@C=20pt{
+		{L_0} \ar[d]_{m_{\der{G}, 0}}
+		&&  {K_0} \ar@{>->}[ll]_{l_0} \ar[r]^{r_0} \ar[d]_{k_{\der{G}, 0}}
+		&  {R_0} \ar[dr]|(.33)\hole_{h_{\der{G}, 0}}  \ar@/^.25cm/@{>}^(.2){\phi_{D_1} \circ i_0}|(.32)\hole[drrr]
+		& & 
+		{L_1}\ar[dl]|(.33)\hole^{m_{\der{G}, 1}} \ar@/_.25cm/[dlll]_(.2){\phi_{D_0} \circ i_1} 
+		&  {K_1} \ar@{>->}[l]_{l_1} \ar[rr]^{r_1} \ar[d]^{k_{\der{G}, 1}}
+		& & {R_0} \ar[d]^{h_{\der{G}, 1}} \\		
+		{G_0}
+		& & {D_{\der{G},0}} \ar@{>->}[ll]^{f_{\der{G}, 0}} \ar[rr]_{g_{\der{G}, 0}}
+		& &  {G_{\der{G}, 1}} 
+		& &  {D_{\der{G}, 1}} \ar@{>->}[ll]^{f_{\der{G}, 1}} \ar[rr]_{g_{\der{G}, 1}}
+		& & {G_2}  }
+	\]
+	Again by \Cref{lem:cose} we know that there are diagrams as the following ones, whose common right half is a pullback.
+\[\xymatrix{D_{\der{G},0} \ar@{>->}[d]_{f_{\der{G},0}}& P \ar@{>->}[d]^{p_{0}} \ar[r]^{p_1}\ar@{>->}[l]_-{z_{\der{G},0}} & D_{1} \ar@{>->}[d]^{f_{1}}& D'_0 \ar@{>->}[d]_{f'_0} & P \ar[r]^{p_1} \ar@{>->}[d]^{p_0} \ar@{>->}[l]_{z_0}& D_1 \ar@{>->}[d]^{f_1}\\ G_0 & D_{0} \ar[r]_{g_{0}} \ar@{>->}[l]^{f_{0}} & G_{1} & G_0 & D_0 \ar[r]_{g_{0}} \ar@{>->}[l]^{f_{0}} & D_1}\]
+
+Since $\psi_{G_0}$ is $\id{G_0}$ then $f_{\der{G},0}\circ \psi_{D'_0}=f'_0$. Similarly, since $\psi_{G_2}=\id{G_2}$, then $g_{\der{G},1}\circ \psi_{D'_1}=g'_1$. Now, from the first equality we have
+\begin{align*}
+	f_{\der{G},0} \circ \psi_{D'_0}\circ z_0&=f'_0 \circ z_0\\&= f_0\circ p_0\\&=f_{\der{G},0} \circ z_{\der{G},0}
+\end{align*}
+and so $\psi_{D'_0}\circ z_0=z_{\der{G},0}$. 
+
+By \Cref{rem:abscol}, we know that there exists an isomorphism $\Psi\colon \tpro{E}\to \tpro{G}$ such that
+\[\Psi \circ \iota_{\der{E}, G_0}=\iota_{\der{G}, G_0} \quad \Psi \circ \iota_{\der{E}, G_1}=\iota_{\der{G}, G_{\der{G},1}}\circ \psi_{G'_1} \quad \Psi \circ \iota_{\der{E}, G_2}=\iota_{\der{G}, G_2} \]
+
+Thus:
+\begin{align*}
+	\iota_{\der{G},G_2}\circ g_1\circ p_1&= \Psi \circ \iota_{\der{E}, G_2}\circ g_1\circ p_1\\&=\Psi \circ \iota_{\der{E}, G'_1} \circ g'_0\circ z_0\\&=\iota_{\der{G}, G_{\der{G},1}}\circ \psi_{G'_1}\circ g'_0\circ z_0\\&=\iota_{\der{G}, G_{\der{G},1}}\circ g_{\der{G},0}\circ \psi_{D'_0}\circ z_0\\&=\iota_{\der{G}, G_{\der{G},1}}\circ g_{\der{G},0}\circ z_{\der{G},0}
+\end{align*}
+	We conclude again by \Cref{lem:equi}.\qedhere 
+\end{enumerate}
+ \end{proof}
+
+
+\begin{corollary}\label{cor:swdeco}
 	contenuto...
 \end{corollary}
 
-\fi 
 
 We end this section showing that, if a switch exists, then any pre-switch can be turned into one composing it with an isomorphism.
 
@@ -777,7 +871,7 @@ We end this section showing that, if a switch exists, then any pre-switch can be
  	
  	Let $(P, \{p_0, p_1\})$ be the pullback of $g_{0}$ along $f_1$, so that by \Cref{lem:cose} 	and the definition of switch we have the diagrams below. 
  	
- 		\[\xymatrix{P\ar[r]^{z_0} \ar@{>->}[d]_{p_0}& D'_{0} \ar@{>->}[d]^{f'_{0}} & P \ar@{>->}[d]_{p_0}\ar[r]^-{z_{\der{F},0}} & D_{\der{F}, 0}\ar@{>->}[d]^{f_{\der{F},0}} & D_{\der{F},0}  \ar[d]_{g_{\der{F},0}}& P \ar[r]^{p_1} \ar[l]_-{z_{\der{F},0}} \ar[d]^{z_{\der{F},1}} & D_1 \ar[d]^{g_1}\\ D_0\ar@{>->}[r]_{f_0} & G_0 & D_0\ar@{>->}[r]_{f_0} & G_0 & G_{\der{F},2} & D_{\der{F},1} \ar[r]_-{g_{\der{F},1}} \ar@{>->}[l]^-{f_{\der{F},1}} & G_2}\]
+ 		\[\xymatrix{P\ar@{>->}[r]^{z_0} \ar@{>->}[d]_{p_0}& D'_{0} \ar@{>->}[d]^{f'_{0}} & P \ar@{>->}[d]_{p_0}\ar@{>->}[r]^-{z_{\der{F},0}} & D_{\der{F}, 0}\ar@{>->}[d]^{f_{\der{F},0}} & D_{\der{F},0}  \ar[d]_{g_{\der{F},0}}& P \ar[r]^{p_1} \ar[l]_-{z_{\der{F},0}} \ar[d]^{z_{\der{F},1}} & D_1 \ar[d]^{g_1}\\ D_0\ar@{>->}[r]_{f_0} & G_0 & D_0\ar@{>->}[r]_{f_0} & G_0 & G_{\der{F},2} & D_{\der{F},1} \ar[r]_-{g_{\der{F},1}} \ar@{>->}[l]^-{f_{\der{F},1}} & G_2}\]
  	
  	Now, by \Cref{thm:switch_uni} we know that $f'_{0}=f_{\der{F},0}\circ \phi_{D_{\der{E},0}}$, so that 
  	\begin{align*}
@@ -975,11 +1069,10 @@ The previous theorem not only assures about the existence of a switch along a st
 			\ar@{>->}[dl]|(.4)\hole_(.65){f_0}\ar[ur]|(.5)\hole^(.7){g_0}&&D_1
 			\ar[dr]|(.4)\hole^(.65){g_1}
 			\ar@{>->}[ul]|(.5)\hole_(.65){f_1}&&R_1\ar@/^.6cm/[ddll]^(.2){i'_0}|(.31)\hole|(.81)\hole\ar[dl]_{h_1}|(.6)\hole\\&G_0
-			&&P\ar@{>}[dr]_{z_1}	\ar@{>}[dl]^{z_0}\ar[ur]^(.4){p_1}\ar@{>->}[ul]_(.4){p_0}&&G_2\\L_1	\ar@/^.6cm/[uurr]^(.2){i_1} \ar[ur]_(.35){m'_0}|(.61)\hole && D'_0	\ar@{>->}[ul]|(.4)\hole_(.65){f'_0}\ar[dr]|(.5)\hole_(.65){g'_0}	&&D'_1\ar[ur]|(.4)\hole^(.65){g'_1} \ar@{>->}[dl]|(.5)\hole^(.65){f'_1}	&& R_0 \ar[ul]^(.35){h'_1}|(.61)\hole\ar@/_.6cm/[uull]_(.2){i_0}\\ &K_1	\ar[ur]_{k'_0} \ar[dr]_{r_1}	\ar@{>->}[ul]^{l_1}\ar@/^.6cm/[uurr]_(.65){u_1}&&G'_1&& K_0\ar[ur]_{r_0} \ar[ul]^{k'_1} \ar@{>->}[dl]^{l_0} \ar@/_.6cm/[uull]^(.65){u_0}\\&& R_1	\ar[ur]_{h'_0}\ar@/^.8cm/[uurr]^(.2){i'_0}&& L_0 \ar[ul]^{m'_1} \ar@/_.8cm/[uull]_(.2){i'_1} |(.69)\hole }\] 
+			&&P\ar@{>}[dr]_{z_1}	\ar@{>->}[dl]^{z_0}\ar[ur]^(.4){p_1}\ar@{>->}[ul]_(.4){p_0}&&G_2\\L_1	\ar@/^.6cm/[uurr]^(.2){i_1} \ar[ur]_(.35){m'_0}|(.61)\hole && D'_0	\ar@{>->}[ul]|(.4)\hole_(.65){f'_0}\ar[dr]|(.5)\hole_(.65){g'_0}	&&D'_1\ar[ur]|(.4)\hole^(.65){g'_1} \ar@{>->}[dl]|(.5)\hole^(.65){f'_1}	&& R_0 \ar[ul]^(.35){h'_1}|(.61)\hole\ar@/_.6cm/[uull]_(.2){i_0}\\ &K_1	\ar[ur]_{k'_0} \ar[dr]_{r_1}	\ar@{>->}[ul]^{l_1}\ar@/^.6cm/[uurr]_(.65){u_1}&&G'_1&& K_0\ar[ur]_{r_0} \ar[ul]^{k'_1} \ar@{>->}[dl]^{l_0} \ar@/_.6cm/[uull]^(.65){u_0}\\&& R_1	\ar[ur]_{h'_0}\ar@/^.8cm/[uurr]^(.2){i'_0}&& L_0 \ar[ul]^{m'_1} \ar@/_.8cm/[uull]_(.2){i'_1} |(.69)\hole }\] 
 		
 		The following four squares are all pushouts, while the first three are also pullbacks. 
 		\[\xymatrix{P \ar@{>->}[r]^{p_0} \ar@{>->}[d]_{p_1}& D_0 \ar@{>->}[d]^{g_0}  & P \ar@{>}[r]^{z_0} \ar@{>->}[d]_{p_0}& D'_0 \ar@{>->}[d]^{f'_0} &  P \ar@{->}[d]_{z_0} \ar[r]^{z_1} & D'_1 \ar@{>->}[d]^{f'_1} & P\ar[r]^{z_1} \ar[d]_{p_1}&D'_1 \ar[d]^{g'_1}\\ D_1 \ar@{>->}[r]_{f_1} & G_1  & D_0 \ar@{>->}[r]_{f_0} & G_0 & D'_0 \ar[r]_{g'_0}& G'_1 & D_1 \ar[r]_{g_1}& G_2}\]	
-		In particular, the arrow $z_0\colon P\to D'_0$ belongs to $\mathcal{M}$.
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -1557,45 +1650,45 @@ systems where the uniqueness of the independence pair is ensured.
 
 
 \section{Switch equivalence and concatenable traces}
-\todo{intro}
 
-Switch equivalence is now defined as the equivalence relating derivations that 
-can be obtained one from another by a sequence of switches. Moreover, intermediate graphs can be taken up to isomorphism according to abstraction equivalence.
+We are now ready to define the notion of \emph{concrete switch equivalence}, relating derivations that 
+can be obtained one from another by a sequence of switches. 
 
-\todo{la definizione sotto è da sistemare}
-\begin{definition}[Concrete switching sequence]
+\begin{definition}[Concrete switching equivalence]
 	\label{de:switch-equivalence}
-	Let $(\X, \R)$ be a left-linear rewriting system.  Let also
-	$\der{D}, \der{E} : G \Mapsto H$ be derivations with the same
-	length, $\der{D}=\{\dder{D}_{i}\}_{i=0}^n$ and
-	$\der{E}=\{\dder{E}_{i}\}_{i=0}^n$. If
-	$\dder{D}_i \cdot \dder{D}_{i+1}$ is a switch of
+	Let $(\X, \R)$ be a left-linear rewriting system.  Let also  $\der{D}:=\{\dder{D}_{i}\}_{i=0}^n$,  	$\der{E}:=\{\dder{E}_{i}\}_{i=0}^n$
+	be two derivations with the same length and the same
+	source $G$ and  target $H$. 	If $\dder{D}_i \cdot \dder{D}_{i+1}$ is a switch of
 	$\dder{E}_i \cdot \dder{E}_{i+1}$ for some $i \in [0,n-1]$ and  $\dder{D}_j = \dder{E}_j$ for each $j \not \in \{i,i+1\}$ then we write
-	$\der{D} \shift{\transp{i}} \der{E}$. 
-	A \emph{concrere switching sequence} is a sequence $\{\der{D}_{k}\}_{k=0}^m$
-	of derivations such that
-	$\der{D}_0 \shift{\nu_1} \der{D}_1 \shift{\nu_2} \ldots
-	\shift{\nu_m} \der{D}_m$, where $\nu_{k}$ is the transposition $\transp{i_k}$.
-	
-		
-	Two derivations $\der{D}, \der{E}:G\Mapsto H$ are \emph{switch
-		equivalent}, written $\der{D}\equiv^{sh} \der{E}$, if there is a
-	switching sequence $\{\der{D}_{k}\}_{k=0}^m$ such that
-	\begin{itemize}
-		\item $\der{D}_0$ is $\der{D}$ and $\der{D}_m$ is $\der{E}$;
-		\item for every $i\in [0,m-1]$, $\der{D}_i \shift{\transp{h}}\der{D}_{i+1}$ for some $h\in [0, n-1]$.
-	\end{itemize}
+	$\der{D} \shift{\transp{i}} \der{E}$.
 	 
-	To point out a chosen permutation of rewriting steps, we will also write $\der{D}\equiv^{sh}_{\sigma} \der{E}$, 
-	where $\sigma$ is the composition of the transposition appearing in a chosen switching sequence. 
+	A \emph{switching sequence} is a non-empty sequence $\{\der{D}_{k}\}_{k=0}^m$
+	of derivations such that for every $k\in [0,m-1]$, $\der{D}_k \shift{\transp{h}}\der{D}_{k+1}$ for some $h\in [0, n-1]$. We will denote by $\nu_{k}$ the permutation $[0,n-1]\to [0,n-1] $ swapping $h$ and $h+1$.
+	
+	Two derivations $\der{D}, \der{E}:G\Mapsto H$ are \emph{concretely switch
+		equivalent}, written $\der{D}\equiv^{csh} \der{E}$, if there exists a
+	switching sequence $\{\der{D}_{k}\}_{k=0}^m$ such that $\der{D}_0$ is $\der{D}$ and $\der{D}_m$ is $\der{E}$. To point out a chosen permutation of rewriting steps associated to a switching sequence $\{\der{D}_k\}_{k=0}^m$, we will also write $\der{D}\equiv^{sh}_{\sigma} \der{E}$, 
+	where $\sigma$ is the composition of the family of permutations $\{\nu_k\}_{k=0}^{m-1}$. 
 \end{definition}
+
+\begin{remark}\label{rem:st}
+	We can notice that all the elements of switching sequence $\{\der{D}_{k}\}_{k=0}^m$ have the same source and the same target.
+\end{remark}
+
+The definining feature of well-switching rewriting systems is that there is at most one independence pair between two adjacent direct derivations. Moreover, by \Cref{cor:absequi}, switches are determined up to an abstraction equivalence  with identities as first and last component. Thus, we expect that two switching sequences with the same starting point and the same family of transpositions consist of the same direct derivations, up to abstraction equivalence. This is exactly the content of the next proposition.
 
 
 \begin{proposition}
-\todo{Se uso le stesse trasposizioni ho la stessa cosa}
+	Let $\{\der{D}_k\}_{k=0}^m$ and $\{\der{E}_k\}_{k=0}^m$ be two switching sequences. Suppose that $\der{D}_0$ and $\der{E}_0$ have the same source and target and that there is an abstraction equivalence $\{\phi_X\}_{\X\in \Deltamin(\der{D}_0)}$ between them such that $\phi_{G}=\id{G}$ and $\phi_{H}=\id{H}$. 
+	
+	Let $\{\nu_k\}_{k=0}^{m-1}$  and $\{\sigma_k\}_{k=0}^{m-1}$ be the two associated family of permutations and suppose that $\nu_k=\sigma_k$ for every $k\in [0, m-1]$. Then for every $k\in [0,m-1]$ there exists an abstraction equivalence $\{\psi_{X}\}_{X\in \Deltamin(\der{D}_k)}$ between $\der{D}_k$ and $\der{E}_k$ with identities as first and last component.
 \end{proposition}
 \begin{proof}
+	We proceed by  induction on $m$.
 	
+	\smallskip\noindent $m=0$. In this case there is nothing to proof.
+	
+	\smallskip \noindent $m>0$  Let $(i_0, i_1)$ be the independence pair 
 	
 \end{proof}
 
